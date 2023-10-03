@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class RotateUntilCollision : MonoBehaviour
 {
-    // transform型の変数を宣言
-    Transform myTransform;
-
-    // ワールド座標を基準に、回転を取得
-    Vector3 worldAngle;
-
+    // 回転速度
     public float speed = 1f;
+
+    // マテリアルのオフセットのXの数値
+    float x = 0f;
+
+    // マテリアルのオフセットのXの最大値
+    int maxX = 1;
+
+    void OnCollisionExit(Collision collision)
+    {
+        maxX = 0;
+    }
 
     void Update()
     {
-        myTransform = this.transform;
-        worldAngle = myTransform.eulerAngles;
+        // まだ衝突していなければ
+        if (maxX == 1)
+        {
+            // マテリアルのオフセットのXの数値を増加
+            x += speed * Time.deltaTime * 0.01f;
 
-        worldAngle.y += speed * Time.deltaTime;
+            // xの数値が最大値を超えたら
+            if (x > maxX)
+            {
+                // xの数値を0に戻す
+                x = 0f;
+            }
 
-        myTransform.eulerAngles = worldAngle; // 回転角度を設定
+            GetComponent<Renderer>().sharedMaterial.SetTextureOffset("_MainTex", new Vector2(x, 0f));
+        }
     }
 }
