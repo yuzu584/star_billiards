@@ -4,66 +4,79 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
+// ゲーム中のUIを管理
 public class UIController : MonoBehaviour
 {
-    public GameObject chargeUI;       // チャージのUI
-    public Text chargeValue;          // チャージの数値
-    public Image chargeCircle;        // チャージの円
-    public Text chargeName;           // チャージの文字
-    public Image EnergyGauge;         // エネルギーゲージ
-    public Image EnergyGaugeOutline;  // エネルギーゲージの枠
-    public Text NoEnergy;             // エネルギーがない旨を伝えるテキスト
-    public Text EnergyValue;             // エネルギーの数値
+    // InspectorでUIの配列を指定
+    [SerializeField]
+    UIList UL;
+
+    // UIの配列
+    [System.Serializable]
+    public class UIList
+    {
+        public GameObject chargeUI;       // チャージのUI
+        public Image chargeCircle;        // チャージの円
+        public Text chargeValue;          // チャージの数値
+        public Text chargeName;           // チャージの文字
+        public Image EnergyGauge;         // エネルギーゲージ
+        public Image EnergyGaugeOutline;  // エネルギーゲージの枠
+        public Text EnergyValue;          // エネルギーの数値
+        public Text NoEnergy;             // エネルギーがない旨を伝えるテキスト
+    }
+
+    EnergyController EC = new EnergyController();  // インスタンスを生成
+    Shot St = new Shot();                          // インスタンスを生成
 
     void Start()
     {
         // エネルギーがない旨を伝えるテキストを非表示
-        NoEnergy.enabled = false;
+        UL.NoEnergy.enabled = false;
     }
 
     void Update()
     {
         // エネルギーゲージの増減を描画
-        EnergyGauge.fillAmount = EnergyController.energy / EnergyController.maxEnergy;
+        UL.EnergyGauge.fillAmount = EC.energy / EC.maxEnergy;
 
         // エネルギーの数値を表示
-        EnergyValue.text = EnergyController.energy.ToString("0");
+        UL.EnergyValue.text = EC.energy.ToString("0");
 
         // チャージされているなら
-        if (Shot.charge > 0)
+        if (St.charge > 0)
         {
             // UIを有効化
-            chargeUI.SetActive(true);
+            UL.chargeUI.SetActive(true);
 
             // チャージの数値をテキストで表示
-            chargeValue.text = Shot.charge.ToString("0") + "%";
+            UL.chargeValue.text = St.charge.ToString("0") + "%";
 
             // チャージの円を描写
-            chargeCircle.fillAmount = Shot.charge / 100;
+            UL.chargeCircle.fillAmount = St.charge / 100;
         }
         // チャージされていないなら
-        else if (Shot.charge == 0)
+        else if (St.charge == 0)
         {
             // UIを無効化
-            chargeUI.SetActive(false);
+            UL.chargeUI.SetActive(false);
         }
 
         // エネルギーが0以下なら
-        if(EnergyController.energy <= 0)
+        if(EC.energy <= 0)
         {
             // エネルギーゲージの枠を赤色にする
-            EnergyGaugeOutline.color = new Color32(155, 0, 0, 100);
+            UL.EnergyGaugeOutline.color = new Color32(155, 0, 0, 100);
 
             // エネルギーがない旨を伝えるテキストを表示
-            NoEnergy.enabled = true;
+            UL.NoEnergy.enabled = true;
         }
         else
         {
             // エネルギーゲージの枠を白色にする
-            EnergyGaugeOutline.color = new Color32(255, 255, 255, 100);
+            UL.EnergyGaugeOutline.color = new Color32(255, 255, 255, 100);
 
             // エネルギーがない旨を伝えるテキストを非表示
-            NoEnergy.enabled = false;
+            UL.NoEnergy.enabled = false;
         }
     }
 }

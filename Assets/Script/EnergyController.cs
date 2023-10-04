@@ -2,16 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// エネルギーの増減を管理
 public class EnergyController : MonoBehaviour
 {
-    // プレイヤーのエネルギー
-    public static float energy = 100;
-
-    // 最大エネルギー
-    public static float maxEnergy = 100;
-
-    // リジッドボディ
-    private Rigidbody rb;
+    public float energy = 1000;     // プレイヤーのエネルギー
+    public float maxEnergy = 1000;  // 最大エネルギー
+    private Rigidbody rb;           // リジッドボディ
 
     void Start()
     {
@@ -23,7 +19,7 @@ public class EnergyController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // 衝突したオブジェクトのタグがPlanetなら
-        if (collision.gameObject.tag == "Planet")
+        if (collision.gameObject.CompareTag("Planet"))
         {
             // エネルギーを衝突したときの速度に応じて回復させる
             energy += rb.velocity.magnitude / 10;

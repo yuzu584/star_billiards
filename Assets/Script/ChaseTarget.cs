@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// –Ú•W‚ÌÀ•W‚ÉˆÚ“®‚·‚é
 public class ChaseTarget : MonoBehaviour
 {
-    // ’Ç‚¢‚©‚¯‚é‘ÎÛ
-    public GameObject target;
+    public GameObject target;  // ’Ç‚¢‚©‚¯‚é‘ÎÛ
 
     void Update()
     {

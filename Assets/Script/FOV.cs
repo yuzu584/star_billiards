@@ -2,19 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 視野角を変更する
 public class FOV : MonoBehaviour
 {
-    // メインカメラ
-    private Camera cam;
-
-    // リジッドボディ
-    private Rigidbody rb;
-
-    // 速度を参照するオブジェクト
-    public GameObject player;
-
-    // 視野角
-    public int Fov = 60;
+    private Camera cam;        // メインカメラ
+    private Rigidbody rb;      // リジッドボディ
+    public GameObject player;  // 速度を参照するオブジェクト
+    public int Fov = 60;       // 視野角
 
     void Start()
     {

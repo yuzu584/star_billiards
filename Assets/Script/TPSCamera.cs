@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// カメラの視点移動
 public class TPSCamera : MonoBehaviour
 {
     // Inspectorでプレイヤーを指定
     [SerializeField] GameObject player;
 
-    // 視点移動速度
-    public float speed = 1.0f;
+    public float speed = 1.0f;  // 視点移動速度
+    float mx;                   // マウスの横移動量
+    float my;                   // マウスの縦移動量
 
     void Update()
     {
         // マウスの移動量を取得
-        float mx = Input.GetAxis("Mouse X");
-        float my = Input.GetAxis("Mouse Y");
+        mx = Input.GetAxis("Mouse X");
+        my = Input.GetAxis("Mouse Y");
 
         // X方向に一定量移動していれば横回転
         if (Mathf.Abs(mx) > 0.001f)

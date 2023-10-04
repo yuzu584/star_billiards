@@ -2,37 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 反射するRayとLineを生成
 public class CreateRay : MonoBehaviour
 {
-    // Rayを出すオブジェクト
-    public GameObject target;
+    public GameObject target;           // Rayを出すオブジェクト
+    public GameObject directionTarget;  // Rayの向きを決めるオブジェクト
+    public LineRenderer lineRenderer;   // linerendererの変数
 
-    // Rayの向きを決めるオブジェクト
-    public GameObject directionTarget;
-
-    // Rigidbody型の変数
-    Rigidbody rb;
-
-    Vector3 origin;    // 原点
-    Vector3 direction; // X軸方向を表すベクトル
-    RaycastHit hit;    // Rayのhit
-
-    // 反射ベクトル
-    public static Vector3 reflectionDirection;
-
-    // 入射ベクトル（速度）
-    Vector3 inDirection;
-
-    // 法線ベクトル
-    Vector3 inNormal;
-
-    // linerendererの変数
-    public LineRenderer lineRenderer;
+    Rigidbody rb;                // Rigidbody型の変数
+    Vector3 origin;              // 原点
+    Vector3 direction;           // X軸方向を表すベクトル
+    RaycastHit hit;              // Rayのhit
+    Vector3 inDirection;         // 入射ベクトル（速度）
+    Vector3 inNormal;            // 法線ベクトル
+    Vector3 reflectionDirection; // 反射ベクトル
 
     void Start()
     {
-        lineRenderer.startWidth = 0.1f;        // 開始点の太さを0.1にする
-        lineRenderer.endWidth = 1f;            // 終了点の太さを0.1にする
+        // 開始点の太さを0.1にする
+        lineRenderer.startWidth = 0.1f;
+
+        // 終了点の太さを1にする
+        lineRenderer.endWidth = 1f;
 
         // lineRendererの線の数
         lineRenderer.positionCount = 3;

@@ -2,38 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 発射ボタンで弾を発射する
 public class Shot : MonoBehaviour
 {
-    // カメラ
-    public GameObject camera;
+    [SerializeField] CreateRay Cr;  // RayとLineを作る関数の型
+    public GameObject camera;       // カメラ
+    public float speed = 1.0f;      // 移動速度
+    public float charge = 0;        // 球のチャージ
+    public float chargeSpeed = 10;  // 球のチャージ速度
+    public int bouncePower = 100;   // 衝突したときの反発力
 
-    // 移動速度
-    public float speed = 1.0f;
-
-    // 球のチャージ
-    public static float charge = 0;
-
-    // 球のチャージ速度
-    public float chargeSpeed = 10;
-
-    // RayとLineを作る関数の型
-    public CreateRay createRay;
-
-    // 衝突したときの反発力
-    public int bouncePower = 100;
-
-    // 向き
-    Vector3 direction;
-
-    // プレイヤーのRigidbody
-    Rigidbody rb;
-
-    RaycastHit hit;    // Rayのhit
+    Vector3 direction;              // 向き
+    Rigidbody rb;                   // プレイヤーのRigidbody
+    RaycastHit hit;                 // Rayのhit
+    EnergyController EC;            // エネルギーコントローラー型の変数
 
     void Start()
     {
         // rigidbodyを取得
         rb = GetComponent<Rigidbody>();
+
+        EC = new EnergyController();  // インスタンスを生成
+        Cr = new CreateRay();         // インスタンスを生成
     }
 
     // 衝突したらdirectionの向きに力を加える
@@ -63,7 +53,7 @@ public class Shot : MonoBehaviour
     void FixedUpdate()
     {
         // エネルギーがある状態で発射ボタンが押されたら
-        if (Input.GetAxisRaw("Fire1") > 0 && EnergyController.energy > 0)
+        if (Input.GetAxisRaw("Fire1") > 0 && EC.energy > 0)
         {
             // 減速させる
             rb.velocity *= 0.995f;
@@ -73,10 +63,10 @@ public class Shot : MonoBehaviour
     void Update()
     {
         // エネルギーがある状態で発射ボタンが押されたら
-        if(Input.GetAxisRaw("Fire1") > 0 && EnergyController.energy > 0)
+        if(Input.GetAxisRaw("Fire1") > 0 && EC.energy > 0)
         {
             // 角度を設定
-            direction = createRay.RayDirection();
+            direction = Cr.RayDirection();
 
             // チャージを貯める
             charge += (chargeSpeed * Time.deltaTime) * 50;
@@ -88,7 +78,7 @@ public class Shot : MonoBehaviour
         else if (Input.GetAxisRaw("Fire1") == 0 && charge > 0)
         {
             // エネルギーを減少させる
-            EnergyController.energy -= charge / 10;
+            EC.energy -= charge / 10;
 
             // ベクトルをカメラの向きにする
             Vector3 velocity = camera.transform.forward;

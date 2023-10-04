@@ -2,19 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 自転させる
 public class RotateUntilCollision : MonoBehaviour
 {
-    // 回転速度
-    public float speed = 1f;
+    public float speed = 1f;  // 回転速度
+    float x = 0f;             // マテリアルのオフセットのXの数値
+    int maxX = 1;             // マテリアルのオフセットのXの最大値
 
-    // マテリアルのオフセットのXの数値
-    float x = 0f;
-
-    // マテリアルのオフセットのXの最大値
-    int maxX = 1;
-
+    // 衝突判定が終わったら
     void OnCollisionExit(Collision collision)
     {
+        // 最大値を0にする
         maxX = 0;
     }
 
@@ -33,6 +31,7 @@ public class RotateUntilCollision : MonoBehaviour
                 x = 0f;
             }
 
+            // マテリアルのオフセットを更新
             GetComponent<Renderer>().sharedMaterial.SetTextureOffset("_MainTex", new Vector2(x, 0f));
         }
     }
