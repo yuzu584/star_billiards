@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnergyController : MonoBehaviour
 {
     // プレイヤーのエネルギー
-    public static float energy = 1000;
+    public static float energy = 100;
 
     // 最大エネルギー
-    public static float maxEnergy = 1000;
+    public static float maxEnergy = 100;
 
     // リジッドボディ
     private Rigidbody rb;
