@@ -31,8 +31,8 @@ public class CreateRay : MonoBehaviour
 
     void Start()
     {
-        lineRenderer.startWidth = 0.1f;                   // 開始点の太さを0.1にする
-        lineRenderer.endWidth = 1f;                       // 終了点の太さを0.1にする
+        lineRenderer.startWidth = 0.1f;        // 開始点の太さを0.1にする
+        lineRenderer.endWidth = 1f;            // 終了点の太さを0.1にする
 
         // lineRendererの線の数
         lineRenderer.positionCount = 3;

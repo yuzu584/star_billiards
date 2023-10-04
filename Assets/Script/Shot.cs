@@ -19,6 +19,7 @@ public class Shot : MonoBehaviour
     // RayとLineを作る関数の型
     public CreateRay createRay;
 
+    // 衝突したときの反発力
     public int bouncePower = 100;
 
     // 向き
@@ -26,6 +27,8 @@ public class Shot : MonoBehaviour
 
     // プレイヤーのRigidbody
     Rigidbody rb;
+
+    RaycastHit hit;    // Rayのhit
 
     void Start()
     {
@@ -46,7 +49,15 @@ public class Shot : MonoBehaviour
     // 衝突後に次の角度を設定
     void OnCollisionExit()
     {
-        direction = createRay.RayDirection();
+        // Rayを生成
+        Ray ray = new Ray(transform.position, rb.velocity.normalized);
+
+        // 球体のRayを生成
+        if (Physics.SphereCast(ray, 0.5f, out hit))
+        {
+            // プレイヤーの移動方向とRayが当たった位置の法線ベクトルから角度を計算
+            direction = Vector3.Reflect(rb.velocity.normalized, hit.normal);
+        }
     }
 
     void Update()
