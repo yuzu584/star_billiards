@@ -6,26 +6,14 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    // チャージのUI
-    public GameObject chargeUI;
-
-    // チャージの数値
-    public Text chargeValue;
-
-    // チャージの円
-    public Image chargeCircle;
-
-    // チャージの文字
-    public Text chargeName;
-
-    // エネルギーゲージ
-    public Image EnergyGauge;
-
-    // エネルギーゲージの枠
-    public Image EnergyGaugeOutline;
-
-    // エネルギーがない旨を伝えるテキスト
-    public Text NoEnergy;
+    public GameObject chargeUI;       // チャージのUI
+    public Text chargeValue;          // チャージの数値
+    public Image chargeCircle;        // チャージの円
+    public Text chargeName;           // チャージの文字
+    public Image EnergyGauge;         // エネルギーゲージ
+    public Image EnergyGaugeOutline;  // エネルギーゲージの枠
+    public Text NoEnergy;             // エネルギーがない旨を伝えるテキスト
+    public Text EnergyValue;             // エネルギーの数値
 
     void Start()
     {
@@ -37,6 +25,9 @@ public class UIController : MonoBehaviour
     {
         // エネルギーゲージの増減を描画
         EnergyGauge.fillAmount = EnergyController.energy / EnergyController.maxEnergy;
+
+        // エネルギーの数値を表示
+        EnergyValue.text = EnergyController.energy.ToString("0");
 
         // チャージされているなら
         if (Shot.charge > 0)
