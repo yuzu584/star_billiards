@@ -60,6 +60,16 @@ public class Shot : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        // エネルギーがある状態で発射ボタンが押されたら
+        if (Input.GetAxisRaw("Fire1") > 0 && EnergyController.energy > 0)
+        {
+            // 減速させる
+            rb.velocity *= 0.995f;
+        }
+    }
+
     void Update()
     {
         // エネルギーがある状態で発射ボタンが押されたら
