@@ -31,9 +31,6 @@ public class CreateRay : MonoBehaviour
 
     void Start()
     {
-        // マテリアルを設定して見た目を変える
-        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-
         lineRenderer.startWidth = 0.1f;                   // 開始点の太さを0.1にする
         lineRenderer.endWidth = 1f;                       // 終了点の太さを0.1にする
 
