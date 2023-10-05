@@ -42,8 +42,12 @@ public class UIController : MonoBehaviour
         // チャージされているなら
         if (Shot.charge > 0)
         {
-            // UIを有効化
-            UiList.chargeUI.SetActive(true);
+            // チャージのUIが無効化されていたら
+            if (!(UiList.chargeUI.activeSelf))
+            {
+                // UIを有効化
+                UiList.chargeUI.SetActive(true);
+            }
 
             // チャージの数値をテキストで表示
             UiList.chargeValue.text = Shot.charge.ToString("0") + "%";
@@ -51,15 +55,15 @@ public class UIController : MonoBehaviour
             // チャージの円を描写
             UiList.chargeCircle.fillAmount = Shot.charge / 100;
         }
-        // チャージされていないなら
-        else if (Shot.charge == 0)
+        // チャージされていないかつ表示されているなら
+        else if (Shot.charge == 0 && UiList.chargeUI.activeSelf)
         {
             // UIを無効化
             UiList.chargeUI.SetActive(false);
         }
 
-        // エネルギーが0以下なら
-        if(EnergyController.energy <= 0)
+        // エネルギーが0以下かつ非表示なら
+        if(EnergyController.energy <= 0 && UiList.NoEnergy.enabled == false)
         {
             // エネルギーゲージの枠を赤色にする
             UiList.EnergyGaugeOutline.color = new Color32(155, 0, 0, 100);
@@ -70,7 +74,8 @@ public class UIController : MonoBehaviour
             // エネルギーがない旨を伝えるテキストを表示
             UiList.NoEnergy.enabled = true;
         }
-        else
+        // エネルギーが0より上かつ表示されているなら
+        else if (EnergyController.energy > 0 && UiList.NoEnergy.enabled == true)
         {
             // エネルギーゲージの枠を白色にする
             UiList.EnergyGaugeOutline.color = new Color32(255, 255, 255, 100);
