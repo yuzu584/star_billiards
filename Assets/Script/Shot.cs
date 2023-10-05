@@ -6,12 +6,12 @@ using UnityEngine;
 public class Shot : MonoBehaviour
 {
     [SerializeField] CreateRay Cr;  // RayとLineを作る関数の型
-    public GameObject camera;       // カメラ
     public float speed = 1.0f;      // 移動速度
     public static float charge = 0; // 球のチャージ
     public float chargeSpeed = 10;  // 球のチャージ速度
     public int bouncePower = 100;   // 衝突したときの反発力
 
+    Camera cam;              // カメラ
     Vector3 direction;              // 向き
     Rigidbody rb;                   // プレイヤーのRigidbody
     RaycastHit hit;                 // Rayのhit
@@ -20,6 +20,9 @@ public class Shot : MonoBehaviour
     {
         // rigidbodyを取得
         rb = GetComponent<Rigidbody>();
+
+        // メインカメラを設定
+        cam = Camera.main;
     }
 
     // 衝突したらdirectionの向きに力を加える
@@ -77,7 +80,7 @@ public class Shot : MonoBehaviour
             EnergyController.energy -= charge / 10;
 
             // ベクトルをカメラの向きにする
-            Vector3 velocity = camera.transform.forward;
+            Vector3 velocity = cam.transform.forward;
 
             // 力を加える
             rb.AddForce(velocity * speed * charge);
