@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
 {
     // InspectorでUIの配列を指定
     [SerializeField]
-    UIList UL;
+    UIList UiList;
 
     // UIの配列
     [System.Serializable]
@@ -28,58 +28,58 @@ public class UIController : MonoBehaviour
     void Start()
     {
         // エネルギーがない旨を伝えるテキストを非表示
-        UL.NoEnergy.enabled = false;
+        UiList.NoEnergy.enabled = false;
     }
 
     void Update()
     {
         // エネルギーゲージの増減を描画
-        UL.EnergyGauge.fillAmount = EnergyController.energy / EnergyController.maxEnergy;
+        UiList.EnergyGauge.fillAmount = EnergyController.energy / EnergyController.maxEnergy;
 
         // エネルギーの数値を表示
-        UL.EnergyValue.text = EnergyController.energy.ToString("0");
+        UiList.EnergyValue.text = EnergyController.energy.ToString("0");
 
         // チャージされているなら
         if (Shot.charge > 0)
         {
             // UIを有効化
-            UL.chargeUI.SetActive(true);
+            UiList.chargeUI.SetActive(true);
 
             // チャージの数値をテキストで表示
-            UL.chargeValue.text = Shot.charge.ToString("0") + "%";
+            UiList.chargeValue.text = Shot.charge.ToString("0") + "%";
 
             // チャージの円を描写
-            UL.chargeCircle.fillAmount = Shot.charge / 100;
+            UiList.chargeCircle.fillAmount = Shot.charge / 100;
         }
         // チャージされていないなら
         else if (Shot.charge == 0)
         {
             // UIを無効化
-            UL.chargeUI.SetActive(false);
+            UiList.chargeUI.SetActive(false);
         }
 
         // エネルギーが0以下なら
         if(EnergyController.energy <= 0)
         {
             // エネルギーゲージの枠を赤色にする
-            UL.EnergyGaugeOutline.color = new Color32(155, 0, 0, 100);
+            UiList.EnergyGaugeOutline.color = new Color32(155, 0, 0, 100);
 
             // エネルギーゲージの数値を赤色にする
-            UL.EnergyValue.color = new Color32(155, 0, 0, 100);
+            UiList.EnergyValue.color = new Color32(155, 0, 0, 100);
 
             // エネルギーがない旨を伝えるテキストを表示
-            UL.NoEnergy.enabled = true;
+            UiList.NoEnergy.enabled = true;
         }
         else
         {
             // エネルギーゲージの枠を白色にする
-            UL.EnergyGaugeOutline.color = new Color32(255, 255, 255, 100);
+            UiList.EnergyGaugeOutline.color = new Color32(255, 255, 255, 100);
 
             // エネルギーゲージの数値を白色にする
-            UL.EnergyValue.color = new Color32(255, 255, 255, 100);
+            UiList.EnergyValue.color = new Color32(255, 255, 255, 255);
 
             // エネルギーがない旨を伝えるテキストを非表示
-            UL.NoEnergy.enabled = false;
+            UiList.NoEnergy.enabled = false;
         }
     }
 }

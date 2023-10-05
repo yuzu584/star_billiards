@@ -7,7 +7,7 @@ public class EnergyController : MonoBehaviour
 {
     public static float energy = 1000;     // プレイヤーのエネルギー
     public static float maxEnergy = 1000;  // 最大エネルギー
-    private Rigidbody rb;           // リジッドボディ
+    private Rigidbody rb;                  // リジッドボディ
 
     void Start()
     {
