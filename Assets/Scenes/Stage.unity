@@ -1500,6 +1500,7 @@ MonoBehaviour:
     EnergyGaugeOutline: {fileID: 850064949}
     EnergyValue: {fileID: 39106201}
     NoEnergy: {fileID: 219397082}
+  EC: {fileID: 2052131793}
 --- !u!114 &869580812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2058,7 +2059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2052131786}
-  speed: 3
+  speed: 2
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2949,8 +2950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cr: {fileID: 872107054}
   camera: {fileID: 963194225}
-  speed: 150
-  charge: 0
+  speed: 100
   chargeSpeed: 1
   bouncePower: 100
 --- !u!114 &2052131793

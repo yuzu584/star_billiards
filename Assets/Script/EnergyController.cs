@@ -5,8 +5,8 @@ using UnityEngine;
 // エネルギーの増減を管理
 public class EnergyController : MonoBehaviour
 {
-    public float energy = 1000;     // プレイヤーのエネルギー
-    public float maxEnergy = 1000;  // 最大エネルギー
+    public static float energy = 1000;     // プレイヤーのエネルギー
+    public static float maxEnergy = 1000;  // 最大エネルギー
     private Rigidbody rb;           // リジッドボディ
 
     void Start()

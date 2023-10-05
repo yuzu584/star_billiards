@@ -25,9 +25,6 @@ public class UIController : MonoBehaviour
         public Text NoEnergy;             // エネルギーがない旨を伝えるテキスト
     }
 
-    EnergyController EC = new EnergyController();  // インスタンスを生成
-    Shot St = new Shot();                          // インスタンスを生成
-
     void Start()
     {
         // エネルギーがない旨を伝えるテキストを非表示
@@ -37,35 +34,38 @@ public class UIController : MonoBehaviour
     void Update()
     {
         // エネルギーゲージの増減を描画
-        UL.EnergyGauge.fillAmount = EC.energy / EC.maxEnergy;
+        UL.EnergyGauge.fillAmount = EnergyController.energy / EnergyController.maxEnergy;
 
         // エネルギーの数値を表示
-        UL.EnergyValue.text = EC.energy.ToString("0");
+        UL.EnergyValue.text = EnergyController.energy.ToString("0");
 
         // チャージされているなら
-        if (St.charge > 0)
+        if (Shot.charge > 0)
         {
             // UIを有効化
             UL.chargeUI.SetActive(true);
 
             // チャージの数値をテキストで表示
-            UL.chargeValue.text = St.charge.ToString("0") + "%";
+            UL.chargeValue.text = Shot.charge.ToString("0") + "%";
 
             // チャージの円を描写
-            UL.chargeCircle.fillAmount = St.charge / 100;
+            UL.chargeCircle.fillAmount = Shot.charge / 100;
         }
         // チャージされていないなら
-        else if (St.charge == 0)
+        else if (Shot.charge == 0)
         {
             // UIを無効化
             UL.chargeUI.SetActive(false);
         }
 
         // エネルギーが0以下なら
-        if(EC.energy <= 0)
+        if(EnergyController.energy <= 0)
         {
             // エネルギーゲージの枠を赤色にする
             UL.EnergyGaugeOutline.color = new Color32(155, 0, 0, 100);
+
+            // エネルギーゲージの数値を赤色にする
+            UL.EnergyValue.color = new Color32(155, 0, 0, 100);
 
             // エネルギーがない旨を伝えるテキストを表示
             UL.NoEnergy.enabled = true;
@@ -74,6 +74,9 @@ public class UIController : MonoBehaviour
         {
             // エネルギーゲージの枠を白色にする
             UL.EnergyGaugeOutline.color = new Color32(255, 255, 255, 100);
+
+            // エネルギーゲージの数値を白色にする
+            UL.EnergyValue.color = new Color32(255, 255, 255, 100);
 
             // エネルギーがない旨を伝えるテキストを非表示
             UL.NoEnergy.enabled = false;
