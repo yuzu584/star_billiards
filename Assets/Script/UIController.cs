@@ -15,14 +15,15 @@ public class UIController : MonoBehaviour
     [System.Serializable]
     public class UIList
     {
-        public GameObject chargeUI;       // チャージのUI
-        public Image chargeCircle;        // チャージの円
-        public Text chargeValue;          // チャージの数値
-        public Text chargeName;           // チャージの文字
-        public Image EnergyGauge;         // エネルギーゲージ
-        public Image EnergyGaugeOutline;  // エネルギーゲージの枠
-        public Text EnergyValue;          // エネルギーの数値
-        public Text NoEnergy;             // エネルギーがない旨を伝えるテキスト
+        public GameObject chargeUI;        // チャージのUI
+        public Image chargeCircle;         // チャージの円
+        public Text chargeValue;           // チャージの数値
+        public Text chargeName;            // チャージの文字
+        public Image EnergyGauge;          // エネルギーゲージ
+        public Image EnergyGaugeDecrease;  // エネルギーゲージの減少量
+        public Image EnergyGaugeOutline;   // エネルギーゲージの枠
+        public Text EnergyValue;           // エネルギーの数値
+        public Text NoEnergy;              // エネルギーがない旨を伝えるテキスト
     }
 
     void Start()
@@ -35,6 +36,13 @@ public class UIController : MonoBehaviour
     {
         // エネルギーゲージの増減を描画
         UiList.EnergyGauge.fillAmount = EnergyController.energy / EnergyController.maxEnergy;
+
+        if (UiList.EnergyGaugeDecrease.fillAmount > EnergyController.energy / EnergyController.maxEnergy)
+        {
+            // エネルギーゲージの減少量を少しずつ減らす
+            UiList.EnergyGaugeDecrease.fillAmount -= 
+                (UiList.EnergyGaugeDecrease.fillAmount - EnergyController.energy / EnergyController.maxEnergy) * Time.deltaTime;
+        }
 
         // エネルギーの数値を表示
         UiList.EnergyValue.text = EnergyController.energy.ToString("0");
