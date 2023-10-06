@@ -33,17 +33,23 @@ public class Shot : MonoBehaviour
         // 一瞬速度を0にする
         rb.velocity *= 0;
 
-        // 力を加える
-        rb.AddForce(direction * speed * playerBouncePower);
-
         // 衝突したオブジェクトのタグがPlanetなら
         if (collision.gameObject.tag == "Planet")
         {
+            // 力を少し加える
+            rb.AddForce(direction * speed * playerBouncePower / 2);
+
             // 衝突したオブジェクトのrigidbodyを取得
             cRb = collision.gameObject.GetComponent<Rigidbody>();
 
             // 加速させる
             cRb.velocity *= planetBouncePower / 50;
+        }
+        // タグがPlanet以外なら
+        else
+        {
+            // 力を加える
+            rb.AddForce(direction * speed * playerBouncePower);
         }
     }
 
