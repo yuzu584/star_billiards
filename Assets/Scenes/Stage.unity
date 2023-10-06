@@ -1497,7 +1497,7 @@ MonoBehaviour:
     chargeValue: {fileID: 1015792384}
     chargeName: {fileID: 393294784}
     EnergyGauge: {fileID: 2054252520}
-    EnergyGaugeDecrease: {fileID: 1792383906}
+    EnergyAfterImage: {fileID: 1792383906}
     EnergyGaugeOutline: {fileID: 850064949}
     EnergyValue: {fileID: 39106201}
     NoEnergy: {fileID: 219397082}
@@ -2671,7 +2671,7 @@ GameObject:
   - component: {fileID: 1792383907}
   - component: {fileID: 1792383906}
   m_Layer: 5
-  m_Name: GaugeDecrease
+  m_Name: GaugeAfterImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3072,7 +3072,8 @@ MonoBehaviour:
   Cr: {fileID: 872107054}
   speed: 150
   chargeSpeed: 1
-  bouncePower: 100
+  playerBouncePower: 100
+  planetBouncePower: 100
 --- !u!114 &2052131793
 MonoBehaviour:
   m_ObjectHideFlags: 0
