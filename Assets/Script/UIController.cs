@@ -20,7 +20,7 @@ public class UIController : MonoBehaviour
         public Text chargeValue;           // チャージの数値
         public Text chargeName;            // チャージの文字
         public Image EnergyGauge;          // エネルギーゲージ
-        public Image EnergyGaugeDecrease;  // エネルギーゲージの減少量
+        public Image EnergyAfterImage;  // エネルギーゲージの減少量
         public Image EnergyGaugeOutline;   // エネルギーゲージの枠
         public Text EnergyValue;           // エネルギーの数値
         public Text NoEnergy;              // エネルギーがない旨を伝えるテキスト
@@ -37,11 +37,11 @@ public class UIController : MonoBehaviour
         // エネルギーゲージの増減を描画
         UiList.EnergyGauge.fillAmount = EnergyController.energy / EnergyController.maxEnergy;
 
-        if (UiList.EnergyGaugeDecrease.fillAmount > EnergyController.energy / EnergyController.maxEnergy)
+        if (UiList.EnergyAfterImage.fillAmount > EnergyController.energy / EnergyController.maxEnergy)
         {
             // エネルギーゲージの減少量を少しずつ減らす
-            UiList.EnergyGaugeDecrease.fillAmount -= 
-                (UiList.EnergyGaugeDecrease.fillAmount - EnergyController.energy / EnergyController.maxEnergy) * Time.deltaTime;
+            UiList.EnergyAfterImage.fillAmount -= 
+                (UiList.EnergyAfterImage.fillAmount - EnergyController.energy / EnergyController.maxEnergy) * Time.deltaTime;
         }
 
         // エネルギーの数値を表示
@@ -64,14 +64,14 @@ public class UIController : MonoBehaviour
             UiList.chargeCircle.fillAmount = Shot.charge / 100;
         }
         // チャージされていないかつ表示されているなら
-        else if (Shot.charge == 0 && UiList.chargeUI.activeSelf)
+        else if ((Shot.charge == 0) && (UiList.chargeUI.activeSelf))
         {
             // UIを無効化
             UiList.chargeUI.SetActive(false);
         }
 
         // エネルギーが0以下かつ非表示なら
-        if(EnergyController.energy <= 0 && UiList.NoEnergy.enabled == false)
+        if((EnergyController.energy <= 0) && (UiList.NoEnergy.enabled == false))
         {
             // エネルギーゲージの枠を赤色にする
             UiList.EnergyGaugeOutline.color = new Color32(155, 0, 0, 100);
@@ -83,7 +83,7 @@ public class UIController : MonoBehaviour
             UiList.NoEnergy.enabled = true;
         }
         // エネルギーが0より上かつ表示されているなら
-        else if (EnergyController.energy > 0 && UiList.NoEnergy.enabled == true)
+        else if ((EnergyController.energy > 0) && (UiList.NoEnergy.enabled == true))
         {
             // エネルギーゲージの枠を白色にする
             UiList.EnergyGaugeOutline.color = new Color32(255, 255, 255, 100);

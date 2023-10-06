@@ -52,7 +52,7 @@ public class Shot : MonoBehaviour
     void FixedUpdate()
     {
         // エネルギーがある状態で発射ボタンが押されたら
-        if (Input.GetAxisRaw("Fire1") > 0 && EnergyController.energy > 0)
+        if ((Input.GetAxisRaw("Fire1") > 0) && (EnergyController.energy > 0))
         {
             // 減速させる
             rb.velocity *= 0.995f;
@@ -62,7 +62,7 @@ public class Shot : MonoBehaviour
     void Update()
     {
         // エネルギーがある状態で発射ボタンが押されたら
-        if(Input.GetAxisRaw("Fire1") > 0 && EnergyController.energy > 0)
+        if((Input.GetAxisRaw("Fire1") > 0) && (EnergyController.energy > 0))
         {
             // 角度を設定
             direction = Cr.RayDirection();
@@ -74,7 +74,7 @@ public class Shot : MonoBehaviour
             rb.velocity *= 0.996f;
         }
         // 発射ボタンが押されてないなら
-        else if (Input.GetAxisRaw("Fire1") == 0 && charge > 0)
+        else if ((Input.GetAxisRaw("Fire1") == 0) && (charge > 0))
         {
             // エネルギーを減少させる
             EnergyController.energy -= charge / 10;
