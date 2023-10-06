@@ -27,7 +27,7 @@ public class Shot : MonoBehaviour
         cam = Camera.main;
     }
 
-    // Õ“Ë‚µ‚½‚çdirection‚ÌŒü‚«‚É—Í‚ğ‰Á‚¦‚é
+    // Õ“Ë‚µ‚½‚Æ‚«
     void OnCollisionEnter(Collision collision)
     {
         // ˆêu‘¬“x‚ğ0‚É‚·‚é
@@ -47,7 +47,7 @@ public class Shot : MonoBehaviour
         }
     }
 
-    // Õ“ËŒã‚ÉŸ‚ÌŠp“x‚ğİ’è
+    // Õ“ËŒã
     void OnCollisionExit()
     {
         // Ray‚ğ¶¬
