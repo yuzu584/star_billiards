@@ -876,7 +876,7 @@ GameObject:
   - component: {fileID: 442682249}
   - component: {fileID: 442682250}
   - component: {fileID: 442682251}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sun
   m_TagString: FixedStar
   m_Icon: {fileID: 0}
@@ -1779,11 +1779,11 @@ Light:
   m_GameObject: {fileID: 875835960}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 1
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 10000
+  m_Intensity: 100000
+  m_Range: 2000
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -1819,7 +1819,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingLayerMask: 1
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
@@ -2019,7 +2019,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 63
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
