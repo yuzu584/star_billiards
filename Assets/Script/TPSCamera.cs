@@ -11,6 +11,7 @@ public class TPSCamera : MonoBehaviour
     public float speed = 1.0f;  // 視点移動速度
     float mx;                   // マウスの横移動量
     float my;                   // マウスの縦移動量
+    Vector3 rotate;             // 回転量
 
     void Update()
     {
@@ -22,7 +23,7 @@ public class TPSCamera : MonoBehaviour
         if (Mathf.Abs(mx) > 0.001f)
         {
             // 回転軸はワールド座標のY軸
-            transform.RotateAround(player.transform.position, Vector3.up, mx * speed);
+            transform.RotateAround(player.transform.position, transform.up, mx * speed);
         }
 
         // Y方向に一定量移動していれば縦回転
