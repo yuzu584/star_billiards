@@ -2,37 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 自転させる
+// 何かと衝突するまで公転と自転させる
 public class RotateUntilCollision : MonoBehaviour
 {
-    public float speed = 1f;  // 回転速度
-    float x = 0f;             // マテリアルのオフセットのXの数値
-    int maxX = 1;             // マテリアルのオフセットのXの最大値
+    [SerializeField] GameObject target; // 公転の中心とするオブジェクト
+    [SerializeField] int speed = 1;     // 速度
 
-    // 衝突判定が終わったら
-    void OnCollisionExit(Collision collision)
-    {
-        // 最大値を0にする
-        maxX = 0;
-    }
+    Vector3 targetPosition; // 公転の中心とするオブジェクトの座標
 
     void Update()
     {
-        // まだ衝突していなければ
-        if (maxX == 1)
-        {
-            // マテリアルのオフセットのXの数値を増加
-            x += speed * Time.deltaTime * 0.01f;
+        Rotate();
+    }
 
-            // xの数値が最大値を超えたら
-            if (x > maxX)
-            {
-                // xの数値を0に戻す
-                x = 0f;
-            }
+    void Rotate()
+    {
+        // ターゲットの座標取得
+        targetPosition = target.transform.position;
 
-            // マテリアルのオフセットを更新
-            GetComponent<Renderer>().sharedMaterial.SetTextureOffset("_MainTex", new Vector2(x, 0f));
-        }
+        // 公転させる
+        transform.RotateAround(targetPosition, Vector3.up, speed * Time.deltaTime);
     }
 }

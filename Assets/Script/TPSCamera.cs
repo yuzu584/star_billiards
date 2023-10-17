@@ -11,7 +11,6 @@ public class TPSCamera : MonoBehaviour
     public float speed = 1.0f;  // 視点移動速度
     float mx;                   // マウスの横移動量
     float my;                   // マウスの縦移動量
-    Vector3 rotate;             // 回転量
 
     void Update()
     {
