@@ -2060,7 +2060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2052131786}
-  speed: 2
+  speed: 1
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
