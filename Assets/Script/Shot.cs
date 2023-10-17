@@ -73,7 +73,7 @@ public class Shot : MonoBehaviour
         if ((Input.GetAxisRaw("Fire1") > 0) && (EnergyController.energy > 0))
         {
             // 減速させる
-            rb.velocity *= 0.995f;
+            rb.velocity *= 0.95f;
         }
     }
 
@@ -87,9 +87,6 @@ public class Shot : MonoBehaviour
 
             // チャージを貯める
             charge += (chargeSpeed * Time.deltaTime) * 50;
-
-            // 減速させる
-            rb.velocity *= 0.996f;
         }
         // 発射ボタンが押されてないなら
         else if ((Input.GetAxisRaw("Fire1") == 0) && (charge > 0))
