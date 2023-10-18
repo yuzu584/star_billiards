@@ -5,6 +5,12 @@ using UnityEngine;
 // スキルを管理
 public class SkillController : MonoBehaviour
 {
+    public UIController uIController;
+
+    int selectSkill = 0;  // 選択しているスキルの番号
+    float coolDown = 0;   // クールダウンを管理
+    float effectTime = 0; // 効果時間を管理
+
     // スキルの構造体
     public struct Skill
     {
@@ -26,9 +32,66 @@ public class SkillController : MonoBehaviour
     // スキルの構造体の配列を宣言
     public Skill[] skill =
     {
-        new Skill("SUPER CHARGE", 10, 5, 10),
-        new Skill("POWER SURGE", 30, 10, 5),
-        new Skill("GRAVITY WAVE", 100, 15, 1),
-        new Skill("", -1, -1, -1)
+        new Skill("SuperCharge", 10, 3, 5),
+        new Skill("PowerSurge", 30, 5, 3),
+        new Skill("GravityWave", 100, 8, 1),
     };
+
+    void Start()
+    {
+        // スキルのUIを描画する関数を呼び出す
+    }
+
+    void Update()
+    {
+        // マウスホイールがスクロールされていたら
+        if ((Input.GetAxisRaw("Mouse ScrollWheel") != 0) && (effectTime <= 0) && (coolDown == 0))
+        {
+            // 選択しているスキル番号を変える
+            selectSkill += (int)(Input.GetAxisRaw("Mouse ScrollWheel") * 10);
+
+            // スキル番号が範囲外なら範囲内に収める
+            if (selectSkill < 0)
+                selectSkill = 0;
+            else if (selectSkill >= skill.Length)
+                selectSkill = skill.Length - 1;
+        }
+
+        // スキル使用可能の時にキーが押されたら
+        if ((Input.GetAxisRaw("Skill") != 0) && (effectTime == 0) && (coolDown == 0))
+        {
+            // 効果時間とクールダウンを設定
+            effectTime = skill[selectSkill].effectTime;
+            coolDown = skill[selectSkill].coolDown;
+
+            EnergyController.energy -= skill[selectSkill].energyUsage;
+        }
+
+        // 効果時間を減少させる
+        if (effectTime > 0)
+            effectTime -= Time.deltaTime;
+        // 効果時間が終了していたならクールダウンを減少させる
+        else if (coolDown > 0)
+            coolDown -= Time.deltaTime;
+
+        // 数値が0未満なら0にする
+        if(effectTime < 0)
+            effectTime = 0;
+        if (coolDown < 0)
+            coolDown = 0;
+
+        // スキルのUIを描画する関数を呼び出す
+        CallSetSkillUI();
+    }
+
+    // スキルのUIを描画する関数を呼び出す
+    void CallSetSkillUI()
+    {
+        uIController.SetSkillUI(
+            skill[selectSkill].skillName,
+            skill[selectSkill].coolDown,
+            skill[selectSkill].effectTime,
+            coolDown,
+            effectTime);
+    }
 }

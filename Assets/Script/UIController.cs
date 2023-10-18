@@ -19,10 +19,12 @@ public class UIController : MonoBehaviour
         public Text chargeValue;           // チャージの数値
         public Text chargeName;            // チャージの文字
         public Image EnergyGauge;          // エネルギーゲージ
-        public Image EnergyAfterImage;  // エネルギーゲージの減少量
+        public Image EnergyAfterImage;     // エネルギーゲージの減少量
         public Image EnergyGaugeOutline;   // エネルギーゲージの枠
         public Text EnergyValue;           // エネルギーの数値
         public Text NoEnergy;              // エネルギーがない旨を伝えるテキスト
+        public Text skillName;             // スキル名
+        public Image skillGauge;           // 効果時間とクールダウンのゲージ
     }
 
     void Start()
@@ -93,5 +95,19 @@ public class UIController : MonoBehaviour
             // エネルギーがない旨を伝えるテキストを非表示
             UiList.NoEnergy.enabled = false;
         }
+    }
+
+    // スキルのUIを描画
+    public void SetSkillUI(string skillName, float coolDown, float effectTime, float nowCoolDown, float nowEffectTime)
+    {
+        // テキストを現在のスキル名に変更
+        UiList.skillName.text = skillName;
+
+        // 効果時間を描画
+        if (nowEffectTime > 0)
+            UiList.skillGauge.fillAmount = nowEffectTime / effectTime;
+        // 効果時間が経過していたならクールダウンを描画
+        else if (nowCoolDown > 0)
+            UiList.skillGauge.fillAmount = (coolDown - nowCoolDown) / coolDown;
     }
 }
