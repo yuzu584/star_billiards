@@ -8,8 +8,7 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     // Inspector‚ÅUI‚Ì”z—ñ‚ðŽw’è
-    [SerializeField]
-    UIList UiList;
+    [SerializeField] UIList UiList;
 
     // UI‚Ì”z—ñ
     [System.Serializable]
