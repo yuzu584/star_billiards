@@ -2,25 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ‰½‚©‚ÆÕ“Ë‚·‚é‚Ü‚ÅŒö“]‚Æ©“]‚³‚¹‚é
+// ä½•ã‹ã¨è¡çªã™ã‚‹ã¾ã§å…¬è»¢ã¨è‡ªè»¢ã•ã›ã‚‹
 public class RotateUntilCollision : MonoBehaviour
 {
-    [SerializeField] GameObject target; // Œö“]‚Ì’†S‚Æ‚·‚éƒIƒuƒWƒFƒNƒg
-    [SerializeField] int speed = 1;     // ‘¬“x
+    [SerializeField] GameObject target;           // å…¬è»¢ã®ä¸­å¿ƒã¨ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+    [SerializeField] int speed = 1;               // å…¬è»¢é€Ÿåº¦
 
-    Vector3 targetPosition; // Œö“]‚Ì’†S‚Æ‚·‚éƒIƒuƒWƒFƒNƒg‚ÌÀ•W
+    bool rotate = true;     // å…¬è»¢ã™ã‚‹ã‹å¦ã‹
+    Vector3 targetPosition; // å…¬è»¢ã®ä¸­å¿ƒã¨ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®åº§æ¨™
 
     void Update()
     {
-        Rotate();
+        // å…¬è»¢ã™ã‚‹ãªã‚‰
+        if (rotate)
+            // å…¬è»¢ã•ã›ã‚‹
+            Rotate();
     }
 
+    // ä½•ã‹ã¨è¡çªã—ãŸã‚‰
+    void OnCollisionEnter(Collision collision)
+    {
+        // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’åœæ­¢
+        GetComponent<Animation>().Stop();
+
+        // å…¬è»¢ã‚’ã•ã›ãªãã™ã‚‹
+        rotate = false;
+    }
+
+    // å…¬è»¢ã•ã›ã‚‹
     void Rotate()
     {
-        // ƒ^[ƒQƒbƒg‚ÌÀ•Wæ“¾
+        // ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã®åº§æ¨™å–å¾—
         targetPosition = target.transform.position;
 
-        // Œö“]‚³‚¹‚é
+        // å…¬è»¢ã•ã›ã‚‹
         transform.RotateAround(targetPosition, Vector3.up, speed * Time.deltaTime);
     }
 }
