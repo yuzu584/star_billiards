@@ -16,7 +16,7 @@ public class SkillController : MonoBehaviour
     {
         public string skillName; // スキル名
         public int energyUsage;  // エネルギー消費量
-        public float coolDown;   // 再使用可能時間
+        public float coolDown;   // クールダウン
         public float effectTime; // 効果時間
 
         // 構造体の初期化関数
@@ -37,48 +37,24 @@ public class SkillController : MonoBehaviour
         new Skill("GravityWave", 100, 8, 1),
     };
 
-    void Start()
-    {
-        // スキルのUIを描画する関数を呼び出す
-    }
-
     void Update()
     {
         // マウスホイールがスクロールされていたら
         if ((Input.GetAxisRaw("Mouse ScrollWheel") != 0) && (effectTime <= 0) && (coolDown == 0))
         {
-            // 選択しているスキル番号を変える
-            selectSkill += (int)(Input.GetAxisRaw("Mouse ScrollWheel") * 10);
-
-            // スキル番号が範囲外なら範囲内に収める
-            if (selectSkill < 0)
-                selectSkill = 0;
-            else if (selectSkill >= skill.Length)
-                selectSkill = skill.Length - 1;
+            // スキルを変更
+            ChangeSkill();
         }
 
         // スキル使用可能の時にキーが押されたら
         if ((Input.GetAxisRaw("Skill") != 0) && (effectTime == 0) && (coolDown == 0))
         {
-            // 効果時間とクールダウンを設定
-            effectTime = skill[selectSkill].effectTime;
-            coolDown = skill[selectSkill].coolDown;
-
-            EnergyController.energy -= skill[selectSkill].energyUsage;
+            // スキル使用
+            UseSkill();
         }
 
-        // 効果時間を減少させる
-        if (effectTime > 0)
-            effectTime -= Time.deltaTime;
-        // 効果時間が終了していたならクールダウンを減少させる
-        else if (coolDown > 0)
-            coolDown -= Time.deltaTime;
-
-        // 数値が0未満なら0にする
-        if(effectTime < 0)
-            effectTime = 0;
-        if (coolDown < 0)
-            coolDown = 0;
+        // スキルの効果時間とクールダウンを減少
+        DecreaseEFAndCD();
 
         // スキルのUIを描画する関数を呼び出す
         CallSetSkillUI();
@@ -92,6 +68,47 @@ public class SkillController : MonoBehaviour
             skill[selectSkill].coolDown,
             skill[selectSkill].effectTime,
             coolDown,
-            effectTime);
+            effectTime
+            );
+    }
+
+    // スキルを変更
+    void ChangeSkill()
+    {
+        // 選択しているスキル番号を変える
+        selectSkill += (int)(Input.GetAxisRaw("Mouse ScrollWheel") * 10);
+
+        // スキル番号が範囲外なら範囲内に収める
+        if (selectSkill < 0)
+            selectSkill = 0;
+        else if (selectSkill >= skill.Length)
+            selectSkill = skill.Length - 1;
+    }
+
+    // スキル使用
+    void UseSkill()
+    {
+        // 効果時間とクールダウンを設定
+        effectTime = skill[selectSkill].effectTime;
+        coolDown = skill[selectSkill].coolDown;
+
+        EnergyController.energy -= skill[selectSkill].energyUsage;
+    }
+
+    // スキルの効果時間とクールダウンを減少
+    void DecreaseEFAndCD()
+    {
+        // 効果時間を減少させる
+        if (effectTime > 0)
+            effectTime -= Time.deltaTime;
+        // 効果時間が終了していたならクールダウンを減少させる
+        else if (coolDown > 0)
+            coolDown -= Time.deltaTime;
+
+        // 数値が0未満なら0にする
+        if (effectTime < 0)
+            effectTime = 0;
+        if (coolDown < 0)
+            coolDown = 0;
     }
 }
