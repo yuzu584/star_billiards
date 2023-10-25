@@ -14,22 +14,40 @@ public class UIController : MonoBehaviour
     [System.Serializable]
     public class UIList
     {
-        public GameObject chargeUI;        // チャージのUI
-        public Image chargeCircle;         // チャージの円
-        public Text chargeValue;           // チャージの数値
-        public Text chargeName;            // チャージの文字
-        public Image EnergyGauge;          // エネルギーゲージ
-        public Image EnergyAfterImage;     // エネルギーゲージの減少量
-        public Image EnergyGaugeOutline;   // エネルギーゲージの枠
-        public Text EnergyValue;           // エネルギーの数値
-        public Text NoEnergy;              // エネルギーがない旨を伝えるテキスト
-        public Text skillName;             // スキル名
-        public Image skillGauge;           // 効果時間とクールダウンのゲージ
-        public Image planetInfoRing;       // 情報を表示する惑星に表示する円
+        public GameObject chargeUI;         // チャージのUI
+        public Image chargeCircle;          // チャージの円
+        public Text chargeValue;            // チャージの数値
+        public Text chargeName;             // チャージの文字
+        public Image EnergyGauge;           // エネルギーゲージ
+        public Image EnergyAfterImage;      // エネルギーゲージの減少量
+        public Image EnergyGaugeOutline;    // エネルギーゲージの枠
+        public Text EnergyValue;            // エネルギーの数値
+        public Text NoEnergy;               // エネルギーがない旨を伝えるテキスト
+        public Text skillName;              // スキル名
+        public Image skillGauge;            // 効果時間とクールダウンのゲージ
+        public Image planetInfoRing;        // 惑星情報UIの円
+        public LineRenderer planetInfoLine; // 惑星情報UIの線
     }
+
+    RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
+    Vector3 PIL1;             // 惑星情報UIの線の始点座標
+    Vector3 PIL2;             // 惑星情報UIの線の中間座標
+    Vector3 PIL3;             // 惑星情報UIの線の終点座標
 
     void Start()
     {
+        // 惑星情報UIの円のRectTransformを取得
+        PIR = UiList.planetInfoRing.GetComponent<RectTransform>();
+
+        // 惑星情報UIの線の開始点の太さを指定
+        UiList.planetInfoLine.startWidth = 0.01f;
+
+        // 惑星情報UIの線の終了点の太さを指定
+        UiList.planetInfoLine.endWidth = 0.01f;
+
+        // 惑星情報UIの線の数
+        UiList.planetInfoLine.positionCount = 3;
+
         // エネルギーがない旨を伝えるテキストを非表示
         UiList.NoEnergy.enabled = false;
     }
@@ -125,6 +143,17 @@ public class UIController : MonoBehaviour
     // 惑星情報UIを描画
     public void DrawPlanetInfoUI(Vector3 position)
     {
+        // 惑星情報UIの円のスクリーン座標を変更
+        UiList.planetInfoRing.rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, position);
 
+        // 惑星情報UIの線のスクリーン座標をワールド座標に変換
+        PIL1 = Camera.main.ScreenToWorldPoint(UiList.planetInfoRing.rectTransform.position + new Vector3(0, 0, 10));
+        PIL2 = Camera.main.ScreenToWorldPoint(UiList.planetInfoRing.rectTransform.position + new Vector3(50, 50, 10));
+        PIL3 = Camera.main.ScreenToWorldPoint(UiList.planetInfoRing.rectTransform.position + new Vector3(150, 50, 10));
+
+        // 線を描画
+        UiList.planetInfoLine.SetPosition(0, PIL1);
+        UiList.planetInfoLine.SetPosition(1, PIL2);
+        UiList.planetInfoLine.SetPosition(2, PIL3);
     }
 }
