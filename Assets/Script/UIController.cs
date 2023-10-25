@@ -27,6 +27,7 @@ public class UIController : MonoBehaviour
         public Image skillGauge;            // 効果時間とクールダウンのゲージ
         public Image planetInfoRing;        // 惑星情報UIの円
         public LineRenderer planetInfoLine; // 惑星情報UIの線
+        public Text planetName;             // 惑星の名前
     }
 
     RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
@@ -39,10 +40,8 @@ public class UIController : MonoBehaviour
         // 惑星情報UIの円のRectTransformを取得
         PIR = UiList.planetInfoRing.GetComponent<RectTransform>();
 
-        // 惑星情報UIの線の開始点の太さを指定
+        // 惑星情報UIの線の始点と終点の太さを指定
         UiList.planetInfoLine.startWidth = 0.01f;
-
-        // 惑星情報UIの線の終了点の太さを指定
         UiList.planetInfoLine.endWidth = 0.01f;
 
         // 惑星情報UIの線の数
@@ -141,7 +140,7 @@ public class UIController : MonoBehaviour
     }
 
     // 惑星情報UIを描画
-    public void DrawPlanetInfoUI(Vector3 position)
+    public void DrawPlanetInfoUI(Vector3 position, string planetName)
     {
         // 惑星情報UIの円のスクリーン座標を変更
         UiList.planetInfoRing.rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, position);
@@ -155,5 +154,11 @@ public class UIController : MonoBehaviour
         UiList.planetInfoLine.SetPosition(0, PIL1);
         UiList.planetInfoLine.SetPosition(1, PIL2);
         UiList.planetInfoLine.SetPosition(2, PIL3);
+
+        // 惑星の名前をテキストに設定
+        UiList.planetName.text = planetName;
+
+        // 惑星の名前UIの位置を設定
+        UiList.planetName.rectTransform.position = UiList.planetInfoRing.rectTransform.position + new Vector3(160, 80, 10);
     }
 }

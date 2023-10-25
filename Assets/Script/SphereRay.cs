@@ -9,6 +9,7 @@ public class SphereRay : MonoBehaviour
 
     RaycastHit hit;              // Rayのhit
     Vector3 hitObjectPosition;   // hitしたオブジェクトの座標
+    string hitObjectName;        // hitしたオブジェクトの名前
 
     void Update()
     {
@@ -16,13 +17,26 @@ public class SphereRay : MonoBehaviour
         Ray ray = new Ray(Camera.main.transform.position,Camera.main.transform.forward);
 
         // 球体のRayを生成
-        if (Physics.SphereCast(ray, 20.0f, out hit))
+        if (Physics.SphereCast(ray, 10.0f, out hit))
         {
             // hitしたオブジェクトの座標を取得
             hitObjectPosition = hit.collider.gameObject.transform.position;
 
-            // 惑星情報UIのリングを描画
-            uIController.DrawPlanetInfoUI(hitObjectPosition);
+            // hitしたオブジェクトの名前を取得
+            hitObjectName = hit.collider.gameObject.name;
+
+            // hitしたオブジェクトがSphereなら
+            if (hitObjectName == "Sphere")
+            {
+                if (Physics.SphereCast(ray, 0.1f, out hit))
+                {
+                    // 惑星情報UIの円の座標を画面中央にする
+                    hitObjectPosition = hit.point;
+                }
+            }
         }
+
+        // 惑星情報UIのリングを描画
+        uIController.DrawPlanetInfoUI(hitObjectPosition, hitObjectName);
     }
 }
