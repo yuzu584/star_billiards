@@ -423,7 +423,7 @@ Rigidbody:
   m_GameObject: {fileID: 145278157}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.2
+  m_Drag: 0.1
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -569,7 +569,7 @@ Rigidbody:
   m_GameObject: {fileID: 159051372}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.2
+  m_Drag: 0.1
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -795,7 +795,7 @@ Rigidbody:
   m_GameObject: {fileID: 255121408}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.2
+  m_Drag: 0.1
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -863,6 +863,7 @@ RectTransform:
   - {fileID: 868238459}
   - {fileID: 1823644819}
   - {fileID: 1594602366}
+  - {fileID: 1053927925}
   m_Father: {fileID: 869580815}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1280,7 +1281,7 @@ Rigidbody:
   m_GameObject: {fileID: 505343247}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.2
+  m_Drag: 0.1
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -1540,7 +1541,7 @@ Rigidbody:
   m_GameObject: {fileID: 659846549}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.2
+  m_Drag: 0.1
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -1821,6 +1822,7 @@ MonoBehaviour:
     skillGauge: {fileID: 452950055}
     planetInfoRing: {fileID: 868238460}
     planetInfoLine: {fileID: 1594602367}
+    planetName: {fileID: 1053927926}
 --- !u!114 &869580812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2527,6 +2529,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1053927924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1053927925}
+  - component: {fileID: 1053927927}
+  - component: {fileID: 1053927926}
+  m_Layer: 5
+  m_Name: Planet Name
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1053927925
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053927924}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 310466188}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 150, y: 50}
+  m_SizeDelta: {x: 100, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1053927926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053927924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 0
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: PlanetName
+--- !u!222 &1053927927
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053927924}
+  m_CullTransparentMesh: 1
 --- !u!1 &1067802294
 GameObject:
   m_ObjectHideFlags: 0
@@ -2873,7 +2955,7 @@ Rigidbody:
   m_GameObject: {fileID: 1356776821}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.2
+  m_Drag: 0.1
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -3606,7 +3688,7 @@ Rigidbody:
   m_GameObject: {fileID: 2038691485}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.2
+  m_Drag: 0.1
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -4003,7 +4085,7 @@ Rigidbody:
   m_GameObject: {fileID: 2135561006}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.2
+  m_Drag: 0.1
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
