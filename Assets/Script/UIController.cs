@@ -25,6 +25,7 @@ public class UIController : MonoBehaviour
         public Text NoEnergy;              // エネルギーがない旨を伝えるテキスト
         public Text skillName;             // スキル名
         public Image skillGauge;           // 効果時間とクールダウンのゲージ
+        public Image planetInfoRing;       // 情報を表示する惑星に表示する円
     }
 
     void Start()
@@ -35,19 +36,54 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
+        // エネルギーのUIを描画
+        DrawEnergyUI();
+
+        // チャージのUIを描画
+        DrawChargeUI();
+    }
+
+    // エネルギーのUIを描画
+    void DrawEnergyUI()
+    {
         // エネルギーゲージの増減を描画
         UiList.EnergyGauge.fillAmount = EnergyController.energy / EnergyController.maxEnergy;
 
         if (UiList.EnergyAfterImage.fillAmount > EnergyController.energy / EnergyController.maxEnergy)
         {
             // エネルギーゲージの減少量を少しずつ減らす
-            UiList.EnergyAfterImage.fillAmount -= 
+            UiList.EnergyAfterImage.fillAmount -=
                 (UiList.EnergyAfterImage.fillAmount - EnergyController.energy / EnergyController.maxEnergy) * Time.deltaTime;
         }
 
         // エネルギーの数値を表示
         UiList.EnergyValue.text = EnergyController.energy.ToString("0");
 
+        // エネルギーが0以下かつ非表示なら
+        if ((EnergyController.energy <= 0) && (UiList.NoEnergy.enabled == false))
+        {
+            // エネルギーゲージの枠と数値を赤色にする
+            UiList.EnergyGaugeOutline.color = new Color32(155, 0, 0, 100);
+            UiList.EnergyValue.color = new Color32(155, 0, 0, 100);
+
+            // エネルギーがない旨を伝えるテキストを表示
+            UiList.NoEnergy.enabled = true;
+        }
+        // エネルギーが0より上かつ表示されているなら
+        else if ((EnergyController.energy > 0) && (UiList.NoEnergy.enabled == true))
+        {
+            // エネルギーゲージの枠と数値を白色にする
+            UiList.EnergyGaugeOutline.color = new Color32(255, 255, 255, 100);
+            UiList.EnergyValue.color = new Color32(255, 255, 255, 255);
+
+            // エネルギーがない旨を伝えるテキストを非表示
+            UiList.NoEnergy.enabled = false;
+        }
+    }
+
+    // チャージのUIを描画
+    void DrawChargeUI()
+    {
         // チャージされているなら
         if (Shot.charge > 0)
         {
@@ -70,35 +106,10 @@ public class UIController : MonoBehaviour
             // UIを無効化
             UiList.chargeUI.SetActive(false);
         }
-
-        // エネルギーが0以下かつ非表示なら
-        if((EnergyController.energy <= 0) && (UiList.NoEnergy.enabled == false))
-        {
-            // エネルギーゲージの枠を赤色にする
-            UiList.EnergyGaugeOutline.color = new Color32(155, 0, 0, 100);
-
-            // エネルギーゲージの数値を赤色にする
-            UiList.EnergyValue.color = new Color32(155, 0, 0, 100);
-
-            // エネルギーがない旨を伝えるテキストを表示
-            UiList.NoEnergy.enabled = true;
-        }
-        // エネルギーが0より上かつ表示されているなら
-        else if ((EnergyController.energy > 0) && (UiList.NoEnergy.enabled == true))
-        {
-            // エネルギーゲージの枠を白色にする
-            UiList.EnergyGaugeOutline.color = new Color32(255, 255, 255, 100);
-
-            // エネルギーゲージの数値を白色にする
-            UiList.EnergyValue.color = new Color32(255, 255, 255, 255);
-
-            // エネルギーがない旨を伝えるテキストを非表示
-            UiList.NoEnergy.enabled = false;
-        }
     }
 
     // スキルのUIを描画
-    public void SetSkillUI(string skillName, float coolDown, float effectTime, float nowCoolDown, float nowEffectTime)
+    public void DrawSkillUI(string skillName, float coolDown, float effectTime, float nowCoolDown, float nowEffectTime)
     {
         // テキストを現在のスキル名に変更
         UiList.skillName.text = skillName;
@@ -109,5 +120,11 @@ public class UIController : MonoBehaviour
         // 効果時間が経過していたならクールダウンを描画
         else if (nowCoolDown > 0)
             UiList.skillGauge.fillAmount = (coolDown - nowCoolDown) / coolDown;
+    }
+
+    // 惑星情報UIを描画
+    public void DrawPlanetInfoUI(Vector3 position)
+    {
+
     }
 }

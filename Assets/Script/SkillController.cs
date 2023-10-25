@@ -63,7 +63,7 @@ public class SkillController : MonoBehaviour
     // ƒXƒLƒ‹‚ÌUI‚ğ•`‰æ‚·‚éŠÖ”‚ğŒÄ‚Ño‚·
     void CallSetSkillUI()
     {
-        uIController.SetSkillUI(
+        uIController.DrawSkillUI(
             skill[selectSkill].skillName,
             skill[selectSkill].coolDown,
             skill[selectSkill].effectTime,

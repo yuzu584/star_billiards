@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 反射するRayとLineを生成
-public class CreateRay : MonoBehaviour
+public class PredictionLine : MonoBehaviour
 {
     public GameObject target;           // Rayを出すオブジェクト
     public GameObject directionTarget;  // Rayの向きを決めるオブジェクト

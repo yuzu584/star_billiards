@@ -5,7 +5,7 @@ using UnityEngine;
 // 発射ボタンで弾を発射する
 public class Shot : MonoBehaviour
 {
-    [SerializeField] CreateRay Cr;       // RayとLineを作る関数の型
+    [SerializeField] PredictionLine Pl;       // RayとLineを作る関数の型
     public float speed = 1.0f;           // 移動速度
     public static float charge = 0;      // 球のチャージ
     public float chargeSpeed = 10;       // 球のチャージ速度
@@ -83,7 +83,7 @@ public class Shot : MonoBehaviour
         if((Input.GetAxisRaw("Fire1") > 0) && (EnergyController.energy > 0))
         {
             // 角度を設定
-            direction = Cr.RayDirection();
+            direction = Pl.RayDirection();
 
             // チャージを貯める
             charge += (chargeSpeed * Time.deltaTime) * 50;
