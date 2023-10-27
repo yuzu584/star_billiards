@@ -5,10 +5,11 @@ using UnityEngine;
 // 発射ボタンで弾を発射する
 public class Shot : MonoBehaviour
 {
-    [SerializeField] PredictionLine Pl;       // RayとLineを作る関数の型
+    [SerializeField] PredictionLine Pl;                 // RayとLineを作る関数の型
+    [SerializeField] EnergyController energyController; // EnergyController型の変数
     public float speed = 1.0f;           // 移動速度
-    public static float charge = 0;      // 球のチャージ
-    public float chargeSpeed = 10;       // 球のチャージ速度
+    public float charge = 0;             // 球のチャージ
+    public float chargeSpeed = 1;        // 球のチャージ速度
     public int playerBouncePower = 100;  // 衝突したときのプレイヤーの反発力
     public int planetBouncePower = 100;  // 衝突したときの惑星の反発力
 
@@ -70,7 +71,7 @@ public class Shot : MonoBehaviour
     void FixedUpdate()
     {
         // エネルギーがある状態で発射ボタンが押されたら
-        if ((Input.GetAxisRaw("Fire1") > 0) && (EnergyController.energy > 0))
+        if ((Input.GetAxisRaw("Fire1") > 0) && (energyController.energy > 0))
         {
             // 減速させる
             rb.velocity *= 0.95f;
@@ -80,7 +81,7 @@ public class Shot : MonoBehaviour
     void Update()
     {
         // エネルギーがある状態で発射ボタンが押されたら
-        if((Input.GetAxisRaw("Fire1") > 0) && (EnergyController.energy > 0))
+        if((Input.GetAxisRaw("Fire1") > 0) && (energyController.energy > 0))
         {
             // 角度を設定
             direction = Pl.RayDirection();
@@ -92,7 +93,7 @@ public class Shot : MonoBehaviour
         else if ((Input.GetAxisRaw("Fire1") == 0) && (charge > 0))
         {
             // エネルギーを減少させる
-            EnergyController.energy -= charge / 10;
+            energyController.energy -= charge / 10;
 
             // ベクトルをカメラの向きにする
             Vector3 velocity = cam.transform.forward;

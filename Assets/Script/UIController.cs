@@ -30,6 +30,9 @@ public class UIController : MonoBehaviour
         public Text planetName;             // 惑星の名前
     }
 
+    [SerializeField] Shot shot;                         // Shot型の変数
+    [SerializeField] EnergyController energyController; // EnergyController型の変数
+
     RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
     Vector3 PIL1;             // 惑星情報UIの線の始点座標
     Vector3 PIL2;             // 惑星情報UIの線の中間座標
@@ -64,20 +67,20 @@ public class UIController : MonoBehaviour
     void DrawEnergyUI()
     {
         // エネルギーゲージの増減を描画
-        UiList.EnergyGauge.fillAmount = EnergyController.energy / EnergyController.maxEnergy;
+        UiList.EnergyGauge.fillAmount = energyController.energy / energyController.maxEnergy;
 
-        if (UiList.EnergyAfterImage.fillAmount > EnergyController.energy / EnergyController.maxEnergy)
+        if (UiList.EnergyAfterImage.fillAmount > energyController.energy / energyController.maxEnergy)
         {
             // エネルギーゲージの減少量を少しずつ減らす
             UiList.EnergyAfterImage.fillAmount -=
-                (UiList.EnergyAfterImage.fillAmount - EnergyController.energy / EnergyController.maxEnergy) * Time.deltaTime;
+                (UiList.EnergyAfterImage.fillAmount - energyController.energy / energyController.maxEnergy) * Time.deltaTime;
         }
 
         // エネルギーの数値を表示
-        UiList.EnergyValue.text = EnergyController.energy.ToString("0");
+        UiList.EnergyValue.text = energyController.energy.ToString("0");
 
         // エネルギーが0以下かつ非表示なら
-        if ((EnergyController.energy <= 0) && (UiList.NoEnergy.enabled == false))
+        if ((energyController.energy <= 0) && (UiList.NoEnergy.enabled == false))
         {
             // エネルギーゲージの枠と数値を赤色にする
             UiList.EnergyGaugeOutline.color = new Color32(155, 0, 0, 100);
@@ -87,7 +90,7 @@ public class UIController : MonoBehaviour
             UiList.NoEnergy.enabled = true;
         }
         // エネルギーが0より上かつ表示されているなら
-        else if ((EnergyController.energy > 0) && (UiList.NoEnergy.enabled == true))
+        else if ((energyController.energy > 0) && (UiList.NoEnergy.enabled == true))
         {
             // エネルギーゲージの枠と数値を白色にする
             UiList.EnergyGaugeOutline.color = new Color32(255, 255, 255, 100);
@@ -102,7 +105,7 @@ public class UIController : MonoBehaviour
     void DrawChargeUI()
     {
         // チャージされているなら
-        if (Shot.charge > 0)
+        if (shot.charge > 0)
         {
             // チャージのUIが無効化されていたら
             if (!(UiList.chargeUI.activeSelf))
@@ -112,13 +115,13 @@ public class UIController : MonoBehaviour
             }
 
             // チャージの数値をテキストで表示
-            UiList.chargeValue.text = Shot.charge.ToString("0") + "%";
+            UiList.chargeValue.text = shot.charge.ToString("0") + "%";
 
             // チャージの円を描写
-            UiList.chargeCircle.fillAmount = Shot.charge / 100;
+            UiList.chargeCircle.fillAmount = shot.charge / 100;
         }
         // チャージされていないかつ表示されているなら
-        else if ((Shot.charge == 0) && (UiList.chargeUI.activeSelf))
+        else if ((shot.charge == 0) && (UiList.chargeUI.activeSelf))
         {
             // UIを無効化
             UiList.chargeUI.SetActive(false);

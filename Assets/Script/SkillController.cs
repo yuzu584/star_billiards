@@ -5,7 +5,9 @@ using UnityEngine;
 // スキルを管理
 public class SkillController : MonoBehaviour
 {
-    public UIController uIController;
+    [SerializeField] Shot shot;                         // Shot型の変数
+    [SerializeField] UIController uIController;         // UIController型の変数
+    [SerializeField] EnergyController energyController; // EnergyController型の変数
 
     int selectSkill = 0;  // 選択しているスキルの番号
     float coolDown = 0;   // クールダウンを管理
@@ -32,9 +34,9 @@ public class SkillController : MonoBehaviour
     // スキルの構造体の配列を宣言
     public Skill[] skill =
     {
-        new Skill("SuperCharge", 10, 3, 5),
-        new Skill("PowerSurge", 30, 5, 3),
-        new Skill("GravityWave", 100, 8, 1),
+        new Skill("SuperCharge", 10, 1, 10),
+        new Skill("PowerSurge", 30, 1, 10),
+        new Skill("Huge", 100, 1, 10),
     };
 
     void Update()
@@ -92,7 +94,22 @@ public class SkillController : MonoBehaviour
         effectTime = skill[selectSkill].effectTime;
         coolDown = skill[selectSkill].coolDown;
 
-        EnergyController.energy -= skill[selectSkill].energyUsage;
+        // エネルギーを消費
+        energyController.energy -= skill[selectSkill].energyUsage;
+
+        // 選択しているスキルによって分岐
+        switch(selectSkill)
+        {
+            case 0: // SuperCharge
+                StartCoroutine("UseSuperCharge");
+                break;
+            case 1: // PowerSurge
+                StartCoroutine("UsePowerSurge");
+                break;
+            case 2: // Huge
+                StartCoroutine("UseHuge");
+                break;
+        }
     }
 
     // スキルの効果時間とクールダウンを減少
@@ -110,5 +127,47 @@ public class SkillController : MonoBehaviour
             effectTime = 0;
         if (coolDown < 0)
             coolDown = 0;
+    }
+
+    // SuperChargeを使用
+    IEnumerator UseSuperCharge()
+    {
+        // チャージスピードを増加
+        shot.chargeSpeed += 1;
+
+        // 効果時間が終わるまで待つ
+        yield return new WaitForSeconds(effectTime);
+
+        // チャージスピードを元に戻す
+        shot.chargeSpeed -= 1;
+    }
+
+    // PowerSurgeを使用
+    IEnumerator UsePowerSurge()
+    {
+        // プレイヤーの質量を増加
+        shot.playerBouncePower -= 100;
+        shot.planetBouncePower += 100;
+
+        // 効果時間が終わるまで待つ
+        yield return new WaitForSeconds(effectTime);
+
+        // プレイヤーの質量を増加を元に戻す
+        shot.playerBouncePower += 100;
+        shot.planetBouncePower -= 100;
+    }
+
+    // Hugeを使用
+    IEnumerator UseHuge()
+    {
+        // 巨大化
+        transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+
+        // 効果時間が終わるまで待つ
+        yield return new WaitForSeconds(effectTime);
+
+        // 巨大化終了
+        transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
     }
 }

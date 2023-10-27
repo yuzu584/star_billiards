@@ -1823,6 +1823,8 @@ MonoBehaviour:
     planetInfoRing: {fileID: 868238460}
     planetInfoLine: {fileID: 1594602367}
     planetName: {fileID: 1053927926}
+  shot: {fileID: 2052131792}
+  energyController: {fileID: 2052131793}
 --- !u!114 &869580812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3856,7 +3858,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pl: {fileID: 872107054}
+  energyController: {fileID: 2052131793}
   speed: 150
+  charge: 0
   chargeSpeed: 1
   playerBouncePower: 100
   planetBouncePower: 100
@@ -3872,6 +3876,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a096084f2b05b6b47a6efd82b1af0318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  energy: 1000
+  maxEnergy: 1000
 --- !u!114 &2052131794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3884,7 +3890,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8838ec1200f5b9044b1ee582e61350c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shot: {fileID: 2052131792}
   uIController: {fileID: 869580811}
+  energyController: {fileID: 2052131793}
 --- !u!114 &2052131795
 MonoBehaviour:
   m_ObjectHideFlags: 0
