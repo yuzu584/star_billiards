@@ -2804,7 +2804,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3baad58fc819d6e4cb8d979d3a6d0e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenController: {fileID: 1600059365}
 --- !u!4 &1180901548
 Transform:
   m_ObjectHideFlags: 0
@@ -3360,6 +3359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cd097e734fcfa43b27f3cf26223b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorController: {fileID: 1180901547}
+  uIController: {fileID: 869580811}
   screenNum: 0
 --- !u!4 &1600059366
 Transform:
@@ -3572,6 +3573,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 630366474}
     m_Modifications:
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: screenController
+      value: 
+      objectReference: {fileID: 1600059365}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Text
       value: Setting
@@ -3673,6 +3678,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 630366474}
     m_Modifications:
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: screenController
+      value: 
+      objectReference: {fileID: 1600059365}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Text
       value: Return to title
@@ -3774,6 +3783,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 630366474}
     m_Modifications:
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: screenController
+      value: 
+      objectReference: {fileID: 1600059365}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Text
       value: Retorn to game

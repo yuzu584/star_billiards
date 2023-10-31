@@ -60,6 +60,9 @@ public class UIController : MonoBehaviour
 
         // エネルギーがない旨を伝えるテキストを非表示
         inGameUI.NoEnergy.enabled = false;
+
+        // ポーズ画面のUIを非表示
+        DrawPauseUI(false);
     }
 
     void Update()
@@ -69,17 +72,6 @@ public class UIController : MonoBehaviour
 
         // チャージのUIを描画
         DrawChargeUI();
-
-        if(screenController.screenNum == 1)
-        {
-            // ポーズ画面のUIを描画
-            DrawPauseUI(true);
-        }
-        else
-        {
-            // ポーズ画面のUIを非表示
-            DrawPauseUI(false);
-        }
     }
 
     // エネルギーのUIを描画
@@ -184,8 +176,8 @@ public class UIController : MonoBehaviour
         inGameUI.planetName.rectTransform.position = inGameUI.planetInfoRing.rectTransform.position + new Vector3(160, 80, 10);
     }
 
-    // ポーズ画面のUIを描画
-    void DrawPauseUI(bool draw)
+    // ポーズ画面のUIを表示又は非表示にする
+    public void DrawPauseUI(bool draw)
     {
         // 表示又は非表示
         pauseUI.pauseUI.SetActive(draw);

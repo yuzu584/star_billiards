@@ -5,43 +5,29 @@ using UnityEngine;
 // マウスカーソルを管理
 public class CursorController : MonoBehaviour
 {
-    [SerializeField] ScreenController screenController; // ScreenController型の変数
-
     void Start()
     {
-        // カーソルを画面中央に固定
-        Cursor.lockState = CursorLockMode.Locked;
-
-        // カーソル非表示
-        Cursor.visible = false;
+        // マウスカーソルを非表示
+        DrawCursol(false);
     }
 
-    void Update()
+    // マウスカーソルを表示又は非表示にする
+    public void DrawCursol(bool draw)
     {
-        // 戻るボタンが押されたら
-        if(Input.GetButtonDown("Cancel"))
+        // カーソルの表示非表示切り替え
+        Cursor.visible = draw;
+
+        // カーソルを表示するなら
+        if(draw)
         {
-            // 画面番号によって分岐
-            switch (screenController.screenNum)
-            {
-                case 0: // InGame
-
-                    // カーソルを画面中央に固定
-                    Cursor.lockState = CursorLockMode.Locked;
-
-                    // カーソル非表示
-                    Cursor.visible = false;
-                    break;
-
-                case 1: // Pause
-
-                    // カーソルの固定を解除
-                    Cursor.lockState = CursorLockMode.None;
-
-                    // カーソル表示
-                    Cursor.visible = true;
-                    break;
-            }
+            // カーソルの固定を解除
+            Cursor.lockState = CursorLockMode.None;
+        }
+        // カーソルが非表示なら
+        else
+        {
+            // カーソルを画面中央に固定
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }
