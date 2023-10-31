@@ -5,9 +5,10 @@ using UnityEngine;
 // 反射するRayとLineを生成
 public class PredictionLine : MonoBehaviour
 {
-    public GameObject target;           // Rayを出すオブジェクト
-    public GameObject directionTarget;  // Rayの向きを決めるオブジェクト
-    public LineRenderer lineRenderer;   // linerendererの変数
+    [SerializeField] private GameObject target;                 // Rayを出すオブジェクト
+    [SerializeField] private GameObject directionTarget;        // Rayの向きを決めるオブジェクト
+    [SerializeField] private LineRenderer lineRenderer;         // linerendererの変数
+    [SerializeField] private ScreenController screenController; // ScreenController型の変数
 
     Rigidbody rb;                // Rigidbody型の変数
     Vector3 origin;              // 原点
@@ -77,17 +78,21 @@ public class PredictionLine : MonoBehaviour
 
     void Update()
     {
-        // もし発射ボタン1が押されていたら
-        if (Input.GetAxisRaw("Fire1") > 0)
+        // ゲーム画面なら
+        if (screenController.screenNum == 0)
         {
-            // 線を表示
-            lineRenderer.enabled = true;
-        }
-        // もし発射ボタン1が押されていなければ
-        else if (Input.GetAxisRaw("Fire1") == 0)
-        {
-            // 線を非表示
-            lineRenderer.enabled = false;
+            // もし発射ボタン1が押されていたら
+            if (Input.GetAxisRaw("Fire1") > 0)
+            {
+                // 線を表示
+                lineRenderer.enabled = true;
+            }
+            // もし発射ボタン1が押されていなければ
+            else if (Input.GetAxisRaw("Fire1") == 0)
+            {
+                // 線を非表示
+                lineRenderer.enabled = false;
+            }
         }
     }
 }

@@ -26,6 +26,9 @@ public class ScreenController : MonoBehaviour
 
             // ポーズ画面のUIを表示
             uIController.DrawPauseUI(true);
+
+            // 時間の流れを止める
+            Time.timeScale = 0.0f;
         }
     }
 }

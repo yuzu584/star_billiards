@@ -5,9 +5,10 @@ using UnityEngine;
 // スキルを管理
 public class SkillController : MonoBehaviour
 {
-    [SerializeField] Shot shot;                         // Shot型の変数
-    [SerializeField] UIController uIController;         // UIController型の変数
-    [SerializeField] EnergyController energyController; // EnergyController型の変数
+    [SerializeField] private Shot shot;                         // Shot型の変数
+    [SerializeField] private UIController uIController;         // UIController型の変数
+    [SerializeField] private EnergyController energyController; // EnergyController型の変数
+    [SerializeField] private ScreenController screenController; // ScreenController型の変数
 
     int selectSkill = 0;  // 選択しているスキルの番号
     float coolDown = 0;   // クールダウンを管理
@@ -41,25 +42,29 @@ public class SkillController : MonoBehaviour
 
     void Update()
     {
-        // マウスホイールがスクロールされていたら
-        if ((Input.GetAxisRaw("Mouse ScrollWheel") != 0) && (effectTime <= 0) && (coolDown == 0))
+        // ゲーム画面なら
+        if (screenController.screenNum == 0)
         {
-            // スキルを変更
-            ChangeSkill();
+            // マウスホイールがスクロールされていたら
+            if ((Input.GetAxisRaw("Mouse ScrollWheel") != 0) && (effectTime <= 0) && (coolDown == 0))
+            {
+                // スキルを変更
+                ChangeSkill();
+            }
+
+            // スキル使用可能の時にキーが押されたら
+            if ((Input.GetAxisRaw("Skill") != 0) && (effectTime == 0) && (coolDown == 0))
+            {
+                // スキル使用
+                UseSkill();
+            }
+
+            // スキルの効果時間とクールダウンを減少
+            DecreaseEFAndCD();
+
+            // スキルのUIを描画する関数を呼び出す
+            CallSetSkillUI();
         }
-
-        // スキル使用可能の時にキーが押されたら
-        if ((Input.GetAxisRaw("Skill") != 0) && (effectTime == 0) && (coolDown == 0))
-        {
-            // スキル使用
-            UseSkill();
-        }
-
-        // スキルの効果時間とクールダウンを減少
-        DecreaseEFAndCD();
-
-        // スキルのUIを描画する関数を呼び出す
-        CallSetSkillUI();
     }
 
     // スキルのUIを描画する関数を呼び出す

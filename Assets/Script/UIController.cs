@@ -15,20 +15,22 @@ public class UIController : MonoBehaviour
     [System.Serializable]
     public class InGameUI
     {
-        public GameObject chargeUI;         // チャージのUI
-        public Image chargeCircle;          // チャージの円
-        public Text chargeValue;            // チャージの数値
-        public Text chargeName;             // チャージの文字
-        public Image EnergyGauge;           // エネルギーゲージ
-        public Image EnergyAfterImage;      // エネルギーゲージの減少量
-        public Image EnergyGaugeOutline;    // エネルギーゲージの枠
-        public Text EnergyValue;            // エネルギーの数値
-        public Text NoEnergy;               // エネルギーがない旨を伝えるテキスト
-        public Text skillName;              // スキル名
-        public Image skillGauge;            // 効果時間とクールダウンのゲージ
-        public Image planetInfoRing;        // 惑星情報UIの円
-        public LineRenderer planetInfoLine; // 惑星情報UIの線
-        public Text planetName;             // 惑星の名前
+        public GameObject chargeUI;          // チャージのUI
+        public Image chargeCircle;           // チャージの円
+        public Text chargeValue;             // チャージの数値
+        public Text chargeName;              // チャージの文字
+        public Image EnergyGauge;            // エネルギーゲージ
+        public Image EnergyAfterImage;       // エネルギーゲージの減少量
+        public Image EnergyGaugeOutline;     // エネルギーゲージの枠
+        public Text EnergyValue;             // エネルギーの数値
+        public Text NoEnergy;                // エネルギーがない旨を伝えるテキスト
+        public Text skillName;               // スキル名
+        public Image skillGauge;             // 効果時間とクールダウンのゲージ
+        public GameObject planetInfo;        // 惑星情報UI
+        public Image planetInfoRing;         // 惑星情報UIの円
+        public LineRenderer planetInfoLine;  // 惑星情報UIの線
+        public Text planetName;              // 惑星の名前
+        public Image reticle;                // レティクル
     }
 
     [System.Serializable]
@@ -37,9 +39,10 @@ public class UIController : MonoBehaviour
         public GameObject pauseUI; // ポーズ画面のUI
     }
 
-    [SerializeField] Shot shot;                         // Shot型の変数
-    [SerializeField] EnergyController energyController; // EnergyController型の変数
-    [SerializeField] ScreenController screenController; // ScreenController型の変数
+    [SerializeField] private Shot shot;                                   // Shot型の変数
+    [SerializeField] private EnergyController energyController;           // EnergyController型の変数
+    [SerializeField] private ScreenController screenController;           // ScreenController型の変数
+    [SerializeField] private PostProcessController postProcessController; // PostProcessController型の変数
 
     RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
     Vector3 PIL1;             // 惑星情報UIの線の始点座標
@@ -156,30 +159,50 @@ public class UIController : MonoBehaviour
     // 惑星情報UIを描画
     public void DrawPlanetInfoUI(Vector3 position, string planetName)
     {
-        // 惑星情報UIの円のスクリーン座標を変更
-        inGameUI.planetInfoRing.rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, position);
+        // ゲーム画面ならUIを表示
+        if(screenController.screenNum == 0)
+        {
+            // UIが非表示なら表示
+            if(!(inGameUI.planetInfo.activeSelf))
+            {
+                inGameUI.planetInfo.SetActive(true);
+            }
+            // 惑星情報UIの円のスクリーン座標を変更
+            inGameUI.planetInfoRing.rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, position);
 
-        // 惑星情報UIの線のスクリーン座標をワールド座標に変換
-        PIL1 = Camera.main.ScreenToWorldPoint(inGameUI.planetInfoRing.rectTransform.position + new Vector3(0, 0, 10));
-        PIL2 = Camera.main.ScreenToWorldPoint(inGameUI.planetInfoRing.rectTransform.position + new Vector3(50, 50, 10));
-        PIL3 = Camera.main.ScreenToWorldPoint(inGameUI.planetInfoRing.rectTransform.position + new Vector3(150, 50, 10));
+            // 惑星情報UIの線のスクリーン座標をワールド座標に変換
+            PIL1 = Camera.main.ScreenToWorldPoint(inGameUI.planetInfoRing.rectTransform.position + new Vector3(0, 0, 10));
+            PIL2 = Camera.main.ScreenToWorldPoint(inGameUI.planetInfoRing.rectTransform.position + new Vector3(50, 50, 10));
+            PIL3 = Camera.main.ScreenToWorldPoint(inGameUI.planetInfoRing.rectTransform.position + new Vector3(150, 50, 10));
 
-        // 線を描画
-        inGameUI.planetInfoLine.SetPosition(0, PIL1);
-        inGameUI.planetInfoLine.SetPosition(1, PIL2);
-        inGameUI.planetInfoLine.SetPosition(2, PIL3);
+            // 線を描画
+            inGameUI.planetInfoLine.SetPosition(0, PIL1);
+            inGameUI.planetInfoLine.SetPosition(1, PIL2);
+            inGameUI.planetInfoLine.SetPosition(2, PIL3);
 
-        // 惑星の名前をテキストに設定
-        inGameUI.planetName.text = planetName;
+            // 惑星の名前をテキストに設定
+            inGameUI.planetName.text = planetName;
 
-        // 惑星の名前UIの位置を設定
-        inGameUI.planetName.rectTransform.position = inGameUI.planetInfoRing.rectTransform.position + new Vector3(160, 80, 10);
+            // 惑星の名前UIの位置を設定
+            inGameUI.planetName.rectTransform.position = inGameUI.planetInfoRing.rectTransform.position + new Vector3(160, 80, 10);
+        }
+        // ポーズ画面かつUIが表示されているなら非表示にする
+        else if((screenController.screenNum == 1) && (inGameUI.planetInfo.activeSelf))
+        {
+            inGameUI.planetInfo.SetActive(false);
+        }
     }
 
     // ポーズ画面のUIを表示又は非表示にする
     public void DrawPauseUI(bool draw)
     {
-        // 表示又は非表示
+        // ポーズ画面を表示又は非表示
         pauseUI.pauseUI.SetActive(draw);
+
+        // 被写界深度のONOFF切り替え
+        postProcessController.DepthOfFieldOnOff(draw);
+
+        // レティクルを表示又は非表示
+        inGameUI.reticle.enabled = !(draw);
     }
 }

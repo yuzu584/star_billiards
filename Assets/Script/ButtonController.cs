@@ -6,20 +6,22 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 // ボタンの見た目を管理
-public class ButtonGraphic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private Color color;                       // ポインターが乗った時の色
     [SerializeField] private Color defaultColor;                // デフォルトの色
-    [SerializeField] private Image Btn;                         // ボタン
-    [SerializeField] private ScreenController screenController; // ScreenController型
+    [SerializeField] private Image Btn;                         // ボタンの画像
     [SerializeField] private enum ClickAction                   // ボタンが押されたときの効果
     {
         ReturnToGame,  // ゲームに戻る
-        ConfigMenu,    // 設定画面を開く
+        Setting,       // 設定画面を開く
         ReturnToTitle, // タイトル画面に戻る
     }
-
-    [SerializeField] ClickAction clickAction; // ボタンを押したときの効果
+    [SerializeField] ClickAction clickAction;                   // ボタンを押したときの効果
+    [SerializeField] private ScreenController screenController; // ScreenController型
+    [SerializeField] private UIController uIController;         // UIController型の変数
+    [SerializeField] private CursorController cursorController; // CursorController型の変数
+    [SerializeField] private GameObject planetInfo;             // 惑星情報UI
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
@@ -44,7 +46,7 @@ public class ButtonGraphic : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             case ClickAction.ReturnToGame:  // ゲームに戻る
                 ReturnToGame();
                 break;
-            case ClickAction.ConfigMenu:    // 設定画面を開く
+            case ClickAction.Setting:    // 設定画面を開く
                 break;
             case ClickAction.ReturnToTitle: // タイトル画面に戻る
                 break;
@@ -56,6 +58,19 @@ public class ButtonGraphic : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     // ゲームに戻る
     void ReturnToGame()
     {
+        // 画面番号をInGameに変更
         screenController.screenNum = 0;
+
+        // ポーズ画面のUIを非表示
+        uIController.DrawPauseUI(false);
+
+        // マウスカーソルを非表示
+        cursorController.DrawCursol(false);
+
+        // 惑星情報UIを表示
+        planetInfo.SetActive(true);
+
+        // 時間の流れを元に戻す
+        Time.timeScale = 1.0f;
     }
 }

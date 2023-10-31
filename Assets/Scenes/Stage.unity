@@ -606,6 +606,86 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!1 &196388285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 196388286}
+  - component: {fileID: 196388288}
+  - component: {fileID: 196388287}
+  m_Layer: 5
+  m_Name: PauseText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &196388286
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196388285}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 630366474}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 100}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &196388287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196388285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: PAUSE
+--- !u!222 &196388288
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196388285}
+  m_CullTransparentMesh: 1
 --- !u!1 &219397080
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,7 +945,7 @@ RectTransform:
   - {fileID: 1594602366}
   - {fileID: 1053927925}
   m_Father: {fileID: 1564237708}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1349,7 +1429,7 @@ RectTransform:
   - {fileID: 452950054}
   - {fileID: 1954531741}
   m_Father: {fileID: 1564237708}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1465,6 +1545,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 196388286}
   - {fileID: 1340884237}
   - {fileID: 607904074}
   - {fileID: 655898871}
@@ -1869,14 +1950,17 @@ MonoBehaviour:
     NoEnergy: {fileID: 219397082}
     skillName: {fileID: 1954531742}
     skillGauge: {fileID: 452950055}
+    planetInfo: {fileID: 310466187}
     planetInfoRing: {fileID: 868238460}
     planetInfoLine: {fileID: 1594602367}
     planetName: {fileID: 1053927926}
+    reticle: {fileID: 1067802296}
   pauseUI:
     pauseUI: {fileID: 630366473}
   shot: {fileID: 2052131792}
   energyController: {fileID: 2052131793}
   screenController: {fileID: 1600059365}
+  postProcessController: {fileID: 1746308557}
 --- !u!114 &869580812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1993,6 +2077,7 @@ MonoBehaviour:
   target: {fileID: 2052131786}
   directionTarget: {fileID: 963194225}
   lineRenderer: {fileID: 872107056}
+  screenController: {fileID: 1600059365}
 --- !u!4 &872107055
 Transform:
   m_ObjectHideFlags: 0
@@ -2406,6 +2491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2052131786}
+  screenController: {fileID: 1600059365}
   speed: 1
 --- !u!114 &963194231
 MonoBehaviour:
@@ -2433,6 +2519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b18f269af8ac1d458641cf93d75193c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenController: {fileID: 1600059365}
 --- !u!114 &963194233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2690,7 +2777,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1564237708}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3183,9 +3270,9 @@ RectTransform:
   - {fileID: 1240062158}
   - {fileID: 1202113753}
   - {fileID: 1371782927}
-  - {fileID: 1067802295}
   - {fileID: 530810192}
   - {fileID: 310466188}
+  - {fileID: 1067802295}
   m_Father: {fileID: 869580815}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3388,6 +3475,7 @@ GameObject:
   - component: {fileID: 1746308555}
   - component: {fileID: 1746308554}
   - component: {fileID: 1746308556}
+  - component: {fileID: 1746308557}
   m_Layer: 0
   m_Name: Post-process Volume
   m_TagString: Untagged
@@ -3440,6 +3528,19 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 6dd665e355e0ace41b7b561080daec1e, type: 2}
+--- !u!114 &1746308557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746308552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9dc970e71e01d4685f68fd1b7a51d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: {fileID: 1746308556}
 --- !u!1 &1792383904
 GameObject:
   m_ObjectHideFlags: 0
@@ -3574,6 +3675,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 630366474}
     m_Modifications:
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: planetInfo
+      value: 
+      objectReference: {fileID: 310466187}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: clickAction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: uIController
+      value: 
+      objectReference: {fileID: 869580811}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: cursorController
+      value: 
+      objectReference: {fileID: 1180901547}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: screenController
       value: 
       objectReference: {fileID: 1600059365}
@@ -3595,7 +3712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051200584755, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051200584755, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3679,6 +3796,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 630366474}
     m_Modifications:
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: planetInfo
+      value: 
+      objectReference: {fileID: 310466187}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: clickAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: uIController
+      value: 
+      objectReference: {fileID: 869580811}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: cursorController
+      value: 
+      objectReference: {fileID: 1180901547}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: screenController
       value: 
       objectReference: {fileID: 1600059365}
@@ -3700,7 +3833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051200584755, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051200584755, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3784,6 +3917,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 630366474}
     m_Modifications:
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: planetInfo
+      value: 
+      objectReference: {fileID: 310466187}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: uIController
+      value: 
+      objectReference: {fileID: 869580811}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: cursorController
+      value: 
+      objectReference: {fileID: 1180901547}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: screenController
       value: 
       objectReference: {fileID: 1600059365}
@@ -3805,7 +3950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051200584755, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051200584755, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4316,6 +4461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Pl: {fileID: 872107054}
   energyController: {fileID: 2052131793}
+  screenController: {fileID: 1600059365}
   speed: 150
   charge: 0
   chargeSpeed: 1
@@ -4350,6 +4496,7 @@ MonoBehaviour:
   shot: {fileID: 2052131792}
   uIController: {fileID: 869580811}
   energyController: {fileID: 2052131793}
+  screenController: {fileID: 1600059365}
 --- !u!114 &2052131795
 MonoBehaviour:
   m_ObjectHideFlags: 0
