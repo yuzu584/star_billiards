@@ -106,13 +106,13 @@ public class SkillController : MonoBehaviour
         switch(selectSkill)
         {
             case 0: // SuperCharge
-                StartCoroutine("UseSuperCharge");
+                StartCoroutine(UseSuperCharge());
                 break;
             case 1: // PowerSurge
-                StartCoroutine("UsePowerSurge");
+                StartCoroutine(UsePowerSurge());
                 break;
             case 2: // Huge
-                StartCoroutine("UseHuge");
+                StartCoroutine(UseHuge());
                 break;
         }
     }
