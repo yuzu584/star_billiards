@@ -23,9 +23,13 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         Setting,       // 設定画面を開く
         ReturnToTitle, // タイトル画面に戻る
     }
-    [SerializeField] private ClickAction clickAction;           // ボタンを押したときの効果
+    [SerializeField] private ClickAction clickAction; // ボタンを押したときの効果
 
     private Vector3[] defaultPos = new Vector3[3]; // ボタンの位置
+    private Vector3[] startPos = new Vector3[3];   // ボタンの始点位置
+    private Vector3[] endPos = new Vector3[3];     // ボタンの終点位置
+    private float buttonAnimationTime = 0.2f;      // ボタンのアニメーション時間
+    Vector3 moveLength = new Vector3(5, 5, 0);     // アニメーション時の移動距離
 
     void Start()
     {
@@ -42,7 +46,10 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         Btn.color = color;
 
         // ボタンをアニメーション
-        StartCoroutine(ButtonAnimation(true, 0.2f));
+        endPos[0] = defaultPos[0] + moveLength;
+        endPos[1] = defaultPos[1] + moveLength;
+        endPos[2] = defaultPos[2] + moveLength;
+        StartCoroutine(ButtonAnimation(buttonAnimationTime, endPos));
     }
 
     // マウスポインターがボタンの上から離れたら
@@ -52,15 +59,15 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         Btn.color = defaultColor;
 
         // ボタンをアニメーション
-        StartCoroutine(ButtonAnimation(false, 0.2f));
+        endPos[0] = defaultPos[0];
+        endPos[1] = defaultPos[1];
+        endPos[2] = defaultPos[2];
+        StartCoroutine(ButtonAnimation(buttonAnimationTime, endPos));
     }
     
     // ボタンがクリックされたら
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        // ボタンをアニメーション
-        StartCoroutine(ButtonAnimation(false, 0.2f));
-
         // ボタンごとの効果によって分岐
         switch (clickAction)
         {
@@ -96,45 +103,24 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     }
 
     // ボタンのアニメーション
-    IEnumerator ButtonAnimation(bool onoff, float time)
+    IEnumerator ButtonAnimation(float time, Vector3[] endPos)
     {
         Vector3[] startPos = new Vector3[3];       // 開始位置
-        Vector3[] endPos = new Vector3[3];         // 終了位置
-        Vector3 moveLength = new Vector3(5, 5, 0); // アニメーション時の移動距離
         float elapseTime = 0;                      // 経過時間
+
+        // 開始位置を設定
+        startPos[0] = Btn.rectTransform.position;
+        startPos[1] = BtnOutline.rectTransform.position;
+        startPos[2] = BtnText.rectTransform.position;
 
         // 時間が経過するまで繰り返す
         while (elapseTime < time)
         {
+            // 経過時間をカウント
             elapseTime += Time.unscaledDeltaTime;
 
             // 時間が経過した割合(0 ～ 1)
             float t = elapseTime / time;
-
-            if (onoff)
-            {
-                // 開始位置を設定
-                startPos[0] = defaultPos[0];
-                startPos[1] = defaultPos[1];
-                startPos[2] = defaultPos[2];
-
-                // 終了位置を設定
-                endPos[0] = defaultPos[0] += moveLength;
-                endPos[1] = defaultPos[1] += moveLength;
-                endPos[2] = defaultPos[2] += moveLength;
-            }
-            else
-            {
-                // 開始位置を設定
-                startPos[0] = Btn.rectTransform.position;
-                startPos[1] = BtnOutline.rectTransform.position;
-                startPos[2] = BtnText.rectTransform.position;
-
-                // 終了位置を設定
-                endPos[0] = defaultPos[0];
-                endPos[1] = defaultPos[1];
-                endPos[2] = defaultPos[2];
-            }
 
             // 補完でアニメーション
             Btn.rectTransform.position = Vector3.Lerp(startPos[0], endPos[0], t);
