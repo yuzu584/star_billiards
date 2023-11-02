@@ -28,15 +28,15 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        // ボタンの色を変更
-        StartCoroutine(ButtonAnimation(color));
+        // ボタンのアニメーション
+        ButtonAnimation(color);
     }
 
     // マウスポインターがボタンの上から離れたら
     public void OnPointerExit(PointerEventData pointerEventData)
     {
-        // ボタンの色を元に戻す
-        StartCoroutine(ButtonAnimation(defaultColor));
+        // ボタンのアニメーション
+        ButtonAnimation(defaultColor);
     }
     
     // ボタンがクリックされたら
@@ -77,25 +77,9 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     }
 
     // ボタンのアニメーション
-    IEnumerator ButtonAnimation(Color color)
+    void ButtonAnimation(Color color)
     {
-        float time = 0.5f;    // ボタンのアニメーション時間
-        float elapseTime = 0; // 経過時間
-
-        // 時間が経過するまで繰り返す
-        while (elapseTime < time)
-        {
-            // 経過時間をカウント
-            elapseTime += Time.unscaledDeltaTime;
-
-            // 時間が経過した割合(0 ～ 1)
-            float t = elapseTime / time;
-
-            // 補完でアニメーション
-            Btn.color = Color.Lerp(Btn.color, color, t);
-
-            // 1フレーム待つ
-            yield return null;
-        }
+        // ボタンの色を変更
+        Btn.color = color;
     }
 }
