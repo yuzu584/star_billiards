@@ -12,7 +12,7 @@ public class CollisionEffect : MonoBehaviour
         // パーティクルシステムのインスタンスを生成
         ParticleSystem newParticle = Instantiate(particle);
 
-        // 生成したパーティクルをプレイヤーの座標に移動
+        // 生成したパーティクルを衝突地点に移動
         newParticle.transform.position = collision.contacts[0].point;
 
         // パーティクルの向きをプレイヤーに向ける
@@ -22,6 +22,6 @@ public class CollisionEffect : MonoBehaviour
         newParticle.Play();
 
         // パーティクルを削除
-        Destroy(newParticle.gameObject, 5.0f);
+        Destroy(newParticle.gameObject, 2.0f);
     }
 }

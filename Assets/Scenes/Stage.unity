@@ -3698,6 +3698,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: Setting
       objectReference: {fileID: 0}
+    - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
     - target: {fileID: 5970234051200584752, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Name
       value: Setting
@@ -3819,6 +3823,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: Return to title
       objectReference: {fileID: 0}
+    - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
     - target: {fileID: 5970234051200584752, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Name
       value: Return to title
@@ -3936,6 +3944,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: Retorn to game
       objectReference: {fileID: 0}
+    - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
     - target: {fileID: 5970234051200584752, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Name
       value: Retorn to game
