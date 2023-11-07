@@ -23,6 +23,7 @@ public class UIController : MonoBehaviour
         public Image EnergyAfterImage;       // エネルギーゲージの減少量
         public Image EnergyGaugeOutline;     // エネルギーゲージの枠
         public Text EnergyValue;             // エネルギーの数値
+        public GameObject Message;           // メッセージ
         public Text NoEnergy;                // エネルギーがない旨を伝えるテキスト
         public Text skillName;               // スキル名
         public Image skillGauge;             // 効果時間とクールダウンのゲージ
@@ -43,39 +44,13 @@ public class UIController : MonoBehaviour
     [SerializeField] private EnergyController energyController;           // EnergyController型の変数
     [SerializeField] private ScreenController screenController;           // ScreenController型の変数
     [SerializeField] private PostProcessController postProcessController; // PostProcessController型の変数
+    [SerializeField] private GameObject popUp;                            // ポップアップのプレハブ
 
     RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
     Vector3 PIL1;             // 惑星情報UIの線の始点座標
     Vector3 PIL2;             // 惑星情報UIの線の中間座標
     Vector3 PIL3;             // 惑星情報UIの線の終点座標
-
-    void Start()
-    {
-        // 惑星情報UIの円のRectTransformを取得
-        PIR = inGameUI.planetInfoRing.GetComponent<RectTransform>();
-
-        // 惑星情報UIの線の始点と終点の太さを指定
-        inGameUI.planetInfoLine.startWidth = 0.01f;
-        inGameUI.planetInfoLine.endWidth = 0.01f;
-
-        // 惑星情報UIの線の数
-        inGameUI.planetInfoLine.positionCount = 3;
-
-        // エネルギーがない旨を伝えるテキストを非表示
-        inGameUI.NoEnergy.enabled = false;
-
-        // ポーズ画面のUIを非表示
-        DrawPauseUI(false);
-    }
-
-    void Update()
-    {
-        // エネルギーのUIを描画
-        DrawEnergyUI();
-
-        // チャージのUIを描画
-        DrawChargeUI();
-    }
+    int popupAmount = 0;      // 描画されているポップアップの量
 
     // エネルギーのUIを描画
     void DrawEnergyUI()
@@ -204,5 +179,55 @@ public class UIController : MonoBehaviour
 
         // レティクルを表示又は非表示
         inGameUI.reticle.enabled = !(draw);
+    }
+
+    // 惑星が破壊された旨を伝えるポップアップを描画
+    public void DrawDestroyPlanetPopup(string name)
+    {
+        // ポップアップのインスタンスを生成
+        GameObject popup = Instantiate(popUp);
+
+        // 親を設定
+        popup.transform.SetParent(inGameUI.Message.transform, false);
+
+        // 大きさを設定
+        popup.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+
+        // プレハブのテキストを取得
+        Text popupText = popup.transform.GetChild(1).GetComponent<Text>();
+
+        // プレハブのテキストを設定
+        popupText.text = name + " was destroyed";
+
+        // ポップアップを削除
+        Destroy(popup.gameObject, 5.0f);
+    }
+
+    void Start()
+    {
+        // 惑星情報UIの円のRectTransformを取得
+        PIR = inGameUI.planetInfoRing.GetComponent<RectTransform>();
+
+        // 惑星情報UIの線の始点と終点の太さを指定
+        inGameUI.planetInfoLine.startWidth = 0.01f;
+        inGameUI.planetInfoLine.endWidth = 0.01f;
+
+        // 惑星情報UIの線の数
+        inGameUI.planetInfoLine.positionCount = 3;
+
+        // エネルギーがない旨を伝えるテキストを非表示
+        inGameUI.NoEnergy.enabled = false;
+
+        // ポーズ画面のUIを非表示
+        DrawPauseUI(false);
+    }
+
+    void Update()
+    {
+        // エネルギーのUIを描画
+        DrawEnergyUI();
+
+        // チャージのUIを描画
+        DrawChargeUI();
     }
 }
