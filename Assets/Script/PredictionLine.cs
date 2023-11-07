@@ -9,6 +9,7 @@ public class PredictionLine : MonoBehaviour
     [SerializeField] private GameObject directionTarget;        // Rayの向きを決めるオブジェクト
     [SerializeField] private LineRenderer lineRenderer;         // linerendererの変数
     [SerializeField] private ScreenController screenController; // ScreenController型の変数
+    [SerializeField] private EnergyController energyController; // EnergyController型の変数
 
     Rigidbody rb;                // Rigidbody型の変数
     Vector3 origin;              // 原点
@@ -81,14 +82,14 @@ public class PredictionLine : MonoBehaviour
         // ゲーム画面なら
         if (screenController.screenNum == 0)
         {
-            // もし発射ボタン1が押されていたら
-            if (Input.GetAxisRaw("Fire1") > 0)
+            // エネルギーがある状態で発射ボタン1が押されていたら
+            if ((Input.GetAxisRaw("Fire1") > 0) && (energyController.energy > 0))
             {
                 // 線を表示
                 lineRenderer.enabled = true;
             }
-            // もし発射ボタン1が押されていなければ
-            else if (Input.GetAxisRaw("Fire1") == 0)
+            // 線が表示されていたら
+            else if (lineRenderer.enabled == true)
             {
                 // 線を非表示
                 lineRenderer.enabled = false;
