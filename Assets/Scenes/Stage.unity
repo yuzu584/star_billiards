@@ -2078,6 +2078,7 @@ MonoBehaviour:
   directionTarget: {fileID: 963194225}
   lineRenderer: {fileID: 872107056}
   screenController: {fileID: 1600059365}
+  energyController: {fileID: 2052131793}
 --- !u!4 &872107055
 Transform:
   m_ObjectHideFlags: 0
