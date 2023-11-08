@@ -40,7 +40,8 @@ public class UIController : MonoBehaviour
         public GameObject pauseUI; // ポーズ画面のUI
     }
 
-    public int popupAmount = 0; // 描画されているポップアップの量
+    public int popupAmount = 0;                // ポップアップの数
+    public bool[] drawingPopup = new bool[10]; // ポップアップが描画されているか
 
     [SerializeField] private Shot shot;                                   // Shot型の変数
     [SerializeField] private EnergyController energyController;           // EnergyController型の変数
@@ -185,6 +186,21 @@ public class UIController : MonoBehaviour
     // 惑星が破壊された旨を伝えるポップアップを描画
     public IEnumerator DrawDestroyPlanetPopup(string name)
     {
+        float destroyTime = 10.0f; // 惑星を破壊するまでの時間
+        int i = 0;                 // 数を数える変数
+
+        // falseが見つかるまで繰り返す
+        while ((drawingPopup[i]))
+        {
+            // 配列の範囲外ならコルーチン終了
+            if (i > drawingPopup.Length)
+                yield break;
+            i++;
+        }
+
+        // 描画済みにする
+        drawingPopup[i] = true;
+
         // ポップアップのインスタンスを生成
         GameObject popup = Instantiate(popUp);
 
@@ -192,10 +208,7 @@ public class UIController : MonoBehaviour
         popup.transform.SetParent(inGameUI.Message.transform, false);
 
         // 位置を設定
-        popup.transform.position += new Vector3(0, popupAmount * 40, 0);
-
-        // 大きさを設定
-        popup.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        popup.transform.position += new Vector3(0, i * -40, 0);
 
         // プレハブのテキストを取得
         Text popupText = popup.transform.GetChild(1).GetComponent<Text>();
@@ -203,14 +216,17 @@ public class UIController : MonoBehaviour
         // プレハブのテキストを設定
         popupText.text = name + " was destroyed";
 
-        // ポップアップを5秒後に削除
-        Destroy(popup.gameObject, 5.0f);
+        // ポップアップを削除
+        Destroy(popup.gameObject, destroyTime);
 
         // ポップアップが消えるまで待つ
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(destroyTime);
 
-        // ポップアップの数を減らす
+        // ポップアップカウントを減らす
         popupAmount--;
+
+        // 描画していない状態にする
+        drawingPopup[i] = false;
     }
 
     void Start()
@@ -230,6 +246,12 @@ public class UIController : MonoBehaviour
 
         // ポーズ画面のUIを非表示
         DrawPauseUI(false);
+
+        // ポップアップが描画されているかを管理する変数を初期化
+        for (int i = 0; i > drawingPopup.Length; i++)
+        {
+            drawingPopup[i] = false;
+        }
     }
 
     void Update()
