@@ -128,6 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b2083ee59036c47a61a036848adcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uIController: {fileID: 0}
+  stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
+  stageController: {fileID: 0}
 --- !u!111 &1619880542665924079
 Animation:
   m_ObjectHideFlags: 0

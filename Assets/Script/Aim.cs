@@ -5,7 +5,7 @@ using UnityEngine;
 // ƒGƒCƒ€‚·‚é
 public class Aim : MonoBehaviour
 {
-    [SerializeField] private ScreenController screenController; // ScreenControllerŒ^‚Ì•Ï”
+    [SerializeField] private ScreenController screenController; // Inspector‚ÅScreenController‚ğw’è
 
     void Update()
     {

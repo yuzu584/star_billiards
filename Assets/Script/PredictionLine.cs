@@ -7,11 +7,11 @@ public class PredictionLine : MonoBehaviour
 {
     [SerializeField] private GameObject target;                 // Rayを出すオブジェクト
     [SerializeField] private GameObject directionTarget;        // Rayの向きを決めるオブジェクト
-    [SerializeField] private LineRenderer lineRenderer;         // linerendererの変数
-    [SerializeField] private ScreenController screenController; // ScreenController型の変数
-    [SerializeField] private EnergyController energyController; // EnergyController型の変数
+    [SerializeField] private LineRenderer lineRenderer;         // Inspectorでlinerendererを指定
+    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
+    [SerializeField] private EnergyController energyController; // InspectorでEnergyControllerを指定
 
-    Rigidbody rb;                // Rigidbody型の変数
+    Rigidbody rb;                // InspectorでRigidbodyを指定
     Vector3 origin;              // 原点
     Vector3 direction;           // X軸方向を表すベクトル
     RaycastHit hit;              // Rayのhit

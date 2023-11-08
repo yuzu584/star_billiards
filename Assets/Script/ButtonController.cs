@@ -14,9 +14,9 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private Image Btn;                         // ボタンの画像
     [SerializeField] private Image BtnOutline;                  // ボタンの枠の画像
     [SerializeField] private Text BtnText;                      // ボタンのテキスト
-    [SerializeField] private ScreenController screenController; // ScreenController型
-    [SerializeField] private UIController uIController;         // UIController型の変数
-    [SerializeField] private CursorController cursorController; // CursorController型の変数
+    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
+    [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
+    [SerializeField] private CursorController cursorController; // InspectorでCursorControllerを指定
     [SerializeField] private GameObject planetInfo;             // 惑星情報UI
     [SerializeField] private enum ClickAction                   // ボタンが押されたときの効果
     {

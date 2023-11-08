@@ -5,8 +5,8 @@ using UnityEngine;
 // ‰æ–Ê‚Ìí—Ş‚ğŠÇ—
 public class ScreenController : MonoBehaviour
 {
-    [SerializeField] private CursorController cursorController; // CursorControllerŒ^‚Ì•Ï”
-    [SerializeField] private UIController uIController;         // UIControllerŒ^‚Ì•Ï”
+    [SerializeField] private CursorController cursorController; // Inspector‚ÅCursorController‚ğw’è
+    [SerializeField] private UIController uIController;         // Inspector‚ÅUIController‚ğw’è
 
     // ‰æ–Ê”Ô†
     // InGame = 0

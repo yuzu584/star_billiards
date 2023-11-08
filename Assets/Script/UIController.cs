@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour
     public MessageUI messageUI;
     public SkillUI skillUI;
     public PlanetInfoUI planetInfoUI;
+    public MissionUI missionUI;
     public PauseUI pauseUI;
     public OtherUI otherUI;
 
@@ -69,6 +70,13 @@ public class UIController : MonoBehaviour
         public Text planetName;              // 惑星の名前
     }
 
+    // ミッションのUI
+    [System.Serializable]
+    public class MissionUI
+    {
+        public Text missionText;             // ミッションのテキスト
+    }
+
     // その他UI
     [System.Serializable]
     public class OtherUI
@@ -79,10 +87,13 @@ public class UIController : MonoBehaviour
     [System.NonSerialized] public int popupAmount = 0;                // ポップアップの数
     [System.NonSerialized] public bool[] drawingPopup = new bool[10]; // ポップアップが描画されているか
 
-    [SerializeField] private Shot shot;                                   // Shot型の変数
-    [SerializeField] private EnergyController energyController;           // EnergyController型の変数
-    [SerializeField] private ScreenController screenController;           // ScreenController型の変数
-    [SerializeField] private PostProcessController postProcessController; // PostProcessController型の変数
+    [SerializeField] private Shot shot;                                   // InspectorでShotを指定
+    [SerializeField] private EnergyController energyController;           // InspectorでEnergyControllerを指定
+    [SerializeField] private ScreenController screenController;           // InspectorでScreenControllerを指定
+    [SerializeField] private PostProcessController postProcessController; // InspectorでPostProcessControllerを指定
+    [SerializeField] private StageData stageData;                         // InspectorでStageDataを指定
+    [SerializeField] private StageController stageController;             // InspectorでStageControllerを指定
+    [SerializeField] private DestroyPlanet destroyPlanet;                 // InspectorでDestroyPlanetを指定
     [SerializeField] private GameObject popUp;                            // ポップアップのプレハブ
 
     RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
@@ -265,6 +276,33 @@ public class UIController : MonoBehaviour
         drawingPopup[i] = false;
     }
 
+    // ミッションのUIを描画
+    public void DrawMissionUI()
+    {
+        // ミッション番号を代入
+        int missionNum = stageData.stageList[stageController.stageNum].missionNum;
+
+        // ステージの初期惑星数を代入
+        int planetAmount = stageData.stageList[stageController.stageNum].planetAmount;
+
+        // ミッション番号によって分岐
+        switch (missionNum)
+        {
+            case 0: // 全ての惑星を破壊
+
+                // ミッションのテキストを設定
+                missionUI.missionText.text = "Destroy all planets " + destroyPlanet.planetDestroyAmount + " / " + planetAmount;
+                break;
+            case 1: // 時間内にゴールにたどり着け
+
+                // ミッションのテキストを設定
+                missionUI.missionText.text = "Reach the goal";
+                break;
+            default:
+                break;
+        }
+    }
+
     void Start()
     {
         // 惑星情報UIの円のRectTransformを取得
@@ -297,5 +335,8 @@ public class UIController : MonoBehaviour
 
         // チャージのUIを描画
         DrawChargeUI();
+
+        // ミッションのUIを描画
+        DrawMissionUI();
     }
 }

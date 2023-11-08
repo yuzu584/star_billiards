@@ -6,7 +6,7 @@ using UnityEngine;
 public class TPSCamera : MonoBehaviour
 {
     [SerializeField] private GameObject player;                 // プレイヤー
-    [SerializeField] private ScreenController screenController; // ScreenController型の変数
+    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
 
     public float speed = 1.0f;  // 視点移動速度
     float mx;                   // マウスの横移動量
