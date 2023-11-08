@@ -21,7 +21,7 @@ public class DestroyPlanet : MonoBehaviour
             uIController.popupAmount++;
 
             // 惑星が破壊された旨を伝えるポップアップを描画
-            StartCoroutine(uIController.DrawDestroyPlanetPopup(collision.gameObject.name));
+            StartCoroutine(uIController.DrawDestroyPlanetPopup(collision.gameObject.name + " was destroyed"));
 
             // ミッションが"全ての惑星を破壊"なら
             if(stageData.stageList[stageController.stageNum].missionNum == 0)

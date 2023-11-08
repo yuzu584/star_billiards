@@ -230,11 +230,40 @@ public class UIController : MonoBehaviour
         otherUI.reticle.enabled = !(draw);
     }
 
-    // 惑星が破壊された旨を伝えるポップアップを描画
-    public IEnumerator DrawDestroyPlanetPopup(string name)
+    // ポップアップを動かす
+    public IEnumerator MovePopup(float time, float fadeTime, GameObject popup, float moveDistance, Vector3 defaultPosition, int i)
     {
-        float destroyTime = 10.0f; // 惑星を破壊するまでの時間
-        int i = 0;                 // 数を数える変数
+        // 指定した時間が経過するまで繰り返す
+        while (time < fadeTime)
+        {
+            // 時間をカウント
+            time += Time.deltaTime;
+
+            // 進み具合を計算
+            float t = time / fadeTime;
+
+            // ポップアップを移動
+            popup.transform.position = Vector3.Lerp(defaultPosition, defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), t);
+
+            // 1フレーム待つ
+            yield return null;
+        }
+
+        if(moveDistance < 0)
+        {
+            // 描画していない状態にする
+            drawingPopup[i] = false;
+        }
+    }
+
+    // ポップアップを描画
+    public IEnumerator DrawDestroyPlanetPopup(string text)
+    {
+        float destroyTime = 10.0f;   // 惑星を破壊するまでの時間
+        int i = 0;                   // 数を数える変数
+        float fadeTime = 0.2f;       // フェード時間
+        float moveDistance = 200.0f; // 移動距離
+        Vector3 defaultPosition;     // デフォルトの位置
 
         // falseが見つかるまで繰り返す
         while ((drawingPopup[i]))
@@ -255,25 +284,36 @@ public class UIController : MonoBehaviour
         popup.transform.SetParent(messageUI.Message.transform, false);
 
         // 位置を設定
-        popup.transform.position += new Vector3(0, i * -40, 0);
+        popup.transform.position += new Vector3(-moveDistance, i * -40.0f, 0.0f);
 
         // プレハブのテキストを取得
         Text popupText = popup.transform.GetChild(1).GetComponent<Text>();
 
         // プレハブのテキストを設定
-        popupText.text = name + " was destroyed";
+        popupText.text = text;
+
+        // 経過時間をカウント
+        float time = 0;
+
+        // デフォルト位置を設定
+        defaultPosition = popup.transform.position;
+
+        // ポップアップを動かす
+        StartCoroutine(MovePopup(time, fadeTime, popup, moveDistance, defaultPosition, i));
+
+        // ポップアップが時間が経過するまで待つ
+        yield return new WaitForSeconds(destroyTime);
+
+        // ポップアップを動かす
+        StartCoroutine(MovePopup(time, fadeTime, popup, -moveDistance, defaultPosition, i));
+
+        yield return new WaitUntil(() => !(drawingPopup[i]));
 
         // ポップアップを削除
-        Destroy(popup.gameObject, destroyTime);
-
-        // ポップアップが消えるまで待つ
-        yield return new WaitForSeconds(destroyTime);
+        Destroy(popup.gameObject);
 
         // ポップアップカウントを減らす
         popupAmount--;
-
-        // 描画していない状態にする
-        drawingPopup[i] = false;
     }
 
     // ミッションのUIを描画
