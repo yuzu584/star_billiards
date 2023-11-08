@@ -16,12 +16,14 @@ public class UIController : MonoBehaviour
     public PauseUI pauseUI;
     public OtherUI otherUI;
 
+    // ポーズ画面のUI
     [System.Serializable]
     public class PauseUI
     {
-        public GameObject pauseUI;           // ポーズ画面のUI
+        public GameObject allPauseUI;        // ポーズ画面全体のUI
     }
 
+    // チャージのUI
     [System.Serializable]
     public class ChargeUI
     {
@@ -31,6 +33,7 @@ public class UIController : MonoBehaviour
         public Text chargeName;              // チャージの文字
     }
 
+    // エネルギーのUI
     [System.Serializable]
     public class EnergyUI
     {
@@ -40,6 +43,7 @@ public class UIController : MonoBehaviour
         public Text EnergyValue;             // エネルギーの数値
     }
 
+    // メッセージのUI
     [System.Serializable]
     public class MessageUI
     {
@@ -47,6 +51,7 @@ public class UIController : MonoBehaviour
         public Text NoEnergy;                // エネルギーがない旨を伝えるテキスト
     }
 
+    // スキルのUI
     [System.Serializable]
     public class SkillUI
     {
@@ -54,15 +59,17 @@ public class UIController : MonoBehaviour
         public Image skillGauge;             // 効果時間とクールダウンのゲージ
     }
 
+    // 惑星情報UI
     [System.Serializable]
     public class PlanetInfoUI
     {
-        public GameObject allPlanetInfo;     // 惑星情報UI
+        public GameObject allPlanetInfo;     // 全ての惑星情報UI
         public Image targetRing;             // 惑星情報UIの円
         public LineRenderer planetInfoLine;  // 惑星情報UIの線
         public Text planetName;              // 惑星の名前
     }
 
+    // その他UI
     [System.Serializable]
     public class OtherUI
     {
@@ -203,7 +210,7 @@ public class UIController : MonoBehaviour
     public void DrawPauseUI(bool draw)
     {
         // ポーズ画面を表示又は非表示
-        pauseUI.pauseUI.SetActive(draw);
+        pauseUI.allPauseUI.SetActive(draw);
 
         // 被写界深度のONOFF切り替え
         postProcessController.DepthOfFieldOnOff(draw);

@@ -1235,7 +1235,7 @@ MonoBehaviour:
     planetInfoLine: {fileID: 1594602367}
     planetName: {fileID: 1053927926}
   pauseUI:
-    pauseUI: {fileID: 630366473}
+    allPauseUI: {fileID: 630366473}
   otherUI:
     reticle: {fileID: 1067802296}
   shot: {fileID: 2052131792}
