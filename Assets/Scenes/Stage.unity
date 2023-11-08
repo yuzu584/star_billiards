@@ -1213,27 +1213,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dafb1f5228efb46b7b2799422ef714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inGameUI:
-    chargeUI: {fileID: 1240062157}
+  chargeUI:
+    allChargeUI: {fileID: 1240062157}
     chargeCircle: {fileID: 1981505939}
     chargeValue: {fileID: 1015792384}
     chargeName: {fileID: 393294784}
+  energyUI:
     EnergyGauge: {fileID: 2054252520}
     EnergyAfterImage: {fileID: 1792383906}
     EnergyGaugeOutline: {fileID: 850064949}
     EnergyValue: {fileID: 39106201}
+  messageUI:
     Message: {fileID: 1371782926}
     NoEnergy: {fileID: 219397082}
+  skillUI:
     skillName: {fileID: 1954531742}
     skillGauge: {fileID: 452950055}
-    planetInfo: {fileID: 310466187}
-    planetInfoRing: {fileID: 868238460}
+  planetInfoUI:
+    allPlanetInfo: {fileID: 310466187}
+    targetRing: {fileID: 868238460}
     planetInfoLine: {fileID: 1594602367}
     planetName: {fileID: 1053927926}
-    reticle: {fileID: 1067802296}
   pauseUI:
     pauseUI: {fileID: 630366473}
-  popupAmount: 0
+  otherUI:
+    reticle: {fileID: 1067802296}
   shot: {fileID: 2052131792}
   energyController: {fileID: 2052131793}
   screenController: {fileID: 1600059365}
