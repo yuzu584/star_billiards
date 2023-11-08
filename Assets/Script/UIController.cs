@@ -40,6 +40,8 @@ public class UIController : MonoBehaviour
         public GameObject pauseUI; // ポーズ画面のUI
     }
 
+    public int popupAmount = 0; // 描画されているポップアップの量
+
     [SerializeField] private Shot shot;                                   // Shot型の変数
     [SerializeField] private EnergyController energyController;           // EnergyController型の変数
     [SerializeField] private ScreenController screenController;           // ScreenController型の変数
@@ -50,7 +52,6 @@ public class UIController : MonoBehaviour
     Vector3 PIL1;             // 惑星情報UIの線の始点座標
     Vector3 PIL2;             // 惑星情報UIの線の中間座標
     Vector3 PIL3;             // 惑星情報UIの線の終点座標
-    int popupAmount = 0;      // 描画されているポップアップの量
 
     // エネルギーのUIを描画
     void DrawEnergyUI()
@@ -182,13 +183,16 @@ public class UIController : MonoBehaviour
     }
 
     // 惑星が破壊された旨を伝えるポップアップを描画
-    public void DrawDestroyPlanetPopup(string name)
+    public IEnumerator DrawDestroyPlanetPopup(string name)
     {
         // ポップアップのインスタンスを生成
         GameObject popup = Instantiate(popUp);
 
         // 親を設定
         popup.transform.SetParent(inGameUI.Message.transform, false);
+
+        // 位置を設定
+        popup.transform.position += new Vector3(0, popupAmount * 40, 0);
 
         // 大きさを設定
         popup.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
@@ -199,8 +203,14 @@ public class UIController : MonoBehaviour
         // プレハブのテキストを設定
         popupText.text = name + " was destroyed";
 
-        // ポップアップを削除
+        // ポップアップを5秒後に削除
         Destroy(popup.gameObject, 5.0f);
+
+        // ポップアップが消えるまで待つ
+        yield return new WaitForSeconds(5.0f);
+
+        // ポップアップの数を減らす
+        popupAmount--;
     }
 
     void Start()

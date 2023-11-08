@@ -8,8 +8,9 @@ using UnityEngine.EventSystems;
 // ボタンの見た目を管理
 public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [SerializeField] private Color color;                       // ポインターが乗った時の色
+    [SerializeField] private Color OnPointerColor;              // ポインターが乗った時の色
     [SerializeField] private Color defaultColor;                // デフォルトの色
+    [SerializeField] private float fadeTime;                    // フェード時間
     [SerializeField] private Image Btn;                         // ボタンの画像
     [SerializeField] private Image BtnOutline;                  // ボタンの枠の画像
     [SerializeField] private Text BtnText;                      // ボタンのテキスト
@@ -29,14 +30,16 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         // ボタンのアニメーション
-        ButtonAnimation(color);
+        StopAllCoroutines();
+        StartCoroutine(ButtonAnimation(defaultColor, OnPointerColor));
     }
 
     // マウスポインターがボタンの上から離れたら
     public void OnPointerExit(PointerEventData pointerEventData)
     {
         // ボタンのアニメーション
-        ButtonAnimation(defaultColor);
+        StopAllCoroutines();
+        StartCoroutine(ButtonAnimation(OnPointerColor, defaultColor));
     }
     
     // ボタンがクリックされたら
@@ -77,9 +80,24 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     }
 
     // ボタンのアニメーション
-    void ButtonAnimation(Color color)
+    IEnumerator ButtonAnimation(Color colorA, Color colorB)
     {
-        // ボタンの色を変更
-        Btn.color = color;
+        float time = 0; // 経過時間をカウント
+
+        // 指定した時間が経過するまで繰り返す
+        while (time < fadeTime)
+        {
+            // 時間をカウント
+            time += Time.unscaledDeltaTime;
+
+            // 進み具合を計算
+            float t = time / fadeTime;
+
+            // ボタンの色を変更
+            Btn.color = Color.Lerp(colorA, colorB, t);
+
+            // 1フレーム待つ
+            yield return null;
+        }
     }
 }
