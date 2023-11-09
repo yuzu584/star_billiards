@@ -267,7 +267,7 @@ public class UIController : MonoBehaviour
         float destroyTime = 10.0f;   // 惑星を破壊するまでの時間
         int i = 0;                   // 数を数える変数
         float fadeTime = 0.2f;       // フェード時間
-        float moveDistance = 200.0f; // 移動距離
+        float moveDistance = 300.0f; // 移動距離
         Vector3 defaultPosition;     // デフォルトの位置
 
         // falseが見つかるまで繰り返す
