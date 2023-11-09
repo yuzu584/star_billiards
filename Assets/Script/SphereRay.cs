@@ -24,16 +24,6 @@ public class SphereRay : MonoBehaviour
 
             // hitしたオブジェクトの名前を取得
             hitObjectName = hit.collider.gameObject.name;
-
-            // hitしたオブジェクトがSphereなら
-            if (hitObjectName == "Sphere")
-            {
-                if (Physics.SphereCast(ray, 0.1f, out hit))
-                {
-                    // 惑星情報UIの円の座標を画面中央にする
-                    hitObjectPosition = hit.point;
-                }
-            }
         }
 
         // 惑星情報UIのリングを描画

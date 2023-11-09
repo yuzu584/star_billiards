@@ -183,8 +183,8 @@ public class UIController : MonoBehaviour
     // 惑星情報UIを描画
     public void DrawPlanetInfoUI(Vector3 position, string planetName)
     {
-        // ゲーム画面ならUIを表示
-        if(screenController.screenNum == 0)
+        // ゲーム画面かつ対象がSphere以外ならUIを表示
+        if((screenController.screenNum == 0) && (!(planetName == "Sphere")))
         {
             // UIが非表示なら表示
             if(!(planetInfoUI.allPlanetInfo.activeSelf))
@@ -209,6 +209,11 @@ public class UIController : MonoBehaviour
 
             // 惑星の名前UIの位置を設定
             planetInfoUI.planetName.rectTransform.position = planetInfoUI.targetRing.rectTransform.position + new Vector3(160, 80, 10);
+        }
+        // 対象がSphereなら非表示にする
+        else if(planetName == "Sphere")
+        {
+            planetInfoUI.allPlanetInfo.SetActive(false);
         }
         // ポーズ画面かつUIが表示されているなら非表示にする
         else if((screenController.screenNum == 1) && (planetInfoUI.allPlanetInfo.activeSelf))
