@@ -25,4 +25,18 @@ public class InertialController : MonoBehaviour
         // ‘OŒãˆÚ“®—Ê‚ð‘ã“ü
         z = Input.GetAxisRaw("Vertical");
     }
+
+    void FixedUpdate()
+    {
+        // ‘O“ü—Í‚È‚ç‰Á‘¬
+        if (z > 0)
+        {
+            rb.velocity *= 1.05f;
+        }
+        // Œã‚ë“ü—Í‚È‚çŒ¸‘¬
+        else if (z < 0)
+        {
+            rb.velocity *= 0.95f;
+        }
+    }
 }
