@@ -28,15 +28,26 @@ public class InertialController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // 前入力なら加速
+        // 前入力なら減速を緩やかに
         if (z > 0)
         {
-            rb.velocity *= 1.05f;
+            rb.velocity *= 1.008f;
         }
         // 後ろ入力なら減速
         else if (z < 0)
         {
             rb.velocity *= 0.95f;
+        }
+        // 前後入力されていない状態で左右入力なら軌道を左右に曲げる
+        else if (x != 0)
+        {
+            rb.AddForce(Camera.main.transform.right * rb.velocity.magnitude / 10 * x * EaseOfBending);
+        }
+
+        // 速度が一定の値以下なら0にする
+        if (rb.velocity.magnitude < 0.01f)
+        {
+            rb.velocity *= 0;
         }
     }
 }
