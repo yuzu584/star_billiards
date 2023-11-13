@@ -1527,6 +1527,7 @@ MonoBehaviour:
     allPauseUI: {fileID: 630366473}
   stageClearUI:
     allStageClearUI: {fileID: 49308636}
+    stageClearText: {fileID: 1937790908}
   otherUI:
     reticle: {fileID: 1067802296}
     speedValue: {fileID: 372907193}

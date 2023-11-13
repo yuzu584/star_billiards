@@ -83,6 +83,7 @@ public class UIController : MonoBehaviour
     public class StageClearUI
     {
         public GameObject allStageClearUI;   // ステージクリア画面全体のUI
+        public Text stageClearText;          // ステージクリア画面のテキスト
     }
 
     // その他UI
@@ -371,6 +372,32 @@ public class UIController : MonoBehaviour
     {
         // ステージクリア画面を表示
         stageClearUI.allStageClearUI.SetActive(draw);
+
+        // ステージクリア画面を動かす
+        StartCoroutine(MoveStageClearUI());
+    }
+
+    // ステージクリア画面を動かす
+    IEnumerator MoveStageClearUI()
+    {
+        float time = 0;        // 経過時間
+        float fadeTime = 0.2f; // フェード時間
+
+        // 指定した時間が経過するまで繰り返す
+        while (time < fadeTime)
+        {
+            // 時間をカウント
+            time += Time.deltaTime;
+
+            // 進み具合を計算
+            float t = time / fadeTime;
+
+            // ステージクリアテキストを移動
+            stageClearUI.stageClearText.transform.localPosition = Vector3.Lerp(new Vector3(300.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), t);
+
+            // 1フレーム待つ
+            yield return null;
+        }
     }
 
     void Start()
