@@ -82,6 +82,7 @@ public class UIController : MonoBehaviour
     public class OtherUI
     {
         public Image reticle;                // レティクル
+        public Text speedValue;              // 移動速度のUI
     }
 
     [System.NonSerialized] public int popupAmount = 0;                // ポップアップの数
@@ -95,6 +96,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private StageController stageController;             // InspectorでStageControllerを指定
     [SerializeField] private DestroyPlanet destroyPlanet;                 // InspectorでDestroyPlanetを指定
     [SerializeField] private GameObject popUp;                            // ポップアップのプレハブ
+    [SerializeField] private Rigidbody rb;                                // プレイヤーのRigidbody
 
     RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
     Vector3 PIL1;             // 惑星情報UIの線の始点座標
@@ -348,6 +350,12 @@ public class UIController : MonoBehaviour
         }
     }
 
+    // 移動速度の数値を描画
+    void DrawSpeedValue()
+    {
+        otherUI.speedValue.text = rb.velocity.magnitude.ToString("0") + " km/s";
+    }
+
     void Start()
     {
         // 惑星情報UIの円のRectTransformを取得
@@ -383,5 +391,8 @@ public class UIController : MonoBehaviour
 
         // ミッションのUIを描画
         DrawMissionUI();
+
+        // 移動速度の数値を描画
+        DrawSpeedValue();
     }
 }
