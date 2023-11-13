@@ -15,14 +15,8 @@ public class UIController : MonoBehaviour
     public PlanetInfoUI planetInfoUI;
     public MissionUI missionUI;
     public PauseUI pauseUI;
+    public StageClearUI stageClearUI;
     public OtherUI otherUI;
-
-    // ポーズ画面のUI
-    [System.Serializable]
-    public class PauseUI
-    {
-        public GameObject allPauseUI;        // ポーズ画面全体のUI
-    }
 
     // チャージのUI
     [System.Serializable]
@@ -77,6 +71,20 @@ public class UIController : MonoBehaviour
         public Text missionText;             // ミッションのテキスト
     }
 
+    // ポーズ画面のUI
+    [System.Serializable]
+    public class PauseUI
+    {
+        public GameObject allPauseUI;        // ポーズ画面全体のUI
+    }
+
+    // ステージクリア画面のUI
+    [System.Serializable]
+    public class StageClearUI
+    {
+        public GameObject allStageClearUI;   // ステージクリア画面全体のUI
+    }
+
     // その他UI
     [System.Serializable]
     public class OtherUI
@@ -102,6 +110,8 @@ public class UIController : MonoBehaviour
     Vector3 PIL1;             // 惑星情報UIの線の始点座標
     Vector3 PIL2;             // 惑星情報UIの線の中間座標
     Vector3 PIL3;             // 惑星情報UIの線の終点座標
+
+    private bool drawedStageClearUI = false; // ステージクリア画面が描画されたか
 
     // エネルギーのUIを描画
     void DrawEnergyUI()
@@ -356,6 +366,13 @@ public class UIController : MonoBehaviour
         otherUI.speedValue.text = rb.velocity.magnitude.ToString("0") + " km/s";
     }
 
+    // ステージクリア画面のUIを描画
+    void DrawStageClearUI(bool draw)
+    {
+        // ステージクリア画面を表示
+        stageClearUI.allStageClearUI.SetActive(draw);
+    }
+
     void Start()
     {
         // 惑星情報UIの円のRectTransformを取得
@@ -373,6 +390,9 @@ public class UIController : MonoBehaviour
 
         // ポーズ画面のUIを非表示
         DrawPauseUI(false);
+
+        // ステージクリア画面のUIを非表示
+        DrawStageClearUI(false);
 
         // ポップアップが描画されているかを管理する変数を初期化
         for (int i = 0; i > drawingPopup.Length; i++)
@@ -394,5 +414,13 @@ public class UIController : MonoBehaviour
 
         // 移動速度の数値を描画
         DrawSpeedValue();
+
+        // ステージをクリアしたかつUIが描画されていないなら
+        if ((stageController.stageCrear) && (!(drawedStageClearUI)))
+        {
+            // ステージクリア画面を描画
+            drawedStageClearUI = true;
+            DrawStageClearUI(true);
+        }
     }
 }

@@ -7,10 +7,12 @@ public class ScreenController : MonoBehaviour
 {
     [SerializeField] private CursorController cursorController; // InspectorでCursorControllerを指定
     [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
+    [SerializeField] private StageController stageController;   // InspectorでStageControllerを指定
 
     // 画面番号
-    // InGame = 0
-    // Pause  = 1
+    // InGame     = 0
+    // Pause      = 1
+    // StageCrear = 2
     public int screenNum = 0;
 
     void Update()
@@ -29,6 +31,13 @@ public class ScreenController : MonoBehaviour
 
             // 時間の流れを止める
             Time.timeScale = 0.0f;
+        }
+
+        // ステージをクリアしたなら
+        if (stageController.stageCrear)
+        {
+            // ステージクリア画面に遷移
+            screenNum = 2;
         }
     }
 }
