@@ -364,7 +364,23 @@ public class UIController : MonoBehaviour
     // 移動速度の数値を描画
     void DrawSpeedValue()
     {
-        otherUI.speedValue.text = rb.velocity.magnitude.ToString("0") + " km/s";
+        // ポーズ画面かつUIが表示されているなら非表示にする
+        if ((screenController.screenNum == 1) && (otherUI.speedValue.enabled == true))
+        {
+            otherUI.speedValue.enabled = false;
+        }
+        // ゲーム画面なら
+        else if (screenController.screenNum == 0)
+        {
+            // 非表示なら表示
+            if (otherUI.speedValue.enabled == false)
+            {
+                otherUI.speedValue.enabled = true;
+            }
+
+            // 速度のテキストを更新
+            otherUI.speedValue.text = rb.velocity.magnitude.ToString("0") + " km/s";
+        }
     }
 
     // ステージクリア画面のUIを描画
