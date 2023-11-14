@@ -38,6 +38,9 @@ public class ScreenController : MonoBehaviour
         {
             // ステージクリア画面に遷移
             screenNum = 2;
+
+            // マウスカーソルを表示
+            cursorController.DrawCursol(true);
         }
     }
 }

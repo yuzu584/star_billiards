@@ -422,7 +422,7 @@ public class UIController : MonoBehaviour
         while (time < fadeTime)
         {
             // 時間をカウント
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
 
             // 進み具合を計算
             float t = time / fadeTime;
@@ -455,7 +455,7 @@ public class UIController : MonoBehaviour
         while (time < fadeTime)
         {
             // 時間をカウント
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
 
             // 進み具合を計算
             float t = time / fadeTime;
