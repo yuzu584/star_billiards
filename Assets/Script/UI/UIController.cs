@@ -109,50 +109,22 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject popUp;                            // ポップアップのプレハブ
     [SerializeField] private Rigidbody rb;                                // プレイヤーのRigidbody
 
+    // UI描画関数
+    [System.Serializable]
+    public class UIFunction
+    {
+        public EnergyUIController energyUIController;
+    }
+
+    // InspectorでUI描画関数を指定
+    public UIFunction uIFunction;
+
     RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
     Vector3 PIL1;             // 惑星情報UIの線の始点座標
     Vector3 PIL2;             // 惑星情報UIの線の中間座標
     Vector3 PIL3;             // 惑星情報UIの線の終点座標
 
     private bool drawedStageClearUI = false; // ステージクリア画面が描画されたか
-
-    // エネルギーのUIを描画
-    void DrawEnergyUI()
-    {
-        // エネルギーゲージの増減を描画
-        energyUI.EnergyGauge.fillAmount = energyController.energy / energyController.maxEnergy;
-
-        if (energyUI.EnergyAfterImage.fillAmount > energyController.energy / energyController.maxEnergy)
-        {
-            // エネルギーゲージの減少量を少しずつ減らす
-            energyUI.EnergyAfterImage.fillAmount -=
-                (energyUI.EnergyAfterImage.fillAmount - energyController.energy / energyController.maxEnergy) * Time.deltaTime;
-        }
-
-        // エネルギーの数値を表示
-        energyUI.EnergyValue.text = energyController.energy.ToString("0");
-
-        // エネルギーが0以下かつ非表示なら
-        if ((energyController.energy <= 0) && (messageUI.NoEnergy.enabled == false))
-        {
-            // エネルギーゲージの枠と数値を赤色にする
-            energyUI.EnergyGaugeOutline.color = new Color32(155, 0, 0, 100);
-            energyUI.EnergyValue.color = new Color32(155, 0, 0, 100);
-
-            // エネルギーがない旨を伝えるテキストを表示
-            messageUI.NoEnergy.enabled = true;
-        }
-        // エネルギーが0より上かつ表示されているなら
-        else if ((energyController.energy > 0) && (messageUI.NoEnergy.enabled == true))
-        {
-            // エネルギーゲージの枠と数値を白色にする
-            energyUI.EnergyGaugeOutline.color = new Color32(255, 255, 255, 100);
-            energyUI.EnergyValue.color = new Color32(255, 255, 255, 255);
-
-            // エネルギーがない旨を伝えるテキストを非表示
-            messageUI.NoEnergy.enabled = false;
-        }
-    }
 
     // チャージのUIを描画
     void DrawChargeUI()
@@ -503,7 +475,7 @@ public class UIController : MonoBehaviour
     void Update()
     {
         // エネルギーのUIを描画
-        DrawEnergyUI();
+        uIFunction.energyUIController.DrawEnergyUI(energyUI.EnergyGauge, energyUI.EnergyAfterImage, energyUI.EnergyGaugeOutline, energyUI.EnergyValue, messageUI.NoEnergy);
 
         // チャージのUIを描画
         DrawChargeUI();
