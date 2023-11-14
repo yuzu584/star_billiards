@@ -23,6 +23,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         ReturnToGame,  // ゲームに戻る
         Setting,       // 設定画面を開く
         ReturnToTitle, // タイトル画面に戻る
+        StageSelect,   // ステージ選択画面に戻る
     }
     [SerializeField] private ClickAction clickAction; // ボタンを押したときの効果
 
@@ -54,6 +55,8 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
             case ClickAction.Setting:    // 設定画面を開く
                 break;
             case ClickAction.ReturnToTitle: // タイトル画面に戻る
+                break;
+            case ClickAction.StageSelect: // ステージ選択画面に戻る
                 break;
             default:
                 break;

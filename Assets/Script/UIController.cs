@@ -84,6 +84,8 @@ public class UIController : MonoBehaviour
     {
         public GameObject allStageClearUI;   // ステージクリア画面全体のUI
         public Text stageClearText;          // ステージクリア画面のテキスト
+        public GameObject[] button;          // ステージクリア画面のボタン
+        public Material stageClearButtonMat; // ボタンのマテリアル
     }
 
     // その他UI
@@ -389,6 +391,10 @@ public class UIController : MonoBehaviour
         // ステージクリア画面を表示
         stageClearUI.allStageClearUI.SetActive(draw);
 
+        // ボタンを非表示
+        for (int i = 0; i < stageClearUI.button.Length; i++)
+            stageClearUI.button[i].SetActive(false);
+
         // ステージクリア画面を動かす
         StartCoroutine(MoveStageClearUI());
     }
@@ -396,8 +402,21 @@ public class UIController : MonoBehaviour
     // ステージクリア画面を動かす
     IEnumerator MoveStageClearUI()
     {
+        // テキストを動かす
+        StartCoroutine(MoveStageClearText());
+
+        // 一瞬待つ
+        yield return new WaitForSeconds(1.0f);
+
+        // ボタンを動かす
+        StartCoroutine(MoveStageClearButton());
+    }
+
+    // ステージクリア画面のテキストを動かす
+    IEnumerator MoveStageClearText()
+    {
         float time = 0;        // 経過時間
-        float fadeTime = 0.2f; // フェード時間
+        float fadeTime = 0.5f; // フェード時間
 
         // 指定した時間が経過するまで繰り返す
         while (time < fadeTime)
@@ -408,8 +427,45 @@ public class UIController : MonoBehaviour
             // 進み具合を計算
             float t = time / fadeTime;
 
-            // ステージクリアテキストを移動
+            // テキスト移動・透明度変化
             stageClearUI.stageClearText.transform.localPosition = Vector3.Lerp(new Vector3(300.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), t);
+            stageClearUI.stageClearText.color = Color32.Lerp(new Color32(255, 255, 255, 0), new Color32(255, 255, 255, 255), t);
+
+            // 1フレーム待つ
+            yield return null;
+        }
+    }
+
+    // ステージクリア画面のボタンを動かす
+    IEnumerator MoveStageClearButton()
+    {
+        float time = 0;        // 経過時間
+        float fadeTime = 0.5f; // フェード時間
+
+        // 初期位置を保存
+        Vector3[] defaultPosition = new Vector3[stageClearUI.button.Length];
+        for (int i = 0; i < stageClearUI.button.Length; i++)
+            defaultPosition[i] = stageClearUI.button[i].transform.position;
+
+        // ボタンを表示
+        for (int i = 0; i < stageClearUI.button.Length; i++)
+            stageClearUI.button[i].SetActive(true);
+
+        // 指定した時間が経過するまで繰り返す
+        while (time < fadeTime)
+        {
+            // 時間をカウント
+            time += Time.deltaTime;
+
+            // 進み具合を計算
+            float t = time / fadeTime;
+
+            // ボタン移動・透明度変化
+            for (int i = 0; i < stageClearUI.button.Length; i++)
+            {
+                stageClearUI.button[i].transform.position = Vector3.Lerp(defaultPosition[i] - new Vector3(0.0f, 50.0f, 0.0f), defaultPosition[i], t);
+                stageClearUI.stageClearButtonMat.color = Color32.Lerp(new Color32(255, 255, 255, 0), new Color32(255, 255, 255, 255), t);
+            }
 
             // 1フレーム待つ
             yield return null;

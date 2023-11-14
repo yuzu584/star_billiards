@@ -15,5 +15,5 @@ MonoBehaviour:
   stageList:
   - stageName: Solar system
     fixedStarAmount: 1
-    planetAmount: 8
+    planetAmount: 1
     missionNum: 0
