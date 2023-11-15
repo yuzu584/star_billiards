@@ -631,6 +631,10 @@ PrefabInstance:
       propertyPath: screenController
       value: 
       objectReference: {fileID: 1600059365}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: pauseUIController
+      value: 
+      objectReference: {fileID: 1148952472}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Text
       value: Return to title
@@ -1655,6 +1659,8 @@ MonoBehaviour:
     planetName: {fileID: 1053927926}
   missionUI:
     missionText: {fileID: 1740467959}
+  inGameUI:
+    allInGameUI: {fileID: 1564237707}
   pauseUI:
     allPauseUI: {fileID: 630366473}
   stageClearUI:
@@ -2764,6 +2770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageClearButtonMat: {fileID: 2100000, guid: d92459fa41ce17a4788b4cc97f57703b, type: 2}
   postProcessController: {fileID: 1746308557}
+  uIController: {fileID: 869580811}
 --- !u!1 &1180901546
 GameObject:
   m_ObjectHideFlags: 0
@@ -3083,6 +3090,10 @@ PrefabInstance:
       propertyPath: screenController
       value: 
       objectReference: {fileID: 1600059365}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: pauseUIController
+      value: 
+      objectReference: {fileID: 1148952472}
     - target: {fileID: 5970234050213230019, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 1

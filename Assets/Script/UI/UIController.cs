@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
     public SkillUI skillUI;
     public PlanetInfoUI planetInfoUI;
     public MissionUI missionUI;
+    public InGameUI inGameUI;
     public PauseUI pauseUI;
     public StageClearUI stageClearUI;
     public OtherUI otherUI;
@@ -69,6 +70,13 @@ public class UIController : MonoBehaviour
     public class MissionUI
     {
         public Text missionText;             // ミッションのテキスト
+    }
+
+    // ゲーム画面のUI
+    [System.Serializable]
+    public class InGameUI
+    {
+        public GameObject allInGameUI;          // ゲーム画面のUI
     }
 
     // ポーズ画面のUI

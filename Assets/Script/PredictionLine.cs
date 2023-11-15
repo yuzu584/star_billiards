@@ -95,5 +95,11 @@ public class PredictionLine : MonoBehaviour
                 lineRenderer.enabled = false;
             }
         }
+        // ƒQ[ƒ€‰æ–Ê‚Å‚Í‚È‚¢‚È‚ç
+        else
+        {
+            // ü‚ğ”ñ•\¦
+            lineRenderer.enabled = false;
+        }
     }
 }

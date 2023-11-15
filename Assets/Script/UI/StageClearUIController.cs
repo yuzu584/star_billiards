@@ -9,14 +9,18 @@ public class StageClearUIController : MonoBehaviour
 {
     [SerializeField] private Material stageClearButtonMat;                // ボタンのマテリアル
     [SerializeField] private PostProcessController postProcessController; // InspectorでPostProcessControllerを指定
+    [SerializeField] private UIController uIController;                   // InspectorでUIControllerを指定
 
     // ステージクリア画面のUIを描画
     public void DrawStageClearUI(bool draw, GameObject allStageClearUI, GameObject[] button, Text stageClearText)
     {
-        // ステージクリア画面を表示
+        // ステージクリア画面を表示/非表示
         allStageClearUI.SetActive(draw);
 
-        // 被写界深度をON
+        // ゲーム画面のUIを表示/非表示
+        uIController.inGameUI.allInGameUI.SetActive(!draw);
+
+        // 被写界深度をON/OFF
         postProcessController.DepthOfFieldOnOff(draw);
 
         // ボタンを非表示
