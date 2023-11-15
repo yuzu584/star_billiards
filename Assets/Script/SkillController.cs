@@ -75,15 +75,15 @@ public class SkillController : MonoBehaviour
             DecreaseEFAndCD();
 
             // スキルのUIを描画する関数を呼び出す
-            CallSetSkillUI();
+            CallSetSkillUI(true);
         }
     }
 
     // スキルのUIを描画する関数を呼び出す
-    void CallSetSkillUI()
+    public void CallSetSkillUI(bool draw)
     {
         skillUIController.DrawSkillUI(
-            true,
+            draw,
             skill[selectSkill].skillName,
             skill[selectSkill].coolDown,
             skill[selectSkill].effectTime,

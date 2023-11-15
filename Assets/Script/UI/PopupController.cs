@@ -11,8 +11,7 @@ public class PopupController : MonoBehaviour
     [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
     [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
 
-    [System.NonSerialized] public int popupAmount = 0;                // ポップアップの数
-    [System.NonSerialized] public bool[] drawingPopup = new bool[10]; // ポップアップが描画されているか
+    [System.NonSerialized] public GameObject[] drawingPopup = new GameObject[10]; // ポップアップがの配列
 
     // ポップアップを動かす
     public IEnumerator MovePopup(float time, float fadeTime, GameObject popup, float moveDistance, Vector3 defaultPosition, int i)
@@ -36,7 +35,7 @@ public class PopupController : MonoBehaviour
         if (moveDistance < 0)
         {
             // 描画していない状態にする
-            drawingPopup[i] = false;
+            drawingPopup[i] = null;
         }
     }
 
@@ -50,7 +49,7 @@ public class PopupController : MonoBehaviour
         Vector3 defaultPosition;     // デフォルトの位置
 
         // falseが見つかるまで繰り返す
-        while ((drawingPopup[i]))
+        while ((drawingPopup[i] != null))
         {
             // 配列の範囲外ならコルーチン終了
             if (i > drawingPopup.Length)
@@ -58,20 +57,17 @@ public class PopupController : MonoBehaviour
             i++;
         }
 
-        // 描画済みにする
-        drawingPopup[i] = true;
-
         // ポップアップのインスタンスを生成
-        GameObject popup = Instantiate(popUp);
+        drawingPopup[i] = Instantiate(popUp);
 
         // 親を設定
-        popup.transform.SetParent(uIController.messageUI.Message.transform, false);
+        drawingPopup[i].transform.SetParent(uIController.messageUI.Message.transform, false);
 
         // 位置を設定
-        popup.transform.position += new Vector3(-moveDistance, i * -40.0f, 0.0f);
+        drawingPopup[i].transform.position += new Vector3(-moveDistance, i * -40.0f, 0.0f);
 
         // プレハブのテキストを取得
-        Text popupText = popup.transform.GetChild(1).GetComponent<Text>();
+        Text popupText = drawingPopup[i].transform.GetChild(1).GetComponent<Text>();
 
         // プレハブのテキストを設定
         popupText.text = text;
@@ -80,30 +76,53 @@ public class PopupController : MonoBehaviour
         float time = 0;
 
         // デフォルト位置を設定
-        defaultPosition = popup.transform.position;
+        defaultPosition = drawingPopup[i].transform.position;
 
         // ポップアップを動かす
-        StartCoroutine(MovePopup(time, fadeTime, popup, moveDistance, defaultPosition, i));
+        StartCoroutine(MovePopup(time, fadeTime, drawingPopup[i], moveDistance, defaultPosition, i));
 
         // ポップアップが時間が経過するまで待つ
         yield return new WaitForSeconds(destroyTime);
 
         // ポップアップを動かす
-        StartCoroutine(MovePopup(time, fadeTime, popup, -moveDistance, defaultPosition, i));
+        StartCoroutine(MovePopup(time, fadeTime, drawingPopup[i], -moveDistance, defaultPosition, i));
 
         yield return new WaitUntil(() => !(drawingPopup[i]));
 
         // ポップアップを削除
-        Destroy(popup.gameObject);
-
-        // ポップアップカウントを減らす
-        popupAmount--;
+        drawingPopup[i] = null;
     }
 
     void Start()
     {
         // ポップアップが描画されているかを管理する変数を初期化
-        for (int i = 0; i > drawingPopup.Length; i++)
-            drawingPopup[i] = false;
+        for (int i = 0; i < drawingPopup.Length; i++)
+            drawingPopup[i] = null;
+    }
+
+    void Update()
+    {
+        // ポップアップの個数繰り返す
+        for (int i = 0; i < drawingPopup.Length; i++)
+        {
+            // インスタンスが生成されていれば
+            if (drawingPopup[i] != null)
+            {
+                // ゲーム画面かつ非表示なら
+                if ((screenController.screenNum == 0) && (!drawingPopup[i].activeSelf))
+                {
+                    // 表示する
+                    drawingPopup[i].SetActive(true);
+                    Debug.Log("表示");
+                }
+                // ゲーム画面以外かつ表示されているなら
+                else if ((screenController.screenNum != 0) && (drawingPopup[i].activeSelf))
+                {
+                    // 非表示にする
+                    drawingPopup[i].SetActive(false);
+                    Debug.Log("非表示");
+                }
+            }
+        }
     }
 }

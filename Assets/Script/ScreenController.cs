@@ -37,6 +37,12 @@ public class ScreenController : MonoBehaviour
             // ステージクリア画面に遷移
             screenNum = 2;
         }
+        // ステージ未クリアかつ画面遷移したなら
+        else if ((!stageController.stageCrear) && (changeStageClearScreen))
+        {
+            // ステージクリア画面に未遷移
+            changeStageClearScreen = false;
+        }
 
         // メインメニューなら
         if(screenNum == 3)

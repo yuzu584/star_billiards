@@ -1797,6 +1797,7 @@ MonoBehaviour:
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
   stageController: {fileID: 291823625}
   destroyPlanet: {fileID: 442682250}
+  skillController: {fileID: 2052131794}
   rb: {fileID: 2052131791}
   uIFunction:
     energyUIController: {fileID: 1148952467}

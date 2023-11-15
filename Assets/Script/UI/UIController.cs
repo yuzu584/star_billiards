@@ -122,6 +122,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private StageData stageData;                         // InspectorでStageDataを指定
     [SerializeField] private StageController stageController;             // InspectorでStageControllerを指定
     [SerializeField] private DestroyPlanet destroyPlanet;                 // InspectorでDestroyPlanetを指定
+    [SerializeField] private SkillController skillController;             // InspectorでSkillControllerを指定
     [SerializeField] private Rigidbody rb;                                // プレイヤーのRigidbody
 
     // UI描画関数
@@ -197,6 +198,9 @@ public class UIController : MonoBehaviour
         // ミッションのUIを描画
         uIFunction.missionUIController.DrawMissionUI(draw);
 
+        // スキルのUIを描画
+        skillController.CallSetSkillUI(draw);
+
         // 移動速度の数値を描画
         uIFunction.speedUIController.DrawSpeedValue(
             draw,
@@ -214,7 +218,7 @@ public class UIController : MonoBehaviour
                 stageClearUI.stageClearText);
         }
         // ステージクリア済みかつステージクリア画面ではないなら
-        else if((stageController.stageCrear) && (screenController.screenNum != 2) && (drawedStageClearUI))
+        else if((stageController.stageCrear) && (screenController.screenNum != 2))
         {
             // ステージクリアフラグを初期化
             drawedStageClearUI = false;
@@ -227,6 +231,19 @@ public class UIController : MonoBehaviour
                 stageClearUI.allStageClearUI,
                 stageClearUI.button,
                 stageClearUI.stageClearText);
+        }
+
+        // スクリーン番号がポーズ画面かつ非表示なら
+        if((screenController.screenNum == 1) && (!pauseUI.allPauseUI.activeSelf))
+        {
+            // ポーズ画面を表示
+            uIFunction.pauseUIController.DrawPauseUI(true);
+        }
+        // スクリーン番号がポーズ画面以外かつ表示されているなら
+        else if ((screenController.screenNum != 1) && (pauseUI.allPauseUI.activeSelf))
+        {
+            // ポーズ画面を非表示
+            uIFunction.pauseUIController.DrawPauseUI(false);
         }
 
         // スクリーン番号がメインメニューかつメインメニューが非表示なら

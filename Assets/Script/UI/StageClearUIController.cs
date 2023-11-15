@@ -71,7 +71,7 @@ public class StageClearUIController : MonoBehaviour
         float fadeTime,
         bool fadeColor)
     {
-        float time = 0;        // 経過時間
+        float time = 0; // 経過時間
 
         // 指定した時間が経過するまで繰り返す
         while (time < fadeTime)

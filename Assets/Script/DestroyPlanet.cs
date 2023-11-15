@@ -20,9 +20,6 @@ public class DestroyPlanet : MonoBehaviour
         // ゲーム中に惑星と衝突したら
         if ((collision.gameObject.CompareTag("Planet")) && (screenController.screenNum == 0))
         {
-            // ポップアップの数をカウント
-            popupController.popupAmount++;
-
             // 惑星が破壊された旨を伝えるポップアップを描画
             StartCoroutine(popupController.DrawDestroyPlanetPopup(collision.gameObject.name + " was destroyed"));
 
