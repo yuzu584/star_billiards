@@ -7,8 +7,9 @@ using UnityEngine.UI;
 // ポップアップを管理
 public class PopupController : MonoBehaviour
 {
-    [SerializeField] private GameObject popUp;          // ポップアップのプレハブ
-    [SerializeField] private UIController uIController; // InspectorでUIControllerを指定
+    [SerializeField] private GameObject popUp;                  // ポップアップのプレハブ
+    [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
+    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
 
     [System.NonSerialized] public int popupAmount = 0;                // ポップアップの数
     [System.NonSerialized] public bool[] drawingPopup = new bool[10]; // ポップアップが描画されているか
@@ -103,8 +104,6 @@ public class PopupController : MonoBehaviour
     {
         // ポップアップが描画されているかを管理する変数を初期化
         for (int i = 0; i > drawingPopup.Length; i++)
-        {
             drawingPopup[i] = false;
-        }
     }
 }

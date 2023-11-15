@@ -141,7 +141,11 @@ public class UIController : MonoBehaviour
         uIFunction.pauseUIController.DrawPauseUI(false);
 
         // ステージクリア画面のUIを非表示
-        uIFunction.stageClearUIController.DrawStageClearUI(false, stageClearUI.allStageClearUI, stageClearUI.button, stageClearUI.stageClearText);
+        uIFunction.stageClearUIController.DrawStageClearUI(
+            false,
+            stageClearUI.allStageClearUI,
+            stageClearUI.button,
+            stageClearUI.stageClearText);
     }
 
     void Update()
@@ -171,7 +175,11 @@ public class UIController : MonoBehaviour
         {
             // ステージクリア画面を描画
             drawedStageClearUI = true;
-            uIFunction.stageClearUIController.DrawStageClearUI(true, stageClearUI.allStageClearUI, stageClearUI.button, stageClearUI.stageClearText);
+            uIFunction.stageClearUIController.DrawStageClearUI(
+                true,
+                stageClearUI.allStageClearUI,
+                stageClearUI.button,
+                stageClearUI.stageClearText);
         }
     }
 }
