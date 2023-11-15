@@ -1769,6 +1769,7 @@ MonoBehaviour:
     planetName: {fileID: 1053927926}
   missionUI:
     missionText: {fileID: 1740467959}
+    icon: {fileID: 1553336409}
   inGameUI:
     allInGameUI: {fileID: 1564237707}
   pauseUI:
@@ -3042,6 +3043,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3baad58fc819d6e4cb8d979d3a6d0e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
+  screenController: {fileID: 1600059365}
 --- !u!4 &1180901548
 Transform:
   m_ObjectHideFlags: 0
@@ -3888,7 +3891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cd097e734fcfa43b27f3cf26223b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorController: {fileID: 1180901547}
   uIController: {fileID: 869580811}
   stageController: {fileID: 291823625}
   pauseUIController: {fileID: 1148952472}
@@ -5193,6 +5195,10 @@ PrefabInstance:
       propertyPath: stageController
       value: 
       objectReference: {fileID: 291823625}
+    - target: {fileID: 1619880542665924073, guid: 07738d4bc84c9834caf27599a491cc2c, type: 3}
+      propertyPath: screenController
+      value: 
+      objectReference: {fileID: 1600059365}
     - target: {fileID: 1619880542665924073, guid: 07738d4bc84c9834caf27599a491cc2c, type: 3}
       propertyPath: missionController
       value: 

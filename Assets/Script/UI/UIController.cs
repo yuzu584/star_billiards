@@ -71,6 +71,7 @@ public class UIController : MonoBehaviour
     public class MissionUI
     {
         public Text missionText;             // ミッションのテキスト
+        public GameObject icon;              // ミッションのアイコン
     }
 
     // ゲーム画面のUI
@@ -172,7 +173,7 @@ public class UIController : MonoBehaviour
     void Update()
     {
         // ゲーム中ならUIを描画
-        if(screenController.screenNum == 1)
+        if(screenController.screenNum == 0)
             draw = true;
         else
             draw = false;
@@ -217,13 +218,13 @@ public class UIController : MonoBehaviour
         if ((screenController.screenNum == 3) && (!mainMenuUI.allMainMenuUI.activeSelf))
         {
             // メインメニューを描画
-            uIFunction.mainMenuUIController.DrawMainMenu(true);
+            uIFunction.mainMenuUIController.DrawMainMenu(true, mainMenuUI.allMainMenuUI);
         }
         // スクリーン番号がメインメニュー以外なら
         else if(screenController.screenNum != 3)
         {
             // メインメニューを非表示
-            uIFunction.mainMenuUIController.DrawMainMenu(false);
+            uIFunction.mainMenuUIController.DrawMainMenu(false, mainMenuUI.allMainMenuUI);
         }
     }
 }

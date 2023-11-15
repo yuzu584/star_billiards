@@ -15,7 +15,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private Text BtnText;                                  // ボタンのテキスト
     [SerializeField] private ScreenController screenController;             // InspectorでScreenControllerを指定
     [SerializeField] private UIController uIController;                     // InspectorでUIControllerを指定
-    [SerializeField] private CursorController cursorController;             // InspectorでCursorControllerを指定
     [SerializeField] private PauseUIController pauseUIController;           // InspectorでPauseUIControllerを指定
     [SerializeField] private GameObject planetInfo;                         // 惑星情報UI
     [SerializeField] private enum ClickAction                               // ボタンが押されたときの効果
@@ -73,9 +72,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         // ポーズ画面のUIを非表示
         pauseUIController.DrawPauseUI(false);
 
-        // マウスカーソルを非表示
-        cursorController.DrawCursol(false);
-
         // 惑星情報UIを表示
         planetInfo.SetActive(true);
 
@@ -88,9 +84,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         // 画面番号をTitleに変更
         screenController.screenNum = 3;
-
-        // マウスカーソルを表示
-        cursorController.DrawCursol(true);
     }
 
     // ボタンのアニメーション

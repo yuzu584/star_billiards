@@ -46,6 +46,7 @@ public class MissionUIController : MonoBehaviour
         if(uIController.missionUI.missionText.enabled != draw)
         {
             uIController.missionUI.missionText.enabled = draw;
+            uIController.missionUI.icon.SetActive(draw);
         }
     }
 }

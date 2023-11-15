@@ -18,7 +18,7 @@ public class DestroyPlanet : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // ゲーム中に惑星と衝突したら
-        if ((collision.gameObject.CompareTag("Planet")) && (screenController.screenNum == 1))
+        if ((collision.gameObject.CompareTag("Planet")) && (screenController.screenNum == 0))
         {
             // ポップアップの数をカウント
             popupController.popupAmount++;

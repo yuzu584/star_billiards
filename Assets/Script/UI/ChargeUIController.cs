@@ -24,6 +24,13 @@ public class ChargeUIController : MonoBehaviour
                 // チャージの円を描写
                 chargeCircle.fillAmount = shot.charge / 100;
             }
+            // チャージされていないなら
+            else
+            {
+                // チャージのUIをリセット
+                chargeValue.text = "0";
+                chargeCircle.fillAmount = 0;
+            }
         }
 
         // 表示/非表示切り替え
