@@ -213,6 +213,21 @@ public class UIController : MonoBehaviour
                 stageClearUI.button,
                 stageClearUI.stageClearText);
         }
+        // ステージクリア済みかつステージクリア画面ではないなら
+        else if((stageController.stageCrear) && (screenController.screenNum != 2) && (drawedStageClearUI))
+        {
+            // ステージクリアフラグを初期化
+            drawedStageClearUI = false;
+            stageController.stageCrear = false;
+            destroyPlanet.planetDestroyAmount = 0;
+
+            // ステージクリア画面を非表示
+            uIFunction.stageClearUIController.DrawStageClearUI(
+                false,
+                stageClearUI.allStageClearUI,
+                stageClearUI.button,
+                stageClearUI.stageClearText);
+        }
 
         // スクリーン番号がメインメニューかつメインメニューが非表示なら
         if ((screenController.screenNum == 3) && (!mainMenuUI.allMainMenuUI.activeSelf))
