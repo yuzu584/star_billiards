@@ -5,9 +5,10 @@ using UnityEngine;
 // 画面の種類を管理
 public class ScreenController : MonoBehaviour
 {
-    [SerializeField] private CursorController cursorController; // InspectorでCursorControllerを指定
-    [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
-    [SerializeField] private StageController stageController;   // InspectorでStageControllerを指定
+    [SerializeField] private CursorController cursorController;   // InspectorでCursorControllerを指定
+    [SerializeField] private UIController uIController;           // InspectorでUIControllerを指定
+    [SerializeField] private StageController stageController;     // InspectorでStageControllerを指定
+    [SerializeField] private PauseUIController pauseUIController; // InspectorでPauseUIControllerを指定
 
     // 画面番号
     // InGame     = 0
@@ -27,7 +28,7 @@ public class ScreenController : MonoBehaviour
             cursorController.DrawCursol(true);
 
             // ポーズ画面のUIを表示
-            uIController.DrawPauseUI(true);
+            pauseUIController.DrawPauseUI(true);
 
             // 時間の流れを止める
             Time.timeScale = 0.0f;

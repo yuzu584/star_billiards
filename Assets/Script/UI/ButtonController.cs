@@ -8,17 +8,18 @@ using UnityEngine.EventSystems;
 // ボタンの見た目を管理
 public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [SerializeField] private Color OnPointerColor;              // ポインターが乗った時の色
-    [SerializeField] private Color defaultColor;                // デフォルトの色
-    [SerializeField] private float fadeTime;                    // フェード時間
-    [SerializeField] private Image Btn;                         // ボタンの画像
-    [SerializeField] private Image BtnOutline;                  // ボタンの枠の画像
-    [SerializeField] private Text BtnText;                      // ボタンのテキスト
-    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
-    [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
-    [SerializeField] private CursorController cursorController; // InspectorでCursorControllerを指定
-    [SerializeField] private GameObject planetInfo;             // 惑星情報UI
-    [SerializeField] private enum ClickAction                   // ボタンが押されたときの効果
+    [SerializeField] private Color OnPointerColor;                // ポインターが乗った時の色
+    [SerializeField] private Color defaultColor;                  // デフォルトの色
+    [SerializeField] private float fadeTime;                      // フェード時間
+    [SerializeField] private Image Btn;                           // ボタンの画像
+    [SerializeField] private Image BtnOutline;                    // ボタンの枠の画像
+    [SerializeField] private Text BtnText;                        // ボタンのテキスト
+    [SerializeField] private ScreenController screenController;   // InspectorでScreenControllerを指定
+    [SerializeField] private UIController uIController;           // InspectorでUIControllerを指定
+    [SerializeField] private CursorController cursorController;   // InspectorでCursorControllerを指定
+    [SerializeField] private PauseUIController pauseUIController; // InspectorでPauseUIControllerを指定
+    [SerializeField] private GameObject planetInfo;               // 惑星情報UI
+    [SerializeField] private enum ClickAction                     // ボタンが押されたときの効果
     {
         ReturnToGame,  // ゲームに戻る
         Setting,       // 設定画面を開く
@@ -70,7 +71,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         screenController.screenNum = 0;
 
         // ポーズ画面のUIを非表示
-        uIController.DrawPauseUI(false);
+        pauseUIController.DrawPauseUI(false);
 
         // マウスカーソルを非表示
         cursorController.DrawCursol(false);

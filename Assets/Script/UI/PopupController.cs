@@ -1,0 +1,110 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+using UnityEngine.UI;
+
+// ポップアップを管理
+public class PopupController : MonoBehaviour
+{
+    [SerializeField] private GameObject popUp;          // ポップアップのプレハブ
+    [SerializeField] private UIController uIController; // InspectorでUIControllerを指定
+
+    [System.NonSerialized] public int popupAmount = 0;                // ポップアップの数
+    [System.NonSerialized] public bool[] drawingPopup = new bool[10]; // ポップアップが描画されているか
+
+    // ポップアップを動かす
+    public IEnumerator MovePopup(float time, float fadeTime, GameObject popup, float moveDistance, Vector3 defaultPosition, int i)
+    {
+        // 指定した時間が経過するまで繰り返す
+        while (time < fadeTime)
+        {
+            // 時間をカウント
+            time += Time.deltaTime;
+
+            // 進み具合を計算
+            float t = time / fadeTime;
+
+            // ポップアップを移動
+            popup.transform.position = Vector3.Lerp(defaultPosition, defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), t);
+
+            // 1フレーム待つ
+            yield return null;
+        }
+
+        if (moveDistance < 0)
+        {
+            // 描画していない状態にする
+            drawingPopup[i] = false;
+        }
+    }
+
+    // ポップアップを描画
+    public IEnumerator DrawDestroyPlanetPopup(string text)
+    {
+        float destroyTime = 10.0f;   // 惑星を破壊するまでの時間
+        int i = 0;                   // 数を数える変数
+        float fadeTime = 0.2f;       // フェード時間
+        float moveDistance = 300.0f; // 移動距離
+        Vector3 defaultPosition;     // デフォルトの位置
+
+        // falseが見つかるまで繰り返す
+        while ((drawingPopup[i]))
+        {
+            // 配列の範囲外ならコルーチン終了
+            if (i > drawingPopup.Length)
+                yield break;
+            i++;
+        }
+
+        // 描画済みにする
+        drawingPopup[i] = true;
+
+        // ポップアップのインスタンスを生成
+        GameObject popup = Instantiate(popUp);
+
+        // 親を設定
+        popup.transform.SetParent(uIController.messageUI.Message.transform, false);
+
+        // 位置を設定
+        popup.transform.position += new Vector3(-moveDistance, i * -40.0f, 0.0f);
+
+        // プレハブのテキストを取得
+        Text popupText = popup.transform.GetChild(1).GetComponent<Text>();
+
+        // プレハブのテキストを設定
+        popupText.text = text;
+
+        // 経過時間をカウント
+        float time = 0;
+
+        // デフォルト位置を設定
+        defaultPosition = popup.transform.position;
+
+        // ポップアップを動かす
+        StartCoroutine(MovePopup(time, fadeTime, popup, moveDistance, defaultPosition, i));
+
+        // ポップアップが時間が経過するまで待つ
+        yield return new WaitForSeconds(destroyTime);
+
+        // ポップアップを動かす
+        StartCoroutine(MovePopup(time, fadeTime, popup, -moveDistance, defaultPosition, i));
+
+        yield return new WaitUntil(() => !(drawingPopup[i]));
+
+        // ポップアップを削除
+        Destroy(popup.gameObject);
+
+        // ポップアップカウントを減らす
+        popupAmount--;
+    }
+
+    void Start()
+    {
+        // ポップアップが描画されているかを管理する変数を初期化
+        for (int i = 0; i > drawingPopup.Length; i++)
+        {
+            drawingPopup[i] = false;
+        }
+    }
+}

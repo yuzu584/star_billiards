@@ -98,6 +98,7 @@ MonoBehaviour:
   screenController: {fileID: 0}
   uIController: {fileID: 0}
   cursorController: {fileID: 0}
+  pauseUIController: {fileID: 0}
   planetInfo: {fileID: 0}
   clickAction: 0
 --- !u!1 &5970234051039374984

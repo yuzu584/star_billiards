@@ -1663,7 +1663,6 @@ MonoBehaviour:
     button:
     - {fileID: 1516220715}
     - {fileID: 1311069895}
-    stageClearButtonMat: {fileID: 2100000, guid: d92459fa41ce17a4788b4cc97f57703b, type: 2}
   otherUI:
     reticle: {fileID: 1067802296}
     speedValue: {fileID: 372907193}
@@ -1674,10 +1673,14 @@ MonoBehaviour:
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
   stageController: {fileID: 291823625}
   destroyPlanet: {fileID: 442682250}
-  popUp: {fileID: 6751493928476000379, guid: ae6f80cdd48614846a10b75943843f67, type: 3}
   rb: {fileID: 2052131791}
   uIFunction:
     energyUIController: {fileID: 1148952467}
+    chargeUIController: {fileID: 1148952471}
+    pauseUIController: {fileID: 1148952472}
+    missionUIController: {fileID: 1148952473}
+    speedUIController: {fileID: 1148952474}
+    stageClearUIController: {fileID: 1148952475}
 --- !u!114 &869580812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1924,7 +1927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc9d1796340acf4d92c36dbf654dcf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uIController: {fileID: 869580811}
+  planetInfoUIController: {fileID: 1148952469}
 --- !u!1 &875835960
 GameObject:
   m_ObjectHideFlags: 0
@@ -2605,6 +2608,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1148952466}
   - component: {fileID: 1148952467}
+  - component: {fileID: 1148952471}
+  - component: {fileID: 1148952470}
+  - component: {fileID: 1148952472}
+  - component: {fileID: 1148952469}
+  - component: {fileID: 1148952468}
+  - component: {fileID: 1148952473}
+  - component: {fileID: 1148952474}
+  - component: {fileID: 1148952475}
   m_Layer: 0
   m_Name: UIFunctionController
   m_TagString: Untagged
@@ -2640,6 +2651,117 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyController: {fileID: 2052131793}
+--- !u!114 &1148952468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148952465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53606b673144fe4da9dc2db56391425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUp: {fileID: 6751493928476000379, guid: ae6f80cdd48614846a10b75943843f67, type: 3}
+  uIController: {fileID: 869580811}
+--- !u!114 &1148952469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148952465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a6b41b77d4732418839ed22d20588f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uIController: {fileID: 869580811}
+  screenController: {fileID: 1600059365}
+--- !u!114 &1148952470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148952465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3cf3eef9e33bc49bdae0cbe23f7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uIController: {fileID: 869580811}
+--- !u!114 &1148952471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148952465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ab656dc9cb8cf45a1975108c37aac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shot: {fileID: 2052131792}
+--- !u!114 &1148952472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148952465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b099c1fba9bcfa4bb8df08dcd01484a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uIController: {fileID: 869580811}
+  postProcessController: {fileID: 1746308557}
+--- !u!114 &1148952473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148952465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207001b503b186348b97ae3d67d5ffd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
+  stageController: {fileID: 291823625}
+  uIController: {fileID: 869580811}
+  destroyPlanet: {fileID: 442682250}
+--- !u!114 &1148952474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148952465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491c1a6767dd0d34a9610a218e2762aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenController: {fileID: 1600059365}
+  rb: {fileID: 2052131791}
+--- !u!114 &1148952475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148952465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a138ac99a7cea4ab678937c703c5fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageClearButtonMat: {fileID: 2100000, guid: d92459fa41ce17a4788b4cc97f57703b, type: 2}
 --- !u!1 &1180901546
 GameObject:
   m_ObjectHideFlags: 0
@@ -3358,6 +3480,7 @@ MonoBehaviour:
   cursorController: {fileID: 1180901547}
   uIController: {fileID: 869580811}
   stageController: {fileID: 291823625}
+  pauseUIController: {fileID: 1148952472}
   screenNum: 0
 --- !u!4 &1600059366
 Transform:
@@ -3710,6 +3833,10 @@ PrefabInstance:
       propertyPath: screenController
       value: 
       objectReference: {fileID: 1600059365}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: pauseUIController
+      value: 
+      objectReference: {fileID: 1148952472}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Text
       value: Setting
@@ -3835,6 +3962,10 @@ PrefabInstance:
       propertyPath: screenController
       value: 
       objectReference: {fileID: 1600059365}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: pauseUIController
+      value: 
+      objectReference: {fileID: 1148952472}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Text
       value: Return to title
@@ -4036,6 +4167,10 @@ PrefabInstance:
       propertyPath: screenController
       value: 
       objectReference: {fileID: 1600059365}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: pauseUIController
+      value: 
+      objectReference: {fileID: 1148952472}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Text
       value: Retorn to game
@@ -4462,7 +4597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shot: {fileID: 2052131792}
-  uIController: {fileID: 869580811}
+  skillUIController: {fileID: 1148952470}
   energyController: {fileID: 2052131793}
   screenController: {fileID: 1600059365}
 --- !u!114 &2052131795
@@ -4590,6 +4725,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 869580811}
     - target: {fileID: 1619880542665924073, guid: 07738d4bc84c9834caf27599a491cc2c, type: 3}
+      propertyPath: popupController
+      value: 
+      objectReference: {fileID: 1148952468}
+    - target: {fileID: 1619880542665924073, guid: 07738d4bc84c9834caf27599a491cc2c, type: 3}
       propertyPath: stageController
       value: 
       objectReference: {fileID: 291823625}
@@ -4597,6 +4736,10 @@ PrefabInstance:
       propertyPath: missionController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1619880542665924073, guid: 07738d4bc84c9834caf27599a491cc2c, type: 3}
+      propertyPath: missionUIController
+      value: 
+      objectReference: {fileID: 1148952473}
     - target: {fileID: 1619880542665924075, guid: 07738d4bc84c9834caf27599a491cc2c, type: 3}
       propertyPath: m_RootOrder
       value: 0

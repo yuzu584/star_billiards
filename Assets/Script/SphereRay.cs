@@ -5,7 +5,7 @@ using UnityEngine;
 // 球体のRayを生成し、関数を呼び出す
 public class SphereRay : MonoBehaviour
 {
-    [SerializeField] UIController uIController; // UIControllerをInspectorで指定
+    [SerializeField] PlanetInfoUIController planetInfoUIController; // PlanetInfoUIControllerをInspectorで指定
 
     RaycastHit hit;              // Rayのhit
     Vector3 hitObjectPosition;   // hitしたオブジェクトの座標
@@ -27,6 +27,6 @@ public class SphereRay : MonoBehaviour
         }
 
         // 惑星情報UIのリングを描画
-        uIController.DrawPlanetInfoUI(hitObjectPosition, hitObjectName);
+        planetInfoUIController.DrawPlanetInfoUI(hitObjectPosition, hitObjectName);
     }
 }

@@ -5,10 +5,10 @@ using UnityEngine;
 // スキルを管理
 public class SkillController : MonoBehaviour
 {
-    [SerializeField] private Shot shot;                         // InspectorでShotを指定
-    [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
-    [SerializeField] private EnergyController energyController; // InspectorでEnergyControllerを指定
-    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
+    [SerializeField] private Shot shot;                           // InspectorでShotを指定
+    [SerializeField] private SkillUIController skillUIController; // InspectorでSkillUIControllerを指定
+    [SerializeField] private EnergyController energyController;   // InspectorでEnergyControllerを指定
+    [SerializeField] private ScreenController screenController;   // InspectorでScreenControllerを指定
 
     int selectSkill = 0;  // 選択しているスキルの番号
     float coolDown = 0;   // クールダウンを管理
@@ -70,7 +70,7 @@ public class SkillController : MonoBehaviour
     // スキルのUIを描画する関数を呼び出す
     void CallSetSkillUI()
     {
-        uIController.DrawSkillUI(
+        skillUIController.DrawSkillUI(
             skill[selectSkill].skillName,
             skill[selectSkill].coolDown,
             skill[selectSkill].effectTime,
