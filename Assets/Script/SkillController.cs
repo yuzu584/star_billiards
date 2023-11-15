@@ -40,6 +40,18 @@ public class SkillController : MonoBehaviour
         new Skill("Huge", 100, 1, 10),
     };
 
+    void Start()
+    {
+        skillUIController.DrawSkillUI(
+            false,
+            skill[selectSkill].skillName,
+            skill[selectSkill].coolDown,
+            skill[selectSkill].effectTime,
+            coolDown,
+            effectTime
+            );
+    }
+
     void Update()
     {
         // ÉQÅ[ÉÄâÊñ Ç»ÇÁ
@@ -71,6 +83,7 @@ public class SkillController : MonoBehaviour
     void CallSetSkillUI()
     {
         skillUIController.DrawSkillUI(
+            true,
             skill[selectSkill].skillName,
             skill[selectSkill].coolDown,
             skill[selectSkill].effectTime,

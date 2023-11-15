@@ -10,29 +10,28 @@ public class ChargeUIController : MonoBehaviour
     [SerializeField] private Shot shot; // InspectorでShotを指定
 
     // チャージのUIを描画
-    public void DrawChargeUI(GameObject allChargeUI, Text chargeValue, Image chargeCircle)
+    public void DrawChargeUI(bool draw, GameObject allChargeUI, Text chargeValue, Image chargeCircle)
     {
-        // チャージされているなら
-        if (shot.charge > 0)
+        // 描画するなら
+        if (draw)
         {
-            // チャージのUIが無効化されていたら
-            if (!(allChargeUI.activeSelf))
+            // チャージされているなら
+            if (shot.charge > 0)
             {
-                // UIを有効化
-                allChargeUI.SetActive(true);
+                // チャージの数値をテキストで表示
+                chargeValue.text = shot.charge.ToString("0") + "%";
+
+                // チャージの円を描写
+                chargeCircle.fillAmount = shot.charge / 100;
             }
-
-            // チャージの数値をテキストで表示
-            chargeValue.text = shot.charge.ToString("0") + "%";
-
-            // チャージの円を描写
-            chargeCircle.fillAmount = shot.charge / 100;
         }
-        // チャージされていないかつ表示されているなら
-        else if ((shot.charge == 0) && (allChargeUI.activeSelf))
+
+        // 表示/非表示切り替え
+        if (allChargeUI.activeSelf != draw)
         {
-            // UIを無効化
-            allChargeUI.SetActive(false);
+            allChargeUI.SetActive(draw);
+            chargeValue.enabled = draw;
+            chargeCircle.enabled = draw;
         }
     }
 }

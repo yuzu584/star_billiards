@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour
     public InGameUI inGameUI;
     public PauseUI pauseUI;
     public StageClearUI stageClearUI;
+    public MainMenuUI mainMenuUI;
     public OtherUI otherUI;
 
     // チャージのUI
@@ -95,6 +96,16 @@ public class UIController : MonoBehaviour
         public GameObject[] button;          // ステージクリア画面のボタン
     }
 
+    // メインメニューのUI
+    [System.Serializable]
+    public class MainMenuUI
+    {
+        public GameObject allMainMenuUI;     // メインメニュー全体のUI
+        public Text titleText;               // メインメニューのタイトル
+        public GameObject[] button;          // メインメニューのボタン
+        public Image backGround;             // メインメニューの背景画像
+    }
+
     // その他UI
     [System.Serializable]
     public class OtherUI
@@ -122,6 +133,7 @@ public class UIController : MonoBehaviour
         public MissionUIController missionUIController;
         public SpeedUIController speedUIController;
         public StageClearUIController stageClearUIController;
+        public MainMenuUIController mainMenuUIController;
     }
 
     RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
@@ -129,6 +141,7 @@ public class UIController : MonoBehaviour
     public UIFunction uIFunction; // InspectorでUI描画関数を指定
 
     private bool drawedStageClearUI = false; // ステージクリア画面が描画されたか
+    private bool draw = false;               // UIを描画するかどうか
 
     void Start()
     {
@@ -158,8 +171,15 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
+        // ゲーム中ならUIを描画
+        if(screenController.screenNum == 1)
+            draw = true;
+        else
+            draw = false;
+
         // エネルギーのUIを描画
         uIFunction.energyUIController.DrawEnergyUI(
+            draw,
             energyUI.EnergyGauge,
             energyUI.EnergyAfterImage,
             energyUI.EnergyGaugeOutline,
@@ -168,15 +188,18 @@ public class UIController : MonoBehaviour
 
         // チャージのUIを描画
         uIFunction.chargeUIController.DrawChargeUI(
+            draw,
             chargeUI.allChargeUI,
             chargeUI.chargeValue,
             chargeUI.chargeCircle);
 
         // ミッションのUIを描画
-        uIFunction.missionUIController.DrawMissionUI();
+        uIFunction.missionUIController.DrawMissionUI(draw);
 
         // 移動速度の数値を描画
-        uIFunction.speedUIController.DrawSpeedValue(otherUI.speedValue);
+        uIFunction.speedUIController.DrawSpeedValue(
+            draw,
+            otherUI.speedValue);
 
         // ステージをクリアしたかつUIが描画されていないなら
         if ((stageController.stageCrear) && (!(drawedStageClearUI)))
@@ -188,6 +211,19 @@ public class UIController : MonoBehaviour
                 stageClearUI.allStageClearUI,
                 stageClearUI.button,
                 stageClearUI.stageClearText);
+        }
+
+        // スクリーン番号がメインメニューかつメインメニューが非表示なら
+        if ((screenController.screenNum == 3) && (!mainMenuUI.allMainMenuUI.activeSelf))
+        {
+            // メインメニューを描画
+            uIFunction.mainMenuUIController.DrawMainMenu(true);
+        }
+        // スクリーン番号がメインメニュー以外なら
+        else if(screenController.screenNum != 3)
+        {
+            // メインメニューを非表示
+            uIFunction.mainMenuUIController.DrawMainMenu(false);
         }
     }
 }

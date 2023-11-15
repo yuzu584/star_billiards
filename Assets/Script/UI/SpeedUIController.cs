@@ -11,24 +11,19 @@ public class SpeedUIController : MonoBehaviour
     [SerializeField] private Rigidbody rb;                      // プレイヤーのRigidbody
 
     // 移動速度の数値を描画
-    public void DrawSpeedValue(Text speedValue)
+    public void DrawSpeedValue(bool draw, Text speedValue)
     {
-        // ポーズ画面かつUIが表示されているなら非表示にする
-        if ((screenController.screenNum == 1) && (speedValue.enabled == true))
+        // 描画するなら
+        if(draw)
         {
-            speedValue.enabled = false;
-        }
-        // ゲーム画面なら
-        else if (screenController.screenNum == 0)
-        {
-            // 非表示なら表示
-            if (speedValue.enabled == false)
-            {
-                speedValue.enabled = true;
-            }
-
             // 速度のテキストを更新
             speedValue.text = rb.velocity.magnitude.ToString("0") + " km/s";
+        }
+
+        // 表示/非表示切り替え
+        if(speedValue.enabled != draw)
+        {
+            speedValue.enabled = draw;
         }
     }
 }

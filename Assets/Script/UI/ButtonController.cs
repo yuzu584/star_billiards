@@ -12,7 +12,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private Color defaultColor;                            // デフォルトの色
     [SerializeField] private float fadeTime;                                // フェード時間
     [SerializeField] private Image Btn;                                     // ボタンの画像
-    [SerializeField] private Image BtnOutline;                              // ボタンの枠の画像
     [SerializeField] private Text BtnText;                                  // ボタンのテキスト
     [SerializeField] private ScreenController screenController;             // InspectorでScreenControllerを指定
     [SerializeField] private UIController uIController;                     // InspectorでUIControllerを指定
@@ -21,10 +20,10 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private GameObject planetInfo;                         // 惑星情報UI
     [SerializeField] private enum ClickAction                               // ボタンが押されたときの効果
     {
-        ReturnToGame,  // ゲームに戻る
-        Setting,       // 設定画面を開く
-        ReturnToTitle, // タイトル画面に戻る
-        StageSelect,   // ステージ選択画面に戻る
+        ReturnToGame,     // ゲームに戻る
+        Setting,          // 設定画面を開く
+        ReturnToMainMenu, // メインメニューに戻る
+        StageSelect,      // ステージ選択画面に戻る
     }
     [SerializeField] private ClickAction clickAction; // ボタンを押したときの効果
 
@@ -55,8 +54,8 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
                 break;
             case ClickAction.Setting:    // 設定画面を開く
                 break;
-            case ClickAction.ReturnToTitle: // タイトル画面に戻る
-                ReturnToTitle();
+            case ClickAction.ReturnToMainMenu: // メインメニューに戻る
+                ReturnToMainMenu();
                 break;
             case ClickAction.StageSelect: // ステージ選択画面に戻る
                 break;
@@ -84,8 +83,8 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         Time.timeScale = 1.0f;
     }
 
-    // タイトル画面に戻る
-    void ReturnToTitle()
+    // メインメニューに戻る
+    void ReturnToMainMenu()
     {
         // 画面番号をTitleに変更
         screenController.screenNum = 3;
