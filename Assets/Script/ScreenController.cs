@@ -14,7 +14,10 @@ public class ScreenController : MonoBehaviour
     // InGame     = 0
     // Pause      = 1
     // StageCrear = 2
+    // Title      = 3
     public int screenNum = 0;
+
+    bool changeStageClearScreen = false; // ステージクリア画面に遷移したかどうか
 
     void Update()
     {
@@ -35,8 +38,11 @@ public class ScreenController : MonoBehaviour
         }
 
         // ステージをクリアしたなら
-        if (stageController.stageCrear)
+        if ((stageController.stageCrear) && (!changeStageClearScreen))
         {
+            // ステージクリア画面に遷移済み
+            changeStageClearScreen = true;
+
             // ステージクリア画面に遷移
             screenNum = 2;
 
