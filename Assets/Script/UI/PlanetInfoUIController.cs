@@ -8,23 +8,17 @@ using UnityEngine.UI;
 public class PlanetInfoUIController : MonoBehaviour
 {
     [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
-    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
 
     Vector3 PIL1;             // 惑星情報UIの線の始点座標
     Vector3 PIL2;             // 惑星情報UIの線の中間座標
     Vector3 PIL3;             // 惑星情報UIの線の終点座標
 
     // 惑星情報UIを描画
-    public void DrawPlanetInfoUI(Vector3 position, string planetName)
+    public void DrawPlanetInfoUI(bool draw, Vector3 position, string planetName)
     {
-        // ゲーム画面かつ対象がSphere以外ならUIを表示
-        if ((screenController.screenNum == 0) && (!(planetName == "Sphere")))
+        // 描画するなら
+        if (draw)
         {
-            // UIが非表示なら表示
-            if (!(uIController.planetInfoUI.allPlanetInfo.activeSelf))
-            {
-                uIController.planetInfoUI.allPlanetInfo.SetActive(true);
-            }
             // 惑星情報UIの円のスクリーン座標を変更
             uIController.planetInfoUI.targetRing.rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, position);
 
@@ -44,15 +38,11 @@ public class PlanetInfoUIController : MonoBehaviour
             // 惑星の名前UIの位置を設定
             uIController.planetInfoUI.planetName.rectTransform.position = uIController.planetInfoUI.targetRing.rectTransform.position + new Vector3(160, 80, 10);
         }
-        // 対象がSphereなら非表示にする
-        else if (planetName == "Sphere")
+
+        // 表示/非表示切り替え
+        if(uIController.planetInfoUI.allPlanetInfo.activeSelf != draw)
         {
-            uIController.planetInfoUI.allPlanetInfo.SetActive(false);
-        }
-        // ポーズ画面かつUIが表示されているなら非表示にする
-        else if ((screenController.screenNum == 1) && (uIController.planetInfoUI.allPlanetInfo.activeSelf))
-        {
-            uIController.planetInfoUI.allPlanetInfo.SetActive(false);
+            uIController.planetInfoUI.allPlanetInfo.SetActive(draw);
         }
     }
 }

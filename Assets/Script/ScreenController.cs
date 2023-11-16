@@ -23,9 +23,6 @@ public class ScreenController : MonoBehaviour
 
             // ポーズ画面のUIを表示
             pauseUIController.DrawPauseUI(true);
-
-            // 時間の流れを止める
-            Time.timeScale = 0.0f;
         }
 
         // ステージをクリアかつ画面遷移していないなら
@@ -42,13 +39,6 @@ public class ScreenController : MonoBehaviour
         {
             // ステージクリア画面に未遷移
             changeStageClearScreen = false;
-        }
-
-        // メインメニューなら
-        if(screenNum == 3)
-        {
-            // 時間の流れを止める
-            Time.timeScale = 0.0f;
         }
     }
 }

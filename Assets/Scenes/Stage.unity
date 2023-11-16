@@ -435,6 +435,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3270650668174926157, guid: 61e591431bc920e459238c5b8e5ac48f, type: 3}
   m_PrefabInstance: {fileID: 3270650668030698908}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &153213448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 153213449}
+  - component: {fileID: 153213450}
+  m_Layer: 0
+  m_Name: TimeScaleController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &153213449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153213448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 318109087}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &153213450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153213448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fe3d15f5560d024f9f798cf71672ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
+  screenController: {fileID: 1600059365}
 --- !u!4 &159051376 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5098211884048975150, guid: 91674131e0e378a4fa4483eb31dfc90c, type: 3}
@@ -858,6 +904,7 @@ Transform:
   - {fileID: 1600059366}
   - {fileID: 291823624}
   - {fileID: 1148952466}
+  - {fileID: 153213449}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2055,6 +2102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetInfoUIController: {fileID: 1148952469}
+  screenController: {fileID: 1600059365}
 --- !u!1 &875835960
 GameObject:
   m_ObjectHideFlags: 0
@@ -2917,7 +2965,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uIController: {fileID: 869580811}
-  screenController: {fileID: 1600059365}
 --- !u!114 &1148952470
 MonoBehaviour:
   m_ObjectHideFlags: 0

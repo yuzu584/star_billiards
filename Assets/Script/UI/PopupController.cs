@@ -113,14 +113,12 @@ public class PopupController : MonoBehaviour
                 {
                     // 表示する
                     drawingPopup[i].SetActive(true);
-                    Debug.Log("表示");
                 }
                 // ゲーム画面以外かつ表示されているなら
                 else if ((screenController.screenNum != 0) && (drawingPopup[i].activeSelf))
                 {
                     // 非表示にする
                     drawingPopup[i].SetActive(false);
-                    Debug.Log("非表示");
                 }
             }
         }
