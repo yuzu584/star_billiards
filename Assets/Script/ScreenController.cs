@@ -8,6 +8,7 @@ public class ScreenController : MonoBehaviour
     [SerializeField] private UIController uIController;                 // InspectorでUIControllerを指定
     [SerializeField] private StageController stageController;           // InspectorでStageControllerを指定
     [SerializeField] private PauseUIController pauseUIController;       // InspectorでPauseUIControllerを指定
+    [SerializeField] private ScreenData screenData;                     // InspectorでScreenDataを指定
 
     public int screenNum = 3; // 画面番号
 

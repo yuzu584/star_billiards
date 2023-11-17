@@ -10,27 +10,16 @@ public class SkillUIController : MonoBehaviour
     [SerializeField] private UIController uIController; // InspectorでUIControllerを指定
 
     // スキルのUIを描画
-    public void DrawSkillUI(bool draw, string skillName, float coolDown, float effectTime, float nowCoolDown, float nowEffectTime)
+    public void DrawSkillUI(string skillName, float coolDown, float effectTime, float nowCoolDown, float nowEffectTime)
     {
-        // 描画するなら
-        if (draw)
-        {
-            // テキストを現在のスキル名に変更
-            uIController.skillUI.skillName.text = skillName;
+        // テキストを現在のスキル名に変更
+        uIController.skillUI.skillName.text = skillName;
 
-            // 効果時間を描画
-            if (nowEffectTime > 0)
-                uIController.skillUI.skillGauge.fillAmount = nowEffectTime / effectTime;
-            // 効果時間が経過していたならクールダウンを描画
-            else if (nowCoolDown > 0)
-                uIController.skillUI.skillGauge.fillAmount = (coolDown - nowCoolDown) / coolDown;
-        }
-
-        // 表示/非表示切り替え
-        if(uIController.skillUI.skillName.enabled != draw)
-        {
-            uIController.skillUI.skillName.enabled = draw;
-            uIController.skillUI.skillGauge.enabled = draw;
-        }
+        // 効果時間を描画
+        if (nowEffectTime > 0)
+            uIController.skillUI.skillGauge.fillAmount = nowEffectTime / effectTime;
+        // 効果時間が経過していたならクールダウンを描画
+        else if (nowCoolDown > 0)
+            uIController.skillUI.skillGauge.fillAmount = (coolDown - nowCoolDown) / coolDown;
     }
 }

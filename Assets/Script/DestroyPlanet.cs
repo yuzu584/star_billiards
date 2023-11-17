@@ -30,7 +30,7 @@ public class DestroyPlanet : MonoBehaviour
                 planetDestroyAmount++;
 
                 // ミッションUIを更新
-                missionUIController.DrawMissionUI(true);
+                missionUIController.DrawMissionUI();
             }
 
             // 惑星を削除

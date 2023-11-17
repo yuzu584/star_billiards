@@ -16,15 +16,20 @@ MonoBehaviour:
   - screenName: InGame
     drawCursol: 0
     timeScale: 1
+    isDraw: 0
   - screenName: Pause
     drawCursol: 1
     timeScale: 0
+    isDraw: 0
   - screenName: StageClear
     drawCursol: 1
     timeScale: 1
+    isDraw: 0
   - screenName: MainMenu
     drawCursol: 1
     timeScale: 0
+    isDraw: 0
   - screenName: StageSelect
     drawCursol: 1
     timeScale: 0
+    isDraw: 0

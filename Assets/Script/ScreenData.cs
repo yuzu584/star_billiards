@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "MyScriptable/Create ScreenData")]
 public class ScreenData : ScriptableObject
 {
-    public List<ScreenDataContent> screenList = new List<ScreenDataContent>();
+    public List<ScreenDataContent> screenList;
 }
 
 // スクリーンのリスト

@@ -43,7 +43,6 @@ public class SkillController : MonoBehaviour
     void Start()
     {
         skillUIController.DrawSkillUI(
-            false,
             skill[selectSkill].skillName,
             skill[selectSkill].coolDown,
             skill[selectSkill].effectTime,
@@ -75,15 +74,14 @@ public class SkillController : MonoBehaviour
             DecreaseEFAndCD();
 
             // スキルのUIを描画する関数を呼び出す
-            CallSetSkillUI(true);
+            CallSetSkillUI();
         }
     }
 
     // スキルのUIを描画する関数を呼び出す
-    public void CallSetSkillUI(bool draw)
+    public void CallSetSkillUI()
     {
         skillUIController.DrawSkillUI(
-            draw,
             skill[selectSkill].skillName,
             skill[selectSkill].coolDown,
             skill[selectSkill].effectTime,

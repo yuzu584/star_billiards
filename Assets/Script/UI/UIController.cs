@@ -143,7 +143,6 @@ public class UIController : MonoBehaviour
     public UIFunction uIFunction; // InspectorでUI描画関数を指定
 
     private bool drawedStageClearUI = false; // ステージクリア画面が描画されたか
-    private bool draw = false;               // UIを描画するかどうか
 
     void Start()
     {
@@ -173,38 +172,38 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
-        // ゲーム中ならUIを描画
-        if(screenController.screenNum == 0)
-            draw = true;
-        else
-            draw = false;
+        // ゲーム画面を表示/非表示
+        if((screenController.screenNum == 0) && (!inGameUI.allInGameUI.activeSelf))
+            inGameUI.allInGameUI.SetActive(true);
+        else if((screenController.screenNum != 0) && (inGameUI.allInGameUI.activeSelf))
+            inGameUI.allInGameUI.SetActive(false);
 
-        // エネルギーのUIを描画
-        uIFunction.energyUIController.DrawEnergyUI(
-            draw,
-            energyUI.EnergyGauge,
-            energyUI.EnergyAfterImage,
-            energyUI.EnergyGaugeOutline,
-            energyUI.EnergyValue,
-            messageUI.NoEnergy);
+        // ゲーム画面が表示されているなら各種UIを更新
+        if (inGameUI.allInGameUI.activeSelf)
+        {
+            // エネルギーのUIを更新
+            uIFunction.energyUIController.DrawEnergyUI(
+                energyUI.EnergyGauge,
+                energyUI.EnergyAfterImage,
+                energyUI.EnergyGaugeOutline,
+                energyUI.EnergyValue,
+                messageUI.NoEnergy);
 
-        // チャージのUIを描画
-        uIFunction.chargeUIController.DrawChargeUI(
-            draw,
-            chargeUI.allChargeUI,
-            chargeUI.chargeValue,
-            chargeUI.chargeCircle);
+            // チャージのUIを更新
+            uIFunction.chargeUIController.DrawChargeUI(
+                chargeUI.allChargeUI,
+                chargeUI.chargeValue,
+                chargeUI.chargeCircle);
 
-        // ミッションのUIを描画
-        uIFunction.missionUIController.DrawMissionUI(draw);
+            // ミッションのUIを更新
+            uIFunction.missionUIController.DrawMissionUI();
 
-        // スキルのUIを描画
-        skillController.CallSetSkillUI(draw);
+            // スキルのUIを更新
+            skillController.CallSetSkillUI();
 
-        // 移動速度の数値を描画
-        uIFunction.speedUIController.DrawSpeedValue(
-            draw,
-            otherUI.speedValue);
+            // 移動速度の数値を更新
+            uIFunction.speedUIController.DrawSpeedValue(otherUI.speedValue);
+        }
 
         // ステージをクリアしたかつUIが描画されていないなら
         if ((stageController.stageCrear) && (!(drawedStageClearUI)))
@@ -233,30 +232,16 @@ public class UIController : MonoBehaviour
                 stageClearUI.stageClearText);
         }
 
-        // スクリーン番号がポーズ画面かつ非表示なら
+        // ポーズ画面を表示/非表示
         if((screenController.screenNum == 1) && (!pauseUI.allPauseUI.activeSelf))
-        {
-            // ポーズ画面を表示
             uIFunction.pauseUIController.DrawPauseUI(true);
-        }
-        // スクリーン番号がポーズ画面以外かつ表示されているなら
         else if ((screenController.screenNum != 1) && (pauseUI.allPauseUI.activeSelf))
-        {
-            // ポーズ画面を非表示
             uIFunction.pauseUIController.DrawPauseUI(false);
-        }
 
-        // スクリーン番号がメインメニューかつメインメニューが非表示なら
+        // メインメニューを表示/非表示
         if ((screenController.screenNum == 3) && (!mainMenuUI.allMainMenuUI.activeSelf))
-        {
-            // メインメニューを描画
             uIFunction.mainMenuUIController.DrawMainMenu(true, mainMenuUI.allMainMenuUI);
-        }
-        // スクリーン番号がメインメニュー以外なら
         else if(screenController.screenNum != 3)
-        {
-            // メインメニューを非表示
             uIFunction.mainMenuUIController.DrawMainMenu(false, mainMenuUI.allMainMenuUI);
-        }
     }
 }
