@@ -18,6 +18,7 @@ public class UIController : MonoBehaviour
     public PauseUI pauseUI;
     public StageClearUI stageClearUI;
     public MainMenuUI mainMenuUI;
+    public StageSelectUI stageSelectUI;
     public OtherUI otherUI;
 
     // チャージのUI
@@ -105,6 +106,13 @@ public class UIController : MonoBehaviour
         public Text titleText;               // メインメニューのタイトル
         public GameObject[] button;          // メインメニューのボタン
         public Image backGround;             // メインメニューの背景画像
+    }
+
+    // ステージ選択画面のUI
+    [System.Serializable]
+    public class StageSelectUI
+    {
+        public GameObject allStageSelectUI;  // ステージ選択画面全体のUI
     }
 
     // その他UI
@@ -243,5 +251,11 @@ public class UIController : MonoBehaviour
             uIFunction.mainMenuUIController.DrawMainMenu(true, mainMenuUI.allMainMenuUI);
         else if(screenController.screenNum != 3)
             uIFunction.mainMenuUIController.DrawMainMenu(false, mainMenuUI.allMainMenuUI);
+
+        // ステージ選択画面を表示/非表示
+        if((screenController.screenNum == 4) && (!stageSelectUI.allStageSelectUI.activeSelf))
+            stageSelectUI.allStageSelectUI.SetActive(true);
+        else if(screenController.screenNum != 4)
+            stageSelectUI.allStageSelectUI.SetActive(false);
     }
 }

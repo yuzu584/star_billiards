@@ -23,6 +23,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         Setting,          // 設定画面を開く
         ReturnToMainMenu, // メインメニューに戻る
         StageSelect,      // ステージ選択画面に戻る
+        StageStart,       // ステージスタート
     }
     [SerializeField] private ClickAction clickAction; // ボタンを押したときの効果
 
@@ -48,15 +49,19 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         // ボタンごとの効果によって分岐
         switch (clickAction)
         {
-            case ClickAction.ReturnToGame:  // ゲームに戻る
+            case ClickAction.ReturnToGame:     // ゲームに戻る
                 ReturnToGame();
                 break;
-            case ClickAction.Setting:    // 設定画面を開く
+            case ClickAction.Setting:          // 設定画面を開く
                 break;
             case ClickAction.ReturnToMainMenu: // メインメニューに戻る
                 ReturnToMainMenu();
                 break;
-            case ClickAction.StageSelect: // ステージ選択画面に戻る
+            case ClickAction.StageSelect:      // ステージ選択画面に遷移
+                StageSelect();
+                break;
+            case ClickAction.StageStart:       // ステージスタート
+                StageStart();
                 break;
             default:
                 break;
@@ -84,6 +89,20 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         // 画面番号をTitleに変更
         screenController.screenNum = 3;
+    }
+
+    // ステージ選択画面に遷移
+    void StageSelect()
+    {
+        // 画面番号をStageSelectに変更
+        screenController.screenNum = 4;
+    }
+
+    // ステージスタート
+    void StageStart()
+    {
+        // 画面番号をInGameに変更
+        screenController.screenNum = 0;
     }
 
     // ボタンのアニメーション
