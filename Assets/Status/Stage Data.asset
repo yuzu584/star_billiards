@@ -14,6 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageList:
   - stageName: Solar system
-    fixedStarAmount: 1
-    planetAmount: 1
+    fixedStar:
+    - {fileID: 1619880542665924071, guid: 07738d4bc84c9834caf27599a491cc2c, type: 3}
+    planet:
+    - {fileID: 8621607546710637530, guid: ea78bcce29604464baf87d9092eb40a4, type: 3}
+    - {fileID: 3522120587113054704, guid: a9871198cc31145408afb1e826eaadd7, type: 3}
+    - {fileID: 6045756243694474078, guid: 108cf9c71bad60544aa5bbaea6449d25, type: 3}
+    - {fileID: 5448436212305208589, guid: ba124b33c99c1bc49a29cb5bb546cde1, type: 3}
+    - {fileID: 3270650668174926161, guid: 61e591431bc920e459238c5b8e5ac48f, type: 3}
+    - {fileID: 5235480300598501326, guid: 25fa7dcf9ec9fef489f3846f09bdb5bd, type: 3}
+    - {fileID: 5098211884048975154, guid: 91674131e0e378a4fa4483eb31dfc90c, type: 3}
+    - {fileID: 1725714881869314568, guid: 73501e53b08d3594095a3b26a455b603, type: 3}
     missionNum: 0

@@ -14,11 +14,14 @@ public class StageController : MonoBehaviour
 
     void Update()
     {
-        // ミッション番号を代入
-        missionNum = stageData.stageList[stageNum].missionNum;
+        if (missionNum != stageData.stageList[stageNum].missionNum)
+        {
+            // ミッション番号を代入
+            missionNum = stageData.stageList[stageNum].missionNum;
+        }
 
         // ミッションが"全ての惑星を破壊"かつクリア条件を達成したなら
-        if (missionNum == 0 && (destroyPlanet.planetDestroyAmount >= stageData.stageList[stageNum].planetAmount))
+        if (missionNum == 0 && (destroyPlanet.planetDestroyAmount >= stageData.stageList[stageNum].planet.Length))
         {
             // ステージクリア
             stageCrear = true;

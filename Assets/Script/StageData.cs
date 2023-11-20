@@ -13,8 +13,8 @@ public class StageData : ScriptableObject
 [System.Serializable]
 public class StageDataContent
 {
-    public string stageName;    // 名前
-    public int fixedStarAmount; // 恒星数
-    public int planetAmount;    // 惑星数
-    public int missionNum;      // ミッション番号
+    public string stageName;       // 名前
+    public GameObject[] fixedStar; // 恒星
+    public GameObject[] planet;    // 惑星
+    public int missionNum;         // ミッション番号
 }

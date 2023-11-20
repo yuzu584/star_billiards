@@ -17,7 +17,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private UIController uIController;                     // InspectorでUIControllerを指定
     [SerializeField] private PauseUIController pauseUIController;           // InspectorでPauseUIControllerを指定
     [SerializeField] private GameObject planetInfo;                         // 惑星情報UI
-    [SerializeField] private enum ClickAction                               // ボタンが押されたときの効果
+    [SerializeField] private enum ClickAction                               // ボタンを押したときの効果
     {
         ReturnToGame,     // ゲームに戻る
         Setting,          // 設定画面を開く
