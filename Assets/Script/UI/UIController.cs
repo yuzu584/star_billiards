@@ -113,6 +113,8 @@ public class UIController : MonoBehaviour
     public class StageSelectUI
     {
         public GameObject allStageSelectUI;  // ステージ選択画面全体のUI
+        public Text name;                    // ステージ名
+        public Text mission;                 // ミッション名
     }
 
     // その他UI
@@ -144,6 +146,7 @@ public class UIController : MonoBehaviour
         public SpeedUIController speedUIController;
         public StageClearUIController stageClearUIController;
         public MainMenuUIController mainMenuUIController;
+        public StageSelectUIController StageSelectUIController;
     }
 
     RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
@@ -257,5 +260,14 @@ public class UIController : MonoBehaviour
             stageSelectUI.allStageSelectUI.SetActive(true);
         else if(screenController.screenNum != 4)
             stageSelectUI.allStageSelectUI.SetActive(false);
+
+        // ステージ選択画面が表示されているなら各種UIを更新
+        if (stageSelectUI.allStageSelectUI.activeSelf)
+        {
+            // ステージ情報UIを更新
+            uIFunction.StageSelectUIController.DrawStageInfo(
+                stageSelectUI.name,
+                stageSelectUI.mission);
+        }
     }
 }

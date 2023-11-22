@@ -2273,6 +2273,8 @@ MonoBehaviour:
     backGround: {fileID: 1367596023}
   stageSelectUI:
     allStageSelectUI: {fileID: 1814400183}
+    name: {fileID: 2077197693}
+    mission: {fileID: 3455790}
   otherUI:
     reticle: {fileID: 1067802296}
     speedValue: {fileID: 372907193}
@@ -2293,6 +2295,7 @@ MonoBehaviour:
     speedUIController: {fileID: 1148952474}
     stageClearUIController: {fileID: 1148952475}
     mainMenuUIController: {fileID: 1148952476}
+    StageSelectUIController: {fileID: 1148952477}
 --- !u!114 &869580812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3368,6 +3371,7 @@ GameObject:
   - component: {fileID: 1148952474}
   - component: {fileID: 1148952475}
   - component: {fileID: 1148952476}
+  - component: {fileID: 1148952477}
   m_Layer: 0
   m_Name: UIFunctionController
   m_TagString: Untagged
@@ -3528,6 +3532,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7406a08b516bd734b905833e5919f94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1148952477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148952465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed24e9f1f6c2c64a9a15541bafb9a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
+  stageController: {fileID: 291823625}
 --- !u!1 &1180901546
 GameObject:
   m_ObjectHideFlags: 0

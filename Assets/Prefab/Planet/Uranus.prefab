@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5098211884048975151}
   - component: {fileID: 5098211884048975146}
   - component: {fileID: 7321253793254614107}
+  - component: {fileID: -1875135478154279246}
   m_Layer: 0
   m_Name: Uranus
   m_TagString: Planet
@@ -109,7 +110,7 @@ Rigidbody:
   m_GameObject: {fileID: 5098211884048975154}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.1
+  m_Drag: 0.2
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -145,3 +146,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
+--- !u!114 &-1875135478154279246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5098211884048975154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f913615326d4244841130df8868401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bouncePower: 50
