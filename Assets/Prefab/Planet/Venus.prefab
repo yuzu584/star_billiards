@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3522120587113054719}
   - component: {fileID: 3522120587113054718}
   - component: {fileID: 3522120587113054712}
+  - component: {fileID: -8057340019537307325}
   m_Layer: 0
   m_Name: Venus
   m_TagString: Planet
@@ -146,3 +147,22 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &-8057340019537307325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522120587113054704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b2083ee59036c47a61a036848adcff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uIController: {fileID: 0}
+  stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
+  stageController: {fileID: 0}
+  popupController: {fileID: 0}
+  missionUIController: {fileID: 0}
+  screenController: {fileID: 0}
+  planetAmount: {fileID: 0}

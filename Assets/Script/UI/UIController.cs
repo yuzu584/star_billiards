@@ -129,7 +129,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private PostProcessController postProcessController; // InspectorでPostProcessControllerを指定
     [SerializeField] private StageData stageData;                         // InspectorでStageDataを指定
     [SerializeField] private StageController stageController;             // InspectorでStageControllerを指定
-    [SerializeField] private DestroyPlanet destroyPlanet;                 // InspectorでDestroyPlanetを指定
+    [SerializeField] private PlanetAmount planetAmount;                   // InspectorでPlanetAmountを指定
     [SerializeField] private SkillController skillController;             // InspectorでSkillControllerを指定
     [SerializeField] private Rigidbody rb;                                // プレイヤーのRigidbody
 
@@ -230,7 +230,7 @@ public class UIController : MonoBehaviour
             // ステージクリアフラグを初期化
             drawedStageClearUI = false;
             stageController.stageCrear = false;
-            destroyPlanet.planetDestroyAmount = 0;
+            planetAmount.planetDestroyAmount = 0;
 
             // ステージクリア画面を非表示
             uIFunction.stageClearUIController.DrawStageClearUI(

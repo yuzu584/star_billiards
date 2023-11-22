@@ -10,7 +10,7 @@ public class MissionUIController : MonoBehaviour
     [SerializeField] private StageData stageData;                         // InspectorでStageDataを指定
     [SerializeField] private StageController stageController;             // InspectorでStageControllerを指定
     [SerializeField] private UIController uIController;                   // InspectorでUIControllerを指定
-    [SerializeField] private DestroyPlanet destroyPlanet;                 // InspectorでDestroyPlanetを指定
+    [SerializeField] private PlanetAmount planetAmount;                   // InspectorでPlanetAmountを指定
 
     // ミッションのUIを描画
     public void DrawMissionUI()
@@ -19,7 +19,7 @@ public class MissionUIController : MonoBehaviour
         int missionNum = stageData.stageList[stageController.stageNum].missionNum;
 
         // ステージの初期惑星数を代入
-        int planetAmount = stageData.stageList[stageController.stageNum].planet.Length;
+        int planet = stageData.stageList[stageController.stageNum].planet.Length;
 
         // ミッション番号によって分岐
         switch (missionNum)
@@ -27,7 +27,7 @@ public class MissionUIController : MonoBehaviour
             case 0: // 全ての惑星を破壊
 
                 // ミッションのテキストを設定
-                uIController.missionUI.missionText.text = "Destroy all planets " + destroyPlanet.planetDestroyAmount + " / " + planetAmount;
+                uIController.missionUI.missionText.text = "Destroy all planets " + planetAmount.planetDestroyAmount + " / " + planet;
                 break;
             case 1: // 時間内にゴールにたどり着け
 

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1619880542665924069}
   - component: {fileID: 1619880542665924070}
   - component: {fileID: 1619880542665924074}
-  - component: {fileID: 1619880542665924073}
   - component: {fileID: 1619880542665924079}
   m_Layer: 3
   m_Name: Sun
@@ -116,21 +115,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 1
---- !u!114 &1619880542665924073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619880542665924071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b2083ee59036c47a61a036848adcff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uIController: {fileID: 0}
-  stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
-  stageController: {fileID: 0}
 --- !u!111 &1619880542665924079
 Animation:
   m_ObjectHideFlags: 0

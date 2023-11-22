@@ -12,7 +12,6 @@ public class SphereRay : MonoBehaviour
     RaycastHit hit;              // Rayのhit
     Vector3 hitObjectPosition;   // hitしたオブジェクトの座標
     string hitObjectName;        // hitしたオブジェクトの名前
-    bool draw = false;           // 描画するかどうか
 
     void Update()
     {

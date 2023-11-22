@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1725714881869314581}
   - component: {fileID: 1725714881869314578}
   - component: {fileID: 1725714881869314576}
+  - component: {fileID: -2794042334315216883}
   m_Layer: 0
   m_Name: Neptune
   m_TagString: Planet
@@ -146,3 +147,22 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &-2794042334315216883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725714881869314568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b2083ee59036c47a61a036848adcff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uIController: {fileID: 0}
+  stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
+  stageController: {fileID: 0}
+  popupController: {fileID: 0}
+  missionUIController: {fileID: 0}
+  screenController: {fileID: 0}
+  planetAmount: {fileID: 0}
