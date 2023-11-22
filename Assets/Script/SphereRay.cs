@@ -30,7 +30,7 @@ public class SphereRay : MonoBehaviour
         }
 
         // ゲーム中なら描画
-        if ((screenController.screenNum == 0) && (hit.collider.gameObject.name != "Sphere"))
+        if ((screenController.screenNum == 0) && (hitObjectName != "Sphere"))
         {
             // 非表示なら表示
             if (!uIController.planetInfoUI.allPlanetInfo.activeSelf)

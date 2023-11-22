@@ -14,7 +14,6 @@ public class Shot : MonoBehaviour
     public int playerBouncePower = 100;  // 衝突したときのプレイヤーの反発力
     public int planetBouncePower = 100;  // 衝突したときの惑星の反発力
 
-    Camera cam;         // カメラ
     Vector3 direction;  // 向き
     Rigidbody rb;       // プレイヤーのRigidbody
     Rigidbody cRb;      // 衝突したオブジェクトのRigidbody
@@ -24,9 +23,6 @@ public class Shot : MonoBehaviour
     {
         // rigidbodyを取得
         rb = GetComponent<Rigidbody>();
-
-        // メインカメラを設定
-        cam = Camera.main;
     }
 
     // 衝突したとき
@@ -100,7 +96,7 @@ public class Shot : MonoBehaviour
                 energyController.energy -= charge / 10;
 
                 // ベクトルをカメラの向きにする
-                Vector3 velocity = cam.transform.forward;
+                Vector3 velocity = Camera.main.transform.forward;
 
                 // 力を加える
                 rb.AddForce(velocity * speed * charge);
