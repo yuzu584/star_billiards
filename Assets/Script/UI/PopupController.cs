@@ -58,6 +58,9 @@ public class PopupController : MonoBehaviour
         // ポップアップのインスタンスを生成
         drawingPopup[i] = Instantiate(popUp);
 
+        // ポップアップの名前を設定
+        drawingPopup[i].name = text;
+
         // 親を設定
         drawingPopup[i].transform.SetParent(uIController.messageUI.Message.transform, false);
 

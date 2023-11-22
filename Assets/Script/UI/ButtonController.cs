@@ -36,6 +36,8 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private PauseUIController pauseUIController;
     private CreateStage createStage;
 
+    private bool stageCreated = false; // ステージを作成したか
+
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
@@ -98,9 +100,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         // 画面番号をTitleに変更
         screenController.screenNum = 3;
-
-        // ステージを削除
-        createStage.Delete();
     }
 
     // ステージ選択画面に遷移
@@ -116,8 +115,13 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         // 画面番号をInGameに変更
         screenController.screenNum = 0;
 
+        // ステージクリア済みならステージを削除
+        if (stageCreated)
+            createStage.Delete();
+
         // ステージを作成
         createStage.Create();
+        stageCreated = true;
     }
 
     // ボタンのアニメーション
