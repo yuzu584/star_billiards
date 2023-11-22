@@ -5,8 +5,9 @@ using UnityEngine;
 // 球体のRayを生成し、関数を呼び出す
 public class SphereRay : MonoBehaviour
 {
-    [SerializeField] PlanetInfoUIController planetInfoUIController; // PlanetInfoUIControllerをInspectorで指定
-    [SerializeField] private ScreenController screenController;     // InspectorでScreenControllerを指定
+    [SerializeField] private PlanetInfoUIController planetInfoUIController; // PlanetInfoUIControllerをInspectorで指定
+    [SerializeField] private ScreenController screenController;             // InspectorでScreenControllerを指定
+    [SerializeField] private UIController uIController;                     // InspectorでUIControllerを指定
 
     RaycastHit hit;              // Rayのhit
     Vector3 hitObjectPosition;   // hitしたオブジェクトの座標
@@ -28,13 +29,18 @@ public class SphereRay : MonoBehaviour
             hitObjectName = hit.collider.gameObject.name;
         }
 
-        // ゲーム中なら描画、それ以外なら非表示
+        // ゲーム中なら描画
         if ((screenController.screenNum == 0) && (hit.collider.gameObject.name != "Sphere"))
-            draw = true;
-        else
-            draw = false;
+        {
+            // 非表示なら表示
+            if (!uIController.planetInfoUI.allPlanetInfo.activeSelf)
+                uIController.planetInfoUI.allPlanetInfo.SetActive(true);
 
-        // 惑星情報UIのリングを描画
-        planetInfoUIController.DrawPlanetInfoUI(draw, hitObjectPosition, hitObjectName);
+            // 惑星情報UIのリングを描画
+            planetInfoUIController.DrawPlanetInfoUI(hitObjectPosition, hitObjectName);
+        }
+        // 表示されているなら非表示
+        else if(uIController.planetInfoUI.allPlanetInfo.activeSelf)
+            uIController.planetInfoUI.allPlanetInfo.SetActive(false);
     }
 }
