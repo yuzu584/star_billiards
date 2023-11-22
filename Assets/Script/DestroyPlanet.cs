@@ -24,7 +24,7 @@ public class DestroyPlanet : MonoBehaviour
     // ‚à‚µ‰½‚©‚ÆÕ“Ë‚µ‚½‚ç
     void OnCollisionEnter(Collision collision)
     {
-        // ƒQ[ƒ€’†‚É˜f¯‚ÆÕ“Ë‚µ‚½‚ç
+        // ƒQ[ƒ€’†‚ÉP¯‚ÆÕ“Ë‚µ‚½‚ç
         if ((collision.gameObject.CompareTag("FixedStar")) && (_screenController.screenNum == 0))
         {
             // ˜f¯‚ª”j‰ó‚³‚ê‚½|‚ğ“`‚¦‚éƒ|ƒbƒvƒAƒbƒv‚ğ•`‰æ
