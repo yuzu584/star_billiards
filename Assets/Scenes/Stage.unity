@@ -4072,6 +4072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
   stageController: {fileID: 291823625}
+  sphere: {fileID: 1048813890}
 --- !u!1 &1469557845
 GameObject:
   m_ObjectHideFlags: 0
