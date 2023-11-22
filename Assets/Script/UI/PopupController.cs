@@ -33,10 +33,8 @@ public class PopupController : MonoBehaviour
         }
 
         if (moveDistance < 0)
-        {
-            // 描画していない状態にする
-            drawingPopup[i] = null;
-        }
+            // ポップアップを削除
+            Destroy(drawingPopup[i].gameObject);
     }
 
     // ポップアップを描画
@@ -86,11 +84,6 @@ public class PopupController : MonoBehaviour
 
         // ポップアップを動かす
         StartCoroutine(MovePopup(time, fadeTime, drawingPopup[i], -moveDistance, defaultPosition, i));
-
-        yield return new WaitUntil(() => !(drawingPopup[i]));
-
-        // ポップアップを削除
-        drawingPopup[i] = null;
     }
 
     void Start()
@@ -110,16 +103,15 @@ public class PopupController : MonoBehaviour
             {
                 // ゲーム画面かつ非表示なら
                 if ((screenController.screenNum == 0) && (!drawingPopup[i].activeSelf))
-                {
+
                     // 表示する
                     drawingPopup[i].SetActive(true);
-                }
+
                 // ゲーム画面以外かつ表示されているなら
                 else if ((screenController.screenNum != 0) && (drawingPopup[i].activeSelf))
-                {
+
                     // 非表示にする
                     drawingPopup[i].SetActive(false);
-                }
             }
         }
     }
