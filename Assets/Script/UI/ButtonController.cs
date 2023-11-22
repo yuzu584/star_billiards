@@ -13,10 +13,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private float fadeTime;                                // フェード時間
     [SerializeField] private Image Btn;                                     // ボタンの画像
     [SerializeField] private Text BtnText;                                  // ボタンのテキスト
-    [SerializeField] private ScreenController screenController;             // InspectorでScreenControllerを指定
-    [SerializeField] private UIController uIController;                     // InspectorでUIControllerを指定
-    [SerializeField] private PauseUIController pauseUIController;           // InspectorでPauseUIControllerを指定
-    [SerializeField] private GameObject planetInfo;                         // 惑星情報UI
     [SerializeField] private enum ClickAction                               // ボタンを押したときの効果
     {
         ReturnToGame,     // ゲームに戻る
@@ -26,6 +22,19 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         StageStart,       // ステージスタート
     }
     [SerializeField] private ClickAction clickAction; // ボタンを押したときの効果
+
+    // Findで探すGameObject
+    private GameObject ScreenController;
+    private GameObject Canvas;
+    private GameObject UIFunctionController;
+    private GameObject Stage;
+    private GameObject PlanetInfo;
+
+    // Findで探したGameObjectのコンポーネント
+    private ScreenController screenController;
+    private UIController uIController;
+    private PauseUIController pauseUIController;
+    private CreateStage createStage;
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
@@ -78,7 +87,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         pauseUIController.DrawPauseUI(false);
 
         // 惑星情報UIを表示
-        planetInfo.SetActive(true);
+        PlanetInfo.SetActive(true);
 
         // 時間の流れを元に戻す
         Time.timeScale = 1.0f;
@@ -89,6 +98,9 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         // 画面番号をTitleに変更
         screenController.screenNum = 3;
+
+        // ステージを削除
+        createStage.Delete();
     }
 
     // ステージ選択画面に遷移
@@ -103,6 +115,9 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         // 画面番号をInGameに変更
         screenController.screenNum = 0;
+
+        // ステージを作成
+        createStage.Create();
     }
 
     // ボタンのアニメーション
@@ -125,5 +140,21 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
             // 1フレーム待つ
             yield return null;
         }
+    }
+
+    void Start()
+    {
+        // GameObjectを探す
+        ScreenController = GameObject.Find("ScreenController");
+        Canvas = GameObject.Find("Canvas");
+        UIFunctionController = GameObject.Find("UIFunctionController");
+        Stage = GameObject.Find("Stage");
+        PlanetInfo = GameObject.Find("Planet Info");
+
+        // 探したGameObjectのコンポーネントを取得
+        screenController = ScreenController.gameObject.GetComponent<ScreenController>();
+        uIController = Canvas.gameObject.GetComponent<UIController>();
+        pauseUIController = UIFunctionController.GetComponent<PauseUIController>();
+        createStage = Stage.GetComponent<CreateStage>();
     }
 }
