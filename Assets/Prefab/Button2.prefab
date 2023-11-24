@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: d92459fa41ce17a4788b4cc97f57703b, type: 2}
+  m_Material: {fileID: 2100000, guid: 3dd7807a42b312d4abdbf91c61cccf93, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -94,10 +94,6 @@ MonoBehaviour:
   fadeTime: 0.1
   Btn: {fileID: 5970234050213230016}
   BtnText: {fileID: 5970234051039374986}
-  screenController: {fileID: 0}
-  uIController: {fileID: 0}
-  pauseUIController: {fileID: 0}
-  planetInfo: {fileID: 0}
   clickAction: 0
 --- !u!1 &5970234051039374984
 GameObject:
@@ -157,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: d92459fa41ce17a4788b4cc97f57703b, type: 2}
+  m_Material: {fileID: 2100000, guid: 3dd7807a42b312d4abdbf91c61cccf93, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}

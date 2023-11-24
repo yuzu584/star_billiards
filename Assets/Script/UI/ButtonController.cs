@@ -57,6 +57,9 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     // ボタンがクリックされたら
     public void OnPointerClick(PointerEventData pointerEventData)
     {
+        // ボタンの色をリセット
+        Btn.color = defaultColor;
+
         // ボタンごとの効果によって分岐
         switch (clickAction)
         {

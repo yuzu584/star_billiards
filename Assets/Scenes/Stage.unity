@@ -930,6 +930,10 @@ PrefabInstance:
       value: Return to mainmenu
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: d92459fa41ce17a4788b4cc97f57703b, type: 2}
+    - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
       objectReference: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
@@ -1021,6 +1025,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5970234051254067567, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: d92459fa41ce17a4788b4cc97f57703b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
 --- !u!224 &254362117 stripped
@@ -4193,6 +4201,10 @@ PrefabInstance:
       value: Stage Select
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: d92459fa41ce17a4788b4cc97f57703b, type: 2}
+    - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
       objectReference: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
@@ -4284,6 +4296,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5970234051254067567, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: d92459fa41ce17a4788b4cc97f57703b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
 --- !u!224 &1497186009 stripped
