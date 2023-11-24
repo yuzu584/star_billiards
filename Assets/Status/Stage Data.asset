@@ -15,7 +15,7 @@ MonoBehaviour:
   stageList:
   - stageName: Solar system
     fixedStar:
-    - {fileID: 1619880542665924071, guid: 07738d4bc84c9834caf27599a491cc2c, type: 3}
+    - {fileID: 8018973082679575124, guid: 07738d4bc84c9834caf27599a491cc2c, type: 3}
     planet:
     - {fileID: 8621607546710637530, guid: ea78bcce29604464baf87d9092eb40a4, type: 3}
     - {fileID: 3522120587113054704, guid: a9871198cc31145408afb1e826eaadd7, type: 3}

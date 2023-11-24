@@ -9,6 +9,7 @@ public class StageSelectUIController : MonoBehaviour
 {
     [SerializeField] private StageData stageData;             // InspectorでStageDataを指定
     [SerializeField] private StageController stageController; // InspectorでStageControllerを指定
+    [SerializeField] private GameObject[] stageIcon;          // ステージのアイコン
 
     // ステージ情報を描画
     public void DrawStageInfo(Text name, Text mission)
