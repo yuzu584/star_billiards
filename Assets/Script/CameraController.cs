@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
                 // プレイヤーを追従
                 chasePlayer = true;
 
-                // カメラの位置を微調整
+                // カメラの座標を微調整
                 transform.position = new Vector3(5.0f, 1.0f, 0.0f);
 
                 // プレイヤーの子オブジェクトに設定
@@ -31,6 +31,17 @@ public class CameraController : MonoBehaviour
 
             // 視点移動
             tPSCamera.MoveCameraAngle();
+        }
+        // ステージ選択画面なら
+        else if (screenController.screenNum == 4)
+        {
+            // 親子関係を解消
+            chasePlayer = false;
+            transform.parent = null;
+
+            // 座標と向きを変更
+            transform.position = new Vector3(0.0f, 50.0f, 0.0f);
+            transform.rotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
         }
     }
 }
