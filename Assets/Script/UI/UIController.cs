@@ -269,5 +269,8 @@ public class UIController : MonoBehaviour
                 stageSelectUI.name,
                 stageSelectUI.mission);
         }
+
+        // ステージのアイコンを表示/非表示
+        uIFunction.StageSelectUIController.DrawStageIcon(stageSelectUI.allStageSelectUI.activeSelf);
     }
 }

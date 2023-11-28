@@ -28,4 +28,14 @@ public class StageSelectUIController : MonoBehaviour
                 break;
         }
     }
+
+    // ステージのアイコンを表示/非表示
+    public void DrawStageIcon(bool draw)
+    {
+        // ステージのアイコンを表示/非表示切り替え
+        for (int i = 0; i < stageIcon.Length;  i++)
+        {
+            stageIcon[i].SetActive(draw);
+        }
+    }
 }

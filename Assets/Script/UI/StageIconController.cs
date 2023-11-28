@@ -7,8 +7,8 @@ using UnityEngine.EventSystems;
 // ステージ選択画面のアイコンを管理
 public class StageIconController : MonoBehaviour
 {
-    [SerializeField] private StageController stageController; // InspectorでStageControllerを指定
-    [SerializeField] private enum ClickAction                 // アイコンが押されたときの挙動
+    [SerializeField] private StageController stageController;   // InspectorでStageControllerを指定
+    [SerializeField] private enum ClickAction                   // アイコンが押されたときの挙動
     {
         solarSystem,
     }
