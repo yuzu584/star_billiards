@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 目標の座標に移動する
+// ターゲットの座標に移動する
 public class ChaseTarget : MonoBehaviour
 {
-    public GameObject target;  // 追いかける対象
+    public GameObject target; // ターゲット
 
-    void Update()
+    // ターゲットの座標に移動
+    public void Chase()
     {
-        // 座標を対象の位置に移動
+        // ターゲットの座標に移動
         transform.position = target.transform.position;
 
         // 座標を少し上にずらす
