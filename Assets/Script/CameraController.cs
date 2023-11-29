@@ -25,8 +25,9 @@ public class CameraController : MonoBehaviour
                 // プレイヤーを追従
                 chasePlayer = true;
 
-                // カメラとプレイヤーの距離を少し離す
-                transform.position = AppConst.CAMERA_AND_PLAYER_DISTANCE;
+                // 座標と向きを変更
+                transform.position = AppConst.DEFAULT_IN_GAME_POS;
+                transform.rotation = Quaternion.Euler(AppConst.DEFAULT_IN_GAME_ANGLE);
 
                 // プレイヤーの子オブジェクトに設定
                 transform.SetParent(player.transform, false);

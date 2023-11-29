@@ -6,12 +6,13 @@ namespace Const
 {
     public static class AppConst
     {
-        public static readonly Vector3 DEFAULT_STAGE_SELECT_POS = new Vector3(0.0f, 50.0f, 0.0f);    // ステージ選択画面のカメラの初期位置
-        public static readonly Vector3 DEFAULT_STAGE_SELECT_ANGLE = new Vector3(0.0f, -90.0f, 0.0f); // ステージ選択画面のカメラの初期の向き
+        public static readonly Vector3 DEFAULT_STAGE_SELECT_POS = new Vector3(0.0f, 100.0f, 0.0f);    // ステージ選択画面のカメラの初期位置
+        public static readonly Vector3 DEFAULT_STAGE_SELECT_ANGLE = new Vector3(30.0f, -90.0f, 0.0f); // ステージ選択画面のカメラの初期の向き
+        public static readonly Vector3 DEFAULT_IN_GAME_POS = new Vector3(5.0f, 1.0f, 0.0f);           // ゲーム画面のカメラの初期位置
+        public static readonly Vector3 DEFAULT_IN_GAME_ANGLE = new Vector3(0.0f, -90.0f, 0.0f);       // ゲーム画面のカメラの初期の向き
         public const float SPEED_MAINTENANCE_RATE = 1.008f;                                          // プレイヤーの速度維持率
         public const float SPEED_REDUCTION_RATE = 0.95f;                                             // プレイヤーの速度減少率
         public const float SPEED_THRESHOLD = 0.01f;                                                  // プレイヤーの速度のしきい値
-        public static readonly Vector3 CAMERA_AND_PLAYER_DISTANCE = new Vector3(5.0f, 1.0f, 0.0f);   // カメラとプレイヤーの距離
         public const int SKILL_NUM = 3;                                                              // スキルの数
         public static readonly string[] SKILL_NAME = new string[]                                    // スキル名
         {
