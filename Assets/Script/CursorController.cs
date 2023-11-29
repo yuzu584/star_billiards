@@ -18,17 +18,12 @@ public class CursorController : MonoBehaviour
         // カーソルの表示非表示切り替え
         Cursor.visible = draw;
 
-        // カーソルを表示するなら
+        // カーソルを表示するなら固定を解除
         if (draw)
-        {
-            // カーソルの固定を解除
             Cursor.lockState = CursorLockMode.None;
-        }
-        // カーソルが非表示なら
+
+        // カーソルが非表示なら画面中央に固定
         else
-        {
-            // カーソルを画面中央に固定
             Cursor.lockState = CursorLockMode.Locked;
-        }
     }
 }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Const;
+
 // 発射ボタンで弾を発射する
 public class Shot : MonoBehaviour
 {
@@ -58,7 +60,7 @@ public class Shot : MonoBehaviour
         Ray ray = new Ray(transform.position, rb.velocity.normalized);
 
         // 球体のRayを生成
-        if (Physics.SphereCast(ray, 0.5f, out hit))
+        if (Physics.SphereCast(ray, transform.localScale.x, out hit))
         {
             // プレイヤーの移動方向とRayが当たった位置の法線ベクトルから角度を計算
             direction = Vector3.Reflect(rb.velocity.normalized, hit.normal);
@@ -71,7 +73,7 @@ public class Shot : MonoBehaviour
         if ((Input.GetAxisRaw("Fire1") > 0) && (energyController.energy > 0))
         {
             // 減速させる
-            rb.velocity *= 0.95f;
+            rb.velocity *= AppConst.SPEED_REDUCTION_RATE;
         }
     }
 

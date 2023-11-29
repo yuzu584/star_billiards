@@ -8,7 +8,6 @@ public class DestroyPlanet : MonoBehaviour
     [SerializeField] private StageData stageData; // Inspector‚ÅStageData‚ðŽw’è
 
     // Find‚Å’T‚·GameObject
-    private GameObject canvas;
     private GameObject stageController;
     private GameObject uIFunctionController;
     private GameObject screenController;
@@ -48,7 +47,6 @@ public class DestroyPlanet : MonoBehaviour
     void Start()
     {
         // GameObject‚ð’T‚·
-        canvas = GameObject.Find("Canvas");
         stageController = GameObject.Find("StageController");
         uIFunctionController = GameObject.Find("UIFunctionController");
         screenController = GameObject.Find("ScreenController");

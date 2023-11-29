@@ -43,15 +43,11 @@ public class CreateStage : MonoBehaviour
         {
             // 恒星のインスタンスを削除
             for (int i = 0; i < stageData.stageList[stageController.stageNum].fixedStar.Length; i++)
-            {
                 Destroy(star[i]);
-            }
 
             // 惑星のインスタンスを削除
             for (int i = 0; i < stageData.stageList[stageController.stageNum].planet.Length; i++)
-            {
                 Destroy(planet[i]);
-            }
         }
 
         // スフィアを表示/非表示切り替え

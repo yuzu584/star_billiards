@@ -10,9 +10,15 @@ public class ScreenController : MonoBehaviour
     [SerializeField] private PauseUIController pauseUIController;       // InspectorでPauseUIControllerを指定
     [SerializeField] private ScreenData screenData;                     // InspectorでScreenDataを指定
 
-    public int screenNum = 3; // 画面番号
+    // 画面番号
+    // 0 : ゲーム画面
+    // 1 : ポーズ画面
+    // 2 : ステージクリア画面
+    // 3 : メインメニュー
+    // 4 : ステージ選択画面
+    public int screenNum = 3;
 
-    bool changeStageClearScreen = false; // ステージクリア画面に遷移したかどうか
+    private bool changeStageClearScreen = false; // ステージクリア画面に遷移したかどうか
 
     void Update()
     {

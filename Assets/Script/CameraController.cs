@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Const;
+
 // メインカメラを管理
 public class CameraController : MonoBehaviour
 {
@@ -11,9 +13,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private GameObject player;                 // プレイヤー
 
     private bool chasePlayer = false; // プレイヤーを追従しているかどうか
-
-    static readonly Vector3 DEFAULT_STAGE_SELECT_POS = new Vector3(0.0f, 50.0f, 0.0f);    // ステージ選択画面のカメラの初期位置
-    static readonly Vector3 DEFAULT_STAGE_SELECT_ANGLE = new Vector3(0.0f, -90.0f, 0.0f); // ステージ選択画面のカメラの初期の向き
 
     void Update()
     {
@@ -26,8 +25,8 @@ public class CameraController : MonoBehaviour
                 // プレイヤーを追従
                 chasePlayer = true;
 
-                // カメラの座標を微調整
-                transform.position = new Vector3(5.0f, 1.0f, 0.0f);
+                // カメラとプレイヤーの距離を少し離す
+                transform.position = AppConst.CAMERA_AND_PLAYER_DISTANCE;
 
                 // プレイヤーの子オブジェクトに設定
                 transform.SetParent(player.transform, false);
@@ -50,8 +49,8 @@ public class CameraController : MonoBehaviour
                 transform.parent = null;
 
             // 座標と向きを変更
-            transform.position = DEFAULT_STAGE_SELECT_POS;
-            transform.rotation = Quaternion.Euler(DEFAULT_STAGE_SELECT_ANGLE);
+            transform.position = AppConst.DEFAULT_STAGE_SELECT_POS;
+            transform.rotation = Quaternion.Euler(AppConst.DEFAULT_STAGE_SELECT_ANGLE);
 
             // 視野角をリセット
             fOV.ResetFOV();

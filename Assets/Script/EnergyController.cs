@@ -28,17 +28,10 @@ public class EnergyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // もしエネルギーが最大値を超えてたら
-        if(energy > maxEnergy)
-        {
-            // 最大値に戻す
+        // エネルギーの数値が範囲外なら範囲内に戻す
+        if (energy > maxEnergy)
             energy = maxEnergy;
-        }
-        // もしエネルギーが0未満なら
-        else if(energy < 0)
-        {
-            // エネルギーを0にする
+        else if (energy < 0)
             energy = 0;
-        }
     }
 }

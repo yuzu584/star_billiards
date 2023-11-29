@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Const;
+
 // 球体のRayを生成し、関数を呼び出す
 public class SphereRay : MonoBehaviour
 {
@@ -9,9 +11,9 @@ public class SphereRay : MonoBehaviour
     [SerializeField] private ScreenController screenController;             // InspectorでScreenControllerを指定
     [SerializeField] private UIController uIController;                     // InspectorでUIControllerを指定
 
-    RaycastHit hit;              // Rayのhit
-    Vector3 hitObjectPosition;   // hitしたオブジェクトの座標
-    string hitObjectName;        // hitしたオブジェクトの名前
+    private RaycastHit hit;            // Rayのhit
+    private Vector3 hitObjectPosition; // hitしたオブジェクトの座標
+    private string hitObjectName;      // hitしたオブジェクトの名前
 
     void Update()
     {
@@ -19,7 +21,7 @@ public class SphereRay : MonoBehaviour
         Ray ray = new Ray(Camera.main.transform.position,Camera.main.transform.forward);
 
         // 球体のRayを生成
-        if (Physics.SphereCast(ray, 10.0f, out hit))
+        if (Physics.SphereCast(ray, AppConst.SPHERE_RAY_WIDTH, out hit))
         {
             // hitしたオブジェクトの座標を取得
             hitObjectPosition = hit.collider.gameObject.transform.position;

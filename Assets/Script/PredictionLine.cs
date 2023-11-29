@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Const;
+
 // 反射するRayとLineを生成
 public class PredictionLine : MonoBehaviour
 {
@@ -21,13 +23,13 @@ public class PredictionLine : MonoBehaviour
 
     void Start()
     {
-        // 開始点の太さを0.1にする
-        lineRenderer.startWidth = 0.1f;
+        // 始点の太さを指定
+        lineRenderer.startWidth = AppConst.PREDICTION_LINE_START_WIDTH;
 
-        // 終了点の太さを1にする
-        lineRenderer.endWidth = 1f;
+        // 終点の太さを指定
+        lineRenderer.endWidth = AppConst.PREDICTION_LINE_END_WIDTH;
 
-        // lineRendererの線の数
+        // lineRendererの線の数を指定
         lineRenderer.positionCount = 3;
 
         // rigidbodyを取得
@@ -46,8 +48,8 @@ public class PredictionLine : MonoBehaviour
         // Rayを生成
         Ray ray = new Ray(origin, direction);
 
-        // 球体のRayを生成
-        if (Physics.SphereCast(ray, 0.5f, out hit))
+        // プレイヤーと同じ幅のRayを生成
+        if (Physics.SphereCast(ray, target.transform.localScale.x, out hit))
         {
             // Rayに沿ってLineを描画
             lineRenderer.SetPosition(0, origin);
@@ -66,8 +68,8 @@ public class PredictionLine : MonoBehaviour
         // Rayを生成
         ray = new Ray(hit.point, reflectionDirection);
 
-        // 球体のRayを生成
-        if (Physics.SphereCast(ray, 0.5f, out hit))
+        // プレイヤーと同じ幅のRayを生成
+        if (Physics.SphereCast(ray, target.transform.localScale.x, out hit))
         {
             // 反射後のRayに沿ってLineを描画
             lineRenderer.SetPosition(2, hit.point);
@@ -96,7 +98,7 @@ public class PredictionLine : MonoBehaviour
             }
         }
         // ゲーム画面ではないなら
-        else
+        else if(lineRenderer.enabled == true)
         {
             // 線を非表示
             lineRenderer.enabled = false;
