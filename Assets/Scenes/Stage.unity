@@ -2895,6 +2895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenController: {fileID: 1600059365}
   tPSCamera: {fileID: 963194229}
+  fOV: {fileID: 963194231}
   player: {fileID: 2052131786}
 --- !u!1 &1015792383
 GameObject:
