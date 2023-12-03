@@ -2268,6 +2268,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dafb1f5228efb46b7b2799422ef714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inGameUI:
+    allInGameUI: {fileID: 1564237707}
   chargeUI:
     allChargeUI: {fileID: 1240062157}
     chargeCircle: {fileID: 1981505939}
@@ -2292,8 +2294,8 @@ MonoBehaviour:
   missionUI:
     missionText: {fileID: 1740467959}
     icon: {fileID: 1553336409}
-  inGameUI:
-    allInGameUI: {fileID: 1564237707}
+  planetListUI:
+    allPlanetList: {fileID: 1402327227}
   pauseUI:
     allPauseUI: {fileID: 630366473}
   stageClearUI:
@@ -2334,6 +2336,7 @@ MonoBehaviour:
     stageClearUIController: {fileID: 1148952475}
     mainMenuUIController: {fileID: 1148952476}
     StageSelectUIController: {fileID: 1148952477}
+    planetListUIController: {fileID: 1148952478}
 --- !u!114 &869580812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3311,6 +3314,7 @@ GameObject:
   - component: {fileID: 1148952475}
   - component: {fileID: 1148952476}
   - component: {fileID: 1148952477}
+  - component: {fileID: 1148952478}
   m_Layer: 0
   m_Name: UIFunctionController
   m_TagString: Untagged
@@ -3487,6 +3491,18 @@ MonoBehaviour:
   stageController: {fileID: 291823625}
   stageIcon:
   - {fileID: 1517996453}
+--- !u!114 &1148952478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148952465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d190d44caef0f44b5388d96aef0b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1180901546
 GameObject:
   m_ObjectHideFlags: 0
@@ -6456,7 +6472,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052131786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 500, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []

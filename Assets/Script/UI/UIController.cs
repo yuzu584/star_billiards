@@ -8,18 +8,26 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     // InspectorでUIの配列を指定
+    public InGameUI inGameUI;
     public ChargeUI chargeUI;
     public EnergyUI energyUI;
     public MessageUI messageUI;
     public SkillUI skillUI;
     public PlanetInfoUI planetInfoUI;
     public MissionUI missionUI;
-    public InGameUI inGameUI;
+    public PlanetListUI planetListUI;
     public PauseUI pauseUI;
     public StageClearUI stageClearUI;
     public MainMenuUI mainMenuUI;
     public StageSelectUI stageSelectUI;
     public OtherUI otherUI;
+
+    // ゲーム画面のUI
+    [System.Serializable]
+    public class InGameUI
+    {
+        public GameObject allInGameUI;          // ゲーム画面のUI
+    }
 
     // チャージのUI
     [System.Serializable]
@@ -75,11 +83,10 @@ public class UIController : MonoBehaviour
         public GameObject icon;              // ミッションのアイコン
     }
 
-    // ゲーム画面のUI
     [System.Serializable]
-    public class InGameUI
+    public class PlanetListUI
     {
-        public GameObject allInGameUI;          // ゲーム画面のUI
+        public GameObject allPlanetList;     // 全ての惑星リストUI
     }
 
     // ポーズ画面のUI
@@ -147,6 +154,7 @@ public class UIController : MonoBehaviour
         public StageClearUIController stageClearUIController;
         public MainMenuUIController mainMenuUIController;
         public StageSelectUIController StageSelectUIController;
+        public PlanetListUIController planetListUIController;
     }
 
     RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
@@ -179,6 +187,9 @@ public class UIController : MonoBehaviour
             stageClearUI.allStageClearUI,
             stageClearUI.button,
             stageClearUI.stageClearText);
+
+        // 惑星リストUIを非表示
+        planetListUI.allPlanetList.SetActive(false);
     }
 
     void Update()
