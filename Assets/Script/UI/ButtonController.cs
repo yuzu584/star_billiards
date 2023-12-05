@@ -29,12 +29,14 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private GameObject UIFunctionController;
     private GameObject Stage;
     private GameObject PlanetInfo;
+    private GameObject PlanetList;
 
     // Findで探したGameObjectのコンポーネント
     private ScreenController screenController;
     private UIController uIController;
     private PauseUIController pauseUIController;
     private CreateStage createStage;
+    private PlanetListController planetListController;
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
@@ -121,6 +123,9 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
         // ステージを作成
         createStage.Create(true);
+
+        // 惑星リストを作成
+        planetListController.CreateList();
     }
 
     // ボタンのアニメーション
@@ -153,11 +158,13 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         UIFunctionController = GameObject.Find("UIFunctionController");
         Stage = GameObject.Find("Stage");
         PlanetInfo = GameObject.Find("Planet Info");
+        PlanetList = GameObject.Find("PlanetList");
 
         // 探したGameObjectのコンポーネントを取得
         screenController = ScreenController.gameObject.GetComponent<ScreenController>();
         uIController = Canvas.gameObject.GetComponent<UIController>();
         pauseUIController = UIFunctionController.GetComponent<PauseUIController>();
         createStage = Stage.GetComponent<CreateStage>();
+        planetListController = PlanetList.GetComponent<PlanetListController>();
     }
 }

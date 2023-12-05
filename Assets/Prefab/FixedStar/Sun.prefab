@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 7624361161684046481}
   m_Layer: 0
   m_Name: Sun
-  m_TagString: Untagged
+  m_TagString: FixedStar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
