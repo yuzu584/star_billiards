@@ -23,6 +23,8 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     }
     [SerializeField] private ClickAction clickAction; // ボタンを押したときの効果
 
+    public int number = 0; // ボタン識別用番号
+
     // Findで探すGameObject
     private GameObject ScreenController;
     private GameObject Canvas;

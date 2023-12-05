@@ -140,6 +140,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private StageController stageController;             // InspectorでStageControllerを指定
     [SerializeField] private PlanetAmount planetAmount;                   // InspectorでPlanetAmountを指定
     [SerializeField] private SkillController skillController;             // InspectorでSkillControllerを指定
+    [SerializeField] private PlanetListController planetListController;   // InspectorでPlanetListControllerを指定
     [SerializeField] private Rigidbody rb;                                // プレイヤーのRigidbody
 
     // UI描画関数
@@ -187,9 +188,6 @@ public class UIController : MonoBehaviour
             stageClearUI.allStageClearUI,
             stageClearUI.button,
             stageClearUI.stageClearText);
-
-        // 惑星リストUIを非表示
-        planetListUI.allPlanetList.SetActive(false);
     }
 
     void Update()
@@ -226,6 +224,9 @@ public class UIController : MonoBehaviour
             // 移動速度の数値を更新
             uIFunction.speedUIController.DrawSpeedValue(otherUI.speedValue);
         }
+
+        // 惑星リストUIを表示/非表示
+        planetListUI.allPlanetList.SetActive(planetListController.uiDrawing);
 
         // ステージをクリアしたかつUIが描画されていないなら
         if ((stageController.stageCrear) && (!(drawedStageClearUI)))

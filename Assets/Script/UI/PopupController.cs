@@ -11,7 +11,7 @@ public class PopupController : MonoBehaviour
     [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
     [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
 
-    [System.NonSerialized] public GameObject[] drawingPopup = new GameObject[10]; // ポップアップがの配列
+    [System.NonSerialized] public GameObject[] drawingPopup = new GameObject[10]; // ポップアップの配列
 
     // ポップアップを動かす
     public IEnumerator MovePopup(float time, float fadeTime, GameObject popup, float moveDistance, Vector3 defaultPosition, int i)

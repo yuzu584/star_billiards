@@ -1322,8 +1322,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
   stageController: {fileID: 291823625}
+  planetListUIController: {fileID: 1148952478}
   starParentObj: {fileID: 1400418623}
   planetList: []
+  uiDrawing: 0
 --- !u!1 &372907191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2413,6 +2415,7 @@ MonoBehaviour:
   stageController: {fileID: 291823625}
   planetAmount: {fileID: 1658508822}
   skillController: {fileID: 2052131794}
+  planetListController: {fileID: 354845784}
   rb: {fileID: 2052131791}
   uIFunction:
     energyUIController: {fileID: 1148952467}
@@ -3590,6 +3593,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d190d44caef0f44b5388d96aef0b01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planetListBtn: {fileID: 3022205939589738930, guid: 56e125e838fe6a140a10324d3180ba47, type: 3}
+  parentObj: {fileID: 1402327227}
+  planetListController: {fileID: 354845784}
 --- !u!1 &1180901546
 GameObject:
   m_ObjectHideFlags: 0
