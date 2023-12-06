@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.078431375}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1323,6 +1323,7 @@ MonoBehaviour:
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
   stageController: {fileID: 291823625}
   planetListUIController: {fileID: 1148952478}
+  screenController: {fileID: 1600059365}
   starParentObj: {fileID: 1400418623}
   planetList: []
   uiDrawing: 0
@@ -3596,6 +3597,7 @@ MonoBehaviour:
   planetListBtn: {fileID: 3022205939589738930, guid: 56e125e838fe6a140a10324d3180ba47, type: 3}
   parentObj: {fileID: 1402327227}
   planetListController: {fileID: 354845784}
+  btnList: []
 --- !u!1 &1180901546
 GameObject:
   m_ObjectHideFlags: 0

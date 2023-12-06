@@ -16,8 +16,8 @@ public class PlanetListUIController : MonoBehaviour
     // 惑星リストUIを描画
     public void DrawPlanetList()
     {
-        // リストの要素をすべて削除
-        btnList.Clear();
+        // 惑星リストを作成
+        planetListController.CreateList();
 
         // 惑星リストの要素数分繰り返す
         for (int i = 0; i < planetListController.planetList.Count; i++)
@@ -32,17 +32,26 @@ public class PlanetListUIController : MonoBehaviour
             btnList[i].transform.SetParent(parentObj.transform, false);
 
             // 位置を設定
-            btnList[i].transform.position += new Vector3(0.0f, i * -40.0f, 0.0f);
+            btnList[i].transform.position += new Vector3(0.0f, i * -75.0f, 0.0f);
 
             // プレハブのテキストを取得
             Text btnText = btnList[i].transform.GetChild(2).GetComponent<Text>();
 
             // プレハブのテキストを設定
             btnText.text = planetListController.planetList[i].name;
-
-            // ボタン識別用番号を設定
-            ButtonController btnNum = btnList[i].GetComponent<ButtonController>();
-            btnNum.number = i;
         }
+    }
+
+    // 惑星リストUIの要素を削除
+    public void DeletePlanetListContent()
+    {
+        // インスタンスを削除
+        for (int i = 0; i < btnList.Count; i++)
+        {
+            Destroy(btnList[i].gameObject);
+        }
+
+        // リストを初期化
+        btnList.Clear();
     }
 }

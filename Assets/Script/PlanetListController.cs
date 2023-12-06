@@ -8,6 +8,7 @@ public class PlanetListController : MonoBehaviour
     [SerializeField] private StageData stageData;                           // InspectorでStageDataを指定
     [SerializeField] private StageController stageController;               // InspectorでStageControllerを指定
     [SerializeField] private PlanetListUIController planetListUIController; // InspectorでPlanetListUIControllerを指定
+    [SerializeField] private ScreenController screenController;             // InspectorでScreenControllerを指定
     [SerializeField] private GameObject starParentObj;                      // ステージの星をまとめる親オブジェクト
 
     public List<GameObject> planetList;   // 惑星のリスト
@@ -36,16 +37,22 @@ public class PlanetListController : MonoBehaviour
 
     void Update()
     {
-        // 惑星リスト表示ボタンが押されたら表示/非表示切り替え
-        if ((Input.GetAxisRaw("PlanetList") != 0) && (!isPushKey))
+        // ゲーム中に惑星リスト表示ボタンが押されたら表示/非表示切り替え
+        if ((screenController.screenNum == 0) && (Input.GetAxisRaw("PlanetList") != 0) && (!isPushKey))
         {
             isPushKey = true;
             uiDrawing = !uiDrawing;
-            planetListUIController.DrawPlanetList();
+
+            // UIが描画されているかで分岐
+            if (uiDrawing)
+                // UIを描画
+                planetListUIController.DrawPlanetList();
+            else
+                // UIを削除
+                planetListUIController.DeletePlanetListContent();
         }
-        else if ((Input.GetAxisRaw("PlanetList") == 0) && (isPushKey))
-        {
+        // ゲーム中にキーが押されていなければisPushKeyを押されていない状態にする
+        else if ((screenController.screenNum == 0) && (Input.GetAxisRaw("PlanetList") == 0) && (isPushKey))
             isPushKey = false;
-        }
     }
 }
