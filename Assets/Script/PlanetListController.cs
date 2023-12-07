@@ -37,22 +37,32 @@ public class PlanetListController : MonoBehaviour
 
     void Update()
     {
-        // ゲーム中に惑星リスト表示ボタンが押されたら表示/非表示切り替え
-        if ((screenController.screenNum == 0) && (Input.GetAxisRaw("PlanetList") != 0) && (!isPushKey))
+        // ゲーム中か惑星リスト画面で惑星リスト表示ボタンが押されたら表示/非表示切り替え
+        if (((screenController.screenNum == 0) || (screenController.screenNum == 5)) && (Input.GetAxisRaw("PlanetList") != 0) && (!isPushKey))
         {
             isPushKey = true;
             uiDrawing = !uiDrawing;
 
             // UIが描画されているかで分岐
             if (uiDrawing)
+            {
+                // 惑星リスト画面に遷移
+                screenController.screenNum = 5;
+
                 // UIを描画
                 planetListUIController.DrawPlanetList();
+            }
             else
+            {
+                // ゲーム画面に遷移
+                screenController.screenNum = 0;
+
                 // UIを削除
                 planetListUIController.DeletePlanetListContent();
+            }
         }
-        // ゲーム中にキーが押されていなければisPushKeyを押されていない状態にする
-        else if ((screenController.screenNum == 0) && (Input.GetAxisRaw("PlanetList") == 0) && (isPushKey))
+        // ゲーム中か惑星リスト画面でキーが押されていなければisPushKeyを押されていない状態にする
+        else if (((screenController.screenNum == 0) || (screenController.screenNum == 5)) && (Input.GetAxisRaw("PlanetList") == 0) && (isPushKey))
             isPushKey = false;
     }
 }

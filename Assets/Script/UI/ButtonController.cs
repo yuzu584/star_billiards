@@ -13,15 +13,17 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private float fadeTime;                                // フェード時間
     [SerializeField] private Image Btn;                                     // ボタンの画像
     [SerializeField] private Text BtnText;                                  // ボタンのテキスト
-    [SerializeField] private enum ClickAction                               // ボタンを押したときの効果
+    public enum ClickAction                                                 // ボタンを押したときの効果
     {
+        None,             // 効果なし
         ReturnToGame,     // ゲームに戻る
         Setting,          // 設定画面を開く
         ReturnToMainMenu, // メインメニューに戻る
         StageSelect,      // ステージ選択画面に戻る
         StageStart,       // ステージスタート
+        LockOnPlanet,     // 惑星をロックオン
     }
-    [SerializeField] private ClickAction clickAction; // ボタンを押したときの効果
+    public ClickAction clickAction;                                         // ボタンを押したときの効果
 
     // Findで探すGameObject
     private GameObject ScreenController;
@@ -29,12 +31,14 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private GameObject UIFunctionController;
     private GameObject Stage;
     private GameObject PlanetInfo;
+    private GameObject ArrowController;
 
     // Findで探したGameObjectのコンポーネント
     private ScreenController screenController;
     private UIController uIController;
     private PauseUIController pauseUIController;
     private CreateStage createStage;
+    private Arrow arrow;
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
@@ -58,7 +62,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         // ボタンの色をリセット
         Btn.color = defaultColor;
 
-        // ボタンごとの効果によって分岐
+        // ボタンを押したときの効果によって分岐
         switch (clickAction)
         {
             case ClickAction.ReturnToGame:     // ゲームに戻る
@@ -74,6 +78,8 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
                 break;
             case ClickAction.StageStart:       // ステージスタート
                 StageStart();
+                break;
+            case ClickAction.LockOnPlanet:     // 惑星をロックオン
                 break;
             default:
                 break;
@@ -123,6 +129,13 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         createStage.Create(true);
     }
 
+    // 惑星をロックオン
+    void LockOnPlanet()
+    {
+        GameObject target = GameObject.Find(this.name);
+        arrow.Create(target);
+    }
+
     // ボタンのアニメーション
     IEnumerator ButtonAnimation(Color colorA, Color colorB)
     {
@@ -153,11 +166,13 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         UIFunctionController = GameObject.Find("UIFunctionController");
         Stage = GameObject.Find("Stage");
         PlanetInfo = GameObject.Find("Planet Info");
+        ArrowController = GameObject.Find("ArrowController");
 
         // 探したGameObjectのコンポーネントを取得
         screenController = ScreenController.gameObject.GetComponent<ScreenController>();
         uIController = Canvas.gameObject.GetComponent<UIController>();
         pauseUIController = UIFunctionController.GetComponent<PauseUIController>();
         createStage = Stage.GetComponent<CreateStage>();
+        arrow = ArrowController.GetComponent<Arrow>();
     }
 }

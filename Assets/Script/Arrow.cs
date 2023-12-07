@@ -18,7 +18,7 @@ public class Arrow : MonoBehaviour
         arrowObj.transform.SetParent(player.transform, false);
 
         // ターゲットを指定
-        LookAt lookTarget = GetComponent<LookAt>();
+        LookAt lookTarget = arrowObj.GetComponent<LookAt>();
         lookTarget.target = target;
     }
 }

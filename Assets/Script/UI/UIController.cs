@@ -83,6 +83,7 @@ public class UIController : MonoBehaviour
         public GameObject icon;              // ミッションのアイコン
     }
 
+    // 惑星リストUI
     [System.Serializable]
     public class PlanetListUI
     {
@@ -193,9 +194,9 @@ public class UIController : MonoBehaviour
     void Update()
     {
         // ゲーム画面を表示/非表示
-        if((screenController.screenNum == 0) && (!inGameUI.allInGameUI.activeSelf))
+        if(((screenController.screenNum == 0) || (screenController.screenNum == 5)) && (!inGameUI.allInGameUI.activeSelf))
             inGameUI.allInGameUI.SetActive(true);
-        else if((screenController.screenNum != 0) && (inGameUI.allInGameUI.activeSelf))
+        else if(((screenController.screenNum != 0) && (screenController.screenNum != 5)) && (inGameUI.allInGameUI.activeSelf))
             inGameUI.allInGameUI.SetActive(false);
 
         // ゲーム画面が表示されているなら各種UIを更新

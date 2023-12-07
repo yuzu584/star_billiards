@@ -39,6 +39,9 @@ public class PlanetListUIController : MonoBehaviour
 
             // プレハブのテキストを設定
             btnText.text = planetListController.planetList[i].name;
+
+            // ボタンを押したときの効果を設定
+
         }
     }
 
