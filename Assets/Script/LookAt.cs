@@ -9,7 +9,10 @@ public class LookAt : MonoBehaviour
 
     void Update()
     {
-        // オブジェクトの方を向く
-        transform.LookAt(target.transform);
+        // ターゲットが存在しないなら自分を削除/存在するならターゲットの方を向く
+        if (target == null)
+            Destroy(this.gameObject);
+        else
+            transform.LookAt(target.transform);
     }
 }

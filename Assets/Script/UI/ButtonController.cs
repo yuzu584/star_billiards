@@ -80,6 +80,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
                 StageStart();
                 break;
             case ClickAction.LockOnPlanet:     // 惑星をロックオン
+                LockOnPlanet();
                 break;
             default:
                 break;
@@ -132,7 +133,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     // 惑星をロックオン
     void LockOnPlanet()
     {
-        GameObject target = GameObject.Find(this.name);
+        GameObject target = GameObject.Find(transform.parent.gameObject.name);
         arrow.Create(target);
     }
 
