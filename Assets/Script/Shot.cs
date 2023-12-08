@@ -7,14 +7,14 @@ using Const;
 // 発射ボタンで弾を発射する
 public class Shot : MonoBehaviour
 {
-    [SerializeField] private PredictionLine predictionLine;     // InspectorでPredictionLineを指定
-    [SerializeField] private EnergyController energyController; // InspectorでEnergyControllerを指定
-    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
-    public float speed = 1.0f;           // 移動速度
-    public float charge = 0;             // 球のチャージ
-    public float chargeSpeed = 1;        // 球のチャージ速度
-    public int playerBouncePower = 100;  // 衝突したときのプレイヤーの反発力
-    public int planetBouncePower = 100;  // 衝突したときの惑星の反発力
+    [SerializeField] private PredictionLine predictionLine;       // InspectorでPredictionLineを指定
+    [SerializeField] private EnergyController energyController;   // InspectorでEnergyControllerを指定
+    [SerializeField] private ScreenController screenController;   // InspectorでScreenControllerを指定
+    public float speed = AppConst.PLAYER_DEFAULT_SPEED;           // 移動速度
+    public float charge = 0;                                      // 球のチャージ
+    public float chargeSpeed = AppConst.DEFAULT_CHARGE_SPEED;     // 球のチャージ速度
+    public int playerBouncePower = AppConst.DEFAULT_BOUNCE_POWER; // 衝突したときのプレイヤーの反発力
+    public int planetBouncePower = AppConst.DEFAULT_BOUNCE_POWER; // 衝突したときの惑星の反発力
 
     Vector3 direction;  // 向き
     Rigidbody rb;       // プレイヤーのRigidbody

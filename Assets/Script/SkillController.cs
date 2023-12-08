@@ -114,41 +114,59 @@ public class SkillController : MonoBehaviour
     IEnumerator UseSuperCharge()
     {
         // チャージスピードを増加
-        shot.chargeSpeed += AppConst.CHARGE_SPEED_INCREASE_AMOUNT;
+        shot.chargeSpeed = AppConst.DEFAULT_CHARGE_SPEED + AppConst.CHARGE_SPEED_INCREASE_AMOUNT;
 
         // 効果時間が終わるまで待つ
         yield return new WaitForSeconds(effectTime);
 
         // チャージスピードを元に戻す
-        shot.chargeSpeed -= AppConst.CHARGE_SPEED_INCREASE_AMOUNT;
+        InitSkillEffect();
     }
 
     // PowerSurgeを使用
     IEnumerator UsePowerSurge()
     {
         // プレイヤーの質量を増加
-        shot.playerBouncePower -= AppConst.MASS_INCREASE_AMOUNT;
-        shot.planetBouncePower += AppConst.MASS_INCREASE_AMOUNT;
+        shot.playerBouncePower = AppConst.DEFAULT_BOUNCE_POWER - AppConst.BOUNCE_POWER_INCREASE_AMOUNT;
+        shot.planetBouncePower = AppConst.DEFAULT_BOUNCE_POWER + AppConst.BOUNCE_POWER_INCREASE_AMOUNT;
 
         // 効果時間が終わるまで待つ
         yield return new WaitForSeconds(effectTime);
 
         // プレイヤーの質量を増加を元に戻す
-        shot.playerBouncePower += AppConst.MASS_INCREASE_AMOUNT;
-        shot.planetBouncePower -= AppConst.MASS_INCREASE_AMOUNT;
+        InitSkillEffect();
     }
 
     // Hugeを使用
     IEnumerator UseHuge()
     {
         // 巨大化
-        transform.localScale *= AppConst.SIZE_INCREASE_RATE;
+        transform.localScale = AppConst.PLAYER_DEFAULT_SCALE * AppConst.SIZE_INCREASE_RATE;
 
         // 効果時間が終わるまで待つ
         yield return new WaitForSeconds(effectTime);
 
         // 巨大化終了
-        transform.localScale /= AppConst.SIZE_INCREASE_RATE;
+        InitSkillEffect();
 
+    }
+
+    // 初期化
+    public void Init()
+    {
+        StopAllCoroutines();
+        InitSkillEffect();
+        selectSkill = 0;
+        coolDown = 0;
+        effectTime = 0;
+    }
+
+    // スキルの効果を消し去る
+    void InitSkillEffect()
+    {
+        shot.chargeSpeed = AppConst.DEFAULT_CHARGE_SPEED;
+        shot.playerBouncePower = AppConst.DEFAULT_BOUNCE_POWER;
+        shot.planetBouncePower = AppConst.DEFAULT_BOUNCE_POWER;
+        transform.localScale = AppConst.PLAYER_DEFAULT_SCALE;
     }
 }

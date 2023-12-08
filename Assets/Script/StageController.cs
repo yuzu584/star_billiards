@@ -37,9 +37,7 @@ public class StageController : MonoBehaviour
         stageCrear = false;
         planetAmount.planetDestroyAmount = 0;
         energyController.energy = energyController.maxEnergy;
-        skillController.selectSkill = 0;
-        skillController.coolDown = 0;
-        skillController.effectTime = 0;
+        skillController.Init();
         skillUIController.InitSkillUI();
         energyUIController.InitEnergyUI();
         popupController.InitPopUp();
