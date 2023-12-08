@@ -19,6 +19,12 @@ public class PopupController : MonoBehaviour
         // 指定した時間が経過するまで繰り返す
         while (time < fadeTime)
         {
+            // ポップアップが存在しなければ終了
+            if (!popup)
+            {
+                yield break;
+            }
+
             // 時間をカウント
             time += Time.deltaTime;
 
@@ -46,8 +52,8 @@ public class PopupController : MonoBehaviour
         float moveDistance = 300.0f; // 移動距離
         Vector3 defaultPosition;     // デフォルトの位置
 
-        // falseが見つかるまで繰り返す
-        while ((drawingPopup[i] != null))
+        // 配列の空きが見つかるまで繰り返す
+        while ((drawingPopup[i]))
         {
             // 配列の範囲外ならコルーチン終了
             if (i > drawingPopup.Length)
@@ -87,6 +93,19 @@ public class PopupController : MonoBehaviour
 
         // ポップアップを動かす
         StartCoroutine(MovePopup(time, fadeTime, drawingPopup[i], -moveDistance, defaultPosition, i));
+    }
+
+    // ポップアップを初期化
+    public void InitPopUp()
+    {
+        for(int i = 0; i < drawingPopup.Length; i++)
+        {
+            // インスタンスが存在したら削除
+            if (drawingPopup[i])
+            {
+                Destroy(drawingPopup[i]);
+            }
+        }
     }
 
     void Start()

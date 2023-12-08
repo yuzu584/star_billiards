@@ -5,10 +5,15 @@ using UnityEngine;
 // ステージを管理
 public class StageController : MonoBehaviour
 {
-    [SerializeField] private StageData stageData;         // InspectorでStageDataを指定
-    [SerializeField] private PlanetAmount planetAmount;   // InspectorでPlanetAmountを指定
-    public int stageNum = 0;                              // ステージ番号
-    public bool stageCrear = false;                       // ステージをクリアしたかどうか
+    [SerializeField] private StageData stageData;                   // InspectorでStageDataを指定
+    [SerializeField] private PlanetAmount planetAmount;             // InspectorでPlanetAmountを指定
+    [SerializeField] private EnergyController energyController;     // InspectorでEnergyControllerを指定
+    [SerializeField] private EnergyUIController energyUIController; // InspectorでEnergyUIControllerを指定
+    [SerializeField] private SkillController skillController;       // InspectorでSkillControllerを指定
+    [SerializeField] private SkillUIController skillUIController;   // InspectorでSkillUIControllerを指定
+    [SerializeField] private PopupController popupController;       // InspectorでPopupControllerを指定
+    public int stageNum = 0;                                        // ステージ番号
+    public bool stageCrear = false;                                 // ステージをクリアしたかどうか
 
     private int missionNum; // ミッション番号
 
@@ -24,5 +29,19 @@ public class StageController : MonoBehaviour
             // ステージクリア
             stageCrear = true;
         }
+    }
+
+    // ステージに関する数値を初期化
+    public void Init()
+    {
+        stageCrear = false;
+        planetAmount.planetDestroyAmount = 0;
+        energyController.energy = energyController.maxEnergy;
+        skillController.selectSkill = 0;
+        skillController.coolDown = 0;
+        skillController.effectTime = 0;
+        skillUIController.InitSkillUI();
+        energyUIController.InitEnergyUI();
+        popupController.InitPopUp();
     }
 }

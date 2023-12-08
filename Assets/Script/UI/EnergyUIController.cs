@@ -8,18 +8,20 @@ using UnityEngine.UI;
 public class EnergyUIController : MonoBehaviour
 {
     [SerializeField] private EnergyController energyController; // InspectorでEnergyControllerを指定
+    [SerializeField] private Image energyGauge;                 // エネルギーゲージの画像
+    [SerializeField] private Image energyAfterImage;            // エネルギーゲージの残像の画像
 
     // エネルギーのUIを描画
-    public void DrawEnergyUI(Image EnergyGauge, Image EnergyAfterImage, Image EnergyGaugeOutline, Text EnergyValue, Text NoEnergy)
+    public void DrawEnergyUI(Image energyGaugeOutline, Text EnergyValue, Text NoEnergy)
     {
         // エネルギーゲージの増減を描画
-        EnergyGauge.fillAmount = energyController.energy / energyController.maxEnergy;
+        energyGauge.fillAmount = energyController.energy / energyController.maxEnergy;
 
-        if (EnergyAfterImage.fillAmount > energyController.energy / energyController.maxEnergy)
+        if (energyAfterImage.fillAmount > energyController.energy / energyController.maxEnergy)
         {
             // エネルギーゲージの減少量を少しずつ減らす
-            EnergyAfterImage.fillAmount -=
-                (EnergyAfterImage.fillAmount - energyController.energy / energyController.maxEnergy) * Time.deltaTime;
+            energyAfterImage.fillAmount -=
+                (energyAfterImage.fillAmount - energyController.energy / energyController.maxEnergy) * Time.deltaTime;
         }
 
         // エネルギーの数値を表示
@@ -29,7 +31,7 @@ public class EnergyUIController : MonoBehaviour
         if ((energyController.energy <= 0) && (NoEnergy.enabled == false))
         {
             // エネルギーゲージの枠と数値を赤色にする
-            EnergyGaugeOutline.color = new Color32(155, 0, 0, 100);
+            energyGaugeOutline.color = new Color32(155, 0, 0, 100);
             EnergyValue.color = new Color32(155, 0, 0, 100);
 
             // エネルギーがない旨を伝えるテキストを表示
@@ -39,11 +41,18 @@ public class EnergyUIController : MonoBehaviour
         else if ((energyController.energy > 0) && (NoEnergy.enabled == true))
         {
             // エネルギーゲージの枠と数値を白色にする
-            EnergyGaugeOutline.color = new Color32(255, 255, 255, 100);
+            energyGaugeOutline.color = new Color32(255, 255, 255, 100);
             EnergyValue.color = new Color32(255, 255, 255, 255);
 
             // エネルギーがない旨を伝えるテキストを非表示
             NoEnergy.enabled = false;
         }
+    }
+
+    // エネルギーのUIを初期化
+    public void InitEnergyUI()
+    {
+        energyGauge.fillAmount = 1;
+        energyAfterImage.fillAmount = 1;
     }
 }

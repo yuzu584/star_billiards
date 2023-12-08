@@ -12,9 +12,9 @@ public class SkillController : MonoBehaviour
     [SerializeField] private EnergyController energyController;   // InspectorでEnergyControllerを指定
     [SerializeField] private ScreenController screenController;   // InspectorでScreenControllerを指定
 
-    int selectSkill = 0;  // 選択しているスキルの番号
-    float coolDown = 0;   // クールダウンを管理
-    float effectTime = 0; // 効果時間を管理
+    public int selectSkill = 0;  // 選択しているスキルの番号
+    public float coolDown = 0;   // クールダウンを管理
+    public float effectTime = 0; // 効果時間を管理
 
     void Update()
     {

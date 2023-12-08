@@ -204,8 +204,6 @@ public class UIController : MonoBehaviour
         {
             // エネルギーのUIを更新
             uIFunction.energyUIController.DrawEnergyUI(
-                energyUI.EnergyGauge,
-                energyUI.EnergyAfterImage,
                 energyUI.EnergyGaugeOutline,
                 energyUI.EnergyValue,
                 messageUI.NoEnergy);

@@ -1128,6 +1128,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
   planetAmount: {fileID: 1658508822}
+  energyController: {fileID: 2052131793}
+  energyUIController: {fileID: 1148952467}
+  skillController: {fileID: 2052131794}
+  skillUIController: {fileID: 1148952470}
+  popupController: {fileID: 1148952468}
   stageNum: 0
   stageCrear: 0
 --- !u!1 &299483584
@@ -3488,6 +3493,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyController: {fileID: 2052131793}
+  energyGauge: {fileID: 2054252520}
+  energyAfterImage: {fileID: 1792383906}
 --- !u!114 &1148952468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6690,6 +6697,9 @@ MonoBehaviour:
   skillUIController: {fileID: 1148952470}
   energyController: {fileID: 2052131793}
   screenController: {fileID: 1600059365}
+  selectSkill: 0
+  coolDown: 0
+  effectTime: 0
 --- !u!114 &2052131795
 MonoBehaviour:
   m_ObjectHideFlags: 0

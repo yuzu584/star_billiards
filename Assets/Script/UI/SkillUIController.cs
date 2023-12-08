@@ -22,4 +22,10 @@ public class SkillUIController : MonoBehaviour
         else if (nowCoolDown > 0)
             uIController.skillUI.skillGauge.fillAmount = (coolDown - nowCoolDown) / coolDown;
     }
+
+    // ƒXƒLƒ‹‚ÌUI‚ğ‰Šú‰»
+    public void InitSkillUI()
+    {
+        uIController.skillUI.skillGauge.fillAmount = 1;
+    }
 }

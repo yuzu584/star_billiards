@@ -32,6 +32,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private GameObject Stage;
     private GameObject PlanetInfo;
     private GameObject ArrowController;
+    private GameObject StageController;
 
     // Findで探したGameObjectのコンポーネント
     private ScreenController screenController;
@@ -39,6 +40,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private PauseUIController pauseUIController;
     private CreateStage createStage;
     private Arrow arrow;
+    private StageController stageController;
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
@@ -126,6 +128,9 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         // 画面番号をInGameに変更
         screenController.screenNum = 0;
 
+        // ステージに関する数値を初期化
+        stageController.Init();
+
         // ステージを作成
         createStage.Create(true);
     }
@@ -168,6 +173,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         Stage = GameObject.Find("Stage");
         PlanetInfo = GameObject.Find("Planet Info");
         ArrowController = GameObject.Find("ArrowController");
+        StageController = GameObject.Find("StageController");
 
         // 探したGameObjectのコンポーネントを取得
         screenController = ScreenController.gameObject.GetComponent<ScreenController>();
@@ -175,5 +181,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         pauseUIController = UIFunctionController.GetComponent<PauseUIController>();
         createStage = Stage.GetComponent<CreateStage>();
         arrow = ArrowController.GetComponent<Arrow>();
+        stageController = StageController.GetComponent<StageController>();
     }
 }
