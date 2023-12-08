@@ -12,6 +12,7 @@ public class StageController : MonoBehaviour
     [SerializeField] private SkillController skillController;       // InspectorでSkillControllerを指定
     [SerializeField] private SkillUIController skillUIController;   // InspectorでSkillUIControllerを指定
     [SerializeField] private PopupController popupController;       // InspectorでPopupControllerを指定
+    [SerializeField] private PlayerController playerController;     // InspectorでPlayerControllerを指定
     public int stageNum = 0;                                        // ステージ番号
     public bool stageCrear = false;                                 // ステージをクリアしたかどうか
 
@@ -36,10 +37,11 @@ public class StageController : MonoBehaviour
     {
         stageCrear = false;
         planetAmount.planetDestroyAmount = 0;
-        energyController.energy = energyController.maxEnergy;
-        skillController.Init();
-        skillUIController.InitSkillUI();
-        energyUIController.InitEnergyUI();
         popupController.InitPopUp();
+        playerController.Init(
+            energyController,
+            energyUIController,
+            skillController,
+            skillUIController);
     }
 }

@@ -1133,6 +1133,7 @@ MonoBehaviour:
   skillController: {fileID: 2052131794}
   skillUIController: {fileID: 1148952470}
   popupController: {fileID: 1148952468}
+  playerController: {fileID: 2052131797}
   stageNum: 0
   stageCrear: 0
 --- !u!1 &299483584
@@ -6546,6 +6547,7 @@ GameObject:
   - component: {fileID: 2052131794}
   - component: {fileID: 2052131795}
   - component: {fileID: 2052131796}
+  - component: {fileID: 2052131797}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -6726,6 +6728,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EaseOfBending: 1
+--- !u!114 &2052131797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052131786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c728ccc7fe89ff4dbf4484f6ab33267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2052131791}
 --- !u!1 &2052819195 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5970234051200584752, guid: ce501dd24771fea4d8c7451a78eb2f84, type: 3}
