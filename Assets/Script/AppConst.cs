@@ -6,15 +6,15 @@ namespace Const
 {
     public static class AppConst
     {
-        public static readonly Vector3 DEFAULT_STAGE_SELECT_POS = new Vector3(0.0f, 100.0f, 0.0f);    // ステージ選択画面のカメラの初期位置
-        public static readonly Vector3 DEFAULT_STAGE_SELECT_ANGLE = new Vector3(30.0f, -90.0f, 0.0f); // ステージ選択画面のカメラの初期の向き
-        public static readonly Vector3 DEFAULT_IN_GAME_POS = new Vector3(5.0f, 1.0f, 0.0f);           // ゲーム画面のカメラの初期位置
-        public static readonly Vector3 DEFAULT_IN_GAME_ANGLE = new Vector3(0.0f, -90.0f, 0.0f);       // ゲーム画面のカメラの初期の向き
-        public const float SPEED_MAINTENANCE_RATE = 1.008f;                                          // プレイヤーの速度維持率
-        public const float SPEED_REDUCTION_RATE = 0.95f;                                             // プレイヤーの速度減少率
-        public const float SPEED_THRESHOLD = 0.01f;                                                  // プレイヤーの速度のしきい値
-        public const int SKILL_NUM = 3;                                                              // スキルの数
-        public static readonly string[] SKILL_NAME = new string[]                                    // スキル名
+        public static readonly Vector3 DEFAULT_STAGE_SELECT_POS = new Vector3(0.0f, 100.0f, 0.0f);     // ステージ選択画面のカメラの初期位置
+        public static readonly Vector3 DEFAULT_STAGE_SELECT_ANGLE = new Vector3(30.0f, -90.0f, 0.0f);  // ステージ選択画面のカメラの初期の向き
+        public static readonly Vector3 CAMERA_DEFAULT_IN_GAME_POS = new Vector3(5.0f, 1.0f, 0.0f);     // ゲーム画面のカメラの初期位置
+        public static readonly Vector3 CAMERA_DEFAULT_IN_GAME_ANGLE = new Vector3(0.0f, -90.0f, 0.0f); // ゲーム画面のカメラの初期の向き
+        public const float SPEED_MAINTENANCE_RATE = 1.008f;                                            // プレイヤーの速度維持率
+        public const float SPEED_REDUCTION_RATE = 0.95f;                                               // プレイヤーの速度減少率
+        public const float SPEED_THRESHOLD = 0.01f;                                                    // プレイヤーの速度のしきい値
+        public const int SKILL_NUM = 3;                                                                // スキルの数
+        public static readonly string[] SKILL_NAME = new string[]                                      // スキル名
         {
             "SuperCharge",
             "PowerSurge",
@@ -50,5 +50,6 @@ namespace Const
         public const float SPHERE_RAY_WIDTH = 10.0f;                                                 // 球体のRayの太さ
         public const float DEFAULT_TIME_SCALE = 1.0f;                                                // 時間の速さの初期値
         public const float SLOW_TIME_SCALE = 0.1f;                                                   // スローモーション時の時間の速さ
+        public static readonly Vector3 PLATER_DEFAULT_POSITION = new Vector3(500.0f, 0.0f, 0.0f);    // プレイヤーの初期位置
     }
 }

@@ -26,8 +26,8 @@ public class CameraController : MonoBehaviour
                 chasePlayer = true;
 
                 // 座標と向きを変更
-                transform.position = AppConst.DEFAULT_IN_GAME_POS;
-                transform.rotation = Quaternion.Euler(AppConst.DEFAULT_IN_GAME_ANGLE);
+                transform.position = AppConst.CAMERA_DEFAULT_IN_GAME_POS;
+                transform.rotation = Quaternion.Euler(AppConst.CAMERA_DEFAULT_IN_GAME_ANGLE);
 
                 // プレイヤーの子オブジェクトに設定
                 transform.SetParent(player.transform, false);
