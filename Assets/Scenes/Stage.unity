@@ -953,7 +953,7 @@ PrefabInstance:
       objectReference: {fileID: 310466187}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: clickAction
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: uIController
@@ -2184,7 +2184,7 @@ PrefabInstance:
       objectReference: {fileID: 310466187}
     - target: {fileID: 5970234050213230018, guid: ce501dd24771fea4d8c7451a78eb2f84, type: 3}
       propertyPath: clickAction
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: ce501dd24771fea4d8c7451a78eb2f84, type: 3}
       propertyPath: uIController
@@ -2822,7 +2822,7 @@ PrefabInstance:
       objectReference: {fileID: 310466187}
     - target: {fileID: 5970234050213230018, guid: ce501dd24771fea4d8c7451a78eb2f84, type: 3}
       propertyPath: clickAction
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: ce501dd24771fea4d8c7451a78eb2f84, type: 3}
       propertyPath: uIController
@@ -3738,7 +3738,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5970234050213230018, guid: dd687111c45c0584f8cb04e10ba43eee, type: 3}
       propertyPath: clickAction
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051200584752, guid: dd687111c45c0584f8cb04e10ba43eee, type: 3}
       propertyPath: m_Name
@@ -4484,7 +4484,7 @@ PrefabInstance:
       objectReference: {fileID: 310466187}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: clickAction
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: uIController
@@ -5457,7 +5457,7 @@ PrefabInstance:
       objectReference: {fileID: 310466187}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: clickAction
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: uIController
@@ -5813,7 +5813,7 @@ PrefabInstance:
       objectReference: {fileID: 310466187}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: clickAction
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: uIController
@@ -5986,7 +5986,7 @@ PrefabInstance:
       objectReference: {fileID: 310466187}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: clickAction
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: uIController
@@ -6236,6 +6236,10 @@ PrefabInstance:
       propertyPath: planetInfo
       value: 
       objectReference: {fileID: 310466187}
+    - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: clickAction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: uIController
       value: 
