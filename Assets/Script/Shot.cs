@@ -107,5 +107,12 @@ public class Shot : MonoBehaviour
                 charge = 0;
             }
         }
+
+        // ゲーム画面以外かつチャージ中なら
+        else if(charge > 0)
+        {
+            // チャージをリセット
+            charge = 0;
+        }
     }
 }

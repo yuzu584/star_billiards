@@ -158,11 +158,10 @@ public class SkillController : MonoBehaviour
     // GravityWaveを使用
     void UseGravityWave()
     {
-        // パーティクルを生成
+        // パーティクルを生成->再生
         ParticleSystem newParticle = Instantiate(GravityWaveParticle);
         newParticle.transform.position = this.gameObject.transform.position;
         newParticle.Play();
-        Destroy(newParticle.gameObject, 2.0f);
 
         // 指定した半径の当たり判定を生成
         RaycastHit[] hits = Physics.SphereCastAll(
@@ -187,6 +186,9 @@ public class SkillController : MonoBehaviour
                 hitObj.AddForce(-direction / distance);
             }
         }
+
+        // パーティクルを削除
+        Destroy(newParticle.gameObject, 2.0f);
     }
 
     // 初期化
