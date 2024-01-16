@@ -11,6 +11,7 @@ public class SkillController : MonoBehaviour
     [SerializeField] private SkillUIController skillUIController; // InspectorでSkillUIControllerを指定
     [SerializeField] private EnergyController energyController;   // InspectorでEnergyControllerを指定
     [SerializeField] private ScreenController screenController;   // InspectorでScreenControllerを指定
+    [SerializeField] private ParticleSystem GravityWaveParticle;  // GravityWaveのパーティクル
 
     public int selectSkill = 0;  // 選択しているスキルの番号
     public float coolDown = 0;   // クールダウンを管理
@@ -157,6 +158,12 @@ public class SkillController : MonoBehaviour
     // GravityWaveを使用
     void UseGravityWave()
     {
+        // パーティクルを生成
+        ParticleSystem newParticle = Instantiate(GravityWaveParticle);
+        newParticle.transform.position = this.gameObject.transform.position;
+        newParticle.Play();
+        Destroy(newParticle.gameObject, 2.0f);
+
         // 指定した半径の当たり判定を生成
         RaycastHit[] hits = Physics.SphereCastAll(
             transform.position,

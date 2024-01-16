@@ -6689,6 +6689,7 @@ MonoBehaviour:
   skillUIController: {fileID: 1148952470}
   energyController: {fileID: 2052131793}
   screenController: {fileID: 1600059365}
+  GravityWaveParticle: {fileID: 7855226533659244353, guid: 59a02b5fc103317428ace8f4b1f4d2d3, type: 3}
   selectSkill: 0
   coolDown: 0
   effectTime: 0
