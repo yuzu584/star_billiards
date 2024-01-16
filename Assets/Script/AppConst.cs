@@ -13,21 +13,24 @@ namespace Const
         public const float SPEED_MAINTENANCE_RATE = 1.008f;                                            // プレイヤーの速度維持率
         public const float SPEED_REDUCTION_RATE = 0.95f;                                               // プレイヤーの速度減少率
         public const float SPEED_THRESHOLD = 0.01f;                                                    // プレイヤーの速度のしきい値
-        public const int SKILL_NUM = 3;                                                                // スキルの数
+        public const int SKILL_NUM = 4;                                                                // スキルの数
         public static readonly string[] SKILL_NAME = new string[]                                      // スキル名
         {
             "SuperCharge",
             "PowerSurge",
             "Huge",
+            "GravityWave",
         };
         public static readonly int[] SKILL_ENERGY_USAGE = new int[]                                  // スキルのエネルギー消費量
         {
             10,
             20,
             100,
+            50,
         };
         public static readonly float[] SKILL_COOLDOWN = new float[]                                  // スキルのクールダウン
         {
+            1.0f,
             1.0f,
             1.0f,
             1.0f,
@@ -37,6 +40,7 @@ namespace Const
             10.0f,
             10.0f,
             10.0f,
+            1.0f,
         };
         public const float PLAYER_DEFAULT_SPEED = 1.0f;                                              // プレイヤーの移動速度の初期値
         public const int DEFAULT_CHARGE_SPEED = 1;                                                   // チャージ速度の初期値

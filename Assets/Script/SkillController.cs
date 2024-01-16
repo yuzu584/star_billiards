@@ -90,6 +90,9 @@ public class SkillController : MonoBehaviour
             case 2: // Huge
                 StartCoroutine(UseHuge());
                 break;
+            case 3: // GravityWave
+                UseGravityWave();
+                break;
         }
     }
 
@@ -149,6 +152,34 @@ public class SkillController : MonoBehaviour
         // 巨大化終了
         InitSkillEffect();
 
+    }
+
+    // GravityWaveを使用
+    void UseGravityWave()
+    {
+        // 指定した半径の当たり判定を生成
+        RaycastHit[] hits = Physics.SphereCastAll(
+            transform.position,
+            1000.0f,
+            Vector3.forward);
+
+        // hitしたオブジェクトの数繰り返す
+        foreach (var hit in hits)
+        {
+            // 当たったオブジェクトのRigidBodyを取得
+            Rigidbody hitObj = hit.collider.gameObject.GetComponent<Rigidbody>();
+
+            // RigidBodyが取得できたかつ取得したオブジェクトが惑星なら
+            if ((hitObj != null) && (hit.collider.gameObject.tag == "Planet"))
+            {
+                // 力を加えるベクトルを設定(最後に30000を掛けて力を調整)
+                Vector3 direction = (this.gameObject.transform.position - hitObj.position) * 30000;
+
+                // オブジェクトとの距離が近いほど強い力を加える
+                float distance = Vector3.Distance(this.gameObject.transform.position, hitObj.position);
+                hitObj.AddForce(-direction / distance);
+            }
+        }
     }
 
     // 初期化
