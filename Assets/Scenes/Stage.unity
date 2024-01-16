@@ -2471,16 +2471,6 @@ MonoBehaviour:
   skillController: {fileID: 2052131794}
   planetListController: {fileID: 354845784}
   rb: {fileID: 2052131791}
-  uIFunction:
-    energyUIController: {fileID: 1148952467}
-    chargeUIController: {fileID: 1148952471}
-    pauseUIController: {fileID: 1148952472}
-    missionUIController: {fileID: 1148952473}
-    speedUIController: {fileID: 1148952474}
-    stageClearUIController: {fileID: 1148952475}
-    mainMenuUIController: {fileID: 1148952476}
-    StageSelectUIController: {fileID: 1148952477}
-    planetListUIController: {fileID: 1148952478}
 --- !u!114 &869580812
 MonoBehaviour:
   m_ObjectHideFlags: 0

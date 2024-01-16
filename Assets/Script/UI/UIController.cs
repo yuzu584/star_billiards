@@ -144,29 +144,40 @@ public class UIController : MonoBehaviour
     [SerializeField] private PlanetListController planetListController;   // InspectorでPlanetListControllerを指定
     [SerializeField] private Rigidbody rb;                                // プレイヤーのRigidbody
 
-    // UI描画関数
-    [System.Serializable]
-    public class UIFunction
-    {
-        public EnergyUIController energyUIController;
-        public ChargeUIController chargeUIController;
-        public PauseUIController pauseUIController;
-        public MissionUIController missionUIController;
-        public SpeedUIController speedUIController;
-        public StageClearUIController stageClearUIController;
-        public MainMenuUIController mainMenuUIController;
-        public StageSelectUIController StageSelectUIController;
-        public PlanetListUIController planetListUIController;
-    }
+    // Findで探すGameObject
+    private GameObject UIFunctionController;
+
+    // Findで探したGameObjectのコンポーネント
+    private EnergyUIController energyUIController;
+    private ChargeUIController chargeUIController;
+    private PauseUIController pauseUIController;
+    private MissionUIController missionUIController;
+    private SpeedUIController speedUIController;
+    private StageClearUIController stageClearUIController;
+    private MainMenuUIController mainMenuUIController;
+    private StageSelectUIController stageSelectUIController;
+    private PlanetListUIController planetListUIController;
 
     RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
-
-    public UIFunction uIFunction; // InspectorでUI描画関数を指定
 
     private bool drawedStageClearUI = false; // ステージクリア画面が描画されたか
 
     void Start()
     {
+        // GameObjectを探す
+        UIFunctionController = GameObject.Find("UIFunctionController");
+
+        // 探したGameObjectのコンポーネントを取得
+        energyUIController = UIFunctionController.gameObject.GetComponent<EnergyUIController>();
+        chargeUIController = UIFunctionController.gameObject.GetComponent<ChargeUIController>();
+        pauseUIController = UIFunctionController.gameObject.GetComponent<PauseUIController>();
+        missionUIController = UIFunctionController.gameObject.GetComponent<MissionUIController>();
+        speedUIController = UIFunctionController.gameObject.GetComponent<SpeedUIController>();
+        stageClearUIController = UIFunctionController.gameObject.GetComponent<StageClearUIController>();
+        mainMenuUIController = UIFunctionController.gameObject.GetComponent<MainMenuUIController>();
+        stageSelectUIController = UIFunctionController.gameObject.GetComponent<StageSelectUIController>();
+        planetListUIController = UIFunctionController.gameObject.GetComponent<PlanetListUIController>();
+
         // 惑星情報UIの円のRectTransformを取得
         PIR = planetInfoUI.targetRing.GetComponent<RectTransform>();
 
@@ -181,10 +192,10 @@ public class UIController : MonoBehaviour
         messageUI.NoEnergy.enabled = false;
 
         // ポーズ画面のUIを非表示
-        uIFunction.pauseUIController.DrawPauseUI(false);
+        pauseUIController.DrawPauseUI(false);
 
         // ステージクリア画面のUIを非表示
-        uIFunction.stageClearUIController.DrawStageClearUI(
+        stageClearUIController.DrawStageClearUI(
             false,
             stageClearUI.allStageClearUI,
             stageClearUI.button,
@@ -203,25 +214,25 @@ public class UIController : MonoBehaviour
         if (inGameUI.allInGameUI.activeSelf)
         {
             // エネルギーのUIを更新
-            uIFunction.energyUIController.DrawEnergyUI(
+            energyUIController.DrawEnergyUI(
                 energyUI.EnergyGaugeOutline,
                 energyUI.EnergyValue,
                 messageUI.NoEnergy);
 
             // チャージのUIを更新
-            uIFunction.chargeUIController.DrawChargeUI(
+            chargeUIController.DrawChargeUI(
                 chargeUI.allChargeUI,
                 chargeUI.chargeValue,
                 chargeUI.chargeCircle);
 
             // ミッションのUIを更新
-            uIFunction.missionUIController.DrawMissionUI();
+            missionUIController.DrawMissionUI();
 
             // スキルのUIを更新
             skillController.CallSetSkillUI();
 
-            // 移動速度の数値を更新
-            uIFunction.speedUIController.DrawSpeedValue(otherUI.speedValue);
+            // 移動速度の数値UIを更新
+            speedUIController.DrawSpeedValue(otherUI.speedValue);
         }
 
         // 惑星リストUIを表示/非表示
@@ -232,7 +243,7 @@ public class UIController : MonoBehaviour
         {
             // ステージクリア画面を描画
             drawedStageClearUI = true;
-            uIFunction.stageClearUIController.DrawStageClearUI(
+            stageClearUIController.DrawStageClearUI(
                 true,
                 stageClearUI.allStageClearUI,
                 stageClearUI.button,
@@ -247,7 +258,7 @@ public class UIController : MonoBehaviour
             planetAmount.planetDestroyAmount = 0;
 
             // ステージクリア画面を非表示
-            uIFunction.stageClearUIController.DrawStageClearUI(
+            stageClearUIController.DrawStageClearUI(
                 false,
                 stageClearUI.allStageClearUI,
                 stageClearUI.button,
@@ -256,15 +267,15 @@ public class UIController : MonoBehaviour
 
         // ポーズ画面を表示/非表示
         if((screenController.screenNum == 1) && (!pauseUI.allPauseUI.activeSelf))
-            uIFunction.pauseUIController.DrawPauseUI(true);
+            pauseUIController.DrawPauseUI(true);
         else if ((screenController.screenNum != 1) && (pauseUI.allPauseUI.activeSelf))
-            uIFunction.pauseUIController.DrawPauseUI(false);
+            pauseUIController.DrawPauseUI(false);
 
         // メインメニューを表示/非表示
         if ((screenController.screenNum == 3) && (!mainMenuUI.allMainMenuUI.activeSelf))
-            uIFunction.mainMenuUIController.DrawMainMenu(true, mainMenuUI.allMainMenuUI);
+            mainMenuUIController.DrawMainMenu(true, mainMenuUI.allMainMenuUI);
         else if(screenController.screenNum != 3)
-            uIFunction.mainMenuUIController.DrawMainMenu(false, mainMenuUI.allMainMenuUI);
+            mainMenuUIController.DrawMainMenu(false, mainMenuUI.allMainMenuUI);
 
         // ステージ選択画面を表示/非表示
         if((screenController.screenNum == 4) && (!stageSelectUI.allStageSelectUI.activeSelf))
@@ -276,12 +287,12 @@ public class UIController : MonoBehaviour
         if (stageSelectUI.allStageSelectUI.activeSelf)
         {
             // ステージ情報UIを更新
-            uIFunction.StageSelectUIController.DrawStageInfo(
+            stageSelectUIController.DrawStageInfo(
                 stageSelectUI.name,
                 stageSelectUI.mission);
         }
 
         // ステージのアイコンを表示/非表示
-        uIFunction.StageSelectUIController.DrawStageIcon(stageSelectUI.allStageSelectUI.activeSelf);
+        stageSelectUIController.DrawStageIcon(stageSelectUI.allStageSelectUI.activeSelf);
     }
 }
