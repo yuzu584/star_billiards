@@ -54,7 +54,7 @@ public class StageClearUIController : MonoBehaviour
             stageClearText,
             new Vector3(0.0f, 0.0f, 0.0f),
             new Vector3(0.0f, 100.0f, 0.0f),
-            0.3f,
+            0.2f,
             false));
 
         // ƒ{ƒ^ƒ“‚ð“®‚©‚·

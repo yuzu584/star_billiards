@@ -26,7 +26,7 @@ public class SkillController : MonoBehaviour
             if ((Input.GetAxisRaw("Mouse ScrollWheel") != 0) && (effectTime <= 0) && (coolDown == 0))
             {
                 // スキルを変更
-                ChangeSkill();
+                ChangeSkill(Input.GetAxisRaw("Mouse ScrollWheel"));
             }
 
             // スキル使用可能の時にキーが押されたら
@@ -57,10 +57,10 @@ public class SkillController : MonoBehaviour
     }
 
     // スキルを変更
-    void ChangeSkill()
+    void ChangeSkill(float scroolAmount)
     {
         // 選択しているスキル番号を変える
-        selectSkill += (int)(Input.GetAxisRaw("Mouse ScrollWheel") * 10);
+        selectSkill += (int)(scroolAmount * 10);
 
         // スキル番号が範囲外なら範囲内に収める
         if (selectSkill < 0)
@@ -169,7 +169,7 @@ public class SkillController : MonoBehaviour
             1000.0f,
             Vector3.forward);
 
-        // hitしたオブジェクトの数繰り返す
+        // 当たり判定に触れたオブジェクトの数繰り返す
         foreach (var hit in hits)
         {
             // 当たったオブジェクトのRigidBodyを取得

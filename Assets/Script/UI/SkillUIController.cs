@@ -4,6 +4,8 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
+using Const;
+
 // スキルのUIを管理
 public class SkillUIController : MonoBehaviour
 {
@@ -18,9 +20,22 @@ public class SkillUIController : MonoBehaviour
         // 効果時間を描画
         if (nowEffectTime > 0)
             uIController.skillUI.skillGauge.fillAmount = nowEffectTime / effectTime;
+
         // 効果時間が経過していたならクールダウンを描画
         else if (nowCoolDown > 0)
             uIController.skillUI.skillGauge.fillAmount = (coolDown - nowCoolDown) / coolDown;
+
+        // スキルが使用可能かつ黄色ではないなら黄色にする
+        if((nowCoolDown == 0) && (nowEffectTime == 0) && (uIController.skillUI.skillGauge.color != AppConst.CAN_USE_SKILL_GAUGE_COLOR))
+        {
+            uIController.skillUI.skillGauge.color = AppConst.CAN_USE_SKILL_GAUGE_COLOR;
+        }
+
+        // スキルが使用不可かつ白色ではないなら白色にする
+        else if (((nowCoolDown != 0) || (nowEffectTime != 0)) && (uIController.skillUI.skillGauge.color != AppConst.DEFAULT_SKILL_GAUGE_COLOR))
+        {
+            uIController.skillUI.skillGauge.color = AppConst.DEFAULT_SKILL_GAUGE_COLOR;
+        }
     }
 
     // スキルのUIを初期化
