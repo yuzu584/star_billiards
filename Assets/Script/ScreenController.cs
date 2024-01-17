@@ -16,6 +16,9 @@ public class ScreenController : MonoBehaviour
     // 2 : ステージクリア画面
     // 3 : メインメニュー
     // 4 : ステージ選択画面
+    // 5 : 惑星情報画面
+    // 6 : スキル選択画面
+    // 7 : 設定画面
     public int screenNum = 3;
 
     private bool changeStageClearScreen = false; // ステージクリア画面に遷移したかどうか

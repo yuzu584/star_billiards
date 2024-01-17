@@ -31,3 +31,9 @@ MonoBehaviour:
   - screenName: PlanetList
     drawCursol: 1
     timeScale: 0
+  - screenName: SkillSelect
+    drawCursol: 1
+    timeScale: 0
+  - screenName: Setting
+    drawCursol: 1
+    timeScale: 0

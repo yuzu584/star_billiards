@@ -20,13 +20,15 @@ public class UIController : MonoBehaviour
     public StageClearUI stageClearUI;
     public MainMenuUI mainMenuUI;
     public StageSelectUI stageSelectUI;
+    public SkillSelectUI skillSelectUI;
+    public SettingUI settingUI;
     public OtherUI otherUI;
 
     // ゲーム画面のUI
     [System.Serializable]
     public class InGameUI
     {
-        public GameObject allInGameUI;          // ゲーム画面のUI
+        public GameObject allInGameUI;       // ゲーム画面のUI
     }
 
     // チャージのUI
@@ -123,6 +125,20 @@ public class UIController : MonoBehaviour
         public GameObject allStageSelectUI;  // ステージ選択画面全体のUI
         public Text name;                    // ステージ名
         public Text mission;                 // ミッション名
+    }
+
+    // スキル選択画面のUI
+    [System.Serializable]
+    public class SkillSelectUI
+    {
+        public GameObject allSkillSelectUI; // スキル選択画面全体のUI
+    }
+
+    // 設定画面のUI
+    [System.Serializable]
+    public class SettingUI
+    {
+        public GameObject allSettingUI; // 設定画面全体のUI
     }
 
     // その他UI
@@ -291,6 +307,18 @@ public class UIController : MonoBehaviour
                 stageSelectUI.name,
                 stageSelectUI.mission);
         }
+
+        // スキル選択画面を表示/非表示
+        if ((screenController.screenNum == 6) && (!skillSelectUI.allSkillSelectUI.activeSelf))
+            skillSelectUI.allSkillSelectUI.SetActive(true);
+        else if (screenController.screenNum != 6)
+            skillSelectUI.allSkillSelectUI.SetActive(false);
+
+        // 設定画面を表示/非表示
+        if ((screenController.screenNum == 7) && (!settingUI.allSettingUI.activeSelf))
+            settingUI.allSettingUI.SetActive(true);
+        else if (screenController.screenNum != 7)
+            settingUI.allSettingUI.SetActive(false);
 
         // ステージのアイコンを表示/非表示
         stageSelectUIController.DrawStageIcon(stageSelectUI.allStageSelectUI.activeSelf);

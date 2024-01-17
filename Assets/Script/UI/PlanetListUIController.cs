@@ -42,7 +42,7 @@ public class PlanetListUIController : MonoBehaviour
 
             // ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚ÌŒø‰Ê‚ğİ’è
             ButtonController buttonController = btnList[i].transform.GetChild(0).GetComponent<ButtonController>();
-            buttonController.clickAction = ButtonController.ClickAction.LockOnPlanet;
+            buttonController.clickAction = ButtonController.ClickAction.PlanetList;
         }
     }
 

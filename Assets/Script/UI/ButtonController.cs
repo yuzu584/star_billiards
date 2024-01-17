@@ -21,7 +21,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         ReturnToMainMenu, // メインメニューに戻る
         StageSelect,      // ステージ選択画面に戻る
         StageStart,       // ステージスタート
-        LockOnPlanet,     // 惑星をロックオン
+        PlanetList,       // 惑星情報画面を開く
         SkillSelect,      // スキル選択画面を開く
     }
     public ClickAction clickAction;                                         // ボタンを押したときの効果
@@ -42,13 +42,14 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private CreateStage createStage;
     private Arrow arrow;
     private StageController stageController;
+    private Lerp lerp;
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         // ボタンのアニメーション
         StopAllCoroutines();
-        StartCoroutine(ButtonAnimation(defaultColor, OnPointerColor));
+        StartCoroutine(lerp.ChangeColor(Btn,defaultColor, OnPointerColor, fadeTime));
     }
 
     // マウスポインターがボタンの上から離れたら
@@ -56,7 +57,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         // ボタンのアニメーション
         StopAllCoroutines();
-        StartCoroutine(ButtonAnimation(OnPointerColor, defaultColor));
+        StartCoroutine(lerp.ChangeColor(Btn, OnPointerColor, defaultColor, fadeTime));
     }
     
     // ボタンがクリックされたら
@@ -72,6 +73,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
                 ReturnToGame();
                 break;
             case ClickAction.Setting:          // 設定画面を開く
+                Setting();
                 break;
             case ClickAction.ReturnToMainMenu: // メインメニューに戻る
                 ReturnToMainMenu();
@@ -82,8 +84,8 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
             case ClickAction.StageStart:       // ステージスタート
                 StageStart();
                 break;
-            case ClickAction.LockOnPlanet:     // 惑星をロックオン
-                LockOnPlanet();
+            case ClickAction.PlanetList:       // 惑星リスト画面を開く
+                PlanetList();
                 break;
             case ClickAction.SkillSelect:      // スキル選択画面を開く
                 SkillSelect();
@@ -107,6 +109,13 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
         // 時間の流れを元に戻す
         Time.timeScale = 1.0f;
+    }
+
+    // 設定画面を開く
+    void Setting()
+    {
+        // 画面番号をSettingに変更
+        screenController.screenNum = 7;
     }
 
     // メインメニューに戻る
@@ -139,8 +148,8 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         createStage.Create(true);
     }
 
-    // 惑星をロックオン
-    void LockOnPlanet()
+    // 惑星情報画面を開く
+    void PlanetList()
     {
         GameObject target = GameObject.Find(transform.parent.gameObject.name);
         arrow.Create(target);
@@ -149,29 +158,8 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     // スキル選択画面を開く
     void SkillSelect()
     {
-
-    }
-
-    // ボタンのアニメーション
-    IEnumerator ButtonAnimation(Color colorA, Color colorB)
-    {
-        float time = 0; // 経過時間をカウント
-
-        // 指定した時間が経過するまで繰り返す
-        while (time < fadeTime)
-        {
-            // 時間をカウント
-            time += Time.unscaledDeltaTime;
-
-            // 進み具合を計算
-            float t = time / fadeTime;
-
-            // ボタンの色を変更
-            Btn.color = Color.Lerp(colorA, colorB, t);
-
-            // 1フレーム待つ
-            yield return null;
-        }
+        // 画面番号をSkillSelectに変更
+        screenController.screenNum = 6;
     }
 
     void Start()
@@ -192,5 +180,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         createStage = Stage.GetComponent<CreateStage>();
         arrow = ArrowController.GetComponent<Arrow>();
         stageController = StageController.GetComponent<StageController>();
+        lerp = UIFunctionController.GetComponent<Lerp>();
     }
 }
