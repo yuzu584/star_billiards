@@ -1172,6 +1172,8 @@ MonoBehaviour:
   skillUIController: {fileID: 1148952470}
   popupController: {fileID: 1148952468}
   playerController: {fileID: 2052131797}
+  createStage: {fileID: 1400418625}
+  screenController: {fileID: 1600059365}
   stageNum: 0
   stageCrear: 0
 --- !u!1 &299483584
