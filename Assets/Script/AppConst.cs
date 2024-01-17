@@ -56,6 +56,7 @@ namespace Const
         public const float SLOW_TIME_SCALE = 0.1f;                                                   // スローモーション時の時間の速さ
         public static readonly Vector3 PLATER_DEFAULT_POSITION = new Vector3(500.0f, 0.0f, 0.0f);    // プレイヤーの初期位置
         public static readonly Color32 DEFAULT_SKILL_GAUGE_COLOR = new Color32(255, 255, 255, 100);  // スキルゲージの初期色
-        public static readonly Color32 CAN_USE_SKILL_GAUGE_COLOR = new Color32(255, 255, 100, 200);    // スキル使用可能時のスキルゲージの色
+        public static readonly Color32 CAN_USE_SKILL_GAUGE_COLOR = new Color32(255, 255, 100, 200);  // スキル使用可能時のスキルゲージの色
+        public const int SKILL_SLOT_AMOUNT = 3;                                                      // スキルスロットの数
     }
 }

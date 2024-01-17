@@ -17,6 +17,17 @@ public class SkillController : MonoBehaviour
     public float coolDown = 0;   // クールダウンを管理
     public float effectTime = 0; // 効果時間を管理
 
+    private int[] skillSlot = new int[AppConst.SKILL_SLOT_AMOUNT]; // スキルスロット
+
+    void Start()
+    {
+        // スキルスロットを初期化
+        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
+        {
+            skillSlot[i] = i;
+        }
+    }
+
     void Update()
     {
         // ゲーム画面なら
@@ -48,9 +59,9 @@ public class SkillController : MonoBehaviour
     public void CallSetSkillUI()
     {
         skillUIController.DrawSkillUI(
-            AppConst.SKILL_NAME[selectSkill],
-            AppConst.SKILL_COOLDOWN[selectSkill],
-            AppConst.SKILL_EFFECT_TIME[selectSkill],
+            AppConst.SKILL_NAME[skillSlot[selectSkill]],
+            AppConst.SKILL_COOLDOWN[skillSlot[selectSkill]],
+            AppConst.SKILL_EFFECT_TIME[skillSlot[selectSkill]],
             coolDown,
             effectTime
             );
@@ -65,22 +76,22 @@ public class SkillController : MonoBehaviour
         // スキル番号が範囲外なら範囲内に収める
         if (selectSkill < 0)
             selectSkill = 0;
-        else if (selectSkill >= AppConst.SKILL_NUM)
-            selectSkill = AppConst.SKILL_NUM - 1;
+        else if (selectSkill > AppConst.SKILL_SLOT_AMOUNT - 1)
+            selectSkill = AppConst.SKILL_SLOT_AMOUNT - 1;
     }
 
     // スキル使用
     void UseSkill()
     {
         // 効果時間とクールダウンを設定
-        effectTime = AppConst.SKILL_EFFECT_TIME[selectSkill];
-        coolDown = AppConst.SKILL_COOLDOWN[selectSkill];
+        effectTime = AppConst.SKILL_EFFECT_TIME[skillSlot[selectSkill]];
+        coolDown = AppConst.SKILL_COOLDOWN[skillSlot[selectSkill]];
 
         // エネルギーを消費
-        energyController.energy -= AppConst.SKILL_ENERGY_USAGE[selectSkill];
+        energyController.energy -= AppConst.SKILL_ENERGY_USAGE[skillSlot[selectSkill]];
 
         // 選択しているスキルによって分岐
-        switch(selectSkill)
+        switch(skillSlot[selectSkill])
         {
             case 0: // SuperCharge
                 StartCoroutine(UseSuperCharge());
