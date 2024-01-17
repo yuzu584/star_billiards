@@ -22,6 +22,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         StageSelect,      // ステージ選択画面に戻る
         StageStart,       // ステージスタート
         LockOnPlanet,     // 惑星をロックオン
+        SkillSelect,      // スキル選択画面を開く
     }
     public ClickAction clickAction;                                         // ボタンを押したときの効果
 
@@ -84,6 +85,9 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
             case ClickAction.LockOnPlanet:     // 惑星をロックオン
                 LockOnPlanet();
                 break;
+            case ClickAction.SkillSelect:      // スキル選択画面を開く
+                SkillSelect();
+                break;
             default:
                 break;
         }
@@ -140,6 +144,12 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         GameObject target = GameObject.Find(transform.parent.gameObject.name);
         arrow.Create(target);
+    }
+
+    // スキル選択画面を開く
+    void SkillSelect()
+    {
+
     }
 
     // ボタンのアニメーション
