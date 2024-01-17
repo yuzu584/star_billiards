@@ -49,7 +49,5 @@ public class SkillSlotController : MonoBehaviour, IPointerEnterHandler, IPointer
 
         // 探したGameObjectのコンポーネントを取得
         lerp = UIFunctionController.GetComponent<Lerp>();
-
-
     }
 }

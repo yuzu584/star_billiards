@@ -14,28 +14,28 @@ namespace Const
         public const float SPEED_REDUCTION_RATE = 0.95f;                                               // プレイヤーの速度減少率
         public const float SPEED_THRESHOLD = 0.01f;                                                    // プレイヤーの速度のしきい値
         public const int SKILL_NUM = 4;                                                                // スキルの数
-        public static readonly string[] SKILL_NAME = new string[]                                      // スキル名
+        public static readonly string[] SKILL_NAME = new string[SKILL_NUM]                             // スキル名
         {
             "SuperCharge",
             "PowerSurge",
             "Huge",
             "GravityWave",
         };
-        public static readonly int[] SKILL_ENERGY_USAGE = new int[]                                  // スキルのエネルギー消費量
+        public static readonly int[] SKILL_ENERGY_USAGE = new int[SKILL_NUM]                           // スキルのエネルギー消費量
         {
             10,
             20,
             100,
             50,
         };
-        public static readonly float[] SKILL_COOLDOWN = new float[]                                  // スキルのクールダウン
+        public static readonly float[] SKILL_COOLDOWN = new float[SKILL_NUM]                           // スキルのクールダウン
         {
             1.0f,
             1.0f,
             1.0f,
             1.0f,
         };
-        public static readonly float[] SKILL_EFFECT_TIME = new float[]                               // スキルの効果時間
+        public static readonly float[] SKILL_EFFECT_TIME = new float[SKILL_NUM]                        // スキルの効果時間
         {
             10.0f,
             10.0f,
