@@ -18,8 +18,9 @@ public class StageController : MonoBehaviour
     public int stageNum = 0;                                        // ステージ番号
     public bool stageCrear = false;                                 // ステージをクリアしたかどうか
 
-    private int missionNum;            // ミッション番号
-    private bool stageCreated = false; // ステージを生成したか
+    private int missionNum;              // ミッション番号
+    private bool canCreateStage = false; // ステージ生成可能か
+    private bool stageCreated = false;   // ステージを生成したか
 
     void Update()
     {
@@ -34,18 +35,19 @@ public class StageController : MonoBehaviour
             stageCrear = true;
         }
 
-        // ゲーム画面かつステージ未生成ならステージを生成
-        if(((screenController.screenNum == 0) || (screenController.screenNum == 1) || (screenController.screenNum == 7)) && (!stageCreated))
-        {
-            stageCreated = true;
-            createStage.Create(true);
-        }
+        // ステージ生成可能かつステージ未生成ならステージを生成
+        if(((screenController.screenNum == 0) || (screenController.screenNum == 1) || (screenController.screenNum == 5) || (screenController.screenNum == 7)) && (!stageCreated))
+            canCreateStage = true;
 
-        // ゲーム画面以外かつステージ生成済みならステージを削除
-        else if ((screenController.screenNum != 0) && (screenController.screenNum != 1) && (screenController.screenNum != 7) && (stageCreated))
+        // ステージ生成不可かつステージ生成済みならステージを削除
+        else if ((screenController.screenNum != 0) && (screenController.screenNum != 1) && (screenController.screenNum != 5) && (screenController.screenNum != 7) && (stageCreated))
+            canCreateStage = false;
+
+        // ステージを生成/削除
+        if(stageCreated != canCreateStage)
         {
-            stageCreated = false;
-            createStage.Create(false);
+            stageCreated = canCreateStage;
+            createStage.Create(canCreateStage);
         }
     }
 
