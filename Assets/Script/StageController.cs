@@ -13,10 +13,14 @@ public class StageController : MonoBehaviour
     [SerializeField] private SkillUIController skillUIController;   // InspectorでSkillUIControllerを指定
     [SerializeField] private PopupController popupController;       // InspectorでPopupControllerを指定
     [SerializeField] private PlayerController playerController;     // InspectorでPlayerControllerを指定
+    [SerializeField] private CreateStage createStage;               // InspectorでCreateStageを指定
+    [SerializeField] private ScreenController screenController;     // InspectorでScreenControllerを指定
     public int stageNum = 0;                                        // ステージ番号
     public bool stageCrear = false;                                 // ステージをクリアしたかどうか
 
-    private int missionNum; // ミッション番号
+    private int missionNum;              // ミッション番号
+    private bool canCreateStage = false; // ステージ生成可能か
+    private bool stageCreated = false;   // ステージを生成したか
 
     void Update()
     {
@@ -29,6 +33,21 @@ public class StageController : MonoBehaviour
         {
             // ステージクリア
             stageCrear = true;
+        }
+
+        // ステージ生成可能かつステージ未生成ならステージを生成
+        if(((screenController.screenNum == 0) || (screenController.screenNum == 1) || (screenController.screenNum == 5) || (screenController.screenNum == 7)) && (!stageCreated))
+            canCreateStage = true;
+
+        // ステージ生成不可かつステージ生成済みならステージを削除
+        else if ((screenController.screenNum != 0) && (screenController.screenNum != 1) && (screenController.screenNum != 5) && (screenController.screenNum != 7) && (stageCreated))
+            canCreateStage = false;
+
+        // ステージを生成/削除
+        if(stageCreated != canCreateStage)
+        {
+            stageCreated = canCreateStage;
+            createStage.Create(canCreateStage);
         }
     }
 
