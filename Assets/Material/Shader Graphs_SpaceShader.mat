@@ -62,17 +62,17 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Cloud_Amount: 20
+    - _Cloud_Amount: 30
     - _Cloud_Strength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Star_A_Count: 10
+    - _Star_A_Count: 30
     - _Star_A_Size: 0
-    - _Star_B_Count: 30
+    - _Star_B_Count: 50
     - _Star_B_Size: 0
     m_Colors:
-    - _Cloud_Color: {r: 0.46775103, g: 0, b: 1, a: 0}
+    - _Cloud_Color: {r: 0.4017415, g: 0, b: 1, a: 0}
     - _Color_Space: {r: 0.061820373, g: 0.059184738, b: 0.09433959, a: 0}
-    - _Star_A_Color: {r: 0.9607843, g: 0.29856643, b: 0.14901958, a: 0}
+    - _Star_A_Color: {r: 1, g: 0.38056087, b: 0, a: 0}
     - _Star_B_Color: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

@@ -2663,6 +2663,8 @@ MonoBehaviour:
     allSkillSelectUI: {fileID: 2027750825}
   settingUI:
     allSettingUI: {fileID: 1225636072}
+  titleUI:
+    allTitleUI: {fileID: 923416506}
   otherUI:
     reticle: {fileID: 1067802296}
     speedValue: {fileID: 372907193}
@@ -3574,6 +3576,7 @@ GameObject:
   - component: {fileID: 1148952480}
   - component: {fileID: 1148952479}
   - component: {fileID: 1148952481}
+  - component: {fileID: 1148952482}
   m_Layer: 0
   m_Name: UIFunctionController
   m_TagString: Untagged
@@ -3809,6 +3812,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FPSText: {fileID: 264912051}
+--- !u!114 &1148952482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148952465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10eb5ce851b1fe849a384015200b963b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenController: {fileID: 1600059365}
 --- !u!1 &1180901546
 GameObject:
   m_ObjectHideFlags: 0
@@ -5343,7 +5359,7 @@ MonoBehaviour:
   screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
   canUIDraw: 000000000000000000
   canStageDraw: 0
-  screenNum: 1
+  screenNum: 0
 --- !u!4 &1600059366
 Transform:
   m_ObjectHideFlags: 0

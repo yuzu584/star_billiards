@@ -22,6 +22,7 @@ public class UIController : MonoBehaviour
     public StageSelectUI stageSelectUI;
     public SkillSelectUI skillSelectUI;
     public SettingUI settingUI;
+    public TitleUI titleUI;
     public OtherUI otherUI;
 
     // ゲーム画面のUI
@@ -139,6 +140,13 @@ public class UIController : MonoBehaviour
     public class SettingUI
     {
         public GameObject allSettingUI; // 設定画面全体のUI
+    }
+
+    // タイトル画面のUI
+    [System.Serializable]
+    public class TitleUI
+    {
+        public GameObject allTitleUI; // タイトル画面全体のUI
     }
 
     // その他UI
@@ -319,6 +327,12 @@ public class UIController : MonoBehaviour
             settingUI.allSettingUI.SetActive(true);
         else if (screenController.screenNum != 3)
             settingUI.allSettingUI.SetActive(false);
+
+        // タイトル画面を表示/非表示
+        if ((screenController.screenNum == 0) && (!titleUI.allTitleUI.activeSelf))
+            titleUI.allTitleUI.SetActive(true);
+        else if (screenController.screenNum != 0)
+            titleUI.allTitleUI.SetActive(false);
 
         // ステージのアイコンを表示/非表示
         stageSelectUIController.DrawStageIcon(stageSelectUI.allStageSelectUI.activeSelf);
