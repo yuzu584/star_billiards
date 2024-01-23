@@ -1120,6 +1120,86 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5970234051200584755, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
   m_PrefabInstance: {fileID: 254362116}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &264912050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 264912053}
+  - component: {fileID: 264912052}
+  - component: {fileID: 264912051}
+  m_Layer: 5
+  m_Name: FrameRate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &264912051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264912050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 144 FPS
+--- !u!222 &264912052
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264912050}
+  m_CullTransparentMesh: 1
+--- !u!224 &264912053
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264912050}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 869580815}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -30, y: -10}
+  m_SizeDelta: {x: 75, y: 15}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &291823623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,6 +1252,8 @@ MonoBehaviour:
   skillUIController: {fileID: 1148952470}
   popupController: {fileID: 1148952468}
   playerController: {fileID: 2052131797}
+  createStage: {fileID: 1400418625}
+  screenController: {fileID: 1600059365}
   stageNum: 0
   stageCrear: 0
 --- !u!1 &299483584
@@ -2676,6 +2758,7 @@ RectTransform:
   - {fileID: 630366474}
   - {fileID: 1402327228}
   - {fileID: 49308637}
+  - {fileID: 264912053}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3490,6 +3573,7 @@ GameObject:
   - component: {fileID: 1148952478}
   - component: {fileID: 1148952480}
   - component: {fileID: 1148952479}
+  - component: {fileID: 1148952481}
   m_Layer: 0
   m_Name: UIFunctionController
   m_TagString: Untagged
@@ -3712,6 +3796,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillSlotObj: {fileID: 7245476138344427337, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
   parentObj: {fileID: 2027750825}
+--- !u!114 &1148952481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148952465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e76385d35a7b8f46918ca07124957f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FPSText: {fileID: 264912051}
 --- !u!1 &1180901546
 GameObject:
   m_ObjectHideFlags: 0
@@ -5244,7 +5341,8 @@ MonoBehaviour:
   stageController: {fileID: 291823625}
   pauseUIController: {fileID: 1148952472}
   screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
-  CanUIDrawing: 000000000000000000
+  canUIDraw: 000000000000000000
+  canStageDraw: 0
   screenNum: 1
 --- !u!4 &1600059366
 Transform:

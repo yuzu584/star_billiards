@@ -30,7 +30,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private GameObject ScreenController;
     private GameObject Canvas;
     private GameObject UIFunctionController;
-    private GameObject Stage;
     private GameObject PlanetInfo;
     private GameObject ArrowController;
     private GameObject StageController;
@@ -39,7 +38,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private ScreenController screenController;
     private UIController uIController;
     private PauseUIController pauseUIController;
-    private CreateStage createStage;
     private Arrow arrow;
     private StageController stageController;
     private Lerp lerp;
@@ -130,9 +128,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         // 画面番号をStageSelectに変更
         screenController.screenNum = 2;
-
-        // ステージを削除
-        createStage.Create(false);
     }
 
     // ステージスタート
@@ -143,9 +138,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
         // ステージに関する数値を初期化
         stageController.Init();
-
-        // ステージを作成
-        createStage.Create(true);
     }
 
     // 惑星情報画面を開く
@@ -168,7 +160,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         ScreenController = GameObject.Find("ScreenController");
         Canvas = GameObject.Find("Canvas");
         UIFunctionController = GameObject.Find("UIFunctionController");
-        Stage = GameObject.Find("Stage");
         PlanetInfo = GameObject.Find("Planet Info");
         ArrowController = GameObject.Find("ArrowController");
         StageController = GameObject.Find("StageController");
@@ -177,7 +168,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         screenController = ScreenController.gameObject.GetComponent<ScreenController>();
         uIController = Canvas.gameObject.GetComponent<UIController>();
         pauseUIController = UIFunctionController.GetComponent<PauseUIController>();
-        createStage = Stage.GetComponent<CreateStage>();
         arrow = ArrowController.GetComponent<Arrow>();
         stageController = StageController.GetComponent<StageController>();
         lerp = UIFunctionController.GetComponent<Lerp>();

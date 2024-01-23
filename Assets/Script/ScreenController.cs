@@ -20,7 +20,9 @@ public class ScreenController : MonoBehaviour
     // 6 : ポーズ画面
     // 7 : 惑星リスト画面
     // 8 : ステージクリア画面
-    public bool[] CanUIDrawing = new bool[9];
+    public bool[] canUIDraw = new bool[9];
+
+    public bool canStageDraw = false; // ステージを描画可能か
 
     public int screenNum = 1; // 画面番号
 
@@ -57,8 +59,15 @@ public class ScreenController : MonoBehaviour
         // UIが描画可能かを管理する配列を更新
         for (int i = 0; i < 9; i++)
         {
-            if(CanUIDrawing[i] != screenData.screenList[screenNum].uIDrawList[i])
-                CanUIDrawing[i] = screenData.screenList[screenNum].uIDrawList[i];
+            if(canUIDraw[i] != screenData.screenList[screenNum].uIDrawList[i])
+                canUIDraw[i] = screenData.screenList[screenNum].uIDrawList[i];
+        }
+
+        // ステージが描画可能かを管理する配列を更新
+        for (int i = 0;i < 9; i++)
+        {
+            if (canStageDraw != screenData.screenList[screenNum].drawStage)
+                canStageDraw = screenData.screenList[screenNum].drawStage;
         }
     }
 }

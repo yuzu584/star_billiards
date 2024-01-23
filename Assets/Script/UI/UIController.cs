@@ -221,9 +221,9 @@ public class UIController : MonoBehaviour
     void Update()
     {
         // ゲーム画面を表示/非表示
-        if ((screenController.CanUIDrawing[5]) && (!inGameUI.allInGameUI.activeSelf))
+        if ((screenController.canUIDraw[5]) && (!inGameUI.allInGameUI.activeSelf))
             inGameUI.allInGameUI.SetActive(true);
-        else if((!screenController.CanUIDrawing[5]) && (inGameUI.allInGameUI.activeSelf))
+        else if((!screenController.canUIDraw[5]) && (inGameUI.allInGameUI.activeSelf))
             inGameUI.allInGameUI.SetActive(false);
 
         // ゲーム画面が表示されているなら各種UIを更新
