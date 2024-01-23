@@ -8,8 +8,8 @@ using UnityEngine.Rendering.Universal;
 // ポストプロセスを管理
 public class PostProcessController : MonoBehaviour
 {
-    [SerializeField] Volume volume; // ポストプロセスのボリューム
-    DepthOfField depthOfField;      // 被写界深度
+    [SerializeField] Volume volume;    // ポストプロセスのボリューム
+    private DepthOfField depthOfField; // 被写界深度
 
     // 被写界深度をON又はOFFにする
     public void DepthOfFieldOnOff(bool onoff)
@@ -18,5 +18,16 @@ public class PostProcessController : MonoBehaviour
         {
             depthOfField.active = onoff;
         }
+    }
+
+    // 被写界深度のON/OFFを取得
+    public bool GetDepthOfFieldOnOff()
+    {
+        if (volume.profile.TryGet<DepthOfField>(out depthOfField))
+        {
+            return depthOfField.active;
+        }
+
+        return false;
     }
 }

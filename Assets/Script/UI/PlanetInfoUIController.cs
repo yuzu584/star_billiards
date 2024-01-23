@@ -7,11 +7,11 @@ using UnityEngine.UI;
 // 惑星情報UIを管理
 public class PlanetInfoUIController : MonoBehaviour
 {
-    [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
+    [SerializeField] private UIController uIController; // InspectorでUIControllerを指定
 
-    Vector3 PIL1;             // 惑星情報UIの線の始点座標
-    Vector3 PIL2;             // 惑星情報UIの線の中間座標
-    Vector3 PIL3;             // 惑星情報UIの線の終点座標
+    Vector3 PIL1; // 惑星情報UIの線の始点座標
+    Vector3 PIL2; // 惑星情報UIの線の中間座標
+    Vector3 PIL3; // 惑星情報UIの線の終点座標
 
     // 惑星情報UIを描画
     public void DrawPlanetInfoUI(Vector3 position, string planetName)

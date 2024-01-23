@@ -99,14 +99,8 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         // 画面番号をInGameに変更
         screenController.screenNum = 5;
 
-        // ポーズ画面のUIを非表示
-        pauseUIController.DrawPauseUI(false);
-
         // 惑星情報UIを表示
         PlanetInfo.SetActive(true);
-
-        // 時間の流れを元に戻す
-        Time.timeScale = 1.0f;
     }
 
     // 設定画面を開く

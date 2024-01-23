@@ -212,12 +212,6 @@ public class UIController : MonoBehaviour
         // 惑星情報UIの線の数
         planetInfoUI.planetInfoLine.positionCount = 3;
 
-        // エネルギーがない旨を伝えるテキストを非表示
-        messageUI.NoEnergy.enabled = false;
-
-        // ポーズ画面のUIを非表示
-        pauseUIController.DrawPauseUI(false);
-
         // ステージクリア画面のUIを非表示
         stageClearUIController.DrawStageClearUI(
             false,
@@ -229,10 +223,7 @@ public class UIController : MonoBehaviour
     void Update()
     {
         // ゲーム画面を表示/非表示
-        if ((screenController.canUIDraw[5]) && (!inGameUI.allInGameUI.activeSelf))
-            inGameUI.allInGameUI.SetActive(true);
-        else if((!screenController.canUIDraw[5]) && (inGameUI.allInGameUI.activeSelf))
-            inGameUI.allInGameUI.SetActive(false);
+        DrawOrHide(inGameUI.allInGameUI, 5);
 
         // ゲーム画面が表示されているなら各種UIを更新
         if (inGameUI.allInGameUI.activeSelf)
@@ -290,22 +281,13 @@ public class UIController : MonoBehaviour
         }
 
         // ポーズ画面を表示/非表示
-        if((screenController.screenNum == 6) && (!pauseUI.allPauseUI.activeSelf))
-            pauseUIController.DrawPauseUI(true);
-        else if ((screenController.screenNum != 6) && (pauseUI.allPauseUI.activeSelf))
-            pauseUIController.DrawPauseUI(false);
+        DrawOrHide(pauseUI.allPauseUI, 6);
 
         // メインメニューを表示/非表示
-        if ((screenController.screenNum == 1) && (!mainMenuUI.allMainMenuUI.activeSelf))
-            mainMenuUIController.DrawMainMenu(true, mainMenuUI.allMainMenuUI);
-        else if(screenController.screenNum != 1)
-            mainMenuUIController.DrawMainMenu(false, mainMenuUI.allMainMenuUI);
+        DrawOrHide(mainMenuUI.allMainMenuUI, 1);
 
         // ステージ選択画面を表示/非表示
-        if((screenController.screenNum == 2) && (!stageSelectUI.allStageSelectUI.activeSelf))
-            stageSelectUI.allStageSelectUI.SetActive(true);
-        else if(screenController.screenNum != 2)
-            stageSelectUI.allStageSelectUI.SetActive(false);
+        DrawOrHide(stageSelectUI.allStageSelectUI, 2);
 
         // ステージ選択画面が表示されているなら各種UIを更新
         if (stageSelectUI.allStageSelectUI.activeSelf)
@@ -317,24 +299,22 @@ public class UIController : MonoBehaviour
         }
 
         // スキル選択画面を表示/非表示
-        if ((screenController.screenNum == 4) && (!skillSelectUI.allSkillSelectUI.activeSelf))
-            skillSelectUI.allSkillSelectUI.SetActive(true);
-        else if (screenController.screenNum != 4)
-            skillSelectUI.allSkillSelectUI.SetActive(false);
+        DrawOrHide(skillSelectUI.allSkillSelectUI, 4);
 
         // 設定画面を表示/非表示
-        if ((screenController.screenNum == 3) && (!settingUI.allSettingUI.activeSelf))
-            settingUI.allSettingUI.SetActive(true);
-        else if (screenController.screenNum != 3)
-            settingUI.allSettingUI.SetActive(false);
+        DrawOrHide(settingUI.allSettingUI, 3);
 
         // タイトル画面を表示/非表示
-        if ((screenController.screenNum == 0) && (!titleUI.allTitleUI.activeSelf))
-            titleUI.allTitleUI.SetActive(true);
-        else if (screenController.screenNum != 0)
-            titleUI.allTitleUI.SetActive(false);
+        DrawOrHide(titleUI.allTitleUI, 0);
 
         // ステージのアイコンを表示/非表示
         stageSelectUIController.DrawStageIcon(stageSelectUI.allStageSelectUI.activeSelf);
+    }
+
+    // 描画するかしないかを判断
+    void DrawOrHide(GameObject obj, int num)
+    {
+        if      ((screenController.canUIDraw[num]) && (!obj.activeSelf)) { obj.SetActive(true); }
+        else if ((!screenController.canUIDraw[num]) && (obj.activeSelf)) { obj.SetActive(false); }
     }
 }

@@ -35,9 +35,6 @@ public class ScreenController : MonoBehaviour
         {
             // ポーズ画面に遷移
             screenNum = 6;
-
-            // ポーズ画面のUIを表示
-            pauseUIController.DrawPauseUI(true);
         }
 
         // ステージをクリアかつ画面遷移していないなら
