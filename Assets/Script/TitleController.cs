@@ -9,7 +9,8 @@ public class TitleController : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKey)
+        // タイトル画面で何かしらの入力が行われたらメインメニューに遷移
+        if ((Input.anyKey) && (screenController.screenNum == 0))
         {
             screenController.screenNum = 1;
         }
