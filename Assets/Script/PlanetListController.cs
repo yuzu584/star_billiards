@@ -38,7 +38,7 @@ public class PlanetListController : MonoBehaviour
     void Update()
     {
         // ゲーム中か惑星リスト画面で惑星リスト表示ボタンが押されたら表示/非表示切り替え
-        if (((screenController.screenNum == 0) || (screenController.screenNum == 5)) && (Input.GetAxisRaw("PlanetList") != 0) && (!isPushKey))
+        if (((screenController.screenNum == 5) || (screenController.screenNum == 7)) && (Input.GetAxisRaw("PlanetList") != 0) && (!isPushKey))
         {
             isPushKey = true;
             uiDrawing = !uiDrawing;
@@ -47,7 +47,7 @@ public class PlanetListController : MonoBehaviour
             if (uiDrawing)
             {
                 // 惑星リスト画面に遷移
-                screenController.screenNum = 5;
+                screenController.screenNum = 7;
 
                 // UIを描画
                 planetListUIController.DrawPlanetList();
@@ -55,14 +55,14 @@ public class PlanetListController : MonoBehaviour
             else
             {
                 // ゲーム画面に遷移
-                screenController.screenNum = 0;
+                screenController.screenNum = 5;
 
                 // UIを削除
                 planetListUIController.DeletePlanetListContent();
             }
         }
         // ゲーム中か惑星リスト画面でキーが押されていなければisPushKeyを押されていない状態にする
-        else if (((screenController.screenNum == 0) || (screenController.screenNum == 5)) && (Input.GetAxisRaw("PlanetList") == 0) && (isPushKey))
+        else if (((screenController.screenNum == 5) || (screenController.screenNum == 7)) && (Input.GetAxisRaw("PlanetList") == 0) && (isPushKey))
             isPushKey = false;
     }
 }

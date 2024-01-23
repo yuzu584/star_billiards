@@ -221,9 +221,9 @@ public class UIController : MonoBehaviour
     void Update()
     {
         // ゲーム画面を表示/非表示
-        if(((screenController.screenNum == 0) || (screenController.screenNum == 5)) && (!inGameUI.allInGameUI.activeSelf))
+        if ((screenController.CanUIDrawing[5]) && (!inGameUI.allInGameUI.activeSelf))
             inGameUI.allInGameUI.SetActive(true);
-        else if(((screenController.screenNum != 0) && (screenController.screenNum != 5)) && (inGameUI.allInGameUI.activeSelf))
+        else if((!screenController.CanUIDrawing[5]) && (inGameUI.allInGameUI.activeSelf))
             inGameUI.allInGameUI.SetActive(false);
 
         // ゲーム画面が表示されているなら各種UIを更新
@@ -266,7 +266,7 @@ public class UIController : MonoBehaviour
                 stageClearUI.stageClearText);
         }
         // ステージクリア済みかつステージクリア画面ではないなら
-        else if((stageController.stageCrear) && (screenController.screenNum != 2))
+        else if((stageController.stageCrear) && (screenController.screenNum != 8))
         {
             // ステージクリアフラグを初期化
             drawedStageClearUI = false;
@@ -282,21 +282,21 @@ public class UIController : MonoBehaviour
         }
 
         // ポーズ画面を表示/非表示
-        if((screenController.screenNum == 1) && (!pauseUI.allPauseUI.activeSelf))
+        if((screenController.screenNum == 6) && (!pauseUI.allPauseUI.activeSelf))
             pauseUIController.DrawPauseUI(true);
-        else if ((screenController.screenNum != 1) && (pauseUI.allPauseUI.activeSelf))
+        else if ((screenController.screenNum != 6) && (pauseUI.allPauseUI.activeSelf))
             pauseUIController.DrawPauseUI(false);
 
         // メインメニューを表示/非表示
-        if ((screenController.screenNum == 3) && (!mainMenuUI.allMainMenuUI.activeSelf))
+        if ((screenController.screenNum == 1) && (!mainMenuUI.allMainMenuUI.activeSelf))
             mainMenuUIController.DrawMainMenu(true, mainMenuUI.allMainMenuUI);
-        else if(screenController.screenNum != 3)
+        else if(screenController.screenNum != 1)
             mainMenuUIController.DrawMainMenu(false, mainMenuUI.allMainMenuUI);
 
         // ステージ選択画面を表示/非表示
-        if((screenController.screenNum == 4) && (!stageSelectUI.allStageSelectUI.activeSelf))
+        if((screenController.screenNum == 2) && (!stageSelectUI.allStageSelectUI.activeSelf))
             stageSelectUI.allStageSelectUI.SetActive(true);
-        else if(screenController.screenNum != 4)
+        else if(screenController.screenNum != 2)
             stageSelectUI.allStageSelectUI.SetActive(false);
 
         // ステージ選択画面が表示されているなら各種UIを更新
@@ -309,15 +309,15 @@ public class UIController : MonoBehaviour
         }
 
         // スキル選択画面を表示/非表示
-        if ((screenController.screenNum == 6) && (!skillSelectUI.allSkillSelectUI.activeSelf))
+        if ((screenController.screenNum == 4) && (!skillSelectUI.allSkillSelectUI.activeSelf))
             skillSelectUI.allSkillSelectUI.SetActive(true);
-        else if (screenController.screenNum != 6)
+        else if (screenController.screenNum != 4)
             skillSelectUI.allSkillSelectUI.SetActive(false);
 
         // 設定画面を表示/非表示
-        if ((screenController.screenNum == 7) && (!settingUI.allSettingUI.activeSelf))
+        if ((screenController.screenNum == 3) && (!settingUI.allSettingUI.activeSelf))
             settingUI.allSettingUI.SetActive(true);
-        else if (screenController.screenNum != 7)
+        else if (screenController.screenNum != 3)
             settingUI.allSettingUI.SetActive(false);
 
         // ステージのアイコンを表示/非表示

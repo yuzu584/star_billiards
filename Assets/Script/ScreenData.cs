@@ -13,7 +13,8 @@ public class ScreenData : ScriptableObject
 [System.Serializable]
 public class ScreenDataContent
 {
-    public string screenName;      // 名前
-    public bool drawCursol;        // カーソルを表示するか
-    public float timeScale = 1.0f; // 時間が流れる速さ
+    public string screenName;               // 名前
+    public bool drawCursol;                 // カーソルを表示するか
+    public float timeScale = 1.0f;          // 時間が流れる速さ
+    public bool[] uIDrawList = new bool[9]; // 描画するUIの配列
 }

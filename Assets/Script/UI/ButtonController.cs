@@ -99,7 +99,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     void ReturnToGame()
     {
         // 画面番号をInGameに変更
-        screenController.screenNum = 0;
+        screenController.screenNum = 5;
 
         // ポーズ画面のUIを非表示
         pauseUIController.DrawPauseUI(false);
@@ -115,21 +115,21 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     void Setting()
     {
         // 画面番号をSettingに変更
-        screenController.screenNum = 7;
+        screenController.screenNum = 3;
     }
 
     // メインメニューに戻る
     void ReturnToMainMenu()
     {
-        // 画面番号をTitleに変更
-        screenController.screenNum = 3;
+        // 画面番号をMainMenuに変更
+        screenController.screenNum = 1;
     }
 
     // ステージ選択画面に遷移
     void StageSelect()
     {
         // 画面番号をStageSelectに変更
-        screenController.screenNum = 4;
+        screenController.screenNum = 2;
 
         // ステージを削除
         createStage.Create(false);
@@ -139,7 +139,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     void StageStart()
     {
         // 画面番号をInGameに変更
-        screenController.screenNum = 0;
+        screenController.screenNum = 5;
 
         // ステージに関する数値を初期化
         stageController.Init();
@@ -159,7 +159,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     void SkillSelect()
     {
         // 画面番号をSkillSelectに変更
-        screenController.screenNum = 6;
+        screenController.screenNum = 4;
     }
 
     void Start()

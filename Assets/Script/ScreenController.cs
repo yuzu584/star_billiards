@@ -10,26 +10,29 @@ public class ScreenController : MonoBehaviour
     [SerializeField] private PauseUIController pauseUIController;       // InspectorでPauseUIControllerを指定
     [SerializeField] private ScreenData screenData;                     // InspectorでScreenDataを指定
 
-    // 画面番号
-    // 0 : ゲーム画面
-    // 1 : ポーズ画面
-    // 2 : ステージクリア画面
-    // 3 : メインメニュー
-    // 4 : ステージ選択画面
-    // 5 : 惑星情報画面
-    // 6 : スキル選択画面
-    // 7 : 設定画面
-    public int screenNum = 3;
+    // UIが描画可能かを管理する配列
+    // 0 : タイトル画面
+    // 1 : メインメニュー
+    // 2 : ステージ選択画面
+    // 3 : 設定画面
+    // 4 : スキル選択画面
+    // 5 : ゲーム画面
+    // 6 : ポーズ画面
+    // 7 : 惑星リスト画面
+    // 8 : ステージクリア画面
+    public bool[] CanUIDrawing = new bool[9];
+
+    public int screenNum = 1; // 画面番号
 
     private bool changeStageClearScreen = false; // ステージクリア画面に遷移したかどうか
 
     void Update()
     {
         // ゲーム中に戻るボタンが押されたら
-        if(Input.GetButtonDown("Cancel") && screenNum == 0)
+        if(Input.GetButtonDown("Cancel") && screenNum == 5)
         {
             // ポーズ画面に遷移
-            screenNum = 1;
+            screenNum = 6;
 
             // ポーズ画面のUIを表示
             pauseUIController.DrawPauseUI(true);
@@ -42,13 +45,20 @@ public class ScreenController : MonoBehaviour
             changeStageClearScreen = true;
 
             // ステージクリア画面に遷移
-            screenNum = 2;
+            screenNum = 8;
         }
         // ステージ未クリアかつ画面遷移したなら
         else if ((!stageController.stageCrear) && (changeStageClearScreen))
         {
             // ステージクリア画面に未遷移
             changeStageClearScreen = false;
+        }
+
+        // UIが描画可能かを管理する配列を更新
+        for (int i = 0; i < 9; i++)
+        {
+            if(CanUIDrawing[i] != screenData.screenList[screenNum].uIDrawList[i])
+                CanUIDrawing[i] = screenData.screenList[screenNum].uIDrawList[i];
         }
     }
 }

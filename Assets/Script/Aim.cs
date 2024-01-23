@@ -12,7 +12,7 @@ public class Aim : MonoBehaviour
     void Update()
     {
         // ƒQ[ƒ€‰æ–Ê‚È‚ç
-        if (screenController.screenNum == 0)
+        if (screenController.screenNum == 5)
         {
             // ”­ŽËƒ{ƒ^ƒ“2‚ª‰Ÿ‚³‚ê‚½‚ç
             if (Input.GetAxisRaw("Fire2") > 0)

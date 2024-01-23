@@ -31,7 +31,7 @@ public class SkillController : MonoBehaviour
     void Update()
     {
         // ゲーム画面なら
-        if (screenController.screenNum == 0)
+        if (screenController.screenNum == 5)
         {
             // マウスホイールがスクロールされていたら
             if ((Input.GetAxisRaw("Mouse ScrollWheel") != 0) && (effectTime <= 0) && (coolDown == 0))
