@@ -34,6 +34,7 @@ public class SkillSlotController : MonoBehaviour, IPointerEnterHandler, IPointer
         // ボタンのアニメーション
         StopAllCoroutines();
         StartCoroutine(lerp.ChangeColor(image, defaultColor, OnPointerColor, fadeTime));
+        StartCoroutine(lerp.ChangePosition(imageOutline, imageOutline.rectTransform.position, imageOutline.rectTransform.position + new Vector3(-5, -5, 0), fadeTime));
 
         // スキルの情報を表示するUIを更新
         skillSelectUIController.DrawSkillInfo(skillNum);
