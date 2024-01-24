@@ -7,15 +7,13 @@ public class FOV : MonoBehaviour
 {
     [SerializeField] private GameObject player; // 速度を参照するオブジェクト
     [SerializeField] private int Fov = 60;      // 視野角
+    [SerializeField] private int maxFov = 90;   // 最大視野角
+    [SerializeField] private int minFov = 60;   // 最小視野角
 
-    private Camera cam;   // メインカメラ
     private Rigidbody rb; // リジッドボディ
 
     void Start()
     {
-        // カメラのコンポーネントを取得
-        cam = GetComponent<Camera>();
-
         // 速度を参照するオブジェクトのrigidbodyを取得
         rb = player.GetComponent<Rigidbody>();
     }
@@ -24,26 +22,15 @@ public class FOV : MonoBehaviour
     public void ChangeFOV()
     {
         // 視野角を滑らかに変更
-        cam.fieldOfView += (Fov + rb.velocity.magnitude - cam.fieldOfView) * Time.deltaTime;
+        Camera.main.fieldOfView += (Fov + rb.velocity.magnitude - Camera.main.fieldOfView) * Time.deltaTime;
 
-        // 視野角が初期値+30度以上なら
-        if (cam.fieldOfView >= Fov + 30)
-        {
-            // 視野角を初期値+30度にする
-            cam.fieldOfView = Fov + 30;
-        }
-
-        // 視野角が初期値以下なら
-        else if (cam.fieldOfView <= Fov)
-        {
-            // 視野角を初期値にする
-            ResetFOV();
-        }
+        // 視野角を正常な範囲に保つ
+        Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, minFov, maxFov);
     }
 
     // 視野角を初期値にリセット
     public void ResetFOV()
     {
-        cam.fieldOfView = Fov;
+        Camera.main.fieldOfView = Fov;
     }
 }

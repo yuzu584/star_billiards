@@ -17,7 +17,9 @@ public class SkillController : MonoBehaviour
     public float coolDown = 0;   // クールダウンを管理
     public float effectTime = 0; // 効果時間を管理
 
-    private int[] skillSlot = new int[AppConst.SKILL_SLOT_AMOUNT]; // スキルスロット
+    public int[] skillSlot = new int[AppConst.SKILL_SLOT_AMOUNT];  // スキルスロット
+    public int[] selectSlot = new int[AppConst.SKILL_SLOT_AMOUNT]; // 選択しているスキルスロット
+    public int count = 0;                                          // スキルスロットを選択した回数をカウント
 
     void Start()
     {
@@ -26,6 +28,9 @@ public class SkillController : MonoBehaviour
         {
             skillSlot[i] = i;
         }
+
+        // 選択しているスキルスロットの配列を初期化
+        InitSelectSlot();
     }
 
     void Update()
@@ -200,6 +205,53 @@ public class SkillController : MonoBehaviour
 
         // パーティクルを削除
         Destroy(newParticle.gameObject, 2.0f);
+    }
+
+    // 選択しているスキルスロットの配列を初期化
+    public void InitSelectSlot()
+    {
+        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
+        {
+            selectSlot[i] = -1;
+        }
+        count = 0;
+    }
+
+    // 選択したスキルをセット
+    public void SetSelectSlot()
+    {
+        // セットしているスキルを管理
+        bool[] usingList = new bool[AppConst.SKILL_NUM];
+
+        // 使用しているスキルはtrue
+        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
+        {
+            if (selectSlot[i] >= 0)
+                usingList[selectSlot[i]] = true;
+        }
+
+        // スキル番号が-1なら正常な値にする
+        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
+        {
+            if (selectSlot[i] == -1)
+            {
+                for(int j = 0; i < AppConst.SKILL_NUM; j++)
+                {
+                    if (!usingList[j]) 
+                    {
+                        selectSlot[i] = j;
+                        usingList[selectSlot[i]] = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // スキルをセット
+        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
+            skillSlot[i] = selectSlot[i];
+
+        count = AppConst.SKILL_SLOT_AMOUNT;
     }
 
     // 初期化

@@ -33,6 +33,10 @@ public class SkillSelectUIController : MonoBehaviour
 
             // e‚ğİ’è
             slotPrefab.transform.SetParent(parentObj.transform, false);
+
+            // ƒXƒLƒ‹”Ô†‚ğİ’è
+            SkillSlotController skillSlotController = slotPrefab.GetComponent<SkillSlotController>();
+            skillSlotController.skillNum = i;
         }
     }
 }

@@ -23,6 +23,8 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         StageStart,       // ステージスタート
         PlanetList,       // 惑星情報画面を開く
         SkillSelect,      // スキル選択画面を開く
+        ApplySkill,       // 選択したスキルを適用
+        ResetSelectSkill, // 選択したスキルをリセット
     }
     public ClickAction clickAction;                                         // ボタンを押したときの効果
 
@@ -33,6 +35,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private GameObject PlanetInfo;
     private GameObject ArrowController;
     private GameObject StageController;
+    private GameObject Player;
 
     // Findで探したGameObjectのコンポーネント
     private ScreenController screenController;
@@ -41,6 +44,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private Arrow arrow;
     private StageController stageController;
     private Lerp lerp;
+    private SkillController skillController;
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
@@ -87,6 +91,12 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
                 break;
             case ClickAction.SkillSelect:      // スキル選択画面を開く
                 SkillSelect();
+                break;
+            case ClickAction.ApplySkill:       // 選択したスキルを適用
+                ApplySkill();
+                break;
+            case ClickAction.ResetSelectSkill: // 選択したスキルをリセット
+                ResetSelectSkill();
                 break;
             default:
                 break;
@@ -148,6 +158,18 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         screenController.screenNum = 4;
     }
 
+    // 選択したスキルを適用
+    void ApplySkill()
+    {
+        skillController.SetSelectSlot();
+    }
+
+    // 選択したスキルをリセット
+    void ResetSelectSkill()
+    {
+        skillController.InitSelectSlot();
+    }
+
     void Start()
     {
         // GameObjectを探す
@@ -157,6 +179,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         PlanetInfo = GameObject.Find("Planet Info");
         ArrowController = GameObject.Find("ArrowController");
         StageController = GameObject.Find("StageController");
+        Player = GameObject.Find("Player");
 
         // 探したGameObjectのコンポーネントを取得
         screenController = ScreenController.gameObject.GetComponent<ScreenController>();
@@ -165,5 +188,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         arrow = ArrowController.GetComponent<Arrow>();
         stageController = StageController.GetComponent<StageController>();
         lerp = UIFunctionController.GetComponent<Lerp>();
+        skillController = Player.GetComponent<SkillController>();
     }
 }
