@@ -19,6 +19,9 @@ public class SkillSlotController : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public int skillNum; // スキル番号
 
+    private Vector3 defaultPos;                            // 初期位置
+    private Vector3 moveDistance = new Vector3(-3, -3, 0); // 移動距離
+
     // Findで探すもの
     private GameObject UIFunctionController;
     private GameObject Player;
@@ -34,7 +37,7 @@ public class SkillSlotController : MonoBehaviour, IPointerEnterHandler, IPointer
         // ボタンのアニメーション
         StopAllCoroutines();
         StartCoroutine(lerp.ChangeColor(image, defaultColor, OnPointerColor, fadeTime));
-        StartCoroutine(lerp.ChangePosition(imageOutline, imageOutline.rectTransform.position, imageOutline.rectTransform.position + new Vector3(-5, -5, 0), fadeTime));
+        StartCoroutine(lerp.ChangePosition(imageOutline, defaultPos, defaultPos + moveDistance, fadeTime));
 
         // スキルの情報を表示するUIを更新
         skillSelectUIController.DrawSkillInfo(skillNum);
@@ -46,6 +49,7 @@ public class SkillSlotController : MonoBehaviour, IPointerEnterHandler, IPointer
         // ボタンのアニメーション
         StopAllCoroutines();
         StartCoroutine(lerp.ChangeColor(image, OnPointerColor, defaultColor, fadeTime));
+        StartCoroutine(lerp.ChangePosition(imageOutline, defaultPos + moveDistance, defaultPos, fadeTime));
     }
 
     // ボタンがクリックされたら
@@ -67,6 +71,9 @@ public class SkillSlotController : MonoBehaviour, IPointerEnterHandler, IPointer
         lerp = UIFunctionController.GetComponent<Lerp>();
         skillController = Player.GetComponent<SkillController>();
         skillSelectUIController = UIFunctionController.GetComponent<SkillSelectUIController>();
+
+        // 初期位置を設定
+        defaultPos = imageOutline.rectTransform.position;
     }
 
     void Update()
