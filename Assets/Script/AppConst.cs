@@ -42,6 +42,13 @@ namespace Const
             10.0f,
             1.0f,
         };
+        public static readonly string[] SKILL_DETAILS = new string[SKILL_NUM]                          // スキルの効果を述べた文章
+        {
+            "Charge speed x2",
+            "Player mass x2",
+            "Player size x2",
+            "Emit a shock wave",
+        };
         public const float PLAYER_DEFAULT_SPEED = 1.0f;                                              // プレイヤーの移動速度の初期値
         public const int DEFAULT_CHARGE_SPEED = 1;                                                   // チャージ速度の初期値
         public const int DEFAULT_BOUNCE_POWER = 100;                                                 // 反発力の初期値

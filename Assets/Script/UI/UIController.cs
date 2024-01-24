@@ -132,21 +132,27 @@ public class UIController : MonoBehaviour
     [System.Serializable]
     public class SkillSelectUI
     {
-        public GameObject allSkillSelectUI; // スキル選択画面全体のUI
+        public GameObject allSkillSelectUI;  // スキル選択画面全体のUI
+        public Text name;                    // スキルの名前を表示するテキスト
+        public Image icon;                   // スキルのアイコンの画像
+        public Text cost;                    // スキルのコストを表示するテキスト
+        public Text effectTime;              // スキルの効果時間を表示するテキスト
+        public Text coolDown;                // スキルのクールダウンを表示するテキスト
+        public Text effectDetails;           // スキルの効果が書かれたテキスト
     }
 
     // 設定画面のUI
     [System.Serializable]
     public class SettingUI
     {
-        public GameObject allSettingUI; // 設定画面全体のUI
+        public GameObject allSettingUI;      // 設定画面全体のUI
     }
 
     // タイトル画面のUI
     [System.Serializable]
     public class TitleUI
     {
-        public GameObject allTitleUI; // タイトル画面全体のUI
+        public GameObject allTitleUI;        // タイトル画面全体のUI
     }
 
     // その他UI

@@ -7,13 +7,17 @@ using Const;
 // スキル選択画面のUIを管理
 public class SkillSelectUIController : MonoBehaviour
 {
-    [SerializeField] private GameObject skillSlotObj; // スキルスロットのプレハブ
-    [SerializeField] private GameObject parentObj;    // スキルスロットのプレハブの親オブジェクト
+    [SerializeField] private UIController uIController; // InspectorでUIControllerを指定
+    [SerializeField] private GameObject skillSlotObj;   // スキルスロットのプレハブ
+    [SerializeField] private GameObject parentObj;      // スキルスロットのプレハブの親オブジェクト
 
     void Start()
     {
         // スキル選択画面のスキルスロットを作成
         CreateSkillSlot();
+
+        // スキルの情報を描画
+        DrawSkillInfo(0);
     }
 
     // スキル選択画面のスキルスロットを作成
@@ -38,5 +42,15 @@ public class SkillSelectUIController : MonoBehaviour
             SkillSlotController skillSlotController = slotPrefab.GetComponent<SkillSlotController>();
             skillSlotController.skillNum = i;
         }
+    }
+
+    // スキルの情報を描画
+    public void DrawSkillInfo(int skillNum)
+    {
+        uIController.skillSelectUI.name.text = AppConst.SKILL_NAME[skillNum];
+        uIController.skillSelectUI.cost.text = AppConst.SKILL_ENERGY_USAGE[skillNum].ToString("0");
+        uIController.skillSelectUI.effectTime.text = AppConst.SKILL_EFFECT_TIME[skillNum].ToString("0") + "s";
+        uIController.skillSelectUI.coolDown.text = AppConst.SKILL_COOLDOWN[skillNum].ToString("0") + "s";
+        uIController.skillSelectUI.effectDetails.text = AppConst.SKILL_DETAILS[skillNum];
     }
 }

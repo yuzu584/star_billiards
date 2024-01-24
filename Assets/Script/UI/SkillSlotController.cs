@@ -26,6 +26,7 @@ public class SkillSlotController : MonoBehaviour, IPointerEnterHandler, IPointer
     // Findで探したGameObjectのコンポーネント
     private Lerp lerp;
     private SkillController skillController;
+    private SkillSelectUIController skillSelectUIController;
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
@@ -33,6 +34,9 @@ public class SkillSlotController : MonoBehaviour, IPointerEnterHandler, IPointer
         // ボタンのアニメーション
         StopAllCoroutines();
         StartCoroutine(lerp.ChangeColor(image, defaultColor, OnPointerColor, fadeTime));
+
+        // スキルの情報を表示するUIを更新
+        skillSelectUIController.DrawSkillInfo(skillNum);
     }
 
     // マウスポインターがボタンの上から離れたら
@@ -61,6 +65,7 @@ public class SkillSlotController : MonoBehaviour, IPointerEnterHandler, IPointer
         // 探したGameObjectのコンポーネントを取得
         lerp = UIFunctionController.GetComponent<Lerp>();
         skillController = Player.GetComponent<SkillController>();
+        skillSelectUIController = UIFunctionController.GetComponent<SkillSelectUIController>();
     }
 
     void Update()
