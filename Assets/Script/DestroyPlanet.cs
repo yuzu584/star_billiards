@@ -2,61 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// P¯‚ÉÕ“Ë‚µ‚½‚ç©•ª‚ğíœ
+// ˜f¯‚ğ”j‰ó
 public class DestroyPlanet : MonoBehaviour
 {
     [SerializeField] private StageData stageData; // Inspector‚ÅStageData‚ğw’è
+    [SerializeField] private ScreenController screenController;
+    [SerializeField] private PopupController popupController;
+    [SerializeField] private StageController stageController;
+    [SerializeField] private PlanetAmount planetAmount;
+    [SerializeField] private MissionUIController missionUIController;
 
-    // Find‚Å’T‚·GameObject
-    private GameObject stageController;
-    private GameObject uIFunctionController;
-    private GameObject screenController;
-    private GameObject planetAmount;
-
-    // Find‚Å’T‚µ‚½GameObject‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg
-    private ScreenController _screenController;
-    private PopupController _popupController;
-    private StageController _stageController;
-    private PlanetAmount _planetAmount;
-    private MissionUIController _missionUIController;
-
-    // ‚à‚µ‰½‚©‚ÆÕ“Ë‚µ‚½‚ç
-    void OnCollisionEnter(Collision collision)
+    // ˜f¯‚ğ”j‰ó
+    public void DestroyPlanetPrpcess(GameObject obj)
     {
-        // ƒQ[ƒ€’†‚ÉP¯‚ÆÕ“Ë‚µ‚½‚ç
-        if ((collision.gameObject.CompareTag("FixedStar")) && (_screenController.screenNum == 5))
+        // ƒQ[ƒ€’†‚É˜f¯‚ÆÕ“Ë‚µ‚½‚ç
+        if ((obj.CompareTag("Planet")) && (screenController.screenNum == 5))
         {
             // ˜f¯‚ª”j‰ó‚³‚ê‚½|‚ğ“`‚¦‚éƒ|ƒbƒvƒAƒbƒv‚ğ•`‰æ
-            _planetAmount.DrawDestroyPlanetPopup(_popupController, gameObject.name);
+            popupController.DrawDestroyPlanetPopUp(obj.name);
 
             // ƒ~ƒbƒVƒ‡ƒ“‚ª"‘S‚Ä‚Ì˜f¯‚ğ”j‰ó"‚È‚ç
-            if (stageData.stageList[_stageController.stageNum].missionNum == 0)
+            if (stageData.stageList[stageController.stageNum].missionNum == 0)
             {
                 // ˜f¯‚ğ”j‰ó‚µ‚½”‚ğƒJƒEƒ“ƒg
-                _planetAmount.planetDestroyAmount++;
+                planetAmount.planetDestroyAmount++;
 
                 // ƒ~ƒbƒVƒ‡ƒ“UI‚ğXV
-                _missionUIController.DrawMissionUI();
+                missionUIController.DrawMissionUI();
             }
 
             // ˜f¯‚ğíœ
-            Destroy(this.gameObject);
+            Destroy(obj);
         }
-    }
-
-    void Start()
-    {
-        // GameObject‚ğ’T‚·
-        stageController = GameObject.Find("StageController");
-        uIFunctionController = GameObject.Find("UIFunctionController");
-        screenController = GameObject.Find("ScreenController");
-        planetAmount = GameObject.Find("PlanetAmount");
-
-        // ’T‚µ‚½GameObject‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾
-        _screenController = screenController.gameObject.GetComponent<ScreenController>();
-        _popupController = uIFunctionController.gameObject.GetComponent<PopupController>();
-        _stageController = stageController.gameObject.GetComponent<StageController>();
-        _planetAmount = planetAmount.gameObject.GetComponent<PlanetAmount>();
-        _missionUIController = uIFunctionController.gameObject.GetComponent<MissionUIController>();
     }
 }

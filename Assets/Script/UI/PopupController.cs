@@ -44,7 +44,7 @@ public class PopupController : MonoBehaviour
     }
 
     // ポップアップを描画
-    public IEnumerator DrawDestroyPlanetPopup(string text)
+    private IEnumerator DrawPopup(string text)
     {
         float destroyTime = 10.0f;   // 惑星を破壊するまでの時間
         int i = 0;                   // 数を数える変数
@@ -93,6 +93,12 @@ public class PopupController : MonoBehaviour
 
         // ポップアップを動かす
         StartCoroutine(MovePopup(time, fadeTime, drawingPopup[i], -moveDistance, defaultPosition, i));
+    }
+
+    // 惑星が破壊された際のポップアップを呼び出す
+    public void DrawDestroyPlanetPopUp(string name)
+    {
+        StartCoroutine(DrawPopup(name + " was destroyed"));
     }
 
     // ポップアップを初期化
