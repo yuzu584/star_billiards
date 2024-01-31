@@ -30,7 +30,7 @@ public class BrackHole : MonoBehaviour
             if (hitObj != null)
             {
                 // 力を加えるベクトルを設定(スケールによって力が変わる)
-                Vector3 direction = (this.gameObject.transform.position - hitObj.position) * this.transform.localScale.x / 2;
+                Vector3 direction = (this.gameObject.transform.position - hitObj.position) * this.transform.localScale.x / 4;
 
                 // オブジェクトとの距離が近いほど強い力を加える
                 float distance = Vector3.Distance(this.gameObject.transform.position, hitObj.position);
