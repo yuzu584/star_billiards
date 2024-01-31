@@ -51,7 +51,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         // ボタンのアニメーション
         StopAllCoroutines();
-        StartCoroutine(lerp.ChangeColor(Btn,defaultColor, OnPointerColor, fadeTime));
+        StartCoroutine(lerp.Color_Image(Btn,defaultColor, OnPointerColor, fadeTime));
     }
 
     // マウスポインターがボタンの上から離れたら
@@ -59,7 +59,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         // ボタンのアニメーション
         StopAllCoroutines();
-        StartCoroutine(lerp.ChangeColor(Btn, OnPointerColor, defaultColor, fadeTime));
+        StartCoroutine(lerp.Color_Image(Btn, OnPointerColor, defaultColor, fadeTime));
     }
     
     // ボタンがクリックされたら

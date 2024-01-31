@@ -19,6 +19,7 @@ public class UIController : MonoBehaviour
     public TimeLimitUI timeLimitUI;
     public PauseUI pauseUI;
     public StageClearUI stageClearUI;
+    public GameOverUI gameOverUI;
     public MainMenuUI mainMenuUI;
     public StageSelectUI stageSelectUI;
     public SkillSelectUI skillSelectUI;
@@ -109,16 +110,27 @@ public class UIController : MonoBehaviour
     [System.Serializable]
     public class PauseUI
     {
-        public GameObject allPauseUI;        // ポーズ画面全体のUI
+        public GameObject allPauseUI;             // ポーズ画面全体のUI
     }
 
     // ステージクリア画面のUI
     [System.Serializable]
     public class StageClearUI
     {
-        public GameObject allStageClearUI;   // ステージクリア画面全体のUI
-        public Text stageClearText;          // ステージクリア画面のテキスト
-        public GameObject[] button;          // ステージクリア画面のボタン
+        public GameObject allStageClearUI;        // ステージクリア画面全体のUI
+        public Text stageClearText;               // ステージクリア画面のテキスト
+        public GameObject[] button;               // ステージクリア画面のボタン
+        public delegate void RenderStageClear();  // ステージクリア画面を描画するデリゲートを定義
+        public RenderStageClear renderStageClear; // ステージクリア画面を描画するデリゲートを宣言
+    }
+
+    // ゲームオーバー画面のUI
+    [System.Serializable]
+    public class GameOverUI
+    {
+        public GameObject allGameOverUI;     // ゲームオーバー画面全体のUI
+        public Text GameOverText;            // ゲームオーバー画面のテキスト
+        public GameObject[] button;          // ゲームオーバー画面のボタン
     }
 
     // メインメニューのUI
@@ -202,7 +214,7 @@ public class UIController : MonoBehaviour
 
     RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
 
-    private bool drawedStageClearUI = false; // ステージクリア画面が描画されたか
+    private bool drawedStageCrearUI = false; // ステージクリア画面を描画済みか
 
     void Start()
     {
@@ -229,13 +241,6 @@ public class UIController : MonoBehaviour
 
         // 惑星情報UIの線の数
         planetInfoUI.planetInfoLine.positionCount = 3;
-
-        // ステージクリア画面のUIを非表示
-        stageClearUIController.DrawStageClearUI(
-            false,
-            stageClearUI.allStageClearUI,
-            stageClearUI.button,
-            stageClearUI.stageClearText);
     }
 
     void Update()
@@ -274,31 +279,18 @@ public class UIController : MonoBehaviour
         // 惑星リストUIを表示/非表示
         planetListUI.allPlanetList.SetActive(planetListController.uiDrawing);
 
-        // ステージをクリアしたかつUIが描画されていないなら
-        if ((stageController.stageCrear) && (!(drawedStageClearUI)))
-        {
-            // ステージクリア画面を描画
-            drawedStageClearUI = true;
-            stageClearUIController.DrawStageClearUI(
-                true,
-                stageClearUI.allStageClearUI,
-                stageClearUI.button,
-                stageClearUI.stageClearText);
-        }
-        // ステージクリア済みかつステージクリア画面ではないなら
-        else if((stageController.stageCrear) && (screenController.screenNum != 8))
-        {
-            // ステージクリアフラグを初期化
-            drawedStageClearUI = false;
-            stageController.stageCrear = false;
-            planetAmount.planetDestroyAmount = 0;
+        // ステージクリア画面を表示/非表示
+        DrawOrHide(stageClearUI.allStageClearUI, 8);
 
-            // ステージクリア画面を非表示
-            stageClearUIController.DrawStageClearUI(
-                false,
-                stageClearUI.allStageClearUI,
-                stageClearUI.button,
-                stageClearUI.stageClearText);
+        // ステージクリア画面が表示されているなら処理を行う
+        if ((stageClearUI.allStageClearUI.activeSelf) && (!drawedStageCrearUI))
+        {
+            drawedStageCrearUI = true;
+            stageClearUIController.DrawStageClearUI();
+        }
+        else if ((!stageClearUI.allStageClearUI.activeSelf) && (drawedStageCrearUI))
+        {
+            drawedStageCrearUI = false;
         }
 
         // ポーズ画面を表示/非表示
@@ -330,6 +322,9 @@ public class UIController : MonoBehaviour
 
         // ステージのアイコンを表示/非表示
         stageSelectUIController.DrawStageIcon(stageSelectUI.allStageSelectUI.activeSelf);
+
+        // ゲームオーバー画面を表示/非表示
+        DrawOrHide(gameOverUI.allGameOverUI, 9);
     }
 
     // 描画するかしないかを判断

@@ -31,8 +31,8 @@ public class Lerp : MonoBehaviour
         }
     }
 
-    // 線形補完で色を変更
-    public IEnumerator ChangeColor(Image image, Color colorA, Color colorB, float fadeTime)
+    // 線形補完で色を変更(Image)
+    public IEnumerator Color_Image(Image image, Color colorA, Color colorB, float fadeTime)
     {
         Action<float> lerpFunction = (float t) =>
         {
@@ -42,12 +42,43 @@ public class Lerp : MonoBehaviour
         yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
     }
 
+    // 線形補完で色を変更(Material)
+    public IEnumerator Color_Material(Material mat, Color32 colorA, Color32 colorB, float fadeTime)
+    {
+        Action<float> lerpFunction = (float t) =>
+        {
+            mat.color = Color.Lerp(colorA, colorB, t);
+        };
+
+        yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
+    }
+
     // 線形補完で座標を変更(Image)
-    public IEnumerator ChangePosition(Image obj, Vector3 startPos, Vector3 endPos, float fadeTime)
+    public IEnumerator Position_Image(Image obj, Vector3 startPos, Vector3 endPos, float fadeTime)
     {
         Action<float> lerpFunction = (float t) =>
         {
             obj.rectTransform.position = Vector3.Lerp(startPos, endPos, t);
+        };
+        yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
+    }
+
+    // 線形補完で座標を変更(Text)
+    public IEnumerator Position_Text(Text obj, Vector3 startPos, Vector3 endPos, float fadeTime)
+    {
+        Action<float> lerpFunction = (float t) =>
+        {
+            obj.rectTransform.anchoredPosition = Vector3.Lerp(startPos, endPos, t);
+        };
+        yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
+    }
+
+    // 線形補完で座標を変更(GameObject)
+    public IEnumerator Position_GameObject(GameObject obj, Vector3 startPos, Vector3 endPos, float fadeTime)
+    {
+        Action<float> lerpFunction = (float t) =>
+        {
+            obj.transform.position = Vector3.Lerp(startPos, endPos, t);
         };
         yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
     }

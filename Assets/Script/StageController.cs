@@ -17,6 +17,7 @@ public class StageController : MonoBehaviour
     [SerializeField] private ScreenController screenController;     // InspectorでScreenControllerを指定
     public int stageNum = 0;                                        // ステージ番号
     public bool stageCrear = false;                                 // ステージをクリアしたかどうか
+    public bool gameOver = false;                                   // ゲームオーバーかどうか
 
     private int missionNum;              // ミッション番号
     private bool stageCreated = false;   // ステージを生成したか
@@ -31,7 +32,7 @@ public class StageController : MonoBehaviour
         if (missionNum == 0 && (planetAmount.planetDestroyAmount >= stageData.stageList[stageNum].planet.Length))
         {
             // ステージクリア
-            stageCrear = true;
+            StageCrear();
         }
 
         // ステージを生成/削除
@@ -42,10 +43,23 @@ public class StageController : MonoBehaviour
         }
     }
 
+    // ステージクリア時の処理
+    void StageCrear()
+    {
+        stageCrear = true;
+    }
+
+    // ゲームオーバー時の処理
+    void GameOver()
+    {
+        gameOver = true;
+    }
+
     // ステージに関する数値を初期化
     public void Init()
     {
         stageCrear = false;
+        gameOver = false;
         planetAmount.planetDestroyAmount = 0;
         popupController.InitPopUp();
         playerController.Init(

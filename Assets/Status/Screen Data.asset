@@ -17,44 +17,49 @@ MonoBehaviour:
     drawCursol: 1
     timeScale: 0
     drawStage: 0
-    uIDrawList: 010000000000000000
+    uIDrawList: 01000000000000000000
   - screenName: MainMenu
     drawCursol: 1
     timeScale: 0
     drawStage: 0
-    uIDrawList: 000100000000000000
+    uIDrawList: 00010000000000000000
   - screenName: StageSelect
     drawCursol: 1
     timeScale: 0
     drawStage: 0
-    uIDrawList: 000001000000000000
+    uIDrawList: 00000100000000000000
   - screenName: Setting
     drawCursol: 1
     timeScale: 0
     drawStage: 1
-    uIDrawList: 000000010000000000
+    uIDrawList: 00000001000000000000
   - screenName: SkillSelect
     drawCursol: 1
     timeScale: 0
     drawStage: 0
-    uIDrawList: 000000000100000000
+    uIDrawList: 00000000010000000000
   - screenName: InGame
     drawCursol: 0
     timeScale: 1
     drawStage: 1
-    uIDrawList: 000000000001000000
+    uIDrawList: 00000000000100000000
   - screenName: Pause
     drawCursol: 1
     timeScale: 0
     drawStage: 1
-    uIDrawList: 000000000000010000
+    uIDrawList: 00000000000001000000
   - screenName: PlanetList
     drawCursol: 1
     timeScale: 0
     drawStage: 1
-    uIDrawList: 000000000001000100
+    uIDrawList: 00000000000100010000
   - screenName: StageClear
     drawCursol: 1
     timeScale: 1
     drawStage: 1
-    uIDrawList: 000000000000000001
+    uIDrawList: 00000000000000000101
+  - screenName: GameOver
+    drawCursol: 1
+    timeScale: 1
+    drawStage: 1
+    uIDrawList: 00000000000000000001

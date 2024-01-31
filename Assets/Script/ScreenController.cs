@@ -20,16 +20,32 @@ public class ScreenController : MonoBehaviour
     // 6 : ポーズ画面
     // 7 : 惑星リスト画面
     // 8 : ステージクリア画面
-    public bool[] canUIDraw = new bool[9];
+    // 9 : ゲームオーバー画面
+    [System.NonSerialized] public bool[] canUIDraw = new bool[10];
 
-    public bool canStageDraw = false; // ステージを描画可能か
+    [System.NonSerialized] public bool canStageDraw = false; // ステージを描画可能か
 
-    public int screenNum = 1; // 画面番号
+    public int screenNum = 0;    // 画面番号
+    public int oldScreenNum = 0; // 1フレーム前の画面番号
+    public bool changeNow = false; // 現在のフレームで画面番号が変わったかどうか
 
     private bool changeStageClearScreen = false; // ステージクリア画面に遷移したかどうか
 
     void Update()
     {
+        oldScreenNum = screenNum;
+
+        // 前回のフレームと現在のフレームで画面番号が異なったら
+        if(screenNum != oldScreenNum)
+        {
+            changeNow = true;
+        }
+
+        else
+        {
+            changeNow = false;
+        }
+
         // ゲーム中に戻るボタンが押されたら
         if(Input.GetButtonDown("Cancel") && screenNum == 5)
         {

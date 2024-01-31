@@ -36,8 +36,8 @@ public class SkillSlotController : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         // ボタンのアニメーション
         StopAllCoroutines();
-        StartCoroutine(lerp.ChangeColor(image, defaultColor, OnPointerColor, fadeTime));
-        StartCoroutine(lerp.ChangePosition(imageOutline, defaultPos, defaultPos + moveDistance, fadeTime));
+        StartCoroutine(lerp.Color_Image(image, defaultColor, OnPointerColor, fadeTime));
+        StartCoroutine(lerp.Position_Image(imageOutline, defaultPos, defaultPos + moveDistance, fadeTime));
 
         // スキルの情報を表示するUIを更新
         skillSelectUIController.DrawSkillInfo(skillNum);
@@ -48,8 +48,8 @@ public class SkillSlotController : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         // ボタンのアニメーション
         StopAllCoroutines();
-        StartCoroutine(lerp.ChangeColor(image, OnPointerColor, defaultColor, fadeTime));
-        StartCoroutine(lerp.ChangePosition(imageOutline, defaultPos + moveDistance, defaultPos, fadeTime));
+        StartCoroutine(lerp.Color_Image(image, OnPointerColor, defaultColor, fadeTime));
+        StartCoroutine(lerp.Position_Image(imageOutline, defaultPos + moveDistance, defaultPos, fadeTime));
     }
 
     // ボタンがクリックされたら
