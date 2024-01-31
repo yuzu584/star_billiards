@@ -16,6 +16,7 @@ public class UIController : MonoBehaviour
     public PlanetInfoUI planetInfoUI;
     public MissionUI missionUI;
     public PlanetListUI planetListUI;
+    public TimeLimitUI timeLimitUI;
     public PauseUI pauseUI;
     public StageClearUI stageClearUI;
     public MainMenuUI mainMenuUI;
@@ -91,6 +92,17 @@ public class UIController : MonoBehaviour
     public class PlanetListUI
     {
         public GameObject allPlanetList;     // 全ての惑星リストUI
+    }
+
+    // 制限時間のUI
+    [System.Serializable]
+    public class TimeLimitUI
+    {
+        public GameObject allTimeLimitUI;       // 全ての制限時間UI
+        public Text value;                      // 制限時間の数値を表すテキスト
+        public Image gauge;                     // 制限時間のゲージ
+        public delegate void RenderTimeLimit(); // 制限時間UIを描画するデリゲートを定義
+        public RenderTimeLimit renderTimeLimit; // 制限時間UIを描画するデリゲートを宣言
     }
 
     // ポーズ画面のUI
@@ -254,6 +266,9 @@ public class UIController : MonoBehaviour
 
             // 移動速度の数値UIを更新
             speedUIController.DrawSpeedValue(otherUI.speedValue);
+
+            // 制限時間のUIを描画
+            timeLimitUI.renderTimeLimit();
         }
 
         // 惑星リストUIを表示/非表示

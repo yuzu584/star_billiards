@@ -17,4 +17,5 @@ public class StageDataContent
     public GameObject[] fixedStar; // P¯
     public GameObject[] planet;    // ˜f¯
     public int missionNum;         // ƒ~ƒbƒVƒ‡ƒ“”Ô†
+    public int timeLimit;          // §ŒÀŠÔ
 }
