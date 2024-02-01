@@ -92,8 +92,8 @@ MonoBehaviour:
   OnPointerColor: {r: 1, g: 1, b: 1, a: 0.15686275}
   defaultColor: {r: 1, g: 1, b: 1, a: 0.039215688}
   fadeTime: 0.1
-  Btn: {fileID: 5970234050213230016}
-  BtnText: {fileID: 5970234051039374986}
+  image: {fileID: 5970234051254067567}
+  text: {fileID: 5970234051039374986}
   clickAction: 0
 --- !u!1 &5970234051039374984
 GameObject:

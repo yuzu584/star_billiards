@@ -8,11 +8,9 @@ using UnityEngine.EventSystems;
 // ボタンの見た目を管理
 public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [SerializeField] private Color OnPointerColor;                          // ポインターが乗った時の色
-    [SerializeField] private Color defaultColor;                            // デフォルトの色
     [SerializeField] private float fadeTime;                                // フェード時間
-    [SerializeField] private Image Btn;                                     // ボタンの画像
-    [SerializeField] private Text BtnText;                                  // ボタンのテキスト
+    [SerializeField] private Image image;                                   // ボタンの画像
+    [SerializeField] private Text text;                                  // ボタンのテキスト
     public enum ClickAction                                                 // ボタンを押したときの効果
     {
         None,             // 効果なし
@@ -27,6 +25,11 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         ResetSelectSkill, // 選択したスキルをリセット
     }
     public ClickAction clickAction;                                         // ボタンを押したときの効果
+
+    private Vector3 defaultPos;                             // 初期位置
+    private Vector3 moveDistance = new Vector3(-3, -3, 0);  // 移動距離
+    private Color defaultColor;                             // デフォルトの色
+    private Color fadeColor = new Color(0, 0, 0, 0.1f);     // 変わる色
 
     // Findで探すGameObject
     private GameObject ScreenController;
@@ -51,7 +54,8 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         // ボタンのアニメーション
         StopAllCoroutines();
-        StartCoroutine(lerp.Color_Image(Btn,defaultColor, OnPointerColor, fadeTime));
+        StartCoroutine(lerp.Color_Image(image, defaultColor, defaultColor + fadeColor, fadeTime));
+        StartCoroutine(lerp.Position_Image(image, defaultPos, defaultPos + moveDistance, fadeTime));
     }
 
     // マウスポインターがボタンの上から離れたら
@@ -59,14 +63,15 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         // ボタンのアニメーション
         StopAllCoroutines();
-        StartCoroutine(lerp.Color_Image(Btn, OnPointerColor, defaultColor, fadeTime));
+        StartCoroutine(lerp.Color_Image(image, defaultColor + fadeColor, defaultColor, fadeTime));
+        StartCoroutine(lerp.Position_Image(image, defaultPos + moveDistance, defaultPos, fadeTime));
     }
     
     // ボタンがクリックされたら
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         // ボタンの色をリセット
-        Btn.color = defaultColor;
+        image.color = defaultColor;
 
         // ボタンを押したときの効果によって分岐
         switch (clickAction)
@@ -172,6 +177,10 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     void Start()
     {
+        // 初期値を設定
+        defaultPos = image.rectTransform.position;
+        defaultColor = image.color;
+
         // GameObjectを探す
         ScreenController = GameObject.Find("ScreenController");
         Canvas = GameObject.Find("Canvas");
