@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5970234050213230017}
   - component: {fileID: 5970234050213230019}
   - component: {fileID: 5970234050213230016}
-  - component: {fileID: 5970234050213230018}
+  - component: {fileID: 3605661833613333862}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 10
---- !u!114 &5970234050213230018
+--- !u!114 &3605661833613333862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,15 +86,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5970234050213230030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4d46f481dc12da4eaf26cab68a8a229, type: 3}
+  m_Script: {fileID: 11500000, guid: c1200d497f6b37d439658b1cbd84ee0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerColor: {r: 1, g: 1, b: 1, a: 0.11764706}
-  defaultColor: {r: 1, g: 1, b: 1, a: 0}
-  fadeTime: 0.1
-  image: {fileID: 5970234050213230016}
+  backGround: {fileID: 5970234050213230016}
   text: {fileID: 5970234051039374986}
-  clickAction: 0
 --- !u!1 &5970234051039374984
 GameObject:
   m_ObjectHideFlags: 0
