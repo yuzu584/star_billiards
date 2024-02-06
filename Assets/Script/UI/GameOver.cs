@@ -87,10 +87,4 @@ public class GameOver : MonoBehaviour
         // アニメーション
         Animation();
     }
-
-    void OnDisable()
-    {
-        // コルーチン停止
-        StopAllCoroutines();
-    }
 }

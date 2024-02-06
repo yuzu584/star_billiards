@@ -53,7 +53,7 @@ public class BackButton : Button
         oldScreen = screenController.oldScreenNum;
     }
 
-    void Start()
+    new void Start()
     {
         base.Start();
 
