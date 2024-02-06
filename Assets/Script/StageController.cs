@@ -11,16 +11,21 @@ public class StageController : MonoBehaviour
     [SerializeField] private EnergyUIController energyUIController; // InspectorでEnergyUIControllerを指定
     [SerializeField] private SkillController skillController;       // InspectorでSkillControllerを指定
     [SerializeField] private SkillUIController skillUIController;   // InspectorでSkillUIControllerを指定
-    [SerializeField] private PopupController popupController;       // InspectorでPopupControllerを指定
-    [SerializeField] private PlayerController playerController;     // InspectorでPlayerControllerを指定
     [SerializeField] private CreateStage createStage;               // InspectorでCreateStageを指定
     [SerializeField] private ScreenController screenController;     // InspectorでScreenControllerを指定
+    [SerializeField] private Initialize initialize;                 // InspectorでInitializeを指定
     public int stageNum = 0;                                        // ステージ番号
     public bool stageCrear = false;                                 // ステージをクリアしたかどうか
     public bool gameOver = false;                                   // ゲームオーバーかどうか
 
     private int missionNum;              // ミッション番号
     private bool stageCreated = false;   // ステージを生成したか
+
+    void Start()
+    {
+        // デリゲートに初期化関数を登録
+        initialize.init_Stage += Init;
+    }
 
     void Update()
     {
@@ -60,12 +65,5 @@ public class StageController : MonoBehaviour
     {
         stageCrear = false;
         gameOver = false;
-        planetAmount.planetDestroyAmount = 0;
-        popupController.InitPopUp();
-        playerController.Init(
-            energyController,
-            energyUIController,
-            skillController,
-            skillUIController);
     }
 }

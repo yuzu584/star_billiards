@@ -10,6 +10,7 @@ using Const;
 public class SkillUIController : MonoBehaviour
 {
     [SerializeField] private UIController uIController; // InspectorでUIControllerを指定
+    [SerializeField] private Initialize initialize;     // InspectorでInitializeを指定
 
     // スキルのUIを描画
     public void DrawSkillUI(string skillName, float coolDown, float effectTime, float nowCoolDown, float nowEffectTime)
@@ -39,8 +40,14 @@ public class SkillUIController : MonoBehaviour
     }
 
     // スキルのUIを初期化
-    public void InitSkillUI()
+    void Init()
     {
         uIController.skillUI.skillGauge.fillAmount = 1;
+    }
+
+    void Start()
+    {
+        // デリゲートに初期化関数を登録
+        initialize.init_Stage += Init;
     }
 }

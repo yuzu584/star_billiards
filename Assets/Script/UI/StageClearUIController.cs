@@ -31,7 +31,6 @@ public class StageClearUIController : MonoBehaviour
     // ステージクリア画面を動かす
     IEnumerator MoveStageClearUI()
     {
-        Debug.Log("Move");
         Vector3[] defaultPos = new Vector3[uIController.stageClearUI.button.Length]; // 初期位置
         Vector3 startPos;   // 開始位置
         Vector3 endPos;     // 終了位置

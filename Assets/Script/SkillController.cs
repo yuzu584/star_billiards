@@ -11,6 +11,7 @@ public class SkillController : MonoBehaviour
     [SerializeField] private SkillUIController skillUIController; // InspectorでSkillUIControllerを指定
     [SerializeField] private EnergyController energyController;   // InspectorでEnergyControllerを指定
     [SerializeField] private ScreenController screenController;   // InspectorでScreenControllerを指定
+    [SerializeField] private Initialize initialize;               // InspectorでInitializeを指定
     [SerializeField] private ParticleSystem GravityWaveParticle;  // GravityWaveのパーティクル
 
     public int selectSkill = 0;  // 選択しているスキルの番号
@@ -31,6 +32,9 @@ public class SkillController : MonoBehaviour
 
         // 選択しているスキルスロットの配列を初期化
         InitSelectSlot();
+
+        // デリゲートに初期化関数を登録
+        initialize.init_Stage += Init;
     }
 
     void Update()
@@ -255,7 +259,7 @@ public class SkillController : MonoBehaviour
     }
 
     // 初期化
-    public void Init()
+    void Init()
     {
         StopAllCoroutines();
         InitSkillEffect();

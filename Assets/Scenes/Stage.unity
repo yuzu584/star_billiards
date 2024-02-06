@@ -1481,10 +1481,9 @@ MonoBehaviour:
   energyUIController: {fileID: 1148952467}
   skillController: {fileID: 2052131794}
   skillUIController: {fileID: 1148952470}
-  popupController: {fileID: 1148952468}
-  playerController: {fileID: 2052131797}
   createStage: {fileID: 1400418625}
   screenController: {fileID: 1600059365}
+  initialize: {fileID: 702041415}
   stageNum: 0
   stageCrear: 0
   gameOver: 0
@@ -1620,6 +1619,7 @@ Transform:
   - {fileID: 1658508821}
   - {fileID: 354845783}
   - {fileID: 116554231}
+  - {fileID: 702041414}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3032,6 +3032,50 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5970234051200584755, guid: dd687111c45c0584f8cb04e10ba43eee, type: 3}
   m_PrefabInstance: {fileID: 656492038}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &702041413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 702041414}
+  - component: {fileID: 702041415}
+  m_Layer: 0
+  m_Name: InitializeController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &702041414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702041413}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 318109087}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &702041415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702041413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 699671e983236014f92d2627cebd77f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &721491512
 GameObject:
   m_ObjectHideFlags: 0
@@ -3436,6 +3480,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 846516595}
+  - component: {fileID: 846516596}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -3467,6 +3512,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &846516596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846516594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7d42570ebaf5d4782e01659180b973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenController: {fileID: 1600059365}
+  gameOverButtonMat: {fileID: 2100000, guid: d92459fa41ce17a4788b4cc97f57703b, type: 2}
+  postProcessController: {fileID: 1746308557}
+  uIController: {fileID: 869580811}
+  lerp: {fileID: 1148952479}
+  fadeTime: 0.2
 --- !u!1 &850064947
 GameObject:
   m_ObjectHideFlags: 0
@@ -4751,6 +4814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyController: {fileID: 2052131793}
+  initialize: {fileID: 702041415}
   energyGauge: {fileID: 2054252520}
   energyAfterImage: {fileID: 1792383906}
 --- !u!114 &1148952468
@@ -4768,6 +4832,7 @@ MonoBehaviour:
   popUp: {fileID: 6751493928476000379, guid: ae6f80cdd48614846a10b75943843f67, type: 3}
   uIController: {fileID: 869580811}
   screenController: {fileID: 1600059365}
+  initialize: {fileID: 702041415}
 --- !u!114 &1148952469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4794,6 +4859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uIController: {fileID: 869580811}
+  initialize: {fileID: 702041415}
 --- !u!114 &1148952471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6753,7 +6819,6 @@ MonoBehaviour:
   screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
   screenNum: 0
   oldScreenNum: 0
-  changeNow: 0
 --- !u!4 &1600059366
 Transform:
   m_ObjectHideFlags: 0
@@ -6813,6 +6878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034393fdd0e1c724cbe8f5256f83c66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialize: {fileID: 702041415}
   planetDestroyAmount: 0
 --- !u!1 &1665893595
 GameObject:
@@ -8940,8 +9006,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a096084f2b05b6b47a6efd82b1af0318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenController: {fileID: 1600059365}
+  gameOver: {fileID: 846516596}
+  initialize: {fileID: 702041415}
   energy: 1000
-  maxEnergy: 1000
+  maxEnergy: 100
 --- !u!114 &2052131794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8958,6 +9027,7 @@ MonoBehaviour:
   skillUIController: {fileID: 1148952470}
   energyController: {fileID: 2052131793}
   screenController: {fileID: 1600059365}
+  initialize: {fileID: 702041415}
   GravityWaveParticle: {fileID: 7855226533659244353, guid: 59a02b5fc103317428ace8f4b1f4d2d3, type: 3}
   selectSkill: 0
   coolDown: 0
@@ -9004,6 +9074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2052131791}
+  initialize: {fileID: 702041415}
 --- !u!1 &2054252518
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class EnergyUIController : MonoBehaviour
 {
     [SerializeField] private EnergyController energyController; // InspectorでEnergyControllerを指定
+    [SerializeField] private Initialize initialize;             // InspectorでInitializeを指定
     [SerializeField] private Image energyGauge;                 // エネルギーゲージの画像
     [SerializeField] private Image energyAfterImage;            // エネルギーゲージの残像の画像
 
@@ -50,9 +51,15 @@ public class EnergyUIController : MonoBehaviour
     }
 
     // エネルギーのUIを初期化
-    public void InitEnergyUI()
+    void Init()
     {
         energyGauge.fillAmount = 1;
         energyAfterImage.fillAmount = 1;
+    }
+
+    void Start()
+    {
+        // デリゲートに初期化関数を登録
+        initialize.init_Stage += Init;
     }
 }

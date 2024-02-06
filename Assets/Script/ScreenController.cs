@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Const;
+
 // 画面の種類を管理
 public class ScreenController : MonoBehaviour
 {
@@ -21,7 +23,7 @@ public class ScreenController : MonoBehaviour
     // 7 : 惑星リスト画面
     // 8 : ステージクリア画面
     // 9 : ゲームオーバー画面
-    [System.NonSerialized] public bool[] canUIDraw = new bool[10];
+    [System.NonSerialized] public bool[] canUIDraw = new bool[AppConst.SCREEN_AMOUNT];
 
     [System.NonSerialized] public bool canStageDraw = false; // ステージを描画可能か
 
@@ -65,14 +67,14 @@ public class ScreenController : MonoBehaviour
         }
 
         // UIが描画可能かを管理する配列を更新
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < AppConst.SCREEN_AMOUNT; i++)
         {
             if(canUIDraw[i] != screenData.screenList[screenNum].uIDrawList[i])
                 canUIDraw[i] = screenData.screenList[screenNum].uIDrawList[i];
         }
 
         // ステージが描画可能かを管理する配列を更新
-        for (int i = 0;i < 9; i++)
+        for (int i = 0;i < AppConst.SCREEN_AMOUNT; i++)
         {
             if (canStageDraw != screenData.screenList[screenNum].drawStage)
                 canStageDraw = screenData.screenList[screenNum].drawStage;

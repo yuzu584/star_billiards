@@ -71,5 +71,6 @@ namespace Const
             "Setting",
             "SkillSelect",
         };
+        public const int SCREEN_AMOUNT = 10;                                                         // ƒXƒNƒŠ[ƒ“‚Ì”
     }
 }

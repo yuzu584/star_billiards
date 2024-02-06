@@ -10,6 +10,7 @@ public class PopupController : MonoBehaviour
     [SerializeField] private GameObject popUp;                  // ポップアップのプレハブ
     [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
     [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
+    [SerializeField] private Initialize initialize;             // InspectorでInitializeを指定
 
     [System.NonSerialized] public GameObject[] drawingPopup = new GameObject[10]; // ポップアップの配列
 
@@ -102,7 +103,7 @@ public class PopupController : MonoBehaviour
     }
 
     // ポップアップを初期化
-    public void InitPopUp()
+    public void Init()
     {
         for(int i = 0; i < drawingPopup.Length; i++)
         {
@@ -112,13 +113,19 @@ public class PopupController : MonoBehaviour
                 Destroy(drawingPopup[i]);
             }
         }
+
+        // ポップアップが描画されているかを管理する変数を初期化
+        for (int i = 0; i < drawingPopup.Length; i++)
+            drawingPopup[i] = null;
     }
 
     void Start()
     {
-        // ポップアップが描画されているかを管理する変数を初期化
-        for (int i = 0; i < drawingPopup.Length; i++)
-            drawingPopup[i] = null;
+        // デリゲートに初期化関数を登録
+        initialize.init_Stage += Init;
+
+        // 最初の初期化
+        Init();
     }
 
     void Update()
