@@ -9,12 +9,12 @@ using UnityEngine.EventSystems;
 public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     // Findで探すGameObject
-    [System.NonSerialized] public GameObject ScreenController;
-    [System.NonSerialized] public GameObject UIFunctionController;
+    [System.NonSerialized] protected GameObject ScreenController;
+    [System.NonSerialized] protected GameObject UIFunctionController;
 
     // Findで探したGameObjectのコンポーネント
-    [System.NonSerialized] public ScreenController screenController;
-    [System.NonSerialized] public Lerp lerp;
+    [System.NonSerialized] protected ScreenController screenController;
+    [System.NonSerialized] protected Lerp lerp;
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
@@ -35,24 +35,24 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     }
 
     // マウスポインターが乗った時の処理
-    public virtual void EnterProcess()
+    protected virtual void EnterProcess()
     {
         Debug.Log("ポインターが乗った時の処理が設定されていません。");
     }
 
     // マウスポインターが離れたときの処理
-    public virtual void ExitProcess()
+    protected virtual void ExitProcess()
     {
         Debug.Log("ポインターが離れた時の処理が設定されていません。");
     }
 
     // クリックされたときの処理
-    public virtual void ClickProcess()
+    protected virtual void ClickProcess()
     {
         Debug.Log("クリック時の処理が設定されていません。");
     }
 
-    void Start()
+    protected void Start()
     {
         // GameObjectを探す
         ScreenController = GameObject.Find("ScreenController");
