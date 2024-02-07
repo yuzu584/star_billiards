@@ -59,11 +59,17 @@ public class CreateStage : MonoBehaviour
     {
         // 恒星を表示/非表示
         for (int i = 0; i < stageData.stageList[stageController.stageNum].fixedStar.Length; i++)
-            star[i].SetActive(draw);
+        {
+            if (star[i] != null)
+                star[i].SetActive(draw);
+        }
 
         // 惑星を表示/非表示
         for (int i = 0; i < stageData.stageList[stageController.stageNum].planet.Length; i++)
-            planet[i].SetActive(draw);
+        {
+            if (planet[i] != null)
+                planet[i].SetActive(draw);
+        }
 
         // スフィアを表示/非表示切り替え
         sphere.SetActive(draw);

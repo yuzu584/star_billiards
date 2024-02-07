@@ -445,8 +445,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 200}
-  m_SizeDelta: {x: 150, y: 40}
+  m_AnchoredPosition: {x: 0, y: 210}
+  m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &60752102
 MonoBehaviour:
@@ -470,11 +470,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
-    m_FontSize: 30
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 58
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3787,16 +3787,9 @@ MonoBehaviour:
     reticle: {fileID: 1067802296}
     speedValue: {fileID: 372907193}
     justShotText: {fileID: 1079048339}
-  shot: {fileID: 2052131792}
-  energyController: {fileID: 2052131793}
   screenController: {fileID: 1600059365}
-  postProcessController: {fileID: 1746308557}
-  stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
-  stageController: {fileID: 291823625}
-  planetAmount: {fileID: 1658508822}
   skillController: {fileID: 2052131794}
   planetListController: {fileID: 354845784}
-  rb: {fileID: 2052131791}
 --- !u!114 &869580812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5166,8 +5159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 223}
-  m_SizeDelta: {x: 800, y: 3}
+  m_AnchoredPosition: {x: 0, y: 224}
+  m_SizeDelta: {x: 800, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1180053157
 MonoBehaviour:
