@@ -3529,7 +3529,7 @@ MonoBehaviour:
   postProcessController: {fileID: 1746308557}
   uIController: {fileID: 869580811}
   lerp: {fileID: 1148952479}
-  fadeTime: 0.2
+  fadeTime: 0.5
 --- !u!1 &850064947
 GameObject:
   m_ObjectHideFlags: 0
@@ -4907,6 +4907,7 @@ MonoBehaviour:
   uIController: {fileID: 869580811}
   screenController: {fileID: 1600059365}
   initialize: {fileID: 702041415}
+  lerp: {fileID: 1148952479}
 --- !u!114 &1148952469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5007,7 +5008,7 @@ MonoBehaviour:
   postProcessController: {fileID: 1746308557}
   uIController: {fileID: 869580811}
   lerp: {fileID: 1148952479}
-  fadeTime: 0.2
+  fadeTime: 0.5
 --- !u!114 &1148952476
 MonoBehaviour:
   m_ObjectHideFlags: 0

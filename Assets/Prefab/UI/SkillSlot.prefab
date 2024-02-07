@@ -290,7 +290,7 @@ MonoBehaviour:
   selectNumText: {fileID: 2438596319425878976}
   OnPointerColor: {r: 1, g: 1, b: 1, a: 0.078431375}
   defaultColor: {r: 1, g: 1, b: 1, a: 0.039215688}
-  fadeTime: 0.1
+  fadeTime: 0.2
   skillNum: 0
 --- !u!1 &7245476138589862730
 GameObject:

@@ -11,45 +11,16 @@ public class PopupController : MonoBehaviour
     [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
     [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
     [SerializeField] private Initialize initialize;             // InspectorでInitializeを指定
+    [SerializeField] private Lerp lerp;                         // InspectorでLerpを指定
 
     [System.NonSerialized] public GameObject[] drawingPopup = new GameObject[10]; // ポップアップの配列
-
-    // ポップアップを動かす
-    public IEnumerator MovePopup(float time, float fadeTime, GameObject popup, float moveDistance, Vector3 defaultPosition, int i)
-    {
-        // 指定した時間が経過するまで繰り返す
-        while (time < fadeTime)
-        {
-            // ポップアップが存在しなければ終了
-            if (!popup)
-            {
-                yield break;
-            }
-
-            // 時間をカウント
-            time += Time.deltaTime;
-
-            // 進み具合を計算
-            float t = time / fadeTime;
-
-            // ポップアップを移動
-            popup.transform.position = Vector3.Lerp(defaultPosition, defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), t);
-
-            // 1フレーム待つ
-            yield return null;
-        }
-
-        if (moveDistance < 0)
-            // ポップアップを削除
-            Destroy(drawingPopup[i].gameObject);
-    }
 
     // ポップアップを描画
     private IEnumerator DrawPopup(string text)
     {
         float destroyTime = 10.0f;   // 惑星を破壊するまでの時間
         int i = 0;                   // 数を数える変数
-        float fadeTime = 0.2f;       // フェード時間
+        float fadeTime = 1.0f;       // フェード時間
         float moveDistance = 300.0f; // 移動距離
         Vector3 defaultPosition;     // デフォルトの位置
 
@@ -87,13 +58,17 @@ public class PopupController : MonoBehaviour
         defaultPosition = drawingPopup[i].transform.position;
 
         // ポップアップを動かす
-        StartCoroutine(MovePopup(time, fadeTime, drawingPopup[i], moveDistance, defaultPosition, i));
+        yield return lerp.Position_GameObject(drawingPopup[i], defaultPosition, defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), fadeTime);
 
         // ポップアップが時間が経過するまで待つ
         yield return new WaitForSeconds(destroyTime);
 
         // ポップアップを動かす
-        StartCoroutine(MovePopup(time, fadeTime, drawingPopup[i], -moveDistance, defaultPosition, i));
+        if (drawingPopup[i] != null)
+            yield return lerp.Position_GameObject(drawingPopup[i], defaultPosition, defaultPosition - new Vector3(moveDistance, 0.0f, 0.0f), fadeTime);
+
+        // ポップアップを削除
+        Destroy(drawingPopup[i]);
     }
 
     // 惑星が破壊された際のポップアップを呼び出す
