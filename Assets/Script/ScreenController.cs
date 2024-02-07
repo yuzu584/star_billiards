@@ -74,10 +74,7 @@ public class ScreenController : MonoBehaviour
         }
 
         // ステージが描画可能かを管理する配列を更新
-        for (int i = 0;i < AppConst.SCREEN_AMOUNT; i++)
-        {
-            if (canStageDraw != screenData.screenList[screenNum].drawStage)
-                canStageDraw = screenData.screenList[screenNum].drawStage;
-        }
+        if (canStageDraw != screenData.screenList[screenNum].drawStage)
+            canStageDraw = screenData.screenList[screenNum].drawStage;
     }
 }

@@ -40,11 +40,11 @@ public class StageController : MonoBehaviour
             StageCrear();
         }
 
-        // ステージを生成/削除
+        // ステージを表示/非表示
         if(stageCreated != screenController.canStageDraw)
         {
             stageCreated = screenController.canStageDraw;
-            createStage.Create(screenController.canStageDraw);
+            createStage.Draw(screenController.canStageDraw);
         }
     }
 

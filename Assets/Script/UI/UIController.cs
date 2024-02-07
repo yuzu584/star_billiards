@@ -188,16 +188,9 @@ public class UIController : MonoBehaviour
         public Text justShotText;            // ジャストショット時のテキスト
     }
 
-    [SerializeField] private Shot shot;                                   // InspectorでShotを指定
-    [SerializeField] private EnergyController energyController;           // InspectorでEnergyControllerを指定
     [SerializeField] private ScreenController screenController;           // InspectorでScreenControllerを指定
-    [SerializeField] private PostProcessController postProcessController; // InspectorでPostProcessControllerを指定
-    [SerializeField] private StageData stageData;                         // InspectorでStageDataを指定
-    [SerializeField] private StageController stageController;             // InspectorでStageControllerを指定
-    [SerializeField] private PlanetAmount planetAmount;                   // InspectorでPlanetAmountを指定
     [SerializeField] private SkillController skillController;             // InspectorでSkillControllerを指定
     [SerializeField] private PlanetListController planetListController;   // InspectorでPlanetListControllerを指定
-    [SerializeField] private Rigidbody rb;                                // プレイヤーのRigidbody
 
     // Findで探すGameObject
     private GameObject UIFunctionController;

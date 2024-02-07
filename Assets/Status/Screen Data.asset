@@ -31,7 +31,7 @@ MonoBehaviour:
   - screenName: Setting
     drawCursol: 1
     timeScale: 0
-    drawStage: 1
+    drawStage: 0
     uIDrawList: 00000001000000000000
   - screenName: SkillSelect
     drawCursol: 1

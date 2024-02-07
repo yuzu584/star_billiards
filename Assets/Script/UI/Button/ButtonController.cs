@@ -40,6 +40,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private GameObject StageController;
     private GameObject Player;
     private GameObject InitializeController;
+    private GameObject Stage;
 
     // Findで探したGameObjectのコンポーネント
     private ScreenController screenController;
@@ -50,6 +51,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private Lerp lerp;
     private SkillController skillController;
     private Initialize initialize;
+    private CreateStage createStage;
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
@@ -149,6 +151,10 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
         // ステージに関する数値を初期化
         initialize.init_Stage();
+
+        // ステージ生成
+        createStage.Destroy();
+        createStage.Create();
     }
 
     // 惑星情報画面を開く
@@ -192,6 +198,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         StageController = GameObject.Find("StageController");
         Player = GameObject.Find("Player");
         InitializeController = GameObject.Find("InitializeController");
+        Stage = GameObject.Find("Stage");
 
         // 探したGameObjectのコンポーネントを取得
         screenController = ScreenController.gameObject.GetComponent<ScreenController>();
@@ -202,5 +209,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         lerp = UIFunctionController.GetComponent<Lerp>();
         skillController = Player.GetComponent<SkillController>();
         initialize = InitializeController.GetComponent<Initialize>();
+        createStage = Stage.GetComponent<CreateStage>();
     }
 }
