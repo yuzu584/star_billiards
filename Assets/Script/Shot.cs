@@ -10,16 +10,18 @@ public class Shot : MonoBehaviour
     [SerializeField] private PredictionLine predictionLine;       // InspectorでPredictionLineを指定
     [SerializeField] private EnergyController energyController;   // InspectorでEnergyControllerを指定
     [SerializeField] private ScreenController screenController;   // InspectorでScreenControllerを指定
+    [SerializeField] private JustShot justShot;                   // InspectorでJustShotを指定
+
     public float speed = AppConst.PLAYER_DEFAULT_SPEED;           // 移動速度
     public float charge = 0;                                      // 球のチャージ
     public float chargeSpeed = AppConst.DEFAULT_CHARGE_SPEED;     // 球のチャージ速度
     public int playerBouncePower = AppConst.DEFAULT_BOUNCE_POWER; // 衝突したときのプレイヤーの反発力
     public int planetBouncePower = AppConst.DEFAULT_BOUNCE_POWER; // 衝突したときの惑星の反発力
 
-    Vector3 direction;  // 向き
-    Rigidbody rb;       // プレイヤーのRigidbody
-    Rigidbody cRb;      // 衝突したオブジェクトのRigidbody
-    RaycastHit hit;     // Rayのhit
+    private Vector3 direction;          // 向き
+    private Rigidbody rb;               // プレイヤーのRigidbody
+    private Rigidbody cRb;              // 衝突したオブジェクトのRigidbody
+    private RaycastHit hit;             // Rayのhit
 
     void Start()
     {
@@ -36,19 +38,29 @@ public class Shot : MonoBehaviour
         // 衝突したオブジェクトのタグがPlanetなら
         if (collision.gameObject.tag == "Planet")
         {
-            // 力を少し加える
-            rb.AddForce(direction * speed * playerBouncePower / 2);
-
             // 衝突したオブジェクトのrigidbodyを取得
             cRb = collision.gameObject.GetComponent<Rigidbody>();
 
-            // 加速させる
-            cRb.velocity *= planetBouncePower / 50;
+            // ジャストショットの猶予時間内なら強い力で飛ばす
+            int power = 2;
+            if (justShot.time > 0.0f)
+            {
+                StopAllCoroutines();
+                StartCoroutine(justShot.UIAnimation());
+            }
+
+            // ジャストショットの猶予時間外なら通常の力で飛ばす
+            else power = 1;
+
+            // プレイヤーと衝突した惑星に力を加える
+            rb.AddForce(direction * speed * playerBouncePower / (2 * power));
+            cRb.velocity *= planetBouncePower / (50 / power);
+
         }
         // タグがPlanet以外なら
         else
         {
-            // 力を加える
+            // プレイヤーを加速させる
             rb.AddForce(direction * speed * playerBouncePower);
         }
     }
@@ -82,7 +94,7 @@ public class Shot : MonoBehaviour
         // ゲーム画面なら
         if (screenController.screenNum == 5)
         {
-            // エネルギーがある状態で発射ボタンが押されたら
+            // エネルギーがある状態で発射ボタンが押されていたら(長押し可)
             if ((Input.GetAxisRaw("Fire1") > 0) && (energyController.energy > 0))
             {
                 // 角度を設定
@@ -105,6 +117,13 @@ public class Shot : MonoBehaviour
 
                 // チャージをリセット
                 charge = 0;
+            }
+
+            // エネルギーがある状態で発射ボタンが押されたら(押した瞬間だけ)
+            if ((Input.GetButtonDown("Fire1")) && (energyController.energy > 0))
+            {
+                // ジャストショットの猶予時間をカウント
+                StartCoroutine(justShot.JustShotCount());
             }
         }
 

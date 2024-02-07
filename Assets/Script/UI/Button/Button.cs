@@ -9,12 +9,12 @@ using UnityEngine.EventSystems;
 public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     // Findで探すGameObject
-    [System.NonSerialized] protected GameObject ScreenController;
-    [System.NonSerialized] protected GameObject UIFunctionController;
+    protected GameObject ScreenController;
+    protected GameObject UIFunctionController;
 
     // Findで探したGameObjectのコンポーネント
-    [System.NonSerialized] protected ScreenController screenController;
-    [System.NonSerialized] protected Lerp lerp;
+    protected ScreenController screenController;
+    protected Lerp lerp;
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)

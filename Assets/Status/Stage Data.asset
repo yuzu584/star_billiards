@@ -26,4 +26,4 @@ MonoBehaviour:
     - {fileID: 5098211884048975154, guid: 91674131e0e378a4fa4483eb31dfc90c, type: 3}
     - {fileID: 1725714881869314568, guid: 73501e53b08d3594095a3b26a455b603, type: 3}
     missionNum: 0
-    timeLimit: 5
+    timeLimit: 60

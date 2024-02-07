@@ -185,6 +185,7 @@ public class UIController : MonoBehaviour
     {
         public Image reticle;                // レティクル
         public Text speedValue;              // 移動速度のUI
+        public Text justShotText;            // ジャストショット時のテキスト
     }
 
     [SerializeField] private Shot shot;                                   // InspectorでShotを指定
