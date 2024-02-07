@@ -22,6 +22,7 @@ public class Lerp : MonoBehaviour
 
             // 進み具合を計算
             t = time / fadeTime;
+            t = easeOutQuint(t);
 
             // コールバックを呼び出す
             lerpFunction(t);
@@ -81,5 +82,11 @@ public class Lerp : MonoBehaviour
             obj.transform.position = Vector3.Lerp(startPos, endPos, t);
         };
         yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
+    }
+
+    // 滑らかな線形補完
+    private float easeOutQuint(float t)
+    {
+        return 1 - Mathf.Pow(1 - t, 5);
     }
 }

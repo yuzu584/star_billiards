@@ -74,6 +74,7 @@ public class Shot : MonoBehaviour
         else
         {
             // ƒvƒŒƒCƒ„[‚ğ‰Á‘¬‚³‚¹‚é
+            rb.velocity *= 0;
             rb.AddForce(direction * speed * playerBouncePower);
         }
     }
