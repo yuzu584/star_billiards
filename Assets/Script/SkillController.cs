@@ -12,6 +12,7 @@ public class SkillController : MonoBehaviour
     [SerializeField] private EnergyController energyController;   // InspectorでEnergyControllerを指定
     [SerializeField] private ScreenController screenController;   // InspectorでScreenControllerを指定
     [SerializeField] private Initialize initialize;               // InspectorでInitializeを指定
+    [SerializeField] private SphereRay sphereRay;                 // InspectorでSphereRayを指定
     [SerializeField] private ParticleSystem GravityWaveParticle;  // GravityWaveのパーティクル
 
     public int selectSkill = 0;  // 選択しているスキルの番号
@@ -114,6 +115,9 @@ public class SkillController : MonoBehaviour
             case 3: // GravityWave
                 UseGravityWave();
                 break;
+            case 4: // Frieze
+                UseFrieze();
+                break;
         }
     }
 
@@ -209,6 +213,17 @@ public class SkillController : MonoBehaviour
 
         // パーティクルを削除
         Destroy(newParticle.gameObject, 2.0f);
+    }
+
+    // Friezeを使用
+    void UseFrieze()
+    {
+        // Rayに当たったオブジェクトのRigidBodyを取得
+        Rigidbody hitRb = sphereRay.hit.collider.gameObject.GetComponent<Rigidbody>();
+
+        // 対象が惑星なら動きを止める
+        if (sphereRay.hitObjectTag == "Planet")
+            hitRb.velocity *= 0;
     }
 
     // 選択しているスキルスロットの配列を初期化

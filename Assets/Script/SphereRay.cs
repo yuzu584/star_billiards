@@ -11,9 +11,10 @@ public class SphereRay : MonoBehaviour
     [SerializeField] private ScreenController screenController;             // InspectorでScreenControllerを指定
     [SerializeField] private UIController uIController;                     // InspectorでUIControllerを指定
 
-    private RaycastHit hit;            // Rayのhit
-    private Vector3 hitObjectPosition; // hitしたオブジェクトの座標
-    private string hitObjectName;      // hitしたオブジェクトの名前
+    [System.NonSerialized] public RaycastHit hit;            // Rayのhit
+    [System.NonSerialized] public Vector3 hitObjectPosition; // hitしたオブジェクトの座標
+    [System.NonSerialized] public string hitObjectName;      // hitしたオブジェクトの名前
+    [System.NonSerialized] public string hitObjectTag;       // hitしたオブジェクトのタグ
 
     void Update()
     {
@@ -23,11 +24,10 @@ public class SphereRay : MonoBehaviour
         // 球体のRayを生成
         if (Physics.SphereCast(ray, AppConst.SPHERE_RAY_WIDTH, out hit))
         {
-            // hitしたオブジェクトの座標を取得
+            // hitしたオブジェクトの座標と名前とタグを取得
             hitObjectPosition = hit.collider.gameObject.transform.position;
-
-            // hitしたオブジェクトの名前を取得
             hitObjectName = hit.collider.gameObject.name;
+            hitObjectTag = hit.collider.gameObject.tag;
         }
 
         // ゲーム中なら描画
