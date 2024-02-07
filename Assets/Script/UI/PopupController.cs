@@ -51,9 +51,6 @@ public class PopupController : MonoBehaviour
         // プレハブのテキストを設定
         popupText.text = text;
 
-        // 経過時間をカウント
-        float time = 0;
-
         // デフォルト位置を設定
         defaultPosition = drawingPopup[i].transform.position;
 
