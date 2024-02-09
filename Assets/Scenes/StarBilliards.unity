@@ -579,8 +579,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Text
-      value: Apply
+      value: Appry
       objectReference: {fileID: 0}
+    - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
     - target: {fileID: 5970234051200584752, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Name
       value: Apply
@@ -2099,6 +2103,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: Reset
       objectReference: {fileID: 0}
+    - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
     - target: {fileID: 5970234051200584752, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Name
       value: Reset
