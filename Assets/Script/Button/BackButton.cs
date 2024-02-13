@@ -8,8 +8,7 @@ using UnityEditor;
 // 戻るボタンを管理
 public class BackButton : Button
 {
-    [SerializeField] private Image backGround;          // 背景画像
-    [SerializeField] private Text text;                 // テキスト
+    [SerializeField] private Image image; // 画像
 
     private int oldScreen = 0;                                    // 前回のスクリーン(戻り先の画面)
     private Color startColor = new Color(1.0f, 1.0f, 1.0f, 0.0f); // 変化前の色
@@ -21,20 +20,20 @@ public class BackButton : Button
     protected override void EnterProcess()
     {
         // ボタンのアニメーション
-        nowColor = backGround.color;
+        nowColor = image.color;
 
         StopAllCoroutines();
-        StartCoroutine(lerp.Color_Image(backGround, nowColor, endColor, fadeTime));
+        StartCoroutine(lerp.Color_Image(image, nowColor, endColor, fadeTime));
     }
 
     // マウスポインターが離れたときの処理
     protected override void ExitProcess()
     {
         // ボタンのアニメーション
-        nowColor = backGround.color;
+        nowColor = image.color;
 
         StopAllCoroutines();
-        StartCoroutine(lerp.Color_Image(backGround, nowColor, startColor, fadeTime));
+        StartCoroutine(lerp.Color_Image(image, nowColor, startColor, fadeTime));
     }
 
     // クリックされたときの処理
@@ -44,7 +43,7 @@ public class BackButton : Button
         screenController.screenNum = oldScreen;
 
         // ボタンの色をリセット
-        backGround.color = startColor;
+        image.color = startColor;
     }
 
     // 前回のスクリーン番号をセット
