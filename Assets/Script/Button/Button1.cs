@@ -20,24 +20,6 @@ public class Button1 : Button
     private Initialize initialize;
     private CreateStage createStage;
 
-    [System.Serializable]
-    private struct ImageStruct   // 画像の構造体
-    {
-        public Image image;      // 画像
-        public Color startColor; // 変化前の色
-        public Color endColor;   // 変化後の色
-        public float fadeTime;   // フェード時間
-    }
-
-    [System.Serializable]
-    private struct TextStruct    // テキストの構造体
-    {
-        public Text text;        // テキスト
-        public Color startColor; // 変化前の色
-        public Color endColor;   // 変化後の色
-        public float fadeTime;   // フェード時間
-    }
-
     public enum ClickAction // ボタンを押したときの効果
     {
         None,                 // 効果なし
@@ -49,8 +31,6 @@ public class Button1 : Button
     }
 
     [SerializeField] private ClickAction clickAction;
-    [SerializeField] private ImageStruct[] imageStructs;
-    [SerializeField] private TextStruct[] textStructs;
     [SerializeField] private int nextScreen = 0; // 遷移先の画面番号
 
     // マウスポインターが乗った時の処理
@@ -80,13 +60,6 @@ public class Button1 : Button
     // クリックされたときの処理
     protected override void ClickProcess()
     {
-        // ボタンの色をリセット
-        for (int i = 0; i < imageStructs.Length; i++)
-        {
-            imageStructs[i].image.color = imageStructs[i].startColor;
-            textStructs[i].text.color = textStructs[i].startColor;
-        }
-
         // ボタンを押したときの効果によって分岐
         switch (clickAction)
         {
@@ -147,6 +120,17 @@ public class Button1 : Button
     void ResetSelectSkill()
     {
         skillController.InitSelectSlot();
+    }
+
+    void OnEnable()
+    {
+        // ボタンの色をリセット
+        StopAllCoroutines();
+        for (int i = 0; i < imageStructs.Length; i++)
+        {
+            imageStructs[i].image.color = imageStructs[i].startColor;
+            textStructs[i].text.color = textStructs[i].startColor;
+        }
     }
 
     new void Start()

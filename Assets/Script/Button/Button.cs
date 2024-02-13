@@ -8,6 +8,27 @@ using UnityEngine.EventSystems;
 // ボタンの親クラス
 public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    [System.Serializable]
+    protected struct ImageStruct   // 画像の構造体
+    {
+        public Image image;      // 画像
+        public Color startColor; // 変化前の色
+        public Color endColor;   // 変化後の色
+        public float fadeTime;   // フェード時間
+    }
+
+    [System.Serializable]
+    protected struct TextStruct    // テキストの構造体
+    {
+        public Text text;        // テキスト
+        public Color startColor; // 変化前の色
+        public Color endColor;   // 変化後の色
+        public float fadeTime;   // フェード時間
+    }
+
+    [SerializeField] protected ImageStruct[] imageStructs;
+    [SerializeField] protected TextStruct[] textStructs;
+
     // Findで探すGameObject
     protected GameObject ScreenController;
     protected GameObject UIFunctionController;

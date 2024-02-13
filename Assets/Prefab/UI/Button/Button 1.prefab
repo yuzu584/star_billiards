@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5970234051200584755}
   - component: {fileID: 880919052158026651}
   m_Layer: 5
-  m_Name: Button1
+  m_Name: Button 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a475a13cfe6e5d49a9e4c625a6e2428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickAction: 0
   imageStructs:
   - image: {fileID: 5970234050213230016}
     startColor: {r: 1, g: 1, b: 1, a: 0.039215688}
@@ -59,8 +58,9 @@ MonoBehaviour:
   textStructs:
   - text: {fileID: 5970234051039374986}
     startColor: {r: 1, g: 1, b: 1, a: 1}
-    endColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+    endColor: {r: 0, g: 0, b: 0, a: 1}
     fadeTime: 0.4
+  clickAction: 0
   nextScreen: 0
 --- !u!1001 &1501167659160551737
 PrefabInstance:

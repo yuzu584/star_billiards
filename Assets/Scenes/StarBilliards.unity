@@ -675,13 +675,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2027750826}
     m_Modifications:
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: clickAction
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: clickAction
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Text
-      value: Appry
+      value: Apply
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_FontData.m_Font
@@ -757,7 +761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051200584755, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051200584755, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1431,6 +1435,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 49308637}
     m_Modifications:
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: nextScreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: clickAction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230016, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Material
       value: 
@@ -2311,6 +2323,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2027750826}
     m_Modifications:
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: clickAction
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: clickAction
       value: 9
@@ -2393,7 +2409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051200584755, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051200584755, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2501,6 +2517,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 846516595}
     m_Modifications:
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: nextScreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: clickAction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230016, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Material
       value: 
@@ -3851,7 +3875,7 @@ Canvas:
   m_GameObject: {fileID: 869580810}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 963194227}
   m_PlaneDistance: 0.5
   m_PixelPerfect: 0
@@ -6133,6 +6157,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 49308637}
     m_Modifications:
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: nextScreen
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: clickAction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230016, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Material
       value: 
@@ -7285,6 +7317,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 846516595}
     m_Modifications:
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: nextScreen
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: clickAction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230016, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Material
       value: 
@@ -7435,6 +7475,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1670636198}
     m_Modifications:
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: clickAction
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230017, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_SizeDelta.x
       value: 150
@@ -7874,6 +7918,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 630366474}
     m_Modifications:
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: nextScreen
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: clickAction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: planetInfo
       value: 
@@ -8283,6 +8335,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 630366474}
     m_Modifications:
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: nextScreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: clickAction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: planetInfo
       value: 
@@ -8535,6 +8595,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 630366474}
     m_Modifications:
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: nextScreen
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: clickAction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: planetInfo
       value: 
