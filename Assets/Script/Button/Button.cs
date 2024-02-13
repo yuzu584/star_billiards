@@ -54,11 +54,9 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     protected void Start()
     {
-        // GameObjectを探す
+        // オブジェクトを探してコンポーネントを取得
         ScreenController = GameObject.Find("ScreenController");
         UIFunctionController = GameObject.Find("UIFunctionController");
-
-        // 探したGameObjectのコンポーネントを取得
         screenController = ScreenController.gameObject.GetComponent<ScreenController>();
         lerp = UIFunctionController.GetComponent<Lerp>();
     }

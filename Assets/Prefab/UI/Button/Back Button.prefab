@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5970234051200584755}
   - component: {fileID: 7582371322693978309}
   m_Layer: 5
-  m_Name: Button Back
+  m_Name: Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -370, y: 200}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7582371322693978309
@@ -50,7 +50,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1200d497f6b37d439658b1cbd84ee0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 2010910362825449115}
+  imageStructs:
+  - image: {fileID: 2010910364416277094}
+    startColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+    endColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+    fadeTime: 0.4
+  - image: {fileID: 2010910362825449115}
+    startColor: {r: 1, g: 1, b: 1, a: 0.039215688}
+    endColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+    fadeTime: 0.4
 --- !u!1001 &3865741229817698171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,3 +172,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3336586199802711708, guid: 98ce19e4cd89e0b44b94381e4805f48d, type: 3}
   m_PrefabInstance: {fileID: 3865741229817698171}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2010910364416277094 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3336586200964361501, guid: 98ce19e4cd89e0b44b94381e4805f48d, type: 3}
+  m_PrefabInstance: {fileID: 3865741229817698171}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

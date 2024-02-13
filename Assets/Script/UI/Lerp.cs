@@ -43,6 +43,17 @@ public class Lerp : MonoBehaviour
         yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
     }
 
+    // 線形補完で色を変更(Text)
+    public IEnumerator Color_Text(Text text, Color colorA, Color colorB, float fadeTime)
+    {
+        Action<float> lerpFunction = (float t) =>
+        {
+            text.color = Color.Lerp(colorA, colorB, t);
+        };
+
+        yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
+    }
+
     // 線形補完で色を変更(Material)
     public IEnumerator Color_Material(Material mat, Color32 colorA, Color32 colorB, float fadeTime)
     {
