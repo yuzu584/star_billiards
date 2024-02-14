@@ -52,13 +52,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageStructs:
   - image: {fileID: 2010910364416277094}
-    startColor: {r: 1, g: 1, b: 1, a: 0.39215687}
-    endColor: {r: 0, g: 0, b: 0, a: 0.78431374}
-    fadeTime: 0.4
+    lerpColor:
+      useLerp: 1
+      startColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+      endColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      fadeTime: 0.4
+    lerpPosition:
+      useLerp: 0
+      startPos: {r: 0, g: 0, b: 0, a: 0}
+      endPos: {r: 0, g: 0, b: 0, a: 0}
+      fadeTime: 0
+    onPointerDraw: 0
   - image: {fileID: 2010910362825449115}
-    startColor: {r: 1, g: 1, b: 1, a: 0.039215688}
-    endColor: {r: 1, g: 1, b: 1, a: 0.78431374}
-    fadeTime: 0.4
+    lerpColor:
+      useLerp: 1
+      startColor: {r: 1, g: 1, b: 1, a: 0.039215688}
+      endColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+      fadeTime: 0.4
+    lerpPosition:
+      useLerp: 0
+      startPos: {r: 0, g: 0, b: 0, a: 0}
+      endPos: {r: 0, g: 0, b: 0, a: 0}
+      fadeTime: 0
+    onPointerDraw: 0
   textStructs: []
 --- !u!1001 &3865741229817698171
 PrefabInstance:

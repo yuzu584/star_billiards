@@ -95,6 +95,26 @@ public class Lerp : MonoBehaviour
         yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
     }
 
+    // 線形補完でスケールを変更(Image)
+    public IEnumerator Scale_Image(Image obj, Vector2 startScale, Vector2 endScale, float fadeTime)
+    {
+        Action<float> lerpFunction = (float t) =>
+        {
+            obj.rectTransform.localScale = Vector2.Lerp(startScale, endScale, t);
+        };
+        yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
+    }
+
+    // 線形補完でスケールを変更(Text)
+    public IEnumerator Scale_Text(Text obj, Vector2 startScale, Vector2 endScale, float fadeTime)
+    {
+        Action<float> lerpFunction = (float t) =>
+        {
+            obj.rectTransform.localScale = Vector2.Lerp(startScale, endScale, t);
+        };
+        yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
+    }
+
     // 滑らかな線形補完
     private float easeOutQuint(float t)
     {
