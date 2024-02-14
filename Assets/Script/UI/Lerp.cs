@@ -8,6 +8,12 @@ using UnityEngine.UI;
 // 線形補完
 public class Lerp : MonoBehaviour
 {
+    // 全てのコルーチンを停止
+    public void StopAll()
+    {
+        StopAllCoroutines();
+    }
+
     // 汎用的な補完
     private IEnumerator GenericLerp(float fadeTime, Action<float> lerpFunction)
     {

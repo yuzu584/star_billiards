@@ -116,6 +116,9 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         Vector2 scale1;
         Vector2 scale2;
 
+        lerp.StopAll();
+        BtnInit(childrenImageStructs, childrenTextStructs);
+
         // ポインターが乗っているときのみ描画するなら描画
         for (int i = 0; i < childrenImageStructs.Length; i++)
         {
@@ -127,9 +130,6 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
             if ((childrenTextStructs[i].onPointerDraw) && (childrenTextStructs[i].text.enabled != enterOrExit))
                 childrenTextStructs[i].text.enabled = enterOrExit;
         }
-
-        // ボタンのアニメーション
-        StopAllCoroutines();
 
         // 画像のアニメーション
         for (int i = 0; i < childrenImageStructs.Length; i++)
@@ -257,13 +257,13 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     // ボタンの初期化処理
     protected void BtnInit(ImageStruct[] childrenImageStructs, TextStruct[] childrenTextStructs)
     {
-        StopAllCoroutines();
-
         // ボタンの色をリセット
         for (int i = 0; i < childrenImageStructs.Length; i++)
         {
             if (childrenImageStructs[i].lerpColor.useLerp)
+            {
                 childrenImageStructs[i].image.color = childrenImageStructs[i].lerpColor.startColor;
+            }
         }
         for (int i = 0; i < childrenTextStructs.Length; i++)
         {
