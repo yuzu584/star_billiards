@@ -140,7 +140,6 @@ public class UIController : MonoBehaviour
         public GameObject allMainMenuUI;     // メインメニュー全体のUI
         public Text titleText;               // メインメニューのタイトル
         public GameObject[] button;          // メインメニューのボタン
-        public Image backGround;             // メインメニューの背景画像
     }
 
     // ステージ選択画面のUI

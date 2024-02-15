@@ -70,12 +70,6 @@ namespace Const
         public static readonly Color32 DEFAULT_SKILL_GAUGE_COLOR = new Color32(255, 255, 255, 100);  // スキルゲージの初期色
         public static readonly Color32 CAN_USE_SKILL_GAUGE_COLOR = new Color32(255, 255, 100, 200);  // スキル使用可能時のスキルゲージの色
         public const int SKILL_SLOT_AMOUNT = 3;                                                      // スキルスロットの数
-        public static readonly string[] MAINMENU_BTN_TEXT = new string[]                             // メインメニューのボタンのテキスト
-        {
-            "StageSelect",
-            "Setting",
-            "SkillSelect",
-        };
         public const int SCREEN_AMOUNT = 10;                                                         // スクリーンの数
     }
 }
