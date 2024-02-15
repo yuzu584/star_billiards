@@ -59,8 +59,13 @@ MonoBehaviour:
       fadeTime: 0.4
     lerpPosition:
       useLerp: 0
-      startPos: {r: 0, g: 0, b: 0, a: 0}
-      endPos: {r: 0, g: 0, b: 0, a: 0}
+      startPos: {x: 0, y: 0, z: 0}
+      endPos: {x: 0, y: 0, z: 0}
+      fadeTime: 0
+    lerpScale:
+      useLerp: 0
+      startScale: {x: 0, y: 0}
+      endScale: {x: 0, y: 0}
       fadeTime: 0
     onPointerDraw: 0
   - image: {fileID: 2010910362825449115}
@@ -71,9 +76,31 @@ MonoBehaviour:
       fadeTime: 0.4
     lerpPosition:
       useLerp: 0
-      startPos: {r: 0, g: 0, b: 0, a: 0}
-      endPos: {r: 0, g: 0, b: 0, a: 0}
+      startPos: {x: 0, y: 0, z: 0}
+      endPos: {x: 0, y: 0, z: 0}
       fadeTime: 0
+    lerpScale:
+      useLerp: 0
+      startScale: {x: 0, y: 0}
+      endScale: {x: 0, y: 0}
+      fadeTime: 0
+    onPointerDraw: 0
+  - image: {fileID: 2010910364306988963}
+    lerpColor:
+      useLerp: 1
+      startColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+      endColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+      fadeTime: 0.4
+    lerpPosition:
+      useLerp: 0
+      startPos: {x: 0, y: 0, z: 0}
+      endPos: {x: 0, y: 0, z: 0}
+      fadeTime: 0
+    lerpScale:
+      useLerp: 1
+      startScale: {x: 1, y: 1}
+      endScale: {x: 1.15, y: 1.15}
+      fadeTime: 0.4
     onPointerDraw: 0
   textStructs: []
 --- !u!1001 &3865741229817698171
@@ -189,6 +216,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3336586199802711708, guid: 98ce19e4cd89e0b44b94381e4805f48d, type: 3}
   m_PrefabInstance: {fileID: 3865741229817698171}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2010910364306988963 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3336586201107187928, guid: 98ce19e4cd89e0b44b94381e4805f48d, type: 3}
+  m_PrefabInstance: {fileID: 3865741229817698171}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2010910364416277094 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3336586200964361501, guid: 98ce19e4cd89e0b44b94381e4805f48d, type: 3}

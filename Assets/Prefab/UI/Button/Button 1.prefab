@@ -80,11 +80,11 @@ MonoBehaviour:
       endPos: {x: 0, y: 0, z: 0}
       fadeTime: 0
     lerpScale:
-      useLerp: 0
+      useLerp: 1
       startScale: {x: 1, y: 1}
-      endScale: {x: 1.1, y: 1.1}
+      endScale: {x: 1.05, y: 1.1}
       fadeTime: 0.4
-    onPointerDraw: 1
+    onPointerDraw: 0
   textStructs:
   - text: {fileID: 5970234051039374986}
     lerpColor:
