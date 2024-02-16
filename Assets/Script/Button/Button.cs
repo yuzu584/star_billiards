@@ -65,14 +65,22 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     // Findで探すGameObject
     protected GameObject ScreenController;
     protected GameObject UIFunctionController;
+    protected GameObject SoundController;
 
     // Findで探したGameObjectのコンポーネント
     protected ScreenController screenController;
     protected Lerp lerp;
+    protected Sound sound;
+
+    [SerializeField] protected AudioClip EnterSound;    // ポインターが乗った時に再生する音声ファイル
+    [SerializeField] protected AudioClip ClickSound;    // ボタンクリック時に再生する音声ファイル
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
+        // 音を再生
+        sound.Play(EnterSound);
+
         EnterProcess();
     }
 
@@ -85,6 +93,9 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     // ボタンがクリックされたら
     public void OnPointerClick(PointerEventData pointerEventData)
     {
+        //音を再生
+        sound.Play(ClickSound);
+
         ClickProcess();
     }
 
@@ -313,7 +324,9 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         // オブジェクトを探してコンポーネントを取得
         ScreenController = GameObject.Find("ScreenController");
         UIFunctionController = GameObject.Find("UIFunctionController");
+        SoundController = GameObject.Find("SoundController");
         screenController = ScreenController.gameObject.GetComponent<ScreenController>();
         lerp = UIFunctionController.GetComponent<Lerp>();
+        sound = SoundController.GetComponent<Sound>();
     }
 }
