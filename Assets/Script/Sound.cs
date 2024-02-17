@@ -8,8 +8,10 @@ public class Sound : MonoBehaviour
     [SerializeField] protected AudioSource audioSource; // AudioSource
 
     // ‰¹ºƒtƒ@ƒCƒ‹‚ğÄ¶
-    public void Play(AudioClip audio)
+    public IEnumerator Play(AudioClip audio)
     {
         audioSource.PlayOneShot(audio);
+
+        yield return null;
     }
 }

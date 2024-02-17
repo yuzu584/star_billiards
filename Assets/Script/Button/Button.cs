@@ -79,7 +79,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         // ‰¹‚ğÄ¶
-        sound.Play(EnterSound);
+        StartCoroutine(sound.Play(EnterSound));
 
         EnterProcess();
     }
@@ -94,7 +94,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         //‰¹‚ğÄ¶
-        sound.Play(ClickSound);
+        StartCoroutine(sound.Play(ClickSound));
 
         ClickProcess();
     }
