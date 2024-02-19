@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 76047272090718990}
   - component: {fileID: 2438596319425878976}
   m_Layer: 5
-  m_Name: SkillSlot Select Number
+  m_Name: Select Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
-    m_FontSize: 16
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 7245476137574169521}
   - component: {fileID: 7245476137574169526}
   m_Layer: 5
-  m_Name: SkillSlot Image
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7245476137574169521
 CanvasRenderer:
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68d62d7f22c747246bceab64eebaca1c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d1be29fdc81159b4d960aee85e82ca92, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 7245476137975213827}
   - component: {fileID: 7245476137975213824}
   m_Layer: 5
-  m_Name: SkillSlot Image Outline
+  m_Name: Image Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,8 +191,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: 5}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 65, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7245476137975213827
 CanvasRenderer:
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 08629f64e22fc674c831c8087167ed43, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d14d1461e45a5a14e9f2ff4050998e50, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -241,7 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7245476138344427336}
-  - component: {fileID: 7245476138344427339}
+  - component: {fileID: 7210835567840534325}
   m_Layer: 5
   m_Name: SkillSlot
   m_TagString: Untagged
@@ -271,9 +271,9 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7245476138344427339
+--- !u!114 &7210835567840534325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -282,16 +282,66 @@ MonoBehaviour:
   m_GameObject: {fileID: 7245476138344427337}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f5b9b33193908f41bef2911d1b5ee14, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ac0a12152081c6458336bc710c62489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 7245476137574169526}
-  imageOutline: {fileID: 7245476137975213824}
-  selectNumText: {fileID: 2438596319425878976}
-  OnPointerColor: {r: 1, g: 1, b: 1, a: 0.078431375}
-  defaultColor: {r: 1, g: 1, b: 1, a: 0.039215688}
-  fadeTime: 0.2
+  imageStructs:
+  - image: {fileID: 7245476137574169526}
+    lerpColor:
+      useLerp: 1
+      startColor: {r: 1, g: 1, b: 1, a: 0.039215688}
+      endColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+      fadeTime: 0.4
+    lerpPosition:
+      useLerp: 0
+      startPos: {x: 0, y: 0, z: 0}
+      endPos: {x: 0, y: 0, z: 0}
+      fadeTime: 0
+    lerpScale:
+      useLerp: 0
+      startScale: {x: 0, y: 0}
+      endScale: {x: 0, y: 0}
+      fadeTime: 0
+    onPointerDraw: 0
+  - image: {fileID: 7245476137975213824}
+    lerpColor:
+      useLerp: 1
+      startColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+      endColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+      fadeTime: 0.4
+    lerpPosition:
+      useLerp: 0
+      startPos: {x: 0, y: 0, z: 0}
+      endPos: {x: 0, y: 0, z: 0}
+      fadeTime: 0
+    lerpScale:
+      useLerp: 1
+      startScale: {x: 1, y: 1}
+      endScale: {x: 1.1, y: 1.1}
+      fadeTime: 0.4
+    onPointerDraw: 0
+  - image: {fileID: 7245476138589862724}
+    lerpColor:
+      useLerp: 1
+      startColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+      endColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      fadeTime: 0.4
+    lerpPosition:
+      useLerp: 0
+      startPos: {x: 0, y: 0, z: 0}
+      endPos: {x: 0, y: 0, z: 0}
+      fadeTime: 0
+    lerpScale:
+      useLerp: 0
+      startScale: {x: 0, y: 0}
+      endScale: {x: 0, y: 0}
+      fadeTime: 0
+    onPointerDraw: 0
+  textStructs: []
+  EnterSound: {fileID: 8300000, guid: 13dc1ec8e21e60b4b83f31fb90a45748, type: 3}
+  ClickSound: {fileID: 8300000, guid: 6383ff15321eb9146a08c0130415cf4f, type: 3}
   skillNum: 0
+  selectNumText: {fileID: 2438596319425878976}
 --- !u!1 &7245476138589862730
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,8 +377,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: 5}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7245476138589862727
 CanvasRenderer:
@@ -358,7 +408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5a7f596b6d0c4334e80acb06bfd2d9e9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e3e28fa6d774474e907dead3b6da923, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

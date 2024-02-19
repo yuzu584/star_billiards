@@ -325,6 +325,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         ScreenController = GameObject.Find("ScreenController");
         UIFunctionController = GameObject.Find("UIFunctionController");
         SoundController = GameObject.Find("SoundController");
+
         screenController = ScreenController.gameObject.GetComponent<ScreenController>();
         lerp = UIFunctionController.GetComponent<Lerp>();
         sound = SoundController.GetComponent<Sound>();

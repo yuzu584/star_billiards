@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.UI;
-using UnityEditor;
 
 // É{É^Éì1Çä«óù
 public class Button1 : Button
@@ -127,6 +126,7 @@ public class Button1 : Button
         ArrowController = GameObject.Find("ArrowController");
         InitializeController = GameObject.Find("InitializeController");
         Stage = GameObject.Find("Stage");
+
         skillController = Player.GetComponent<SkillController>();
         arrow = ArrowController.GetComponent<Arrow>();
         initialize = InitializeController.GetComponent<Initialize>();
