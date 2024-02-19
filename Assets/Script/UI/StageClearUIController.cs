@@ -17,9 +17,6 @@ public class StageClearUIController : MonoBehaviour
     // ステージクリア画面のUIを描画
     public void DrawStageClearUI()
     {
-        // 被写界深度をON/OFF
-        postProcessController.DepthOfFieldOnOff(true);
-
         // ボタンを非表示
         for (int i = 0; i < uIController.stageClearUI.button.Length; i++)
             uIController.stageClearUI.button[i].SetActive(false);

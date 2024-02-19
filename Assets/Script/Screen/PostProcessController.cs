@@ -15,19 +15,21 @@ public class PostProcessController : MonoBehaviour
     public void DepthOfFieldOnOff(bool onoff)
     {
         if (volume.profile.TryGet<DepthOfField>(out depthOfField))
-        {
             depthOfField.active = onoff;
-        }
     }
 
     // ”íÊŠE[“x‚ÌON/OFF‚ğæ“¾
     public bool GetDepthOfFieldOnOff()
     {
         if (volume.profile.TryGet<DepthOfField>(out depthOfField))
-        {
             return depthOfField.active;
-        }
 
         return false;
+    }
+
+    void Start()
+    {
+        // ”íÊŠE[“x‚ğOFF
+        DepthOfFieldOnOff(false);
     }
 }

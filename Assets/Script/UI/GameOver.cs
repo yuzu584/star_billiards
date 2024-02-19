@@ -25,9 +25,6 @@ public class GameOver : MonoBehaviour
     // ゲームオーバー画面のアニメーション
     void Animation()
     {
-        // 被写界深度をON
-        postProcessController.DepthOfFieldOnOff(true);
-
         // ボタンを非表示
         for (int i = 0; i < uIController.gameOverUI.button.Length; i++)
             uIController.gameOverUI.button[i].SetActive(false);

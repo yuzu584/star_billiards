@@ -5272,8 +5272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b099c1fba9bcfa4bb8df08dcd01484a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uIController: {fileID: 869580811}
-  postProcessController: {fileID: 1746308557}
 --- !u!114 &1148952473
 MonoBehaviour:
   m_ObjectHideFlags: 0
