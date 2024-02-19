@@ -15,12 +15,16 @@ public class SkillSlot : Button
 
     // Findで探したGameObjectのコンポーネント
     private SkillController skillController;
+    private SkillSelectUIController skillSelectUIController;
 
     // マウスポインターが乗った時の処理
     protected override void EnterProcess()
     {
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, true);
+
+        // スキルの情報を描画
+        skillSelectUIController.DrawSkillInfo(skillNum);
     }
 
     // マウスポインターが離れたときの処理
@@ -92,6 +96,7 @@ public class SkillSlot : Button
         Player = GameObject.Find("Player");
 
         skillController = Player.GetComponent<SkillController>();
+        skillSelectUIController = UIFunctionController.GetComponent<SkillSelectUIController>();
     }
 
     void Update()
