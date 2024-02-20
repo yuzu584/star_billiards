@@ -76,7 +76,7 @@ public class Lerp : MonoBehaviour
     {
         Action<float> lerpFunction = (float t) =>
         {
-            obj.rectTransform.position = Vector3.Lerp(startPos, endPos, t);
+            obj.rectTransform.anchoredPosition = Vector3.Lerp(startPos, endPos, t);
         };
         yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
     }
@@ -96,7 +96,7 @@ public class Lerp : MonoBehaviour
     {
         Action<float> lerpFunction = (float t) =>
         {
-            obj.transform.position = Vector3.Lerp(startPos, endPos, t);
+            obj.transform.localPosition = Vector3.Lerp(startPos, endPos, t);
         };
         yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
     }

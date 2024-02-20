@@ -12,7 +12,7 @@ public class StageClearUIController : MonoBehaviour
     [SerializeField] private UIController uIController;                   // InspectorでUIControllerを指定
     [SerializeField] private Lerp lerp;                                   // InspectorでLerpを指定
 
-    public float fadeTime = 0.2f; // フェード時間
+    public float fadeTime = 0.4f; // フェード時間
 
     // ステージクリア画面のUIを描画
     public void DrawStageClearUI()
@@ -54,7 +54,7 @@ public class StageClearUIController : MonoBehaviour
         // ボタンのアニメーション
         for (int i = 0; i < defaultPos.Length; ++i)
         {
-            defaultPos[i] = uIController.stageClearUI.button[i].transform.position;
+            defaultPos[i] = uIController.stageClearUI.button[i].transform.localPosition;
         }
 
         for (int i = 0; i < uIController.stageClearUI.button.Length; ++i)

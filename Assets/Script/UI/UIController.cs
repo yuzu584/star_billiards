@@ -76,7 +76,6 @@ public class UIController : MonoBehaviour
     {
         public GameObject allPlanetInfo;     // ‘S‚Ä‚Ì˜f¯î•ñUI
         public Image targetRing;             // ˜f¯î•ñUI‚Ì‰~
-        public LineRenderer planetInfoLine;  // ˜f¯î•ñUI‚Ìü
         public Text planetName;              // ˜f¯‚Ì–¼‘O
     }
 
@@ -227,13 +226,6 @@ public class UIController : MonoBehaviour
 
         // ˜f¯î•ñUI‚Ì‰~‚ÌRectTransform‚ğæ“¾
         PIR = planetInfoUI.targetRing.GetComponent<RectTransform>();
-
-        // ˜f¯î•ñUI‚Ìü‚Ìn“_‚ÆI“_‚Ì‘¾‚³‚ğw’è
-        planetInfoUI.planetInfoLine.startWidth = 0.01f;
-        planetInfoUI.planetInfoLine.endWidth = 0.01f;
-
-        // ˜f¯î•ñUI‚Ìü‚Ì”
-        planetInfoUI.planetInfoLine.positionCount = 3;
     }
 
     void Update()

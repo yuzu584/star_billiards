@@ -43,7 +43,7 @@ public class PopupController : MonoBehaviour
         drawingPopup[i].transform.SetParent(uIController.messageUI.Message.transform, false);
 
         // 位置を設定
-        drawingPopup[i].transform.position += new Vector3(-moveDistance, i * -40.0f, 0.0f);
+        drawingPopup[i].transform.localPosition += new Vector3(-moveDistance, i * -20.0f, 0.0f);
 
         // プレハブのテキストを取得
         Text popupText = drawingPopup[i].transform.GetChild(1).GetComponent<Text>();
@@ -52,7 +52,7 @@ public class PopupController : MonoBehaviour
         popupText.text = text;
 
         // デフォルト位置を設定
-        defaultPosition = drawingPopup[i].transform.position;
+        defaultPosition = drawingPopup[i].transform.localPosition;
 
         // ポップアップを動かす
         yield return lerp.Position_GameObject(drawingPopup[i], defaultPosition, defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), fadeTime);
