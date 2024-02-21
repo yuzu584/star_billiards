@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ポップアップを管理
-public class PopupController : MonoBehaviour
+public class PopupController : Lerp
 {
     [SerializeField] private GameObject popUp;                  // ポップアップのプレハブ
     [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
@@ -55,14 +55,14 @@ public class PopupController : MonoBehaviour
         defaultPosition = drawingPopup[i].transform.localPosition;
 
         // ポップアップを動かす
-        yield return lerp.Position_GameObject(drawingPopup[i], defaultPosition, defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), fadeTime);
+        yield return Position_GameObject(drawingPopup[i], defaultPosition, defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), fadeTime);
 
         // ポップアップが時間が経過するまで待つ
         yield return new WaitForSeconds(destroyTime);
 
         // ポップアップを動かす
         if (drawingPopup[i] != null)
-            yield return lerp.Position_GameObject(drawingPopup[i], defaultPosition, defaultPosition - new Vector3(moveDistance, 0.0f, 0.0f), fadeTime);
+            yield return Position_GameObject(drawingPopup[i], defaultPosition, defaultPosition - new Vector3(moveDistance, 0.0f, 0.0f), fadeTime);
 
         // ポップアップを削除
         Destroy(drawingPopup[i]);

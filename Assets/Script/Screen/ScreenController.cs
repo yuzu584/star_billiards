@@ -20,7 +20,7 @@ public class ScreenController : MonoBehaviour
     // 4 : スキル選択画面
     // 5 : ゲーム画面
     // 6 : ポーズ画面
-    // 7 : 惑星リスト画面
+    // 7 : 
     // 8 : ステージクリア画面
     // 9 : ゲームオーバー画面
     [System.NonSerialized] public bool[] canUIDraw = new bool[AppConst.SCREEN_AMOUNT];

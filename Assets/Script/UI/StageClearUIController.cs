@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ステージクリア画面のUIを管理
-public class StageClearUIController : MonoBehaviour
+public class StageClearUIController : Lerp
 {
     [SerializeField] private Material stageClearButtonMat;                // ボタンのマテリアル
     [SerializeField] private PostProcessController postProcessController; // InspectorでPostProcessControllerを指定
@@ -37,7 +37,7 @@ public class StageClearUIController : MonoBehaviour
         // テキストを動かす
         startPos = new Vector3(300.0f, 0.0f, 0.0f);
         endPos = new Vector3(0.0f, 0.0f, 0.0f);
-        StartCoroutine(lerp.Position_Text(uIController.stageClearUI.stageClearText, startPos, endPos, fadeTime));
+        StartCoroutine(Position_Text(uIController.stageClearUI.stageClearText, startPos, endPos, fadeTime));
 
         // 一瞬待つ
         yield return new WaitForSeconds(2.0f);
@@ -45,7 +45,7 @@ public class StageClearUIController : MonoBehaviour
         // テキストを動かす
         startPos = new Vector3(0.0f, 0.0f, 0.0f);
         endPos = new Vector3(0.0f, 100.0f, 0.0f);
-        StartCoroutine(lerp.Position_Text(uIController.stageClearUI.stageClearText, startPos, endPos, fadeTime));
+        StartCoroutine(Position_Text(uIController.stageClearUI.stageClearText, startPos, endPos, fadeTime));
 
         // ボタンを表示
         for (int i = 0; i < uIController.stageClearUI.button.Length; i++)
@@ -62,12 +62,12 @@ public class StageClearUIController : MonoBehaviour
             // ボタン移動
             startPos = defaultPos[i] + new Vector3(300.0f, 0.0f, 0.0f);
             endPos = defaultPos[i];
-            StartCoroutine(lerp.Position_GameObject(uIController.stageClearUI.button[i], startPos, endPos, fadeTime));
+            StartCoroutine(Position_GameObject(uIController.stageClearUI.button[i], startPos, endPos, fadeTime));
 
             // 透明度変化
             startColor = new Color32(255, 255, 255, 0);
             endColor = new Color32(255, 255, 255, 255);
-            StartCoroutine(lerp.Color_Material(stageClearButtonMat, startColor, endColor, fadeTime));
+            StartCoroutine(Color_Material(stageClearButtonMat, startColor, endColor, fadeTime));
         }
     }
 }

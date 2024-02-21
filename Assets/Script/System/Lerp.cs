@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Lerp : MonoBehaviour
 {
     // 全てのコルーチンを停止
-    public void StopAll()
+    protected void StopAll()
     {
         StopAllCoroutines();
     }
@@ -39,7 +39,7 @@ public class Lerp : MonoBehaviour
     }
 
     // 線形補完で色を変更(Image)
-    public IEnumerator Color_Image(Image image, Color colorA, Color colorB, float fadeTime)
+    protected IEnumerator Color_Image(Image image, Color colorA, Color colorB, float fadeTime)
     {
         Action<float> lerpFunction = (float t) =>
         {
@@ -50,7 +50,7 @@ public class Lerp : MonoBehaviour
     }
 
     // 線形補完で色を変更(Text)
-    public IEnumerator Color_Text(Text text, Color colorA, Color colorB, float fadeTime)
+    protected IEnumerator Color_Text(Text text, Color colorA, Color colorB, float fadeTime)
     {
         Action<float> lerpFunction = (float t) =>
         {
@@ -61,7 +61,7 @@ public class Lerp : MonoBehaviour
     }
 
     // 線形補完で色を変更(Material)
-    public IEnumerator Color_Material(Material mat, Color32 colorA, Color32 colorB, float fadeTime)
+    protected IEnumerator Color_Material(Material mat, Color32 colorA, Color32 colorB, float fadeTime)
     {
         Action<float> lerpFunction = (float t) =>
         {
@@ -72,7 +72,7 @@ public class Lerp : MonoBehaviour
     }
 
     // 線形補完で座標を変更(Image)
-    public IEnumerator Position_Image(Image obj, Vector3 startPos, Vector3 endPos, float fadeTime)
+    protected IEnumerator Position_Image(Image obj, Vector3 startPos, Vector3 endPos, float fadeTime)
     {
         Action<float> lerpFunction = (float t) =>
         {
@@ -82,7 +82,7 @@ public class Lerp : MonoBehaviour
     }
 
     // 線形補完で座標を変更(Text)
-    public IEnumerator Position_Text(Text obj, Vector3 startPos, Vector3 endPos, float fadeTime)
+    protected IEnumerator Position_Text(Text obj, Vector3 startPos, Vector3 endPos, float fadeTime)
     {
         Action<float> lerpFunction = (float t) =>
         {
@@ -92,7 +92,7 @@ public class Lerp : MonoBehaviour
     }
 
     // 線形補完で座標を変更(GameObject)
-    public IEnumerator Position_GameObject(GameObject obj, Vector3 startPos, Vector3 endPos, float fadeTime)
+    protected IEnumerator Position_GameObject(GameObject obj, Vector3 startPos, Vector3 endPos, float fadeTime)
     {
         Action<float> lerpFunction = (float t) =>
         {
@@ -102,7 +102,7 @@ public class Lerp : MonoBehaviour
     }
 
     // 線形補完でスケールを変更(Image)
-    public IEnumerator Scale_Image(Image obj, Vector2 startScale, Vector2 endScale, float fadeTime)
+    protected IEnumerator Scale_Image(Image obj, Vector2 startScale, Vector2 endScale, float fadeTime)
     {
         Action<float> lerpFunction = (float t) =>
         {
@@ -112,7 +112,7 @@ public class Lerp : MonoBehaviour
     }
 
     // 線形補完でスケールを変更(Text)
-    public IEnumerator Scale_Text(Text obj, Vector2 startScale, Vector2 endScale, float fadeTime)
+    protected IEnumerator Scale_Text(Text obj, Vector2 startScale, Vector2 endScale, float fadeTime)
     {
         Action<float> lerpFunction = (float t) =>
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ゲームオーバー画面を管理
-public class GameOver : MonoBehaviour
+public class GameOver : Lerp
 {
     [SerializeField] private ScreenController screenController;           // InspectorでScreenControllerを指定
     [SerializeField] private Material gameOverButtonMat;                  // ボタンのマテリアル
@@ -45,7 +45,7 @@ public class GameOver : MonoBehaviour
         // テキストを動かす
         startPos = new Vector3(300.0f, 0.0f, 0.0f);
         endPos = new Vector3(0.0f, 0.0f, 0.0f);
-        StartCoroutine(lerp.Position_Text(uIController.gameOverUI.GameOverText, startPos, endPos, fadeTime));
+        StartCoroutine(Position_Text(uIController.gameOverUI.GameOverText, startPos, endPos, fadeTime));
 
         // 一瞬待つ
         yield return new WaitForSeconds(2.0f);
@@ -53,7 +53,7 @@ public class GameOver : MonoBehaviour
         // テキストを動かす
         startPos = new Vector3(0.0f, 0.0f, 0.0f);
         endPos = new Vector3(0.0f, 100.0f, 0.0f);
-        StartCoroutine(lerp.Position_Text(uIController.gameOverUI.GameOverText, startPos, endPos, fadeTime));
+        StartCoroutine(Position_Text(uIController.gameOverUI.GameOverText, startPos, endPos, fadeTime));
 
         // ボタンを表示
         for (int i = 0; i < uIController.gameOverUI.button.Length; i++)
@@ -70,12 +70,12 @@ public class GameOver : MonoBehaviour
             // ボタン移動
             startPos = defaultPos[i];
             endPos = defaultPos[i];
-            StartCoroutine(lerp.Position_GameObject(uIController.gameOverUI.button[i], startPos, endPos, fadeTime));
+            StartCoroutine(Position_GameObject(uIController.gameOverUI.button[i], startPos, endPos, fadeTime));
 
             // 透明度変化
             startColor = new Color32(255, 255, 255, 0);
             endColor = new Color32(255, 255, 255, 255);
-            StartCoroutine(lerp.Color_Material(gameOverButtonMat, startColor, endColor, fadeTime));
+            StartCoroutine(Color_Material(gameOverButtonMat, startColor, endColor, fadeTime));
         }
     }
 

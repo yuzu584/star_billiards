@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 // ボタンの親クラス
-public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     // 線形補完で色を変更する時に使用する変数の構造体
     [System.Serializable]
@@ -69,7 +69,6 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     // Findで探したGameObjectのコンポーネント
     protected ScreenController screenController;
-    protected Lerp lerp;
     protected Sound sound;
 
     [SerializeField] protected AudioClip EnterSound;    // ポインターが乗った時に再生する音声ファイル
@@ -127,7 +126,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         Vector2 scale1;
         Vector2 scale2;
 
-        lerp.StopAll();
+        StopAll();
         BtnInit(childrenImageStructs, childrenTextStructs);
 
         // ポインターが乗っているときのみ描画するなら描画
@@ -161,7 +160,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
                 }
 
                 // 線形補完
-                StartCoroutine(lerp.Color_Image(childrenImageStructs[i].image, color1, color2, childrenImageStructs[i].lerpColor.fadeTime));
+                StartCoroutine(Color_Image(childrenImageStructs[i].image, color1, color2, childrenImageStructs[i].lerpColor.fadeTime));
             }
 
             // 座標の線形補完を使用するなら
@@ -180,7 +179,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
                 }
 
                 // 線形補完
-                StartCoroutine(lerp.Position_Image(childrenImageStructs[i].image, pos1, pos2, childrenImageStructs[i].lerpPosition.fadeTime));
+                StartCoroutine(Position_Image(childrenImageStructs[i].image, pos1, pos2, childrenImageStructs[i].lerpPosition.fadeTime));
             }
 
             // スケールの線形補完を使用するなら
@@ -199,7 +198,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
                 }
 
                 // 線形補完
-                StartCoroutine(lerp.Scale_Image(childrenImageStructs[i].image, scale1, scale2, childrenImageStructs[i].lerpScale.fadeTime));
+                StartCoroutine(Scale_Image(childrenImageStructs[i].image, scale1, scale2, childrenImageStructs[i].lerpScale.fadeTime));
             }
         }
 
@@ -222,7 +221,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
                 }
 
                 // 線形補完
-                StartCoroutine(lerp.Color_Text(childrenTextStructs[i].text, color1, color2, childrenTextStructs[i].lerpColor.fadeTime));
+                StartCoroutine(Color_Text(childrenTextStructs[i].text, color1, color2, childrenTextStructs[i].lerpColor.fadeTime));
             }
 
             // 座標の線形補完を使用するなら
@@ -241,7 +240,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
                 }
 
                 // 線形補完
-                StartCoroutine(lerp.Position_Text(childrenTextStructs[i].text, pos1, pos2, childrenTextStructs[i].lerpPosition.fadeTime));
+                StartCoroutine(Position_Text(childrenTextStructs[i].text, pos1, pos2, childrenTextStructs[i].lerpPosition.fadeTime));
             }
 
             // スケールの線形補完を使用するなら
@@ -260,7 +259,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
                 }
 
                 // 線形補完
-                StartCoroutine(lerp.Scale_Text(childrenTextStructs[i].text, scale1, scale2, childrenTextStructs[i].lerpScale.fadeTime));
+                StartCoroutine(Scale_Text(childrenTextStructs[i].text, scale1, scale2, childrenTextStructs[i].lerpScale.fadeTime));
             }
         }
     }
@@ -327,7 +326,6 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         SoundController = GameObject.Find("SoundController");
 
         screenController = ScreenController.gameObject.GetComponent<ScreenController>();
-        lerp = UIFunctionController.GetComponent<Lerp>();
         sound = SoundController.GetComponent<Sound>();
     }
 }

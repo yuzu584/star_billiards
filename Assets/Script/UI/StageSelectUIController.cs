@@ -9,7 +9,6 @@ public class StageSelectUIController : MonoBehaviour
 {
     [SerializeField] private StageData stageData;             // InspectorでStageDataを指定
     [SerializeField] private StageController stageController; // InspectorでStageControllerを指定
-    [SerializeField] private GameObject[] stageIcon;          // ステージのアイコン
 
     // ステージ情報を描画
     public void DrawStageInfo(Text name, Text mission)
@@ -26,16 +25,6 @@ public class StageSelectUIController : MonoBehaviour
             case 1: // 時間内にゴールにたどり着け
                 mission.text = "Reach the goal";
                 break;
-        }
-    }
-
-    // ステージのアイコンを表示/非表示
-    public void DrawStageIcon(bool draw)
-    {
-        // ステージのアイコンを表示/非表示切り替え
-        for (int i = 0; i < stageIcon.Length;  i++)
-        {
-            stageIcon[i].SetActive(draw);
         }
     }
 }

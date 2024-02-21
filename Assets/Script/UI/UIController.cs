@@ -15,7 +15,6 @@ public class UIController : MonoBehaviour
     public SkillUI skillUI;
     public PlanetInfoUI planetInfoUI;
     public MissionUI missionUI;
-    public PlanetListUI planetListUI;
     public TimeLimitUI timeLimitUI;
     public PauseUI pauseUI;
     public StageClearUI stageClearUI;
@@ -85,13 +84,6 @@ public class UIController : MonoBehaviour
     {
         public Text missionText;             // ミッションのテキスト
         public GameObject icon;              // ミッションのアイコン
-    }
-
-    // 惑星リストUI
-    [System.Serializable]
-    public class PlanetListUI
-    {
-        public GameObject allPlanetList;     // 全ての惑星リストUI
     }
 
     // 制限時間のUI
@@ -188,7 +180,6 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private ScreenController screenController;           // InspectorでScreenControllerを指定
     [SerializeField] private SkillController skillController;             // InspectorでSkillControllerを指定
-    [SerializeField] private PlanetListController planetListController;   // InspectorでPlanetListControllerを指定
 
     // Findで探すGameObject
     private GameObject UIFunctionController;
@@ -202,7 +193,6 @@ public class UIController : MonoBehaviour
     private StageClearUIController stageClearUIController;
     private MainMenuUIController mainMenuUIController;
     private StageSelectUIController stageSelectUIController;
-    private PlanetListUIController planetListUIController;
 
     RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
 
@@ -222,7 +212,6 @@ public class UIController : MonoBehaviour
         stageClearUIController = UIFunctionController.gameObject.GetComponent<StageClearUIController>();
         mainMenuUIController = UIFunctionController.gameObject.GetComponent<MainMenuUIController>();
         stageSelectUIController = UIFunctionController.gameObject.GetComponent<StageSelectUIController>();
-        planetListUIController = UIFunctionController.gameObject.GetComponent<PlanetListUIController>();
 
         // 惑星情報UIの円のRectTransformを取得
         PIR = planetInfoUI.targetRing.GetComponent<RectTransform>();
@@ -260,9 +249,6 @@ public class UIController : MonoBehaviour
             // 制限時間のUIを描画
             timeLimitUI.renderTimeLimit();
         }
-
-        // 惑星リストUIを表示/非表示
-        planetListUI.allPlanetList.SetActive(planetListController.uiDrawing);
 
         // ステージクリア画面を表示/非表示
         DrawOrHide(stageClearUI.allStageClearUI, 8);
@@ -304,9 +290,6 @@ public class UIController : MonoBehaviour
 
         // タイトル画面を表示/非表示
         DrawOrHide(titleUI.allTitleUI, 0);
-
-        // ステージのアイコンを表示/非表示
-        stageSelectUIController.DrawStageIcon(stageSelectUI.allStageSelectUI.activeSelf);
 
         // ゲームオーバー画面を表示/非表示
         DrawOrHide(gameOverUI.allGameOverUI, 9);
