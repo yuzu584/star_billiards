@@ -19,7 +19,7 @@ public class MissionUIController : MonoBehaviour
         int missionNum = stageData.stageList[stageController.stageNum].missionNum;
 
         // ステージの初期惑星数を代入
-        int planet = stageData.stageList[stageController.stageNum].planet.Length;
+        int planet = stageData.stageList[stageController.stageNum].planetNum;
 
         // ミッション番号によって分岐
         switch (missionNum)
