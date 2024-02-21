@@ -127,7 +127,6 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
         Vector2 scale2;
 
         StopAll();
-        BtnInit(childrenImageStructs, childrenTextStructs);
 
         // ポインターが乗っているときのみ描画するなら描画
         for (int i = 0; i < childrenImageStructs.Length; i++)

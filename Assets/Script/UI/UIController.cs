@@ -138,6 +138,8 @@ public class UIController : MonoBehaviour
     public class StageSelectUI
     {
         public GameObject allStageSelectUI;  // ステージ選択画面全体のUI
+        public GameObject stageInfoUI;       // ステージ情報UI
+        public GameObject buttons;           // ステージボタンをまとめたオブジェクト
         public Text name;                    // ステージ名
         public Text mission;                 // ミッション名
     }
@@ -272,15 +274,6 @@ public class UIController : MonoBehaviour
 
         // ステージ選択画面を表示/非表示
         DrawOrHide(stageSelectUI.allStageSelectUI, 2);
-
-        // ステージ選択画面が表示されているなら各種UIを更新
-        if (stageSelectUI.allStageSelectUI.activeSelf)
-        {
-            // ステージ情報UIを更新
-            stageSelectUIController.DrawStageInfo(
-                stageSelectUI.name,
-                stageSelectUI.mission);
-        }
 
         // スキル選択画面を表示/非表示
         DrawOrHide(skillSelectUI.allSkillSelectUI, 4);

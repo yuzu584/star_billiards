@@ -42,14 +42,14 @@ public class CreateStage : MonoBehaviour
         if(star != null)
         {
             // 恒星のインスタンスを削除
-            for (int i = 0; i < stageData.stageList[stageController.stageNum].fixedStar.Length; i++)
+            for (int i = 0; i < star.Length; i++)
                 Destroy(star[i]);
         }
 
         if(planet != null)
         {
             // 惑星のインスタンスを削除
-            for (int i = 0; i < stageData.stageList[stageController.stageNum].planet.Length; i++)
+            for (int i = 0; i < planet.Length; i++)
                 Destroy(planet[i]);
         }
     }

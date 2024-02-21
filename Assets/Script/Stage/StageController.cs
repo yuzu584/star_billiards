@@ -7,10 +7,6 @@ public class StageController : MonoBehaviour
 {
     [SerializeField] private StageData stageData;                   // InspectorでStageDataを指定
     [SerializeField] private PlanetAmount planetAmount;             // InspectorでPlanetAmountを指定
-    [SerializeField] private EnergyController energyController;     // InspectorでEnergyControllerを指定
-    [SerializeField] private EnergyUIController energyUIController; // InspectorでEnergyUIControllerを指定
-    [SerializeField] private SkillController skillController;       // InspectorでSkillControllerを指定
-    [SerializeField] private SkillUIController skillUIController;   // InspectorでSkillUIControllerを指定
     [SerializeField] private CreateStage createStage;               // InspectorでCreateStageを指定
     [SerializeField] private ScreenController screenController;     // InspectorでScreenControllerを指定
     [SerializeField] private Initialize initialize;                 // InspectorでInitializeを指定
@@ -20,6 +16,25 @@ public class StageController : MonoBehaviour
 
     private int missionNum;              // ミッション番号
     private bool stageCreated = false;   // ステージを生成したか
+
+    // ステージクリア時の処理
+    void StageCrear()
+    {
+        stageCrear = true;
+    }
+
+    // ゲームオーバー時の処理
+    void GameOver()
+    {
+        gameOver = true;
+    }
+
+    // ステージに関する数値を初期化
+    public void Init()
+    {
+        stageCrear = false;
+        gameOver = false;
+    }
 
     void Start()
     {
@@ -41,29 +56,10 @@ public class StageController : MonoBehaviour
         }
 
         // ステージを表示/非表示
-        if(stageCreated != screenController.canStageDraw)
+        if (stageCreated != screenController.canStageDraw)
         {
             stageCreated = screenController.canStageDraw;
             createStage.Draw(screenController.canStageDraw);
         }
-    }
-
-    // ステージクリア時の処理
-    void StageCrear()
-    {
-        stageCrear = true;
-    }
-
-    // ゲームオーバー時の処理
-    void GameOver()
-    {
-        gameOver = true;
-    }
-
-    // ステージに関する数値を初期化
-    public void Init()
-    {
-        stageCrear = false;
-        gameOver = false;
     }
 }
