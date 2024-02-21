@@ -2,10 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
+
 public class StageButton : Button
 {
     [SerializeField]
     private int num; // セットするステージ番号
+
+    [SerializeField]
+    private Text stageName; // ステージ名のテキスト
+
+    [SerializeField]
+    private StageData stageData;  // ステージのデータをまとめたScriptableObject
+
+    public bool anim = false; // ボタンがアニメーション中か
 
     // Findで探すGameObject
     private GameObject StageController;
@@ -31,8 +41,12 @@ public class StageButton : Button
     // クリックされたときの処理
     protected override void ClickProcess()
     {
-        stageController.stageNum = num;
-        stageSelectUIController.DrawStageInfo();
+        // アニメーション中ではないなら
+        if (!anim)
+        {
+            stageController.stageNum = num;
+            stageSelectUIController.DrawStageInfo(this.transform.localPosition, this.gameObject, GetComponent<StageButton>());
+        }
     }
 
     void OnEnable()
@@ -54,5 +68,20 @@ public class StageButton : Button
 
         stageSelectUIController = UIFunctionController.GetComponent<StageSelectUIController>();
         stageController = StageController.GetComponent<StageController>();
+
+        // テキストをステージ名に設定
+        stageName.text = stageData.stageList[num].stageName;
+    }
+
+    void Update()
+    {
+        if (anim)
+        {
+            stageName.enabled = false;
+        }
+        else
+        {
+            stageName.enabled = true;
+        }
     }
 }

@@ -121,6 +121,16 @@ public class Lerp : MonoBehaviour
         yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
     }
 
+    // 線形補完でスケールを変更(GameObject)
+    protected IEnumerator Scale_GameObject(GameObject obj, Vector2 startScale, Vector2 endScale, float fadeTime)
+    {
+        Action<float> lerpFunction = (float t) =>
+        {
+            obj.transform.localScale = Vector2.Lerp(startScale, endScale, t);
+        };
+        yield return StartCoroutine(GenericLerp(fadeTime, lerpFunction));
+    }
+
     // 滑らかな線形補完
     private float easeOutQuint(float t)
     {
