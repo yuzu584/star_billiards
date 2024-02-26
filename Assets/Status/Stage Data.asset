@@ -20,9 +20,9 @@ MonoBehaviour:
     missionNum: 0
     timeLimit: 60
   - stageName: test_1
-    stagePrefab: {fileID: 6387989875076711302, guid: d4e09ee214d56a44aa19061d05119c45, type: 3}
+    stagePrefab: {fileID: 5764467011819603874, guid: 31b5fecd495b23746bdcc525b6a0f4b4, type: 3}
     fixedStarNum: 1
-    planetNum: 8
+    planetNum: 0
     missionNum: 1
     timeLimit: 30
   - stageName: test_2
