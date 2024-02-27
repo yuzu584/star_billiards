@@ -23,7 +23,6 @@ public class ScreenController : MonoBehaviour
     // 7 : 
     // 8 : ステージクリア画面
     // 9 : ゲームオーバー画面
-    [System.NonSerialized] public bool[] canUIDraw = new bool[AppConst.SCREEN_AMOUNT];
 
     [System.NonSerialized] public bool canStageDraw = false; // ステージを描画可能か
 
@@ -64,13 +63,6 @@ public class ScreenController : MonoBehaviour
         {
             // ステージクリア画面に未遷移
             changeStageClearScreen = false;
-        }
-
-        // UIが描画可能かを管理する配列を更新
-        for (int i = 0; i < AppConst.SCREEN_AMOUNT; i++)
-        {
-            if(canUIDraw[i] != screenData.screenList[screenNum].uIDrawList[i])
-                canUIDraw[i] = screenData.screenList[screenNum].uIDrawList[i];
         }
 
         // ステージが描画可能かを管理する配列を更新

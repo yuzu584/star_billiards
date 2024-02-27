@@ -291,7 +291,7 @@ public class UIController : MonoBehaviour
     // •`‰æ‚·‚é‚©‚µ‚È‚¢‚©‚ð”»’f
     void DrawOrHide(GameObject obj, int num)
     {
-        if      ((screenController.canUIDraw[num]) && (!obj.activeSelf)) { obj.SetActive(true); }
-        else if ((!screenController.canUIDraw[num]) && (obj.activeSelf)) { obj.SetActive(false); }
+        if      ((screenController.screenNum == num) && (!obj.activeSelf)) { obj.SetActive(true); }
+        else if ((screenController.screenNum != num) && (obj.activeSelf)) { obj.SetActive(false); }
     }
 }

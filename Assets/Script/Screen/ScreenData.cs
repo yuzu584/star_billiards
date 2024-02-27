@@ -19,5 +19,4 @@ public class ScreenDataContent
     public bool drawCursol;                                      // カーソルを表示するか
     public float timeScale = 1.0f;                               // 時間が流れる速さ
     public bool drawStage = false;                               // ステージを描画するか
-    public bool[] uIDrawList = new bool[AppConst.SCREEN_AMOUNT]; // 描画するUIの配列
 }
