@@ -180,7 +180,6 @@ public class UIController : MonoBehaviour
         public Text justShotText;            // ジャストショット時のテキスト
     }
 
-    [SerializeField] private ScreenController screenController;           // InspectorでScreenControllerを指定
     [SerializeField] private SkillController skillController;             // InspectorでSkillControllerを指定
 
     // Findで探すGameObject
@@ -189,14 +188,9 @@ public class UIController : MonoBehaviour
     // Findで探したGameObjectのコンポーネント
     private EnergyUIController energyUIController;
     private ChargeUIController chargeUIController;
-    private PauseUIController pauseUIController;
     private MissionUIController missionUIController;
     private SpeedUIController speedUIController;
     private StageClearUIController stageClearUIController;
-    private MainMenuUIController mainMenuUIController;
-    private StageSelectUIController stageSelectUIController;
-
-    RectTransform PIR = null; // 惑星情報UIの円のスクリーン座標
 
     private bool drawedStageCrearUI = false; // ステージクリア画面を描画済みか
 
@@ -208,22 +202,13 @@ public class UIController : MonoBehaviour
         // 探したGameObjectのコンポーネントを取得
         energyUIController = UIFunctionController.gameObject.GetComponent<EnergyUIController>();
         chargeUIController = UIFunctionController.gameObject.GetComponent<ChargeUIController>();
-        pauseUIController = UIFunctionController.gameObject.GetComponent<PauseUIController>();
         missionUIController = UIFunctionController.gameObject.GetComponent<MissionUIController>();
         speedUIController = UIFunctionController.gameObject.GetComponent<SpeedUIController>();
         stageClearUIController = UIFunctionController.gameObject.GetComponent<StageClearUIController>();
-        mainMenuUIController = UIFunctionController.gameObject.GetComponent<MainMenuUIController>();
-        stageSelectUIController = UIFunctionController.gameObject.GetComponent<StageSelectUIController>();
-
-        // 惑星情報UIの円のRectTransformを取得
-        PIR = planetInfoUI.targetRing.GetComponent<RectTransform>();
     }
 
     void Update()
     {
-        // ゲーム画面を表示/非表示
-        DrawOrHide(inGameUI.allInGameUI, 5);
-
         // ゲーム画面が表示されているなら各種UIを更新
         if (inGameUI.allInGameUI.activeSelf)
         {
@@ -252,9 +237,6 @@ public class UIController : MonoBehaviour
             timeLimitUI.renderTimeLimit();
         }
 
-        // ステージクリア画面を表示/非表示
-        DrawOrHide(stageClearUI.allStageClearUI, 8);
-
         // ステージクリア画面が表示されているなら処理を行う
         if ((stageClearUI.allStageClearUI.activeSelf) && (!drawedStageCrearUI))
         {
@@ -265,33 +247,5 @@ public class UIController : MonoBehaviour
         {
             drawedStageCrearUI = false;
         }
-
-        // ポーズ画面を表示/非表示
-        DrawOrHide(pauseUI.allPauseUI, 6);
-
-        // メインメニューを表示/非表示
-        DrawOrHide(mainMenuUI.allMainMenuUI, 1);
-
-        // ステージ選択画面を表示/非表示
-        DrawOrHide(stageSelectUI.allStageSelectUI, 2);
-
-        // スキル選択画面を表示/非表示
-        DrawOrHide(skillSelectUI.allSkillSelectUI, 4);
-
-        // 設定画面を表示/非表示
-        DrawOrHide(settingUI.allSettingUI, 3);
-
-        // タイトル画面を表示/非表示
-        DrawOrHide(titleUI.allTitleUI, 0);
-
-        // ゲームオーバー画面を表示/非表示
-        DrawOrHide(gameOverUI.allGameOverUI, 9);
-    }
-
-    // 描画するかしないかを判断
-    void DrawOrHide(GameObject obj, int num)
-    {
-        if      ((screenController.screenNum == num) && (!obj.activeSelf)) { obj.SetActive(true); }
-        else if ((screenController.screenNum != num) && (obj.activeSelf)) { obj.SetActive(false); }
     }
 }

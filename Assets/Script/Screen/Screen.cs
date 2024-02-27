@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// スクリーンの親クラス
-public class Screen : MonoBehaviour, IScreen
+// これをGameObjectにアタッチすると指定した画面番号の時のみ表示されるようになる
+public class Screen : MonoBehaviour
 {
-    [SerializeField] protected int num = 0;                       // このスクリーンを表示する画面番号
-    [SerializeField] protected ScreenController screenController; // InspectorでScreenControllerを指定
+    [SerializeField] private int num = 0;                       // このGameObjectを表示する画面番号
+    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
 
     // 表示する画面を切り替え
     public void SwitchScreen()
@@ -17,9 +17,15 @@ public class Screen : MonoBehaviour, IScreen
             gameObject.SetActive(true);
         }
         // 違うなら非表示
-        else if (gameObject.activeSelf)
+        else if ((screenController.screenNum != num) && (gameObject.activeSelf))
         {
             gameObject.SetActive(false);
         }
+    }
+
+    void Start()
+    {
+        screenController.changeScreen += SwitchScreen;
+        SwitchScreen();
     }
 }

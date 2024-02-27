@@ -49,5 +49,7 @@ public class BackButton : Button
 
         // ƒfƒŠƒQ[ƒg‚ğ’Ç‰Á
         screenController.changeScreen += SetOldScreen;
+
+        SetOldScreen();
     }
 }

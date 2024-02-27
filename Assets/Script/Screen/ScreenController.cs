@@ -26,8 +26,9 @@ public class ScreenController : MonoBehaviour
 
     [System.NonSerialized] public bool canStageDraw = false; // ステージを描画可能か
 
-    public int screenNum = 0;    // 画面番号
-    public int oldScreenNum = 0; // 1フレーム前の画面番号
+    public int screenNum = 0;            // 画面番号
+    public int oldScreenNum = 0;         // 前回の画面番号
+    public int oldFrameScreenNum = 0;    // 1フレーム前の画面番号
     public delegate void ChangeScreen(); // 画面が遷移したときのデリゲート
     public ChangeScreen changeScreen;
 
@@ -36,10 +37,16 @@ public class ScreenController : MonoBehaviour
     void Update()
     {
         // 前回のフレームと現在のフレームで画面番号が異なったら
-        if(screenNum != oldScreenNum)
+        if(screenNum != oldFrameScreenNum)
         {
+            // 前回の画面番号を保存
+            oldScreenNum = oldFrameScreenNum;
+
+            // 1フレーム前の画面番号に現在の画面番号を代入
+            oldFrameScreenNum = screenNum;
+
+            // 画面遷移したときの処理
             changeScreen();
-            oldScreenNum = screenNum;
         }
 
         // ゲーム中に戻るボタンが押されたら
