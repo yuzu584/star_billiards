@@ -11,7 +11,7 @@ public class FrameRate : MonoBehaviour
 
     private int frameCount = 0;            // 経過したフレームを数える
     private float prevTime = 0.0f;         // 計測開始した時間を保存
-    private float waitTime = 0.1f;         // フレームレートの描画間隔
+    private float waitTime = 0.2f;         // フレームレートの描画間隔
 
     void Update()
     {
