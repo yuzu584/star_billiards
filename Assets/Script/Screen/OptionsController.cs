@@ -43,6 +43,11 @@ public class OptionsController : MonoBehaviour
         fov.ResetFOV();
     }
 
+    void Start()
+    {
+        SwitchLoot();
+    }
+
     void Update()
     {
         // ŠK‘w‚ª•Ï‚í‚Á‚½‚ç‰æ–Ê‚ğØ‚è‘Ö‚¦‚é
