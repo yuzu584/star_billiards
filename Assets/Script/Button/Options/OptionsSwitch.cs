@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using System;
+using UnityEngine.UI;
 
-// 設定画面の汎用ボタン
-public class OptionsButton : Button
+// 設定画面のスイッチボタン
+public class OptionsSwitch : Button
 {
     [SerializeField] private OptionsController _optionsController;
-    [SerializeField] private int num = 0; // 遷移先の設定項目の番号
+    [SerializeField] private Text state;                           // ボタンの状態を表すテキスト
+    [SerializeField] private string[] stateText;                   // ボタンの状態を表すテキストにセットする文字列
+    private int nowState = 0;                                      // 現在のボタンの状態
 
     // マウスポインターが乗った時の処理
     protected override void EnterProcess()
@@ -27,13 +29,24 @@ public class OptionsButton : Button
     // クリックされたときの処理
     protected override void ClickProcess()
     {
-        // 設定画面の階層を変更
-        _optionsController.loot = (OptionsController.Loot)Enum.ToObject(typeof(OptionsController.Loot), num);
+        ++nowState;
+        if(nowState > (stateText.Length - 1))
+            nowState = 0;
+        SetStateText();
     }
 
     void OnEnable()
     {
         // ボタンの初期化処理
         BtnInit(imageStructs, textStructs);
+
+        // ボタンのテキストを設定
+        SetStateText();
+    }
+
+    // ボタンのテキストを設定
+    private void SetStateText()
+    {
+        state.text = stateText[nowState];
     }
 }
