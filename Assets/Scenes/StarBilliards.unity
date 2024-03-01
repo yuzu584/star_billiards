@@ -4557,6 +4557,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1150158038}
     m_Modifications:
+    - target: {fileID: 2278713236912858717, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: _optionsController
+      value: 
+      objectReference: {fileID: 1225636075}
     - target: {fileID: 3417743442187201278, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4665,6 +4669,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8199208808427150282, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: _optionsController
+      value: 
+      objectReference: {fileID: 1225636075}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
 --- !u!224 &743211076 stripped
@@ -7980,6 +7988,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1150158038}
     m_Modifications:
+    - target: {fileID: 2278713236912858717, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: _optionsController
+      value: 
+      objectReference: {fileID: 1225636075}
     - target: {fileID: 3417743442187201278, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8088,6 +8100,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8199208808427150282, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: _optionsController
+      value: 
+      objectReference: {fileID: 1225636075}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
 --- !u!224 &1313302846 stripped
@@ -9983,6 +9999,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1150158038}
     m_Modifications:
+    - target: {fileID: 2278713236912858717, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: _optionsController
+      value: 
+      objectReference: {fileID: 1225636075}
     - target: {fileID: 3417743442187201278, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -10091,6 +10111,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8199208808427150282, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: _optionsController
+      value: 
+      objectReference: {fileID: 1225636075}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
 --- !u!224 &1773446900 stripped

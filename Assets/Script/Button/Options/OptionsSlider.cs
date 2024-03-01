@@ -4,13 +4,15 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-// 設定画面のスイッチボタン
-public class OptionsSwitch : Button
+// 設定画面のスライダー
+public class OptionsSlider : Button
 {
     [SerializeField] private OptionsController _optionsController;
     [SerializeField] private Text state;                           // ボタンの状態を表すテキスト
-    [SerializeField] private string[] stateText;                   // ボタンの状態を表すテキストにセットする文字列
-    private int nowState = 0;                                      // 現在のボタンの状態
+    [SerializeField] private Slider slider;                        // スライダー
+    [SerializeField] private float defaultvalue;                   // 初期値
+    [SerializeField] private float maxValue;                       // 最大値
+    [SerializeField] private float minValue;                       // 最小値
 
     // マウスポインターが乗った時の処理
     protected override void EnterProcess()
@@ -29,10 +31,7 @@ public class OptionsSwitch : Button
     // クリックされたときの処理
     protected override void ClickProcess()
     {
-        ++nowState;
-        if(nowState > (stateText.Length - 1))
-            nowState = 0;
-        SetStateText();
+
     }
 
     void OnEnable()
@@ -40,13 +39,26 @@ public class OptionsSwitch : Button
         // ボタンの初期化処理
         BtnInit(imageStructs, textStructs);
 
-        // ボタンのテキストを設定
+        // ボタンの状態を表すテキストを設定
+        SetStateText();
+    }
+
+    new void Start()
+    {
+        base.Start();
+
+        // スライダーの現在値・最大値・最小値を設定
+        slider.value = defaultvalue;
+        slider.maxValue = maxValue;
+        slider.minValue = minValue;
+
+        // ボタンの状態を表すテキストを設定
         SetStateText();
     }
 
     // ボタンの状態を表すテキストを設定
-    private void SetStateText()
+    public void SetStateText()
     {
-        state.text = stateText[nowState];
+        state.text = slider.value.ToString("f1");
     }
 }
