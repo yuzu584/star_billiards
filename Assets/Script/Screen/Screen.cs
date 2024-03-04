@@ -12,12 +12,12 @@ public class Screen : MonoBehaviour
     public void SwitchScreen()
     {
         // ‰æ–Ê”Ô†‚ªnum‚Æ“¯‚¶‚È‚ç•\¦
-        if((screenController.screenNum == num) && (!gameObject.activeSelf))
+        if((screenController.ScreenNum == num) && (!gameObject.activeSelf))
         {
             gameObject.SetActive(true);
         }
         // ˆá‚¤‚È‚ç”ñ•\¦
-        else if ((screenController.screenNum != num) && (gameObject.activeSelf))
+        else if ((screenController.ScreenNum != num) && (gameObject.activeSelf))
         {
             gameObject.SetActive(false);
         }

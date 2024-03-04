@@ -28,7 +28,7 @@ public class BackButton : Button
     protected override void ClickProcess()
     {
         // 画面番号を前の画面にする
-        screenController.screenNum = oldScreen;
+        screenController.ScreenNum = oldScreen;
     }
 
     // 前回のスクリーン番号をセット

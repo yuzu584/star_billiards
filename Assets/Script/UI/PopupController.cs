@@ -109,13 +109,13 @@ public class PopupController : Lerp
             if (drawingPopup[i] != null)
             {
                 // ゲーム画面かつ非表示なら
-                if ((screenController.screenNum == 5) && (!drawingPopup[i].activeSelf))
+                if ((screenController.ScreenNum == 5) && (!drawingPopup[i].activeSelf))
 
                     // 表示する
                     drawingPopup[i].SetActive(true);
 
                 // ゲーム画面以外かつ表示されているなら
-                else if ((screenController.screenNum != 5) && (drawingPopup[i].activeSelf))
+                else if ((screenController.ScreenNum != 5) && (drawingPopup[i].activeSelf))
 
                     // 非表示にする
                     drawingPopup[i].SetActive(false);

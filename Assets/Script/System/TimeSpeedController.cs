@@ -11,10 +11,10 @@ public class TimeSpeedController : MonoBehaviour
     void Update()
     {
         // ŠÔ‚Ì‘¬‚³‚ª³í‚Å‚È‚¯‚ê‚Î
-        if(Time.timeScale != screenData.screenList[screenController.screenNum].timeScale)
+        if(Time.timeScale != screenData.screenList[screenController.ScreenNum].timeScale)
         {
             // ŠÔ‚Ì‘¬‚³‚ğ³í‚É‚·‚é
-            Time.timeScale = screenData.screenList[screenController.screenNum].timeScale;
+            Time.timeScale = screenData.screenList[screenController.ScreenNum].timeScale;
         }
     }
 }

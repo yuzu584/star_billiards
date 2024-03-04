@@ -19,7 +19,7 @@ public class GameOver : Lerp
     public void GameOverProcess()
     {
         // ゲームオーバー画面に遷移
-        screenController.screenNum = 9;
+        screenController.ScreenNum = 9;
     }
 
     // ゲームオーバー画面のアニメーション

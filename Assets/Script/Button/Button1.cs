@@ -75,14 +75,14 @@ public class Button1 : Button
     // 画面遷移
     private void ChangeScreen()
     {
-        screenController.screenNum = nextScreen;
+        screenController.ScreenNum = nextScreen;
     }
 
     // ステージスタート
     void StageStart()
     {
         // 画面番号をInGameに変更
-        screenController.screenNum = 5;
+        screenController.ScreenNum = 5;
 
         // ステージに関する数値を初期化
         initialize.init_Stage();

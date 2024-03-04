@@ -31,7 +31,7 @@ public class EnergyController : MonoBehaviour
     void Update()
     {
         // ゲーム画面でエネルギーが0になったらゲームオーバー処理
-        if((screenController.screenNum == 5) && (energy <= 0))
+        if((screenController.ScreenNum == 5) && (energy <= 0))
         {
             gameOver.GameOverProcess();
         }

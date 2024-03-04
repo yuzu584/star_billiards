@@ -16,7 +16,7 @@ public class DestroyPlanet : MonoBehaviour
     public void DestroyPlanetPrpcess(GameObject obj)
     {
         // ƒQ[ƒ€’†‚É˜f¯‚ÆÕ“Ë‚µ‚½‚ç
-        if ((obj.CompareTag("Planet")) && (screenController.screenNum == 5))
+        if ((obj.CompareTag("Planet")) && (screenController.ScreenNum == 5))
         {
             // ˜f¯‚ª”j‰ó‚³‚ê‚½|‚ğ“`‚¦‚éƒ|ƒbƒvƒAƒbƒv‚ğ•`‰æ
             popupController.DrawDestroyPlanetPopUp(obj.name);

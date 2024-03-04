@@ -103,7 +103,7 @@ public class Shot : MonoBehaviour
     void Update()
     {
         // ゲーム画面なら
-        if (screenController.screenNum == 5)
+        if (screenController.ScreenNum == 5)
         {
             // エネルギーがある状態で発射ボタンが押されていたら(長押し可)
             if ((Input.GetAxisRaw("Fire1") > 0) && (energyController.energy > 0))
