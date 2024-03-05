@@ -11,6 +11,7 @@ public class Shot : MonoBehaviour
     [SerializeField] private EnergyController energyController;   // InspectorでEnergyControllerを指定
     [SerializeField] private ScreenController screenController;   // InspectorでScreenControllerを指定
     [SerializeField] private JustShot justShot;                   // InspectorでJustShotを指定
+    [SerializeField] private InputController input;               // InspectorでInputControllerを指定
 
     public float speed = AppConst.PLAYER_DEFAULT_SPEED;           // 移動速度
     public float charge = 0;                                      // 球のチャージ
@@ -24,6 +25,7 @@ public class Shot : MonoBehaviour
     private RaycastHit hit;                          // Rayのhit
     private int power = 0;                           // 衝突時のパワー
     private Vector3 colObjVelocity;                  // 衝突したオブジェクトのvelocityを保存
+    private float inputValue;                        // 発射ボタンの入力を代入
 
     // プレイヤーとオブジェクトに力を加える
     void AddPower()
@@ -96,24 +98,27 @@ public class Shot : MonoBehaviour
     void FixedUpdate()
     {
         // エネルギーがある状態で発射ボタンが押されたら減速
-        if ((Input.GetAxisRaw("Fire1") > 0) && (energyController.energy > 0))
+        if ((inputValue > 0) && (energyController.energy > 0))
             rb.velocity *= AppConst.SPEED_REDUCTION_RATE;
     }
 
     void Update()
     {
+        // ショットの入力を取得
+        inputValue = input.Game_Shot;
+
         // ゲーム画面なら
         if (screenController.ScreenNum == 5)
         {
             // エネルギーがある状態で発射ボタンが押されていたら(長押し可)
-            if ((Input.GetAxisRaw("Fire1") > 0) && (energyController.energy > 0))
+            if ((inputValue > 0) && (energyController.energy > 0))
             {
                 // 向きを設定してチャージする
                 direction = predictionLine.RayDirection();
                 charge += (chargeSpeed * Time.deltaTime) * 50;
             }
             // 発射ボタンが押されてないかつチャージ済みなら
-            else if ((Input.GetAxisRaw("Fire1") == 0) && (charge > 0))
+            else if ((inputValue == 0) && (charge > 0))
             {
                 // エネルギーを消費して発射
                 energyController.energy -= charge / 10;
@@ -123,7 +128,7 @@ public class Shot : MonoBehaviour
             }
 
             // エネルギーがある状態で発射ボタンが押されたら(押した瞬間だけ)
-            if ((Input.GetButtonDown("Fire1")) && (energyController.energy > 0))
+            if ((inputValue > 0) && (energyController.energy > 0))
             {
                 // ジャストショットの猶予時間をカウント
                 StartCoroutine(justShot.JustShotCount());

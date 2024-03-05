@@ -5,30 +5,29 @@ using UnityEngine;
 // カメラの視点移動
 public class TPSCamera : MonoBehaviour
 {
-    [SerializeField] private GameObject player; // プレイヤー
+    [SerializeField] private InputController input; // InspectorでInputControllerを指定
+    [SerializeField] private GameObject player;     // プレイヤー
+    [SerializeField] private float speed = 1.0f;    // 視点移動速度
 
-    public float speed = 1.0f;  // 視点移動速度
-    float mx;                   // マウスの横移動量
-    float my;                   // マウスの縦移動量
+    Vector2 angleMove; // 視点移動量
 
     public void MoveCameraAngle()
     {
         // マウスの移動量を取得
-        mx = Input.GetAxis("Mouse X");
-        my = Input.GetAxis("Mouse Y");
+        angleMove = input.Game_Look;
 
         // X方向に一定量移動していれば横回転
-        if (Mathf.Abs(mx) > 0.001f)
+        if (Mathf.Abs(angleMove.x) > 0.001f)
         {
             // 回転軸はワールド座標のY軸
-            transform.RotateAround(player.transform.position, transform.up, mx * speed);
+            transform.RotateAround(player.transform.position, transform.up, angleMove.x * speed);
         }
 
         // Y方向に一定量移動していれば縦回転
-        if (Mathf.Abs(my) > 0.001f)
+        if (Mathf.Abs(angleMove.y) > 0.001f)
         {
             // 回転軸はカメラ自身のX軸
-            transform.RotateAround(player.transform.position, transform.right, -my * speed);
+            transform.RotateAround(player.transform.position, transform.right, -angleMove.y * speed);
         }
     }
 }

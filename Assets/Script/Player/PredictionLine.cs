@@ -12,6 +12,7 @@ public class PredictionLine : MonoBehaviour
     [SerializeField] private LineRenderer lineRenderer;         // Inspectorでlinerendererを指定
     [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
     [SerializeField] private EnergyController energyController; // InspectorでEnergyControllerを指定
+    [SerializeField] private InputController input;             // InspectorでInputControllerを指定
 
     Rigidbody rb;                // InspectorでRigidbodyを指定
     Vector3 origin;              // 原点
@@ -20,6 +21,8 @@ public class PredictionLine : MonoBehaviour
     Vector3 inDirection;         // 入射ベクトル（速度）
     Vector3 inNormal;            // 法線ベクトル
     Vector3 reflectionDirection; // 反射ベクトル
+
+    private float inputValue;    // 発射ボタンの入力を代入
 
     void Start()
     {
@@ -81,11 +84,14 @@ public class PredictionLine : MonoBehaviour
 
     void Update()
     {
+        // ショットの入力を取得
+        inputValue = input.Game_Shot;
+
         // ゲーム画面なら
         if (screenController.ScreenNum == 5)
         {
             // エネルギーがある状態で発射ボタン1が押されていたら
-            if ((Input.GetAxisRaw("Fire1") > 0) && (energyController.energy > 0))
+            if ((inputValue > 0) && (energyController.energy > 0))
             {
                 // 線を表示
                 lineRenderer.enabled = true;

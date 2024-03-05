@@ -1542,7 +1542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051200584755, guid: dd687111c45c0584f8cb04e10ba43eee, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051200584755, guid: dd687111c45c0584f8cb04e10ba43eee, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5320,6 +5320,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 872107056}
   screenController: {fileID: 1600059365}
   energyController: {fileID: 2052131793}
+  input: {fileID: 876631145}
 --- !u!4 &872107055
 Transform:
   m_ObjectHideFlags: 0
@@ -5511,7 +5512,7 @@ MonoBehaviour:
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 963194227}
 --- !u!114 &876631145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5524,6 +5525,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e28c3cbe409921458dbe054cbc38e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenController: {fileID: 1600059365}
+  screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
+  Game_Move: {x: 0, y: 0}
+  Game_Look: {x: 0, y: 0}
+  Game_Shot: 0
+  Game_Aim: 0
+  Game_UseSkill: 0
+  Game_ChangeSkill: 0
+  Game_Pause: 0
 --- !u!1 &893040309
 GameObject:
   m_ObjectHideFlags: 0
@@ -5802,6 +5812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b43d732bd1312949a3532c07a7d2cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 876631145}
   player: {fileID: 2052131786}
   speed: 1
 --- !u!114 &963194231
@@ -5833,6 +5844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenController: {fileID: 1600059365}
+  input: {fileID: 876631145}
 --- !u!114 &963194233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7624,7 +7636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7598036234248533183, guid: 7e66b04add62f754999cb2f68ac0be3e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7598036234248533183, guid: 7e66b04add62f754999cb2f68ac0be3e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -9124,6 +9136,7 @@ MonoBehaviour:
   stageController: {fileID: 291823625}
   pauseUIController: {fileID: 1148952472}
   screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
+  input: {fileID: 876631145}
   switchImage: {fileID: 1569710203}
 --- !u!4 &1600059366
 Transform:
@@ -11720,6 +11733,7 @@ MonoBehaviour:
   energyController: {fileID: 2052131793}
   screenController: {fileID: 1600059365}
   justShot: {fileID: 2052131798}
+  input: {fileID: 876631145}
   speed: 150
   charge: 0
   chargeSpeed: 1
@@ -11760,6 +11774,7 @@ MonoBehaviour:
   screenController: {fileID: 1600059365}
   initialize: {fileID: 702041415}
   sphereRay: {fileID: 872107057}
+  input: {fileID: 876631145}
   GravityWaveParticle: {fileID: 7855226533659244353, guid: 59a02b5fc103317428ace8f4b1f4d2d3, type: 3}
   selectSkill: 0
   coolDown: 0
@@ -11792,6 +11807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f843d935307ae4dba7bf16b06e7598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 876631145}
   EaseOfBending: 1
 --- !u!114 &2052131797
 MonoBehaviour:

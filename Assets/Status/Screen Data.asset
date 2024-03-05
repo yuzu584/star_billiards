@@ -19,57 +19,67 @@ MonoBehaviour:
     drawStage: 0
     enterAnim: 1
     exitAnim: 1
+    inputType: 1
   - screenName: MainMenu
     drawCursol: 1
     timeScale: 0
     drawStage: 0
     enterAnim: 1
     exitAnim: 1
+    inputType: 1
   - screenName: StageSelect
     drawCursol: 1
     timeScale: 0
     drawStage: 0
     enterAnim: 1
     exitAnim: 1
+    inputType: 1
   - screenName: Setting
     drawCursol: 1
     timeScale: 0
     drawStage: 0
     enterAnim: 1
     exitAnim: 1
+    inputType: 1
   - screenName: SkillSelect
     drawCursol: 1
     timeScale: 0
     drawStage: 0
     enterAnim: 1
     exitAnim: 1
+    inputType: 1
   - screenName: InGame
     drawCursol: 0
     timeScale: 1
     drawStage: 1
     enterAnim: 0
     exitAnim: 0
+    inputType: 0
   - screenName: Pause
     drawCursol: 1
     timeScale: 0
     drawStage: 1
     enterAnim: 0
     exitAnim: 0
+    inputType: 1
   - screenName: PlanetList
     drawCursol: 1
     timeScale: 0
     drawStage: 1
     enterAnim: 0
     exitAnim: 0
+    inputType: 1
   - screenName: StageClear
     drawCursol: 1
     timeScale: 1
     drawStage: 1
     enterAnim: 0
     exitAnim: 0
+    inputType: 1
   - screenName: GameOver
     drawCursol: 1
     timeScale: 1
     drawStage: 1
     enterAnim: 0
     exitAnim: 0
+    inputType: 1

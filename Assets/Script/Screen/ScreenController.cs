@@ -12,6 +12,7 @@ public class ScreenController : Lerp
     [SerializeField] private StageController stageController;           // InspectorでStageControllerを指定
     [SerializeField] private PauseUIController pauseUIController;       // InspectorでPauseUIControllerを指定
     [SerializeField] private ScreenData screenData;                     // InspectorでScreenDataを指定
+    [SerializeField] private InputController input;                     // InspectorでInputControllerを指定
     [SerializeField] private Image switchImage;                         // 画面遷移時の画像
 
     // UIが描画可能かを管理する配列
@@ -40,6 +41,7 @@ public class ScreenController : Lerp
     public ChangeScreen changeScreen;
 
     private bool changeStageClearScreen = false; // ステージクリア画面に遷移したかどうか
+    private float pauseInputValue;               // ポーズ画面を開くボタンの入力
     
     // 画面遷移処理
     private void SwitchProcess(int num)
@@ -91,10 +93,18 @@ public class ScreenController : Lerp
         yield return StartCoroutine(Color_Image(switchImage, c1, c2, 0.5f));
     }
 
+    void Srart()
+    {
+        changeScreen();
+    }
+
     void Update()
     {
+        // ポーズ画面を開くボタンの入力を取得
+        pauseInputValue = input.Game_Pause;
+
         // 前回のフレームと現在のフレームで画面番号が異なったら
-        if(screenNum != oldFrameScreenNum)
+        if (screenNum != oldFrameScreenNum)
         {
             // 前回の画面番号を保存
             oldScreenNum = oldFrameScreenNum;
@@ -107,7 +117,7 @@ public class ScreenController : Lerp
         }
 
         // ゲーム中に戻るボタンが押されたら
-        if (Input.GetButtonDown("Cancel") && screenNum == 5)
+        if ((pauseInputValue > 0) && (screenNum == 5))
         {
             // ポーズ画面に遷移
             screenNum = 6;

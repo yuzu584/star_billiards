@@ -74,9 +74,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""ChangeSkill"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""b83802cd-63a0-44f7-bd0e-f85a6f9b62e0"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -160,17 +160,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9cbb2029-7865-4442-b643-dfcec23f6b20"",
-                    ""path"": ""<Gamepad>/dpad"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""510125dd-f144-4f59-be56-ff90696bcdb3"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -185,7 +174,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""id"": ""bf09ab2b-249f-4ddc-8080-c008c9345a7b"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""Normalize"",
                     ""groups"": """",
                     ""action"": ""Shot"",
                     ""isComposite"": false,
@@ -218,7 +207,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""id"": ""242bae69-0391-43b5-8b5a-d04754801e24"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2(x=0.04,y=0.04)"",
                     ""groups"": """",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -226,56 +215,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""42825080-f357-41b0-bb3d-6d02b74981fb"",
+                    ""id"": ""199c674d-8ac1-45cd-8d0c-36e2db57d89e"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2(x=0.15,y=0.15)"",
                     ""groups"": """",
                     ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""df3ca756-d230-4d05-9a32-d95595c6e797"",
-                    ""path"": ""<Mouse>/forwardButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeSkill"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f6c4e08d-107e-40e8-b9bc-dcfe79eca197"",
-                    ""path"": ""<Mouse>/backButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeSkill"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""57454752-fa21-4aed-99e6-a2dc77b6ff10"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeSkill"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""474321e8-5789-447f-8bad-b55de7752183"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -320,6 +265,28 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab5eed0a-43c4-4e8f-83dd-cf3c8cb50827"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=0.001)"",
+                    ""groups"": """",
+                    ""action"": ""ChangeSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""899488c0-40f4-4439-9536-e08a47b00650"",
+                    ""path"": ""<Gamepad>/dpad/x"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }

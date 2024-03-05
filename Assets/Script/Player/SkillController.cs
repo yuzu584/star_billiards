@@ -13,6 +13,7 @@ public class SkillController : MonoBehaviour
     [SerializeField] private ScreenController screenController;   // InspectorでScreenControllerを指定
     [SerializeField] private Initialize initialize;               // InspectorでInitializeを指定
     [SerializeField] private SphereRay sphereRay;                 // InspectorでSphereRayを指定
+    [SerializeField] private InputController input;               // InspectorでInputControllerを指定
     [SerializeField] private ParticleSystem GravityWaveParticle;  // GravityWaveのパーティクル
 
     public int selectSkill = 0;  // 選択しているスキルの番号
@@ -22,6 +23,9 @@ public class SkillController : MonoBehaviour
     public int[] skillSlot = new int[AppConst.SKILL_SLOT_AMOUNT];  // スキルスロット
     public int[] selectSlot = new int[AppConst.SKILL_SLOT_AMOUNT]; // 選択しているスキルスロット
     public int count = 0;                                          // スキルスロットを選択した回数をカウント
+
+    private float inputUseSkill;      // スキル使用ボタンの入力
+    private float inputChangeSkill; // スキル変更ボタンの入力
 
     void Start()
     {
@@ -40,18 +44,22 @@ public class SkillController : MonoBehaviour
 
     void Update()
     {
+        // スキル使用ボタンの入力を取得
+        inputUseSkill = input.Game_UseSkill;
+        inputChangeSkill = input.Game_ChangeSkill;
+
         // ゲーム画面なら
         if (screenController.ScreenNum == 5)
         {
             // マウスホイールがスクロールされていたら
-            if ((Input.GetAxisRaw("Mouse ScrollWheel") != 0) && (effectTime <= 0) && (coolDown == 0))
+            if ((inputChangeSkill != 0) && (effectTime <= 0) && (coolDown == 0))
             {
                 // スキルを変更
-                ChangeSkill(Input.GetAxisRaw("Mouse ScrollWheel"));
+                ChangeSkill(inputChangeSkill);
             }
 
             // スキル使用可能の時にキーが押されたら
-            if ((Input.GetAxisRaw("Skill") != 0) && (effectTime == 0) && (coolDown == 0))
+            if ((inputUseSkill != 0) && (effectTime == 0) && (coolDown == 0))
             {
                 // スキル使用
                 UseSkill();
