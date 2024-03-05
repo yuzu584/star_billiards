@@ -75,7 +75,7 @@ public class ScreenController : Lerp
 
         // 画面番号を設定
         screenNum = num;
-
+        
         if(orPlay)
         {
             // 画面遷移アニメーション

@@ -82,7 +82,7 @@ MonoBehaviour:
     lerpScale:
       useLerp: 1
       startScale: {x: 1, y: 1}
-      endScale: {x: 1.03, y: 1.1}
+      endScale: {x: 1.015, y: 1.05}
       fadeTime: 0.4
     onPointerDraw: 0
   textStructs:
