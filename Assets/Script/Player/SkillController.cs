@@ -51,7 +51,7 @@ public class SkillController : MonoBehaviour
         // ゲーム画面なら
         if (screenController.ScreenNum == 5)
         {
-            // マウスホイールがスクロールされていたら
+            // スキル変更ボタンが押されていたら
             if ((inputChangeSkill != 0) && (effectTime <= 0) && (coolDown == 0))
             {
                 // スキルを変更

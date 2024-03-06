@@ -26,6 +26,7 @@ public class Shot : MonoBehaviour
     private int power = 0;                           // 衝突時のパワー
     private Vector3 colObjVelocity;                  // 衝突したオブジェクトのvelocityを保存
     private float inputValue;                        // 発射ボタンの入力を代入
+    private Coroutine coroutine;                     // ジャストショットの猶予時間をカウントするコルーチン
 
     // プレイヤーとオブジェクトに力を加える
     void AddPower()
@@ -58,7 +59,7 @@ public class Shot : MonoBehaviour
             // ジャストショットの猶予時間内なら強い力で飛ばす
             if (justShot.time > 0.0f)
             {
-                power = 2;
+                power = 3;
                 StopAllCoroutines();
                 StartCoroutine(justShot.UIAnimation());
             }
@@ -131,7 +132,9 @@ public class Shot : MonoBehaviour
             if ((inputValue > 0) && (energyController.energy > 0))
             {
                 // ジャストショットの猶予時間をカウント
-                StartCoroutine(justShot.JustShotCount());
+                if(coroutine != null)
+                    StopCoroutine(coroutine);
+                coroutine = StartCoroutine(justShot.JustShotCount());
             }
         }
 
