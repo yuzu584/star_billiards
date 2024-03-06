@@ -222,7 +222,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d14d1461e45a5a14e9f2ff4050998e50, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9c502f31b8846994d81d634ce4a7ae70, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -317,7 +317,7 @@ MonoBehaviour:
     lerpScale:
       useLerp: 1
       startScale: {x: 1, y: 1}
-      endScale: {x: 1.05, y: 1.05}
+      endScale: {x: 1.1, y: 1.1}
       fadeTime: 0.4
     onPointerDraw: 0
   - image: {fileID: 7245476138589862724}

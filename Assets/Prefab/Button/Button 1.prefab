@@ -77,12 +77,12 @@ MonoBehaviour:
     lerpPosition:
       useLerp: 0
       startPos: {x: 0, y: 0, z: 0}
-      endPos: {x: 0, y: 0, z: 0}
-      fadeTime: 0
+      endPos: {x: 0, y: 0, z: 5}
+      fadeTime: 0.4
     lerpScale:
       useLerp: 1
       startScale: {x: 1, y: 1}
-      endScale: {x: 1.015, y: 1.05}
+      endScale: {x: 1.03, y: 1.1}
       fadeTime: 0.4
     onPointerDraw: 0
   textStructs:

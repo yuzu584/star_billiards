@@ -75,7 +75,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 10
+  m_PixelsPerUnitMultiplier: 20
 --- !u!1 &2829114146100421346
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
     lerpScale:
       useLerp: 1
       startScale: {x: 1, y: 1}
-      endScale: {x: 1.01, y: 1.1}
+      endScale: {x: 1.01, y: 1.2}
       fadeTime: 0.4
     onPointerDraw: 0
   textStructs:
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 10
+  m_PixelsPerUnitMultiplier: 20
 --- !u!1 &2829114147495447400
 GameObject:
   m_ObjectHideFlags: 0

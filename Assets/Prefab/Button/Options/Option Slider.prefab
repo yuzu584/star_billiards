@@ -138,7 +138,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -6, y: 10}
+  m_SizeDelta: {x: 0, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2805085159147360067
 GameObject:
@@ -435,7 +435,7 @@ MonoBehaviour:
     lerpScale:
       useLerp: 1
       startScale: {x: 1, y: 1}
-      endScale: {x: 1.01, y: 1.1}
+      endScale: {x: 1.01, y: 1.2}
       fadeTime: 0.4
     onPointerDraw: 0
   textStructs:
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 10
+  m_PixelsPerUnitMultiplier: 20
 --- !u!1 &5571069669276434656
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,7 +749,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -6, y: 10}
+  m_SizeDelta: {x: 0, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &303783537819916130
 CanvasRenderer:
