@@ -160,6 +160,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""57942664-17c8-47df-9ebb-32ba02978478"",
+                    ""path"": ""<Joystick>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""510125dd-f144-4f59-be56-ff90696bcdb3"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -173,6 +184,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""bf09ab2b-249f-4ddc-8080-c008c9345a7b"",
                     ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b9017c99-8347-429e-8acc-f0728abb184f"",
+                    ""path"": ""<HID::Logicool Logicool Dual Action>/button8"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -204,6 +226,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""f033712a-0e8d-444b-96e6-25e35b6de123"",
+                    ""path"": ""<Joystick>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""242bae69-0391-43b5-8b5a-d04754801e24"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
@@ -225,6 +258,61 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""5ebb693e-c6cf-4cde-a9b7-e329c6c7dd50"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": ""ScaleVector2(x=0.15,y=0.15)"",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""b3a3dff3-a778-4ee1-9afd-7e1b134a3608"",
+                    ""path"": ""<HID::Logicool Logicool Dual Action>/rz"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(min=-1),Invert"",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""96581645-edf6-4070-b249-2c5c846b3497"",
+                    ""path"": ""<HID::Logicool Logicool Dual Action>/rz"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(max=1)"",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""1a0c8557-0482-4959-b569-4559a935e987"",
+                    ""path"": ""<HID::Logicool Logicool Dual Action>/z"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(min=-1),Invert"",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""3c75484a-c036-42b8-8cf9-1bd3b650f877"",
+                    ""path"": ""<HID::Logicool Logicool Dual Action>/z"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(max=1)"",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""ce93abe4-5f13-45a0-aba6-a607720aed01"",
                     ""path"": ""<Keyboard>/escape"",
@@ -238,7 +326,18 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7aa579c3-5d37-4e01-bc85-d674a88c6e5f"",
-                    ""path"": ""<Gamepad>/select"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49953b18-1d67-4025-80ec-438d57a54b9f"",
+                    ""path"": ""<HID::Logicool Logicool Dual Action>/button10"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -270,6 +369,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""2de6628b-8184-4222-bc14-ceaa07cca46e"",
+                    ""path"": ""<HID::Logicool Logicool Dual Action>/button7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ab5eed0a-43c4-4e8f-83dd-cf3c8cb50827"",
                     ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": """",
@@ -280,15 +390,70 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""899488c0-40f4-4439-9536-e08a47b00650"",
-                    ""path"": ""<Gamepad>/dpad/x"",
-                    ""interactions"": ""Press"",
+                    ""name"": ""1D Axis"",
+                    ""id"": ""a464a399-2b5f-47f7-95a5-5fb0e42eea00"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSkill"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""1756d7f0-0db0-4b22-88b0-811d11b1aa51"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ChangeSkill"",
                     ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1edb320a-85a4-4804-bc36-19f537d82e04"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""74e47571-e394-4536-a0e2-2f4c5d364f95"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSkill"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""8424fb33-8cf8-4733-8b5b-7366a5574ab6"",
+                    ""path"": ""<HID::Logicool Logicool Dual Action>/button5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e7a456e5-2aa4-449d-bff2-597985d6b872"",
+                    ""path"": ""<HID::Logicool Logicool Dual Action>/button6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
