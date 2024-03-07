@@ -10,28 +10,25 @@ public class Aim : MonoBehaviour
     [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
     [SerializeField] private InputController input;             // InspectorでInputControllerを指定
 
-    private float inputValue; // 発射ボタン2の入力
-
-    void Update()
+    void Start()
     {
-        // 発射ボタン2の入力を取得
-        inputValue = input.Game_Aim;
+        input.game_OnAimDele += Process;
+    }
 
-        // ゲーム画面なら
-        if (screenController.ScreenNum == 5)
+    // エイム時の処理
+    void Process(float value)
+    {
+        // エイムボタンが押されたら
+        if (value > 0)
         {
-            // 発射ボタン2が押されたら
-            if (inputValue > 0)
-            {
-                // 時間の流れをスローにする
-                Time.timeScale = AppConst.SLOW_TIME_SCALE;
-            }
-            // 発射ボタン2が押されてないなら
-            else if (inputValue == 0)
-            {
-                // 時間の流れを元に戻す
-                Time.timeScale = AppConst.DEFAULT_TIME_SCALE;
-            }
+            // 時間の流れをスローにする
+            Time.timeScale = AppConst.SLOW_TIME_SCALE;
+        }
+        // エイムボタンが押されてないなら
+        else if (value == 0)
+        {
+            // 時間の流れを元に戻す
+            Time.timeScale = AppConst.DEFAULT_TIME_SCALE;
         }
     }
 }

@@ -66,7 +66,7 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -361,7 +361,7 @@
                     "id": "ab5eed0a-43c4-4e8f-83dd-cf3c8cb50827",
                     "path": "<Mouse>/scroll/y",
                     "interactions": "Press",
-                    "processors": "",
+                    "processors": "Clamp(min=-1,max=1)",
                     "groups": "",
                     "action": "ChangeSkill",
                     "isComposite": false,
@@ -372,7 +372,7 @@
                     "id": "a464a399-2b5f-47f7-95a5-5fb0e42eea00",
                     "path": "1DAxis",
                     "interactions": "Press",
-                    "processors": "",
+                    "processors": "Clamp(min=-1,max=1)",
                     "groups": "",
                     "action": "ChangeSkill",
                     "isComposite": true,
@@ -405,7 +405,7 @@
                     "id": "74e47571-e394-4536-a0e2-2f4c5d364f95",
                     "path": "1DAxis",
                     "interactions": "Press",
-                    "processors": "",
+                    "processors": "Clamp(min=-1,max=1)",
                     "groups": "",
                     "action": "ChangeSkill",
                     "isComposite": true,

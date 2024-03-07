@@ -11,22 +11,18 @@ public class InertialController : MonoBehaviour
 
     public float EaseOfBending = 1.0f; // 軌道の曲げやすさ
     Rigidbody rb;                      // プレイヤーのRigidbody
-    Vector2 mVec;                      // 前後左右の移動ベクトル
-    Vector3 vector;                    // 移動方向
 
     void Start()
     {
         // rigidbodyを取得
         rb = GetComponent<Rigidbody>();
+
+        // ゲーム中に移動したときに発火するイベントに登録
+        input.game_OnMoveDele += Process;
     }
 
-    void Update()
-    {
-        // 移動量を代入
-        mVec = input.Game_Move;
-    }
-
-    void FixedUpdate()
+    // プレイヤーの慣性を制御する処理
+    void Process(Vector2 mVec)
     {
         // 前入力なら減速を緩やかに
         if (mVec.y > 0)

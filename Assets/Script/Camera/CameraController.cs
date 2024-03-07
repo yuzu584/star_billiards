@@ -8,7 +8,6 @@ using Const;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
-    [SerializeField] private TPSCamera tPSCamera;               // InspectorでTPSCameraを指定
     [SerializeField] private FOV fOV;                           // InspectorでFOVを指定
     [SerializeField] private GameObject player;                 // プレイヤー
 
@@ -32,9 +31,6 @@ public class CameraController : MonoBehaviour
                 // プレイヤーの子オブジェクトに設定
                 transform.SetParent(player.transform, false);
             }
-
-            // 視点移動
-            tPSCamera.MoveCameraAngle();
 
             // 視野角を変更
             fOV.ChangeFOV();

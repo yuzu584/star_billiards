@@ -5627,16 +5627,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenController: {fileID: 1600059365}
   screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
-  Game_Move: {x: 0, y: 0}
-  Game_Look: {x: 0, y: 0}
-  Game_Shot: 0
-  Game_Aim: 0
-  Game_UseSkill: 0
-  Game_ChangeSkill: 0
-  Game_Pause: 0
-  UI_Move: {x: 0, y: 0}
-  UI_Positive: 0
-  UI_Negative: 0
 --- !u!1 &893040309
 GameObject:
   m_ObjectHideFlags: 0
@@ -5994,7 +5984,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenController: {fileID: 1600059365}
-  tPSCamera: {fileID: 963194229}
   fOV: {fileID: 963194231}
   player: {fileID: 2052131786}
 --- !u!1001 &971800051

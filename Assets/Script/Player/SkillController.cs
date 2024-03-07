@@ -24,9 +24,6 @@ public class SkillController : MonoBehaviour
     public int[] selectSlot = new int[AppConst.SKILL_SLOT_AMOUNT]; // 選択しているスキルスロット
     public int count = 0;                                          // スキルスロットを選択した回数をカウント
 
-    private float inputUseSkill;      // スキル使用ボタンの入力
-    private float inputChangeSkill; // スキル変更ボタンの入力
-
     void Start()
     {
         // スキルスロットを初期化
@@ -40,31 +37,16 @@ public class SkillController : MonoBehaviour
 
         // デリゲートに初期化関数を登録
         initialize.init_Stage += Init;
+
+        input.game_OnUseSkillDele += UseSkill;
+        input.game_OnChangeSkillDele += ChangeSkill;
     }
 
     void Update()
     {
-        // スキル使用ボタンの入力を取得
-        inputUseSkill = input.Game_UseSkill;
-        inputChangeSkill = input.Game_ChangeSkill;
-
         // ゲーム画面なら
         if (screenController.ScreenNum == 5)
         {
-            // スキル変更ボタンが押されていたら
-            if ((inputChangeSkill != 0) && (effectTime <= 0) && (coolDown == 0))
-            {
-                // スキルを変更
-                ChangeSkill(inputChangeSkill);
-            }
-
-            // スキル使用可能の時にキーが押されたら
-            if ((inputUseSkill != 0) && (effectTime == 0) && (coolDown == 0))
-            {
-                // スキル使用
-                UseSkill();
-            }
-
             // スキルの効果時間とクールダウンを減少
             DecreaseEFAndCD();
 
@@ -85,47 +67,55 @@ public class SkillController : MonoBehaviour
             );
     }
 
-    // スキルを変更
-    void ChangeSkill(float scroolAmount)
+    // スキル使用
+    void UseSkill(float value)
     {
-        // 選択しているスキル番号を変える
-        selectSkill += (int)(scroolAmount * 10);
+        // スキル使用可能の時にキーが押されたら
+        if ((value != 0) && (effectTime == 0) && (coolDown == 0))
+        {
+            // 効果時間とクールダウンを設定
+            effectTime = AppConst.SKILL_EFFECT_TIME[skillSlot[selectSkill]];
+            coolDown = AppConst.SKILL_COOLDOWN[skillSlot[selectSkill]];
 
-        // スキル番号が範囲外なら範囲内に収める
-        if (selectSkill < 0)
-            selectSkill = 0;
-        else if (selectSkill > AppConst.SKILL_SLOT_AMOUNT - 1)
-            selectSkill = AppConst.SKILL_SLOT_AMOUNT - 1;
+            // エネルギーを消費
+            energyController.energy -= AppConst.SKILL_ENERGY_USAGE[skillSlot[selectSkill]];
+
+            // 選択しているスキルによって分岐
+            switch (skillSlot[selectSkill])
+            {
+                case 0: // SuperCharge
+                    StartCoroutine(UseSuperCharge());
+                    break;
+                case 1: // PowerSurge
+                    StartCoroutine(UsePowerSurge());
+                    break;
+                case 2: // Huge
+                    StartCoroutine(UseHuge());
+                    break;
+                case 3: // GravityWave
+                    UseGravityWave();
+                    break;
+                case 4: // Frieze
+                    UseFrieze();
+                    break;
+            }
+        }
     }
 
-    // スキル使用
-    void UseSkill()
+    // スキルを変更
+    void ChangeSkill(float value)
     {
-        // 効果時間とクールダウンを設定
-        effectTime = AppConst.SKILL_EFFECT_TIME[skillSlot[selectSkill]];
-        coolDown = AppConst.SKILL_COOLDOWN[skillSlot[selectSkill]];
-
-        // エネルギーを消費
-        energyController.energy -= AppConst.SKILL_ENERGY_USAGE[skillSlot[selectSkill]];
-
-        // 選択しているスキルによって分岐
-        switch(skillSlot[selectSkill])
+        // スキル変更ボタンが押されていたら
+        if ((value != 0) && (effectTime <= 0) && (coolDown == 0))
         {
-            case 0: // SuperCharge
-                StartCoroutine(UseSuperCharge());
-                break;
-            case 1: // PowerSurge
-                StartCoroutine(UsePowerSurge());
-                break;
-            case 2: // Huge
-                StartCoroutine(UseHuge());
-                break;
-            case 3: // GravityWave
-                UseGravityWave();
-                break;
-            case 4: // Frieze
-                UseFrieze();
-                break;
+            // 選択しているスキル番号を変える
+            selectSkill += (int)value;
+
+            // スキル番号が範囲外なら範囲内に収める
+            if (selectSkill < 0)
+                selectSkill = 0;
+            else if (selectSkill > AppConst.SKILL_SLOT_AMOUNT - 1)
+                selectSkill = AppConst.SKILL_SLOT_AMOUNT - 1;
         }
     }
 

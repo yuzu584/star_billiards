@@ -41,7 +41,6 @@ public class ScreenController : Lerp
     public ChangeScreen changeScreen;
 
     private bool changeStageClearScreen = false; // ステージクリア画面に遷移したかどうか
-    private float pauseInputValue;               // ポーズ画面を開くボタンの入力
     
     // 画面遷移処理
     private void SwitchProcess(int num)
@@ -93,16 +92,13 @@ public class ScreenController : Lerp
         yield return StartCoroutine(Color_Image(switchImage, c1, c2, 0.5f));
     }
 
-    void Srart()
+    void Start()
     {
-        changeScreen();
+        input.game_OnPauseDele += OpenPause;
     }
 
     void Update()
     {
-        // ポーズ画面を開くボタンの入力を取得
-        pauseInputValue = input.Game_Pause;
-
         // 前回のフレームと現在のフレームで画面番号が異なったら
         if (screenNum != oldFrameScreenNum)
         {
@@ -114,13 +110,6 @@ public class ScreenController : Lerp
 
             // 画面遷移したときの処理
             changeScreen();
-        }
-
-        // ゲーム中に戻るボタンが押されたら
-        if ((pauseInputValue > 0) && (screenNum == 5))
-        {
-            // ポーズ画面に遷移
-            screenNum = 6;
         }
 
         // ステージをクリアかつ画面遷移していないなら
@@ -142,5 +131,12 @@ public class ScreenController : Lerp
         // ステージが描画可能かを管理する配列を更新
         if (canStageDraw != screenData.screenList[screenNum].drawStage)
             canStageDraw = screenData.screenList[screenNum].drawStage;
+    }
+
+    // ポーズ画面に遷移
+    void OpenPause(float value)
+    {
+        if (value > 0)
+            screenNum = 6;
     }
 }

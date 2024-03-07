@@ -22,8 +22,6 @@ public class PredictionLine : MonoBehaviour
     Vector3 inNormal;            // 法線ベクトル
     Vector3 reflectionDirection; // 反射ベクトル
 
-    private float inputValue;    // 発射ボタンの入力を代入
-
     void Start()
     {
         // 始点の太さを指定
@@ -37,6 +35,8 @@ public class PredictionLine : MonoBehaviour
 
         // rigidbodyを取得
         rb = target.GetComponent<Rigidbody>();
+
+        input.game_OnShotDele += RenderProcess;
     }
 
     // RayとLineの向きを決める関数
@@ -82,29 +82,17 @@ public class PredictionLine : MonoBehaviour
         return reflectionDirection;
     }
 
-    void Update()
+    // 線を表示/非表示にする処理
+    void RenderProcess(float value)
     {
-        // ショットの入力を取得
-        inputValue = input.Game_Shot;
-
-        // ゲーム画面なら
-        if (screenController.ScreenNum == 5)
+        // エネルギーがある状態でショットボタンが押されていたら
+        if ((value > 0) && (energyController.energy > 0))
         {
-            // エネルギーがある状態で発射ボタン1が押されていたら
-            if ((inputValue > 0) && (energyController.energy > 0))
-            {
-                // 線を表示
-                lineRenderer.enabled = true;
-            }
-            // 線が表示されていたら
-            else if (lineRenderer.enabled == true)
-            {
-                // 線を非表示
-                lineRenderer.enabled = false;
-            }
+            // 線を表示
+            lineRenderer.enabled = true;
         }
-        // ゲーム画面ではないなら
-        else if(lineRenderer.enabled == true)
+        // 線が表示されていたら
+        else if (lineRenderer.enabled == true)
         {
             // 線を非表示
             lineRenderer.enabled = false;

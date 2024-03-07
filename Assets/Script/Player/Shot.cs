@@ -4,7 +4,7 @@ using UnityEngine;
 
 using Const;
 
-// 発射ボタンで弾を発射する
+// ショットボタンで弾を発射する
 public class Shot : MonoBehaviour
 {
     [SerializeField] private PredictionLine predictionLine;       // InspectorでPredictionLineを指定
@@ -25,7 +25,6 @@ public class Shot : MonoBehaviour
     private RaycastHit hit;                          // Rayのhit
     private int power = 0;                           // 衝突時のパワー
     private Vector3 colObjVelocity;                  // 衝突したオブジェクトのvelocityを保存
-    private float inputValue;                        // 発射ボタンの入力を代入
     private Coroutine coroutine;                     // ジャストショットの猶予時間をカウントするコルーチン
 
     // プレイヤーとオブジェクトに力を加える
@@ -45,6 +44,8 @@ public class Shot : MonoBehaviour
     {
         // rigidbodyを取得
         rb = GetComponent<Rigidbody>();
+
+        input.game_OnShotDele += ShotProcess;
     }
 
     // 衝突したとき
@@ -96,53 +97,37 @@ public class Shot : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    // ショットの処理
+    void ShotProcess(float value)
     {
-        // エネルギーがある状態で発射ボタンが押されたら減速
-        if ((inputValue > 0) && (energyController.energy > 0))
-            rb.velocity *= AppConst.SPEED_REDUCTION_RATE;
-    }
-
-    void Update()
-    {
-        // ショットの入力を取得
-        inputValue = input.Game_Shot;
-
-        // ゲーム画面なら
-        if (screenController.ScreenNum == 5)
+        // エネルギーがある状態でショットボタンが押されていたら(長押し可)
+        if ((value > 0) && (energyController.energy > 0))
         {
-            // エネルギーがある状態で発射ボタンが押されていたら(長押し可)
-            if ((inputValue > 0) && (energyController.energy > 0))
-            {
-                // 向きを設定してチャージする
-                direction = predictionLine.RayDirection();
-                charge += (chargeSpeed * Time.deltaTime) * 50;
-            }
-            // 発射ボタンが押されてないかつチャージ済みなら
-            else if ((inputValue == 0) && (charge > 0))
-            {
-                // エネルギーを消費して発射
-                energyController.energy -= charge / 10;
-                Vector3 velocity = Camera.main.transform.forward;
-                rb.AddForce(velocity * speed * charge);
-                charge = 0;
-            }
-
-            // エネルギーがある状態で発射ボタンが押されたら(押した瞬間だけ)
-            if ((inputValue > 0) && (energyController.energy > 0))
-            {
-                // ジャストショットの猶予時間をカウント
-                if(coroutine != null)
-                    StopCoroutine(coroutine);
-                coroutine = StartCoroutine(justShot.JustShotCount());
-            }
+            // 向きを設定してチャージする
+            direction = predictionLine.RayDirection();
+            charge += (chargeSpeed * Time.deltaTime) * 50;
         }
-
-        // ゲーム画面以外かつチャージ中なら
-        else if(charge > 0)
+        // ショットボタンが押されてないかつチャージ済みなら
+        else if ((value == 0) && (charge > 0))
         {
-            // チャージをリセット
+            // エネルギーを消費して発射
+            energyController.energy -= charge / 10;
+            Vector3 velocity = Camera.main.transform.forward;
+            rb.AddForce(velocity * speed * charge);
             charge = 0;
         }
+
+        // エネルギーがある状態でショットボタンが押されたら(押した瞬間だけ)
+        if ((value > 0) && (energyController.energy > 0))
+        {
+            // ジャストショットの猶予時間をカウント
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+            coroutine = StartCoroutine(justShot.JustShotCount());
+        }
+
+        // エネルギーがある状態でショットボタンが押されたら減速
+        if ((value > 0) && (energyController.energy > 0))
+            rb.velocity *= AppConst.SPEED_REDUCTION_RATE;
     }
 }
