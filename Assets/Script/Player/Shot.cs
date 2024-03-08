@@ -26,6 +26,7 @@ public class Shot : MonoBehaviour
     private int power = 0;                           // 衝突時のパワー
     private Vector3 colObjVelocity;                  // 衝突したオブジェクトのvelocityを保存
     private Coroutine coroutine;                     // ジャストショットの猶予時間をカウントするコルーチン
+    private float inputValue;                        // 入力の数値
 
     // プレイヤーとオブジェクトに力を加える
     void AddPower()
@@ -46,6 +47,13 @@ public class Shot : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         input.game_OnShotDele += ShotProcess;
+    }
+
+    void FixedUpdate()
+    {
+        // エネルギーがある状態でショットボタンが押されたら減速
+        if ((inputValue > 0) && (energyController.energy > 0))
+            rb.velocity *= AppConst.SPEED_REDUCTION_RATE;
     }
 
     // 衝突したとき
@@ -100,15 +108,17 @@ public class Shot : MonoBehaviour
     // ショットの処理
     void ShotProcess(float value)
     {
+        inputValue = value;
+
         // エネルギーがある状態でショットボタンが押されていたら(長押し可)
-        if ((value > 0) && (energyController.energy > 0))
+        if ((inputValue > 0) && (energyController.energy > 0))
         {
             // 向きを設定してチャージする
             direction = predictionLine.RayDirection();
             charge += (chargeSpeed * Time.deltaTime) * 50;
         }
         // ショットボタンが押されてないかつチャージ済みなら
-        else if ((value == 0) && (charge > 0))
+        else if ((inputValue == 0) && (charge > 0))
         {
             // エネルギーを消費して発射
             energyController.energy -= charge / 10;
@@ -118,16 +128,12 @@ public class Shot : MonoBehaviour
         }
 
         // エネルギーがある状態でショットボタンが押されたら(押した瞬間だけ)
-        if ((value > 0) && (energyController.energy > 0))
+        if ((inputValue > 0) && (energyController.energy > 0))
         {
             // ジャストショットの猶予時間をカウント
             if (coroutine != null)
                 StopCoroutine(coroutine);
             coroutine = StartCoroutine(justShot.JustShotCount());
         }
-
-        // エネルギーがある状態でショットボタンが押されたら減速
-        if ((value > 0) && (energyController.energy > 0))
-            rb.velocity *= AppConst.SPEED_REDUCTION_RATE;
     }
 }

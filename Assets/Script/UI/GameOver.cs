@@ -48,7 +48,7 @@ public class GameOver : Lerp
         StartCoroutine(Position_Text(uIController.gameOverUI.GameOverText, startPos, endPos, fadeTime));
 
         // 一瞬待つ
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSecondsRealtime(2.0f);
 
         // テキストを動かす
         startPos = new Vector3(0.0f, 0.0f, 0.0f);

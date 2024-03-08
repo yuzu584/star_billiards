@@ -35,20 +35,30 @@ public class InputController : MonoBehaviour
     public UI_OnPositiveDele ui_OnPositiveDele;
     public UI_OnNegativeDele ui_OnNegativeDele;
 
+    // キーが押されているか
+    [SerializeField] private bool IsPressed_Game_Move;
+    [SerializeField] private bool IsPressed_Game_Look;
+    [SerializeField] private bool IsPressed_Game_Shot;
+    [SerializeField] private bool IsPressed_UI_Move;
+
     private void Awake()
     {
         // インスタンスを生成
         actions = new PlayerActions();
 
         // イベントを設定
-        actions.Game.Move.performed += Game_OnMove;
-        actions.Game.Look.performed += Game_OnLook;
-        actions.Game.Shot.performed += Game_OnShot;
+        actions.Game.Move.started += (InputAction.CallbackContext context) => { IsPressed_Game_Move = true; };
+        actions.Game.Move.canceled += (InputAction.CallbackContext context) => { IsPressed_Game_Move = false; };
+        actions.Game.Look.started += (InputAction.CallbackContext context) => { IsPressed_Game_Look = true; };
+        actions.Game.Look.canceled += (InputAction.CallbackContext context) => { IsPressed_Game_Look = false; };
+        actions.Game.Shot.started += (InputAction.CallbackContext context) => { IsPressed_Game_Shot = true; };
+        actions.Game.Shot.canceled += (InputAction.CallbackContext context) => { game_OnShotDele(actions.Game.Shot.ReadValue<float>()); IsPressed_Game_Shot = false; };
         actions.Game.Aim.performed += Game_OnAim;
         actions.Game.UseSkill.performed += Game_OnUseSkill;
         actions.Game.ChangeSkill.performed += Game_OnChangeSkill;
         actions.Game.Pause.performed += Game_OnPause;
-        actions.UI.Move.performed += UI_OnMove;
+        actions.UI.Move.started += (InputAction.CallbackContext context) => { IsPressed_UI_Move = true; };
+        actions.UI.Move.canceled += (InputAction.CallbackContext context) => { IsPressed_UI_Move = false; };
         actions.UI.Positive.performed += UI_OnPositive;
         actions.UI.Negative.performed += UI_OnNegative;
     }
@@ -57,6 +67,36 @@ public class InputController : MonoBehaviour
     {
         // 画面遷移時に入力状態の有効無効を設定する
         screenController.changeScreen += SetInputs;
+    }
+
+    void Update()
+    {
+        // 視点移動入力されているか判定(Game)
+        if (IsPressed_Game_Look)
+        {
+            game_OnLookDele(actions.Game.Look.ReadValue<Vector2>());
+        }
+
+        // ショット入力されているか判定
+        if(IsPressed_Game_Shot)
+        {
+            game_OnShotDele(actions.Game.Shot.ReadValue<float>());
+        }
+
+        // 移動入力されているか判定(UI)
+        if (IsPressed_UI_Move)
+        {
+            ui_OnMoveDele(actions.UI.Move.ReadValue<Vector2>());
+        }
+    }
+
+    void FixedUpdate()
+    {
+        // 移動入力されているか判定
+        if (IsPressed_Game_Move)
+        {
+            game_OnMoveDele(actions.Game.Move.ReadValue<Vector2>());
+        }
     }
 
     // 入力状態の有効無効を設定

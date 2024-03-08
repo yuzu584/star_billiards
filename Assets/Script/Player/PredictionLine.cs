@@ -33,6 +33,9 @@ public class PredictionLine : MonoBehaviour
         // lineRenderer‚Ìü‚Ì”‚ğw’è
         lineRenderer.positionCount = 3;
 
+        // ü‚ğ”ñ•\¦
+        lineRenderer.enabled = false;
+
         // rigidbody‚ğæ“¾
         rb = target.GetComponent<Rigidbody>();
 

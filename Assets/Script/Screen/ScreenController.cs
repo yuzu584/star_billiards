@@ -70,6 +70,9 @@ public class ScreenController : Lerp
             switchImage.gameObject.SetActive(true);
             switchImage.raycastTarget = true;
             yield return StartCoroutine(SwitchAnim(c1, c2));
+
+            // ˆêu‘Ò‚Â
+            yield return new WaitForSecondsRealtime(0.2f);
         }
 
         // ‰æ–Ê”Ô†‚ğİ’è
