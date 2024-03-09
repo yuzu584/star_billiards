@@ -9234,6 +9234,11 @@ MonoBehaviour:
   screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
   input: {fileID: 876631145}
   switchImage: {fileID: 1569710203}
+  cursorMovement:
+    buttonAmount: 0
+    axis: 0
+    crossMoveAmount: 0
+  buttonAmount: 0
 --- !u!4 &1600059366
 Transform:
   m_ObjectHideFlags: 0

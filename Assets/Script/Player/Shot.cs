@@ -26,7 +26,9 @@ public class Shot : MonoBehaviour
     private int power = 0;                           // 衝突時のパワー
     private Vector3 colObjVelocity;                  // 衝突したオブジェクトのvelocityを保存
     private Coroutine coroutine;                     // ジャストショットの猶予時間をカウントするコルーチン
-    private float inputValue;                        // 入力の数値
+    private float inputValue = 0;                    // 入力の数値
+    private float oldInputValue = 0;                 // 1フレーム前の入力の数値
+    private bool nowInput = false;                   // 入力が行われた瞬間かどうか
 
     // プレイヤーとオブジェクトに力を加える
     void AddPower()
@@ -47,6 +49,21 @@ public class Shot : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         input.game_OnShotDele += ShotProcess;
+    }
+
+    void Update()
+    {
+        // ショット入力がされた瞬間なら
+        if ((inputValue != oldInputValue) && (!nowInput))
+        {
+            oldInputValue = inputValue;
+            nowInput = true;
+        }
+        // ショット入力がされた瞬間でないなら
+        else if ((inputValue == oldInputValue) && (nowInput))
+        {
+            nowInput = false;
+        }
     }
 
     void FixedUpdate()
@@ -128,7 +145,7 @@ public class Shot : MonoBehaviour
         }
 
         // エネルギーがある状態でショットボタンが押されたら(押した瞬間だけ)
-        if ((inputValue > 0) && (energyController.energy > 0))
+        if ((inputValue > 0) && (energyController.energy > 0) && (nowInput))
         {
             // ジャストショットの猶予時間をカウント
             if (coroutine != null)
