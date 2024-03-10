@@ -73,6 +73,10 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
 
     [SerializeField] protected AudioClip EnterSound;    // ポインターが乗った時に再生する音声ファイル
     [SerializeField] protected AudioClip ClickSound;    // ボタンクリック時に再生する音声ファイル
+    [SerializeField] protected Button buttonUp;         // 自分の上に位置するボタン
+    [SerializeField] protected Button buttonDown;       // 自分の下に位置するボタン
+    [SerializeField] protected Button buttonLeft;       // 自分の左に位置するボタン
+    [SerializeField] protected Button buttonRight;      // 自分の右に位置するボタン
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)

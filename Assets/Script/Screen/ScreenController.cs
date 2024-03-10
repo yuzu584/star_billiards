@@ -45,17 +45,6 @@ public class ScreenController : Lerp
     public delegate void ChangeScreen(); // 画面が遷移したときのデリゲート
     public ChangeScreen changeScreen;
 
-    [System.Serializable]
-    public struct CursorMovement    // カーソル移動に関する変数の構造体
-    {
-        public int buttonAmount;    // 存在するボタンの数
-        public bool axis;           // ボタンの並び(true : X軸に水平 false : Y軸に水平)
-        public int crossMoveAmount; // ボタンの並びに対して垂直な入力がされた時のカーソル移動量
-    }
-    [SerializeField] public CursorMovement cursorMovement;
-
-    public int buttonAmount = 0; // 存在している選択可能なボタンの数
-
     private bool changeStageClearScreen = false; // ステージクリア画面に遷移したかどうか
     
     // 画面遷移処理

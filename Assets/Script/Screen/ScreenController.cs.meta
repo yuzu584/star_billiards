@@ -3,7 +3,13 @@ guid: e0cd097e734fcfa43b27f3cf26223b57
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - uIController: {instanceID: 0}
+  - stageController: {instanceID: 0}
+  - pauseUIController: {instanceID: 0}
+  - screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
+  - input: {instanceID: 0}
+  - switchImage: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

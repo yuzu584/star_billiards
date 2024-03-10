@@ -3,7 +3,12 @@ guid: ea7d42570ebaf5d4782e01659180b973
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - screenController: {instanceID: 0}
+  - gameOverButtonMat: {fileID: 2100000, guid: d92459fa41ce17a4788b4cc97f57703b, type: 2}
+  - postProcessController: {instanceID: 0}
+  - uIController: {instanceID: 0}
+  - lerp: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

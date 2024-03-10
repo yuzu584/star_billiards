@@ -6,18 +6,19 @@ using UnityEngine;
 public class Screen : MonoBehaviour
 {
     [SerializeField] private int num = 0;                       // このGameObjectを表示する画面番号
+    [SerializeField] private int loot = 0;                      // このGameObjectを表示する画面の階層
     [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
 
     // 表示する画面を切り替え
     public void SwitchScreen()
     {
-        // 画面番号がnumと同じなら表示
-        if((screenController.ScreenNum == num) && (!gameObject.activeSelf))
+        // 画面番号がnumと同じかつ画面の階層がlootと同じなら表示
+        if((screenController.ScreenNum == num) && (screenController.ScreenLoot == loot) && (!gameObject.activeSelf))
         {
             gameObject.SetActive(true);
         }
         // 違うなら非表示
-        else if ((screenController.ScreenNum != num) && (gameObject.activeSelf))
+        else if (((screenController.ScreenNum != num) || (screenController.ScreenLoot != loot)) && (gameObject.activeSelf))
         {
             gameObject.SetActive(false);
         }

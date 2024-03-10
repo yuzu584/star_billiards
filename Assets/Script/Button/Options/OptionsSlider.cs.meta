@@ -3,7 +3,16 @@ guid: e6b28b465f16f0b4186b6f429d4cbf0a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - EnterSound: {fileID: 8300000, guid: 13dc1ec8e21e60b4b83f31fb90a45748, type: 3}
+  - ClickSound: {fileID: 8300000, guid: 6383ff15321eb9146a08c0130415cf4f, type: 3}
+  - buttonUp: {instanceID: 0}
+  - buttonDown: {instanceID: 0}
+  - buttonLeft: {instanceID: 0}
+  - buttonRight: {instanceID: 0}
+  - _optionsController: {instanceID: 0}
+  - state: {instanceID: 0}
+  - slider: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

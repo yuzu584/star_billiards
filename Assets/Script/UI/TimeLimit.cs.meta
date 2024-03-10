@@ -3,7 +3,12 @@ guid: d8885c8402ee18d43841d855f59eb8b5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
+  - stageController: {instanceID: 0}
+  - uIController: {instanceID: 0}
+  - gameOver: {instanceID: 0}
+  - initialize: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

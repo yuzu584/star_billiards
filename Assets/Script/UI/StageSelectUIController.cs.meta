@@ -3,7 +3,10 @@ guid: 1ed24e9f1f6c2c64a9a15541bafb9a76
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
+  - stageController: {instanceID: 0}
+  - uIController: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

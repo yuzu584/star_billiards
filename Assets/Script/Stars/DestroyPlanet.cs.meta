@@ -3,7 +3,13 @@ guid: 4888050148e5b1343af04db90ef91a51
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
+  - screenController: {instanceID: 0}
+  - popupController: {instanceID: 0}
+  - stageController: {instanceID: 0}
+  - planetAmount: {instanceID: 0}
+  - missionUIController: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -3,7 +3,13 @@ guid: c1200d497f6b37d439658b1cbd84ee0f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - EnterSound: {fileID: 8300000, guid: 13dc1ec8e21e60b4b83f31fb90a45748, type: 3}
+  - ClickSound: {fileID: 8300000, guid: 7909af90f96bfd943bed28cc2e9d25a2, type: 3}
+  - buttonUp: {instanceID: 0}
+  - buttonDown: {instanceID: 0}
+  - buttonLeft: {instanceID: 0}
+  - buttonRight: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

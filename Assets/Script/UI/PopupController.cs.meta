@@ -3,7 +3,12 @@ guid: b53606b673144fe4da9dc2db56391425
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - popUp: {fileID: 6751493928476000379, guid: ae6f80cdd48614846a10b75943843f67, type: 3}
+  - uIController: {instanceID: 0}
+  - screenController: {instanceID: 0}
+  - initialize: {instanceID: 0}
+  - lerp: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

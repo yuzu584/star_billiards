@@ -375,6 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 8
+  loot: 0
   screenController: {fileID: 1600059365}
 --- !u!1001 &49471610
 PrefabInstance:
@@ -4059,6 +4060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 6
+  loot: 0
   screenController: {fileID: 1600059365}
 --- !u!1001 &638171573
 PrefabInstance:
@@ -4951,6 +4953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 9
+  loot: 0
   screenController: {fileID: 1600059365}
 --- !u!1 &868238458
 GameObject:
@@ -5766,6 +5769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 0
+  loot: 0
   screenController: {fileID: 1600059365}
 --- !u!1 &941270773
 GameObject:
@@ -7557,6 +7561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 3
+  loot: 0
   screenController: {fileID: 1600059365}
 --- !u!114 &1225636075
 MonoBehaviour:
@@ -9003,6 +9008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 5
+  loot: 0
   screenController: {fileID: 1600059365}
 --- !u!1 &1566595050
 GameObject:
@@ -9234,11 +9240,6 @@ MonoBehaviour:
   screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
   input: {fileID: 876631145}
   switchImage: {fileID: 1569710203}
-  cursorMovement:
-    buttonAmount: 0
-    axis: 0
-    crossMoveAmount: 0
-  buttonAmount: 0
 --- !u!4 &1600059366
 Transform:
   m_ObjectHideFlags: 0
@@ -9713,6 +9714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 1
+  loot: 0
   screenController: {fileID: 1600059365}
 --- !u!1 &1740467957
 GameObject:
@@ -10568,6 +10570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 2
+  loot: 0
   screenController: {fileID: 1600059365}
 --- !u!1001 &1820004681
 PrefabInstance:
@@ -11615,6 +11618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 4
+  loot: 0
   screenController: {fileID: 1600059365}
 --- !u!1 &2030439597
 GameObject:
