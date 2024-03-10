@@ -27,6 +27,9 @@ public class StageButton : Button
     // マウスポインターが乗った時の処理
     protected override void EnterProcess()
     {
+        // 階層を設定
+        screenController.ScreenLoot = 0;
+
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, true);
     }
@@ -44,8 +47,11 @@ public class StageButton : Button
         // アニメーション中ではないなら
         if (!anim)
         {
+            // 階層を設定
+            screenController.ScreenLoot = 1;
+
             stageController.stageNum = num;
-            stageSelectUIController.DrawStageInfo(this.transform.localPosition, this.gameObject, GetComponent<StageButton>());
+            stageSelectUIController.DrawStageInfo(this.transform.localPosition, this.gameObject, this);
         }
     }
 
@@ -55,10 +61,6 @@ public class StageButton : Button
 
         // ボタンの初期化処理
         BtnInit(imageStructs, textStructs);
-
-        // ステージ情報UIを非表示
-        if (stageSelectUIController != null)
-            stageSelectUIController.HideStageInfo();
     }
 
     new void Start()

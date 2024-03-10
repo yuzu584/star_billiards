@@ -7,14 +7,16 @@ using UnityEngine.UI;
 // ステージ選択画面のUIを管理
 public class StageSelectUIController : Lerp
 {
-    [SerializeField] private StageData stageData;             // InspectorでStageDataを指定
-    [SerializeField] private StageController stageController; // InspectorでStageControllerを指定
-    [SerializeField] private UIController uIController;       // InspectorでUIControllerを指定
+    [SerializeField] private StageData stageData;               // InspectorでStageDataを指定
+    [SerializeField] private StageController stageController;   // InspectorでStageControllerを指定
+    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
+    [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
 
     private GameObject oldButton;    // 取得したステージボタン
     private Vector3 oldPos;          // 取得したステージボタンの座標
     private StageButton oldStageBtn; // 取得したStageButton
     private float fadeTime = 0.4f;   // フェード時間
+    private StageButton sBtn;
 
     // ステージ情報UIを描画
     public void DrawStageInfo(Vector3 pos, GameObject button, StageButton stageButton)
@@ -22,12 +24,13 @@ public class StageSelectUIController : Lerp
         // ステージボタンの見た目が変えられていたら見た目を元に戻す
         ResetDetail(false);
 
+        sBtn = stageButton;
         oldPos = pos;
         oldButton = button;
-        oldStageBtn = stageButton;
+        oldStageBtn = sBtn;
 
         // アニメーション中にする
-        stageButton.anim = true;
+        sBtn.anim = true;
 
         // ステージ情報UIの座標を設定
         Vector3 newPos = oldPos;
@@ -82,18 +85,27 @@ public class StageSelectUIController : Lerp
     }
 
     // ステージ情報UIを非表示
-    public void HideStageInfo()
+    public void HideStageInfo(bool orFast)
     {
         // ステージ情報UIを非表示
         uIController.stageSelectUI.stageInfoUI.SetActive(false);
 
         // ステージボタンが存在していたら見た目を元に戻す
-        ResetDetail(true);
+        ResetDetail(orFast);
     }
 
     void OnEnable()
     {
         // ステージ情報UIを非表示
-        HideStageInfo();
+        HideStageInfo(true);
+    }
+
+    void Update()
+    {
+        if(sBtn != null)
+        {
+            if ((sBtn.anim) && (screenController.ScreenLoot == 0))
+                HideStageInfo(false);
+        }
     }
 }

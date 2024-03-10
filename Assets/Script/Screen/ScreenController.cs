@@ -15,9 +15,11 @@ public class ScreenController : Lerp
     [SerializeField] private InputController input;                     // InspectorでInputControllerを指定
     [SerializeField] private Image switchImage;                         // 画面遷移時の画像
 
-    [System.NonSerialized] public bool canStageDraw = false;    // ステージを描画可能か
-    [System.NonSerialized] public int oldScreenNum = 0;         // 前回の画面番号
-    [System.NonSerialized] public int oldFrameScreenNum = 0;    // 1フレーム前の画面番号
+    [System.NonSerialized] public bool canStageDraw = false;            // ステージを描画可能か
+    [System.NonSerialized] public int oldScreenNum = 0;                 // 前回の画面番号
+    [System.NonSerialized] public int oldScreenLoot = 0;                // 前回の階層
+    [System.NonSerialized] public int oldFrameScreenNum = 0;            // 1フレーム前の画面番号
+    [System.NonSerialized] public int oldFrameScreenLoot = 0;           // 1フレーム前の階層
 
     // UIが描画可能かを管理する配列
     // 0 : タイトル画面
@@ -31,8 +33,8 @@ public class ScreenController : Lerp
     // 8 : ステージクリア画面
     // 9 : ゲームオーバー画面
 
-    private int screenNum;               // 画面番号
-    private int screenLoot;              // 画面の階層
+    [SerializeField] private int screenNum;  // 画面番号
+    [SerializeField] private int screenLoot; // 画面の階層
     public int ScreenNum                 // 画面番号のプロパティ
     {
         get { return screenNum; }
@@ -44,10 +46,12 @@ public class ScreenController : Lerp
         set { screenLoot = value; }
     }
     public delegate void ChangeScreen(); // 画面が遷移したときのデリゲート
+    public delegate void ChangeLoot();   // 階層が遷移したときのデリゲート
     public ChangeScreen changeScreen;
-    public Button focusBtn;          // フォーカスしているボタン
-    public Button oldfocusBtn;       // フォーカスされていたボタン
-    public bool canMoveFocus = true; // フォーカス対象を変更できるか
+    public ChangeScreen changeLoot;
+    public Button focusBtn;              // フォーカスしているボタン
+    public Button oldfocusBtn;           // フォーカスされていたボタン
+    public bool canMoveFocus = true;     // フォーカス対象を変更できるか
 
     private bool changeStageClearScreen = false; // ステージクリア画面に遷移したかどうか
     
@@ -110,6 +114,11 @@ public class ScreenController : Lerp
     {
         input.game_OnPauseDele += OpenPause;
         input.ui_OnMoveDele += ChangeBtnFocus;
+        input.ui_OnNegativeDele += (float value) =>
+        {
+            if (ScreenLoot > 0)
+                ScreenLoot -= (int)value;
+        };
     }
 
     void Update()
@@ -124,7 +133,22 @@ public class ScreenController : Lerp
             oldFrameScreenNum = screenNum;
 
             // 画面遷移したときの処理
-            changeScreen();
+            if(changeScreen !=  null)
+                changeScreen();
+        }
+
+        // 前回のフレームと現在のフレームで階層が異なったら
+        if (ScreenLoot != oldFrameScreenLoot)
+        {
+            // 前回の階層を保存
+            oldScreenLoot = oldFrameScreenLoot;
+
+            // 1フレーム前の階層に現在の階層を代入
+            oldFrameScreenLoot = ScreenLoot;
+
+            // 階層が遷移したときの処理
+            if (changeLoot != null)
+                changeLoot();
         }
 
         // ステージをクリアかつ画面遷移していないなら
@@ -158,25 +182,26 @@ public class ScreenController : Lerp
     // フォーカスするボタンを変える
     void ChangeBtnFocus(Vector2 mVec)
     {
+        float minInput = 0.5f; // 入力を受け付ける最低値
+
         if((focusBtn != null) && (canMoveFocus))
         {
-            if ((mVec.x > 0) && (focusBtn.buttonRight != null))
+            if ((mVec.x > minInput) && (focusBtn.buttonRight != null))
+            {
                 SetFocusBtn(focusBtn.buttonRight);
-
-            if ((mVec.x < 0) && (focusBtn.buttonLeft != null))
+            }
+            else if ((mVec.x < -minInput) && (focusBtn.buttonLeft != null))
+            {
                 SetFocusBtn(focusBtn.buttonLeft);
-
-            if ((mVec.y < 0) && (focusBtn.buttonDown != null))
+            }
+            else if ((mVec.y < -minInput) && (focusBtn.buttonDown != null))
+            {
                 SetFocusBtn(focusBtn.buttonDown);
-
-            if ((mVec.y > 0) && (focusBtn.buttonUp != null))
+            }
+            else if ((mVec.y > minInput) && (focusBtn.buttonUp != null))
+            {
                 SetFocusBtn(focusBtn.buttonUp);
-
-            // フォーカスされたときの処理
-            focusBtn.FocusProcess(true);
-
-            // フォーカスが外れたときの処理
-            oldfocusBtn.FocusProcess(false);
+            }
         }
     }
 
@@ -188,6 +213,14 @@ public class ScreenController : Lerp
         {
             oldfocusBtn = focusBtn;
             focusBtn = btn;
+
+            // フォーカスされたときの処理
+            if(focusBtn != null)
+                focusBtn.FocusProcess(true);
+
+            // フォーカスが外れたときの処理
+            if(oldfocusBtn != null)
+                oldfocusBtn.FocusProcess(false);
         }
     }
 }

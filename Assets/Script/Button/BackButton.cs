@@ -51,6 +51,17 @@ public class BackButton : Button
 
         // ƒfƒŠƒQ[ƒg‚ð’Ç‰Á
         screenController.changeScreen += SetOldScreen;
+        input.ui_OnNegativeDele += (float value) =>
+        {
+            if (screenController.ScreenLoot <= 0)
+            {
+                if(screenController.ScreenNum == 1)
+                    screenController.ScreenNum = 0;
+                else
+                    screenController.ScreenNum = oldScreen;
+            }
+
+        };
 
         SetOldScreen();
     }

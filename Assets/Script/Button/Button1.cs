@@ -83,6 +83,7 @@ public class Button1 : Button
     {
         // 画面番号をInGameに変更
         screenController.ScreenNum = 5;
+        screenController.ScreenLoot = 0;
 
         // ステージに関する数値を初期化
         initialize.init_Stage();

@@ -4771,7 +4771,7 @@ PrefabInstance:
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: buttonUp
       value: 
-      objectReference: {fileID: 1643224233}
+      objectReference: {fileID: 0}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: buttonLeft
       value: 
@@ -7098,6 +7098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
   stageController: {fileID: 291823625}
+  screenController: {fileID: 1600059365}
   uIController: {fileID: 869580811}
 --- !u!114 &1148952479
 MonoBehaviour:
@@ -8147,6 +8148,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a475a13cfe6e5d49a9e4c625a6e2428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1305099704 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7582371322693978309, guid: dd687111c45c0584f8cb04e10ba43eee, type: 3}
+  m_PrefabInstance: {fileID: 67590360}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1200d497f6b37d439658b1cbd84ee0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1311069895 stripped
@@ -9360,8 +9372,11 @@ MonoBehaviour:
   screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
   input: {fileID: 876631145}
   switchImage: {fileID: 1569710203}
+  screenNum: 0
+  screenLoot: 0
   focusBtn: {fileID: 0}
   oldfocusBtn: {fileID: 0}
+  canMoveFocus: 1
 --- !u!4 &1600059366
 Transform:
   m_ObjectHideFlags: 0
@@ -10205,12 +10220,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 1670636198}
     m_Modifications:
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: loot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: ClickSound
       value: 
       objectReference: {fileID: 8300000, guid: 818a57efe5ef33049b71b74883e97228, type: 3}
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: clickAction
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: defaultFocus
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: imageStructs.Array.data[1].lerpScale.endScale.x
@@ -13043,7 +13066,11 @@ PrefabInstance:
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: buttonUp
       value: 
-      objectReference: {fileID: 1671276896}
+      objectReference: {fileID: 1305099704}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonLeft
+      value: 
+      objectReference: {fileID: 1305099704}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: buttonRight
       value: 

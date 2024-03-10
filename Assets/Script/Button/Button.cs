@@ -66,13 +66,16 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
     protected GameObject ScreenController;
     protected GameObject UIFunctionController;
     protected GameObject SoundController;
+    protected GameObject InputObj;
 
     // Findで探したGameObjectのコンポーネント
     protected ScreenController screenController;
     protected Sound sound;
+    protected InputController input;
 
     [SerializeField] protected AudioClip EnterSound;      // ポインターが乗った時に再生する音声ファイル
     [SerializeField] protected AudioClip ClickSound;      // ボタンクリック時に再生する音声ファイル
+    [SerializeField] protected int loot = 0;              // フォーカスされる階層
     [SerializeField] protected bool defaultFocus = false; // 最初にフォーカスするボタンか
     public Button buttonUp;                               // 自分の上に位置するボタン
     public Button buttonDown;                             // 自分の下に位置するボタン
@@ -83,8 +86,10 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         // 音を再生
-        StartCoroutine(sound.Play(EnterSound));
+        if (sound != null)
+            StartCoroutine(sound.Play(EnterSound));
 
+        // フォーカスされているボタンを設定
         screenController.SetFocusBtn(this);
 
         EnterProcess();
@@ -100,7 +105,8 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         //音を再生
-        StartCoroutine(sound.Play(ClickSound));
+        if (sound != null)
+            StartCoroutine(sound.Play(ClickSound));
 
         ClickProcess();
     }
@@ -161,7 +167,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
                 }
                 else
                 {
-                    color1 = childrenImageStructs[i].lerpColor.endColor;
+                    color1 = childrenImageStructs[i].image.color;
                     color2 = childrenImageStructs[i].lerpColor.startColor;
                 }
 
@@ -180,7 +186,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
                 }
                 else
                 {
-                    pos1 = childrenImageStructs[i].lerpPosition.endPos;
+                    pos1 = childrenImageStructs[i].image.rectTransform.anchoredPosition;
                     pos2 = childrenImageStructs[i].lerpPosition.startPos;
                 }
 
@@ -199,7 +205,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
                 }
                 else
                 {
-                    scale1 = childrenImageStructs[i].lerpScale.endScale;
+                    scale1 = childrenImageStructs[i].image.rectTransform.localScale;
                     scale2 = childrenImageStructs[i].lerpScale.startScale;
                 }
 
@@ -222,7 +228,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
                 }
                 else
                 {
-                    color1 = childrenTextStructs[i].lerpColor.endColor;
+                    color1 = childrenTextStructs[i].text.color;
                     color2 = childrenTextStructs[i].lerpColor.startColor;
                 }
 
@@ -241,7 +247,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
                 }
                 else
                 {
-                    pos1 = childrenTextStructs[i].lerpPosition.endPos;
+                    pos1 = childrenTextStructs[i].text.rectTransform.anchoredPosition;
                     pos2 = childrenTextStructs[i].lerpPosition.startPos;
                 }
 
@@ -260,7 +266,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
                 }
                 else
                 {
-                    scale1 = childrenTextStructs[i].lerpScale.endScale;
+                    scale1 = childrenTextStructs[i].text.rectTransform.localScale;
                     scale2 = childrenTextStructs[i].lerpScale.startScale;
                 }
 
@@ -331,6 +337,10 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
         {
             if (isEnter)
             {
+                // 音を再生
+                if(sound != null)
+                    StartCoroutine(sound.Play(EnterSound));
+
                 EnterProcess();
             }
             else
@@ -343,23 +353,49 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
     protected void Start()
     {
         // オブジェクトを探してコンポーネントを取得
-        ScreenController = GameObject.Find("ScreenController");
-        UIFunctionController = GameObject.Find("UIFunctionController");
-        SoundController = GameObject.Find("SoundController");
-
-        screenController = ScreenController.gameObject.GetComponent<ScreenController>();
-        sound = SoundController.GetComponent<Sound>();
-    }
-
-    protected void OnEnable()
-    {
-        if(screenController == null)
+        if (screenController == null)
         {
             ScreenController = GameObject.Find("ScreenController");
             screenController = ScreenController.gameObject.GetComponent<ScreenController>();
         }
 
-        if (defaultFocus)
-            screenController.SetFocusBtn(this);
+        UIFunctionController = GameObject.Find("UIFunctionController");
+        SoundController = GameObject.Find("SoundController");
+        InputObj = GameObject.Find("Input");
+
+        sound = SoundController.GetComponent<Sound>();
+        input = InputObj.GetComponent<InputController>();
+
+        screenController.changeLoot += () =>
+        {
+            // このボタンがフォーカスされる階層なら
+            if ((loot == screenController.ScreenLoot) && (this.gameObject.activeInHierarchy))
+            {
+                if (defaultFocus)
+                {
+                    screenController.SetFocusBtn(this);
+                    EnterProcess();
+                }
+            }
+        };
+    }
+
+    protected void OnEnable()
+    {
+        if (screenController == null)
+        {
+            ScreenController = GameObject.Find("ScreenController");
+            screenController = ScreenController.gameObject.GetComponent<ScreenController>();
+        }
+
+        // このボタンがフォーカスされる階層なら
+        if (loot == screenController.ScreenLoot)
+        {
+            if (defaultFocus)
+            {
+                screenController.SetFocusBtn(this);
+                EnterProcess();
+            }
+        }
     }
 }
