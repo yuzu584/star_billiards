@@ -57,8 +57,7 @@ public class InputController : MonoBehaviour
         actions.Game.UseSkill.performed += Game_OnUseSkill;
         actions.Game.ChangeSkill.performed += Game_OnChangeSkill;
         actions.Game.Pause.performed += Game_OnPause;
-        actions.UI.Move.started += (InputAction.CallbackContext context) => { IsPressed_UI_Move = true; };
-        actions.UI.Move.canceled += (InputAction.CallbackContext context) => { IsPressed_UI_Move = false; };
+        actions.UI.Move.performed += UI_OnMove;
         actions.UI.Positive.performed += UI_OnPositive;
         actions.UI.Negative.performed += UI_OnNegative;
     }

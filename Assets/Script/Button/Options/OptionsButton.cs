@@ -31,8 +31,10 @@ public class OptionsButton : Button
         _optionsController.loot = (OptionsController.Loot)Enum.ToObject(typeof(OptionsController.Loot), num);
     }
 
-    void OnEnable()
+    new void OnEnable()
     {
+        base.OnEnable();
+
         // ƒ{ƒ^ƒ“‚Ì‰Šú‰»ˆ—
         BtnInit(imageStructs, textStructs);
     }

@@ -49,8 +49,10 @@ public class StageButton : Button
         }
     }
 
-    void OnEnable()
+    new void OnEnable()
     {
+        base.OnEnable();
+
         // ƒ{ƒ^ƒ“‚Ì‰Šú‰»ˆ—
         BtnInit(imageStructs, textStructs);
 

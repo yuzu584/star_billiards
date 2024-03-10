@@ -71,18 +71,21 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
     protected ScreenController screenController;
     protected Sound sound;
 
-    [SerializeField] protected AudioClip EnterSound;    // ポインターが乗った時に再生する音声ファイル
-    [SerializeField] protected AudioClip ClickSound;    // ボタンクリック時に再生する音声ファイル
-    [SerializeField] protected Button buttonUp;         // 自分の上に位置するボタン
-    [SerializeField] protected Button buttonDown;       // 自分の下に位置するボタン
-    [SerializeField] protected Button buttonLeft;       // 自分の左に位置するボタン
-    [SerializeField] protected Button buttonRight;      // 自分の右に位置するボタン
+    [SerializeField] protected AudioClip EnterSound;      // ポインターが乗った時に再生する音声ファイル
+    [SerializeField] protected AudioClip ClickSound;      // ボタンクリック時に再生する音声ファイル
+    [SerializeField] protected bool defaultFocus = false; // 最初にフォーカスするボタンか
+    public Button buttonUp;                               // 自分の上に位置するボタン
+    public Button buttonDown;                             // 自分の下に位置するボタン
+    public Button buttonLeft;                             // 自分の左に位置するボタン
+    public Button buttonRight;                            // 自分の右に位置するボタン
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         // 音を再生
         StartCoroutine(sound.Play(EnterSound));
+
+        screenController.SetFocusBtn(this);
 
         EnterProcess();
     }
@@ -321,6 +324,22 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
         }
     }
 
+    // フォーカス関係の処理
+    public void FocusProcess(bool isEnter)
+    {
+        if (this.gameObject.activeInHierarchy)
+        {
+            if (isEnter)
+            {
+                EnterProcess();
+            }
+            else
+            {
+                ExitProcess();
+            }
+        }
+    }
+
     protected void Start()
     {
         // オブジェクトを探してコンポーネントを取得
@@ -330,5 +349,17 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
 
         screenController = ScreenController.gameObject.GetComponent<ScreenController>();
         sound = SoundController.GetComponent<Sound>();
+    }
+
+    protected void OnEnable()
+    {
+        if(screenController == null)
+        {
+            ScreenController = GameObject.Find("ScreenController");
+            screenController = ScreenController.gameObject.GetComponent<ScreenController>();
+        }
+
+        if (defaultFocus)
+            screenController.SetFocusBtn(this);
     }
 }

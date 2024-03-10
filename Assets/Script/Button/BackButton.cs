@@ -37,8 +37,10 @@ public class BackButton : Button
         oldScreen = screenController.oldScreenNum;
     }
 
-    void OnEnable()
+    new void OnEnable()
     {
+        base.OnEnable();
+
         // ƒ{ƒ^ƒ“‚Ì‰Šú‰»ˆ—
         BtnInit(imageStructs, textStructs);
     }

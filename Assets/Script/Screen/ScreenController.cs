@@ -15,6 +15,10 @@ public class ScreenController : Lerp
     [SerializeField] private InputController input;                     // InspectorでInputControllerを指定
     [SerializeField] private Image switchImage;                         // 画面遷移時の画像
 
+    [System.NonSerialized] public bool canStageDraw = false;    // ステージを描画可能か
+    [System.NonSerialized] public int oldScreenNum = 0;         // 前回の画面番号
+    [System.NonSerialized] public int oldFrameScreenNum = 0;    // 1フレーム前の画面番号
+
     // UIが描画可能かを管理する配列
     // 0 : タイトル画面
     // 1 : メインメニュー
@@ -28,22 +32,22 @@ public class ScreenController : Lerp
     // 9 : ゲームオーバー画面
 
     private int screenNum;               // 画面番号
+    private int screenLoot;              // 画面の階層
     public int ScreenNum                 // 画面番号のプロパティ
     {
         get { return screenNum; }
         set { SwitchProcess(value); }
     }
-    private int screenLoot;              // 画面の階層
     public int ScreenLoot                // 画面の階層のプロパティ
     {
         get { return screenLoot; }
         set { screenLoot = value; }
     }
-    [System.NonSerialized] public bool canStageDraw = false;    // ステージを描画可能か
-    [System.NonSerialized] public int oldScreenNum = 0;         // 前回の画面番号
-    [System.NonSerialized] public int oldFrameScreenNum = 0;    // 1フレーム前の画面番号
     public delegate void ChangeScreen(); // 画面が遷移したときのデリゲート
     public ChangeScreen changeScreen;
+    public Button focusBtn;          // フォーカスしているボタン
+    public Button oldfocusBtn;       // フォーカスされていたボタン
+    public bool canMoveFocus = true; // フォーカス対象を変更できるか
 
     private bool changeStageClearScreen = false; // ステージクリア画面に遷移したかどうか
     
@@ -70,6 +74,7 @@ public class ScreenController : Lerp
         if (orPlay)
         {
             // 画面遷移アニメーション
+            canMoveFocus = false;
             Color c1 = new Color(0, 0, 0, 0);
             Color c2 = new Color(0, 0, 0, 1);
             switchImage.gameObject.SetActive(true);
@@ -86,6 +91,7 @@ public class ScreenController : Lerp
         if(orPlay)
         {
             // 画面遷移アニメーション
+            canMoveFocus = true;
             Color c1 = new Color(0, 0, 0, 0);
             Color c2 = new Color(0, 0, 0, 1);
             switchImage.raycastTarget = false;
@@ -103,6 +109,7 @@ public class ScreenController : Lerp
     void Start()
     {
         input.game_OnPauseDele += OpenPause;
+        input.ui_OnMoveDele += ChangeBtnFocus;
     }
 
     void Update()
@@ -146,5 +153,41 @@ public class ScreenController : Lerp
     {
         if (value > 0)
             screenNum = 6;
+    }
+
+    // フォーカスするボタンを変える
+    void ChangeBtnFocus(Vector2 mVec)
+    {
+        if((focusBtn != null) && (canMoveFocus))
+        {
+            if ((mVec.x > 0) && (focusBtn.buttonRight != null))
+                SetFocusBtn(focusBtn.buttonRight);
+
+            if ((mVec.x < 0) && (focusBtn.buttonLeft != null))
+                SetFocusBtn(focusBtn.buttonLeft);
+
+            if ((mVec.y < 0) && (focusBtn.buttonDown != null))
+                SetFocusBtn(focusBtn.buttonDown);
+
+            if ((mVec.y > 0) && (focusBtn.buttonUp != null))
+                SetFocusBtn(focusBtn.buttonUp);
+
+            // フォーカスされたときの処理
+            focusBtn.FocusProcess(true);
+
+            // フォーカスが外れたときの処理
+            oldfocusBtn.FocusProcess(false);
+        }
+    }
+
+    // フォーカスするボタンを設定
+    public void SetFocusBtn(Button btn)
+    {
+        // 前回フォーカスされていたボタンと異なればセットする
+        if(btn != focusBtn)
+        {
+            oldfocusBtn = focusBtn;
+            focusBtn = btn;
+        }
     }
 }

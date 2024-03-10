@@ -677,6 +677,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7582371322693978309, guid: dd687111c45c0584f8cb04e10ba43eee, type: 3}
+      propertyPath: buttonDown
+      value: 
+      objectReference: {fileID: 2037059007}
+    - target: {fileID: 7582371322693978309, guid: dd687111c45c0584f8cb04e10ba43eee, type: 3}
+      propertyPath: buttonRight
+      value: 
+      objectReference: {fileID: 1671276896}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd687111c45c0584f8cb04e10ba43eee, type: 3}
 --- !u!224 &67590361 stripped
@@ -1115,9 +1123,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1731415852}
     m_Modifications:
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: buttonLeft
+      value: 
+      objectReference: {fileID: 1649357503}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: nextScreen
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: buttonRight
+      value: 
+      objectReference: {fileID: 1284735393}
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: clickAction
       value: 1
@@ -3398,6 +3414,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonUp
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonDown
+      value: 
+      objectReference: {fileID: 638171575}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonLeft
+      value: 
+      objectReference: {fileID: 638171575}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonRight
+      value: 
+      objectReference: {fileID: 1349266275}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: lineConectObject
       value: 
       objectReference: {fileID: 1349266274}
@@ -4158,6 +4190,18 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonUp
+      value: 
+      objectReference: {fileID: 1643224233}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonLeft
+      value: 
+      objectReference: {fileID: 1671276896}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonRight
+      value: 
+      objectReference: {fileID: 1643224233}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: lineConectObject
       value: 
       objectReference: {fileID: 1643224232}
@@ -4172,6 +4216,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2552555218248429928, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
   m_PrefabInstance: {fileID: 638171573}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &638171575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+  m_PrefabInstance: {fileID: 638171573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524871096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41315e46886df946a8f097d7f9e4c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &702041413
 GameObject:
   m_ObjectHideFlags: 0
@@ -4713,6 +4768,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonUp
+      value: 
+      objectReference: {fileID: 1643224233}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonLeft
+      value: 
+      objectReference: {fileID: 1643224233}
     - target: {fileID: 2552555218248429931, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: m_Name
       value: Solar System (2)
@@ -6089,6 +6152,18 @@ PrefabInstance:
       propertyPath: num
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonDown
+      value: 
+      objectReference: {fileID: 638171575}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonLeft
+      value: 
+      objectReference: {fileID: 2037059007}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonRight
+      value: 
+      objectReference: {fileID: 638171575}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: lineConectObject
       value: 
@@ -7818,6 +7893,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7598036234248533183, guid: 7e66b04add62f754999cb2f68ac0be3e, type: 3}
   m_PrefabInstance: {fileID: 1263505229}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1274480663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+  m_PrefabInstance: {fileID: 156807136}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a475a13cfe6e5d49a9e4c625a6e2428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1278919413
 GameObject:
   m_ObjectHideFlags: 0
@@ -7942,6 +8028,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1731415852}
     m_Modifications:
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: buttonLeft
+      value: 
+      objectReference: {fileID: 1274480663}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: nextScreen
       value: 4
       objectReference: {fileID: 0}
@@ -8048,6 +8138,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5970234051200584755, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
   m_PrefabInstance: {fileID: 1284735391}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1284735393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+  m_PrefabInstance: {fileID: 1284735391}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a475a13cfe6e5d49a9e4c625a6e2428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1311069895 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5970234051200584752, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
@@ -8242,7 +8343,15 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: buttonRight
+      value: 
+      objectReference: {fileID: 1274480663}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: clickAction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: defaultFocus
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
@@ -8349,6 +8458,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2552555218248429931, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
   m_PrefabInstance: {fileID: 778739603}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1349266275 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+  m_PrefabInstance: {fileID: 778739603}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349266274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41315e46886df946a8f097d7f9e4c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1359739954
 GameObject:
   m_ObjectHideFlags: 0
@@ -9240,6 +9360,8 @@ MonoBehaviour:
   screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
   input: {fileID: 876631145}
   switchImage: {fileID: 1569710203}
+  focusBtn: {fileID: 0}
+  oldfocusBtn: {fileID: 0}
 --- !u!4 &1600059366
 Transform:
   m_ObjectHideFlags: 0
@@ -9366,6 +9488,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2552555218248429931, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
   m_PrefabInstance: {fileID: 519339638}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1643224233 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+  m_PrefabInstance: {fileID: 519339638}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643224232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41315e46886df946a8f097d7f9e4c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1649357503 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+  m_PrefabInstance: {fileID: 1337295752}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a475a13cfe6e5d49a9e4c625a6e2428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1658508820
 GameObject:
   m_ObjectHideFlags: 0
@@ -9559,6 +9703,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2552555218248429931, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
   m_PrefabInstance: {fileID: 971800051}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1671276896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+  m_PrefabInstance: {fileID: 971800051}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671276895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41315e46886df946a8f097d7f9e4c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1725553471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11701,6 +11856,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2552555218248429928, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
   m_PrefabInstance: {fileID: 2552555216753884374}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2037059007 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+  m_PrefabInstance: {fileID: 2552555216753884374}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41315e46886df946a8f097d7f9e4c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2052131786
 GameObject:
   m_ObjectHideFlags: 0
@@ -12873,6 +13039,18 @@ PrefabInstance:
     - target: {fileID: 2552555218248429928, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonUp
+      value: 
+      objectReference: {fileID: 1671276896}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: buttonRight
+      value: 
+      objectReference: {fileID: 1671276896}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: defaultFocus
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: lineConectObject
