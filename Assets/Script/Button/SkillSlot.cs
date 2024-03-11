@@ -18,7 +18,7 @@ public class SkillSlot : Button
     private SkillSelectUIController skillSelectUIController;
 
     // マウスポインターが乗った時の処理
-    protected override void EnterProcess()
+    public override void EnterProcess()
     {
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, true);
@@ -29,14 +29,14 @@ public class SkillSlot : Button
     }
 
     // マウスポインターが離れたときの処理
-    protected override void ExitProcess()
+    public override void ExitProcess()
     {
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, false);
     }
 
     // クリックされたときの処理
-    protected override void ClickProcess()
+    public override void ClickProcess()
     {
         // 既に選択されたスキルでなければ、選択しているスキルスロットを設定
         if (CheckDoubleSelect(skillNum))

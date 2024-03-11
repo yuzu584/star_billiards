@@ -112,19 +112,19 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
     }
 
     // マウスポインターが乗った時の処理
-    protected virtual void EnterProcess()
+    public virtual void EnterProcess()
     {
         Debug.Log("ポインターが乗った時の処理が設定されていません。");
     }
 
     // マウスポインターが離れたときの処理
-    protected virtual void ExitProcess()
+    public virtual void ExitProcess()
     {
         Debug.Log("ポインターが離れた時の処理が設定されていません。");
     }
 
     // クリックされたときの処理
-    protected virtual void ClickProcess()
+    public virtual void ClickProcess()
     {
         Debug.Log("クリック時の処理が設定されていません。");
     }

@@ -11,21 +11,21 @@ public class BackButton : Button
     private int oldScreen = 0; // 前回のスクリーン(戻り先の画面)
 
     // マウスポインターが乗った時の処理
-    protected override void EnterProcess()
+    public override void EnterProcess()
     {
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, true);
     }
 
     // マウスポインターが離れたときの処理
-    protected override void ExitProcess()
+    public override void ExitProcess()
     {
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, false);
     }
 
     // クリックされたときの処理
-    protected override void ClickProcess()
+    public override void ClickProcess()
     {
         // 画面番号を前の画面にする
         screenController.ScreenNum = oldScreen;

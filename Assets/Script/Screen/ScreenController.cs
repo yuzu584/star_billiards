@@ -114,6 +114,11 @@ public class ScreenController : Lerp
     {
         input.game_OnPauseDele += OpenPause;
         input.ui_OnMoveDele += ChangeBtnFocus;
+        input.ui_OnPositiveDele += (float value) =>
+        {
+            focusBtn.ClickProcess();
+        };
+
         input.ui_OnNegativeDele += (float value) =>
         {
             if (ScreenLoot > 0)

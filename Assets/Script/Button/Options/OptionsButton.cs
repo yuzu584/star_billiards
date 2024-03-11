@@ -11,21 +11,21 @@ public class OptionsButton : Button
     [SerializeField] private int num = 0; // 遷移先の設定項目の番号
 
     // マウスポインターが乗った時の処理
-    protected override void EnterProcess()
+    public override void EnterProcess()
     {
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, true);
     }
 
     // マウスポインターが離れたときの処理
-    protected override void ExitProcess()
+    public override void ExitProcess()
     {
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, false);
     }
 
     // クリックされたときの処理
-    protected override void ClickProcess()
+    public override void ClickProcess()
     {
         // 設定画面の階層を変更
         _optionsController.loot = (OptionsController.Loot)Enum.ToObject(typeof(OptionsController.Loot), num);

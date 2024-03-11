@@ -25,7 +25,7 @@ public class StageButton : Button
     private StageController stageController;
 
     // マウスポインターが乗った時の処理
-    protected override void EnterProcess()
+    public override void EnterProcess()
     {
         // 階層を設定
         screenController.ScreenLoot = 0;
@@ -35,14 +35,14 @@ public class StageButton : Button
     }
 
     // マウスポインターが離れたときの処理
-    protected override void ExitProcess()
+    public override void ExitProcess()
     {
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, false);
     }
 
     // クリックされたときの処理
-    protected override void ClickProcess()
+    public override void ClickProcess()
     {
         // アニメーション中ではないなら
         if (!anim)

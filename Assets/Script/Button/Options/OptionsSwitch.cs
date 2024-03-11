@@ -13,21 +13,21 @@ public class OptionsSwitch : Button
     private int nowState = 0;                                      // 現在のボタンの状態
 
     // マウスポインターが乗った時の処理
-    protected override void EnterProcess()
+    public override void EnterProcess()
     {
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, true);
     }
 
     // マウスポインターが離れたときの処理
-    protected override void ExitProcess()
+    public override void ExitProcess()
     {
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, false);
     }
 
     // クリックされたときの処理
-    protected override void ClickProcess()
+    public override void ClickProcess()
     {
         ++nowState;
         if(nowState > (stateText.Length - 1))
