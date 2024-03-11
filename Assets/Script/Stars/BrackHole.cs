@@ -23,14 +23,40 @@ public class BrackHole : MonoBehaviour
         // 当たり判定に触れたオブジェクトの数繰り返す
         foreach (var hit in hits)
         {
-            // 当たったオブジェクトのRigidBodyを取得
+            // プレイヤーのRigidBodyを取得
+            Rigidbody hitObj = null;
+            if (hit.collider.gameObject.tag == "Player")
+                hitObj = hit.collider.gameObject.GetComponent<Rigidbody>();
+
+            // RigidBodyが取得できたなら
+            if (hitObj != null)
+            {
+                // 力を加えるベクトルを設定(スケールによって力が変わる)
+                Vector3 direction = (this.gameObject.transform.position - hitObj.position) * this.transform.localScale.x / 8;
+
+                // オブジェクトとの距離が近いほど強い力を加える
+                float distance = Vector3.Distance(this.gameObject.transform.position, hitObj.position);
+                hitObj.AddForce(direction / distance);
+            }
+        }
+
+        // 指定した半径の当たり判定を生成
+        hits = Physics.SphereCastAll(
+            transform.position,
+            100.0f,
+            Vector3.forward);
+
+        // 当たり判定に触れたオブジェクトの数繰り返す
+        foreach (var hit in hits)
+        {
+            // 近くののRigidBodyを取得
             Rigidbody hitObj = hit.collider.gameObject.GetComponent<Rigidbody>();
 
             // RigidBodyが取得できたなら
             if (hitObj != null)
             {
                 // 力を加えるベクトルを設定(スケールによって力が変わる)
-                Vector3 direction = (this.gameObject.transform.position - hitObj.position) * this.transform.localScale.x / 4;
+                Vector3 direction = (this.gameObject.transform.position - hitObj.position) * this.transform.localScale.x;
 
                 // オブジェクトとの距離が近いほど強い力を加える
                 float distance = Vector3.Distance(this.gameObject.transform.position, hitObj.position);

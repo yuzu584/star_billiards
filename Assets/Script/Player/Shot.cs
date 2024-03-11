@@ -99,7 +99,15 @@ public class Shot : MonoBehaviour
             cRb.constraints = RigidbodyConstraints.FreezePosition;
             Invoke("AddPower", Mathf.Clamp(colObjVelocity.magnitude / 10000, 0.1f, 0.5f));
         }
-        // タグがPlanet以外なら
+
+        // 衝突したオブジェクトのタグがFixedStarなら
+        else if (collision.gameObject.tag == "FixedStar")
+        {
+            // エネルギーを0にする(ゲームオーバー)
+            energyController.energy = 0;
+        }
+
+        // タグがPlanetとFixedStar以外なら
         else
         {
             // プレイヤーを加速させる

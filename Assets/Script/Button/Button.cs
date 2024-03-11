@@ -73,10 +73,10 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
     protected Sound sound;
     protected InputController input;
 
-    [SerializeField] protected AudioClip EnterSound;      // ポインターが乗った時に再生する音声ファイル
-    [SerializeField] protected AudioClip ClickSound;      // ボタンクリック時に再生する音声ファイル
     [SerializeField] protected int loot = 0;              // フォーカスされる階層
     [SerializeField] protected bool defaultFocus = false; // 最初にフォーカスするボタンか
+    public AudioClip EnterSound;                          // ポインターが乗った時に再生する音声ファイル
+    public AudioClip ClickSound;                          // ボタンクリック時に再生する音声ファイル
     public Button buttonUp;                               // 自分の上に位置するボタン
     public Button buttonDown;                             // 自分の下に位置するボタン
     public Button buttonLeft;                             // 自分の左に位置するボタン
@@ -374,6 +374,11 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
                 if (defaultFocus)
                 {
                     screenController.SetFocusBtn(this);
+
+                    // 音を再生
+                    if (sound != null)
+                        StartCoroutine(sound.Play(EnterSound));
+
                     EnterProcess();
                 }
             }
@@ -382,6 +387,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
 
     protected void OnEnable()
     {
+        // screenControllerが取得されていなければ取得
         if (screenController == null)
         {
             ScreenController = GameObject.Find("ScreenController");
@@ -394,6 +400,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
             if (defaultFocus)
             {
                 screenController.SetFocusBtn(this);
+
                 EnterProcess();
             }
         }

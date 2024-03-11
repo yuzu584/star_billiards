@@ -53,12 +53,15 @@ public class BackButton : Button
         screenController.changeScreen += SetOldScreen;
         input.ui_OnNegativeDele += (float value) =>
         {
-            if (screenController.ScreenLoot <= 0)
+            // 階層が0以下かつオブジェクトが有効なら
+            if ((screenController.ScreenLoot <= 0) && (this.gameObject.activeInHierarchy))
             {
-                if(screenController.ScreenNum == 1)
-                    screenController.ScreenNum = 0;
-                else
-                    screenController.ScreenNum = oldScreen;
+                //音を再生
+                if (sound != null)
+                    StartCoroutine(sound.Play(ClickSound));
+
+                // 前の画面に戻る
+                screenController.ScreenNum = oldScreen;
             }
 
         };

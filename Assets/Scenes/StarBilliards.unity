@@ -3534,6 +3534,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: num
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: buttonUp
       value: 
       objectReference: {fileID: 0}
@@ -3555,7 +3559,7 @@ PrefabInstance:
       objectReference: {fileID: 1349266274}
     - target: {fileID: 2552555218248429931, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: m_Name
-      value: Solar System (1)
+      value: Solar System 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
@@ -4346,7 +4350,7 @@ PrefabInstance:
       objectReference: {fileID: 1643224232}
     - target: {fileID: 2552555218248429931, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: m_Name
-      value: test_2
+      value: Solar System 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
@@ -4698,6 +4702,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1773446901}
     - target: {fileID: 2278713236912858717, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: defaultFocus
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278713236912858717, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: _optionsController
       value: 
       objectReference: {fileID: 1225636075}
@@ -4923,6 +4931,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: num
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: buttonUp
       value: 
       objectReference: {fileID: 0}
@@ -4932,7 +4944,7 @@ PrefabInstance:
       objectReference: {fileID: 1643224233}
     - target: {fileID: 2552555218248429931, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: m_Name
-      value: Solar System (2)
+      value: Solar System 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
@@ -6324,7 +6336,7 @@ PrefabInstance:
       objectReference: {fileID: 524871096}
     - target: {fileID: 2552555218248429931, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: m_Name
-      value: test_1
+      value: Solar System 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
@@ -9615,6 +9627,7 @@ MonoBehaviour:
   pauseUIController: {fileID: 1148952472}
   screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
   input: {fileID: 876631145}
+  sound: {fileID: 1210904629}
   switchImage: {fileID: 1569710203}
   screenNum: 0
   screenLoot: 0
@@ -13522,7 +13535,7 @@ PrefabInstance:
       objectReference: {fileID: 1671276895}
     - target: {fileID: 2552555218248429931, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: m_Name
-      value: Solar System
+      value: Solar System 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}

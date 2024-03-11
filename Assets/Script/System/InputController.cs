@@ -127,70 +127,50 @@ public class InputController : MonoBehaviour
     public void Game_OnMove(InputAction.CallbackContext context)
     {
         game_OnMoveDele(context.ReadValue<Vector2>());
-
-        Debug.Log("move");
     }
 
     public void Game_OnLook(InputAction.CallbackContext context)
     {
         game_OnLookDele(context.ReadValue<Vector2>());
-
-        Debug.Log("look");
     }
 
     public void Game_OnShot(InputAction.CallbackContext context)
     {
         game_OnShotDele(context.ReadValue<float>());
-
-        Debug.Log("shot");
     }
 
     public void Game_OnAim(InputAction.CallbackContext context)
     {
         game_OnAimDele(context.ReadValue<float>());
-
-        Debug.Log("aim");
     }
 
     public void Game_OnUseSkill(InputAction.CallbackContext context)
     {
         game_OnUseSkillDele(context.ReadValue<float>());
-
-        Debug.Log("useskill");
     }
 
     public void Game_OnChangeSkill(InputAction.CallbackContext context)
     {
         game_OnChangeSkillDele(context.ReadValue<float>());
-
-        Debug.Log("changeskill");
     }
 
     public void Game_OnPause(InputAction.CallbackContext context)
     {
         game_OnPauseDele(context.ReadValue<float>());
-
-        Debug.Log("pause");
     }
 
     public void UI_OnMove(InputAction.CallbackContext context)
     {
         ui_OnMoveDele(context.ReadValue<Vector2>());
-
-        Debug.Log("move");
     }
 
     public void UI_OnPositive(InputAction.CallbackContext context)
     {
         ui_OnPositiveDele(context.ReadValue<float>());
-
-        Debug.Log("positive");
     }
 
     public void UI_OnNegative(InputAction.CallbackContext context)
     {
         ui_OnNegativeDele(context.ReadValue<float>());
-
-        Debug.Log("negative");
     }
 }

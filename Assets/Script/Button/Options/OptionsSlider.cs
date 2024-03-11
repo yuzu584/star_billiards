@@ -63,4 +63,10 @@ public class OptionsSlider : Button
     {
         state.text = slider.value.ToString("f1");
     }
+
+    // スライダーを動かす(ボタンで)
+    public void MoveSlider(float value)
+    {
+        slider.value += Mathf.Round(value) * 10;
+    }
 }

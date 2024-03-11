@@ -13,6 +13,7 @@ public class ScreenController : Lerp
     [SerializeField] private PauseUIController pauseUIController;       // InspectorでPauseUIControllerを指定
     [SerializeField] private ScreenData screenData;                     // InspectorでScreenDataを指定
     [SerializeField] private InputController input;                     // InspectorでInputControllerを指定
+    [SerializeField] private Sound sound;                               // InspectorでSoundを指定
     [SerializeField] private Image switchImage;                         // 画面遷移時の画像
 
     [System.NonSerialized] public bool canStageDraw = false;            // ステージを描画可能か
@@ -114,15 +115,30 @@ public class ScreenController : Lerp
     {
         input.game_OnPauseDele += OpenPause;
         input.ui_OnMoveDele += ChangeBtnFocus;
+        input.ui_OnMoveDele += MoveSlider;
+
+        // UI_Positive入力時のイベントを登録
         input.ui_OnPositiveDele += (float value) =>
         {
+            // 音を再生
+            StartCoroutine(sound.Play(focusBtn.ClickSound));
+
+            // ボタンクリック時の処理
             focusBtn.ClickProcess();
         };
 
+        // UI_Negative入力時のイベントを登録
         input.ui_OnNegativeDele += (float value) =>
         {
+            // 階層が0より上なら1下げる
             if (ScreenLoot > 0)
                 ScreenLoot -= (int)value;
+
+            // メインメニューならタイトル画面に戻る
+            else if (ScreenNum == 1)
+            {
+                ScreenNum = 0;
+            }
         };
     }
 
@@ -208,6 +224,15 @@ public class ScreenController : Lerp
                 SetFocusBtn(focusBtn.buttonUp);
             }
         }
+    }
+
+    // スライダーを動かす(ボタンで)
+    void MoveSlider(Vector2 mVec)
+    {
+        // フォーカスされているボタンからOptionsSliderが取得出来たら
+        var sliderBtn = focusBtn.gameObject.GetComponent<OptionsSlider>();
+        if (sliderBtn != null)
+            sliderBtn.MoveSlider(mVec.x);
     }
 
     // フォーカスするボタンを設定
