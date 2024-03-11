@@ -28,6 +28,7 @@ public class BackButton : Button
     public override void ClickProcess()
     {
         // ‰æ–Ê”Ô†‚ğ‘O‚Ì‰æ–Ê‚É‚·‚é
+        screenController.ScreenLoot = 0;
         screenController.ScreenNum = oldScreen;
     }
 
