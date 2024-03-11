@@ -24,7 +24,8 @@ public class SkillSlot : Button
         BtnAnimProcess(imageStructs, textStructs, true);
 
         // スキルの情報を描画
-        skillSelectUIController.DrawSkillInfo(skillNum);
+        if(skillSelectUIController != null)
+            skillSelectUIController.DrawSkillInfo(skillNum);
     }
 
     // マウスポインターが離れたときの処理
