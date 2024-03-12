@@ -375,10 +375,6 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
                 {
                     screenController.SetFocusBtn(this);
 
-                    // ‰¹‚ğÄ¶
-                    if (sound != null)
-                        StartCoroutine(sound.Play(EnterSound));
-
                     EnterProcess();
                 }
             }

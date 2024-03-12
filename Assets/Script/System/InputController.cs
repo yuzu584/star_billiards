@@ -41,6 +41,8 @@ public class InputController : MonoBehaviour
     [SerializeField] private bool IsPressed_Game_Shot;
     [SerializeField] private bool IsPressed_UI_Move;
 
+    public bool canInput = true; // InputSystemの入力が可能か
+
     private void Awake()
     {
         // インスタンスを生成
@@ -101,6 +103,8 @@ public class InputController : MonoBehaviour
     // 入力状態の有効無効を設定
     public void SetInputs()
     {
+        canInput = true;
+
         // 入力を無効化
         switch (screenData.screenList[screenController.oldScreenNum].inputType)
         {
@@ -122,6 +126,13 @@ public class InputController : MonoBehaviour
                 actions.UI.Enable();
                 break;
         }
+    }
+
+    // 全ての入力を無効化
+    public void DisableInputs()
+    {
+        canInput = false;
+        actions.Disable();
     }
 
     public void Game_OnMove(InputAction.CallbackContext context)
