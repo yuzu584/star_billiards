@@ -251,66 +251,11 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""id"": ""199c674d-8ac1-45cd-8d0c-36e2db57d89e"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=0.3,y=0.3)"",
+                    ""processors"": ""ScaleVector2"",
                     ""groups"": """",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""5ebb693e-c6cf-4cde-a9b7-e329c6c7dd50"",
-                    ""path"": ""2DVector(mode=2)"",
-                    ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=0.3,y=0.3)"",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""b3a3dff3-a778-4ee1-9afd-7e1b134a3608"",
-                    ""path"": ""<HID::Logicool Logicool Dual Action>/rz"",
-                    ""interactions"": """",
-                    ""processors"": ""Clamp(min=-1),Invert"",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""96581645-edf6-4070-b249-2c5c846b3497"",
-                    ""path"": ""<HID::Logicool Logicool Dual Action>/rz"",
-                    ""interactions"": """",
-                    ""processors"": ""Clamp(max=1)"",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""1a0c8557-0482-4959-b569-4559a935e987"",
-                    ""path"": ""<HID::Logicool Logicool Dual Action>/z"",
-                    ""interactions"": """",
-                    ""processors"": ""Clamp(min=-1),Invert"",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""3c75484a-c036-42b8-8cf9-1bd3b650f877"",
-                    ""path"": ""<HID::Logicool Logicool Dual Action>/z"",
-                    ""interactions"": """",
-                    ""processors"": ""Clamp(max=1)"",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -452,6 +397,61 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ChangeSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""5ebb693e-c6cf-4cde-a9b7-e329c6c7dd50"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": ""ScaleVector2"",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""b3a3dff3-a778-4ee1-9afd-7e1b134a3608"",
+                    ""path"": ""<HID::Logicool Logicool Dual Action>/rz"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(min=-1),Invert"",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""96581645-edf6-4070-b249-2c5c846b3497"",
+                    ""path"": ""<HID::Logicool Logicool Dual Action>/rz"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(max=1)"",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""1a0c8557-0482-4959-b569-4559a935e987"",
+                    ""path"": ""<HID::Logicool Logicool Dual Action>/z"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(min=-1),Invert"",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""3c75484a-c036-42b8-8cf9-1bd3b650f877"",
+                    ""path"": ""<HID::Logicool Logicool Dual Action>/z"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(max=1)"",
+                    ""groups"": """",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
