@@ -13,7 +13,7 @@ namespace Const
         public const float SPEED_MAINTENANCE_RATE = 1.008f;                                             // プレイヤーの速度維持率
         public const float SPEED_REDUCTION_RATE = 0.95f;                                                // プレイヤーの速度減少率
         public const float SPEED_THRESHOLD = 0.01f;                                                     // プレイヤーの速度のしきい値
-        public const int SKILL_NUM = 5;                                                                 // スキルの数
+        public const int SKILL_NUM = 10;                                                                // スキルの数
         public static readonly string[] SKILL_NAME = new string[SKILL_NUM]                              // スキル名
         {
             "SuperCharge",
@@ -21,30 +21,50 @@ namespace Const
             "Huge",
             "GravityWave",
             "Frieze",
+            "GrapplingHook",
+            "Slow",
+            "InertialControl",
+            "Blink",
+            "TeleportAnchor",
         };
         public static readonly int[] SKILL_ENERGY_USAGE = new int[SKILL_NUM]                           // スキルのエネルギー消費量
         {
-            10,
             20,
+            20,
+            80,
             100,
             50,
+            50,
+            100,
+            50,
+            20,
             50,
         };
         public static readonly float[] SKILL_COOLDOWN = new float[SKILL_NUM]                           // スキルのクールダウン
         {
-            1.0f,
-            1.0f,
-            1.0f,
-            1.0f,
-            1.0f,
+            3.0f,
+            3.0f,
+            5.0f,
+            5.0f,
+            3.0f,
+            3.0f,
+            5.0f,
+            3.0f,
+            3.0f,
+            5.0f,
         };
         public static readonly float[] SKILL_EFFECT_TIME = new float[SKILL_NUM]                        // スキルの効果時間
         {
             10.0f,
             10.0f,
             10.0f,
-            1.0f,
-            1.0f,
+            0.5f,
+            0.5f,
+            0.5f,
+            10.0f,
+            10.0f,
+            0.5f,
+            0.5f,
         };
         public static readonly string[] SKILL_DETAILS = new string[SKILL_NUM]                          // スキルの効果を述べた文章
         {
@@ -53,6 +73,11 @@ namespace Const
             "Player size x2",
             "Emit a shock wave",
             "Stop the movement",
+            "Attract the planets",
+            "Slow down time",
+            "Easier to control inertia",
+            "Move quickly",
+            "Set up a teleport anchor. Reuse the skill to move to the teleport anchor location.",
         };
         public const float PLAYER_DEFAULT_SPEED = 1.0f;                                              // プレイヤーの移動速度の初期値
         public const int DEFAULT_CHARGE_SPEED = 1;                                                   // チャージ速度の初期値

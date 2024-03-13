@@ -8,6 +8,7 @@ using Const;
 public class SkillSlot : Button
 {
     [SerializeField] private int skillNum = 0;     // スキル番号
+    [SerializeField] private Text nameText;        // スキル名を表すテキスト
     [SerializeField] private Text selectNumText;   // スキルの選択した順を表すテキスト
 
     // Findで探すもの
@@ -43,6 +44,12 @@ public class SkillSlot : Button
         {
             SetSelectSlot(skillNum);
         }
+    }
+
+    // スキル名を表すテキストを設定
+    void SetNameText()
+    {
+        nameText.text = AppConst.SKILL_NAME[skillNum];
     }
 
     // スキルの選択した順を表すテキストを設定
@@ -100,6 +107,9 @@ public class SkillSlot : Button
 
         skillController = Player.GetComponent<SkillController>();
         skillSelectUIController = UIFunctionController.GetComponent<SkillSelectUIController>();
+
+        // スキル名のテキストを設定
+        SetNameText();
     }
 
     void Update()
