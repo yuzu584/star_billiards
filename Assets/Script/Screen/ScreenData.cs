@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Const;
-
 // スクリーンのリスト
 [CreateAssetMenu(menuName = "MyScriptable/Create ScreenData")]
 public class ScreenData : ScriptableObject

@@ -52,6 +52,7 @@ public class ScreenController : Lerp
     public ChangeScreen changeLoot;
     public Button focusBtn;                  // フォーカスしているボタン
     public Button oldfocusBtn;               // フォーカスされていたボタン
+    public Scrollbar focusScrollbar;         // フォーカスしているスクロールバー
 
     private bool changeStageClearScreen = false; // ステージクリア画面に遷移したかどうか
     
@@ -249,6 +250,26 @@ public class ScreenController : Lerp
             // フォーカスが外れたときの処理
             if(oldfocusBtn != null)
                 oldfocusBtn.FocusProcess(false);
+        }
+
+        // スクロールバーのスクロール処理
+        // スクロールが必要な座標を計算
+        if(focusScrollbar != null)
+        {
+            float pos;
+            var instance = ScrollBarController.instance;
+            int num = instance.num;
+            pos = instance.scrollBarStruct[num].rTransform.sizeDelta.y / 2;
+            pos += instance.scrollBarStruct[num].rTransform.localPosition.y;
+
+            // フォーカスしたボタンが見切れそうな座標ならスクロール
+            if (focusBtn.gameObject.transform.localPosition.y > pos)
+                instance.Scroll(focusScrollbar, true);
+
+            pos = -(instance.scrollBarStruct[num].rTransform.sizeDelta.y / 2);
+            pos += instance.scrollBarStruct[num].rTransform.localPosition.y;
+            if (focusBtn.gameObject.transform.localPosition.y < pos)
+                instance.Scroll(focusScrollbar, false);
         }
     }
 }
