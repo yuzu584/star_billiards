@@ -263,12 +263,12 @@ public class ScreenController : Lerp
             pos += instance.scrollBarStruct[num].rTransform.localPosition.y;
 
             // フォーカスしたボタンが見切れそうな座標ならスクロール
-            if (focusBtn.gameObject.transform.localPosition.y > pos)
+            if (focusBtn.gameObject.transform.localPosition.y + 230.0f> pos)
                 instance.Scroll(focusScrollbar, true);
 
             pos = -(instance.scrollBarStruct[num].rTransform.sizeDelta.y / 2);
             pos += instance.scrollBarStruct[num].rTransform.localPosition.y;
-            if (focusBtn.gameObject.transform.localPosition.y < pos)
+            if (focusBtn.gameObject.transform.localPosition.y + 230.0f < pos)
                 instance.Scroll(focusScrollbar, false);
         }
     }
