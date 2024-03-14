@@ -30,8 +30,8 @@ public class SphereRay : MonoBehaviour
             hitObjectTag = hit.collider.gameObject.tag;
         }
 
-        // ゲーム中なら描画
-        if ((screenController.ScreenNum == 5) && (hitObjectName != "Sphere") && (hitObjectName != "Player"))
+        // ゲーム中かつ対象が惑星なら描画
+        if ((screenController.ScreenNum == 5) && (hitObjectTag == "Planet"))
         {
             // 非表示なら表示
             if (!uIController.planetInfoUI.allPlanetInfo.activeSelf)
@@ -39,9 +39,18 @@ public class SphereRay : MonoBehaviour
 
             // 惑星情報UIのリングを描画
             planetInfoUIController.DrawPlanetInfoUI(hitObjectPosition, hitObjectName);
+
+            // 視点移動速度を遅くする
+            TPSCamera.instance.rate = AppConst.CAMERA_SLOW_SPEED_RATE;
         }
-        // 表示されているなら非表示
-        else if(uIController.planetInfoUI.allPlanetInfo.activeSelf)
+        // 表示されているなら
+        else if (uIController.planetInfoUI.allPlanetInfo.activeSelf)
+        {
+            // 非表示
             uIController.planetInfoUI.allPlanetInfo.SetActive(false);
+
+            // 視点移動速度を元に戻す
+            TPSCamera.instance.rate = AppConst.CAMERA_DEFAULT_SPEED_RATE;
+        }
     }
 }

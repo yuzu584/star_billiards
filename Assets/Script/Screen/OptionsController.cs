@@ -21,7 +21,6 @@ public class OptionsController : MonoBehaviour
     private int oldLoot = 0;  // 1フレーム前の階層
 
     [SerializeField] private OptionsUIController _optionsUIController;
-    [SerializeField] private FOV fov;
     [SerializeField] private GameObject[] lootObj; // 階層ごとのゲームオブジェクト
 
 
@@ -40,7 +39,6 @@ public class OptionsController : MonoBehaviour
     void OnEnable()
     {
         loot = Loot.Top;
-        fov.ResetFOV();
     }
 
     void Start()

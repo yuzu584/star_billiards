@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 視野角を変更する
-public class FOV : MonoBehaviour
+public class FOV : Singleton<FOV>
 {
     [SerializeField] private GameObject player; // 速度を参照するオブジェクト
     [SerializeField] private int Fov = 60;      // 視野角

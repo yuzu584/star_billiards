@@ -8,6 +8,7 @@ public class Screen : MonoBehaviour
     [SerializeField] private int num = 0;                       // このGameObjectを表示する画面番号
     [SerializeField] private int loot = 0;                      // このGameObjectを表示する画面の階層
     [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
+    [SerializeField] private bool resetFov = false;             // スクリーンアクティブ時に視野角を初期値にするか
 
     // 表示する画面を切り替え
     public void SwitchScreen()
@@ -16,6 +17,12 @@ public class Screen : MonoBehaviour
         if((screenController.ScreenNum == num) && (screenController.ScreenLoot == loot) && (!gameObject.activeSelf))
         {
             gameObject.SetActive(true);
+
+            if(resetFov)
+            {
+                // 視野角を初期値にする
+                FOV.instance.ResetFOV();
+            }
         }
         // 違うなら非表示
         else if (((screenController.ScreenNum != num) || (screenController.ScreenLoot != loot)) && (gameObject.activeSelf))

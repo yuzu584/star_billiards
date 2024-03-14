@@ -21,12 +21,13 @@ public class Button1 : Button
 
     public enum ClickAction // ボタンを押したときの効果
     {
-        None,                 // 効果なし
-        ChangeScreen,         // 指定した画面に遷移
-        StageStart,           // ステージスタート
-        CreatePlanetDirArrow, // 惑星の方向を指し示す矢印を生成
-        ApplySkill,           // 選択したスキルを適用
-        ResetSelectSkill,     // 選択したスキルをリセット
+        None,                   // 効果なし
+        ChangeScreen,           // 指定した画面に遷移
+        StageStart,             // ステージスタート
+        CreatePlanetDirArrow,   // 惑星の方向を指し示す矢印を生成
+        ApplySkill,             // 選択したスキルを適用
+        ResetSelectSkill,       // 選択したスキルをリセット
+        ExitGame,               // ゲーム終了
     }
 
     [SerializeField] private ClickAction clickAction;
@@ -52,20 +53,23 @@ public class Button1 : Button
         // ボタンを押したときの効果によって分岐
         switch (clickAction)
         {
-            case ClickAction.ChangeScreen:         // 画面遷移
+            case ClickAction.ChangeScreen:          // 画面遷移
                 ChangeScreen();
                 break;
-            case ClickAction.StageStart:           // ステージスタート
+            case ClickAction.StageStart:            // ステージスタート
                 StageStart();
                 break;
-            case ClickAction.CreatePlanetDirArrow: // 惑星の方向を指し示す矢印を生成
+            case ClickAction.CreatePlanetDirArrow:  // 惑星の方向を指し示す矢印を生成
                 CreatePlanetDirArrow();
                 break;
-            case ClickAction.ApplySkill:           // 選択したスキルを適用
+            case ClickAction.ApplySkill:            // 選択したスキルを適用
                 ApplySkill();
                 break;
-            case ClickAction.ResetSelectSkill:     // 選択したスキルをリセット
+            case ClickAction.ResetSelectSkill:      // 選択したスキルをリセット
                 ResetSelectSkill();
+                break;
+            case ClickAction.ExitGame:              // ゲーム終了
+                ExitGame();
                 break;
             default:
                 break;
@@ -110,6 +114,16 @@ public class Button1 : Button
     void ResetSelectSkill()
     {
         skillController.InitSelectSlot();
+    }
+
+    // ゲームを終了
+    void ExitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; //ゲームプレイ終了
+#else
+        Application.Quit();//ゲームプレイ終了
+#endif
     }
 
     new void OnEnable()

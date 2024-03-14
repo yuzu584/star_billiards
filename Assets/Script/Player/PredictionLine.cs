@@ -10,7 +10,6 @@ public class PredictionLine : MonoBehaviour
     [SerializeField] private GameObject target;                 // Rayを出すオブジェクト
     [SerializeField] private GameObject directionTarget;        // Rayの向きを決めるオブジェクト
     [SerializeField] private LineRenderer lineRenderer;         // Inspectorでlinerendererを指定
-    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
     [SerializeField] private EnergyController energyController; // InspectorでEnergyControllerを指定
     [SerializeField] private InputController input;             // InspectorでInputControllerを指定
 

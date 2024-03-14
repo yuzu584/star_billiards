@@ -13,31 +13,31 @@ MonoBehaviour:
   m_Name: Stage Data
   m_EditorClassIdentifier: 
   stageList:
-  - stageName: Solar system 1
+  - stageName: Stage 1
     stagePrefab: {fileID: 6387989875076711302, guid: d4e09ee214d56a44aa19061d05119c45, type: 3}
     fixedStarNum: 1
-    planetNum: 8
+    planetNum: 1
     missionNum: 0
-    timeLimit: 180
-  - stageName: Solar system 2
+    timeLimit: 300
+  - stageName: Stage 2
     stagePrefab: {fileID: 6387989875076711302, guid: ee44c906828ac0a44a7ef1aed104e74c, type: 3}
     fixedStarNum: 1
-    planetNum: 8
+    planetNum: 3
     missionNum: 0
     timeLimit: 180
-  - stageName: Solar system 3
+  - stageName: Stage 3
     stagePrefab: {fileID: 6387989875076711302, guid: 8ee7740134f67fc4380b09d239a49009, type: 3}
     fixedStarNum: 1
-    planetNum: 8
+    planetNum: 5
     missionNum: 0
     timeLimit: 120
-  - stageName: Solar system 4
+  - stageName: Stage 4
     stagePrefab: {fileID: 6387989875076711302, guid: 5fa377b501854b24c90649ba6b00352c, type: 3}
     fixedStarNum: 1
-    planetNum: 8
+    planetNum: 5
     missionNum: 0
-    timeLimit: 120
-  - stageName: Solar system 5
+    timeLimit: 90
+  - stageName: Stage 5
     stagePrefab: {fileID: 6387989875076711302, guid: 72f5477007aa34349b049d8919e857c3, type: 3}
     fixedStarNum: 1
     planetNum: 8

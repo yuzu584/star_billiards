@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Const;
+
 // カメラの視点移動
-public class TPSCamera : MonoBehaviour
+public class TPSCamera : Singleton<TPSCamera>
 {
-    [SerializeField] private InputController input; // InspectorでInputControllerを指定
-    [SerializeField] private GameObject player;     // プレイヤー
-    [SerializeField] private float speed = 1.0f;    // 視点移動速度
+    [SerializeField] private InputController input;             // InspectorでInputControllerを指定
+    [SerializeField] private GameObject player;                 // プレイヤー
+    [SerializeField] private float speed = 1.0f;                // 視点移動速度
+    public float rate = AppConst.CAMERA_DEFAULT_SPEED_RATE;     // 視点移動速度の倍率
 
     void Start()
     {
@@ -21,14 +24,14 @@ public class TPSCamera : MonoBehaviour
         if (Mathf.Abs(vec.x) > 0.001f)
         {
             // 回転軸はワールド座標のY軸
-            transform.RotateAround(player.transform.position, transform.up, vec.x * speed);
+            transform.RotateAround(player.transform.position, transform.up, (vec.x * speed) * rate);
         }
 
         // Y方向に一定量移動していれば縦回転
         if (Mathf.Abs(vec.y) > 0.001f)
         {
             // 回転軸はカメラ自身のX軸
-            transform.RotateAround(player.transform.position, transform.right, -vec.y * speed);
+            transform.RotateAround(player.transform.position, transform.right, (-vec.y * speed) * rate);
         }
     }
 }
