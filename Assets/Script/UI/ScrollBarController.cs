@@ -12,11 +12,12 @@ public class ScrollBarController : Singleton<ScrollBarController>
     [System.Serializable]
     public struct ScrollBarStruct
     {
-        public Scrollbar scrollbar;      // スクロールバー
-        public RectTransform rTransform; // 親オブジェクトのRectTransform
-        public int focusScreen;          // スクロールバーをフォーカスする画面番号
-        public GameObject contentObj;    // スクロールする要素の親オブジェクト
-        public int amount;               // スクロールする要素の数
+        public Scrollbar scrollbar;             // スクロールバー
+        public RectTransform parentRect;        // 親オブジェクトのRectTransform
+        public RectTransform contentParenRect;  // スクロールされるコンテンツの親オブジェクトのRectTransform
+        public int focusScreen;                 // スクロールバーをフォーカスする画面番号
+        public GameObject contentObj;           // スクロールする要素の親オブジェクト
+        public int amount;                      // スクロールする要素の数
     }
 
     public int num = 0;
@@ -62,7 +63,7 @@ public class ScrollBarController : Singleton<ScrollBarController>
     }
 
     // スクロール処理
-    public void Scroll(Scrollbar sBar, bool up)
+    public void Scroll(Scrollbar sBar, bool up, float value)
     {
         // スクロールする要素数を代入
         int amount = scrollBarStruct[num].amount;
@@ -71,14 +72,14 @@ public class ScrollBarController : Singleton<ScrollBarController>
         if(up)
         {
             // バーを上に動かす
-            sBar.value += (1.0f / amount);
+            sBar.value += (1.0f / amount / value);
         }
 
         // 下にスクロールするなら
         else
         {
             // バーを下に動かす
-            sBar.value -= (1.0f / amount);
+            sBar.value -= (1.0f / amount / value);
         }
     }
 }

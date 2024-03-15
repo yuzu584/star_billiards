@@ -256,20 +256,34 @@ public class ScreenController : Lerp
         // スクロールが必要な座標を計算
         if(focusScrollbar != null)
         {
-            float pos;
-            var instance = ScrollBarController.instance;
-            int num = instance.num;
-            pos = instance.scrollBarStruct[num].rTransform.sizeDelta.y / 2;
-            pos += instance.scrollBarStruct[num].rTransform.localPosition.y;
+            float posY;                                     // 基準となるY座標
+            float maxY;                                     // スクロールを行う一番上のY座標
+            float minY;                                     // スクロールを行う一番下のY座標
+            float value;                                    // スクロール量
+            int num;                                        // ScrollBarControllerのnum
+            var instance = ScrollBarController.instance;    // ScrollBarControllerのインスタンス
+
+            num = instance.num;
+            posY = focusBtn.gameObject.transform.localPosition.y + instance.scrollBarStruct[num].contentParenRect.localPosition.y;
+            maxY = -30.0f;
+            minY = -(instance.scrollBarStruct[num].parentRect.sizeDelta.y) + 30.0f;
 
             // フォーカスしたボタンが見切れそうな座標ならスクロール
-            if (focusBtn.gameObject.transform.localPosition.y + 230.0f> pos)
-                instance.Scroll(focusScrollbar, true);
+            if (posY > maxY)
+            {
+                value = (maxY - posY);
+                value = -value / instance.scrollBarStruct[num].parentRect.sizeDelta.y;
+                instance.Scroll(focusScrollbar, true, value);
+            }
 
-            pos = -(instance.scrollBarStruct[num].rTransform.sizeDelta.y / 2);
-            pos += instance.scrollBarStruct[num].rTransform.localPosition.y;
-            if (focusBtn.gameObject.transform.localPosition.y + 230.0f < pos)
-                instance.Scroll(focusScrollbar, false);
+            if (posY < minY)
+            {
+                value = (posY - minY);
+                value = -value / instance.scrollBarStruct[num].parentRect.sizeDelta.y;
+                instance.Scroll(focusScrollbar, false, value);
+            }
+
+            Debug.Log("posY = " + posY + "maxY = " + maxY + "minY = " + minY);
         }
     }
 }
