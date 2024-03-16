@@ -14,10 +14,9 @@ public class ScrollBarController : Singleton<ScrollBarController>
     {
         public Scrollbar scrollbar;             // スクロールバー
         public RectTransform parentRect;        // 親オブジェクトのRectTransform
-        public RectTransform contentParenRect;  // スクロールされるコンテンツの親オブジェクトのRectTransform
+        public RectTransform contentParentRect; // スクロールされるコンテンツの親オブジェクトのRectTransform
         public int focusScreen;                 // スクロールバーをフォーカスする画面番号
-        public GameObject contentObj;           // スクロールする要素の親オブジェクト
-        public int amount;                      // スクロールする要素の数
+        public Button.Group group;              // スクロールするボタンのグループ
     }
 
     public int num = 0;
@@ -28,18 +27,6 @@ public class ScrollBarController : Singleton<ScrollBarController>
     {
         // 画面遷移時にスクロールバーのフォーカスを設定する
         screenController.changeScreen += Focus;
-
-        // スクロールする要素の数を取得して設定
-        SetAmount();
-    }
-
-    // スクロールする要素の数を取得して設定
-    void SetAmount()
-    {
-        for (int i = 0; i < scrollBarStruct.Length; ++i)
-        {
-            scrollBarStruct[i].amount = scrollBarStruct[i].contentObj.transform.childCount;
-        }
     }
 
     // スクロールバーのフォーカス処理
@@ -65,21 +52,18 @@ public class ScrollBarController : Singleton<ScrollBarController>
     // スクロール処理
     public void Scroll(Scrollbar sBar, bool up, float value)
     {
-        // スクロールする要素数を代入
-        int amount = scrollBarStruct[num].amount;
-
         // 上にスクロールするなら
         if(up)
         {
             // バーを上に動かす
-            sBar.value += (1.0f / amount / value);
+            sBar.value += value * 5.0f;
         }
 
         // 下にスクロールするなら
         else
         {
             // バーを下に動かす
-            sBar.value -= (1.0f / amount / value);
+            sBar.value -= value * 5.0f;
         }
     }
 }

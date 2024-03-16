@@ -254,7 +254,7 @@ public class ScreenController : Lerp
 
         // スクロールバーのスクロール処理
         // スクロールが必要な座標を計算
-        if(focusScrollbar != null)
+        if((focusScrollbar != null) && (focusBtn.group == ScrollBarController.instance.scrollBarStruct[ScrollBarController.instance.num].group))
         {
             float posY;                                     // 基準となるY座標
             float maxY;                                     // スクロールを行う一番上のY座標
@@ -264,26 +264,41 @@ public class ScreenController : Lerp
             var instance = ScrollBarController.instance;    // ScrollBarControllerのインスタンス
 
             num = instance.num;
-            posY = focusBtn.gameObject.transform.localPosition.y + instance.scrollBarStruct[num].contentParenRect.localPosition.y;
+
+            // フォーカスされているボタンのY座標 + スクロールバーのY座標
+            posY = focusBtn.gameObject.transform.localPosition.y + instance.scrollBarStruct[num].contentParentRect.localPosition.y;
+
+            // 上端から少し低い座標
             maxY = -30.0f;
+
+            // 下端から少し高い座標
             minY = -(instance.scrollBarStruct[num].parentRect.sizeDelta.y) + 30.0f;
 
-            // フォーカスしたボタンが見切れそうな座標ならスクロール
+            // フォーカスしたボタンが一定以上の座標ならスクロール処理
             if (posY > maxY)
             {
-                value = (maxY - posY);
-                value = -value / instance.scrollBarStruct[num].parentRect.sizeDelta.y;
+                // フォーカスされたボタンのY座標とスクロールを行うY座標の差を代入
+                value = (posY - maxY);
+
+                // 親オブジェクトの高さに対するY座標の差の割合を求めて代入
+                value = Mathf.Abs(value / instance.scrollBarStruct[num].contentParentRect.sizeDelta.y);
+
+                // スクロール処理
                 instance.Scroll(focusScrollbar, true, value);
             }
 
-            if (posY < minY)
+            // フォーカスしたボタンが一定以下の座標ならスクロール処理
+            else if (posY < minY)
             {
+                // フォーカスされたボタンのY座標とスクロールを行うY座標の差を代入
                 value = (posY - minY);
-                value = -value / instance.scrollBarStruct[num].parentRect.sizeDelta.y;
+
+                // 親オブジェクトの高さに対するY座標の差の割合を求めて代入
+                value = Mathf.Abs(value / instance.scrollBarStruct[num].contentParentRect.sizeDelta.y);
+
+                // スクロール処理
                 instance.Scroll(focusScrollbar, false, value);
             }
-
-            Debug.Log("posY = " + posY + "maxY = " + maxY + "minY = " + minY);
         }
     }
 }

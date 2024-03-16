@@ -62,6 +62,13 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
     [SerializeField] protected ImageStruct[] imageStructs;
     [SerializeField] protected TextStruct[] textStructs;
 
+    // ボタンが所属するグループ
+    public enum Group
+    {
+        None,
+        SkillList,
+    }
+
     // Findで探すGameObject
     protected GameObject ScreenController;
     protected GameObject UIFunctionController;
@@ -73,14 +80,15 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
     protected Sound sound;
     protected InputController input;
 
-    [SerializeField] protected int loot = 0;              // フォーカスされる階層
-    [SerializeField] protected bool defaultFocus = false; // 最初にフォーカスするボタンか
-    public AudioClip EnterSound;                          // ポインターが乗った時に再生する音声ファイル
-    public AudioClip ClickSound;                          // ボタンクリック時に再生する音声ファイル
-    public Button buttonUp;                               // 自分の上に位置するボタン
-    public Button buttonDown;                             // 自分の下に位置するボタン
-    public Button buttonLeft;                             // 自分の左に位置するボタン
-    public Button buttonRight;                            // 自分の右に位置するボタン
+    [SerializeField] protected int loot = 0;                // フォーカスされる階層
+    [SerializeField] protected bool defaultFocus = false;   // 最初にフォーカスするボタンか
+    public AudioClip EnterSound;                            // ポインターが乗った時に再生する音声ファイル
+    public AudioClip ClickSound;                            // ボタンクリック時に再生する音声ファイル
+    public Button buttonUp;                                 // 自分の上に位置するボタン
+    public Button buttonDown;                               // 自分の下に位置するボタン
+    public Button buttonLeft;                               // 自分の左に位置するボタン
+    public Button buttonRight;                              // 自分の右に位置するボタン
+    public Group group;                                     // このボタンが所属するグループ
 
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
