@@ -8,6 +8,7 @@ using UnityEngine.UI;
 // 画面の種類を管理
 public class ScreenController : Lerp
 {
+    public static ScreenController instance;                            // インスタンスの定義
     [SerializeField] private UIController uIController;                 // InspectorでUIControllerを指定
     [SerializeField] private StageController stageController;           // InspectorでStageControllerを指定
     [SerializeField] private PauseUIController pauseUIController;       // InspectorでPauseUIControllerを指定
@@ -110,6 +111,15 @@ public class ScreenController : Lerp
         yield return StartCoroutine(Color_Image(switchImage, c1, c2, 0.5f));
     }
 
+    private void Awake()
+    {
+        // シングルトン
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
+
     void Start()
     {
         input.game_OnPauseDele += OpenPause;
@@ -143,34 +153,6 @@ public class ScreenController : Lerp
 
     void Update()
     {
-        // 前回のフレームと現在のフレームで画面番号が異なったら
-        if (screenNum != oldFrameScreenNum)
-        {
-            // 前回の画面番号を保存
-            oldScreenNum = oldFrameScreenNum;
-
-            // 1フレーム前の画面番号に現在の画面番号を代入
-            oldFrameScreenNum = screenNum;
-
-            // 画面遷移したときの処理
-            if(changeScreen !=  null)
-                changeScreen();
-        }
-
-        // 前回のフレームと現在のフレームで階層が異なったら
-        if (ScreenLoot != oldFrameScreenLoot)
-        {
-            // 前回の階層を保存
-            oldScreenLoot = oldFrameScreenLoot;
-
-            // 1フレーム前の階層に現在の階層を代入
-            oldFrameScreenLoot = ScreenLoot;
-
-            // 階層が遷移したときの処理
-            if (changeLoot != null)
-                changeLoot();
-        }
-
         // ステージをクリアかつ画面遷移していないなら
         if ((stageController.stageCrear) && (!changeStageClearScreen))
         {
