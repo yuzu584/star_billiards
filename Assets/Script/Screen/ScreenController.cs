@@ -254,7 +254,7 @@ public class ScreenController : Lerp
 
         // スクロールバーのスクロール処理
         // スクロールが必要な座標を計算
-        if((focusScrollbar != null) && (focusBtn.group == ScrollBarController.instance.scrollBarStruct[ScrollBarController.instance.num].group))
+        if((focusScrollbar != null) && (focusBtn.group == ScrollBarController.instance.scrollBarStruct[ScrollBarController.instance.num].group) && (!focusBtn.orPointer))
         {
             float posY;                                     // 基準となるY座標
             float maxY;                                     // スクロールを行う一番上のY座標

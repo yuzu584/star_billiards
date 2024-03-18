@@ -90,9 +90,17 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
     public Button buttonRight;                              // 自分の右に位置するボタン
     public Group group;                                     // このボタンが所属するグループ
 
+    // ポインターによってフォーカスされたか
+    // true  : ポインターによってフォーカスされた
+    // false : ポインター以外(コントローラー入力など)でフォーカスされた
+    public bool orPointer = false;
+
     // マウスポインターがボタンの上に乗ったら
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
+        // ポインターによってフォーカスされた
+        orPointer = true;
+
         // 音を再生
         if (sound != null)
             StartCoroutine(sound.Play(EnterSound));
@@ -101,6 +109,8 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
         screenController.SetFocusBtn(this);
 
         EnterProcess();
+
+        orPointer = false;
     }
 
     // マウスポインターがボタンの上から離れたら

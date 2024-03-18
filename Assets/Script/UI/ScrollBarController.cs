@@ -56,14 +56,14 @@ public class ScrollBarController : Singleton<ScrollBarController>
         if(up)
         {
             // バーを上に動かす
-            sBar.value += value * 5.0f;
+            sBar.value += value * 3.0f;
         }
 
         // 下にスクロールするなら
         else
         {
             // バーを下に動かす
-            sBar.value -= value * 5.0f;
+            sBar.value -= value * 3.0f;
         }
     }
 }
