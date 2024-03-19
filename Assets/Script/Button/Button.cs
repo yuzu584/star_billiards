@@ -146,8 +146,8 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     // ボタンのアニメーション処理
     protected void BtnAnimProcess(ImageStruct[] childrenImageStructs, TextStruct[] childrenTextStructs, bool enterOrExit)
     {
-        // Lerp コンポーネントが null なら終了
-        if (lerp == null) return;
+        // Lerp コンポーネントが null なら取得
+        lerp ??= gameObject.AddComponent<Lerp>();
 
         Color color1;
         Color color2;
@@ -369,9 +369,9 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     protected virtual void Start()
     {
-        lerp = gameObject.AddComponent<Lerp>();
+        lerp ??= gameObject.AddComponent<Lerp>();
 
-        scrCon = ScreenController.instance;
+        scrCon ??= ScreenController.instance;
         sound = Sound.instance;
         input = InputController.instance;
 
@@ -393,8 +393,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     protected virtual void OnEnable()
     {
         // scrConが取得されていなければ取得
-        if (scrCon == null)
-            scrCon = ScreenController.instance;
+        scrCon ??= ScreenController.instance;
 
         // このボタンがフォーカスされる階層なら
         if (loot == scrCon.ScreenLoot)

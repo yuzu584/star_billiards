@@ -15158,11 +15158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a564bb2a7057a544881dbdbc97aba88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  predictionLine: {fileID: 872107054}
-  energyController: {fileID: 2052131793}
-  screenController: {fileID: 1600059365}
-  justShot: {fileID: 2052131798}
-  input: {fileID: 876631145}
   speed: 150
   charge: 0
   chargeSpeed: 1

@@ -11,6 +11,8 @@ public class BrackHole : MonoBehaviour
     // Findで探したGameObjectのコンポーネント
     private DestroyPlanet _destroyPlanet;
 
+    private ScreenController scrCont;
+
     // 周囲のオブジェクトに重力の影響を与える
     void Gravity()
     {
@@ -49,8 +51,10 @@ public class BrackHole : MonoBehaviour
         // 当たり判定に触れたオブジェクトの数繰り返す
         foreach (var hit in hits)
         {
-            // 近くののRigidBodyを取得
-            Rigidbody hitObj = hit.collider.gameObject.GetComponent<Rigidbody>();
+            // 惑星のRigidBodyを取得
+            Rigidbody hitObj = null;
+            if (hit.collider.gameObject.tag == "Planet")
+                hitObj = hit.collider.gameObject.GetComponent<Rigidbody>();
 
             // RigidBodyが取得できたなら
             if (hitObj != null)
@@ -74,6 +78,8 @@ public class BrackHole : MonoBehaviour
 
     void Start()
     {
+        scrCont = ScreenController.instance;
+
         // GameObjectを探す
         stageController = GameObject.Find("StageController");
 
@@ -83,7 +89,8 @@ public class BrackHole : MonoBehaviour
 
     void Update()
     {
-        // 周囲のオブジェクトに重力の影響を与える
-        Gravity();
+        // ゲーム画面なら周囲のオブジェクトに重力の影響を与える
+        if(scrCont.ScreenNum == 5)
+            Gravity();
     }
 }

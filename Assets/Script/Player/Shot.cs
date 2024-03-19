@@ -34,14 +34,17 @@ public class Shot : Singleton<Shot>
     // プレイヤーとオブジェクトに力を加える
     void AddPower()
     {
-        // 移動制限を解除
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-        cRb.constraints = RigidbodyConstraints.None;
+        if (cRb != null)
+        {
+            // 移動制限を解除
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+            cRb.constraints = RigidbodyConstraints.None;
 
-        // プレイヤーとオブジェクトに力を加える
-        rb.AddForce(direction * speed * playerBouncePower / (2 * power));
-        cRb.velocity = colObjVelocity;
-        cRb.velocity *= planetBouncePower / (50 / power);
+            // プレイヤーとオブジェクトに力を加える
+            rb.AddForce(direction * speed * playerBouncePower / (2 * power));
+            cRb.velocity = colObjVelocity;
+            cRb.velocity *= planetBouncePower / (50 / power);
+        }
     }
 
     void Start()
