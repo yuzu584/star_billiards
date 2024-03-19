@@ -5,34 +5,41 @@ using UnityEngine;
 // 画面遷移時の処理
 public class ScreenSwitch : Singleton<ScreenSwitch>
 {
+    private ScreenController scrCon;
+
+    void Start()
+    {
+        scrCon = ScreenController.instance;
+    }
+
     void Update()
     {
         // 前回のフレームと現在のフレームで画面番号が異なったら
-        if (ScreenController.instance.ScreenNum != ScreenController.instance.oldFrameScreenNum)
+        if (scrCon.ScreenNum != scrCon.oldFrameScreenNum)
         {
             // 前回の画面番号を保存
-            ScreenController.instance.oldScreenNum = ScreenController.instance.oldFrameScreenNum;
+            scrCon.oldScreenNum = scrCon.oldFrameScreenNum;
 
             // 1フレーム前の画面番号に現在の画面番号を代入
-            ScreenController.instance.oldFrameScreenNum = ScreenController.instance.ScreenNum;
+            scrCon.oldFrameScreenNum = scrCon.ScreenNum;
 
             // 画面遷移したときの処理
-            if (ScreenController.instance.changeScreen != null)
-                ScreenController.instance.changeScreen();
+            if (scrCon.changeScreen != null)
+                scrCon.changeScreen();
         }
 
         // 前回のフレームと現在のフレームで階層が異なったら
-        if (ScreenController.instance.ScreenLoot != ScreenController.instance.oldFrameScreenLoot)
+        if (scrCon.ScreenLoot != scrCon.oldFrameScreenLoot)
         {
             // 前回の階層を保存
-            ScreenController.instance.oldScreenLoot = ScreenController.instance.oldFrameScreenLoot;
+            scrCon.oldScreenLoot = scrCon.oldFrameScreenLoot;
 
             // 1フレーム前の階層に現在の階層を代入
-            ScreenController.instance.oldFrameScreenLoot = ScreenController.instance.ScreenLoot;
+            scrCon.oldFrameScreenLoot = scrCon.ScreenLoot;
 
             // 階層が遷移したときの処理
-            if (ScreenController.instance.changeLoot != null)
-                ScreenController.instance.changeLoot();
+            if (scrCon.changeLoot != null)
+                scrCon.changeLoot();
         }
     }
 }

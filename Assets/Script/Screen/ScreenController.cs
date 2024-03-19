@@ -6,6 +6,7 @@ using Const;
 using UnityEngine.UI;
 
 // ‰æ–Ê‚Ìí—Ş‚ğŠÇ—
+[DefaultExecutionOrder(-1000)]
 public class ScreenController : Singleton<ScreenController>
 {
     [SerializeField] private UIController uIController;                 // Inspector‚ÅUIController‚ğw’è

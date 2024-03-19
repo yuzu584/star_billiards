@@ -392,8 +392,9 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     protected virtual void OnEnable()
     {
-        // scrConが取得されていなければ終了
-        if (scrCon == null) return;
+        // scrConが取得されていなければ取得
+        if (scrCon == null)
+            scrCon = ScreenController.instance;
 
         // このボタンがフォーカスされる階層なら
         if (loot == scrCon.ScreenLoot)
