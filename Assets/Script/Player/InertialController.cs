@@ -7,7 +7,7 @@ using Const;
 // プレイヤーの慣性を制御
 public class InertialController : MonoBehaviour
 {
-    [SerializeField] private InputController input; // InspectorでInputControllerを指定
+    private InputController input;
 
     public float EaseOfBending = 1.0f; // 軌道の曲げやすさ
     Rigidbody rb;                      // プレイヤーのRigidbody
@@ -16,6 +16,8 @@ public class InertialController : MonoBehaviour
     {
         // rigidbodyを取得
         rb = GetComponent<Rigidbody>();
+
+        input = InputController.instance;
 
         // ゲーム中に移動したときに発火するイベントに登録
         input.game_OnMoveDele += Process;

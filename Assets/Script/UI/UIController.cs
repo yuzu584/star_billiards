@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ƒQ[ƒ€’†‚ÌUI‚ğŠÇ—
-public class UIController : MonoBehaviour
+public class UIController : Singleton<UIController>
 {
     // Inspector‚ÅUI‚Ì”z—ñ‚ğw’è
     public InGameUI inGameUI;

@@ -7,13 +7,16 @@ using Const;
 // カメラの視点移動
 public class TPSCamera : Singleton<TPSCamera>
 {
-    [SerializeField] private InputController input;             // InspectorでInputControllerを指定
     [SerializeField] private GameObject player;                 // プレイヤー
     [SerializeField] private float speed = 1.0f;                // 視点移動速度
+
+    private InputController input;
+
     public float rate = AppConst.CAMERA_DEFAULT_SPEED_RATE;     // 視点移動速度の倍率
 
     void Start()
     {
+        input = InputController.instance;
         input.game_OnLookDele += MoveCameraAngle;
     }
 

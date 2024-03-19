@@ -5,12 +5,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ジャストショットを管理
-public class JustShot : MonoBehaviour
+public class JustShot : Singleton<JustShot>
 {
-    [SerializeField] private UIController uIController;  // InspectorでStageControllerを指定
     [SerializeField] private float justShotGrace = 0.1f; // ジャストショットの猶予時間
 
     [System.NonSerialized] public float time = 0.0f;     // ジャストショットの猶予時間をカウント
+
+    private UIController uiCon;
 
     // ジャストショットの猶予時間をカウント
     public IEnumerator JustShotCount()
@@ -29,18 +30,20 @@ public class JustShot : MonoBehaviour
     public IEnumerator UIAnimation()
     {
         // ジャストショットのテキストを表示
-        uIController.otherUI.justShotText.enabled = true;
+        uiCon.otherUI.justShotText.enabled = true;
 
         // 少し待つ
         yield return new WaitForSeconds(1.5f);
 
         // ジャストショットのテキストを非表示
-        uIController.otherUI.justShotText.enabled = false;
+        uiCon.otherUI.justShotText.enabled = false;
     }
 
     void Start()
     {
+        uiCon = UIController.instance;
+
         // ジャストショットのテキストを非表示
-        uIController.otherUI.justShotText.enabled = false;
+        uiCon.otherUI.justShotText.enabled = false;
     }
 }

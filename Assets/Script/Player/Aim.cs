@@ -7,11 +7,12 @@ using Const;
 // エイムする
 public class Aim : MonoBehaviour
 {
-    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
-    [SerializeField] private InputController input;             // InspectorでInputControllerを指定
+    private InputController input;
 
     void Start()
     {
+        input = InputController.instance;
+
         input.game_OnAimDele += Process;
     }
 

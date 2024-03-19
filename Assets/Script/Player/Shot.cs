@@ -5,19 +5,20 @@ using UnityEngine;
 using Const;
 
 // ショットボタンで弾を発射する
-public class Shot : MonoBehaviour
+public class Shot : Singleton<Shot>
 {
-    [SerializeField] private PredictionLine predictionLine;       // InspectorでPredictionLineを指定
-    [SerializeField] private EnergyController energyController;   // InspectorでEnergyControllerを指定
-    [SerializeField] private ScreenController screenController;   // InspectorでScreenControllerを指定
-    [SerializeField] private JustShot justShot;                   // InspectorでJustShotを指定
-    [SerializeField] private InputController input;               // InspectorでInputControllerを指定
 
     public float speed = AppConst.PLAYER_DEFAULT_SPEED;           // 移動速度
     public float charge = 0;                                      // 球のチャージ
     public float chargeSpeed = AppConst.DEFAULT_CHARGE_SPEED;     // 球のチャージ速度
     public int playerBouncePower = AppConst.DEFAULT_BOUNCE_POWER; // 衝突したときのプレイヤーの反発力
     public int planetBouncePower = AppConst.DEFAULT_BOUNCE_POWER; // 衝突したときの惑星の反発力
+
+    private PredictionLine pLine;
+    private EnergyController eneCon;
+    private ScreenController scrCon;
+    private JustShot jShot;
+    private InputController input;
 
     private Vector3 direction;                       // 向き
     private Rigidbody rb;                            // プレイヤーのRigidbody
@@ -45,6 +46,12 @@ public class Shot : MonoBehaviour
 
     void Start()
     {
+        pLine = PredictionLine.instance;
+        eneCon = EnergyController.instance;
+        scrCon = ScreenController.instance;
+        jShot = JustShot.instance;
+        input = InputController.instance;
+
         // rigidbodyを取得
         rb = GetComponent<Rigidbody>();
 
@@ -69,7 +76,7 @@ public class Shot : MonoBehaviour
     void FixedUpdate()
     {
         // エネルギーがある状態でショットボタンが押されたら減速
-        if ((inputValue > 0) && (energyController.energy > 0))
+        if ((inputValue > 0) && (eneCon.energy > 0))
             rb.velocity *= AppConst.SPEED_REDUCTION_RATE;
     }
 
@@ -83,11 +90,11 @@ public class Shot : MonoBehaviour
             cRb = collision.gameObject.GetComponent<Rigidbody>();
 
             // ジャストショットの猶予時間内なら強い力で飛ばす
-            if (justShot.time > 0.0f)
+            if (jShot.time > 0.0f)
             {
                 power = 3;
                 StopAllCoroutines();
-                StartCoroutine(justShot.UIAnimation());
+                StartCoroutine(jShot.UIAnimation());
             }
 
             // ジャストショットの猶予時間外なら通常の力で飛ばす
@@ -104,7 +111,7 @@ public class Shot : MonoBehaviour
         else if (collision.gameObject.tag == "FixedStar")
         {
             // エネルギーを0にする(ゲームオーバー)
-            energyController.energy = 0;
+            eneCon.energy = 0;
         }
 
         // タグがPlanetとFixedStar以外なら
@@ -136,29 +143,29 @@ public class Shot : MonoBehaviour
         inputValue = value;
 
         // エネルギーがある状態でショットボタンが押されていたら(長押し可)
-        if ((inputValue > 0) && (energyController.energy > 0))
+        if ((inputValue > 0) && (eneCon.energy > 0))
         {
             // 向きを設定してチャージする
-            direction = predictionLine.RayDirection();
+            direction = pLine.RayDirection();
             charge += (chargeSpeed * Time.deltaTime) * 50;
         }
         // ショットボタンが押されてないかつチャージ済みなら
         else if ((inputValue == 0) && (charge > 0))
         {
             // エネルギーを消費して発射
-            energyController.energy -= charge / 10;
+            eneCon.energy -= charge / 10;
             Vector3 velocity = Camera.main.transform.forward;
             rb.AddForce(velocity * speed * charge);
             charge = 0;
         }
 
         // エネルギーがある状態でショットボタンが押されたら(押した瞬間だけ)
-        if ((inputValue > 0) && (energyController.energy > 0) && (nowInput))
+        if ((inputValue > 0) && (eneCon.energy > 0) && (nowInput))
         {
             // ジャストショットの猶予時間をカウント
             if (coroutine != null)
                 StopCoroutine(coroutine);
-            coroutine = StartCoroutine(justShot.JustShotCount());
+            coroutine = StartCoroutine(jShot.JustShotCount());
         }
     }
 }

@@ -7,16 +7,23 @@ using Const;
 // メインカメラを管理
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
-    [SerializeField] private FOV fOV;                           // InspectorでFOVを指定
-    [SerializeField] private GameObject player;                 // プレイヤー
+    [SerializeField] private GameObject player; // プレイヤー
 
-    private bool chasePlayer = false; // プレイヤーを追従しているかどうか
+    private ScreenController scrCon;
+    private FOV fov;
+
+    private bool chasePlayer = false;           // プレイヤーを追従しているかどうか
+    
+    void Start()
+    {
+        scrCon = ScreenController.instance;
+        fov = FOV.instance;
+    }
 
     void Update()
     {
         // ゲーム画面なら
-        if(screenController.ScreenNum == 5)
+        if(scrCon.ScreenNum == 5)
         {
             // プレイヤーを追従していなければ
             if (!chasePlayer)
@@ -33,10 +40,10 @@ public class CameraController : MonoBehaviour
             }
 
             // 視野角を変更
-            fOV.ChangeFOV();
+            fov.ChangeFOV();
         }
         // ステージ選択画面なら
-        else if (screenController.ScreenNum == 2)
+        else if (scrCon.ScreenNum == 2)
         {
             // 親子関係を解消
             if (chasePlayer)
@@ -50,7 +57,7 @@ public class CameraController : MonoBehaviour
             transform.rotation = Quaternion.Euler(AppConst.DEFAULT_STAGE_SELECT_ANGLE);
 
             // 視野角をリセット
-            fOV.ResetFOV();
+            fov.ResetFOV();
         }
     }
 }

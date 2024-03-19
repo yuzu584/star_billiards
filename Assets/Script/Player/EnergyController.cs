@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // エネルギーの増減を管理
-public class EnergyController : MonoBehaviour
+public class EnergyController : Singleton<EnergyController>
 {
-    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
-    [SerializeField] private GameOver gameOver;                 // InspectorでGameOverを指定
-    [SerializeField] private Initialize initialize;             // InspectorでInitializeを指定
+    private ScreenController screenCon;
+    private GameOver gameOver;
+    private Initialize init;
+
+    private Rigidbody rb;           // リジッドボディ
 
     public float energy = 1000;     // プレイヤーのエネルギー
     public float maxEnergy = 1000;  // 最大エネルギー
-    private Rigidbody rb;           // リジッドボディ
 
     // 初期化処理
     void Init()
@@ -21,17 +22,21 @@ public class EnergyController : MonoBehaviour
 
     void Start()
     {
+        screenCon = ScreenController.instance;
+        gameOver = GameOver.instance;
+        init = Initialize.instance;
+
         // 速度を参照するオブジェクトのrigidbodyを取得
         rb = this.GetComponent<Rigidbody>();
 
         // デリゲートに初期化関数を登録
-        initialize.init_Stage += Init;
+        init.init_Stage += Init;
     }
 
     void Update()
     {
         // ゲーム画面でエネルギーが0になったらゲームオーバー処理
-        if((screenController.ScreenNum == 5) && (energy <= 0))
+        if((screenCon.ScreenNum == 5) && (energy <= 0))
         {
             gameOver.GameOverProcess();
         }

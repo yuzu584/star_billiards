@@ -7,14 +7,15 @@ using Const;
 // スキルを管理
 public class SkillController : Singleton<SkillController>
 {
-    [SerializeField] private Shot shot;                           // InspectorでShotを指定
-    [SerializeField] private SkillUIController skillUIController; // InspectorでSkillUIControllerを指定
-    [SerializeField] private EnergyController energyController;   // InspectorでEnergyControllerを指定
-    [SerializeField] private ScreenController screenController;   // InspectorでScreenControllerを指定
-    [SerializeField] private Initialize initialize;               // InspectorでInitializeを指定
-    [SerializeField] private SphereRay sphereRay;                 // InspectorでSphereRayを指定
-    [SerializeField] private InputController input;               // InspectorでInputControllerを指定
     [SerializeField] private ParticleSystem GravityWaveParticle;  // GravityWaveのパーティクル
+
+    private Shot shot;
+    private SkillUIController skillUICon;
+    private EnergyController eneCon;
+    private ScreenController screenCon;
+    private Initialize init;
+    private SphereRay sphereRay;
+    private InputController input;
 
     public int selectSkill = 0;  // 選択しているスキルの番号
     public float coolDown = 0;   // クールダウンを管理
@@ -26,6 +27,14 @@ public class SkillController : Singleton<SkillController>
 
     void Start()
     {
+        shot = Shot.instance;
+        skillUICon = SkillUIController.instance;
+        eneCon = EnergyController.instance;
+        screenCon = ScreenController.instance;
+        init = Initialize.instance;
+        sphereRay = SphereRay.instance;
+        input = InputController.instance;
+
         // スキルスロットを初期化
         for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
         {
@@ -36,7 +45,7 @@ public class SkillController : Singleton<SkillController>
         InitSelectSlot();
 
         // デリゲートに初期化関数を登録
-        initialize.init_Stage += Init;
+        init.init_Stage += Init;
 
         input.game_OnUseSkillDele += UseSkill;
         input.game_OnChangeSkillDele += ChangeSkill;
@@ -45,7 +54,7 @@ public class SkillController : Singleton<SkillController>
     void Update()
     {
         // ゲーム画面なら
-        if (screenController.ScreenNum == 5)
+        if (screenCon.ScreenNum == 5)
         {
             // スキルの効果時間とクールダウンを減少
             DecreaseEFAndCD();
@@ -58,7 +67,7 @@ public class SkillController : Singleton<SkillController>
     // スキルのUIを描画する関数を呼び出す
     public void CallSetSkillUI()
     {
-        skillUIController.DrawSkillUI(
+        skillUICon.DrawSkillUI(
             AppConst.SKILL_NAME[skillSlot[selectSkill]],
             AppConst.SKILL_COOLDOWN[skillSlot[selectSkill]],
             AppConst.SKILL_EFFECT_TIME[skillSlot[selectSkill]],
@@ -78,7 +87,7 @@ public class SkillController : Singleton<SkillController>
             coolDown = AppConst.SKILL_COOLDOWN[skillSlot[selectSkill]];
 
             // エネルギーを消費
-            energyController.energy -= AppConst.SKILL_ENERGY_USAGE[skillSlot[selectSkill]];
+            eneCon.energy -= AppConst.SKILL_ENERGY_USAGE[skillSlot[selectSkill]];
 
             // 選択しているスキルによって分岐
             switch (skillSlot[selectSkill])

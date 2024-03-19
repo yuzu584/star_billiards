@@ -5,13 +5,14 @@ using UnityEngine;
 using Const;
 
 // 反射するRayとLineを生成
-public class PredictionLine : MonoBehaviour
+public class PredictionLine : Singleton<PredictionLine>
 {
     [SerializeField] private GameObject target;                 // Rayを出すオブジェクト
     [SerializeField] private GameObject directionTarget;        // Rayの向きを決めるオブジェクト
     [SerializeField] private LineRenderer lineRenderer;         // Inspectorでlinerendererを指定
-    [SerializeField] private EnergyController energyController; // InspectorでEnergyControllerを指定
-    [SerializeField] private InputController input;             // InspectorでInputControllerを指定
+
+    private EnergyController eneCon;
+    private InputController input;
 
     Rigidbody rb;                // InspectorでRigidbodyを指定
     Vector3 origin;              // 原点
@@ -23,6 +24,9 @@ public class PredictionLine : MonoBehaviour
 
     void Start()
     {
+        eneCon = EnergyController.instance;
+        input = InputController.instance;
+
         // 始点の太さを指定
         lineRenderer.startWidth = AppConst.PREDICTION_LINE_START_WIDTH;
 
@@ -88,7 +92,7 @@ public class PredictionLine : MonoBehaviour
     void RenderProcess(float value)
     {
         // エネルギーがある状態でショットボタンが押されていたら
-        if ((value > 0) && (energyController.energy > 0))
+        if ((value > 0) && (eneCon.energy > 0))
         {
             // 線を表示
             lineRenderer.enabled = true;

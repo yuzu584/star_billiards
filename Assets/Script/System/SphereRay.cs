@@ -5,7 +5,7 @@ using UnityEngine;
 using Const;
 
 // 球体のRayを生成し、関数を呼び出す
-public class SphereRay : MonoBehaviour
+public class SphereRay : Singleton<SphereRay>
 {
     [SerializeField] private PlanetInfoUIController planetInfoUIController; // PlanetInfoUIControllerをInspectorで指定
     [SerializeField] private ScreenController screenController;             // InspectorでScreenControllerを指定

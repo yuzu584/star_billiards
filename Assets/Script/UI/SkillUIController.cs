@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using Const;
 
 // スキルのUIを管理
-public class SkillUIController : MonoBehaviour
+public class SkillUIController : Singleton<SkillUIController>
 {
     [SerializeField] private UIController uIController; // InspectorでUIControllerを指定
     [SerializeField] private Initialize initialize;     // InspectorでInitializeを指定

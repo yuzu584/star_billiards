@@ -8,7 +8,8 @@ using Const;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;          // プレイヤーのリジットボディ
-    [SerializeField] private Initialize initialize; // InspectorでInitializeを指定
+
+    private Initialize init;
 
     // プレイヤーに関する数値を初期化
     void Init()
@@ -19,7 +20,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        init = Initialize.instance;
+
         // デリゲートに初期化関数を登録
-        initialize.init_Stage += Init;
+        init.init_Stage += Init;
     }
 }
