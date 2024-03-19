@@ -7,17 +7,11 @@ using UnityEngine.UI;
 // ボタン1を管理
 public class Button1 : Button
 {
-    // Findで探すGameObject
-    private GameObject Player;
-    private GameObject ArrowController;
-    private GameObject InitializeController;
-    private GameObject Stage;
-
     // Findで探したGameObjectのコンポーネント
-    private SkillController skillController;
+    private SkillController skillCon;
     private Arrow arrow;
-    private Initialize initialize;
-    private CreateStage createStage;
+    private Initialize init;
+    private CreateStage cStage;
 
     public enum ClickAction // ボタンを押したときの効果
     {
@@ -79,22 +73,22 @@ public class Button1 : Button
     // 画面遷移
     private void ChangeScreen()
     {
-        screenController.ScreenNum = nextScreen;
+        scrCon.ScreenNum = nextScreen;
     }
 
     // ステージスタート
     void StageStart()
     {
         // 画面番号をInGameに変更
-        screenController.ScreenNum = 5;
-        screenController.ScreenLoot = 0;
+        scrCon.ScreenNum = 5;
+        scrCon.ScreenLoot = 0;
 
         // ステージに関する数値を初期化
-        initialize.init_Stage();
+        init.init_Stage();
 
         // ステージ生成
-        createStage.Destroy();
-        createStage.Create();
+        cStage.Destroy();
+        cStage.Create();
     }
 
     // 惑星の方向を指し示す矢印を生成
@@ -107,13 +101,13 @@ public class Button1 : Button
     // 選択したスキルを適用
     void ApplySkill()
     {
-        skillController.SetSelectSlot();
+        skillCon.SetSelectSlot();
     }
 
     // 選択したスキルをリセット
     void ResetSelectSkill()
     {
-        skillController.InitSelectSlot();
+        skillCon.InitSelectSlot();
     }
 
     // ゲームを終了
@@ -126,7 +120,7 @@ public class Button1 : Button
 #endif
     }
 
-    new void OnEnable()
+    protected override void OnEnable()
     {
         base.OnEnable();
 
@@ -134,19 +128,13 @@ public class Button1 : Button
         BtnInit(imageStructs, textStructs);
     }
 
-    new void Start()
+    protected override void Start()
     {
         base.Start();
 
-        // オブジェクトを探してコンポーネントを取得
-        Player = GameObject.Find("Player");
-        ArrowController = GameObject.Find("ArrowController");
-        InitializeController = GameObject.Find("InitializeController");
-        Stage = GameObject.Find("Stage");
-
-        skillController = Player.GetComponent<SkillController>();
-        arrow = ArrowController.GetComponent<Arrow>();
-        initialize = InitializeController.GetComponent<Initialize>();
-        createStage = Stage.GetComponent<CreateStage>();
+        skillCon = SkillController.instance;
+        arrow = Arrow.instance;
+        init = Initialize.instance;
+        cStage = CreateStage.instance;
     }
 }

@@ -6,9 +6,8 @@ using Const;
 using UnityEngine.UI;
 
 // 画面の種類を管理
-public class ScreenController : Lerp
+public class ScreenController : Singleton<ScreenController>
 {
-    public static ScreenController instance;                            // インスタンスの定義
     [SerializeField] private UIController uIController;                 // InspectorでUIControllerを指定
     [SerializeField] private StageController stageController;           // InspectorでStageControllerを指定
     [SerializeField] private PauseUIController pauseUIController;       // InspectorでPauseUIControllerを指定
@@ -22,6 +21,7 @@ public class ScreenController : Lerp
     [System.NonSerialized] public int oldScreenLoot = 0;                // 前回の階層
     [System.NonSerialized] public int oldFrameScreenNum = 0;            // 1フレーム前の画面番号
     [System.NonSerialized] public int oldFrameScreenLoot = 0;           // 1フレーム前の階層
+    private Lerp lerp;
 
     // UIが描画可能かを管理する配列
     // 0 : タイトル画面
@@ -64,7 +64,7 @@ public class ScreenController : Lerp
         if ((screenData.screenList[num].enterAnim) || (screenData.screenList[screenNum].exitAnim))
         {
             // アニメーションを行う
-            StopAll();
+            lerp.StopAll();
 
             StartCoroutine(SetScreenNum(num, true));
         }
@@ -108,20 +108,12 @@ public class ScreenController : Lerp
     // 画面遷移時のアニメーション
     private IEnumerator SwitchAnim(Color c1, Color c2)
     {
-        yield return StartCoroutine(Color_Image(switchImage, c1, c2, 0.5f));
-    }
-
-    private void Awake()
-    {
-        // シングルトン
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(gameObject);
+        yield return StartCoroutine(lerp.Color_Image(switchImage, c1, c2, 0.5f));
     }
 
     void Start()
     {
+        lerp = gameObject.AddComponent<Lerp>();
         input.game_OnPauseDele += OpenPause;
         input.ui_OnMoveDele += ChangeBtnFocus;
         input.ui_OnMoveDele += MoveSlider;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 惑星の方向を示す矢印を管理
-public class Arrow : MonoBehaviour
+public class Arrow : Singleton<Arrow>
 {
     [SerializeField] private GameObject arrow;  // 矢印のプレハブ
     [SerializeField] private GameObject player; // プレイヤー

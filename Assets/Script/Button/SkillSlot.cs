@@ -11,12 +11,9 @@ public class SkillSlot : Button
     [SerializeField] private Text nameText;        // スキル名を表すテキスト
     [SerializeField] private Text selectNumText;   // スキルの選択した順を表すテキスト
 
-    // Findで探すもの
-    private GameObject Player;
-
-    // Findで探したGameObjectのコンポーネント
-    private SkillController skillController;
-    private SkillSelectUIController skillSelectUIController;
+    // instanceを代入する変数
+    private SkillController skillCon;
+    private SkillSelectUIController skillSelectUICon;
 
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
@@ -25,8 +22,8 @@ public class SkillSlot : Button
         BtnAnimProcess(imageStructs, textStructs, true);
 
         // スキルの情報を描画
-        if(skillSelectUIController != null)
-            skillSelectUIController.DrawSkillInfo(skillNum);
+        if(skillSelectUICon != null)
+            skillSelectUICon.DrawSkillInfo(skillNum);
     }
 
     // マウスポインターが離れたときの処理
@@ -57,7 +54,7 @@ public class SkillSlot : Button
     {
         for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
         {
-            if (skillController.selectSlot[i] == skillNum)
+            if (skillCon.selectSlot[i] == skillNum)
             {
                 selectNumText.enabled = true;
                 selectNumText.text = (i + 1).ToString("0");
@@ -72,12 +69,12 @@ public class SkillSlot : Button
     // 選択しているスキルスロットを設定
     void SetSelectSlot(int num)
     {
-        if (skillController.count >= AppConst.SKILL_SLOT_AMOUNT)
+        if (skillCon.count >= AppConst.SKILL_SLOT_AMOUNT)
         {
-            skillController.InitSelectSlot();
+            skillCon.InitSelectSlot();
         }
-        skillController.selectSlot[skillController.count] = num;
-        ++skillController.count;
+        skillCon.selectSlot[skillCon.count] = num;
+        ++skillCon.count;
     }
 
     // 同じスキルを選択していないか検知
@@ -85,12 +82,12 @@ public class SkillSlot : Button
     {
         for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
         {
-            if (skillController.selectSlot[i] == num) { return false; }
+            if (skillCon.selectSlot[i] == num) { return false; }
         }
         return true;
     }
 
-    new void OnEnable()
+    protected override void OnEnable()
     {
         base.OnEnable();
 
@@ -98,15 +95,12 @@ public class SkillSlot : Button
         BtnInit(imageStructs, textStructs);
     }
 
-    new void Start()
+    protected override void Start()
     {
         base.Start();
 
-        // オブジェクトを探してコンポーネントを取得
-        Player = GameObject.Find("Player");
-
-        skillController = Player.GetComponent<SkillController>();
-        skillSelectUIController = UIFunctionController.GetComponent<SkillSelectUIController>();
+        skillCon = SkillController.instance;
+        skillSelectUICon = SkillSelectUIController.instance;
 
         // スキル名のテキストを設定
         SetNameText();

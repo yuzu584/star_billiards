@@ -5,7 +5,7 @@ using UnityEngine;
 using Const;
 
 // スキルを管理
-public class SkillController : MonoBehaviour
+public class SkillController : Singleton<SkillController>
 {
     [SerializeField] private Shot shot;                           // InspectorでShotを指定
     [SerializeField] private SkillUIController skillUIController; // InspectorでSkillUIControllerを指定

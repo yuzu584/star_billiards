@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // ステージを管理
-public class StageController : MonoBehaviour
+public class StageController : Singleton<StageController>
 {
     [SerializeField] private StageData stageData;                   // InspectorでStageDataを指定
     [SerializeField] private PlanetAmount planetAmount;             // InspectorでPlanetAmountを指定

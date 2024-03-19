@@ -5,7 +5,7 @@ using UnityEngine;
 using Const;
 
 // スキル選択画面のUIを管理
-public class SkillSelectUIController : MonoBehaviour
+public class SkillSelectUIController : Singleton<SkillSelectUIController>
 {
     [SerializeField] private UIController uIController; // InspectorでUIControllerを指定
 

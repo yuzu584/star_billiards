@@ -5,7 +5,7 @@ using UnityEngine;
 using System;
 
 // İ’è‰æ–Ê‚ğŠÇ—
-public class OptionsController : MonoBehaviour
+public class OptionsController : Singleton<OptionsController>
 {
     public enum Loot   // ŠK‘w
     {

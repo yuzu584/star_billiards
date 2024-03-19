@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // ステージを作成
-public class CreateStage : MonoBehaviour
+public class CreateStage : Singleton<CreateStage>
 {
     [SerializeField] StageData stageData;             // InspectorでStageDataを指定
     [SerializeField] StageController stageController; // InspectorでStageControllerを指定

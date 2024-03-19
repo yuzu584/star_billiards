@@ -7,12 +7,13 @@ using UnityEngine.UI;
 // 設定画面のスライダー
 public class OptionsSlider : Button
 {
-    [SerializeField] private OptionsController _optionsController;
     [SerializeField] private Text state;                           // ボタンの状態を表すテキスト
     [SerializeField] private Slider slider;                        // スライダー
     [SerializeField] private float defaultvalue;                   // 初期値
     [SerializeField] private float maxValue;                       // 最大値
     [SerializeField] private float minValue;                       // 最小値
+
+    private OptionsController opCon;
 
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
@@ -34,7 +35,7 @@ public class OptionsSlider : Button
 
     }
 
-    new void OnEnable()
+    protected override void OnEnable()
     {
         base.OnEnable();
 
@@ -45,9 +46,11 @@ public class OptionsSlider : Button
         SetStateText();
     }
 
-    new void Start()
+    protected override void Start()
     {
         base.Start();
+
+        opCon = OptionsController.instance;
 
         // スライダーの現在値・最大値・最小値を設定
         slider.value = defaultvalue;

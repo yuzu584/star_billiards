@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // ‰¹‚ğŠÇ—
-public class Sound : MonoBehaviour
+public class Sound : Singleton<Sound>
 {
     [SerializeField] protected AudioSource audioSource; // AudioSource
 

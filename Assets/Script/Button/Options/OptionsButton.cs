@@ -7,8 +7,9 @@ using System;
 // 設定画面の汎用ボタン
 public class OptionsButton : Button
 {
-    [SerializeField] private OptionsController _optionsController;
     [SerializeField] private int num = 0; // 遷移先の設定項目の番号
+
+    private OptionsController opCon;
 
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
@@ -28,14 +29,21 @@ public class OptionsButton : Button
     public override void ClickProcess()
     {
         // 設定画面の階層を変更
-        _optionsController.loot = (OptionsController.Loot)Enum.ToObject(typeof(OptionsController.Loot), num);
+        opCon.loot = (OptionsController.Loot)Enum.ToObject(typeof(OptionsController.Loot), num);
     }
 
-    new void OnEnable()
+    protected override void OnEnable()
     {
         base.OnEnable();
 
         // ボタンの初期化処理
         BtnInit(imageStructs, textStructs);
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        opCon = OptionsController.instance;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ステージ選択画面のUIを管理
-public class StageSelectUIController : Lerp
+public class StageSelectUIController : Singleton<StageSelectUIController>
 {
     [SerializeField] private StageData stageData;               // InspectorでStageDataを指定
     [SerializeField] private StageController stageController;   // InspectorでStageControllerを指定
@@ -17,6 +17,7 @@ public class StageSelectUIController : Lerp
     private StageButton oldStageBtn; // 取得したStageButton
     private float fadeTime = 0.4f;   // フェード時間
     private StageButton sBtn;
+    private Lerp lerp;
 
     // ステージ情報UIを描画
     public void DrawStageInfo(Vector3 pos, GameObject button, StageButton stageButton)
@@ -53,12 +54,12 @@ public class StageSelectUIController : Lerp
         }
 
         // ステージボタンを動かす
-        StartCoroutine(Position_GameObject(oldButton, oldButton.transform.localPosition, newPos + new Vector3(-85.0f, 20.0f, 0.0f), fadeTime));
-        StartCoroutine(Scale_GameObject(oldButton, oldButton.transform.localScale, new Vector2(0.4f, 0.4f), fadeTime));
+        StartCoroutine(lerp.Position_GameObject(oldButton, oldButton.transform.localPosition, newPos + new Vector3(-85.0f, 20.0f, 0.0f), fadeTime));
+        StartCoroutine(lerp.Scale_GameObject(oldButton, oldButton.transform.localScale, new Vector2(0.4f, 0.4f), fadeTime));
 
         // ステージ情報UIを表示
         uIController.stageSelectUI.stageInfoUI.SetActive(true);
-        StartCoroutine(Scale_GameObject(uIController.stageSelectUI.stageInfoUI, new Vector2(0.0f, 0.0f), new Vector2(1.0f, 1.0f), fadeTime));
+        StartCoroutine(lerp.Scale_GameObject(uIController.stageSelectUI.stageInfoUI, new Vector2(0.0f, 0.0f), new Vector2(1.0f, 1.0f), fadeTime));
     }
 
     // ステージボタンの見た目を元に戻す
@@ -75,8 +76,8 @@ public class StageSelectUIController : Lerp
             // 高速で処理を行わないなら線形補完を使用して値を変える
             else
             {
-                StartCoroutine(Position_GameObject(oldButton, oldButton.transform.localPosition, oldPos, fadeTime));
-                StartCoroutine(Scale_GameObject(oldButton, oldButton.transform.localScale, new Vector2(1.0f, 1.0f), fadeTime));
+                StartCoroutine(lerp.Position_GameObject(oldButton, oldButton.transform.localPosition, oldPos, fadeTime));
+                StartCoroutine(lerp.Scale_GameObject(oldButton, oldButton.transform.localScale, new Vector2(1.0f, 1.0f), fadeTime));
             }
 
             // ボタンをアニメーション中ではなくする
@@ -98,6 +99,11 @@ public class StageSelectUIController : Lerp
     {
         // ステージ情報UIを非表示
         HideStageInfo(true);
+    }
+
+    void Start()
+    {
+        lerp = gameObject.AddComponent<Lerp>();
     }
 
     void Update()

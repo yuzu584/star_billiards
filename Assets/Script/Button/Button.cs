@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 // ボタンの親クラス
-public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     // 線形補完で色を変更する時に使用する変数の構造体
     [System.Serializable]
@@ -69,16 +69,12 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
         SkillList,
     }
 
-    // Findで探すGameObject
-    protected GameObject ScreenController;
-    protected GameObject UIFunctionController;
-    protected GameObject SoundController;
-    protected GameObject InputObj;
-
-    // Findで探したGameObjectのコンポーネント
-    protected ScreenController screenController;
+    // instanceを代入する変数
+    protected ScreenController scrCon;
     protected Sound sound;
     protected InputController input;
+
+    protected Lerp lerp;
 
     [SerializeField] protected int loot = 0;                // フォーカスされる階層
     [SerializeField] protected bool defaultFocus = false;   // 最初にフォーカスするボタンか
@@ -106,7 +102,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
             StartCoroutine(sound.Play(EnterSound));
 
         // フォーカスされているボタンを設定
-        screenController.SetFocusBtn(this);
+        scrCon.SetFocusBtn(this);
 
         EnterProcess();
 
@@ -150,6 +146,9 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
     // ボタンのアニメーション処理
     protected void BtnAnimProcess(ImageStruct[] childrenImageStructs, TextStruct[] childrenTextStructs, bool enterOrExit)
     {
+        // Lerp コンポーネントが null なら終了
+        if (lerp == null) return;
+
         Color color1;
         Color color2;
         Vector3 pos1;
@@ -157,7 +156,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
         Vector2 scale1;
         Vector2 scale2;
 
-        StopAll();
+        lerp.StopAll();
 
         // ポインターが乗っているときのみ描画するなら描画
         for (int i = 0; i < childrenImageStructs.Length; i++)
@@ -190,7 +189,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
                 }
 
                 // 線形補完
-                StartCoroutine(Color_Image(childrenImageStructs[i].image, color1, color2, childrenImageStructs[i].lerpColor.fadeTime));
+                StartCoroutine(lerp.Color_Image(childrenImageStructs[i].image, color1, color2, childrenImageStructs[i].lerpColor.fadeTime));
             }
 
             // 座標の線形補完を使用するなら
@@ -209,7 +208,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
                 }
 
                 // 線形補完
-                StartCoroutine(Position_Image(childrenImageStructs[i].image, pos1, pos2, childrenImageStructs[i].lerpPosition.fadeTime));
+                StartCoroutine(lerp.Position_Image(childrenImageStructs[i].image, pos1, pos2, childrenImageStructs[i].lerpPosition.fadeTime));
             }
 
             // スケールの線形補完を使用するなら
@@ -228,7 +227,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
                 }
 
                 // 線形補完
-                StartCoroutine(Scale_Image(childrenImageStructs[i].image, scale1, scale2, childrenImageStructs[i].lerpScale.fadeTime));
+                StartCoroutine(lerp.Scale_Image(childrenImageStructs[i].image, scale1, scale2, childrenImageStructs[i].lerpScale.fadeTime));
             }
         }
 
@@ -251,7 +250,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
                 }
 
                 // 線形補完
-                StartCoroutine(Color_Text(childrenTextStructs[i].text, color1, color2, childrenTextStructs[i].lerpColor.fadeTime));
+                StartCoroutine(lerp.Color_Text(childrenTextStructs[i].text, color1, color2, childrenTextStructs[i].lerpColor.fadeTime));
             }
 
             // 座標の線形補完を使用するなら
@@ -270,7 +269,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
                 }
 
                 // 線形補完
-                StartCoroutine(Position_Text(childrenTextStructs[i].text, pos1, pos2, childrenTextStructs[i].lerpPosition.fadeTime));
+                StartCoroutine(lerp.Position_Text(childrenTextStructs[i].text, pos1, pos2, childrenTextStructs[i].lerpPosition.fadeTime));
             }
 
             // スケールの線形補完を使用するなら
@@ -289,7 +288,7 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
                 }
 
                 // 線形補完
-                StartCoroutine(Scale_Text(childrenTextStructs[i].text, scale1, scale2, childrenTextStructs[i].lerpScale.fadeTime));
+                StartCoroutine(lerp.Scale_Text(childrenTextStructs[i].text, scale1, scale2, childrenTextStructs[i].lerpScale.fadeTime));
             }
         }
     }
@@ -368,30 +367,22 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
         }
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
-        // オブジェクトを探してコンポーネントを取得
-        if (screenController == null)
-        {
-            ScreenController = GameObject.Find("ScreenController");
-            screenController = ScreenController.gameObject.GetComponent<ScreenController>();
-        }
+        lerp = gameObject.AddComponent<Lerp>();
 
-        UIFunctionController = GameObject.Find("UIFunctionController");
-        SoundController = GameObject.Find("SoundController");
-        InputObj = GameObject.Find("Input");
+        scrCon = ScreenController.instance;
+        sound = Sound.instance;
+        input = InputController.instance;
 
-        sound = SoundController.GetComponent<Sound>();
-        input = InputObj.GetComponent<InputController>();
-
-        screenController.changeLoot += () =>
+        scrCon.changeLoot += () =>
         {
             // このボタンがフォーカスされる階層なら
-            if ((loot == screenController.ScreenLoot) && (this.gameObject.activeInHierarchy))
+            if ((loot == scrCon.ScreenLoot) && (this.gameObject.activeInHierarchy))
             {
                 if (defaultFocus)
                 {
-                    screenController.SetFocusBtn(this);
+                    scrCon.SetFocusBtn(this);
 
                     EnterProcess();
                 }
@@ -399,21 +390,17 @@ public class Button : Lerp, IPointerEnterHandler, IPointerExitHandler, IPointerC
         };
     }
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
-        // screenControllerが取得されていなければ取得
-        if (screenController == null)
-        {
-            ScreenController = GameObject.Find("ScreenController");
-            screenController = ScreenController.gameObject.GetComponent<ScreenController>();
-        }
+        // scrConが取得されていなければ終了
+        if (scrCon == null) return;
 
         // このボタンがフォーカスされる階層なら
-        if (loot == screenController.ScreenLoot)
+        if (loot == scrCon.ScreenLoot)
         {
             if (defaultFocus)
             {
-                screenController.SetFocusBtn(this);
+                scrCon.SetFocusBtn(this);
 
                 EnterProcess();
             }

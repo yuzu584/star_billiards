@@ -28,17 +28,17 @@ public class BackButton : Button
     public override void ClickProcess()
     {
         // 画面番号を前の画面にする
-        screenController.ScreenLoot = 0;
-        screenController.ScreenNum = oldScreen;
+        scrCon.ScreenLoot = 0;
+        scrCon.ScreenNum = oldScreen;
     }
 
     // 前回のスクリーン番号をセット
     void SetOldScreen()
     {
-        oldScreen = screenController.oldScreenNum;
+        oldScreen = scrCon.oldScreenNum;
     }
 
-    new void OnEnable()
+    protected override void OnEnable()
     {
         base.OnEnable();
 
@@ -46,23 +46,23 @@ public class BackButton : Button
         BtnInit(imageStructs, textStructs);
     }
 
-    new void Start()
+    protected override void Start()
     {
         base.Start();
 
         // デリゲートを追加
-        screenController.changeScreen += SetOldScreen;
+        scrCon.changeScreen += SetOldScreen;
         input.ui_OnNegativeDele += (float value) =>
         {
             // 階層が0以下かつオブジェクトが有効なら
-            if ((screenController.ScreenLoot <= 0) && (this.gameObject.activeInHierarchy))
+            if ((scrCon.ScreenLoot <= 0) && (this.gameObject.activeInHierarchy))
             {
                 //音を再生
                 if (sound != null)
                     StartCoroutine(sound.Play(ClickSound));
 
                 // 前の画面に戻る
-                screenController.ScreenNum = oldScreen;
+                scrCon.ScreenNum = oldScreen;
             }
 
         };

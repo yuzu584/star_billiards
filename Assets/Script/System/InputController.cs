@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 // InputSystemの入力を管理
-public class InputController : MonoBehaviour
+public class InputController : Singleton<InputController>
 {
     [SerializeField] private ScreenController screenController;
     [SerializeField] private ScreenData screenData;
@@ -43,8 +43,10 @@ public class InputController : MonoBehaviour
 
     public bool canInput = true; // InputSystemの入力が可能か
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         // インスタンスを生成
         actions = new PlayerActions();
 

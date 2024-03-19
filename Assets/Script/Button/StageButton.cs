@@ -17,18 +17,14 @@ public class StageButton : Button
 
     public bool anim = false; // ボタンがアニメーション中か
 
-    // Findで探すGameObject
-    private GameObject StageController;
-
-    // Findで探したGameObjectのコンポーネント
-    private StageSelectUIController stageSelectUIController;
-    private StageController stageController;
+    private StageSelectUIController stageSelectUICon;
+    private StageController stageCon;
 
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
     {
         // 階層を設定
-        screenController.ScreenLoot = 0;
+        scrCon.ScreenLoot = 0;
 
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, true);
@@ -48,14 +44,14 @@ public class StageButton : Button
         if (!anim)
         {
             // 階層を設定
-            screenController.ScreenLoot = 1;
+            scrCon.ScreenLoot = 1;
 
-            stageController.stageNum = num;
-            stageSelectUIController.DrawStageInfo(this.transform.localPosition, this.gameObject, this);
+            stageCon.stageNum = num;
+            stageSelectUICon.DrawStageInfo(this.transform.localPosition, this.gameObject, this);
         }
     }
 
-    new void OnEnable()
+    protected override void OnEnable()
     {
         base.OnEnable();
 
@@ -63,15 +59,12 @@ public class StageButton : Button
         BtnInit(imageStructs, textStructs);
     }
 
-    new void Start()
+    protected override void Start()
     {
         base.Start();
 
-        // オブジェクトを探してコンポーネントを取得
-        StageController = GameObject.Find("StageController");
-
-        stageSelectUIController = UIFunctionController.GetComponent<StageSelectUIController>();
-        stageController = StageController.GetComponent<StageController>();
+        stageSelectUICon = StageSelectUIController.instance;
+        stageCon = StageController.instance;
 
         // テキストをステージ名に設定
         stageName.text = stageData.stageList[num].stageName;
