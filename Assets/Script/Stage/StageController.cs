@@ -8,8 +8,10 @@ public class StageController : Singleton<StageController>
     [SerializeField] private StageData stageData;                   // InspectorでStageDataを指定
     [SerializeField] private PlanetAmount planetAmount;             // InspectorでPlanetAmountを指定
     [SerializeField] private CreateStage createStage;               // InspectorでCreateStageを指定
-    [SerializeField] private ScreenController screenController;     // InspectorでScreenControllerを指定
     [SerializeField] private Initialize initialize;                 // InspectorでInitializeを指定
+
+    private ScreenController scrCon;
+
     public int stageNum = 0;                                        // ステージ番号
     public bool stageCrear = false;                                 // ステージをクリアしたかどうか
     public bool gameOver = false;                                   // ゲームオーバーかどうか
@@ -38,6 +40,8 @@ public class StageController : Singleton<StageController>
 
     void Start()
     {
+        scrCon = ScreenController.instance;
+
         // デリゲートに初期化関数を登録
         initialize.init_Stage += Init;
     }
@@ -48,18 +52,18 @@ public class StageController : Singleton<StageController>
         if (missionNum != stageData.stageList[stageNum].missionNum)
             missionNum = stageData.stageList[stageNum].missionNum;
 
-        // ミッションが"全ての惑星を破壊"かつクリア条件を達成したなら
-        if (missionNum == 0 && (planetAmount.planetDestroyAmount >= stageData.stageList[stageNum].planetNum))
+        // ミッションが"全ての惑星を破壊"かつクリア条件を達成したなら(ゲーム画面で)
+        if ((missionNum == 0) && (planetAmount.planetDestroyAmount >= stageData.stageList[stageNum].planetNum) && (scrCon.ScreenNum == 5))
         {
             // ステージクリア
             StageCrear();
         }
 
         // ステージを表示/非表示
-        if (stageCreated != screenController.canStageDraw)
+        if (stageCreated != scrCon.canStageDraw)
         {
-            stageCreated = screenController.canStageDraw;
-            createStage.Draw(screenController.canStageDraw);
+            stageCreated = scrCon.canStageDraw;
+            createStage.Draw(scrCon.canStageDraw);
         }
     }
 }
