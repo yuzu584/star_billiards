@@ -5,12 +5,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ステージクリア画面のUIを管理
-public class StageClearUIController : Lerp
+public class StageClearUIController : MonoBehaviour
 {
     [SerializeField] private Material stageClearButtonMat;                // ボタンのマテリアル
     [SerializeField] private PostProcessController postProcessController; // InspectorでPostProcessControllerを指定
     [SerializeField] private UIController uIController;                   // InspectorでUIControllerを指定
-    [SerializeField] private Lerp lerp;                                   // InspectorでLerpを指定
+
+    private Lerp lerp;
 
     public float fadeTime = 0.4f; // フェード時間
 
@@ -37,7 +38,7 @@ public class StageClearUIController : Lerp
         // テキストを動かす
         startPos = new Vector3(300.0f, 0.0f, 0.0f);
         endPos = new Vector3(0.0f, 0.0f, 0.0f);
-        StartCoroutine(Position_Text(uIController.stageClearUI.stageClearText, startPos, endPos, fadeTime));
+        StartCoroutine(lerp.Position_Text(uIController.stageClearUI.stageClearText, startPos, endPos, fadeTime));
 
         // 一瞬待つ
         yield return new WaitForSecondsRealtime(2.0f);
@@ -45,7 +46,7 @@ public class StageClearUIController : Lerp
         // テキストを動かす
         startPos = new Vector3(0.0f, 0.0f, 0.0f);
         endPos = new Vector3(0.0f, 100.0f, 0.0f);
-        StartCoroutine(Position_Text(uIController.stageClearUI.stageClearText, startPos, endPos, fadeTime));
+        StartCoroutine(lerp.Position_Text(uIController.stageClearUI.stageClearText, startPos, endPos, fadeTime));
 
         // ボタンを表示
         for (int i = 0; i < uIController.stageClearUI.button.Length; i++)
@@ -62,12 +63,17 @@ public class StageClearUIController : Lerp
             // ボタン移動
             startPos = defaultPos[i] + new Vector3(300.0f, 0.0f, 0.0f);
             endPos = defaultPos[i];
-            StartCoroutine(Position_GameObject(uIController.stageClearUI.button[i], startPos, endPos, fadeTime));
+            StartCoroutine(lerp.Position_GameObject(uIController.stageClearUI.button[i], startPos, endPos, fadeTime));
 
             // 透明度変化
             startColor = new Color32(255, 255, 255, 0);
             endColor = new Color32(255, 255, 255, 255);
-            StartCoroutine(Color_Material(stageClearButtonMat, startColor, endColor, fadeTime));
+            StartCoroutine(lerp.Color_Material(stageClearButtonMat, startColor, endColor, fadeTime));
         }
+    }
+
+    private void Start()
+    {
+        lerp = gameObject.AddComponent<Lerp>();
     }
 }

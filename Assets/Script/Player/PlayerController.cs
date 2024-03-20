@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     {
         rb.velocity *= 0;
         transform.position = AppConst.PLATER_DEFAULT_POSITION;
+
+        // ˆÚ“®§ŒÀ‚ğ‰ğœ
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     void Start()

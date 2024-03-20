@@ -5,13 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ポップアップを管理
-public class PopupController : Lerp
+public class PopupController : MonoBehaviour
 {
     [SerializeField] private GameObject popUp;                  // ポップアップのプレハブ
     [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
     [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
     [SerializeField] private Initialize initialize;             // InspectorでInitializeを指定
-    [SerializeField] private Lerp lerp;                         // InspectorでLerpを指定
+
+    private Lerp lerp;
 
     [System.NonSerialized] public GameObject[] drawingPopup = new GameObject[10]; // ポップアップの配列
 
@@ -55,14 +56,14 @@ public class PopupController : Lerp
         defaultPosition = drawingPopup[i].transform.localPosition;
 
         // ポップアップを動かす
-        yield return Position_GameObject(drawingPopup[i], defaultPosition, defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), fadeTime);
+        yield return lerp.Position_GameObject(drawingPopup[i], defaultPosition, defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), fadeTime);
 
         // ポップアップが時間が経過するまで待つ
         yield return new WaitForSeconds(destroyTime);
 
         // ポップアップを動かす
         if (drawingPopup[i] != null)
-            yield return Position_GameObject(drawingPopup[i], defaultPosition, defaultPosition - new Vector3(moveDistance, 0.0f, 0.0f), fadeTime);
+            yield return lerp.Position_GameObject(drawingPopup[i], defaultPosition, defaultPosition - new Vector3(moveDistance, 0.0f, 0.0f), fadeTime);
 
         // ポップアップを削除
         Destroy(drawingPopup[i]);
@@ -93,6 +94,8 @@ public class PopupController : Lerp
 
     void Start()
     {
+        lerp = gameObject.AddComponent<Lerp>();
+
         // デリゲートに初期化関数を登録
         initialize.init_Stage += Init;
 
