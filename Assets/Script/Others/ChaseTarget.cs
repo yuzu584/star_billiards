@@ -5,7 +5,7 @@ using UnityEngine;
 // ターゲットの座標に移動する
 public class ChaseTarget : MonoBehaviour
 {
-    public GameObject target; // ターゲット
+    [SerializeField] private GameObject target; // ターゲット
 
     // ターゲットの座標に移動
     public void Chase()
