@@ -7,7 +7,6 @@ public class CreateStage : Singleton<CreateStage>
 {
     [SerializeField] StageData stageData;             // InspectorでStageDataを指定
     [SerializeField] StageController stageController; // InspectorでStageControllerを指定
-    [SerializeField] GameObject sphere;               // スフィア
 
     private GameObject stagePrefab; // ステージのプレハブ
 
@@ -30,21 +29,20 @@ public class CreateStage : Singleton<CreateStage>
     }
 
     // ステージを表示/非表示
-    public void Draw(bool draw)
+    public void Render(bool draw)
     {
         // ステージを表示/非表示
         if(stagePrefab != null)
         {
             stagePrefab.SetActive(draw);
         }
-
-        // スフィアを表示/非表示切り替え
-        sphere.SetActive(draw);
     }
 
-    void Start()
+    // 現在ステージが描画されているかを返す
+    public bool NowRenderState()
     {
-        // スフィアを非表示
-        sphere.SetActive(false);
+        if(stagePrefab != null)
+            return stagePrefab.activeSelf;
+        else return false;
     }
 }

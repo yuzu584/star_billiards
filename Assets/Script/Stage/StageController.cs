@@ -9,41 +9,22 @@ public class StageController : Singleton<StageController>
     [SerializeField] private PlanetAmount planetAmount;             // InspectorでPlanetAmountを指定
     [SerializeField] private CreateStage createStage;               // InspectorでCreateStageを指定
     [SerializeField] private Initialize initialize;                 // InspectorでInitializeを指定
+    [SerializeField] private ScreenData screenData;                 // InspectorでScreenDataを指定
 
     private ScreenController scrCon;
 
+
+    private int missionNum;                                         // ミッション番号
+
     public int stageNum = 0;                                        // ステージ番号
-    public bool stageCrear = false;                                 // ステージをクリアしたかどうか
-    public bool gameOver = false;                                   // ゲームオーバーかどうか
-
-    private int missionNum;              // ミッション番号
-    private bool stageCreated = false;   // ステージを生成したか
-
-    // ステージクリア時の処理
-    void StageCrear()
-    {
-        stageCrear = true;
-    }
-
-    // ゲームオーバー時の処理
-    void GameOver()
-    {
-        gameOver = true;
-    }
-
-    // ステージに関する数値を初期化
-    public void Init()
-    {
-        stageCrear = false;
-        gameOver = false;
-    }
+    public delegate void StageCrearDele();                          // ステージクリア時のデリゲート
+    public delegate void GameOverDele();                            // ゲームオーバー時のデリゲート
+    public StageCrearDele stageCrearDele;
+    public GameOverDele gameOverDele;
 
     void Start()
     {
         scrCon = ScreenController.instance;
-
-        // デリゲートに初期化関数を登録
-        initialize.init_Stage += Init;
     }
 
     void Update()
@@ -55,15 +36,12 @@ public class StageController : Singleton<StageController>
         // ミッションが"全ての惑星を破壊"かつクリア条件を達成したなら(ゲーム画面で)
         if ((missionNum == 0) && (planetAmount.planetDestroyAmount >= stageData.stageList[stageNum].planetNum) && (scrCon.ScreenNum == 5))
         {
-            // ステージクリア
-            StageCrear();
+            // ステージクリア時のデリゲートを発火
+            stageCrearDele();
         }
 
         // ステージを表示/非表示
-        if (stageCreated != scrCon.canStageDraw)
-        {
-            stageCreated = scrCon.canStageDraw;
-            createStage.Draw(scrCon.canStageDraw);
-        }
+        if(createStage.NowRenderState() != screenData.screenList[scrCon.ScreenNum].drawStage)
+            createStage.Render(screenData.screenList[scrCon.ScreenNum].drawStage);
     }
 }

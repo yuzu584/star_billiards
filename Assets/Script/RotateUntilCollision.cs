@@ -17,6 +17,11 @@ public class RotateUntilCollision : MonoBehaviour
         if (rotate)
             // 公転させる
             Rotate();
+        else
+        {
+            // コンポーネントを廃止
+            Destroy(this);
+        }
     }
 
     // 何かと衝突したら

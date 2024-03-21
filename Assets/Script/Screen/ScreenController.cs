@@ -17,7 +17,6 @@ public class ScreenController : Singleton<ScreenController>
     [SerializeField] private Sound sound;                               // InspectorでSoundを指定
     [SerializeField] private Image switchImage;                         // 画面遷移時の画像
 
-    [System.NonSerialized] public bool canStageDraw = false;            // ステージを描画可能か
     [System.NonSerialized] public int oldScreenNum = 0;                 // 前回の画面番号
     [System.NonSerialized] public int oldScreenLoot = 0;                // 前回の階層
     [System.NonSerialized] public int oldFrameScreenNum = 0;            // 1フレーム前の画面番号
@@ -55,8 +54,6 @@ public class ScreenController : Singleton<ScreenController>
     public Button focusBtn;                  // フォーカスしているボタン
     public Button oldfocusBtn;               // フォーカスされていたボタン
     public Scrollbar focusScrollbar;         // フォーカスしているスクロールバー
-
-    private bool changeStageClearScreen = false; // ステージクリア画面に遷移したかどうか
     
     // 画面遷移処理
     private void SwitchProcess(int num)
@@ -118,6 +115,7 @@ public class ScreenController : Singleton<ScreenController>
         input.game_OnPauseDele += OpenPause;
         input.ui_OnMoveDele += ChangeBtnFocus;
         input.ui_OnMoveDele += MoveSlider;
+        stageController.stageCrearDele += () => { screenNum = 8; };
 
         // UI_Positive入力時のイベントを登録
         input.ui_OnPositiveDele += (float value) =>
@@ -142,29 +140,6 @@ public class ScreenController : Singleton<ScreenController>
                 ScreenNum = 0;
             }
         };
-    }
-
-    void Update()
-    {
-        // ステージをクリアかつ画面遷移していないなら
-        if ((stageController.stageCrear) && (!changeStageClearScreen))
-        {
-            // ステージクリア画面に遷移済み
-            changeStageClearScreen = true;
-
-            // ステージクリア画面に遷移
-            screenNum = 8;
-        }
-        // ステージ未クリアかつ画面遷移したなら
-        else if ((!stageController.stageCrear) && (changeStageClearScreen))
-        {
-            // ステージクリア画面に未遷移
-            changeStageClearScreen = false;
-        }
-
-        // ステージが描画可能かを管理する配列を更新
-        if (canStageDraw != screenData.screenList[screenNum].drawStage)
-            canStageDraw = screenData.screenList[screenNum].drawStage;
     }
 
     // ポーズ画面に遷移

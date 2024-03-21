@@ -9,6 +9,18 @@ public class ScreenData : ScriptableObject
     public List<ScreenDataContent> screenList;
 }
 
+// 階層のクラス
+[System.Serializable]
+public class LootStr
+{
+    public string name;
+    public bool hideCursol;
+    public float timeScale = 1.0f;
+    public bool enterAnim = false;
+    public bool exitAnim = false;
+    public int inputType;
+}
+
 // スクリーンのリスト
 [System.Serializable]
 public class ScreenDataContent
