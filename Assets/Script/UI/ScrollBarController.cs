@@ -7,7 +7,8 @@ using UnityEngine.UI;
 // スクロールバーの挙動を管理(主にコントローラー使用時の)
 public class ScrollBarController : Singleton<ScrollBarController>
 {
-    [SerializeField] ScreenController screenController;
+    private ScreenController scrCon;
+    private Focus focus;
 
     [System.Serializable]
     public struct ScrollBarStruct
@@ -25,28 +26,31 @@ public class ScrollBarController : Singleton<ScrollBarController>
 
     void Start()
     {
+        scrCon = ScreenController.instance;
+        focus = Focus.instance;
+
         // 画面遷移時にスクロールバーのフォーカスを設定する
-        screenController.changeScreen += Focus;
+        scrCon.changeScreen += ScrollBarFocusProcess;
     }
 
     // スクロールバーのフォーカス処理
-    void Focus()
+    void ScrollBarFocusProcess()
     {
         // フォーカスするスクロールバーを探す
         for(int i = 0; i < scrollBarStruct.Length; ++i)
         {
             // 画面番号とスクロールバーをフォーカスする画面番号が一致したら
-            if (scrollBarStruct[i].focusScreen == screenController.ScreenNum)
+            if (scrollBarStruct[i].focusScreen == scrCon.ScreenNum)
             {
                 // フォーカスするスクロールバーを設定
                 num = i;
-                screenController.focusScrollbar = scrollBarStruct[i].scrollbar;
+                focus.focusScrollbar = scrollBarStruct[i].scrollbar;
                 return;
             }
         }
 
         // フォーカスするスクロールバーが無ければフォーカスを外す
-        screenController.focusScrollbar = null;
+        focus.focusScrollbar = null;
     }
 
     // スクロール処理

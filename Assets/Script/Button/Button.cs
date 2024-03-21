@@ -73,6 +73,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     protected ScreenController scrCon;
     protected Sound sound;
     protected InputController input;
+    protected Focus focus;
 
     protected Lerp lerp;
 
@@ -102,7 +103,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
             StartCoroutine(sound.Play(EnterSound));
 
         // フォーカスされているボタンを設定
-        scrCon.SetFocusBtn(this);
+        focus.SetFocusBtn(this);
 
         EnterProcess();
 
@@ -372,6 +373,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         lerp ??= gameObject.AddComponent<Lerp>();
 
         scrCon ??= ScreenController.instance;
+        focus ??= Focus.instance;
         sound = Sound.instance;
         input = InputController.instance;
 
@@ -382,7 +384,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
             {
                 if (defaultFocus)
                 {
-                    scrCon.SetFocusBtn(this);
+                    focus.SetFocusBtn(this);
 
                     EnterProcess();
                 }
@@ -392,15 +394,16 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     protected virtual void OnEnable()
     {
-        // scrConが取得されていなければ取得
+        // 取得されていなければ取得
         scrCon ??= ScreenController.instance;
+        focus ??= Focus.instance;
 
         // このボタンがフォーカスされる階層なら
         if (loot == scrCon.ScreenLoot)
         {
             if (defaultFocus)
             {
-                scrCon.SetFocusBtn(this);
+                focus.SetFocusBtn(this);
 
                 EnterProcess();
             }

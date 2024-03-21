@@ -2405,6 +2405,7 @@ Transform:
   - {fileID: 876631143}
   - {fileID: 1182512707}
   - {fileID: 1951116560}
+  - {fileID: 595195742}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4174,6 +4175,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550391686}
   m_CullTransparentMesh: 1
+--- !u!1 &595195741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 595195742}
+  - component: {fileID: 595195743}
+  m_Layer: 0
+  m_Name: Focus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &595195742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595195741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 318109087}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &595195743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595195741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13d696694151f34b9482b7a59d7a3e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  focusBtn: {fileID: 0}
+  oldfocusBtn: {fileID: 0}
+  focusScrollbar: {fileID: 0}
 --- !u!1001 &609511524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8297,8 +8345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10eb5ce851b1fe849a384015200b963b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenController: {fileID: 1600059365}
-  input: {fileID: 876631145}
 --- !u!114 &1148952483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11137,9 +11183,6 @@ MonoBehaviour:
   switchImage: {fileID: 1569710203}
   screenNum: 0
   screenLoot: 0
-  focusBtn: {fileID: 0}
-  oldfocusBtn: {fileID: 0}
-  focusScrollbar: {fileID: 0}
 --- !u!4 &1600059366
 Transform:
   m_ObjectHideFlags: 0
@@ -13862,7 +13905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e4ee41114893c478e6be1718100c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenController: {fileID: 1600059365}
   num: 0
   scrollBarStruct:
   - scrollbar: {fileID: 183088788}
