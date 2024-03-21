@@ -7,14 +7,15 @@ public class Screen : MonoBehaviour
 {
     [SerializeField] private int num = 0;                       // このGameObjectを表示する画面番号
     [SerializeField] private int loot = 0;                      // このGameObjectを表示する画面の階層
-    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
     [SerializeField] private bool resetFov = false;             // スクリーンアクティブ時に視野角を初期値にするか
+
+    private ScreenController scrCon;
 
     // 表示する画面を切り替え
     public void SwitchScreen()
     {
         // 画面番号がnumと同じかつ画面の階層がlootと同じなら表示
-        if((screenController.ScreenNum == num) && (screenController.ScreenLoot == loot) && (!gameObject.activeSelf))
+        if((scrCon.ScreenNum == num) && (scrCon.ScreenLoot == loot) && (!gameObject.activeSelf))
         {
             gameObject.SetActive(true);
 
@@ -25,7 +26,7 @@ public class Screen : MonoBehaviour
             }
         }
         // 違うなら非表示
-        else if (((screenController.ScreenNum != num) || (screenController.ScreenLoot != loot)) && (gameObject.activeSelf))
+        else if (((scrCon.ScreenNum != num) || (scrCon.ScreenLoot != loot)) && (gameObject.activeSelf))
         {
             gameObject.SetActive(false);
         }
@@ -33,7 +34,8 @@ public class Screen : MonoBehaviour
 
     void Start()
     {
-        screenController.changeScreen += SwitchScreen;
+        scrCon = ScreenController.instance;
+        scrCon.changeScreen += SwitchScreen;
         SwitchScreen();
     }
 }

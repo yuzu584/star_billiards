@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // İ’è‰æ–Ê‚ÌUI‚ğŠÇ—
-public class OptionsUIController : MonoBehaviour
+public class OptionsUIController : Singleton<OptionsUIController>
 {
 
 }

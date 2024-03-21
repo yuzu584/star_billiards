@@ -9,13 +9,12 @@ using UnityEngine.UI;
 [DefaultExecutionOrder(-1000)]
 public class ScreenController : Singleton<ScreenController>
 {
-    [SerializeField] private UIController uIController;                 // InspectorでUIControllerを指定
-    [SerializeField] private StageController stageController;           // InspectorでStageControllerを指定
-    [SerializeField] private PauseUIController pauseUIController;       // InspectorでPauseUIControllerを指定
-    [SerializeField] private ScreenData screenData;                     // InspectorでScreenDataを指定
-    [SerializeField] private InputController input;                     // InspectorでInputControllerを指定
-    [SerializeField] private Sound sound;                               // InspectorでSoundを指定
+    [SerializeField] private ScreenData scrData;
     [SerializeField] private Image switchImage;                         // 画面遷移時の画像
+
+    private StageController stageCon;
+    private InputController input;
+    private Sound sound;
 
     [System.NonSerialized] public int oldScreenNum = 0;                 // 前回の画面番号
     [System.NonSerialized] public int oldScreenLoot = 0;                // 前回の階層
@@ -59,7 +58,7 @@ public class ScreenController : Singleton<ScreenController>
     private void SwitchProcess(int num)
     {
         // 遷移先の画面または現在の画面が遷移時にアニメーションを行うことになっていたら
-        if ((screenData.screenList[num].enterAnim) || (screenData.screenList[screenNum].exitAnim))
+        if ((scrData.screenList[num].enterAnim) || (scrData.screenList[screenNum].exitAnim))
         {
             // アニメーションを行う
             lerp.StopAll();
@@ -111,11 +110,15 @@ public class ScreenController : Singleton<ScreenController>
 
     void Start()
     {
+        stageCon = StageController.instance;
+        input = InputController.instance;
+        sound = Sound.instance;
+
         lerp = gameObject.AddComponent<Lerp>();
         input.game_OnPauseDele += OpenPause;
         input.ui_OnMoveDele += ChangeBtnFocus;
         input.ui_OnMoveDele += MoveSlider;
-        stageController.stageCrearDele += () => { screenNum = 8; };
+        stageCon.stageCrearDele += () => { screenNum = 8; };
 
         // UI_Positive入力時のイベントを登録
         input.ui_OnPositiveDele += (float value) =>

@@ -14,11 +14,8 @@ public class ScreenData : ScriptableObject
 public class LootStr
 {
     public string name;
-    public bool hideCursol;
-    public float timeScale = 1.0f;
     public bool enterAnim = false;
     public bool exitAnim = false;
-    public int inputType;
 }
 
 // スクリーンのリスト

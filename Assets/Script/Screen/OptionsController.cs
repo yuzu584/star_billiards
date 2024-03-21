@@ -19,8 +19,8 @@ public class OptionsController : Singleton<OptionsController>
     public Loot loot = 0;
 
     private int oldLoot = 0;  // 1フレーム前の階層
+    private OptionsUIController optUICon;
 
-    [SerializeField] private OptionsUIController _optionsUIController;
     [SerializeField] private GameObject[] lootObj; // 階層ごとのゲームオブジェクト
 
 

@@ -5,15 +5,21 @@ using UnityEngine;
 // タイトル画面を管理
 public class TitleController : MonoBehaviour
 {
-    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
-    [SerializeField] private InputController input;             // InspectorでInputを指定
+    private ScreenController scrCon;
+    private InputController input;
+
+    void Start()
+    {
+        scrCon = ScreenController.instance;
+        input = InputController.instance;
+    }
 
     void Update()
     {
         // タイトル画面で何かしらの入力が行われたらメインメニューに遷移
-        if ((Input.anyKey) && (screenController.ScreenNum == 0) && (input.canInput))
+        if ((Input.anyKey) && (scrCon.ScreenNum == 0) && (input.canInput))
         {
-            screenController.ScreenNum = 1;
+            scrCon.ScreenNum = 1;
         }
     }
 }

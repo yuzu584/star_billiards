@@ -5,15 +5,23 @@ using UnityEngine;
 // マウスカーソルを管理
 public class CursorController : MonoBehaviour
 {
-    [SerializeField] private ScreenData screenData;             // InspectorでScreenDataを指定
-    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
+    [SerializeField] private ScreenData scrData;             // InspectorでScreenDataを指定
 
-    private bool draw; // カーソルを表示するかどうか
+    private ScreenController scrCon;
+    private bool draw;                                       // カーソルを表示するかどうか
 
-    void Update()
+    private void Start()
+    {
+        scrCon = ScreenController.instance;
+
+        scrCon.changeScreen += SwitchCursorState;
+    }
+
+    // カーソルの状態を切り替え
+    void SwitchCursorState()
     {
         // 現在のスクリーン番号でカーソルを表示するかどうか決める
-        draw = screenData.screenList[screenController.ScreenNum].drawCursol;
+        draw = scrData.screenList[scrCon.ScreenNum].drawCursol;
 
         // カーソルの表示非表示切り替え
         Cursor.visible = draw;

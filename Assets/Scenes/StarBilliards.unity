@@ -517,7 +517,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 8
   loot: 0
-  screenController: {fileID: 1600059365}
   resetFov: 0
 --- !u!1001 &49471610
 PrefabInstance:
@@ -4444,7 +4443,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 6
   loot: 0
-  screenController: {fileID: 1600059365}
   resetFov: 0
 --- !u!1001 &638171573
 PrefabInstance:
@@ -5940,7 +5938,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 9
   loot: 0
-  screenController: {fileID: 1600059365}
   resetFov: 0
 --- !u!1 &868238458
 GameObject:
@@ -6763,7 +6760,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   loot: 0
-  screenController: {fileID: 1600059365}
   resetFov: 1
 --- !u!1 &941270773
 GameObject:
@@ -8506,8 +8502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3baad58fc819d6e4cb8d979d3a6d0e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
-  screenController: {fileID: 1600059365}
+  scrData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
 --- !u!4 &1180901548
 Transform:
   m_ObjectHideFlags: 0
@@ -9073,7 +9068,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 3
   loot: 0
-  screenController: {fileID: 1600059365}
   resetFov: 1
 --- !u!114 &1225636075
 MonoBehaviour:
@@ -9088,7 +9082,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loot: 0
-  _optionsUIController: {fileID: 1225636076}
   lootObj:
   - {fileID: 1023923710}
   - {fileID: 1150158037}
@@ -10914,7 +10907,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 5
   loot: 0
-  screenController: {fileID: 1600059365}
   resetFov: 0
 --- !u!1 &1566595050
 GameObject:
@@ -11141,12 +11133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cd097e734fcfa43b27f3cf26223b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uIController: {fileID: 869580811}
-  stageController: {fileID: 291823625}
-  pauseUIController: {fileID: 1148952472}
-  screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
-  input: {fileID: 876631145}
-  sound: {fileID: 1210904629}
+  scrData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
   switchImage: {fileID: 1569710203}
   screenNum: 0
   screenLoot: 0
@@ -11872,7 +11859,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 1
   loot: 0
-  screenController: {fileID: 1600059365}
   resetFov: 1
 --- !u!1 &1740467957
 GameObject:
@@ -12935,7 +12921,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 2
   loot: 0
-  screenController: {fileID: 1600059365}
   resetFov: 1
 --- !u!1001 &1820004681
 PrefabInstance:
@@ -14634,7 +14619,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 4
   loot: 0
-  screenController: {fileID: 1600059365}
   resetFov: 1
 --- !u!224 &2037059006 stripped
 RectTransform:
