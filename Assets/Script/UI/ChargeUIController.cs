@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // チャージのUIを管理
-public class ChargeUIController : MonoBehaviour
+public class ChargeUIController : Singleton<ChargeUIController>
 {
     [SerializeField] private Shot shot; // InspectorでShotを指定
 

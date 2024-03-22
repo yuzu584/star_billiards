@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // エネルギーのUIを管理
-public class EnergyUIController : MonoBehaviour
+public class EnergyUIController : Singleton<EnergyUIController>
 {
     [SerializeField] private EnergyController energyController; // InspectorでEnergyControllerを指定
     [SerializeField] private Initialize initialize;             // InspectorでInitializeを指定

@@ -180,31 +180,23 @@ public class UIController : Singleton<UIController>
         public Text justShotText;            // ジャストショット時のテキスト
     }
 
-    [SerializeField] private SkillController skillController;             // InspectorでSkillControllerを指定
-
-    // Findで探すGameObject
-    private GameObject UIFunctionController;
-
-    // Findで探したGameObjectのコンポーネント
-    private EnergyUIController energyUIController;
-    private ChargeUIController chargeUIController;
-    private MissionUIController missionUIController;
-    private SpeedUIController speedUIController;
-    private StageClearUIController stageClearUIController;
+    private SkillController skillCon;
+    private EnergyUIController eneUICon;
+    private ChargeUIController chargeUICon;
+    private MissionUIController missionUICon;
+    private SpeedUIController speedUICon;
+    private StageClearUIController stageClearUICon;
 
     private bool drawedStageCrearUI = false; // ステージクリア画面を描画済みか
 
     void Start()
     {
-        // GameObjectを探す
-        UIFunctionController = GameObject.Find("UIFunctionController");
-
-        // 探したGameObjectのコンポーネントを取得
-        energyUIController = UIFunctionController.gameObject.GetComponent<EnergyUIController>();
-        chargeUIController = UIFunctionController.gameObject.GetComponent<ChargeUIController>();
-        missionUIController = UIFunctionController.gameObject.GetComponent<MissionUIController>();
-        speedUIController = UIFunctionController.gameObject.GetComponent<SpeedUIController>();
-        stageClearUIController = UIFunctionController.gameObject.GetComponent<StageClearUIController>();
+        skillCon = SkillController.instance;
+        eneUICon = EnergyUIController.instance;
+        chargeUICon = ChargeUIController.instance;
+        missionUICon = MissionUIController.instance;
+        speedUICon = SpeedUIController.instance;
+        stageClearUICon = StageClearUIController.instance;
     }
 
     void Update()
@@ -213,25 +205,25 @@ public class UIController : Singleton<UIController>
         if (inGameUI.allInGameUI.activeSelf)
         {
             // エネルギーのUIを更新
-            energyUIController.DrawEnergyUI(
+            eneUICon.DrawEnergyUI(
                 energyUI.EnergyGaugeOutline,
                 energyUI.EnergyValue,
                 messageUI.NoEnergy);
 
             // チャージのUIを更新
-            chargeUIController.DrawChargeUI(
+            chargeUICon.DrawChargeUI(
                 chargeUI.allChargeUI,
                 chargeUI.chargeValue,
                 chargeUI.chargeCircle);
 
             // ミッションのUIを更新
-            missionUIController.DrawMissionUI();
+            missionUICon.DrawMissionUI();
 
             // スキルのUIを更新
-            skillController.CallSetSkillUI();
+            skillCon.CallSetSkillUI();
 
             // 移動速度の数値UIを更新
-            speedUIController.DrawSpeedValue(otherUI.speedValue);
+            speedUICon.DrawSpeedValue(otherUI.speedValue);
 
             // 制限時間のUIを描画
             timeLimitUI.renderTimeLimit();
@@ -241,7 +233,7 @@ public class UIController : Singleton<UIController>
         if ((stageClearUI.allStageClearUI.activeSelf) && (!drawedStageCrearUI))
         {
             drawedStageCrearUI = true;
-            stageClearUIController.DrawStageClearUI();
+            stageClearUICon.DrawStageClearUI();
         }
         else if ((!stageClearUI.allStageClearUI.activeSelf) && (drawedStageCrearUI))
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ステージクリア画面のUIを管理
-public class StageClearUIController : MonoBehaviour
+public class StageClearUIController : Singleton<StageClearUIController>
 {
     [SerializeField] private Material stageClearButtonMat;                // ボタンのマテリアル
     [SerializeField] private PostProcessController postProcessController; // InspectorでPostProcessControllerを指定
