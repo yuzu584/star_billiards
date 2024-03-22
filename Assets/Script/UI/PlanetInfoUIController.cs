@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ˜f¯î•ñUI‚ğŠÇ—
-public class PlanetInfoUIController : MonoBehaviour
+public class PlanetInfoUIController : Singleton<PlanetInfoUIController>
 {
     [SerializeField] private UIController uIController; // Inspector‚ÅUIController‚ğw’è
     [SerializeField] private Converter converter;       // Inspector‚ÅConverter‚ğw’è

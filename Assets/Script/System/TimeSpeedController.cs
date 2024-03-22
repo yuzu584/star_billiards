@@ -6,15 +6,21 @@ using UnityEngine;
 public class TimeSpeedController : MonoBehaviour
 {
     [SerializeField] private ScreenData screenData;             // Inspector‚ÅScreenData‚ğw’è
-    [SerializeField] private ScreenController screenController; // Inspector‚ÅScreenController‚ğw’è
+
+    private ScreenController scrCon;
+
+    private void Start()
+    {
+        scrCon = ScreenController.instance;
+    }
 
     void Update()
     {
         // ŠÔ‚Ì‘¬‚³‚ª³í‚Å‚È‚¯‚ê‚Î
-        if(Time.timeScale != screenData.screenList[screenController.ScreenNum].timeScale)
+        if(Time.timeScale != screenData.screenList[scrCon.ScreenNum].timeScale)
         {
             // ŠÔ‚Ì‘¬‚³‚ğ³í‚É‚·‚é
-            Time.timeScale = screenData.screenList[screenController.ScreenNum].timeScale;
+            Time.timeScale = screenData.screenList[scrCon.ScreenNum].timeScale;
         }
     }
 }

@@ -7,14 +7,21 @@ using Const;
 // 球体のRayを生成し、関数を呼び出す
 public class SphereRay : Singleton<SphereRay>
 {
-    [SerializeField] private PlanetInfoUIController planetInfoUIController; // PlanetInfoUIControllerをInspectorで指定
-    [SerializeField] private ScreenController screenController;             // InspectorでScreenControllerを指定
-    [SerializeField] private UIController uIController;                     // InspectorでUIControllerを指定
-
     [System.NonSerialized] public RaycastHit hit;            // Rayのhit
     [System.NonSerialized] public Vector3 hitObjectPosition; // hitしたオブジェクトの座標
     [System.NonSerialized] public string hitObjectName;      // hitしたオブジェクトの名前
     [System.NonSerialized] public string hitObjectTag;       // hitしたオブジェクトのタグ
+
+    private PlanetInfoUIController planetInfoUICon;
+    private ScreenController scrCon;
+    private UIController uICon;
+
+    private void Start()
+    {
+        planetInfoUICon = PlanetInfoUIController.instance;
+        scrCon = ScreenController.instance;
+        uICon = UIController.instance;
+    }
 
     void Update()
     {
@@ -31,23 +38,23 @@ public class SphereRay : Singleton<SphereRay>
         }
 
         // ゲーム中かつ対象が惑星なら描画
-        if ((screenController.ScreenNum == 5) && (hitObjectTag == "Planet"))
+        if ((scrCon.ScreenNum == 5) && (hitObjectTag == "Planet"))
         {
             // 非表示なら表示
-            if (!uIController.planetInfoUI.allPlanetInfo.activeSelf)
-                uIController.planetInfoUI.allPlanetInfo.SetActive(true);
+            if (!uICon.planetInfoUI.allPlanetInfo.activeSelf)
+                uICon.planetInfoUI.allPlanetInfo.SetActive(true);
 
             // 惑星情報UIのリングを描画
-            planetInfoUIController.DrawPlanetInfoUI(hitObjectPosition, hitObjectName);
+            planetInfoUICon.DrawPlanetInfoUI(hitObjectPosition, hitObjectName);
 
             // 視点移動速度を遅くする
             TPSCamera.instance.rate = AppConst.CAMERA_SLOW_SPEED_RATE;
         }
         // 表示されているなら
-        else if (uIController.planetInfoUI.allPlanetInfo.activeSelf)
+        else if (uICon.planetInfoUI.allPlanetInfo.activeSelf)
         {
             // 非表示
-            uIController.planetInfoUI.allPlanetInfo.SetActive(false);
+            uICon.planetInfoUI.allPlanetInfo.SetActive(false);
 
             // 視点移動速度を元に戻す
             TPSCamera.instance.rate = AppConst.CAMERA_DEFAULT_SPEED_RATE;

@@ -2318,11 +2318,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
-  screenController: {fileID: 1600059365}
-  popupController: {fileID: 1148952468}
-  stageController: {fileID: 291823625}
-  planetAmount: {fileID: 1658508822}
-  missionUIController: {fileID: 1148952473}
 --- !u!1 &310466187
 GameObject:
   m_ObjectHideFlags: 0
@@ -6654,8 +6649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e28c3cbe409921458dbe054cbc38e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenController: {fileID: 1600059365}
-  screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
+  scrData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
   IsPressed_Game_Move: 0
   IsPressed_Game_Look: 0
   IsPressed_Game_Shot: 0

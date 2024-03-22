@@ -6,10 +6,10 @@ using UnityEngine.InputSystem;
 // InputSystemの入力を管理
 public class InputController : Singleton<InputController>
 {
-    [SerializeField] private ScreenController screenController;
-    [SerializeField] private ScreenData screenData;
+    [SerializeField] private ScreenData scrData;
 
-    private PlayerActions actions; // InputSystem
+    private ScreenController scrCon;
+    private PlayerActions actions;                  // InputSystem
 
     // デリゲートを定義
     public delegate void Game_OnMoveDele(Vector2 mVec);
@@ -68,8 +68,10 @@ public class InputController : Singleton<InputController>
 
     void Start()
     {
+        scrCon = ScreenController.instance;
+
         // 画面遷移時に入力状態の有効無効を設定する
-        screenController.changeScreen += SetInputs;
+        scrCon.changeScreen += SetInputs;
     }
 
     void Update()
@@ -108,7 +110,7 @@ public class InputController : Singleton<InputController>
         canInput = true;
 
         // 入力を無効化
-        switch (screenData.screenList[screenController.oldScreenNum].inputType)
+        switch (scrData.screenList[scrCon.oldScreenNum].inputType)
         {
             case 0:
                 actions.Game.Disable();
@@ -119,7 +121,7 @@ public class InputController : Singleton<InputController>
         }
 
         // 入力を有効化
-        switch (screenData.screenList[screenController.ScreenNum].inputType)
+        switch (scrData.screenList[scrCon.ScreenNum].inputType)
         {
             case 0:
                 actions.Game.Enable();

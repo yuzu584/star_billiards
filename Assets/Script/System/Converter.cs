@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // ‰½‚©‚ð•ÏŠ·‚·‚é
-public class Converter : MonoBehaviour
+public class Converter : Singleton<Converter>
 {
     [SerializeField]
     private RectTransform canvasRect; // ƒLƒƒƒ“ƒoƒX‚ÌRectTransform
