@@ -8,13 +8,52 @@ using UnityEngine.UI;
 public class PopupController : Singleton<PopupController>
 {
     [SerializeField] private GameObject popUp;                  // ポップアップのプレハブ
-    [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
-    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
-    [SerializeField] private Initialize initialize;             // InspectorでInitializeを指定
+
+    private UIController uICon;
+    private ScreenController scrCon;
+    private Initialize init;
 
     private Lerp lerp;
 
     [System.NonSerialized] public GameObject[] drawingPopup = new GameObject[10]; // ポップアップの配列
+
+    void Start()
+    {
+        uICon = UIController.instance;
+        scrCon = ScreenController.instance;
+        init = Initialize.instance;
+
+        lerp = gameObject.AddComponent<Lerp>();
+
+        // デリゲートに初期化関数を登録
+        init.init_Stage += Init;
+
+        // 最初の初期化
+        Init();
+    }
+
+    void Update()
+    {
+        // ポップアップの個数繰り返す
+        for (int i = 0; i < drawingPopup.Length; i++)
+        {
+            // インスタンスが生成されていれば
+            if (drawingPopup[i] != null)
+            {
+                // ゲーム画面かつ非表示なら
+                if ((scrCon.ScreenNum == 5) && (!drawingPopup[i].activeSelf))
+
+                    // 表示する
+                    drawingPopup[i].SetActive(true);
+
+                // ゲーム画面以外かつ表示されているなら
+                else if ((scrCon.ScreenNum != 5) && (drawingPopup[i].activeSelf))
+
+                    // 非表示にする
+                    drawingPopup[i].SetActive(false);
+            }
+        }
+    }
 
     // ポップアップを描画
     private IEnumerator DrawPopup(string text)
@@ -41,7 +80,7 @@ public class PopupController : Singleton<PopupController>
         drawingPopup[i].name = text;
 
         // 親を設定
-        drawingPopup[i].transform.SetParent(uIController.messageUI.Message.transform, false);
+        drawingPopup[i].transform.SetParent(uICon.messageUI.Message.transform, false);
 
         // 位置を設定
         drawingPopup[i].transform.localPosition += new Vector3(-moveDistance, i * -20.0f, 0.0f);
@@ -56,14 +95,14 @@ public class PopupController : Singleton<PopupController>
         defaultPosition = drawingPopup[i].transform.localPosition;
 
         // ポップアップを動かす
-        yield return lerp.Position_GameObject(drawingPopup[i], defaultPosition, defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), fadeTime);
+        yield return StartCoroutine(lerp.Position_GameObject(drawingPopup[i], defaultPosition, defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), fadeTime));
 
         // ポップアップが時間が経過するまで待つ
         yield return new WaitForSeconds(destroyTime);
 
         // ポップアップを動かす
-        if (drawingPopup[i] != null)
-            yield return lerp.Position_GameObject(drawingPopup[i], defaultPosition, defaultPosition - new Vector3(moveDistance, 0.0f, 0.0f), fadeTime);
+        if (drawingPopup[i] != null) { }
+            yield return StartCoroutine(lerp.Position_GameObject(drawingPopup[i], defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), defaultPosition, fadeTime));
 
         // ポップアップを削除
         Destroy(drawingPopup[i]);
@@ -90,39 +129,5 @@ public class PopupController : Singleton<PopupController>
         // ポップアップが描画されているかを管理する変数を初期化
         for (int i = 0; i < drawingPopup.Length; i++)
             drawingPopup[i] = null;
-    }
-
-    void Start()
-    {
-        lerp = gameObject.AddComponent<Lerp>();
-
-        // デリゲートに初期化関数を登録
-        initialize.init_Stage += Init;
-
-        // 最初の初期化
-        Init();
-    }
-
-    void Update()
-    {
-        // ポップアップの個数繰り返す
-        for (int i = 0; i < drawingPopup.Length; i++)
-        {
-            // インスタンスが生成されていれば
-            if (drawingPopup[i] != null)
-            {
-                // ゲーム画面かつ非表示なら
-                if ((screenController.ScreenNum == 5) && (!drawingPopup[i].activeSelf))
-
-                    // 表示する
-                    drawingPopup[i].SetActive(true);
-
-                // ゲーム画面以外かつ表示されているなら
-                else if ((screenController.ScreenNum != 5) && (drawingPopup[i].activeSelf))
-
-                    // 非表示にする
-                    drawingPopup[i].SetActive(false);
-            }
-        }
     }
 }

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 // 移動速度のUIを管理
 public class SpeedUIController : Singleton<SpeedUIController>
 {
-    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
     [SerializeField] private Rigidbody rb;                      // プレイヤーのRigidbody
 
     // 移動速度の数値を描画

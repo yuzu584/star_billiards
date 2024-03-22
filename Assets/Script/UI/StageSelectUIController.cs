@@ -8,16 +8,35 @@ using UnityEngine.UI;
 public class StageSelectUIController : Singleton<StageSelectUIController>
 {
     [SerializeField] private StageData stageData;               // InspectorでStageDataを指定
-    [SerializeField] private StageController stageController;   // InspectorでStageControllerを指定
-    [SerializeField] private ScreenController screenController; // InspectorでScreenControllerを指定
-    [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定
 
-    private GameObject oldButton;    // 取得したステージボタン
-    private Vector3 oldPos;          // 取得したステージボタンの座標
-    private StageButton oldStageBtn; // 取得したStageButton
-    private float fadeTime = 0.4f;   // フェード時間
-    private StageButton sBtn;
+    private StageController stageCon;
+    private ScreenController scrCon;
+    private UIController uICon;
+
+    private GameObject oldButton;                               // 取得したステージボタン
+    private Vector3 oldPos;                                     // 取得したステージボタンの座標
+    private StageButton oldStageBtn;                            // 取得したStageButton
+    private float fadeTime = 0.4f;                              // フェード時間
+    private StageButton sBtn;                                   // StageButtonを代入する変数
     private Lerp lerp;
+
+    void Start()
+    {
+        stageCon = StageController.instance;
+        scrCon = ScreenController.instance;
+        uICon ??= UIController.instance;
+        
+        lerp = gameObject.AddComponent<Lerp>();
+    }
+
+    void Update()
+    {
+        if (sBtn != null)
+        {
+            if ((sBtn.anim) && (scrCon.ScreenLoot == 0))
+                HideStageInfo(false);
+        }
+    }
 
     // ステージ情報UIを描画
     public void DrawStageInfo(Vector3 pos, GameObject button, StageButton stageButton)
@@ -37,19 +56,19 @@ public class StageSelectUIController : Singleton<StageSelectUIController>
         Vector3 newPos = oldPos;
         newPos.x = Mathf.Clamp(newPos.x, -200.0f, 200.0f);
         newPos.y = Mathf.Clamp(newPos.y, -100.0f, 100.0f);
-        uIController.stageSelectUI.stageInfoUI.transform.localPosition = newPos;
+        uICon.stageSelectUI.stageInfoUI.transform.localPosition = newPos;
 
         // ステージ名を設定
-        uIController.stageSelectUI.name.text = stageData.stageList[stageController.stageNum].stageName;
+        uICon.stageSelectUI.name.text = stageData.stageList[stageCon.stageNum].stageName;
 
         // ミッション名を設定
-        switch (stageData.stageList[stageController.stageNum].missionNum)
+        switch (stageData.stageList[stageCon.stageNum].missionNum)
         {
             case 0: // 全ての惑星を破壊
-                uIController.stageSelectUI.mission.text = "Destroy all planets";
+                uICon.stageSelectUI.mission.text = "Destroy all planets";
                 break;
             case 1: // 時間内にゴールにたどり着け
-                uIController.stageSelectUI.mission.text = "Reach the goal";
+                uICon.stageSelectUI.mission.text = "Reach the goal";
                 break;
         }
 
@@ -58,8 +77,8 @@ public class StageSelectUIController : Singleton<StageSelectUIController>
         StartCoroutine(lerp.Scale_GameObject(oldButton, oldButton.transform.localScale, new Vector2(0.4f, 0.4f), fadeTime));
 
         // ステージ情報UIを表示
-        uIController.stageSelectUI.stageInfoUI.SetActive(true);
-        StartCoroutine(lerp.Scale_GameObject(uIController.stageSelectUI.stageInfoUI, new Vector2(0.0f, 0.0f), new Vector2(1.0f, 1.0f), fadeTime));
+        uICon.stageSelectUI.stageInfoUI.SetActive(true);
+        StartCoroutine(lerp.Scale_GameObject(uICon.stageSelectUI.stageInfoUI, new Vector2(0.0f, 0.0f), new Vector2(1.0f, 1.0f), fadeTime));
     }
 
     // ステージボタンの見た目を元に戻す
@@ -89,7 +108,7 @@ public class StageSelectUIController : Singleton<StageSelectUIController>
     public void HideStageInfo(bool orFast)
     {
         // ステージ情報UIを非表示
-        uIController.stageSelectUI.stageInfoUI.SetActive(false);
+        uICon.stageSelectUI.stageInfoUI.SetActive(false);
 
         // ステージボタンが存在していたら見た目を元に戻す
         ResetDetail(orFast);
@@ -97,21 +116,9 @@ public class StageSelectUIController : Singleton<StageSelectUIController>
 
     void OnEnable()
     {
+        uICon ??= UIController.instance;
+
         // ステージ情報UIを非表示
         HideStageInfo(true);
-    }
-
-    void Start()
-    {
-        lerp = gameObject.AddComponent<Lerp>();
-    }
-
-    void Update()
-    {
-        if(sBtn != null)
-        {
-            if ((sBtn.anim) && (screenController.ScreenLoot == 0))
-                HideStageInfo(false);
-        }
     }
 }

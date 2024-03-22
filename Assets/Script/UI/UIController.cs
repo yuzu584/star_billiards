@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ゲーム中のUIを管理
+[DefaultExecutionOrder(-100)]
 public class UIController : Singleton<UIController>
 {
     // InspectorでUIの配列を指定
@@ -185,9 +186,6 @@ public class UIController : Singleton<UIController>
     private ChargeUIController chargeUICon;
     private MissionUIController missionUICon;
     private SpeedUIController speedUICon;
-    private StageClearUIController stageClearUICon;
-
-    private bool drawedStageCrearUI = false; // ステージクリア画面を描画済みか
 
     void Start()
     {
@@ -196,7 +194,6 @@ public class UIController : Singleton<UIController>
         chargeUICon = ChargeUIController.instance;
         missionUICon = MissionUIController.instance;
         speedUICon = SpeedUIController.instance;
-        stageClearUICon = StageClearUIController.instance;
     }
 
     void Update()
@@ -227,17 +224,6 @@ public class UIController : Singleton<UIController>
 
             // 制限時間のUIを描画
             timeLimitUI.renderTimeLimit();
-        }
-
-        // ステージクリア画面が表示されているなら処理を行う
-        if ((stageClearUI.allStageClearUI.activeSelf) && (!drawedStageCrearUI))
-        {
-            drawedStageCrearUI = true;
-            stageClearUICon.DrawStageClearUI();
-        }
-        else if ((!stageClearUI.allStageClearUI.activeSelf) && (drawedStageCrearUI))
-        {
-            drawedStageCrearUI = false;
         }
     }
 }

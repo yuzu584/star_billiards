@@ -7,29 +7,39 @@ using UnityEngine.UI;
 // エネルギーのUIを管理
 public class EnergyUIController : Singleton<EnergyUIController>
 {
-    [SerializeField] private EnergyController energyController; // InspectorでEnergyControllerを指定
-    [SerializeField] private Initialize initialize;             // InspectorでInitializeを指定
     [SerializeField] private Image energyGauge;                 // エネルギーゲージの画像
     [SerializeField] private Image energyAfterImage;            // エネルギーゲージの残像の画像
+
+    private EnergyController eneCon;
+    private Initialize init;
+
+    void Start()
+    {
+        eneCon = EnergyController.instance;
+        init = Initialize.instance;
+
+        // デリゲートに初期化関数を登録
+        init.init_Stage += Init;
+    }
 
     // エネルギーのUIを描画
     public void DrawEnergyUI(Image energyGaugeOutline, Text EnergyValue, Text NoEnergy)
     {
         // エネルギーゲージの増減を描画
-        energyGauge.fillAmount = energyController.energy / energyController.maxEnergy;
+        energyGauge.fillAmount = eneCon.energy / eneCon.maxEnergy;
 
-        if (energyAfterImage.fillAmount > energyController.energy / energyController.maxEnergy)
+        if (energyAfterImage.fillAmount > eneCon.energy / eneCon.maxEnergy)
         {
             // エネルギーゲージの減少量を少しずつ減らす
             energyAfterImage.fillAmount -=
-                (energyAfterImage.fillAmount - energyController.energy / energyController.maxEnergy) * Time.deltaTime;
+                (energyAfterImage.fillAmount - eneCon.energy / eneCon.maxEnergy) * Time.deltaTime;
         }
 
         // エネルギーの数値を表示
-        EnergyValue.text = energyController.energy.ToString("0");
+        EnergyValue.text = eneCon.energy.ToString("0");
 
         // エネルギーが0以下かつ非表示なら
-        if ((energyController.energy <= 0) && (NoEnergy.enabled == false))
+        if ((eneCon.energy <= 0) && (NoEnergy.enabled == false))
         {
             // エネルギーゲージの枠と数値を赤色にする
             energyGaugeOutline.color = new Color32(155, 0, 0, 100);
@@ -39,7 +49,7 @@ public class EnergyUIController : Singleton<EnergyUIController>
             NoEnergy.enabled = true;
         }
         // エネルギーが0より上かつ表示されているなら
-        else if ((energyController.energy > 0) && (NoEnergy.enabled == true))
+        else if ((eneCon.energy > 0) && (NoEnergy.enabled == true))
         {
             // エネルギーゲージの枠と数値を白色にする
             energyGaugeOutline.color = new Color32(255, 255, 255, 100);
@@ -55,11 +65,5 @@ public class EnergyUIController : Singleton<EnergyUIController>
     {
         energyGauge.fillAmount = 1;
         energyAfterImage.fillAmount = 1;
-    }
-
-    void Start()
-    {
-        // デリゲートに初期化関数を登録
-        initialize.init_Stage += Init;
     }
 }

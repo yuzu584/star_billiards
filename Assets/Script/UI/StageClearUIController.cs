@@ -7,20 +7,22 @@ using UnityEngine.UI;
 // ステージクリア画面のUIを管理
 public class StageClearUIController : Singleton<StageClearUIController>
 {
-    [SerializeField] private Material stageClearButtonMat;                // ボタンのマテリアル
-    [SerializeField] private PostProcessController postProcessController; // InspectorでPostProcessControllerを指定
-    [SerializeField] private UIController uIController;                   // InspectorでUIControllerを指定
+    [SerializeField] private Material stageClearButtonMat;              // ボタンのマテリアル
+    public float fadeTime = 0.4f;                                       // フェード時間
 
+    private UIController uICon;
+    private ScreenController scrCon;
     private Lerp lerp;
 
-    public float fadeTime = 0.4f; // フェード時間
+    private int buttonNum;                                              // ボタンの数
+
 
     // ステージクリア画面のUIを描画
-    public void DrawStageClearUI()
+    void DrawStageClearUI()
     {
         // ボタンを非表示
-        for (int i = 0; i < uIController.stageClearUI.button.Length; i++)
-            uIController.stageClearUI.button[i].SetActive(false);
+        for (int i = 0; i < buttonNum; i++)
+            uICon.stageClearUI.button[i].SetActive(false);
 
         // ステージクリア画面を動かす
         StartCoroutine(MoveStageClearUI());
@@ -29,7 +31,7 @@ public class StageClearUIController : Singleton<StageClearUIController>
     // ステージクリア画面を動かす
     IEnumerator MoveStageClearUI()
     {
-        Vector3[] defaultPos = new Vector3[uIController.stageClearUI.button.Length]; // 初期位置
+        Vector3[] defaultPos = new Vector3[buttonNum]; // 初期位置
         Vector3 startPos;   // 開始位置
         Vector3 endPos;     // 終了位置
         Color32 startColor; // 開始時の色
@@ -38,7 +40,7 @@ public class StageClearUIController : Singleton<StageClearUIController>
         // テキストを動かす
         startPos = new Vector3(300.0f, 0.0f, 0.0f);
         endPos = new Vector3(0.0f, 0.0f, 0.0f);
-        StartCoroutine(lerp.Position_Text(uIController.stageClearUI.stageClearText, startPos, endPos, fadeTime));
+        StartCoroutine(lerp.Position_Text(uICon.stageClearUI.stageClearText, startPos, endPos, fadeTime));
 
         // 一瞬待つ
         yield return new WaitForSecondsRealtime(2.0f);
@@ -46,24 +48,20 @@ public class StageClearUIController : Singleton<StageClearUIController>
         // テキストを動かす
         startPos = new Vector3(0.0f, 0.0f, 0.0f);
         endPos = new Vector3(0.0f, 100.0f, 0.0f);
-        StartCoroutine(lerp.Position_Text(uIController.stageClearUI.stageClearText, startPos, endPos, fadeTime));
+        StartCoroutine(lerp.Position_Text(uICon.stageClearUI.stageClearText, startPos, endPos, fadeTime));
 
-        // ボタンを表示
-        for (int i = 0; i < uIController.stageClearUI.button.Length; i++)
-            uIController.stageClearUI.button[i].SetActive(true);
-
-        // ボタンのアニメーション
-        for (int i = 0; i < defaultPos.Length; ++i)
+        for (int i = 0; i < buttonNum; ++i)
         {
-            defaultPos[i] = uIController.stageClearUI.button[i].transform.localPosition;
-        }
+            // ボタンを表示
+            uICon.stageClearUI.button[i].SetActive(true);
 
-        for (int i = 0; i < uIController.stageClearUI.button.Length; ++i)
-        {
+            // 初期位置を代入
+            defaultPos[i] = uICon.stageClearUI.button[i].transform.localPosition;
+
             // ボタン移動
             startPos = defaultPos[i] + new Vector3(300.0f, 0.0f, 0.0f);
             endPos = defaultPos[i];
-            StartCoroutine(lerp.Position_GameObject(uIController.stageClearUI.button[i], startPos, endPos, fadeTime));
+            StartCoroutine(lerp.Position_GameObject(uICon.stageClearUI.button[i], startPos, endPos, fadeTime));
 
             // 透明度変化
             startColor = new Color32(255, 255, 255, 0);
@@ -75,5 +73,18 @@ public class StageClearUIController : Singleton<StageClearUIController>
     private void Start()
     {
         lerp = gameObject.AddComponent<Lerp>();
+        uICon = UIController.instance;
+        scrCon = ScreenController.instance;
+
+        // ステージクリア画面に遷移したならステージクリア画面の描画処理を行う
+        scrCon.changeScreen += () =>
+        {
+            if (scrCon.ScreenNum == 8)
+            {
+                DrawStageClearUI();
+            }
+        };
+
+        buttonNum = uICon.stageClearUI.button.Length;
     }
 }

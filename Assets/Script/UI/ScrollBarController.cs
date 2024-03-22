@@ -4,7 +4,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-// スクロールバーの挙動を管理(主にコントローラー使用時の)
+// スクロールバーの挙動を管理
 public class ScrollBarController : Singleton<ScrollBarController>
 {
     private ScreenController scrCon;

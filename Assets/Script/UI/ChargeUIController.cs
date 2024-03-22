@@ -7,7 +7,12 @@ using UnityEngine.UI;
 // チャージのUIを管理
 public class ChargeUIController : Singleton<ChargeUIController>
 {
-    [SerializeField] private Shot shot; // InspectorでShotを指定
+    private Shot shot;
+
+    private void Start()
+    {
+        shot = Shot.instance;
+    }
 
     // チャージのUIを描画
     public void DrawChargeUI(GameObject allChargeUI, Text chargeValue, Image chargeCircle)
