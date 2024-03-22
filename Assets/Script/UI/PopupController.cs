@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ポップアップを管理
-public class PopupController : MonoBehaviour
+public class PopupController : Singleton<PopupController>
 {
     [SerializeField] private GameObject popUp;                  // ポップアップのプレハブ
     [SerializeField] private UIController uIController;         // InspectorでUIControllerを指定

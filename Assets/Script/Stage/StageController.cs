@@ -5,14 +5,12 @@ using UnityEngine;
 // ステージを管理
 public class StageController : Singleton<StageController>
 {
+    [SerializeField] private ScreenData scrData;                    // InspectorでScreenDataを指定
     [SerializeField] private StageData stageData;                   // InspectorでStageDataを指定
-    [SerializeField] private PlanetAmount planetAmount;             // InspectorでPlanetAmountを指定
-    [SerializeField] private CreateStage createStage;               // InspectorでCreateStageを指定
-    [SerializeField] private Initialize initialize;                 // InspectorでInitializeを指定
-    [SerializeField] private ScreenData screenData;                 // InspectorでScreenDataを指定
 
     private ScreenController scrCon;
-
+    private PlanetAmount planetAmount;
+    private CreateStage createStage;
 
     private int missionNum;                                         // ミッション番号
 
@@ -25,6 +23,8 @@ public class StageController : Singleton<StageController>
     void Start()
     {
         scrCon = ScreenController.instance;
+        planetAmount = PlanetAmount.instance;
+        createStage = CreateStage.instance;
     }
 
     void Update()
@@ -41,7 +41,7 @@ public class StageController : Singleton<StageController>
         }
 
         // ステージを表示/非表示
-        if(createStage.NowRenderState() != screenData.screenList[scrCon.ScreenNum].drawStage)
-            createStage.Render(screenData.screenList[scrCon.ScreenNum].drawStage);
+        if(createStage.NowRenderState() != scrData.screenList[scrCon.ScreenNum].drawStage)
+            createStage.Render(scrData.screenList[scrCon.ScreenNum].drawStage);
     }
 }

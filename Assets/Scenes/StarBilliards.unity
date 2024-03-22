@@ -2302,11 +2302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8c097ea8b192ec40b2eda5e89e6b3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
-  planetAmount: {fileID: 1658508822}
-  createStage: {fileID: 1400418625}
-  initialize: {fileID: 702041415}
-  screenData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
   stageNum: 0
 --- !u!114 &291823626
 MonoBehaviour:
@@ -10295,7 +10292,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
-  stageController: {fileID: 291823625}
 --- !u!1 &1431765662
 GameObject:
   m_ObjectHideFlags: 0
@@ -11559,7 +11555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034393fdd0e1c724cbe8f5256f83c66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialize: {fileID: 702041415}
   planetDestroyAmount: 0
 --- !u!1001 &1666367543
 PrefabInstance:

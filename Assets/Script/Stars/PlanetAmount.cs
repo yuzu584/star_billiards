@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // ˜f¯‚Ì—Ê‚ğŠÇ—
-public class PlanetAmount : MonoBehaviour
+public class PlanetAmount : Singleton<PlanetAmount>
 {
-    [SerializeField] private Initialize initialize; // Inspector‚ÅInitialize‚ğw’è
+    private Initialize init;
 
     public int planetDestroyAmount = 0; // ˜f¯‚ğ”j‰ó‚µ‚½”
 
@@ -17,7 +17,9 @@ public class PlanetAmount : MonoBehaviour
 
     void Start()
     {
+        init = Initialize.instance;
+
         // ƒfƒŠƒQ[ƒg‚É‰Šú‰»ŠÖ”‚ğ“o˜^
-        initialize.init_Stage += Init;
+        init.init_Stage += Init;
     }
 }

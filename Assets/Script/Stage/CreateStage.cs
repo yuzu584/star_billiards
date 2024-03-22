@@ -5,18 +5,23 @@ using UnityEngine;
 // ステージを作成
 public class CreateStage : Singleton<CreateStage>
 {
-    [SerializeField] StageData stageData;             // InspectorでStageDataを指定
-    [SerializeField] StageController stageController; // InspectorでStageControllerを指定
+    [SerializeField] private StageData stageData;   // InspectorでStageDataを指定
 
-    private GameObject stagePrefab; // ステージのプレハブ
+    private StageController stageCon;
+    private GameObject stagePrefab;                 // ステージのプレハブ
+
+    private void Start()
+    {
+        stageCon = StageController.instance;
+    }
 
     // ステージを作成
     public void Create()
     {
         // ステージのインスタンスを生成・名前から(clone)を削除・親を設定
-        stagePrefab = Instantiate(stageData.stageList[stageController.stageNum].stagePrefab);
-        stagePrefab.name = stageData.stageList[stageController.stageNum].stagePrefab.name;
-        stagePrefab.transform.SetParent(this.transform, false);
+        stagePrefab = Instantiate(stageData.stageList[stageCon.stageNum].stagePrefab);
+        stagePrefab.name = stageData.stageList[stageCon.stageNum].stagePrefab.name;
+        stagePrefab.transform.SetParent(transform, false);
     }
 
     // ステージ削除

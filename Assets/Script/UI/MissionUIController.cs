@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ミッションのUIを管理
-public class MissionUIController : MonoBehaviour
+public class MissionUIController : Singleton<MissionUIController>
 {
     [SerializeField] private StageData stageData;                         // InspectorでStageDataを指定
     [SerializeField] private StageController stageController;             // InspectorでStageControllerを指定

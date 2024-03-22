@@ -5,9 +5,9 @@ using UnityEngine;
 // ステージと衝突したとき反発する
 public class BounceByStage : MonoBehaviour
 {
-    public int bouncePower = 100;  // 衝突したときの反発力
+    public int bouncePower = 100;           // 衝突したときの反発力
 
-    Rigidbody rb;  // 自分のRigidbody
+    [SerializeField] private Rigidbody rb;  // 自分のRigidbody
 
     void Start()
     {
