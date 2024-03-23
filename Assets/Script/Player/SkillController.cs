@@ -92,21 +92,11 @@ public class SkillController : Singleton<SkillController>
             // ‘I‘ð‚µ‚Ä‚¢‚éƒXƒLƒ‹‚É‚æ‚Á‚Ä•ªŠò
             switch (skillSlot[selectSkill])
             {
-                case 0: // SuperCharge
-                    StartCoroutine(UseSuperCharge());
-                    break;
-                case 1: // PowerSurge
-                    StartCoroutine(UsePowerSurge());
-                    break;
-                case 2: // Huge
-                    StartCoroutine(UseHuge());
-                    break;
-                case 3: // GravityWave
-                    UseGravityWave();
-                    break;
-                case 4: // Frieze
-                    UseFrieze();
-                    break;
+                case 0: StartCoroutine(UseSuperCharge());   break;  // SuperCharge
+                case 1: StartCoroutine(UsePowerSurge());    break;  // PowerSurge
+                case 2: StartCoroutine(UseHuge());          break;  // Huge
+                case 3: UseGravityWave();                   break;  // GravityWave
+                case 4: UseFrieze();                        break;  // Frieze
             }
         }
     }

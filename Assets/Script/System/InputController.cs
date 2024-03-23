@@ -112,23 +112,15 @@ public class InputController : Singleton<InputController>
         // “ü—Í‚ð–³Œø‰»
         switch (scrData.screenList[scrCon.oldScreenNum].inputType)
         {
-            case 0:
-                actions.Game.Disable();
-                break;
-            case 1:
-                actions.UI.Disable();
-                break;
+            case 0: actions.Game.Disable(); break;
+            case 1: actions.UI.Disable();   break;
         }
 
         // “ü—Í‚ð—LŒø‰»
         switch (scrData.screenList[scrCon.ScreenNum].inputType)
         {
-            case 0:
-                actions.Game.Enable();
-                break;
-            case 1:
-                actions.UI.Enable();
-                break;
+            case 0: actions.Game.Enable();  break;
+            case 1: actions.UI.Enable();    break;
         }
     }
 

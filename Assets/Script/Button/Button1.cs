@@ -47,26 +47,13 @@ public class Button1 : Button
         // ボタンを押したときの効果によって分岐
         switch (clickAction)
         {
-            case ClickAction.ChangeScreen:          // 画面遷移
-                ChangeScreen();
-                break;
-            case ClickAction.StageStart:            // ステージスタート
-                StageStart();
-                break;
-            case ClickAction.CreatePlanetDirArrow:  // 惑星の方向を指し示す矢印を生成
-                CreatePlanetDirArrow();
-                break;
-            case ClickAction.ApplySkill:            // 選択したスキルを適用
-                ApplySkill();
-                break;
-            case ClickAction.ResetSelectSkill:      // 選択したスキルをリセット
-                ResetSelectSkill();
-                break;
-            case ClickAction.ExitGame:              // ゲーム終了
-                ExitGame();
-                break;
-            default:
-                break;
+            case ClickAction.ChangeScreen:          ChangeScreen();         break;  // 画面遷移
+            case ClickAction.StageStart:            StageStart();           break;  // ステージスタート
+            case ClickAction.CreatePlanetDirArrow:  CreatePlanetDirArrow(); break;  // 惑星の方向を指し示す矢印を生成
+            case ClickAction.ApplySkill:            ApplySkill();           break;  // 選択したスキルを適用
+            case ClickAction.ResetSelectSkill:      ResetSelectSkill();     break;  // 選択したスキルをリセット
+            case ClickAction.ExitGame:              ExitGame();             break;  // ゲーム終了
+            default: break;
         }
     }
 

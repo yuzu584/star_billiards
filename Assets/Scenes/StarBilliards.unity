@@ -5958,10 +5958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7d42570ebaf5d4782e01659180b973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenController: {fileID: 1600059365}
   gameOverButtonMat: {fileID: 2100000, guid: d92459fa41ce17a4788b4cc97f57703b, type: 2}
-  postProcessController: {fileID: 1746308557}
-  uIController: {fileID: 869580811}
   fadeTime: 0.5
 --- !u!114 &846516597
 MonoBehaviour:
@@ -8147,8 +8144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352b65a73ac9942478705ad221540a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyController: {fileID: 2052131793}
-  initialize: {fileID: 702041415}
   energyGauge: {fileID: 1986015433}
   energyAfterImage: {fileID: 2076627165}
 --- !u!114 &1148952468
@@ -8164,9 +8159,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUp: {fileID: 6751493928476000379, guid: ae6f80cdd48614846a10b75943843f67, type: 3}
-  uIController: {fileID: 869580811}
-  screenController: {fileID: 1600059365}
-  initialize: {fileID: 702041415}
 --- !u!114 &1148952469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8179,8 +8171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a6b41b77d4732418839ed22d20588f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uIController: {fileID: 869580811}
-  converter: {fileID: 1182512708}
 --- !u!114 &1148952470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8193,8 +8183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3cf3eef9e33bc49bdae0cbe23f7594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uIController: {fileID: 869580811}
-  initialize: {fileID: 702041415}
 --- !u!114 &1148952471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8207,7 +8195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ab656dc9cb8cf45a1975108c37aac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 2052131792}
 --- !u!114 &1148952472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8233,9 +8220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
-  stageController: {fileID: 291823625}
-  uIController: {fileID: 869580811}
-  planetAmount: {fileID: 1658508822}
 --- !u!114 &1148952474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8248,7 +8232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491c1a6767dd0d34a9610a218e2762aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenController: {fileID: 1600059365}
   rb: {fileID: 2052131791}
 --- !u!114 &1148952475
 MonoBehaviour:
@@ -8289,9 +8272,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
-  stageController: {fileID: 291823625}
-  screenController: {fileID: 1600059365}
-  uIController: {fileID: 869580811}
 --- !u!114 &1148952479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8342,10 +8322,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
-  stageController: {fileID: 291823625}
-  uIController: {fileID: 869580811}
-  gameOver: {fileID: 846516596}
-  initialize: {fileID: 702041415}
 --- !u!114 &1148952484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8358,7 +8334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccad9140df9f0b94f94c313c12dcc3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uIController: {fileID: 869580811}
 --- !u!1 &1150158037
 GameObject:
   m_ObjectHideFlags: 0
