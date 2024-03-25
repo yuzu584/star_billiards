@@ -7,11 +7,11 @@ using UnityEngine.UI;
 // ボタン1を管理
 public class Button1 : Button
 {
-    private SkillController skillCon;
     private Arrow arrow;
     private Initialize init;
     private CreateStage cStage;
     private SkillSelect skillSelect;
+    private UIController uiCon;
 
     public enum ClickAction // ボタンを押したときの効果
     {
@@ -88,7 +88,20 @@ public class Button1 : Button
     // 選択したスキルを適用
     void ApplySkill()
     {
-        skillSelect.SetSelectSlot();
+        // スキルを3つ選択したか判定
+        if (skillSelect.CheckNone())
+        {
+            // スキルを確定
+            skillSelect.SetSelectSlot();
+
+            // ポップアップ表示
+            uiCon.GenerateMessagePopup("was decided");
+        }
+        else
+        {
+            // ポップアップ表示
+            uiCon.GenerateMessagePopup("Please select 3 skills");
+        }
     }
 
     // 選択したスキルをリセット
@@ -119,10 +132,10 @@ public class Button1 : Button
     {
         base.Start();
 
-        skillCon = SkillController.instance;
         arrow = Arrow.instance;
         init = Initialize.instance;
         cStage = CreateStage.instance;
         skillSelect = SkillSelect.instance;
+        uiCon = UIController.instance;
     }
 }

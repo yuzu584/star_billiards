@@ -91,4 +91,18 @@ public class SkillSelect : Singleton<SkillSelect>
         // 選択されていなければ true を返す
         return true;
     }
+
+    // スキルを3つ選択したか判定
+    public bool CheckNone()
+    {
+        // スキルスロットの数繰り返す
+        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
+        {
+            // None が見つかったら false を返す
+            if (selectSlot[i] == SkillController.SkillType.None) { return false; }
+        }
+
+        // None が見つからなければ true を返す
+        return true;
+    }
 }
