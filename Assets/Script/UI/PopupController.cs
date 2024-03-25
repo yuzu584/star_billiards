@@ -41,13 +41,13 @@ public class PopupController : Singleton<PopupController>
             if (drawingPopup[i] != null)
             {
                 // ゲーム画面かつ非表示なら
-                if ((scrCon.ScreenNum == 5) && (!drawingPopup[i].activeSelf))
+                if ((scrCon.Screen == ScreenController.ScreenType.InGame) && (!drawingPopup[i].activeSelf))
 
                     // 表示する
                     drawingPopup[i].SetActive(true);
 
                 // ゲーム画面以外かつ表示されているなら
-                else if ((scrCon.ScreenNum != 5) && (drawingPopup[i].activeSelf))
+                else if ((scrCon.Screen != ScreenController.ScreenType.InGame) && (drawingPopup[i].activeSelf))
 
                     // 非表示にする
                     drawingPopup[i].SetActive(false);

@@ -26,7 +26,7 @@ public class DestroyPlanet : Singleton<DestroyPlanet>
     public void DestroyPlanetProcess(GameObject obj)
     {
         // ƒQ[ƒ€’†‚É˜f¯‚ÆÕ“Ë‚µ‚½‚ç
-        if ((obj.CompareTag("Planet")) && (scrCon.ScreenNum == 5))
+        if ((obj.CompareTag("Planet")) && (scrCon.Screen == ScreenController.ScreenType.InGame))
         {
             // ˜f¯‚ª”j‰ó‚³‚ê‚½|‚ğ“`‚¦‚éƒ|ƒbƒvƒAƒbƒv‚ğ•`‰æ
             popupCon.DrawDestroyPlanetPopUp(obj.name);

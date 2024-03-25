@@ -17,9 +17,9 @@ public class TitleController : MonoBehaviour
     void Update()
     {
         // タイトル画面で何かしらの入力が行われたらメインメニューに遷移
-        if ((Input.anyKey) && (scrCon.ScreenNum == 0) && (input.canInput))
+        if ((Input.anyKey) && (scrCon.Screen == ScreenController.ScreenType.Title) && (input.canInput))
         {
-            scrCon.ScreenNum = 1;
+            scrCon.Screen = ScreenController.ScreenType.MainMenu;
         }
     }
 }

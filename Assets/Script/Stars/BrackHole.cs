@@ -54,7 +54,7 @@ public class BrackHole : MonoBehaviour
     void FixedUpdate()
     {
         // ゲーム画面なら周囲のオブジェクトに重力の影響を与える
-        if(scrCont.ScreenNum == 5)
+        if(scrCont.Screen == ScreenController.ScreenType.InGame)
         {
             Gravity(1000.0f, "Player", 0.5f);
             Gravity(100.0f, "Player", 1.0f);

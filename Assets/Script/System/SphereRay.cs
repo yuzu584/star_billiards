@@ -38,7 +38,7 @@ public class SphereRay : Singleton<SphereRay>
         }
 
         // ゲーム中かつ対象が惑星なら描画
-        if ((scrCon.ScreenNum == 5) && (hitObjectTag == "Planet"))
+        if ((scrCon.Screen == ScreenController.ScreenType.InGame) && (hitObjectTag == "Planet"))
         {
             // 非表示なら表示
             if (!uICon.planetInfoUI.allPlanetInfo.activeSelf)

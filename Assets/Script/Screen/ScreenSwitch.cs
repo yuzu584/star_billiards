@@ -14,14 +14,14 @@ public class ScreenSwitch : Singleton<ScreenSwitch>
 
     void Update()
     {
-        // 前回のフレームと現在のフレームで画面番号が異なったら
-        if (scrCon.ScreenNum != scrCon.oldFrameScreenNum)
+        // 前回のフレームと現在のフレームで画面が異なったら
+        if (scrCon.Screen != scrCon.oldFrameScreen)
         {
-            // 前回の画面番号を保存
-            scrCon.oldScreenNum = scrCon.oldFrameScreenNum;
+            // 前回の画面を保存
+            scrCon.oldScreen = scrCon.oldFrameScreen;
 
-            // 1フレーム前の画面番号に現在の画面番号を代入
-            scrCon.oldFrameScreenNum = scrCon.ScreenNum;
+            // 1フレーム前の画面に現在の画面を代入
+            scrCon.oldFrameScreen = scrCon.Screen;
 
             // 画面遷移したときの処理
             if (scrCon.changeScreen != null)

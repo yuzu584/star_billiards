@@ -8,7 +8,7 @@ using UnityEditor;
 // 戻るボタンを管理
 public class BackButton : Button
 {
-    private int oldScreen = 0; // 前回のスクリーン(戻り先の画面)
+    private ScreenController.ScreenType oldScreen = 0; // 前回のスクリーン(戻り先の画面)
 
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
@@ -27,15 +27,15 @@ public class BackButton : Button
     // クリックされたときの処理
     public override void ClickProcess()
     {
-        // 画面番号を前の画面にする
+        // 画面を前の画面にする
         scrCon.ScreenLoot = 0;
-        scrCon.ScreenNum = oldScreen;
+        scrCon.Screen = oldScreen;
     }
 
     // 前回のスクリーン番号をセット
     void SetOldScreen()
     {
-        oldScreen = scrCon.oldScreenNum;
+        oldScreen = scrCon.oldScreen;
     }
 
     protected override void OnEnable()
@@ -62,7 +62,7 @@ public class BackButton : Button
                     StartCoroutine(sound.Play(ClickSound));
 
                 // 前の画面に戻る
-                scrCon.ScreenNum = oldScreen;
+                scrCon.Screen = oldScreen;
             }
 
         };

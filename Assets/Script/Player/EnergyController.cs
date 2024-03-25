@@ -36,7 +36,7 @@ public class EnergyController : Singleton<EnergyController>
     void Update()
     {
         // ゲーム画面でエネルギーが0になったらゲームオーバー処理
-        if((screenCon.ScreenNum == 5) && (energy <= 0))
+        if((screenCon.Screen == ScreenController.ScreenType.InGame) && (energy <= 0))
         {
             gameOver.GameOverProcess();
         }

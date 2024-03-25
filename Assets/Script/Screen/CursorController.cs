@@ -21,7 +21,7 @@ public class CursorController : MonoBehaviour
     void SwitchCursorState()
     {
         // 現在のスクリーン番号でカーソルを表示するかどうか決める
-        draw = scrData.screenList[scrCon.ScreenNum].drawCursol;
+        draw = scrData.screenList[(int)scrCon.Screen].drawCursol;
 
         // カーソルの表示非表示切り替え
         Cursor.visible = draw;

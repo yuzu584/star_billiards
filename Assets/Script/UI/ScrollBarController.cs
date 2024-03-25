@@ -13,11 +13,11 @@ public class ScrollBarController : Singleton<ScrollBarController>
     [System.Serializable]
     public struct ScrollBarStruct
     {
-        public Scrollbar scrollbar;             // スクロールバー
-        public RectTransform parentRect;        // 親オブジェクトのRectTransform
-        public RectTransform contentParentRect; // スクロールされるコンテンツの親オブジェクトのRectTransform
-        public int focusScreen;                 // スクロールバーをフォーカスする画面番号
-        public Button.Group group;              // スクロールするボタンのグループ
+        public Scrollbar scrollbar;                     // スクロールバー
+        public RectTransform parentRect;                // 親オブジェクトのRectTransform
+        public RectTransform contentParentRect;         // スクロールされるコンテンツの親オブジェクトのRectTransform
+        public ScreenController.ScreenType focusScreen; // スクロールバーをフォーカスする画面
+        public Button.Group group;                      // スクロールするボタンのグループ
     }
 
     public int num = 0;
@@ -39,8 +39,8 @@ public class ScrollBarController : Singleton<ScrollBarController>
         // フォーカスするスクロールバーを探す
         for(int i = 0; i < scrollBarStruct.Length; ++i)
         {
-            // 画面番号とスクロールバーをフォーカスする画面番号が一致したら
-            if (scrollBarStruct[i].focusScreen == scrCon.ScreenNum)
+            // 画面とスクロールバーをフォーカスする画面が一致したら
+            if (scrollBarStruct[i].focusScreen == scrCon.Screen)
             {
                 // フォーカスするスクロールバーを設定
                 num = i;

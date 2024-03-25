@@ -26,7 +26,7 @@ public class GameOver : Singleton<GameOver>
     public void GameOverProcess()
     {
         // ゲームオーバー画面に遷移
-        scrCon.ScreenNum = 9;
+        scrCon.Screen = ScreenController.ScreenType.GameOver;
     }
 
     // ゲームオーバー画面のアニメーション

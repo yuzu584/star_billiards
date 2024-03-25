@@ -54,7 +54,7 @@ public class SkillController : Singleton<SkillController>
     void Update()
     {
         // ゲーム画面なら
-        if (screenCon.ScreenNum == 5)
+        if (screenCon.Screen == ScreenController.ScreenType.InGame)
         {
             // スキルの効果時間とクールダウンを減少
             DecreaseEFAndCD();

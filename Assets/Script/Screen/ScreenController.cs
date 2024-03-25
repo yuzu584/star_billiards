@@ -14,61 +14,64 @@ public class ScreenController : Singleton<ScreenController>
 
     private StageController stageCon;
     private InputController input;
-
-    [System.NonSerialized] public int oldScreenNum = 0;                 // 前回の画面番号
-    [System.NonSerialized] public int oldScreenLoot = 0;                // 前回の階層
-    [System.NonSerialized] public int oldFrameScreenNum = 0;            // 1フレーム前の画面番号
-    [System.NonSerialized] public int oldFrameScreenLoot = 0;           // 1フレーム前の階層
     private Lerp lerp;
 
-    // UIが描画可能かを管理する配列
-    // 0 : タイトル画面
-    // 1 : メインメニュー
-    // 2 : ステージ選択画面
-    // 3 : 設定画面
-    // 4 : スキル選択画面
-    // 5 : ゲーム画面
-    // 6 : ポーズ画面
-    // 7 : 
-    // 8 : ステージクリア画面
-    // 9 : ゲームオーバー画面
+    [System.NonSerialized] public ScreenType oldScreen = 0;             // 前回の画面
+    [System.NonSerialized] public int oldScreenLoot = 0;                // 前回の階層
+    [System.NonSerialized] public ScreenType oldFrameScreen = 0;        // 1フレーム前の画面
+    [System.NonSerialized] public int oldFrameScreenLoot = 0;           // 1フレーム前の階層
 
-    [SerializeField] private int screenNum;  // 画面番号
-    [SerializeField] private int screenLoot; // 画面の階層
-    public int ScreenNum                     // 画面番号のプロパティ
+
+    public enum ScreenType
     {
-        get { return screenNum; }
+        Title,          // タイトル画面
+        MainMenu,       // メインメニュー
+        StageSelect,    // ステージ選択画面
+        Options,        // 設定画面
+        SkillSelect,    // スキル選択画面
+        InGame,         // ゲーム画面
+        Pause,          // ポーズ画面
+        PlanetInfo,     // 惑星情報画面
+        StageClear,     // ステージクリア画面
+        GameOver,       // ゲームオーバー画面
+    }
+
+    [SerializeField] private ScreenType screen;     // 画面
+    [SerializeField] private int screenLoot;        // 画面の階層
+    public ScreenType Screen                        // 画面のプロパティ
+    {
+        get { return screen; }
         set { SwitchProcess(value); }
     }
-    public int ScreenLoot                    // 画面の階層のプロパティ
+    public int ScreenLoot                           // 画面の階層のプロパティ
     {
         get { return screenLoot; }
         set { screenLoot = value; }
     }
-    public delegate void ChangeScreen();     // 画面が遷移したときのデリゲート
-    public delegate void ChangeLoot();       // 階層が遷移したときのデリゲート
+    public delegate void ChangeScreen();            // 画面が遷移したときのデリゲート
+    public delegate void ChangeLoot();              // 階層が遷移したときのデリゲート
     public ChangeScreen changeScreen;
     public ChangeScreen changeLoot;
     
     // 画面遷移処理
-    private void SwitchProcess(int num)
+    private void SwitchProcess(ScreenType scr)
     {
         // 遷移先の画面または現在の画面が遷移時にアニメーションを行うことになっていたら
-        if ((scrData.screenList[num].enterAnim) || (scrData.screenList[screenNum].exitAnim))
+        if ((scrData.screenList[(int)scr].enterAnim) || (scrData.screenList[(int)screen].exitAnim))
         {
             // アニメーションを行う
             lerp.StopAll();
 
-            StartCoroutine(SetScreenNum(num, true));
+            StartCoroutine(SetScreen(scr, true));
         }
         else
         {
-            StartCoroutine(SetScreenNum(num, false));
+            StartCoroutine(SetScreen(scr, false));
         }
     }
 
-    // 画面番号を設定
-    private IEnumerator SetScreenNum(int num, bool orPlay)
+    // 画面を設定
+    private IEnumerator SetScreen(ScreenType scr, bool orPlay)
     {
         if (orPlay)
         {
@@ -84,8 +87,8 @@ public class ScreenController : Singleton<ScreenController>
             yield return new WaitForSecondsRealtime(0.2f);
         }
 
-        // 画面番号を設定
-        screenNum = num;
+        // 画面を設定
+        screen = scr;
         
         if(orPlay)
         {
@@ -111,7 +114,7 @@ public class ScreenController : Singleton<ScreenController>
 
         lerp = gameObject.AddComponent<Lerp>();
         input.game_OnPauseDele += OpenPause;
-        stageCon.stageCrearDele += () => { screenNum = 8; };
+        stageCon.stageCrearDele += () => { screen = ScreenType.StageClear; };
 
         // UI_Negative入力時のイベントを登録
         input.ui_OnNegativeDele += (float value) =>
@@ -121,9 +124,9 @@ public class ScreenController : Singleton<ScreenController>
                 ScreenLoot -= (int)value;
 
             // メインメニューならタイトル画面に戻る
-            else if (ScreenNum == 1)
+            else if (Screen == ScreenType.MainMenu)
             {
-                ScreenNum = 0;
+                Screen = ScreenType.Title;
             }
         };
     }
@@ -132,6 +135,6 @@ public class ScreenController : Singleton<ScreenController>
     void OpenPause(float value)
     {
         if (value > 0)
-            screenNum = 6;
+            screen = ScreenType.Pause;
     }
 }

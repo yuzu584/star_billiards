@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         // ゲーム画面なら
-        if(scrCon.ScreenNum == 5)
+        if(scrCon.Screen == ScreenController.ScreenType.InGame)
         {
             // プレイヤーを追従していなければ
             if (!chasePlayer)
@@ -43,7 +43,7 @@ public class CameraController : MonoBehaviour
             fov.ChangeFOV();
         }
         // ステージ選択画面なら
-        else if (scrCon.ScreenNum == 2)
+        else if (scrCon.Screen == ScreenController.ScreenType.StageSelect)
         {
             // 親子関係を解消
             if (chasePlayer)

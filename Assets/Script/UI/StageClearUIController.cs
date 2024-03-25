@@ -79,7 +79,7 @@ public class StageClearUIController : Singleton<StageClearUIController>
         // ステージクリア画面に遷移したならステージクリア画面の描画処理を行う
         scrCon.changeScreen += () =>
         {
-            if (scrCon.ScreenNum == 8)
+            if (scrCon.Screen == ScreenController.ScreenType.StageClear)
             {
                 DrawStageClearUI();
             }

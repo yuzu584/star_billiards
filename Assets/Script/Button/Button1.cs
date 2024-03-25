@@ -25,7 +25,7 @@ public class Button1 : Button
     }
 
     [SerializeField] private ClickAction clickAction;
-    [SerializeField] private int nextScreen = 0; // 遷移先の画面番号
+    [SerializeField] private ScreenController.ScreenType nextScreen = 0; // 遷移先の画面
 
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
@@ -60,14 +60,14 @@ public class Button1 : Button
     // 画面遷移
     private void ChangeScreen()
     {
-        scrCon.ScreenNum = nextScreen;
+        scrCon.Screen = nextScreen;
     }
 
     // ステージスタート
     void StageStart()
     {
-        // 画面番号をInGameに変更
-        scrCon.ScreenNum = 5;
+        // 画面をInGameに変更
+        scrCon.Screen = ScreenController.ScreenType.InGame;
         scrCon.ScreenLoot = 0;
 
         // ステージに関する数値を初期化

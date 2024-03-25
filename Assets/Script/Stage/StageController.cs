@@ -34,14 +34,14 @@ public class StageController : Singleton<StageController>
             missionNum = stageData.stageList[stageNum].missionNum;
 
         // ミッションが"全ての惑星を破壊"かつクリア条件を達成したなら(ゲーム画面で)
-        if ((missionNum == 0) && (planetAmount.planetDestroyAmount >= stageData.stageList[stageNum].planetNum) && (scrCon.ScreenNum == 5))
+        if ((missionNum == 0) && (planetAmount.planetDestroyAmount >= stageData.stageList[stageNum].planetNum) && (scrCon.Screen == ScreenController.ScreenType.InGame))
         {
             // ステージクリア時のデリゲートを発火
             stageCrearDele();
         }
 
         // ステージを表示/非表示
-        if(createStage.NowRenderState() != scrData.screenList[scrCon.ScreenNum].drawStage)
-            createStage.Render(scrData.screenList[scrCon.ScreenNum].drawStage);
+        if(createStage.NowRenderState() != scrData.screenList[(int)scrCon.Screen].drawStage)
+            createStage.Render(scrData.screenList[(int)scrCon.Screen].drawStage);
     }
 }
