@@ -7,11 +7,11 @@ using UnityEngine.UI;
 // ボタン1を管理
 public class Button1 : Button
 {
-    // Findで探したGameObjectのコンポーネント
     private SkillController skillCon;
     private Arrow arrow;
     private Initialize init;
     private CreateStage cStage;
+    private SkillSelect skillSelect;
 
     public enum ClickAction // ボタンを押したときの効果
     {
@@ -88,13 +88,13 @@ public class Button1 : Button
     // 選択したスキルを適用
     void ApplySkill()
     {
-        skillCon.SetSelectSlot();
+        skillSelect.SetSelectSlot();
     }
 
     // 選択したスキルをリセット
     void ResetSelectSkill()
     {
-        skillCon.InitSelectSlot();
+        skillSelect.InitSelectSlot();
     }
 
     // ゲームを終了
@@ -123,5 +123,6 @@ public class Button1 : Button
         arrow = Arrow.instance;
         init = Initialize.instance;
         cStage = CreateStage.instance;
+        skillSelect = SkillSelect.instance;
     }
 }

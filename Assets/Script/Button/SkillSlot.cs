@@ -7,13 +7,17 @@ using Const;
 
 public class SkillSlot : Button
 {
-    [SerializeField] private int skillNum = 0;     // スキル番号
-    [SerializeField] private Text nameText;        // スキル名を表すテキスト
-    [SerializeField] private Text selectNumText;   // スキルの選択した順を表すテキスト
+    [SerializeField] private SkillController.SkillType skill = 0;       // スキル
+    [SerializeField] private Text nameText;                             // スキル名を表すテキスト
+    [SerializeField] private Image selectedImage;                       // スキルの選択状態を表す画像
 
     // instanceを代入する変数
     private SkillController skillCon;
     private SkillSelectUIController skillSelectUICon;
+    private SkillSelect skillSelect;
+
+    private Color defaultSelectImageColor = new(255.0f, 255.0f, 255.0f, 0.04f);
+    private Color selectedSelectImageColor = new(255.0f, 255.0f, 255.0f, 1.0f);
 
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
@@ -23,7 +27,7 @@ public class SkillSlot : Button
 
         // スキルの情報を描画
         if(skillSelectUICon != null)
-            skillSelectUICon.DrawSkillInfo(skillNum);
+            skillSelectUICon.DrawSkillInfo((int)skill);
     }
 
     // マウスポインターが離れたときの処理
@@ -37,52 +41,51 @@ public class SkillSlot : Button
     public override void ClickProcess()
     {
         // 既に選択されたスキルでなければ、選択しているスキルスロットを設定
-        if (CheckDoubleSelect(skillNum))
+        if (CheckDoubleSelect(skill))
         {
-            SetSelectSlot(skillNum);
+            SetSelectSkill(skill);
         }
     }
 
     // スキル名を表すテキストを設定
     void SetNameText()
     {
-        nameText.text = AppConst.SKILL_NAME[skillNum];
+        nameText.text = AppConst.SKILL_NAME[(int)skill];
     }
 
-    // スキルの選択した順を表すテキストを設定
-    void SetSelectNumText()
+    // スキルの選択状態表す画像の色を設定
+    void SetSelectImageColor()
     {
         for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
         {
-            if (skillCon.selectSlot[i] == skillNum)
+            if (skillSelect.selectSlot[i] == skill)
             {
-                selectNumText.enabled = true;
-                selectNumText.text = (i + 1).ToString("0");
+                selectedImage.color = selectedSelectImageColor;
                 return;
             }
         }
 
-        // スキルがセットされていなければテキストを非表示
-        selectNumText.enabled = false;
+        // スキルがセットされていなければ色を薄くする
+        selectedImage.color = defaultSelectImageColor;
     }
 
     // 選択しているスキルスロットを設定
-    void SetSelectSlot(int num)
+    void SetSelectSkill(SkillController.SkillType st)
     {
-        if (skillCon.count >= AppConst.SKILL_SLOT_AMOUNT)
+        if (skillSelect.count >= AppConst.SKILL_SLOT_AMOUNT)
         {
-            skillCon.InitSelectSlot();
+            skillSelect.InitSelectSlot();
         }
-        skillCon.selectSlot[skillCon.count] = num;
-        ++skillCon.count;
+        skillSelect.selectSlot[skillSelect.count] = st;
+        ++skillSelect.count;
     }
 
     // 同じスキルを選択していないか検知
-    bool CheckDoubleSelect(int num)
+    bool CheckDoubleSelect(SkillController.SkillType st)
     {
         for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
         {
-            if (skillCon.selectSlot[i] == num) { return false; }
+            if (skillSelect.selectSlot[i] == st) { return false; }
         }
         return true;
     }
@@ -101,6 +104,7 @@ public class SkillSlot : Button
 
         skillCon = SkillController.instance;
         skillSelectUICon = SkillSelectUIController.instance;
+        skillSelect = SkillSelect.instance;
 
         // スキル名のテキストを設定
         SetNameText();
@@ -108,7 +112,7 @@ public class SkillSlot : Button
 
     void Update()
     {
-        // スキルの選択した順を表すテキストを設定
-        SetSelectNumText();
+        // スキルの選択状態表す画像の色を設定
+        SetSelectImageColor();
     }
 }

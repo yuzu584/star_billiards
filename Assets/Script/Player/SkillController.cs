@@ -7,7 +7,8 @@ using Const;
 // スキルを管理
 public class SkillController : Singleton<SkillController>
 {
-    [SerializeField] private ParticleSystem GravityWaveParticle;  // GravityWaveのパーティクル
+    [SerializeField] private Transform playerT;                     // プレイヤーの座標
+    [SerializeField] private ParticleSystem GravityWaveParticle;    // GravityWaveのパーティクル
 
     private Shot shot;
     private SkillUIController skillUICon;
@@ -21,9 +22,21 @@ public class SkillController : Singleton<SkillController>
     public float coolDown = 0;   // クールダウンを管理
     public float effectTime = 0; // 効果時間を管理
 
-    public int[] skillSlot = new int[AppConst.SKILL_SLOT_AMOUNT];  // スキルスロット
-    public int[] selectSlot = new int[AppConst.SKILL_SLOT_AMOUNT]; // 選択しているスキルスロット
-    public int count = 0;                                          // スキルスロットを選択した回数をカウント
+    public enum SkillType
+    {
+        SuperCharge,
+        PowerSurge,
+        Huge,
+        GravityWave,
+        Frieze,
+        GrapplingHook,
+        Slow,
+        InertialControl,
+        Blink,
+        TeleportAnchor,
+    }
+
+    public SkillType[] skillSlot = new SkillType[AppConst.SKILL_SLOT_AMOUNT];  // スキルスロット
 
     void Start()
     {
@@ -36,13 +49,9 @@ public class SkillController : Singleton<SkillController>
         input = InputController.instance;
 
         // スキルスロットを初期化
-        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
-        {
-            skillSlot[i] = i;
-        }
-
-        // 選択しているスキルスロットの配列を初期化
-        InitSelectSlot();
+        skillSlot[0] = SkillType.SuperCharge;
+        skillSlot[1] = SkillType.PowerSurge;
+        skillSlot[2] = SkillType.Huge;
 
         // デリゲートに初期化関数を登録
         init.init_Stage += Init;
@@ -68,9 +77,9 @@ public class SkillController : Singleton<SkillController>
     public void CallSetSkillUI()
     {
         skillUICon.DrawSkillUI(
-            AppConst.SKILL_NAME[skillSlot[selectSkill]],
-            AppConst.SKILL_COOLDOWN[skillSlot[selectSkill]],
-            AppConst.SKILL_EFFECT_TIME[skillSlot[selectSkill]],
+            AppConst.SKILL_NAME[(int)skillSlot[selectSkill]],
+            AppConst.SKILL_COOLDOWN[(int)skillSlot[selectSkill]],
+            AppConst.SKILL_EFFECT_TIME[(int)skillSlot[selectSkill]],
             coolDown,
             effectTime
             );
@@ -83,20 +92,20 @@ public class SkillController : Singleton<SkillController>
         if ((value != 0) && (effectTime == 0) && (coolDown == 0))
         {
             // 効果時間とクールダウンを設定
-            effectTime = AppConst.SKILL_EFFECT_TIME[skillSlot[selectSkill]];
-            coolDown = AppConst.SKILL_COOLDOWN[skillSlot[selectSkill]];
+            effectTime = AppConst.SKILL_EFFECT_TIME[(int)skillSlot[selectSkill]];
+            coolDown = AppConst.SKILL_COOLDOWN[(int)skillSlot[selectSkill]];
 
             // エネルギーを消費
-            eneCon.energy -= AppConst.SKILL_ENERGY_USAGE[skillSlot[selectSkill]];
+            eneCon.energy -= AppConst.SKILL_ENERGY_USAGE[(int)skillSlot[selectSkill]];
 
             // 選択しているスキルによって分岐
             switch (skillSlot[selectSkill])
             {
-                case 0: StartCoroutine(UseSuperCharge());   break;  // SuperCharge
-                case 1: StartCoroutine(UsePowerSurge());    break;  // PowerSurge
-                case 2: StartCoroutine(UseHuge());          break;  // Huge
-                case 3: UseGravityWave();                   break;  // GravityWave
-                case 4: UseFrieze();                        break;  // Frieze
+                case SkillType.SuperCharge: StartCoroutine(UseSuperCharge());   break;
+                case SkillType.PowerSurge:  StartCoroutine(UsePowerSurge());    break;
+                case SkillType.Huge:        StartCoroutine(UseHuge());          break;
+                case SkillType.GravityWave: UseGravityWave();                   break;
+                case SkillType.Frieze:      UseFrieze();                        break;
             }
         }
     }
@@ -181,7 +190,7 @@ public class SkillController : Singleton<SkillController>
     {
         // パーティクルを生成->再生
         ParticleSystem newParticle = Instantiate(GravityWaveParticle);
-        newParticle.transform.position = this.gameObject.transform.position;
+        newParticle.transform.position = playerT.position;
         newParticle.Play();
 
         // 指定した半径の当たり判定を生成
@@ -200,10 +209,10 @@ public class SkillController : Singleton<SkillController>
             if ((hitObj != null) && (hit.collider.gameObject.tag == "Planet"))
             {
                 // 力を加えるベクトルを設定(最後に30000を掛けて力を調整)
-                Vector3 direction = (this.gameObject.transform.position - hitObj.position) * 30000;
+                Vector3 direction = (playerT.position - hitObj.position) * 30000;
 
                 // オブジェクトとの距離が近いほど強い力を加える
-                float distance = Vector3.Distance(this.gameObject.transform.position, hitObj.position);
+                float distance = Vector3.Distance(playerT.position, hitObj.position);
                 hitObj.AddForce(-direction / distance);
             }
         }
@@ -221,53 +230,6 @@ public class SkillController : Singleton<SkillController>
         // 対象が惑星なら動きを止める
         if (sphereRay.hitObjectTag == "Planet")
             hitRb.velocity *= 0;
-    }
-
-    // 選択しているスキルスロットの配列を初期化
-    public void InitSelectSlot()
-    {
-        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
-        {
-            selectSlot[i] = -1;
-        }
-        count = 0;
-    }
-
-    // 選択したスキルをセット
-    public void SetSelectSlot()
-    {
-        // セットしているスキルを管理
-        bool[] usingList = new bool[AppConst.SKILL_NUM];
-
-        // 使用しているスキルはtrue
-        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
-        {
-            if (selectSlot[i] >= 0)
-                usingList[selectSlot[i]] = true;
-        }
-
-        // スキル番号が-1なら正常な値にする
-        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
-        {
-            if (selectSlot[i] == -1)
-            {
-                for(int j = 0; i < AppConst.SKILL_NUM; j++)
-                {
-                    if (!usingList[j]) 
-                    {
-                        selectSlot[i] = j;
-                        usingList[selectSlot[i]] = true;
-                        break;
-                    }
-                }
-            }
-        }
-
-        // スキルをセット
-        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
-            skillSlot[i] = selectSlot[i];
-
-        count = AppConst.SKILL_SLOT_AMOUNT;
     }
 
     // 初期化

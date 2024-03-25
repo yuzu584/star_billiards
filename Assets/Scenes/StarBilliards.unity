@@ -215,6 +215,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
       value: 
       objectReference: {fileID: 734221561}
@@ -992,6 +996,10 @@ PrefabInstance:
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: group
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
@@ -2397,6 +2405,7 @@ Transform:
   - {fileID: 1182512707}
   - {fileID: 1951116560}
   - {fileID: 595195742}
+  - {fileID: 1705138440}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2410,6 +2419,10 @@ PrefabInstance:
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: group
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
@@ -3626,6 +3639,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
       value: 
       objectReference: {fileID: 10082138}
@@ -4628,6 +4645,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
       value: 
       objectReference: {fileID: 1618435474}
@@ -4946,6 +4967,10 @@ PrefabInstance:
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: group
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
@@ -5432,6 +5457,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
       value: 
       objectReference: {fileID: 1654165420}
@@ -5638,6 +5667,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
       value: 
       objectReference: {fileID: 108089741}
@@ -5777,6 +5810,10 @@ PrefabInstance:
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: group
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
@@ -8747,6 +8784,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
       value: 
       objectReference: {fileID: 1754278658}
@@ -9959,6 +10000,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
       value: 
       objectReference: {fileID: 514966610}
@@ -10384,6 +10429,10 @@ PrefabInstance:
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: group
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
@@ -11139,7 +11188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrData: {fileID: 11400000, guid: dd52f5a87ef9cc442b05d2cf2b2213f9, type: 2}
   switchImage: {fileID: 1569710203}
-  screenNum: 0
+  screen: 0
   screenLoot: 0
 --- !u!4 &1600059366
 Transform:
@@ -11177,6 +11226,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: group
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
@@ -11342,6 +11395,10 @@ PrefabInstance:
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: group
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
@@ -11702,6 +11759,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac0a12152081c6458336bc710c62489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1705138439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1705138440}
+  - component: {fileID: 1705138442}
+  - component: {fileID: 1705138441}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1705138440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705138439}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 318109087}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1705138441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705138439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c287d55fe651c84ba50d67e53888887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectSlot: 000000000000000000000000
+  count: 0
+--- !u!114 &1705138442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705138439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8838ec1200f5b9044b1ee582e61350c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerT: {fileID: 2052131790}
+  GravityWaveParticle: {fileID: 7855226533659244353, guid: 59a02b5fc103317428ace8f4b1f4d2d3, type: 3}
+  selectSkill: 0
+  coolDown: 0
+  effectTime: 0
+  skillSlot: 000000000000000000000000
 --- !u!1001 &1725553471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12027,6 +12149,10 @@ PrefabInstance:
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: group
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
@@ -14070,6 +14196,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
       value: 
       objectReference: {fileID: 811629044}
@@ -14211,6 +14341,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
       value: 
       objectReference: {fileID: 2000493303}
@@ -14350,6 +14484,10 @@ PrefabInstance:
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: group
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
@@ -14647,6 +14785,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: skill
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonUp
       value: 
       objectReference: {fileID: 1694679417}
@@ -14792,7 +14934,6 @@ GameObject:
   - component: {fileID: 2052131792}
   - component: {fileID: 2052131798}
   - component: {fileID: 2052131793}
-  - component: {fileID: 2052131794}
   - component: {fileID: 2052131795}
   - component: {fileID: 2052131796}
   - component: {fileID: 2052131797}
@@ -14928,25 +15069,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energy: 1000
   maxEnergy: 1000
---- !u!114 &2052131794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052131786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8838ec1200f5b9044b1ee582e61350c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GravityWaveParticle: {fileID: 7855226533659244353, guid: 59a02b5fc103317428ace8f4b1f4d2d3, type: 3}
-  selectSkill: 0
-  coolDown: 0
-  effectTime: 0
-  skillSlot: 000000000000000000000000
-  selectSlot: 000000000000000000000000
-  count: 0
 --- !u!114 &2052131795
 MonoBehaviour:
   m_ObjectHideFlags: 0
