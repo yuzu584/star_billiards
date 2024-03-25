@@ -34,6 +34,7 @@ public class SkillController : Singleton<SkillController>
         InertialControl,
         Blink,
         TeleportAnchor,
+        None,
     }
 
     public SkillType[] skillSlot = new SkillType[AppConst.SKILL_SLOT_AMOUNT];  // スキルスロット

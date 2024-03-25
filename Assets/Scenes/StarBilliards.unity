@@ -11805,7 +11805,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectSlot: 000000000000000000000000
-  count: 0
 --- !u!114 &1705138442
 MonoBehaviour:
   m_ObjectHideFlags: 0

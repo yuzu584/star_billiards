@@ -41,9 +41,14 @@ public class SkillSlot : Button
     public override void ClickProcess()
     {
         // 既に選択されたスキルでなければ、選択しているスキルスロットを設定
-        if (CheckDoubleSelect(skill))
+        if (skillSelect.CheckDoubleSelect(skill))
         {
-            SetSelectSkill(skill);
+            skillSelect.SetSelectSkill(skill);
+        }
+        // 既に選択済みならば、選択を解除する
+        else
+        {
+            skillSelect.CancelSkill(skill);
         }
     }
 
@@ -56,8 +61,10 @@ public class SkillSlot : Button
     // スキルの選択状態表す画像の色を設定
     void SetSelectImageColor()
     {
+        // スキルスロットの数繰り返す
         for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
         {
+            // スキルがセットされていれば色を明るくする
             if (skillSelect.selectSlot[i] == skill)
             {
                 selectedImage.color = selectedSelectImageColor;
@@ -67,27 +74,6 @@ public class SkillSlot : Button
 
         // スキルがセットされていなければ色を薄くする
         selectedImage.color = defaultSelectImageColor;
-    }
-
-    // 選択しているスキルスロットを設定
-    void SetSelectSkill(SkillController.SkillType st)
-    {
-        if (skillSelect.count >= AppConst.SKILL_SLOT_AMOUNT)
-        {
-            skillSelect.InitSelectSlot();
-        }
-        skillSelect.selectSlot[skillSelect.count] = st;
-        ++skillSelect.count;
-    }
-
-    // 同じスキルを選択していないか検知
-    bool CheckDoubleSelect(SkillController.SkillType st)
-    {
-        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
-        {
-            if (skillSelect.selectSlot[i] == st) { return false; }
-        }
-        return true;
     }
 
     protected override void OnEnable()
