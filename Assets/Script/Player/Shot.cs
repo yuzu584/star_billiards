@@ -107,7 +107,7 @@ public class Shot : Singleton<Shot>
             colObjVelocity = cRb.velocity;
             rb.constraints = RigidbodyConstraints.FreezeAll;
             cRb.constraints = RigidbodyConstraints.FreezePosition;
-            Invoke("AddPower", Mathf.Clamp(colObjVelocity.magnitude / 10000, 0.1f, 0.5f));
+            Invoke("AddPower", Mathf.Clamp(colObjVelocity.magnitude / (10000 / power), 0.1f, 0.5f));
         }
 
         // 衝突したオブジェクトのタグがFixedStarなら

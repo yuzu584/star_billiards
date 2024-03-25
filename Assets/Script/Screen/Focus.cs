@@ -28,12 +28,19 @@ public class Focus : Singleton<Focus>
         // UI_Positive入力時のイベントを登録
         input.ui_OnPositiveDele += (float value) =>
         {
-            // 音を再生
-            StartCoroutine(sound.Play(focusBtn.ClickSound));
+            // ボタンがフォーカスされていれば
+            if(focusBtn != null)
+            {
+                // 音を再生
+                StartCoroutine(sound.Play(focusBtn.ClickSound));
 
-            // ボタンクリック時の処理
-            focusBtn.ClickProcess();
+                // ボタンクリック時の処理
+                focusBtn.ClickProcess();
+            }
         };
+
+        // 画面遷移時にボタンのフォーカスを外す
+        scrCon.changeScreen += () => { focusBtn = null; };
     }
 
     // フォーカスするボタンを変える
