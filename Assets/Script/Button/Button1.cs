@@ -11,7 +11,7 @@ public class Button1 : Button
     private Initialize init;
     private CreateStage cStage;
     private SkillSelect skillSelect;
-    private UIController uiCon;
+    private PopupManager popupMana;
 
     public enum ClickAction // ボタンを押したときの効果
     {
@@ -73,6 +73,9 @@ public class Button1 : Button
         // ステージに関する数値を初期化
         init.init_Stage();
 
+        // ポップアップの配列を初期化
+        popupMana.Init(popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1]);
+
         // ステージ生成
         cStage.Destroy();
         cStage.Create();
@@ -95,12 +98,12 @@ public class Button1 : Button
             skillSelect.SetSelectSlot();
 
             // ポップアップ表示
-            uiCon.GenerateMessagePopup("was decided");
+            popupMana.DrawPopup(PopupManager.PopupType.InMenuPopup1, "was decided");
         }
         else
         {
             // ポップアップ表示
-            uiCon.GenerateMessagePopup("Please select 3 skills");
+            popupMana.DrawPopup(PopupManager.PopupType.InMenuPopup1, "Please select 3 skills");
         }
     }
 
@@ -136,6 +139,6 @@ public class Button1 : Button
         init = Initialize.instance;
         cStage = CreateStage.instance;
         skillSelect = SkillSelect.instance;
-        uiCon = UIController.instance;
+        popupMana = PopupManager.instance;
     }
 }

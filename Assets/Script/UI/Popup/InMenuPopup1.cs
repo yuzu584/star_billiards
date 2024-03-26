@@ -3,22 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// メッセージポップアップ
-public class MessagePopup_InMenu : MonoBehaviour
+// メニュー画面のポップアップ1
+public class InMenuPopup1 : PopupParent
 {
     [SerializeField] private Text messageText;              // テキスト
     [SerializeField] private Image image;                   // 画像
     [SerializeField] private float destroyTime = 3.0f;      // ポップアップが消えるまでの時間
 
-    private Lerp lerp;
-
-    private void Awake()
-    {
-        lerp = gameObject.AddComponent<Lerp>();
-    }
-
-    // メッセージポップアップを生成
-    public IEnumerator Generate(string text, Transform parentT)
+    // ポップアップの処理
+    public override IEnumerator Process(string text, Transform parentT, int num)
     {
         Color[] startColor = new Color[2];
         Color[] endColor = new Color[2];
@@ -33,6 +26,8 @@ public class MessagePopup_InMenu : MonoBehaviour
 
         // テキストを設定
         messageText.text = text;
+
+        lerp ??= gameObject.AddComponent<Lerp>();
 
         // 線形補間でアニメーション
         StartCoroutine(lerp.Color_Image(image, startColor[0], endColor[0], fadeTime));

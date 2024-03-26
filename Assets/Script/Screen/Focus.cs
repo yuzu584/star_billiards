@@ -73,9 +73,14 @@ public class Focus : Singleton<Focus>
     void MoveSlider(Vector2 mVec)
     {
         // フォーカスされているボタンからOptionsSliderが取得出来たら
-        var sliderBtn = focusBtn.gameObject.GetComponent<OptionsSlider>();
-        if (sliderBtn != null)
-            sliderBtn.MoveSlider(mVec.x);
+        OptionsSlider slider;
+
+        if(focusBtn != null)
+            slider = focusBtn.gameObject.GetComponent<OptionsSlider>();
+        else slider = null;
+
+        if (slider != null)
+            slider.MoveSlider(mVec.x);
     }
 
     // フォーカスするボタンを設定

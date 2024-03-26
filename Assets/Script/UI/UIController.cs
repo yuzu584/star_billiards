@@ -179,8 +179,6 @@ public class UIController : Singleton<UIController>
         public Image reticle;                   // レティクル
         public Text speedValue;                 // 移動速度のUI
         public Text justShotText;               // ジャストショット時のテキスト
-        public GameObject messagePopup_InMenu;  // ポップアップのプレハブ
-        public GameObject popupParent;          // ポップアップのプレハブの親オブジェクト
     }
 
     private SkillController skillCon;
@@ -188,10 +186,6 @@ public class UIController : Singleton<UIController>
     private ChargeUIController chargeUICon;
     private MissionUIController missionUICon;
     private SpeedUIController speedUICon;
-    private ScreenController scrCon;
-
-    private GameObject popup;
-    private Coroutine popupCol;
 
     void Start()
     {
@@ -200,10 +194,6 @@ public class UIController : Singleton<UIController>
         chargeUICon = ChargeUIController.instance;
         missionUICon = MissionUIController.instance;
         speedUICon = SpeedUIController.instance;
-        scrCon = ScreenController.instance;
-
-        // 画面遷移時にポップアップを削除
-        scrCon.changeScreen += () => { if (popupCol != null ) StopCoroutine(popupCol); Destroy(popup); };
     }
 
     void Update()
@@ -235,17 +225,5 @@ public class UIController : Singleton<UIController>
             // 制限時間のUIを描画
             timeLimitUI.renderTimeLimit();
         }
-    }
-
-    // ポップアップを生成
-    public void GenerateMessagePopup(string text)
-    {
-        // ポップアップのインスタンス生成済みなら終了
-        if(popup != null) { return; }
-
-        // ポップアップ生成・ポップアップの処理
-        popup = Instantiate(otherUI.messagePopup_InMenu);
-        MessagePopup_InMenu component = popup.gameObject.GetComponent<MessagePopup_InMenu>();
-        popupCol = StartCoroutine(component.Generate(text, otherUI.popupParent.transform));
     }
 }
