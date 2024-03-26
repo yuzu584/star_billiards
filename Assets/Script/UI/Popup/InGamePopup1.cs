@@ -7,36 +7,20 @@ using UnityEngine.UI;
 // ゲーム画面のポップアップ1
 public class InGamePopup1 : PopupParent
 {
-    private ScreenController scrCon;
-    private PopupManager popupMana;
-
     protected override void Start()
     {
-        scrCon = ScreenController.instance;
-        popupMana ??= PopupManager.instance;
-    }
+        base.Start();
 
-    void Update()
-    {
-        // ポップアップの個数繰り返す
-        for (int i = 0; i < popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance.Length; i++)
+        scrCon.changeScreen += () =>
         {
-            // インスタンスが生成されていれば
-            if (popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[i] != null)
+            // ゲーム画面なら表示、それ以外なら非表示
+            for (int i = 0; i < popupMana.popupContent.Length; i++)
             {
-                // ゲーム画面かつ非表示なら
-                if ((scrCon.Screen == ScreenController.ScreenType.InGame) && (!popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[i].activeSelf))
-
-                    // 表示する
-                    popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[i].SetActive(true);
-
-                // ゲーム画面以外かつ表示されているなら
-                else if ((scrCon.Screen != ScreenController.ScreenType.InGame) && (popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[i].activeSelf))
-
-                    // 非表示にする
-                    popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[i].SetActive(false);
+                // インスタンスが生成されていれば
+                if (popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[i] != null)
+                    popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[i].SetActive(scrCon.Screen == ScreenController.ScreenType.InGame);
             }
-        }
+        };
     }
 
     // ポップアップの処理
@@ -47,37 +31,38 @@ public class InGamePopup1 : PopupParent
         float moveDistance = 300.0f; // 移動距離
         Vector3 defaultPosition;     // デフォルトの位置
 
+        index = num;
+
         popupMana ??= PopupManager.instance;
 
         // 親を設定
-        popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[num].transform.SetParent(parentT, false);
+        popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[index].transform.SetParent(parentT, false);
 
         // 位置を設定
-        popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[num].transform.localPosition += new Vector3(-moveDistance, num * -20.0f, 0.0f);
+        popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[index].transform.localPosition += new Vector3(-moveDistance, index * -20.0f, 0.0f);
 
         // プレハブのテキストを取得
-        Text popupText = popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[num].transform.GetChild(1).GetComponent<Text>();
+        Text popupText = popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[index].transform.GetChild(1).GetComponent<Text>();
 
         // プレハブのテキストを設定
         popupText.text = text;
 
         // デフォルト位置を設定
-        defaultPosition = popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[num].transform.localPosition;
+        defaultPosition = popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[index].transform.localPosition;
 
         lerp ??= gameObject.AddComponent<Lerp>();
 
         // ポップアップを動かす
-        yield return StartCoroutine(lerp.Position_GameObject(popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[num], defaultPosition, defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), fadeTime));
+        yield return StartCoroutine(lerp.Position_GameObject(popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[index], defaultPosition, defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), fadeTime));
 
         // ポップアップが時間が経過するまで待つ
         yield return new WaitForSeconds(destroyTime);
 
         // ポップアップを動かす
-        if (popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[num] != null)
-        yield return StartCoroutine(lerp.Position_GameObject(popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[num], defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), defaultPosition, fadeTime));
+        if (popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[index] != null)
+        yield return StartCoroutine(lerp.Position_GameObject(popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1].instance[index], defaultPosition + new Vector3(moveDistance, 0.0f, 0.0f), defaultPosition, fadeTime));
 
         // ポップアップを削除
-        if(gameObject)
-            Destroy(gameObject);
+        Destroy();
     }
 }

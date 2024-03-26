@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfb7dafc80b15e4394a76ea65dede25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popupType: 1
   messageText: {fileID: 8936481478559270013}
   image: {fileID: 8936481479312779896}
   destroyTime: 3

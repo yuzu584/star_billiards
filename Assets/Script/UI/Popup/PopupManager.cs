@@ -84,18 +84,15 @@ public class PopupManager : Singleton<PopupManager>
     {
         for(int i = 0; i < pCon.instance.Length; ++i)
         {
-            if (pCon.instance[i])
-            {
-                Destroy(pCon.instance[i]);
-            }
-            pCon.instance[i] = null;
-            pCon.component[i] = null;
-
-            if (pCon.coroutines[i] != null)
-            {
-                StopCoroutine(pCon.coroutines[i]);
-            }
-            pCon.coroutines[i] = null;
+            // PopupParent のコンポーネントを取得済みならポップアップ削除処理を行う
+            if (pCon.component[i] != null)
+                pCon.component[i].Destroy();
         }
+    }
+
+    // 特定のコルーチンを停止させる(StopCoroutine を外部から呼び出すとエラーが出るためこの関数を使用してコルーチンを停止させる)
+    public void StopCoroutineOfPopupContent(PopupContent pCon, int index)
+    {
+        StopCoroutine(pCon.coroutines[index]);
     }
 }

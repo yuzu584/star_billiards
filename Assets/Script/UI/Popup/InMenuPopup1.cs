@@ -10,6 +10,14 @@ public class InMenuPopup1 : PopupParent
     [SerializeField] private Image image;                   // 画像
     [SerializeField] private float destroyTime = 3.0f;      // ポップアップが消えるまでの時間
 
+    protected override void Start()
+    {
+        base.Start();
+
+        // 画面遷移時にポップアップを破棄する
+        scrCon.changeScreen += Destroy;
+    }
+
     // ポップアップの処理
     public override IEnumerator Process(string text, Transform parentT, int num)
     {
@@ -20,6 +28,8 @@ public class InMenuPopup1 : PopupParent
         endColor[0] = new(0, 0, 0, 0.78f);
         endColor[1] = new(1, 1, 1, 1);
         float fadeTime = 0.2f;;
+
+        index = num;
 
         // 親オブジェクトを設定
         gameObject.transform.SetParent(parentT, false);
@@ -44,6 +54,6 @@ public class InMenuPopup1 : PopupParent
         yield return new WaitForSecondsRealtime(fadeTime);
 
         // 自分を破棄
-        Destroy(gameObject);
+        Destroy();
     }
 }
