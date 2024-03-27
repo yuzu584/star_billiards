@@ -439,6 +439,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 450
       objectReference: {fileID: 0}
+    - target: {fileID: 1294125213014739350, guid: 4c428768e832cf141965b12f4bb6f8c4, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1512560755989626319, guid: 4c428768e832cf141965b12f4bb6f8c4, type: 3}
       propertyPath: m_SizeDelta.x
       value: 450
@@ -447,9 +451,17 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 450
       objectReference: {fileID: 0}
+    - target: {fileID: 7239346529832800596, guid: 4c428768e832cf141965b12f4bb6f8c4, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8465106597473929030, guid: 4c428768e832cf141965b12f4bb6f8c4, type: 3}
       propertyPath: m_RaycastTarget
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465106597473929030, guid: 4c428768e832cf141965b12f4bb6f8c4, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c428768e832cf141965b12f4bb6f8c4, type: 3}

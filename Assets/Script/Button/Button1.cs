@@ -129,6 +129,9 @@ public class Button1 : Button
         // ポップアップのコンポーネントを取得
         DialogPopup1 dp1 = g.GetComponent<DialogPopup1>();
 
+        // ポップアップのボタンの値を設定
+        dp1.SetScreenAndLoot(ScreenController.ScreenType.MainMenu, 1);
+
         // ポップアップの OK ボタンを押したときの処理を設定
         dp1.Action = () =>
         {

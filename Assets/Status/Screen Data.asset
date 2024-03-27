@@ -52,7 +52,7 @@ MonoBehaviour:
     - name: 
       enterAnim: 0
       exitAnim: 0
-  - screenName: Setting
+  - screenName: Options
     drawCursol: 1
     timeScale: 0
     drawStage: 0
@@ -60,6 +60,21 @@ MonoBehaviour:
     exitAnim: 1
     inputType: 1
     loot:
+    - name: 
+      enterAnim: 0
+      exitAnim: 0
+    - name: 
+      enterAnim: 0
+      exitAnim: 0
+    - name: 
+      enterAnim: 0
+      exitAnim: 0
+    - name: 
+      enterAnim: 0
+      exitAnim: 0
+    - name: 
+      enterAnim: 0
+      exitAnim: 0
     - name: 
       enterAnim: 0
       exitAnim: 0

@@ -78,8 +78,16 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     protected Lerp lerp;
 
-    [SerializeField] protected int loot = 0;                // フォーカスされる階層
+    // スクリーンと階層をまとめた構造体
+    [System.Serializable]
+    public struct ScreenAndLoot
+    {
+        public ScreenController.ScreenType scrType;
+        public int scrLoot;
+    }
+
     [SerializeField] protected bool defaultFocus = false;   // 最初にフォーカスするボタンか
+    public ScreenAndLoot scrAndLoot;                        // スクリーンと階層をまとめた構造体
     public AudioClip EnterSound;                            // ポインターが乗った時に再生する音声ファイル
     public AudioClip ClickSound;                            // ボタンクリック時に再生する音声ファイル
     public Button buttonUp;                                 // 自分の上に位置するボタン
@@ -352,7 +360,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     // フォーカス関係の処理
     public void FocusProcess(bool isEnter)
     {
-        if (this.gameObject.activeInHierarchy)
+        if (gameObject.activeInHierarchy)
         {
             if (isEnter)
             {
@@ -377,34 +385,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         focus ??= Focus.instance;
         sound = Sound.instance;
         input = InputController.instance;
-        btnRec = ButtonRecorder.instance;
-
-        scrCon.changeLoot += () =>
-        {
-            if (gameObject == null) return;
-
-            // このボタンがフォーカスされる階層なら
-            if ((loot == scrCon.ScreenLoot) && (gameObject.activeInHierarchy))
-            {
-                if (defaultFocus)
-                {
-                    // ボタンが記録されていないなら
-                    if(btnRec.loot[(int)scrCon.Screen].btn[scrCon.ScreenLoot] == null)
-                    {
-                        // 自分をフォーカス
-                        focus.SetFocusBtn(this);
-                    }
-                    // すでにボタンが記録されているなら
-                    else
-                    {
-                        // 記録されているボタンをフォーカス
-                        focus.SetFocusBtn(btnRec.loot[(int)scrCon.Screen].btn[scrCon.ScreenLoot]);
-                    }
-
-                    EnterProcess();
-                }
-            }
-        };
+        btnRec ??= ButtonRecorder.instance;
     }
 
     protected virtual void OnEnable()
@@ -412,15 +393,15 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         // 取得されていなければ取得
         scrCon ??= ScreenController.instance;
         focus ??= Focus.instance;
+        btnRec ??= ButtonRecorder.instance;
 
-        // このボタンがフォーカスされる階層なら
-        if (loot == scrCon.ScreenLoot)
+        if (defaultFocus)
         {
-            if (defaultFocus)
+            // ボタンが記録されていないなら
+            if (btnRec.lootStr[(int)scrCon.Screen].btn[scrCon.ScreenLoot] == null)
             {
-                focus.SetFocusBtn(this);
-
-                EnterProcess();
+                // 自分を記録
+                btnRec.SaveFocusedButton(this);
             }
         }
     }

@@ -44,6 +44,15 @@ public class DialogPopup1 : PopupParent
         btn1.action = action;
     }
 
+    // ボタンの ScreenAndLoot を設定
+    public void SetScreenAndLoot(ScreenController.ScreenType scrType, int loot)
+    {
+        okBtn.scrAndLoot.scrType = scrType;
+        okBtn.scrAndLoot.scrLoot = loot;
+        cancelBtn.scrAndLoot.scrType = scrType;
+        cancelBtn.scrAndLoot.scrLoot = loot;
+    }
+
     // ポップアップの処理
     public override IEnumerator Process(string text, Transform parentT, int num)
     {

@@ -106,8 +106,8 @@ public class Focus : Singleton<Focus>
 
             btnRec ??= ButtonRecorder.instance;
 
-            if (oldfocusBtn != null)
-                btnRec.SaveFocusedButton(oldfocusBtn);
+            if (focusBtn != null)
+                btnRec.SaveFocusedButton(focusBtn);
         }
 
         // スクロールバーのスクロール処理
@@ -118,8 +118,8 @@ public class Focus : Singleton<Focus>
             float maxY;                                     // スクロールを行う一番上のY座標
             float minY;                                     // スクロールを行う一番下のY座標
             float value;                                    // スクロール量
-            int num;                                        // ScrollBarControllerのnum
-            var instance = ScrollBarController.instance;    // ScrollBarControllerのインスタンス
+            int num;                                        // ScrollBarController の num
+            var instance = ScrollBarController.instance;    // ScrollBarController のインスタンス
 
             num = instance.num;
 
