@@ -104,6 +104,7 @@ public class Shot : Singleton<Shot>
             else power = 1;
 
             // ヒットストップ処理(衝突したオブジェクトの速度に応じてヒットストップ時間が変化)
+            rb.velocity *= 0;
             colObjVelocity = cRb.velocity;
             rb.constraints = RigidbodyConstraints.FreezeAll;
             cRb.constraints = RigidbodyConstraints.FreezePosition;
