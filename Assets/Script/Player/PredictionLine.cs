@@ -14,13 +14,14 @@ public class PredictionLine : Singleton<PredictionLine>
     private EnergyController eneCon;
     private InputController input;
 
-    Rigidbody rb;                // InspectorでRigidbodyを指定
-    Vector3 origin;              // 原点
-    Vector3 direction;           // X軸方向を表すベクトル
-    RaycastHit hit;              // Rayのhit
-    Vector3 inDirection;         // 入射ベクトル（速度）
-    Vector3 inNormal;            // 法線ベクトル
-    Vector3 reflectionDirection; // 反射ベクトル
+    private Rigidbody rb;                   // InspectorでRigidbodyを指定
+    private Vector3 origin;                 // 原点
+    private Vector3 direction;              // X軸方向を表すベクトル
+    private Vector3 inDirection;            // 入射ベクトル（速度）
+    private Vector3 inNormal;               // 法線ベクトル
+    private Vector3 reflectionDirection;    // 反射ベクトル
+
+    public RaycastHit hit1, hit2;           // Rayのhit
 
     void Start()
     {
@@ -34,7 +35,7 @@ public class PredictionLine : Singleton<PredictionLine>
         lineRenderer.endWidth = AppConst.PREDICTION_LINE_END_WIDTH;
 
         // lineRendererの線の数を指定
-        lineRenderer.positionCount = 3;
+        lineRenderer.positionCount = 2;
 
         // 線を非表示
         lineRenderer.enabled = false;
@@ -58,15 +59,11 @@ public class PredictionLine : Singleton<PredictionLine>
         Ray ray = new Ray(origin, direction);
 
         // プレイヤーと同じ幅のRayを生成
-        if (Physics.SphereCast(ray, target.transform.localScale.x, out hit))
+        if (Physics.SphereCast(ray, target.transform.localScale.x, out hit1))
         {
-            // Rayに沿ってLineを描画
-            lineRenderer.SetPosition(0, origin);
-            lineRenderer.SetPosition(1, hit.point);
+            // Rayが当たった面の法線ベクトルを代入
+            inNormal = hit1.normal;
         }
-
-        // Rayが当たった面の法線ベクトルを代入
-        inNormal = hit.normal;
 
         // プレイヤーの前向きのベクトルを代入
         direction = directionTarget.transform.forward;
@@ -75,13 +72,14 @@ public class PredictionLine : Singleton<PredictionLine>
         reflectionDirection = Vector3.Reflect(direction, inNormal);
 
         // Rayを生成
-        ray = new Ray(hit.point, reflectionDirection);
+        ray = new Ray(hit1.point, reflectionDirection);
 
         // プレイヤーと同じ幅のRayを生成
-        if (Physics.SphereCast(ray, target.transform.localScale.x, out hit))
+        if (Physics.SphereCast(ray, target.transform.localScale.x, out hit2))
         {
             // 反射後のRayに沿ってLineを描画
-            lineRenderer.SetPosition(2, hit.point);
+            lineRenderer.SetPosition(0, hit1.point);
+            lineRenderer.SetPosition(1, hit2.point);
         }
 
         // 反射方向を返す

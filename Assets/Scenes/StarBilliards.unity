@@ -15029,6 +15029,7 @@ GameObject:
   - component: {fileID: 2052131795}
   - component: {fileID: 2052131796}
   - component: {fileID: 2052131797}
+  - component: {fileID: 2052131799}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -15213,6 +15214,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   justShotGrace: 0.1
+--- !u!114 &2052131799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052131786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3496088afa72841aa45c75ef84498c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guideObj: {fileID: 7990060404319072498, guid: 21ee8e90196f3a344b14e51381913ef5, type: 3}
+  parentObj: {fileID: 1400418623}
 --- !u!1 &2075579890
 GameObject:
   m_ObjectHideFlags: 0

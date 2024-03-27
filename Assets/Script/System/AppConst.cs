@@ -86,7 +86,7 @@ namespace Const
         public const int CHARGE_SPEED_INCREASE_AMOUNT = 1;                                                  // スーパーチャージ使用時のチャージ速度増加量
         public const int BOUNCE_POWER_INCREASE_AMOUNT = 100;                                                // パワーサージ使用時の反発力増加量
         public const float SIZE_INCREASE_RATE = 5.0f;                                                       // 巨大化使用時のサイズ増加倍率
-        public const float PREDICTION_LINE_START_WIDTH = 0.1f;                                              // 軌道予測線の始点の太さ
+        public const float PREDICTION_LINE_START_WIDTH = 0.3f;                                              // 軌道予測線の始点の太さ
         public const float PREDICTION_LINE_END_WIDTH = 1.0f;                                                // 軌道予測線の終点の太さ
         public const float SPHERE_RAY_WIDTH = 10.0f;                                                        // 球体のRayの太さ
         public const float DEFAULT_TIME_SCALE = 1.0f;                                                       // 時間の速さの初期値
