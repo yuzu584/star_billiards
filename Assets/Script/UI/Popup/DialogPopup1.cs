@@ -31,6 +31,7 @@ public class DialogPopup1 : PopupParent
         // キャンセルボタンの処理はポップアップの破棄
         Action a = () =>
         {
+            scrCon.ScreenLoot = 0;
             Destroy();
         };
 

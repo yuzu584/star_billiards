@@ -15,12 +15,14 @@ public class Focus : Singleton<Focus>
     private ScreenController scrCon;
     private InputController input;
     private Sound sound;
+    private ButtonRecorder btnRec;
 
     void Start()
     {
         scrCon = ScreenController.instance;
         input = InputController.instance;
         sound = Sound.instance;
+        btnRec ??= ButtonRecorder.instance;
 
         input.ui_OnMoveDele += ChangeBtnFocus;
         input.ui_OnMoveDele += MoveSlider;
@@ -40,7 +42,9 @@ public class Focus : Singleton<Focus>
         };
 
         // 画面遷移時にボタンのフォーカスを外す
-        scrCon.changeScreen += () => { focusBtn = null; };
+        scrCon.changeScreen += () => {
+            focusBtn = null;
+        };
     }
 
     // フォーカスするボタンを変える
@@ -99,6 +103,11 @@ public class Focus : Singleton<Focus>
             // フォーカスが外れたときの処理
             if (oldfocusBtn != null)
                 oldfocusBtn.FocusProcess(false);
+
+            btnRec ??= ButtonRecorder.instance;
+
+            if (oldfocusBtn != null)
+                btnRec.SaveFocusedButton(oldfocusBtn);
         }
 
         // スクロールバーのスクロール処理

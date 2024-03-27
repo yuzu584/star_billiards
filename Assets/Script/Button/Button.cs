@@ -74,6 +74,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     protected Sound sound;
     protected InputController input;
     protected Focus focus;
+    protected ButtonRecorder btnRec;
 
     protected Lerp lerp;
 
@@ -376,15 +377,29 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         focus ??= Focus.instance;
         sound = Sound.instance;
         input = InputController.instance;
+        btnRec = ButtonRecorder.instance;
 
         scrCon.changeLoot += () =>
         {
+            if (gameObject == null) return;
+
             // このボタンがフォーカスされる階層なら
             if ((loot == scrCon.ScreenLoot) && (gameObject.activeInHierarchy))
             {
                 if (defaultFocus)
                 {
-                    focus.SetFocusBtn(this);
+                    // ボタンが記録されていないなら
+                    if(btnRec.loot[(int)scrCon.Screen].btn[scrCon.ScreenLoot] == null)
+                    {
+                        // 自分をフォーカス
+                        focus.SetFocusBtn(this);
+                    }
+                    // すでにボタンが記録されているなら
+                    else
+                    {
+                        // 記録されているボタンをフォーカス
+                        focus.SetFocusBtn(btnRec.loot[(int)scrCon.Screen].btn[scrCon.ScreenLoot]);
+                    }
 
                     EnterProcess();
                 }

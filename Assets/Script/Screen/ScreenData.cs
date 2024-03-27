@@ -29,4 +29,5 @@ public class ScreenDataContent
     public bool enterAnim = false;  // この画面に遷移した時にアニメーションを行うか
     public bool exitAnim = false;   // この画面から遷移した時にアニメーションを行うか
     public int inputType;           // InputSystemのどのActionMapの入力を受け取るか
+    public LootStr[] loot;          // 階層ごとの情報
 }
