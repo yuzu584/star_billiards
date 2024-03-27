@@ -30,6 +30,7 @@ public class PopupManager : Singleton<PopupManager>
     {
         InGamePopup1,
         InMenuPopup1,
+        DialogPopup1,
     }
 
     private void Start()
@@ -46,13 +47,13 @@ public class PopupManager : Singleton<PopupManager>
     }
 
     // 指定したポップアップを描画
-    public void DrawPopup(PopupType pType, string text)
+    public GameObject DrawPopup(PopupType pType, string text)
     {
         // 空いている配列の場所を代入
         int count = CheckInstance(popupContent[(int)pType]);
 
         // 配列が開いていなければ終了
-        if (count == -1) return;
+        if (count == -1) return null;
 
         // インスタンス生成
         popupContent[(int)pType].instance[count] = Instantiate(popupContent[(int)pType].obj);
@@ -62,6 +63,9 @@ public class PopupManager : Singleton<PopupManager>
 
         // ポップアップの処理を行う
         popupContent[(int)pType].coroutines[count] = StartCoroutine(popupContent[(int)pType].component[count].Process(text, popupContent[(int)pType].parentTransform, count));
+
+        // 生成したインスタンスが返り値
+        return popupContent[(int)pType].instance[count];
     }
 
     // インスタンスの配列の開いている場所を探して返す

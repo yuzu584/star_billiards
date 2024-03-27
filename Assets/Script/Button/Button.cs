@@ -380,7 +380,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         scrCon.changeLoot += () =>
         {
             // このボタンがフォーカスされる階層なら
-            if ((loot == scrCon.ScreenLoot) && (this.gameObject.activeInHierarchy))
+            if ((loot == scrCon.ScreenLoot) && (gameObject.activeInHierarchy))
             {
                 if (defaultFocus)
                 {

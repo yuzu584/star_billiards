@@ -13,9 +13,6 @@ public class InMenuPopup1 : PopupParent
     protected override void Start()
     {
         base.Start();
-
-        // 画面遷移時にポップアップを破棄する
-        scrCon.changeScreen += Destroy;
     }
 
     // ポップアップの処理

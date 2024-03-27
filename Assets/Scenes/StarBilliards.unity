@@ -2418,6 +2418,11 @@ MonoBehaviour:
     maxDraw: 1
     instance: []
     component: []
+  - obj: {fileID: 5217391468355861238, guid: eb51cc2542260c2448d1e76785a4f36b, type: 3}
+    parentTransform: {fileID: 1417871411}
+    maxDraw: 1
+    instance: []
+    component: []
 --- !u!1 &318109086
 GameObject:
   m_ObjectHideFlags: 0
@@ -8253,6 +8258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupType: 0
+  onChangeScreenDestroy: 0
 --- !u!114 &1148952469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15228,6 +15234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guideObj: {fileID: 7990060404319072498, guid: 21ee8e90196f3a344b14e51381913ef5, type: 3}
   parentObj: {fileID: 1400418623}
+  instance: {fileID: 0}
 --- !u!1 &2075579890
 GameObject:
   m_ObjectHideFlags: 0

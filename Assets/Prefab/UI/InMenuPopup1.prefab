@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupType: 1
+  onChangeScreenDestroy: 1
   messageText: {fileID: 8936481478559270013}
   image: {fileID: 8936481479312779896}
   destroyTime: 3

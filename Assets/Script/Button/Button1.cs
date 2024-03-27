@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,10 +23,13 @@ public class Button1 : Button
         ApplySkill,             // 選択したスキルを適用
         ResetSelectSkill,       // 選択したスキルをリセット
         ExitGame,               // ゲーム終了
+        Action,                 // 任意の Action を実行
     }
 
     [SerializeField] private ClickAction clickAction;
     [SerializeField] private ScreenController.ScreenType nextScreen = 0; // 遷移先の画面
+
+    public Action action;
 
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
@@ -47,12 +51,13 @@ public class Button1 : Button
         // ボタンを押したときの効果によって分岐
         switch (clickAction)
         {
-            case ClickAction.ChangeScreen:          ChangeScreen();         break;  // 画面遷移
-            case ClickAction.StageStart:            StageStart();           break;  // ステージスタート
-            case ClickAction.CreatePlanetDirArrow:  CreatePlanetDirArrow(); break;  // 惑星の方向を指し示す矢印を生成
-            case ClickAction.ApplySkill:            ApplySkill();           break;  // 選択したスキルを適用
-            case ClickAction.ResetSelectSkill:      ResetSelectSkill();     break;  // 選択したスキルをリセット
-            case ClickAction.ExitGame:              ExitGame();             break;  // ゲーム終了
+            case ClickAction.ChangeScreen:          ChangeScreen();             break;  // 画面遷移
+            case ClickAction.StageStart:            StageStart();               break;  // ステージスタート
+            case ClickAction.CreatePlanetDirArrow:  CreatePlanetDirArrow();     break;  // 惑星の方向を指し示す矢印を生成
+            case ClickAction.ApplySkill:            ApplySkill();               break;  // 選択したスキルを適用
+            case ClickAction.ResetSelectSkill:      ResetSelectSkill();         break;  // 選択したスキルをリセット
+            case ClickAction.ExitGame:              ExitGame();                 break;  // ゲーム終了
+            case ClickAction.Action:                if(action != null)action(); break;  // 任意の Action を実行
             default: break;
         }
     }
@@ -116,11 +121,16 @@ public class Button1 : Button
     // ゲームを終了
     void ExitGame()
     {
+        GameObject g = popupMana.DrawPopup(PopupManager.PopupType.DialogPopup1, "test dialog");
+        DialogPopup1 dp1 = g.GetComponent<DialogPopup1>();
+        dp1.Action = () =>
+        {
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; //ゲームプレイ終了
+            UnityEditor.EditorApplication.isPlaying = false; //ゲームプレイ終了
 #else
         Application.Quit();//ゲームプレイ終了
 #endif
+        };
     }
 
     protected override void OnEnable()
