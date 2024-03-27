@@ -121,8 +121,13 @@ public class Button1 : Button
     // ゲームを終了
     void ExitGame()
     {
-        GameObject g = popupMana.DrawPopup(PopupManager.PopupType.DialogPopup1, "test dialog");
+        // ダイアログポップアップを生成
+        GameObject g = popupMana.DrawPopup(PopupManager.PopupType.DialogPopup1, "Do you want to exit the game?");
+
+        // ポップアップのコンポーネントを取得
         DialogPopup1 dp1 = g.GetComponent<DialogPopup1>();
+
+        // ポップアップの OK ボタンを押したときの処理を設定
         dp1.Action = () =>
         {
 #if UNITY_EDITOR

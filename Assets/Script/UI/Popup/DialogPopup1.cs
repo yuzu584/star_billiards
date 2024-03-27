@@ -20,9 +20,13 @@ public class DialogPopup1 : PopupParent
         }
     }
 
+    private Focus focus;
+
     protected override void Start()
     {
         base.Start();
+
+        focus ??= Focus.instance;
 
         // キャンセルボタンの処理はポップアップの破棄
         Action a = () =>
@@ -45,12 +49,16 @@ public class DialogPopup1 : PopupParent
         index = num;
 
         popupMana ??= PopupManager.instance;
+        focus ??= Focus.instance;
 
         // 親を設定
         popupMana.popupContent[(int)popupType].instance[index].transform.SetParent(parentT, false);
 
         // テキストを設定
         popupText.text = text;
+
+        // キャンセルボタンをフォーカス
+        focus.SetFocusBtn(cancelBtn);
 
         yield return null;
     }
