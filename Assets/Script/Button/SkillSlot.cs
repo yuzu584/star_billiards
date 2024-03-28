@@ -12,7 +12,6 @@ public class SkillSlot : Button
     [SerializeField] private Image selectedImage;                       // スキルの選択状態を表す画像
 
     // instanceを代入する変数
-    private SkillController skillCon;
     private SkillSelect skillSelect;
 
     private Color defaultSelectImageColor = new(255.0f, 255.0f, 255.0f, 0.04f);
@@ -23,6 +22,8 @@ public class SkillSlot : Button
     {
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, true);
+
+        skillSelect ??= SkillSelect.instance;
 
         // スキルの情報を描画
         skillSelect.DSIdele?.Invoke((int)skill);
@@ -83,8 +84,7 @@ public class SkillSlot : Button
     {
         base.Start();
 
-        skillCon = SkillController.instance;
-        skillSelect = SkillSelect.instance;
+        skillSelect ??= SkillSelect.instance;
 
         // スキル名のテキストを設定
         SetNameText();

@@ -166,6 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4396589449838288052}
   - component: {fileID: 7415881496190283296}
+  - component: {fileID: 385127715719676630}
   m_Layer: 5
   m_Name: StageClear
   m_TagString: Untagged
@@ -215,6 +216,23 @@ MonoBehaviour:
   - {fileID: 8059573011115314561}
   - {fileID: 8059573010409910621}
   stageClearText: {fileID: 4396589447972874453}
+--- !u!114 &385127715719676630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396589449838288053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c607465c318ada048b7bcbb5fc577bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn:
+  - btnNum:
+    - {fileID: 3547277376546849322}
+    - {fileID: 3547277375707201270}
+  dontFocusBtn: []
 --- !u!1001 &4396589448399815089
 PrefabInstance:
   m_ObjectHideFlags: 0

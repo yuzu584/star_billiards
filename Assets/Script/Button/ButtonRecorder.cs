@@ -11,7 +11,7 @@ public class ButtonRecorder : Singleton<ButtonRecorder>
     [System.Serializable]
     public struct SaveButtonContent
     {
-        public Button[] btn;
+        public int[] num;
     }
 
     public SaveButtonContent[] savedBtn;
@@ -34,24 +34,6 @@ public class ButtonRecorder : Singleton<ButtonRecorder>
     {
         scrCon ??= ScreenController.instance;
         focus = Focus.instance;
-
-        // 階層遷移時にボタンをフォーカスする
-        scrCon.changeLoot += () =>
-        {
-            if (savedBtn[(int)scrCon.Screen].btn[scrCon.ScreenLoot])
-                focus.SetFocusBtn(savedBtn[(int)scrCon.Screen].btn[scrCon.ScreenLoot]);
-            else
-                savedBtn[(int)scrCon.Screen].btn[scrCon.ScreenLoot] = null;
-        };
-
-        // 画面遷移時にもボタンをフォーカスする
-        scrCon.changeScreen += () =>
-        {
-            if (savedBtn[(int)scrCon.Screen].btn[scrCon.ScreenLoot])
-                focus.SetFocusBtn(savedBtn[(int)scrCon.Screen].btn[scrCon.ScreenLoot]);
-            else
-                savedBtn[(int)scrCon.Screen].btn[scrCon.ScreenLoot] = null;
-        };
     }
 
     // フォーカスされていたボタンを保存
@@ -61,7 +43,7 @@ public class ButtonRecorder : Singleton<ButtonRecorder>
 
         InitLoot();
 
-        savedBtn[(int)btn.scrAndLoot.scrType].btn[btn.scrAndLoot.scrLoot] = btn;
+        savedBtn[(int)btn.scrAndLoot.scrType].num[btn.scrAndLoot.scrLoot] = btn.btnNum;
     }
 
     // 配列の長さを設定
@@ -76,7 +58,13 @@ public class ButtonRecorder : Singleton<ButtonRecorder>
             savedBtn = new SaveButtonContent[scrData.screenList.Count];
             for (int i = 0; i < savedBtn.Length; i++)
             {
-                savedBtn[i].btn = new Button[scrData.screenList[i].loot.Length];
+                savedBtn[i].num = new int[scrData.screenList[i].loot.Length];
+
+                // -1 を代入して初期化
+                for(int j = 0; j < savedBtn[i].num.Length; j++)
+                {
+                    savedBtn[i].num[j] = -1;
+                }
             }
         }
     }

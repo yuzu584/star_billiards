@@ -95,6 +95,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public Button buttonLeft;                               // 自分の左に位置するボタン
     public Button buttonRight;                              // 自分の右に位置するボタン
     public Group group;                                     // このボタンが所属するグループ
+    public int btnNum;                                      // このボタンの番号(主にフォーカスしていたボタンを保存するために使用する)
 
     // ポインターによってフォーカスされたか
     // true  : ポインターによってフォーカスされた
@@ -385,14 +386,21 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         focus ??= Focus.instance;
         btnRec ??= ButtonRecorder.instance;
 
+        // 最初にフォーカスされるなら
         if (defaultFocus)
         {
-            // ボタンが記録されていないなら
-            if (btnRec.savedBtn[(int)scrCon.Screen].btn[scrCon.ScreenLoot] == null)
+            // ボタンが記録されていないなら(-1 は未記録)
+            if (btnRec.savedBtn[(int)scrCon.Screen].num[scrCon.ScreenLoot] == -1)
             {
                 // 自分を記録
                 btnRec.SaveFocusedButton(this);
             }
+        }
+
+        // ボタンが保存済みかつ btnNum が設定済みならフォーカス
+        if ((btnRec.savedBtn[(int)scrCon.Screen].num[scrCon.ScreenLoot] == btnNum) && (btnNum != -1))
+        {
+            focus.SetFocusBtn(this);
         }
 
         // ボタンの初期化処理
