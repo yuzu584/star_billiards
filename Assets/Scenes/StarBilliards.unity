@@ -415,7 +415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupContent:
   - obj: {fileID: 6751493928476000379, guid: ae6f80cdd48614846a10b75943843f67, type: 3}
-    parentTransform: {fileID: 0}
+    parentTransform: {fileID: 1417871411}
     maxDraw: 10
     instance: []
     component: []

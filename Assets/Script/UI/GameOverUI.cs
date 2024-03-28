@@ -7,11 +7,12 @@ using UnityEngine.UI;
 // ゲームオーバー画面を管理
 public class GameOverUI : Singleton<GameOverUI>
 {
-    [SerializeField] private Material gameOverButtonMat;                  // ボタンのマテリアル
+    [SerializeField] private Material gameOverButtonMat;                // ボタンのマテリアル
+
+    [SerializeField] private GameObject[] btn;                          // 画面に存在するボタン
+    [SerializeField] private Text gameOverText;                         // ステージクリア画面のテキスト
 
     private ScreenController scrCon;
-    private UIController uICon;
-    private StageController stageCon;
 
     private Lerp lerp;
 
@@ -20,10 +21,8 @@ public class GameOverUI : Singleton<GameOverUI>
     private void Start()
     {
         scrCon = ScreenController.instance;
-        uICon = uICon != null ? uICon : UIController.instance;
-        stageCon = StageController.instance;
 
-        stageCon.gameOverDele += GameOverProcess;
+        GameOverProcess();
     }
 
     // ゲームオーバー処理
@@ -37,8 +36,8 @@ public class GameOverUI : Singleton<GameOverUI>
     void Animation()
     {
         // ボタンを非表示
-        for (int i = 0; i < uICon.gameOverUI.button.Length; i++)
-            uICon.gameOverUI.button[i].SetActive(false);
+        for (int i = 0; i < btn.Length; i++)
+            btn[i].SetActive(false);
 
         // UIを動かす
         StartCoroutine(Move());
@@ -47,7 +46,7 @@ public class GameOverUI : Singleton<GameOverUI>
     // UIを動かす
     IEnumerator Move()
     {
-        Vector3[] defaultPos = new Vector3[uICon.gameOverUI.button.Length]; // 初期位置
+        Vector3[] defaultPos = new Vector3[btn.Length]; // 初期位置
         Vector3 startPos;   // 開始位置
         Vector3 endPos;     // 終了位置
         Color32 startColor; // 開始時の色
@@ -56,7 +55,7 @@ public class GameOverUI : Singleton<GameOverUI>
         // テキストを動かす
         startPos = new Vector3(300.0f, 0.0f, 0.0f);
         endPos = new Vector3(0.0f, 0.0f, 0.0f);
-        StartCoroutine(lerp.Position_Text(uICon.gameOverUI.GameOverText, startPos, endPos, fadeTime));
+        StartCoroutine(lerp.Position_Text(gameOverText, startPos, endPos, fadeTime));
 
         // 一瞬待つ
         yield return new WaitForSecondsRealtime(2.0f);
@@ -64,24 +63,24 @@ public class GameOverUI : Singleton<GameOverUI>
         // テキストを動かす
         startPos = new Vector3(0.0f, 0.0f, 0.0f);
         endPos = new Vector3(0.0f, 100.0f, 0.0f);
-        StartCoroutine(lerp.Position_Text(uICon.gameOverUI.GameOverText, startPos, endPos, fadeTime));
+        StartCoroutine(lerp.Position_Text(gameOverText, startPos, endPos, fadeTime));
 
         // ボタンを表示
-        for (int i = 0; i < uICon.gameOverUI.button.Length; i++)
-            uICon.gameOverUI.button[i].SetActive(true);
+        for (int i = 0; i < btn.Length; i++)
+            btn[i].SetActive(true);
 
         // ボタンのアニメーション
         for (int i = 0; i < defaultPos.Length; ++i)
         {
-            defaultPos[i] = uICon.gameOverUI.button[i].transform.localPosition;
+            defaultPos[i] = btn[i].transform.localPosition;
         }
 
-        for (int i = 0; i < uICon.gameOverUI.button.Length; ++i)
+        for (int i = 0; i < btn.Length; ++i)
         {
             // ボタン移動
             startPos = defaultPos[i];
             endPos = defaultPos[i];
-            StartCoroutine(lerp.Position_GameObject(uICon.gameOverUI.button[i], startPos, endPos, fadeTime));
+            StartCoroutine(lerp.Position_GameObject(btn[i], startPos, endPos, fadeTime));
 
             // 透明度変化
             startColor = new Color32(255, 255, 255, 0);
@@ -92,8 +91,6 @@ public class GameOverUI : Singleton<GameOverUI>
 
     void OnEnable()
     {
-        uICon = uICon != null ? uICon : UIController.instance;
-
         if (lerp == null)
             lerp = gameObject.AddComponent<Lerp>();
 

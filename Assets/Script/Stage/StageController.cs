@@ -27,6 +27,9 @@ public class StageController : Singleton<StageController>
         scrCon = ScreenController.instance;
         planetAmount = PlanetAmount.instance;
         createStage = CreateStage.instance;
+
+        stageCrearDele += () => { scrCon.Screen = ScreenController.ScreenType.StageClear; };
+        gameOverDele += () => { scrCon.Screen = ScreenController.ScreenType.GameOver; };
     }
 
     void Update()

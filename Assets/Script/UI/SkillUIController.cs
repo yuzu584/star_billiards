@@ -66,4 +66,9 @@ public class SkillUIController : MonoBehaviour
     {
         DrawSkillUI();
     }
+
+    private void OnDestroy()
+    {
+        init.init_Stage -= Init;
+    }
 }

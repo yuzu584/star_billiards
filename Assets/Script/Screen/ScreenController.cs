@@ -114,7 +114,6 @@ public class ScreenController : Singleton<ScreenController>
 
         lerp = gameObject.AddComponent<Lerp>();
         input.game_OnPauseDele += OpenPause;
-        stageCon.stageCrearDele += () => { screen = ScreenType.StageClear; };
 
         // UI_Negative“ü—ÍŽž‚ÌƒCƒxƒ“ƒg‚ð“o˜^
         input.ui_OnNegativeDele += (float value) =>

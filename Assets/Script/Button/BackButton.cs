@@ -38,6 +38,21 @@ public class BackButton : Button
         oldScreen = scrCon.oldScreen;
     }
 
+    // 画面を戻る
+    void Back(float v)
+    {
+        // 階層が0以下かつオブジェクトが有効なら
+        if ((scrCon.ScreenLoot <= 0) && (gameObject.activeInHierarchy))
+        {
+            //音を再生
+            if (sound != null)
+                StartCoroutine(sound.Play(ClickSound));
+
+            // 前の画面に戻る
+            scrCon.Screen = oldScreen;
+        }
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -49,19 +64,7 @@ public class BackButton : Button
 
         // デリゲートを追加
         scrCon.changeScreen += SetOldScreen;
-        input.ui_OnNegativeDele += (float value) =>
-        {
-            // 階層が0以下かつオブジェクトが有効なら
-            if ((scrCon.ScreenLoot <= 0) && (gameObject.activeInHierarchy))
-            {
-                //音を再生
-                if (sound != null)
-                    StartCoroutine(sound.Play(ClickSound));
-
-                // 前の画面に戻る
-                scrCon.Screen = oldScreen;
-            }
-        };
+        input.ui_OnNegativeDele += Back;
 
         SetOldScreen();
     }
@@ -69,18 +72,6 @@ public class BackButton : Button
     private void OnDestroy()
     {
         scrCon.changeScreen -= SetOldScreen;
-        input.ui_OnNegativeDele -= (float value) =>
-        {
-            // 階層が0以下かつオブジェクトが有効なら
-            if ((scrCon.ScreenLoot <= 0) && (gameObject.activeInHierarchy))
-            {
-                //音を再生
-                if (sound != null)
-                    StartCoroutine(sound.Play(ClickSound));
-
-                // 前の画面に戻る
-                scrCon.Screen = oldScreen;
-            }
-        };
+        input.ui_OnNegativeDele -= Back;
     }
 }

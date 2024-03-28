@@ -23,6 +23,20 @@ public class InGamePopup1 : PopupParent
         };
     }
 
+    private void OnDestroy()
+    {
+        scrCon.changeScreen -= () =>
+        {
+            // ゲーム画面なら表示、それ以外なら非表示
+            for (int i = 0; i < popupMana.popupContent.Length; i++)
+            {
+                // インスタンスが生成されていれば
+                if (popupMana.popupContent[(int)popupType].instance[i] != null)
+                    popupMana.popupContent[(int)popupType].instance[i].SetActive(scrCon.Screen == ScreenController.ScreenType.InGame);
+            }
+        };
+    }
+
     // ポップアップの処理
     public override IEnumerator Process(string text, Transform parentT, int num)
     {

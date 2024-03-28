@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Device;
-using static UIController;
 
 // ゲーム内のポップアップ全般を管理
 [DefaultExecutionOrder(-100)]
@@ -24,8 +23,6 @@ public class PopupManager : Singleton<PopupManager>
 
     private int count = 0;
 
-    private ScreenController scrCon;
-
     public enum PopupType
     {
         InGamePopup1,
@@ -42,8 +39,6 @@ public class PopupManager : Singleton<PopupManager>
             popupContent[i].component = new PopupParent[popupContent[i].maxDraw];
             popupContent[i].coroutines = new Coroutine[popupContent[i].maxDraw];
         }
-
-        scrCon = ScreenController.instance;
     }
 
     // 指定したポップアップを描画

@@ -27,6 +27,12 @@ public class PopupParent : MonoBehaviour
             scrCon.changeScreen += Destroy;
     }
 
+    private void OnDestroy()
+    {
+        if (onChangeScreenDestroy)
+            scrCon.changeScreen -= Destroy;
+    }
+
     // ポップアップの処理
     public virtual IEnumerator Process(string text, Transform parentT, int num)
     {

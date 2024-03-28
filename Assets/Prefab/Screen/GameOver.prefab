@@ -54,6 +54,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverButtonMat: {fileID: 2100000, guid: d92459fa41ce17a4788b4cc97f57703b, type: 2}
+  btn:
+  - {fileID: 5961171048297889416}
+  - {fileID: 5961171049593500539}
+  gameOverText: {fileID: 27264868140808616}
   fadeTime: 0.5
 --- !u!1 &27264867860518373
 GameObject:
@@ -601,12 +605,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
   m_PrefabInstance: {fileID: 27264868954665656}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5961171048297889416}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a475a13cfe6e5d49a9e4c625a6e2428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5961171048297889416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5970234051200584752, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+  m_PrefabInstance: {fileID: 27264868954665656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5961171048297889419 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5970234051200584755, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
