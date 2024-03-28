@@ -124,6 +124,9 @@ public class Button1 : Button
         // ダイアログポップアップを生成
         GameObject g = popupMana.DrawPopup(PopupManager.PopupType.DialogPopup1, "Do you want to exit the game?");
 
+        // ポップアップ生成済みなら終了
+        if (g == null) return;
+
         scrCon.ScreenLoot = 1;
 
         // ポップアップのコンポーネントを取得

@@ -12,8 +12,8 @@ public class ScreenController : Singleton<ScreenController>
     [SerializeField] private ScreenData scrData;
     [SerializeField] private Image switchImage;                         // ‰æ–Ê‘JˆÚŽž‚Ì‰æ‘œ
 
-    private StageController stageCon;
     private InputController input;
+    private FOV fov;
     private Lerp lerp;
 
     [System.NonSerialized] public ScreenType oldScreen = 0;             // ‘O‰ñ‚Ì‰æ–Ê
@@ -109,8 +109,8 @@ public class ScreenController : Singleton<ScreenController>
 
     void Start()
     {
-        stageCon = StageController.instance;
         input = InputController.instance;
+        fov = FOV.instance;
 
         lerp = gameObject.AddComponent<Lerp>();
         input.game_OnPauseDele += OpenPause;
@@ -133,6 +133,13 @@ public class ScreenController : Singleton<ScreenController>
         changeScreen += () =>
         {
             ScreenLoot = 0;
+        };
+
+        // ‰æ–Ê‘JˆÚæ‚ªŽ‹–ìŠp‚ðƒŠƒZƒbƒg‚·‚é‰æ–Ê‚È‚çŽ‹–ìŠp‚ðƒŠƒZƒbƒg
+        changeScreen += () =>
+        {
+            if (scrData.screenList[(int)Screen].resetFov)
+                fov.ResetFOV();
         };
     }
 

@@ -55,9 +55,6 @@ public class CameraController : MonoBehaviour
             // 座標と向きを変更
             transform.position = AppConst.DEFAULT_STAGE_SELECT_POS;
             transform.rotation = Quaternion.Euler(AppConst.DEFAULT_STAGE_SELECT_ANGLE);
-
-            // 視野角をリセット
-            fov.ResetFOV();
         }
     }
 }

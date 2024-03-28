@@ -5,41 +5,52 @@ using UnityEngine;
 // 設定画面のUIを管理
 public class OptionsUIController : MonoBehaviour
 {
-    private OptionsController optCon;
+    public GameObject[] lootObj;    // 階層ごとのゲームオブジェクト
+
+    private OptionsController opCon;
 
     private void Start()
     {
-        optCon ??= OptionsController.instance;
+        opCon.opUICon = this;
+    }
 
-        SwitchLoot();
+    private void OnDestroy()
+    {
+        opCon.opUICon = null;
     }
 
     // 表示する階層を切り替え
     private void SwitchLoot()
     {
-        for (int i = 0; i < optCon.lootObj.Length; ++i)
+        // 階層ごとのオブジェクトの数繰り返す
+        for (int i = 0; i < lootObj.Length; ++i)
         {
-            if (i == (int)optCon.loot)
-                optCon.lootObj[i].SetActive(true);
+            // 表示する階層なら表示
+            if (i == (int)opCon.loot)
+                lootObj[i].SetActive(true);
+            // 非表示
             else
-                optCon.lootObj[i].SetActive(false);
+                lootObj[i].SetActive(false);
         }
     }
 
     void OnEnable()
     {
-        optCon ??= OptionsController.instance;
+        opCon = OptionsController.instance;
 
         // 階層を一番上に
-        optCon.loot = OptionsController.Loot.Top;
+        opCon.loot = OptionsController.Loot.Top;
+
+        // 最初は Top を表示
+        SwitchLoot();
     }
 
     void Update()
     {
         // 階層が変わったら画面を切り替える
-        if (optCon.oldLoot != (int)optCon.loot)
+        if (opCon.oldLoot != opCon.loot)
         {
-            optCon.oldLoot = (int)optCon.loot;
+            opCon.oldLoot = opCon.loot;
             SwitchLoot();
         }
     }

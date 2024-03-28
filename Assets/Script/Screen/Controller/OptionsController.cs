@@ -15,6 +15,16 @@ public class OptionsController : Singleton<OptionsController>
         Language = 5,  // 言語設定
     }
     public Loot loot = 0;
-    public int oldLoot = 0;         // 1フレーム前の階層
-    public GameObject[] lootObj;    // 階層ごとのゲームオブジェクト
+    public Loot oldLoot = 0;        // 1フレーム前の階層
+
+    public OptionsUIController opUICon;
+
+    // 表示する階層を切り替え
+    public void SwitchLoot(Loot l)
+    {
+        if (opUICon == null) return;
+
+        // 階層を設定
+        loot = l;
+    }
 }

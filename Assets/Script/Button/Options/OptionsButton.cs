@@ -7,7 +7,7 @@ using System;
 // İ’è‰æ–Ê‚Ì”Ä—pƒ{ƒ^ƒ“
 public class OptionsButton : Button
 {
-    [SerializeField] private int num = 0; // ‘JˆÚæ‚Ìİ’è€–Ú‚Ì”Ô†
+    [SerializeField] private OptionsController.Loot loot; // ‘JˆÚæ‚Ìİ’è€–Ú
 
     private OptionsController opCon;
 
@@ -29,7 +29,7 @@ public class OptionsButton : Button
     public override void ClickProcess()
     {
         // İ’è‰æ–Ê‚ÌŠK‘w‚ğ•ÏX
-        opCon.loot = (OptionsController.Loot)Enum.ToObject(typeof(OptionsController.Loot), num);
+        opCon.SwitchLoot(loot);
     }
 
     protected override void OnEnable()

@@ -2080,15 +2080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecea3b83c609648448adc57e27ce76b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loot: 0
-  oldLoot: 0
-  lootObj:
-  - {fileID: 7916718644151837658, guid: 082c4c2cdc69da544ad57b367e1b8651, type: 3}
-  - {fileID: 7916718645888692977, guid: 082c4c2cdc69da544ad57b367e1b8651, type: 3}
-  - {fileID: 7916718645711957673, guid: 082c4c2cdc69da544ad57b367e1b8651, type: 3}
-  - {fileID: 7916718644462970463, guid: 082c4c2cdc69da544ad57b367e1b8651, type: 3}
-  - {fileID: 7916718645756453326, guid: 082c4c2cdc69da544ad57b367e1b8651, type: 3}
-  - {fileID: 7916718646013785297, guid: 082c4c2cdc69da544ad57b367e1b8651, type: 3}
+  opUICon: {fileID: 0}
 --- !u!1 &1658508820
 GameObject:
   m_ObjectHideFlags: 0
