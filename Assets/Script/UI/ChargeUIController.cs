@@ -5,8 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // チャージのUIを管理
-public class ChargeUIController : Singleton<ChargeUIController>
+public class ChargeUIController : MonoBehaviour
 {
+    [SerializeField] private Text chargeValue;
+    [SerializeField] private Image chargeCircle;
+
     private Shot shot;
 
     private void Start()
@@ -14,8 +17,13 @@ public class ChargeUIController : Singleton<ChargeUIController>
         shot = Shot.instance;
     }
 
+    private void Update()
+    {
+        Draw();
+    }
+
     // チャージのUIを描画
-    public void DrawChargeUI(GameObject allChargeUI, Text chargeValue, Image chargeCircle)
+    void Draw()
     {
         // チャージされているなら
         if (shot.charge > 0)

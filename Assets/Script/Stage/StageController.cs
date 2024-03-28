@@ -17,8 +17,10 @@ public class StageController : Singleton<StageController>
     public int stageNum = 0;                                        // ステージ番号
     public delegate void StageCrearDele();                          // ステージクリア時のデリゲート
     public delegate void GameOverDele();                            // ゲームオーバー時のデリゲート
+    public delegate void DrawStageInfoDele(Vector3 pos, GameObject button, StageButton stageButton);    // ステージ情報表示デリゲート
     public StageCrearDele stageCrearDele;
     public GameOverDele gameOverDele;
+    public DrawStageInfoDele DSIdele;
 
     void Start()
     {

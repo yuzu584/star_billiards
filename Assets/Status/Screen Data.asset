@@ -14,133 +14,136 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenList:
   - screenName: Title
+    screenObj: {fileID: 2585311485736157756, guid: 8a4a43afcdc201a4cb689e63de160561, type: 3}
+    loot:
+    - name: Top
+      screenObj: {fileID: 0}
     drawCursol: 1
     timeScale: 0
     drawStage: 0
     enterAnim: 1
     exitAnim: 1
     inputType: 1
-    loot:
-    - name: Top
-      enterAnim: 0
-      exitAnim: 0
+    resetFov: 0
   - screenName: MainMenu
-    drawCursol: 1
-    timeScale: 0
-    drawStage: 0
-    enterAnim: 1
-    exitAnim: 1
-    inputType: 1
+    screenObj: {fileID: 8632690720436358100, guid: 27db11c2108a8e448a3f9165866d71b9, type: 3}
     loot:
     - name: Top
-      enterAnim: 0
-      exitAnim: 0
+      screenObj: {fileID: 0}
     - name: ExitPopup
-      enterAnim: 0
-      exitAnim: 0
+      screenObj: {fileID: 0}
+    drawCursol: 1
+    timeScale: 0
+    drawStage: 0
+    enterAnim: 1
+    exitAnim: 1
+    inputType: 1
+    resetFov: 0
   - screenName: StageSelect
+    screenObj: {fileID: 5804563228955326522, guid: 33c2ef8cd826fef45b23eee01f61438d, type: 3}
+    loot:
+    - name: Top
+      screenObj: {fileID: 0}
+    - name: Start
+      screenObj: {fileID: 0}
     drawCursol: 1
     timeScale: 0
     drawStage: 0
     enterAnim: 1
     exitAnim: 1
     inputType: 1
-    loot:
-    - name: 
-      enterAnim: 0
-      exitAnim: 0
-    - name: 
-      enterAnim: 0
-      exitAnim: 0
+    resetFov: 0
   - screenName: Options
+    screenObj: {fileID: 7916718646098628300, guid: 082c4c2cdc69da544ad57b367e1b8651, type: 3}
+    loot:
+    - name: 
+      screenObj: {fileID: 0}
+    - name: 
+      screenObj: {fileID: 0}
+    - name: 
+      screenObj: {fileID: 0}
+    - name: 
+      screenObj: {fileID: 0}
+    - name: 
+      screenObj: {fileID: 0}
+    - name: 
+      screenObj: {fileID: 0}
     drawCursol: 1
     timeScale: 0
     drawStage: 0
     enterAnim: 1
     exitAnim: 1
     inputType: 1
-    loot:
-    - name: 
-      enterAnim: 0
-      exitAnim: 0
-    - name: 
-      enterAnim: 0
-      exitAnim: 0
-    - name: 
-      enterAnim: 0
-      exitAnim: 0
-    - name: 
-      enterAnim: 0
-      exitAnim: 0
-    - name: 
-      enterAnim: 0
-      exitAnim: 0
-    - name: 
-      enterAnim: 0
-      exitAnim: 0
+    resetFov: 0
   - screenName: SkillSelect
+    screenObj: {fileID: 7415601630407778459, guid: fdda017778341a9479236a25121d1152, type: 3}
+    loot:
+    - name: 
+      screenObj: {fileID: 0}
     drawCursol: 1
     timeScale: 0
     drawStage: 0
     enterAnim: 1
     exitAnim: 1
     inputType: 1
+    resetFov: 0
+  - screenName: InGame
+    screenObj: {fileID: 6324641190685456963, guid: ab57a1b32c0580b408c6f556309a0a17, type: 3}
     loot:
     - name: 
-      enterAnim: 0
-      exitAnim: 0
-  - screenName: InGame
+      screenObj: {fileID: 0}
     drawCursol: 0
     timeScale: 1
     drawStage: 1
     enterAnim: 0
     exitAnim: 0
     inputType: 0
-    loot:
-    - name: 
-      enterAnim: 0
-      exitAnim: 0
+    resetFov: 0
   - screenName: Pause
+    screenObj: {fileID: 4024843327376920326, guid: 8bce416b9641ca748a9b277bd4b0a028, type: 3}
+    loot:
+    - name: 
+      screenObj: {fileID: 0}
     drawCursol: 1
     timeScale: 0
     drawStage: 1
     enterAnim: 0
     exitAnim: 0
     inputType: 1
-    loot:
-    - name: 
-      enterAnim: 0
-      exitAnim: 0
+    resetFov: 0
   - screenName: PlanetList
+    screenObj: {fileID: 0}
+    loot:
+    - name: 
+      screenObj: {fileID: 0}
     drawCursol: 1
     timeScale: 0
     drawStage: 1
     enterAnim: 0
     exitAnim: 0
     inputType: 1
-    loot:
-    - name: 
-      enterAnim: 0
-      exitAnim: 0
+    resetFov: 0
   - screenName: StageClear
+    screenObj: {fileID: 4396589449838288053, guid: 597c2530784dc4e4fa6abc4a2796b449, type: 3}
+    loot:
+    - name: 
+      screenObj: {fileID: 0}
     drawCursol: 1
     timeScale: 0
     drawStage: 1
     enterAnim: 0
     exitAnim: 0
     inputType: 1
-    loot:
-    - name: 
-      enterAnim: 0
-      exitAnim: 0
+    resetFov: 0
   - screenName: GameOver
+    screenObj: {fileID: 27264867496887203, guid: 1f96b26e639b6a54dbef9bedd8382fa1, type: 3}
+    loot:
+    - name: 
+      screenObj: {fileID: 0}
     drawCursol: 1
     timeScale: 0
     drawStage: 1
     enterAnim: 0
     exitAnim: 0
     inputType: 1
-    loot:
-    - name: 
-      enterAnim: 0
-      exitAnim: 0
+    resetFov: 0

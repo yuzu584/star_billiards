@@ -5,11 +5,15 @@ using UnityEngine;
 using Const;
 
 // プレイヤーを管理
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
-    [SerializeField] private Rigidbody rb;          // プレイヤーのリジットボディ
+    public Rigidbody rb;          // プレイヤーのリジットボディ
 
     private Initialize init;
+
+    // 移動速度を描画するUIのデリゲート
+    public delegate void SpeedUIDele();
+    public SpeedUIDele speedUIDele;
 
     // プレイヤーに関する数値を初期化
     void Init()
@@ -27,5 +31,10 @@ public class PlayerController : MonoBehaviour
 
         // デリゲートに初期化関数を登録
         init.init_Stage += Init;
+    }
+
+    private void Update()
+    {
+        speedUIDele?.Invoke();
     }
 }

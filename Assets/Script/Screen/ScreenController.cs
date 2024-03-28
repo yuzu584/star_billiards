@@ -129,6 +129,12 @@ public class ScreenController : Singleton<ScreenController>
                 Screen = ScreenType.Title;
             }
         };
+
+        // 画面遷移時に階層をリセット
+        changeScreen += () =>
+        {
+            ScreenLoot = 0;
+        };
     }
 
     // ポーズ画面に遷移

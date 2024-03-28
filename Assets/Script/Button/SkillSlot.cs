@@ -13,7 +13,6 @@ public class SkillSlot : Button
 
     // instanceを代入する変数
     private SkillController skillCon;
-    private SkillSelectUIController skillSelectUICon;
     private SkillSelect skillSelect;
 
     private Color defaultSelectImageColor = new(255.0f, 255.0f, 255.0f, 0.04f);
@@ -26,8 +25,7 @@ public class SkillSlot : Button
         BtnAnimProcess(imageStructs, textStructs, true);
 
         // スキルの情報を描画
-        if(skillSelectUICon != null)
-            skillSelectUICon.DrawSkillInfo((int)skill);
+        skillSelect.DSIdele?.Invoke((int)skill);
     }
 
     // マウスポインターが離れたときの処理
@@ -86,7 +84,6 @@ public class SkillSlot : Button
         base.Start();
 
         skillCon = SkillController.instance;
-        skillSelectUICon = SkillSelectUIController.instance;
         skillSelect = SkillSelect.instance;
 
         // スキル名のテキストを設定

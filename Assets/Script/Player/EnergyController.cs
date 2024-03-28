@@ -6,8 +6,8 @@ using UnityEngine;
 public class EnergyController : Singleton<EnergyController>
 {
     private ScreenController screenCon;
-    private GameOver gameOver;
     private Initialize init;
+    private StageController stageCon;
 
     private Rigidbody rb;           // リジッドボディ
 
@@ -23,8 +23,8 @@ public class EnergyController : Singleton<EnergyController>
     void Start()
     {
         screenCon = ScreenController.instance;
-        gameOver = GameOver.instance;
         init = Initialize.instance;
+        stageCon = StageController.instance;
 
         // 速度を参照するオブジェクトのrigidbodyを取得
         rb = this.GetComponent<Rigidbody>();
@@ -38,7 +38,7 @@ public class EnergyController : Singleton<EnergyController>
         // ゲーム画面でエネルギーが0になったらゲームオーバー処理
         if((screenCon.Screen == ScreenController.ScreenType.InGame) && (energy <= 0))
         {
-            gameOver.GameOverProcess();
+            stageCon.gameOverDele?.Invoke();
         }
 
         // エネルギーの数値が範囲外なら範囲内に戻す

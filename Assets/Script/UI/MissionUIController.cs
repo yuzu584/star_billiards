@@ -5,23 +5,34 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ミッションのUIを管理
-public class MissionUIController : Singleton<MissionUIController>
+public class MissionUIController : MonoBehaviour
 {
-    [SerializeField] private StageData stageData;                         // InspectorでStageDataを指定
+    [SerializeField] private Text mText;                        // ミッションのテキスト
+    [SerializeField] private StageData stageData;               // InspectorでStageDataを指定
 
     private StageController stageCon;
-    private UIController uICon;
     private PlanetAmount planetAmount;
+    private DestroyPlanet dp;
 
     private void Start()
     {
         stageCon = StageController.instance;
-        uICon = UIController.instance;
         planetAmount = PlanetAmount.instance;
+        dp = DestroyPlanet.instance;
+
+        // 惑星破壊時にUIを更新
+        dp.DPdele += Draw;
+
+        Draw();
+    }
+
+    private void OnDestroy()
+    {
+        dp.DPdele -= Draw;
     }
 
     // ミッションのUIを描画
-    public void DrawMissionUI()
+    void Draw()
     {
         // ミッション番号を代入
         int missionNum = stageData.stageList[stageCon.stageNum].missionNum;
@@ -35,12 +46,12 @@ public class MissionUIController : Singleton<MissionUIController>
             case 0: // 全ての惑星を破壊
 
                 // ミッションのテキストを設定
-                uICon.missionUI.missionText.text = "Destroy all planets " + planetAmount.planetDestroyAmount + " / " + planet;
+                mText.text = "Destroy all planets " + planetAmount.planetDestroyAmount + " / " + planet;
                 break;
             case 1: // 時間内にゴールにたどり着け
 
                 // ミッションのテキストを設定
-                uICon.missionUI.missionText.text = "Reach the goal";
+                mText.text = "Reach the goal";
                 break;
             default:
                 break;

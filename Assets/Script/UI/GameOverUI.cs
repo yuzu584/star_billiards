@@ -5,12 +5,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ゲームオーバー画面を管理
-public class GameOver : Singleton<GameOver>
+public class GameOverUI : Singleton<GameOverUI>
 {
     [SerializeField] private Material gameOverButtonMat;                  // ボタンのマテリアル
 
     private ScreenController scrCon;
     private UIController uICon;
+    private StageController stageCon;
 
     private Lerp lerp;
 
@@ -20,10 +21,13 @@ public class GameOver : Singleton<GameOver>
     {
         scrCon = ScreenController.instance;
         uICon = uICon != null ? uICon : UIController.instance;
+        stageCon = StageController.instance;
+
+        stageCon.gameOverDele += GameOverProcess;
     }
 
     // ゲームオーバー処理
-    public void GameOverProcess()
+    void GameOverProcess()
     {
         // ゲームオーバー画面に遷移
         scrCon.Screen = ScreenController.ScreenType.GameOver;

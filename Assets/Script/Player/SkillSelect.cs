@@ -11,6 +11,10 @@ public class SkillSelect : Singleton<SkillSelect>
 
     private SkillController skillCon;
 
+    // スキル情報UIを更新するデリゲート
+    public delegate void DrawSkillInfoDele(int skillNum);
+    public DrawSkillInfoDele DSIdele;
+
     private void Start()
     {
         skillCon = SkillController.instance;

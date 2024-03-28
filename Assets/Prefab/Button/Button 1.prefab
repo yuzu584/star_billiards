@@ -103,8 +103,18 @@ MonoBehaviour:
       endScale: {x: 0, y: 0}
       fadeTime: 0
     onPointerDraw: 0
+  defaultFocus: 0
+  scrAndLoot:
+    scrType: 0
+    scrLoot: 0
   EnterSound: {fileID: 8300000, guid: 13dc1ec8e21e60b4b83f31fb90a45748, type: 3}
   ClickSound: {fileID: 8300000, guid: 6383ff15321eb9146a08c0130415cf4f, type: 3}
+  buttonUp: {fileID: 0}
+  buttonDown: {fileID: 0}
+  buttonLeft: {fileID: 0}
+  buttonRight: {fileID: 0}
+  group: 0
+  orPointer: 0
   clickAction: 0
   nextScreen: 0
 --- !u!1001 &1501167659160551737

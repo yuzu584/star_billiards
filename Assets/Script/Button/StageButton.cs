@@ -17,7 +17,6 @@ public class StageButton : Button
 
     public bool anim = false; // ボタンがアニメーション中か
 
-    private StageSelectUIController stageSelectUICon;
     private StageController stageCon;
 
     // マウスポインターが乗った時の処理
@@ -47,7 +46,7 @@ public class StageButton : Button
             scrCon.ScreenLoot = 1;
 
             stageCon.stageNum = num;
-            stageSelectUICon.DrawStageInfo(this.transform.localPosition, this.gameObject, this);
+            stageCon.DSIdele?.Invoke(transform.localPosition, gameObject, this);
         }
     }
 
@@ -60,7 +59,6 @@ public class StageButton : Button
     {
         base.Start();
 
-        stageSelectUICon = StageSelectUIController.instance;
         stageCon = StageController.instance;
 
         // テキストをステージ名に設定

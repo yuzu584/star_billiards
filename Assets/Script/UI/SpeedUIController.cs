@@ -5,14 +5,33 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // 移動速度のUIを管理
-public class SpeedUIController : Singleton<SpeedUIController>
+public class SpeedUIController : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rb;                      // プレイヤーのRigidbody
+    [SerializeField] private Text speedText;                    // 速度を表すテキスト
+
+    private Rigidbody rb;                                       // プレイヤーのRigidbody
+
+    private PlayerController playerCon;
 
     // 移動速度の数値を描画
-    public void DrawSpeedValue(Text speedValue)
+    void Draw()
     {
         // 速度のテキストを更新
-        speedValue.text = rb.velocity.magnitude.ToString("0") + " km/s";
+        speedText.text = rb.velocity.magnitude.ToString("0") + " km/s";
+    }
+
+    private void Start()
+    {
+        playerCon = PlayerController.instance;
+
+        rb = playerCon.rb;
+
+        // 移動速度のUIを描画するデリゲートに登録
+        playerCon.speedUIDele += Draw;
+    }
+
+    private void OnDestroy()
+    {
+        playerCon.speedUIDele -= Draw;
     }
 }

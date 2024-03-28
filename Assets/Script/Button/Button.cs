@@ -312,54 +312,38 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         {
             // 画像の色をリセット
             if (childrenImageStructs[i].lerpColor.useLerp)
-            {
                 childrenImageStructs[i].image.color = childrenImageStructs[i].lerpColor.startColor;
-            }
 
             // 画像の座標をリセット
             if (childrenImageStructs[i].lerpPosition.useLerp)
-            {
                 childrenImageStructs[i].image.rectTransform.position = childrenImageStructs[i].lerpPosition.startPos;
-            }
 
             // 画像のスケールをリセット
             if (childrenImageStructs[i].lerpScale.useLerp)
-            {
                 childrenImageStructs[i].image.rectTransform.localScale = childrenImageStructs[i].lerpScale.startScale;
-            }
 
             // ポインターが乗っているときのみ描画するなら非表示
             if ((childrenImageStructs[i].onPointerDraw) && (childrenImageStructs[i].image.enabled))
-            {
                 childrenImageStructs[i].image.enabled = false;
-            }
         }
         // 線形補完アニメーションを使用するテキストの数繰り返す
         for (int i = 0; i < childrenTextStructs.Length; i++)
         {
             // テキストの色をリセット
             if (childrenTextStructs[i].lerpColor.useLerp)
-            {
                 childrenTextStructs[i].text.color = childrenTextStructs[i].lerpColor.startColor;
-            }
 
             // テキストの座標をリセット
             if (childrenTextStructs[i].lerpPosition.useLerp)
-            {
                 childrenTextStructs[i].text.rectTransform.anchoredPosition = childrenTextStructs[i].lerpPosition.startPos;
-            }
 
             // テキストのスケールをリセット
             if (childrenTextStructs[i].lerpScale.useLerp)
-            {
                 childrenTextStructs[i].text.rectTransform.localScale = childrenTextStructs[i].lerpScale.startScale;
-            }
 
             // ポインターが乗っているときのみ描画するなら非表示
             if ((childrenTextStructs[i].onPointerDraw) && (childrenTextStructs[i].text.enabled))
-            {
                 childrenTextStructs[i].text.enabled = false;
-            }
         }
     }
 

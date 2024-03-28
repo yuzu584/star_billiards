@@ -112,8 +112,6 @@ public class UIController : Singleton<UIController>
         public GameObject allStageClearUI;        // ステージクリア画面全体のUI
         public Text stageClearText;               // ステージクリア画面のテキスト
         public GameObject[] button;               // ステージクリア画面のボタン
-        public delegate void RenderStageClear();  // ステージクリア画面を描画するデリゲートを定義
-        public RenderStageClear renderStageClear; // ステージクリア画面を描画するデリゲートを宣言
     }
 
     // ゲームオーバー画面のUI
@@ -181,49 +179,6 @@ public class UIController : Singleton<UIController>
         public Text justShotText;               // ジャストショット時のテキスト
     }
 
-    private SkillController skillCon;
-    private EnergyUIController eneUICon;
     private ChargeUIController chargeUICon;
-    private MissionUIController missionUICon;
     private SpeedUIController speedUICon;
-
-    void Start()
-    {
-        skillCon = SkillController.instance;
-        eneUICon = EnergyUIController.instance;
-        chargeUICon = ChargeUIController.instance;
-        missionUICon = MissionUIController.instance;
-        speedUICon = SpeedUIController.instance;
-    }
-
-    void Update()
-    {
-        // ゲーム画面が表示されているなら各種UIを更新
-        if (inGameUI.allInGameUI.activeSelf)
-        {
-            // エネルギーのUIを更新
-            eneUICon.DrawEnergyUI(
-                energyUI.EnergyGaugeOutline,
-                energyUI.EnergyValue,
-                messageUI.NoEnergy);
-
-            // チャージのUIを更新
-            chargeUICon.DrawChargeUI(
-                chargeUI.allChargeUI,
-                chargeUI.chargeValue,
-                chargeUI.chargeCircle);
-
-            // ミッションのUIを更新
-            missionUICon.DrawMissionUI();
-
-            // スキルのUIを更新
-            skillCon.CallSetSkillUI();
-
-            // 移動速度の数値UIを更新
-            speedUICon.DrawSpeedValue(otherUI.speedValue);
-
-            // 制限時間のUIを描画
-            timeLimitUI.renderTimeLimit();
-        }
-    }
 }

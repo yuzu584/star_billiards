@@ -10,15 +10,16 @@ public class DestroyPlanet : Singleton<DestroyPlanet>
     private ScreenController scrCon;
     private StageController stageCon;
     private PlanetAmount planetAmount;
-    private MissionUIController missionUICon;
     private PopupManager popupMana;
+
+    public delegate void DestroyPlanetDele();
+    public DestroyPlanetDele DPdele;
 
     private void Start()
     {
         scrCon = ScreenController.instance;
         stageCon = StageController.instance;
         planetAmount = PlanetAmount.instance;
-        missionUICon = MissionUIController.instance;
         popupMana = PopupManager.instance;
     }
 
@@ -37,8 +38,7 @@ public class DestroyPlanet : Singleton<DestroyPlanet>
                 // 惑星を破壊した数をカウント
                 planetAmount.planetDestroyAmount++;
 
-                // ミッションUIを更新
-                missionUICon.DrawMissionUI();
+                DPdele?.Invoke();
             }
 
             // 惑星を削除

@@ -5,13 +5,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ステージ選択画面のUIを管理
-public class StageSelectUIController : Singleton<StageSelectUIController>
+public class StageSelectUIController : MonoBehaviour
 {
     [SerializeField] private StageData stageData;               // InspectorでStageDataを指定
+    [SerializeField] private GameObject stageInfoObj;           // ステージの情報を表示するオブジェクト
+    [SerializeField] private Text stageName;                    // ステージ名のテキスト
+    [SerializeField] private Text missionName;                  // ステージのミッション名のテキスト
 
     private StageController stageCon;
     private ScreenController scrCon;
-    private UIController uICon;
 
     private GameObject oldButton;                               // 取得したステージボタン
     private Vector3 oldPos;                                     // 取得したステージボタンの座標
@@ -22,11 +24,12 @@ public class StageSelectUIController : Singleton<StageSelectUIController>
 
     void Start()
     {
-        stageCon = StageController.instance;
-        scrCon = ScreenController.instance;
-        uICon ??= UIController.instance;
+        stageCon ??= StageController.instance;
+        scrCon ??= ScreenController.instance;
+
+        stageCon.DSIdele += DrawStageInfo;
         
-        lerp = gameObject.AddComponent<Lerp>();
+        lerp ??= gameObject.AddComponent<Lerp>();
     }
 
     void Update()
@@ -38,8 +41,13 @@ public class StageSelectUIController : Singleton<StageSelectUIController>
         }
     }
 
+    private void OnDestroy()
+    {
+        stageCon.DSIdele -= DrawStageInfo;
+    }
+
     // ステージ情報UIを描画
-    public void DrawStageInfo(Vector3 pos, GameObject button, StageButton stageButton)
+    void DrawStageInfo(Vector3 pos, GameObject button, StageButton stageButton)
     {
         // ステージボタンの見た目が変えられていたら見た目を元に戻す
         ResetDetail(false);
@@ -56,19 +64,21 @@ public class StageSelectUIController : Singleton<StageSelectUIController>
         Vector3 newPos = oldPos;
         newPos.x = Mathf.Clamp(newPos.x, -200.0f, 200.0f);
         newPos.y = Mathf.Clamp(newPos.y, -100.0f, 100.0f);
-        uICon.stageSelectUI.stageInfoUI.transform.localPosition = newPos;
+        stageInfoObj.transform.localPosition = newPos;
+
+        stageCon ??= StageController.instance;
 
         // ステージ名を設定
-        uICon.stageSelectUI.name.text = stageData.stageList[stageCon.stageNum].stageName;
+        stageName.text = stageData.stageList[stageCon.stageNum].stageName;
 
         // ミッション名を設定
         switch (stageData.stageList[stageCon.stageNum].missionNum)
         {
             case 0: // 全ての惑星を破壊
-                uICon.stageSelectUI.mission.text = "Destroy all planets";
+                missionName.text = "Destroy all planets";
                 break;
             case 1: // 時間内にゴールにたどり着け
-                uICon.stageSelectUI.mission.text = "Reach the goal";
+                missionName.text = "Reach the goal";
                 break;
         }
 
@@ -77,13 +87,15 @@ public class StageSelectUIController : Singleton<StageSelectUIController>
         StartCoroutine(lerp.Scale_GameObject(oldButton, oldButton.transform.localScale, new Vector2(0.4f, 0.4f), fadeTime));
 
         // ステージ情報UIを表示
-        uICon.stageSelectUI.stageInfoUI.SetActive(true);
-        StartCoroutine(lerp.Scale_GameObject(uICon.stageSelectUI.stageInfoUI, new Vector2(0.0f, 0.0f), new Vector2(1.0f, 1.0f), fadeTime));
+        stageInfoObj.SetActive(true);
+        StartCoroutine(lerp.Scale_GameObject(stageInfoObj, new Vector2(0.0f, 0.0f), new Vector2(1.0f, 1.0f), fadeTime));
     }
 
     // ステージボタンの見た目を元に戻す
     void ResetDetail(bool orFast)
     {
+        lerp ??= gameObject.AddComponent<Lerp>();
+
         if (oldButton != null)
         {
             // 処理を高速で行うなら線形補完を行わずに直接値を変える
@@ -105,10 +117,10 @@ public class StageSelectUIController : Singleton<StageSelectUIController>
     }
 
     // ステージ情報UIを非表示
-    public void HideStageInfo(bool orFast)
+    void HideStageInfo(bool orFast)
     {
         // ステージ情報UIを非表示
-        uICon.stageSelectUI.stageInfoUI.SetActive(false);
+        stageInfoObj.SetActive(false);
 
         // ステージボタンが存在していたら見た目を元に戻す
         ResetDetail(orFast);
@@ -116,8 +128,6 @@ public class StageSelectUIController : Singleton<StageSelectUIController>
 
     void OnEnable()
     {
-        uICon ??= UIController.instance;
-
         // ステージ情報UIを非表示
         HideStageInfo(true);
     }

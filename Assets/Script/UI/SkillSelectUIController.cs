@@ -3,27 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Const;
+using UnityEngine.UI;
 
 // スキル選択画面のUIを管理
-public class SkillSelectUIController : Singleton<SkillSelectUIController>
+public class SkillSelectUIController : MonoBehaviour
 {
-    private UIController uICon;
+    [SerializeField] private Text skillName, cost, effectTime, coolDown, effectDetails;
+
+    private SkillSelect skillSelect;
 
     void Start()
     {
-        uICon = UIController.instance;
+        skillSelect = SkillSelect.instance;
+
+        // スキル情報UIを更新するデリゲートに登録
+        skillSelect.DSIdele += DrawSkillInfo;
 
         // スキルの情報を描画
         DrawSkillInfo(0);
     }
 
-    // スキルの情報を描画
-    public void DrawSkillInfo(int skillNum)
+    private void OnDestroy()
     {
-        uICon.skillSelectUI.name.text = AppConst.SKILL_NAME[skillNum];
-        uICon.skillSelectUI.cost.text = AppConst.SKILL_ENERGY_USAGE[skillNum].ToString("0");
-        uICon.skillSelectUI.effectTime.text = AppConst.SKILL_EFFECT_TIME[skillNum].ToString("0") + "s";
-        uICon.skillSelectUI.coolDown.text = AppConst.SKILL_COOLDOWN[skillNum].ToString("0") + "s";
-        uICon.skillSelectUI.effectDetails.text = AppConst.SKILL_DETAILS[skillNum];
+        skillSelect.DSIdele -= DrawSkillInfo;
+    }
+
+    // スキルの情報を描画
+    void DrawSkillInfo(int skillNum)
+    {
+        skillName.text = AppConst.SKILL_NAME[skillNum];
+        cost.text = AppConst.SKILL_ENERGY_USAGE[skillNum].ToString("0");
+        effectTime.text = AppConst.SKILL_EFFECT_TIME[skillNum].ToString("0") + "s";
+        coolDown.text = AppConst.SKILL_COOLDOWN[skillNum].ToString("0") + "s";
+        effectDetails.text = AppConst.SKILL_DETAILS[skillNum];
     }
 }

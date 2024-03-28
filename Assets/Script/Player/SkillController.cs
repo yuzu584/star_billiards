@@ -11,7 +11,6 @@ public class SkillController : Singleton<SkillController>
     [SerializeField] private ParticleSystem GravityWaveParticle;    // GravityWaveのパーティクル
 
     private Shot shot;
-    private SkillUIController skillUICon;
     private EnergyController eneCon;
     private ScreenController screenCon;
     private Initialize init;
@@ -42,7 +41,6 @@ public class SkillController : Singleton<SkillController>
     void Start()
     {
         shot = Shot.instance;
-        skillUICon = SkillUIController.instance;
         eneCon = EnergyController.instance;
         screenCon = ScreenController.instance;
         init = Initialize.instance;
@@ -68,22 +66,7 @@ public class SkillController : Singleton<SkillController>
         {
             // スキルの効果時間とクールダウンを減少
             DecreaseEFAndCD();
-
-            // スキルのUIを描画する関数を呼び出す
-            CallSetSkillUI();
         }
-    }
-
-    // スキルのUIを描画する関数を呼び出す
-    public void CallSetSkillUI()
-    {
-        skillUICon.DrawSkillUI(
-            AppConst.SKILL_NAME[(int)skillSlot[selectSkill]],
-            AppConst.SKILL_COOLDOWN[(int)skillSlot[selectSkill]],
-            AppConst.SKILL_EFFECT_TIME[(int)skillSlot[selectSkill]],
-            coolDown,
-            effectTime
-            );
     }
 
     // スキル使用
