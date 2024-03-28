@@ -41,9 +41,6 @@ public class BackButton : Button
     protected override void OnEnable()
     {
         base.OnEnable();
-
-        // ƒ{ƒ^ƒ“‚Ì‰Šú‰»ˆ—
-        BtnInit(imageStructs, textStructs);
     }
 
     protected override void Start()

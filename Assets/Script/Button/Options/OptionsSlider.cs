@@ -39,9 +39,6 @@ public class OptionsSlider : Button
     {
         base.OnEnable();
 
-        // ボタンの初期化処理
-        BtnInit(imageStructs, textStructs);
-
         // ボタンの状態を表すテキストを設定
         SetStateText();
     }

@@ -40,9 +40,6 @@ public class OptionsSwitch : Button
     {
         base.OnEnable();
 
-        // ボタンの初期化処理
-        BtnInit(imageStructs, textStructs);
-
         // ボタンのテキストを設定
         SetStateText();
     }

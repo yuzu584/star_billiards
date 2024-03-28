@@ -306,54 +306,60 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     // ボタンの初期化処理
     protected void BtnInit(ImageStruct[] childrenImageStructs, TextStruct[] childrenTextStructs)
     {
-        // ボタンの色をリセット
+        // ボタンの要素をリセット
+        // 線形補完アニメーションを使用する画像の数繰り返す
         for (int i = 0; i < childrenImageStructs.Length; i++)
         {
+            // 画像の色をリセット
             if (childrenImageStructs[i].lerpColor.useLerp)
             {
                 childrenImageStructs[i].image.color = childrenImageStructs[i].lerpColor.startColor;
             }
-        }
-        for (int i = 0; i < childrenTextStructs.Length; i++)
-        {
-            if (childrenTextStructs[i].lerpColor.useLerp)
-                childrenTextStructs[i].text.color = childrenTextStructs[i].lerpColor.startColor;
-        }
 
-        // ボタンの座標をリセット
-        for (int i = 0; i < childrenImageStructs.Length; i++)
-        {
+            // 画像の座標をリセット
             if (childrenImageStructs[i].lerpPosition.useLerp)
+            {
                 childrenImageStructs[i].image.rectTransform.position = childrenImageStructs[i].lerpPosition.startPos;
-        }
-        for (int i = 0; i < childrenTextStructs.Length; i++)
-        {
-            if (childrenTextStructs[i].lerpPosition.useLerp)
-                childrenTextStructs[i].text.rectTransform.anchoredPosition = childrenTextStructs[i].lerpPosition.startPos;
-        }
+            }
 
-        // ボタンのスケールをリセット
-        for (int i = 0; i < childrenImageStructs.Length; i++)
-        {
+            // 画像のスケールをリセット
             if (childrenImageStructs[i].lerpScale.useLerp)
+            {
                 childrenImageStructs[i].image.rectTransform.localScale = childrenImageStructs[i].lerpScale.startScale;
-        }
-        for (int i = 0; i < childrenTextStructs.Length; i++)
-        {
-            if (childrenTextStructs[i].lerpScale.useLerp)
-                childrenTextStructs[i].text.rectTransform.localScale = childrenTextStructs[i].lerpScale.startScale;
-        }
+            }
 
-        // ポインターが乗っているときのみ描画するなら非表示
-        for (int i = 0; i < childrenImageStructs.Length; i++)
-        {
+            // ポインターが乗っているときのみ描画するなら非表示
             if ((childrenImageStructs[i].onPointerDraw) && (childrenImageStructs[i].image.enabled))
+            {
                 childrenImageStructs[i].image.enabled = false;
+            }
         }
+        // 線形補完アニメーションを使用するテキストの数繰り返す
         for (int i = 0; i < childrenTextStructs.Length; i++)
         {
+            // テキストの色をリセット
+            if (childrenTextStructs[i].lerpColor.useLerp)
+            {
+                childrenTextStructs[i].text.color = childrenTextStructs[i].lerpColor.startColor;
+            }
+
+            // テキストの座標をリセット
+            if (childrenTextStructs[i].lerpPosition.useLerp)
+            {
+                childrenTextStructs[i].text.rectTransform.anchoredPosition = childrenTextStructs[i].lerpPosition.startPos;
+            }
+
+            // テキストのスケールをリセット
+            if (childrenTextStructs[i].lerpScale.useLerp)
+            {
+                childrenTextStructs[i].text.rectTransform.localScale = childrenTextStructs[i].lerpScale.startScale;
+            }
+
+            // ポインターが乗っているときのみ描画するなら非表示
             if ((childrenTextStructs[i].onPointerDraw) && (childrenTextStructs[i].text.enabled))
+            {
                 childrenTextStructs[i].text.enabled = false;
+            }
         }
     }
 
@@ -398,11 +404,14 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         if (defaultFocus)
         {
             // ボタンが記録されていないなら
-            if (btnRec.lootStr[(int)scrCon.Screen].btn[scrCon.ScreenLoot] == null)
+            if (btnRec.savedBtn[(int)scrCon.Screen].btn[scrCon.ScreenLoot] == null)
             {
                 // 自分を記録
                 btnRec.SaveFocusedButton(this);
             }
         }
+
+        // ボタンの初期化処理
+        BtnInit(imageStructs, textStructs);
     }
 }

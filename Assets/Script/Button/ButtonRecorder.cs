@@ -7,13 +7,14 @@ using UnityEngine;
 [DefaultExecutionOrder(-100)]
 public class ButtonRecorder : Singleton<ButtonRecorder>
 {
+    // 保存するボタンの構造体
     [System.Serializable]
-    public struct LootStr
+    public struct SaveButtonContent
     {
         public Button[] btn;
     }
 
-    public LootStr[] lootStr;
+    public SaveButtonContent[] savedBtn;
 
     [SerializeField] private ScreenData scrData;
 
@@ -37,19 +38,19 @@ public class ButtonRecorder : Singleton<ButtonRecorder>
         // 階層遷移時にボタンをフォーカスする
         scrCon.changeLoot += () =>
         {
-            if (lootStr[(int)scrCon.Screen].btn[scrCon.ScreenLoot])
-                focus.SetFocusBtn(lootStr[(int)scrCon.Screen].btn[scrCon.ScreenLoot]);
+            if (savedBtn[(int)scrCon.Screen].btn[scrCon.ScreenLoot])
+                focus.SetFocusBtn(savedBtn[(int)scrCon.Screen].btn[scrCon.ScreenLoot]);
             else
-                lootStr[(int)scrCon.Screen].btn[scrCon.ScreenLoot] = null;
+                savedBtn[(int)scrCon.Screen].btn[scrCon.ScreenLoot] = null;
         };
 
         // 画面遷移時にもボタンをフォーカスする
         scrCon.changeScreen += () =>
         {
-            if (lootStr[(int)scrCon.Screen].btn[scrCon.ScreenLoot])
-                focus.SetFocusBtn(lootStr[(int)scrCon.Screen].btn[scrCon.ScreenLoot]);
+            if (savedBtn[(int)scrCon.Screen].btn[scrCon.ScreenLoot])
+                focus.SetFocusBtn(savedBtn[(int)scrCon.Screen].btn[scrCon.ScreenLoot]);
             else
-                lootStr[(int)scrCon.Screen].btn[scrCon.ScreenLoot] = null;
+                savedBtn[(int)scrCon.Screen].btn[scrCon.ScreenLoot] = null;
         };
     }
 
@@ -60,7 +61,7 @@ public class ButtonRecorder : Singleton<ButtonRecorder>
 
         InitLoot();
 
-        lootStr[(int)btn.scrAndLoot.scrType].btn[btn.scrAndLoot.scrLoot] = btn;
+        savedBtn[(int)btn.scrAndLoot.scrType].btn[btn.scrAndLoot.scrLoot] = btn;
     }
 
     // 配列の長さを設定
@@ -72,10 +73,10 @@ public class ButtonRecorder : Singleton<ButtonRecorder>
             setLootLength = true;
 
             // 配列の長さを設定
-            lootStr = new LootStr[scrData.screenList.Count];
-            for (int i = 0; i < lootStr.Length; i++)
+            savedBtn = new SaveButtonContent[scrData.screenList.Count];
+            for (int i = 0; i < savedBtn.Length; i++)
             {
-                lootStr[i].btn = new Button[scrData.screenList[i].loot.Length];
+                savedBtn[i].btn = new Button[scrData.screenList[i].loot.Length];
             }
         }
     }
