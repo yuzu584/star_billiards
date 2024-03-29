@@ -1644,7 +1644,7 @@ PrefabInstance:
       objectReference: {fileID: 8350110157323155479}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: defaultFocus
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: lineConectObject

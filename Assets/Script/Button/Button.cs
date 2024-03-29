@@ -368,6 +368,42 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         }
     }
 
+    // 最初のフォーカス処理
+    void StartFocus()
+    {
+        // このボタンが保存済みか
+        bool thisSaved = (btnRec.savedBtn[(int)scrCon.Screen].num[scrCon.ScreenLoot] == btnNum);
+
+        // 何のボタンも保存されていないか(保存されていれば -1 以外になっている)
+        bool somethingSaved = (btnRec.savedBtn[(int)scrCon.Screen].num[scrCon.ScreenLoot] == -1);
+
+        // ボタン番号がフォーカス可能な番号か( -1 が入っていたらフォーカス不可)
+        bool canFocus = (btnNum != -1);
+
+        // このボタンが最初のボタンか(btnNum は連番で設定されているので 0 が入っていれば最初のボタンということになる)
+        bool orFirst = (btnNum == 0);
+
+        // ボタンが保存済みかつ btnNum が設定済みならフォーカス(フォーカスの優先度 : 中)
+        if ((thisSaved) && (canFocus))
+        {
+            // 自分を記録
+            focus.SetFocusBtn(this);
+        }
+        // 何のボタンも保存されていないかつ一番最初のボタンならフォーカス(フォーカスの優先度 : 低)
+        else if ((somethingSaved) && (orFirst))
+        {
+            // フォーカス
+            focus.SetFocusBtn(this);
+        }
+
+        // 最初にフォーカスされるボタンなら(フォーカスの優先度 : 高)
+        if (defaultFocus)
+        {
+            // フォーカス
+            focus.SetFocusBtn(this);
+        }
+    }
+
     protected virtual void Start()
     {
         lerp ??= gameObject.AddComponent<Lerp>();
@@ -377,6 +413,11 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         sound = Sound.instance;
         input = InputController.instance;
         btnRec ??= ButtonRecorder.instance;
+
+        scrCon.changeLoot += StartFocus;
+
+        // 最初のフォーカス処理
+        StartFocus();
     }
 
     protected virtual void OnEnable()
@@ -386,24 +427,12 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         focus ??= Focus.instance;
         btnRec ??= ButtonRecorder.instance;
 
-        // 最初にフォーカスされるなら
-        if (defaultFocus)
-        {
-            // ボタンが記録されていないなら(-1 は未記録)
-            if (btnRec.savedBtn[(int)scrCon.Screen].num[scrCon.ScreenLoot] == -1)
-            {
-                // 自分を記録
-                btnRec.SaveFocusedButton(this);
-            }
-        }
-
-        // ボタンが保存済みかつ btnNum が設定済みならフォーカス
-        if ((btnRec.savedBtn[(int)scrCon.Screen].num[scrCon.ScreenLoot] == btnNum) && (btnNum != -1))
-        {
-            focus.SetFocusBtn(this);
-        }
-
         // ボタンの初期化処理
         BtnInit(imageStructs, textStructs);
+    }
+
+    protected virtual void OnDestroy()
+    {
+        scrCon.changeLoot -= StartFocus;
     }
 }

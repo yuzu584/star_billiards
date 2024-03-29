@@ -69,8 +69,10 @@ public class BackButton : Button
         SetOldScreen();
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
+
         scrCon.changeScreen -= SetOldScreen;
         input.ui_OnNegativeDele -= Back;
     }
