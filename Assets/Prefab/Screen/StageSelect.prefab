@@ -604,7 +604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: scrAndLoot.scrLoot
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: scrAndLoot.scrType
@@ -851,6 +851,14 @@ PrefabInstance:
       propertyPath: buttonUp
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: stageNum
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: startBtn
+      value: 
+      objectReference: {fileID: 6680057285076856557}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: buttonDown
       value: 
@@ -1217,6 +1225,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: stageNum
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: startBtn
+      value: 
+      objectReference: {fileID: 6680057285076856557}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: buttonDown
       value: 
       objectReference: {fileID: 8350110157770161233}
@@ -1363,6 +1379,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8350110157911931794}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: stageNum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: startBtn
+      value: 
+      objectReference: {fileID: 6680057285076856557}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: buttonLeft
       value: 
       objectReference: {fileID: 8350110157323155479}
@@ -1505,6 +1529,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: stageNum
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: startBtn
+      value: 
+      objectReference: {fileID: 6680057285076856557}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: buttonLeft
       value: 
       objectReference: {fileID: 8350110157911931794}
@@ -1634,6 +1666,10 @@ PrefabInstance:
       propertyPath: buttonUp
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: startBtn
+      value: 
+      objectReference: {fileID: 6680057285076856557}
     - target: {fileID: 2552555218248429929, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: buttonLeft
       value: 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 
 // ダイアログポップアップ1
 public class DialogPopup1 : PopupParent
@@ -31,11 +32,27 @@ public class DialogPopup1 : PopupParent
         // キャンセルボタンの処理はポップアップの破棄
         Action a = () =>
         {
-            scrCon.ScreenLoot = 0;
-            Destroy();
+            scrCon.ScreenLoot = scrCon.oldScreenLoot;
+            focus.SetFocusBtn(focus.oldLootFocusBtn);
         };
 
         SetBtnAction(cancelBtn, a);
+
+        // Negative ボタンを押したらキャンセルボタンのアクションを起こす
+        input.ui_OnNegativeDele += CancelBtnProcess;
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+
+        input.ui_OnNegativeDele -= CancelBtnProcess;
+    }
+
+    // キャンセルボタンの処理を行う
+    void CancelBtnProcess(float f)
+    {
+        cancelBtn.ClickProcess();
     }
 
     // ボタンのアクションを設定

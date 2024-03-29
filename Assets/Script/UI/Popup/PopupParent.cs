@@ -9,15 +9,18 @@ public class PopupParent : MonoBehaviour
 
     protected PopupManager popupMana;
     protected ScreenController scrCon;
+    protected InputController input;
     protected Lerp lerp;
 
     protected int index = -1;                                       // PopupManager が管理するポップアップの配列の何番目のポップアップか
     [SerializeField] protected bool onChangeScreenDestroy = false;  // 画面遷移時にポップアップを削除するか
+    [SerializeField] protected bool onChangeLootDestroy = false;    // 階層遷移時にポップアップを削除するか
 
     protected virtual void Start()
     {
         popupMana = PopupManager.instance;
         scrCon = ScreenController.instance;
+        input = InputController.instance;
 
         // Lerp をアタッチ
         lerp ??= gameObject.AddComponent<Lerp>();
@@ -25,12 +28,19 @@ public class PopupParent : MonoBehaviour
         // 画面遷移時にポップアップを削除
         if (onChangeScreenDestroy)
             scrCon.changeScreen += Destroy;
+
+        // 階層遷移時にポップアップを削除
+        if (onChangeLootDestroy)
+            scrCon.changeLoot += Destroy;
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         if (onChangeScreenDestroy)
             scrCon.changeScreen -= Destroy;
+
+        if (onChangeLootDestroy)
+            scrCon.changeLoot -= Destroy;
     }
 
     // ポップアップの処理

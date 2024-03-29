@@ -19,7 +19,6 @@ public class ButtonRecorder : Singleton<ButtonRecorder>
     [SerializeField] private ScreenData scrData;
 
     private ScreenController scrCon;
-    private Focus focus;
 
     private bool setLootLength = false;     // loot の配列の長さを設定したか
 
@@ -33,7 +32,6 @@ public class ButtonRecorder : Singleton<ButtonRecorder>
     private void Start()
     {
         scrCon ??= ScreenController.instance;
-        focus = Focus.instance;
     }
 
     // フォーカスされていたボタンを保存

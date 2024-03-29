@@ -23,7 +23,7 @@ public class InGamePopup1 : PopupParent
         };
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         scrCon.changeScreen -= () =>
         {

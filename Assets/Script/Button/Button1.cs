@@ -57,7 +57,7 @@ public class Button1 : Button
             case ClickAction.ApplySkill:            ApplySkill();               break;  // 選択したスキルを適用
             case ClickAction.ResetSelectSkill:      ResetSelectSkill();         break;  // 選択したスキルをリセット
             case ClickAction.ExitGame:              ExitGame();                 break;  // ゲーム終了
-            case ClickAction.Action:                if(action != null)action(); break;  // 任意の Action を実行
+            case ClickAction.Action:                action?.Invoke();           break;  // 任意の Action を実行
             default: break;
         }
     }
@@ -73,7 +73,6 @@ public class Button1 : Button
     {
         // 画面をInGameに変更
         scrCon.Screen = ScreenController.ScreenType.InGame;
-        scrCon.ScreenLoot = 0;
 
         // ステージに関する数値を初期化
         init.init_Stage();

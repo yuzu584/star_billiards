@@ -8,9 +8,10 @@ using UnityEngine.Windows;
 [DefaultExecutionOrder(-100)]
 public class Focus : Singleton<Focus>
 {
-    public Button focusBtn;                  // フォーカスしているボタン
-    public Button oldfocusBtn;               // フォーカスされていたボタン
-    public Scrollbar focusScrollbar;         // フォーカスしているスクロールバー
+    public Button focusBtn;                 // フォーカスしているボタン
+    public Button oldfocusBtn;              // フォーカスされていたボタン
+    public Button oldLootFocusBtn;          // 前回の階層でフォーカスされていたボタン
+    public Scrollbar focusScrollbar;        // フォーカスしているスクロールバー
 
     private ScreenController scrCon;
     private InputController input;
@@ -44,6 +45,12 @@ public class Focus : Singleton<Focus>
         // 画面遷移時にボタンのフォーカスを外す
         scrCon.changeScreen += () => {
             focusBtn = null;
+        };
+
+        // 階層遷移時に前回の階層でフォーカスされていたボタンを保存
+        scrCon.changeLoot += () =>
+        {
+            oldLootFocusBtn = oldfocusBtn;
         };
     }
 

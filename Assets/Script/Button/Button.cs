@@ -97,6 +97,8 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public Group group;                                     // このボタンが所属するグループ
     public int btnNum;                                      // このボタンの番号(主にフォーカスしていたボタンを保存するために使用する)
 
+    public bool isStartFocus = false;                       // StartFocus が実行されたか
+
     // ポインターによってフォーカスされたか
     // true  : ポインターによってフォーカスされた
     // false : ポインター以外(コントローラー入力など)でフォーカスされた
@@ -371,6 +373,11 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     // 最初のフォーカス処理
     void StartFocus()
     {
+        // 最初のフォーカス処理が実行済みなら終了
+        if (isStartFocus) return;
+
+        isStartFocus = true;
+
         // このボタンが保存済みか
         bool thisSaved = (btnRec.savedBtn[(int)scrCon.Screen].num[scrCon.ScreenLoot] == btnNum);
 
@@ -414,6 +421,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         input = InputController.instance;
         btnRec ??= ButtonRecorder.instance;
 
+        // StartFocus を階層遷移時に一回だけ実行
         scrCon.changeLoot += StartFocus;
 
         // 最初のフォーカス処理

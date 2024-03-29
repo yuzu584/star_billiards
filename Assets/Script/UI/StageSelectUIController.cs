@@ -13,7 +13,6 @@ public class StageSelectUIController : MonoBehaviour
     [SerializeField] private Text missionName;                  // ステージのミッション名のテキスト
 
     private StageController stageCon;
-    private ScreenController scrCon;
 
     private GameObject oldButton;                               // 取得したステージボタン
     private Vector3 oldPos;                                     // 取得したステージボタンの座標
@@ -25,20 +24,10 @@ public class StageSelectUIController : MonoBehaviour
     void Start()
     {
         stageCon ??= StageController.instance;
-        scrCon ??= ScreenController.instance;
 
         stageCon.DSIdele += DrawStageInfo;
         
         lerp ??= gameObject.AddComponent<Lerp>();
-    }
-
-    void Update()
-    {
-        if (sBtn != null)
-        {
-            if ((sBtn.anim) && (scrCon.ScreenLoot == 0))
-                HideStageInfo(false);
-        }
     }
 
     private void OnDestroy()
@@ -114,21 +103,5 @@ public class StageSelectUIController : MonoBehaviour
             // ボタンをアニメーション中ではなくする
             oldStageBtn.anim = false;
         }
-    }
-
-    // ステージ情報UIを非表示
-    void HideStageInfo(bool orFast)
-    {
-        // ステージ情報UIを非表示
-        stageInfoObj.SetActive(false);
-
-        // ステージボタンが存在していたら見た目を元に戻す
-        ResetDetail(orFast);
-    }
-
-    void OnEnable()
-    {
-        // ステージ情報UIを非表示
-        HideStageInfo(true);
     }
 }

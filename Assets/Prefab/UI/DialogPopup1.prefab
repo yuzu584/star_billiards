@@ -132,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupType: 2
   onChangeScreenDestroy: 1
+  onChangeLootDestroy: 1
   okBtn: {fileID: 4926448505578254709}
   cancelBtn: {fileID: 4926448503734452770}
   popupText: {fileID: 5217391468522949446}

@@ -118,12 +118,8 @@ public class ScreenController : Singleton<ScreenController>
         // UI_Negative入力時のイベントを登録
         input.ui_OnNegativeDele += (float value) =>
         {
-            // 階層が0より上なら1下げる
-            if (ScreenLoot > 0)
-                ScreenLoot -= (int)value;
-
-            // メインメニューならタイトル画面に戻る
-            else if (Screen == ScreenType.MainMenu)
+            // メインメニューかつ階層が一番下ならタイトル画面に戻る
+            if ((Screen == ScreenType.MainMenu) && (ScreenLoot == 0))
             {
                 Screen = ScreenType.Title;
             }

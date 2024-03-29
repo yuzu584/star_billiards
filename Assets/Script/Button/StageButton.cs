@@ -7,23 +7,40 @@ using UnityEngine.UI;
 public class StageButton : Button
 {
     [SerializeField]
-    private int num; // セットするステージ番号
+    private int stageNum;           // セットするステージ番号
 
     [SerializeField]
-    private Text stageName; // ステージ名のテキスト
+    private Text stageName;         // ステージ名のテキスト
 
     [SerializeField]
-    private StageData stageData;  // ステージのデータをまとめたScriptableObject
+    private StageData stageData;    // ステージのデータをまとめたScriptableObject
 
-    public bool anim = false; // ボタンがアニメーション中か
+    [SerializeField]
+    private Button1 startBtn;       // ステージスタートのボタン
+
+    public bool anim = false;       // ボタンがアニメーション中か
 
     private StageController stageCon;
 
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
     {
-        // 階層を設定
-        scrCon.ScreenLoot = 0;
+        // アニメーション中ではないなら
+        if (!anim)
+        {
+            // フォーカス先のボタンを設定
+            startBtn.buttonUp = buttonUp;
+            startBtn.buttonDown = buttonDown;
+            startBtn.buttonRight = buttonRight;
+            startBtn.buttonLeft = buttonLeft;
+
+            focus.SetFocusBtn(startBtn);
+
+            stageCon ??= StageController.instance;
+
+            stageCon.stageNum = stageNum;
+            stageCon.DSIdele?.Invoke(transform.localPosition, gameObject, this);
+        }
 
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, true);
@@ -39,15 +56,7 @@ public class StageButton : Button
     // クリックされたときの処理
     public override void ClickProcess()
     {
-        // アニメーション中ではないなら
-        if (!anim)
-        {
-            // 階層を設定
-            scrCon.ScreenLoot = 1;
 
-            stageCon.stageNum = num;
-            stageCon.DSIdele?.Invoke(transform.localPosition, gameObject, this);
-        }
     }
 
     protected override void OnEnable()
@@ -59,10 +68,10 @@ public class StageButton : Button
     {
         base.Start();
 
-        stageCon = StageController.instance;
+        stageCon ??= StageController.instance;
 
         // テキストをステージ名に設定
-        stageName.text = stageData.stageList[num].stageName;
+        stageName.text = stageData.stageList[stageNum].stageName;
     }
 
     void Update()
