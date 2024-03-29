@@ -238,6 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7245476138344427336}
   - component: {fileID: 7210835567840534325}
+  - component: {fileID: 1628948846239766759}
   m_Layer: 5
   m_Name: SkillSlot
   m_TagString: Untagged
@@ -334,8 +335,10 @@ MonoBehaviour:
       endScale: {x: 0, y: 0}
       fadeTime: 0
     onPointerDraw: 0
-  loot: 0
   defaultFocus: 0
+  scrAndLoot:
+    scrType: 0
+    scrLoot: 0
   EnterSound: {fileID: 8300000, guid: 13dc1ec8e21e60b4b83f31fb90a45748, type: 3}
   ClickSound: {fileID: 8300000, guid: 6383ff15321eb9146a08c0130415cf4f, type: 3}
   buttonUp: {fileID: 0}
@@ -343,10 +346,26 @@ MonoBehaviour:
   buttonLeft: {fileID: 0}
   buttonRight: {fileID: 0}
   group: 0
+  btnNum: 0
+  isStartFocus: 0
   orPointer: 0
-  skillNum: 0
+  skill: 0
   nameText: {fileID: 7557092268006458988}
   selectedImage: {fileID: 2657103403607380263}
+--- !u!114 &1628948846239766759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7245476138344427337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2000
+  text: {fileID: 7557092268006458988}
 --- !u!1 &8355400256215643350
 GameObject:
   m_ObjectHideFlags: 0

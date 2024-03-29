@@ -242,6 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5213633561668405262}
   - component: {fileID: 599461845565836011}
+  - component: {fileID: 4411111042162408565}
   m_Layer: 5
   m_Name: Options Button 1
   m_TagString: Untagged
@@ -337,7 +338,32 @@ MonoBehaviour:
       endScale: {x: 0, y: 0}
       fadeTime: 0
     onPointerDraw: 0
+  defaultFocus: 0
+  scrAndLoot:
+    scrType: 0
+    scrLoot: 0
   EnterSound: {fileID: 8300000, guid: 13dc1ec8e21e60b4b83f31fb90a45748, type: 3}
   ClickSound: {fileID: 8300000, guid: 6383ff15321eb9146a08c0130415cf4f, type: 3}
-  _optionsController: {fileID: 0}
-  num: 0
+  buttonUp: {fileID: 0}
+  buttonDown: {fileID: 0}
+  buttonLeft: {fileID: 0}
+  buttonRight: {fileID: 0}
+  group: 0
+  btnNum: 0
+  isStartFocus: 0
+  orPointer: 0
+  loot: 0
+--- !u!114 &4411111042162408565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5213633561668405249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2000
+  text: {fileID: 5213633561102883098}

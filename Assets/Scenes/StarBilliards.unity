@@ -474,6 +474,7 @@ Transform:
   - {fileID: 1705138440}
   - {fileID: 315313513}
   - {fileID: 1925420989}
+  - {fileID: 599206282}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -523,7 +524,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   focusBtn: {fileID: 0}
   oldfocusBtn: {fileID: 0}
+  oldLootFocusBtn: {fileID: 0}
   focusScrollbar: {fileID: 0}
+--- !u!1 &599206281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 599206282}
+  - component: {fileID: 599206283}
+  m_Layer: 0
+  m_Name: Localize
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &599206282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599206281}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 318109087}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &599206283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599206281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d7ea10ec65cfa41ae874bf2f345694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stringTextData: {fileID: 11400000, guid: c6522f2ef3d36b74594d0b9cb95c0caa, type: 2}
+  language: 1
 --- !u!1 &702041413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,6 +1558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupType: 0
   onChangeScreenDestroy: 0
+  onChangeLootDestroy: 0
 --- !u!114 &1148952479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2080,6 +2129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecea3b83c609648448adc57e27ce76b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loot: 0
+  oldLoot: 0
   opUICon: {fileID: 0}
 --- !u!1 &1658508820
 GameObject:

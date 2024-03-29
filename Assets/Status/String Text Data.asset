@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 677a39024ab67404eaf7ba9427055455, type: 3}
+  m_Name: String Text Data
+  m_EditorClassIdentifier: 
+  fonts:
+  - language: 0
+    font: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
+  - language: 1
+    font: {fileID: 12800000, guid: 1a28bfd48b57001499a5bf45f019fc20, type: 3}
+  stringData:
+  - type: 2000
+    strings:
+    - language: 0
+      text: None
+    - language: 1
+      text: "\u672A\u8A2D\u5B9A"
+  - type: 100
+    strings:
+    - language: 0
+      text: StageSelect
+    - language: 1
+      text: "\u30B9\u30C6\u30FC\u30B8\u9078\u629E"
+  - type: 101
+    strings:
+    - language: 0
+      text: Options
+    - language: 1
+      text: "\u8A2D\u5B9A"
+  - type: 102
+    strings:
+    - language: 0
+      text: SkillSelect
+    - language: 1
+      text: "\u30B9\u30AD\u30EB\u9078\u629E"
+  - type: 103
+    strings:
+    - language: 0
+      text: Exit
+    - language: 1
+      text: "\u30B2\u30FC\u30E0\u7D42\u4E86"
