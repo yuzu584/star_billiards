@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Windows;
 
 // ダイアログポップアップ1
 public class DialogPopup1 : PopupParent
 {
     [SerializeField] private Button1 okBtn, cancelBtn;  // ボタン1のコンポーネント
-    [SerializeField] private Text popupText;            // ポップアップのテキスト
 
     private  Action action;                             // OK ボタンを押したときに実行する処理
     public Action Action

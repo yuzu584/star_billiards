@@ -19,6 +19,8 @@ public class StageSelectUIController : MonoBehaviour
     private StageButton oldStageBtn;                            // 取得したStageButton
     private float fadeTime = 0.4f;                              // フェード時間
     private StageButton sBtn;                                   // StageButtonを代入する変数
+
+    private Localize localize;
     private Lerp lerp;
 
     void Start()
@@ -27,7 +29,12 @@ public class StageSelectUIController : MonoBehaviour
 
         stageCon.DSIdele += DrawStageInfo;
         
+        localize = Localize.instance;
         lerp ??= gameObject.AddComponent<Lerp>();
+
+        // テキストのフォントを設定
+        stageName.font = localize.GetFont();
+        missionName.font = localize.GetFont();
     }
 
     private void OnDestroy()
@@ -39,7 +46,7 @@ public class StageSelectUIController : MonoBehaviour
     void DrawStageInfo(Vector3 pos, GameObject button, StageButton stageButton)
     {
         // ステージボタンの見た目が変えられていたら見た目を元に戻す
-        ResetDetail(true);
+        ResetDetail(false);
 
         sBtn = stageButton;
         oldPos = pos;
@@ -58,16 +65,24 @@ public class StageSelectUIController : MonoBehaviour
         stageCon ??= StageController.instance;
 
         // ステージ名を設定
-        stageName.text = stageData.stageList[stageCon.stageNum].stageName;
+        switch (stageCon.stageNum)
+        {
+            case 0: stageName.text = localize.GetString(StringGroup.StageName, StringType.Stage1); break;
+            case 1: stageName.text = localize.GetString(StringGroup.StageName, StringType.Stage2); break;
+            case 2: stageName.text = localize.GetString(StringGroup.StageName, StringType.Stage3); break;
+            case 3: stageName.text = localize.GetString(StringGroup.StageName, StringType.Stage4); break;
+            case 4: stageName.text = localize.GetString(StringGroup.StageName, StringType.Stage5); break;
+            default:break;
+        }
 
         // ミッション名を設定
         switch (stageData.stageList[stageCon.stageNum].missionNum)
         {
-            case 0: // 全ての惑星を破壊
-                missionName.text = "Destroy all planets";
+            case 0: // 惑星を破壊しろ
+                missionName.text = localize.GetString(StringGroup.Mission, StringType.DestroyPlanet);
                 break;
-            case 1: // 時間内にゴールにたどり着け
-                missionName.text = "Reach the goal";
+            case 1: // ゴールにたどり着け
+                missionName.text = localize.GetString(StringGroup.Mission, StringType.ReachTheGoal);
                 break;
         }
 
@@ -97,6 +112,7 @@ public class StageSelectUIController : MonoBehaviour
             // 高速で処理を行わないなら線形補完を使用して値を変える
             else
             {
+                lerp.StopAll();
                 StartCoroutine(lerp.Position_GameObject(oldButton, oldButton.transform.localPosition, oldPos, fadeTime));
                 StartCoroutine(lerp.Scale_GameObject(oldButton, oldButton.transform.localScale, new Vector2(1.0f, 1.0f), fadeTime));
             }

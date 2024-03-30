@@ -26,7 +26,7 @@ public class SkillSlot : Button
         skillSelect ??= SkillSelect.instance;
 
         // スキルの情報を描画
-        skillSelect.DSIdele?.Invoke((int)skill);
+        skillSelect.DSIdele?.Invoke(skill);
     }
 
     // マウスポインターが離れたときの処理

@@ -13,12 +13,17 @@ public class MissionUIController : MonoBehaviour
     private StageController stageCon;
     private PlanetAmount planetAmount;
     private DestroyPlanet dp;
+    private Localize localize;
 
     private void Start()
     {
         stageCon = StageController.instance;
         planetAmount = PlanetAmount.instance;
         dp = DestroyPlanet.instance;
+        localize = Localize.instance;
+
+        // フォントを設定
+        mText.font = localize.GetFont();
 
         // 惑星破壊時にUIを更新
         dp.DPdele += Draw;
@@ -46,12 +51,12 @@ public class MissionUIController : MonoBehaviour
             case 0: // 全ての惑星を破壊
 
                 // ミッションのテキストを設定
-                mText.text = "Destroy all planets " + planetAmount.planetDestroyAmount + " / " + planet;
+                mText.text = localize.GetString(StringGroup.Mission, StringType.DestroyPlanet) + " " + planetAmount.planetDestroyAmount + " / " + planet;
                 break;
             case 1: // 時間内にゴールにたどり着け
 
                 // ミッションのテキストを設定
-                mText.text = "Reach the goal";
+                mText.text = localize.GetString(StringGroup.Mission, StringType.ReachTheGoal);
                 break;
             default:
                 break;

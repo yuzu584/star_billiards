@@ -13,6 +13,7 @@ public class Button1 : Button
     private CreateStage cStage;
     private SkillSelect skillSelect;
     private PopupManager popupMana;
+    private Localize localize;
 
     public enum ClickAction // ボタンを押したときの効果
     {
@@ -102,12 +103,12 @@ public class Button1 : Button
             skillSelect.SetSelectSlot();
 
             // ポップアップ表示
-            popupMana.DrawPopup(PopupManager.PopupType.InMenuPopup1, "was decided");
+            popupMana.DrawPopup(PopupManager.PopupType.InMenuPopup1, localize.GetString(StringGroup.Message, StringType.WasDecided));
         }
         else
         {
             // ポップアップ表示
-            popupMana.DrawPopup(PopupManager.PopupType.InMenuPopup1, "Please select 3 skills");
+            popupMana.DrawPopup(PopupManager.PopupType.InMenuPopup1, localize.GetString(StringGroup.Message, StringType.PleaseSelect3Skills));
         }
     }
 
@@ -121,7 +122,7 @@ public class Button1 : Button
     void ExitGame()
     {
         // ダイアログポップアップを生成
-        GameObject g = popupMana.DrawPopup(PopupManager.PopupType.DialogPopup1, "Do you want to exit the game?");
+        GameObject g = popupMana.DrawPopup(PopupManager.PopupType.DialogPopup1, localize.GetString(StringGroup.Message, StringType.ExitGameText));
 
         // ポップアップ生成済みなら終了
         if (g == null) return;
@@ -159,5 +160,6 @@ public class Button1 : Button
         cStage = CreateStage.instance;
         skillSelect = SkillSelect.instance;
         popupMana = PopupManager.instance;
+        localize = Localize.instance;
     }
 }

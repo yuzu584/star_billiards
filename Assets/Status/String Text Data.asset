@@ -80,6 +80,67 @@ MonoBehaviour:
       text:
       - Stage 5
       - "\u30B9\u30C6\u30FC\u30B8 5"
+  - group: 41
+    stringData:
+    - type: 530
+      text:
+      - EnergyCost
+      - "\u30A8\u30CD\u30EB\u30AE\u30FC\u6D88\u8CBB\u91CF"
+    - type: 531
+      text:
+      - EffectTime
+      - "\u52B9\u679C\u6642\u9593"
+    - type: 532
+      text:
+      - CoolDown
+      - "\u30AF\u30FC\u30EB\u30C0\u30A6\u30F3"
+    - type: 533
+      text:
+      - EffectDetails
+      - "\u30B9\u30AD\u30EB\u306E\u52B9\u679C"
+  - group: 42
+    stringData:
+    - type: 560
+      text:
+      - Charge speed x2
+      - "\u30C1\u30E3\u30FC\u30B8\u901F\u5EA6\xD72"
+    - type: 561
+      text:
+      - Player mass x2
+      - "\u30D7\u30EC\u30A4\u30E4\u30FC\u306E\u8CEA\u91CF\xD72"
+    - type: 562
+      text:
+      - Player size x2
+      - "\u30D7\u30EC\u30A4\u30E4\u30FC\u306E\u5927\u304D\u3055\xD72"
+    - type: 563
+      text:
+      - Emit a shock wave
+      - "\u885D\u6483\u6CE2\u3092\u767A\u751F\u3055\u305B\u308B"
+    - type: 564
+      text:
+      - Stop the movement
+      - "\u52D5\u304D\u3092\u6B62\u3081\u308B"
+    - type: 565
+      text:
+      - Attract the planets
+      - "\u60D1\u661F\u3092\u5F15\u304D\u5BC4\u305B\u308B"
+    - type: 566
+      text:
+      - Slow down time
+      - "\u6642\u9593\u306E\u6D41\u308C\u3092\u9045\u304F\u3059\u308B"
+    - type: 567
+      text:
+      - Easier to control inertia
+      - "\u6163\u6027\u3092\u5236\u5FA1\u3057\u3084\u3059\u304F\u3059\u308B"
+    - type: 568
+      text:
+      - Move quickly
+      - "\u7D20\u65E9\u304F\u79FB\u52D5\u3059\u308B"
+    - type: 569
+      text:
+      - Set up a teleport anchor. Reuse the skill to move to the teleport anchor
+        location.
+      - "\u30C6\u30EC\u30DD\u30FC\u30C8\u30A2\u30F3\u30AB\u30FC\u3092\u8A2D\u7F6E\u3059\u308B\u3002\u30B9\u30AD\u30EB\u518D\u4F7F\u7528\u3067\u30C6\u30EC\u30DD\u30FC\u30C8\u30A2\u30F3\u30AB\u30FC\u306E\u5834\u6240\u306B\u79FB\u52D5\u3059\u308B\u3002"
   - group: 20
     stringData:
     - type: 200
@@ -162,6 +223,20 @@ MonoBehaviour:
       text:
       - Charge
       - "\u30C1\u30E3\u30FC\u30B8"
+  - group: 60
+    stringData:
+    - type: 700
+      text:
+      - was decided
+      - "\u78BA\u5B9A\u3057\u307E\u3057\u305F"
+    - type: 701
+      text:
+      - Please select 3 skills
+      - "\u30B9\u30AD\u30EB\u30923\u3064\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044"
+    - type: 702
+      text:
+      - Do you want to exit the game?
+      - "\u30B2\u30FC\u30E0\u3092\u7D42\u4E86\u3057\u307E\u3059\u304B?"
   - group: 100
     stringData:
     - type: 1000

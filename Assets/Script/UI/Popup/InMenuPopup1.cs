@@ -6,7 +6,6 @@ using UnityEngine.UI;
 // メニュー画面のポップアップ1
 public class InMenuPopup1 : PopupParent
 {
-    [SerializeField] private Text messageText;              // テキスト
     [SerializeField] private Image image;                   // 画像
     [SerializeField] private float destroyTime = 3.0f;      // ポップアップが消えるまでの時間
 
@@ -32,20 +31,20 @@ public class InMenuPopup1 : PopupParent
         gameObject.transform.SetParent(parentT, false);
 
         // テキストを設定
-        messageText.text = text;
+        popupText.text = text;
 
         lerp ??= gameObject.AddComponent<Lerp>();
 
         // 線形補間でアニメーション
         StartCoroutine(lerp.Color_Image(image, startColor[0], endColor[0], fadeTime));
-        StartCoroutine(lerp.Color_Text(messageText, startColor[1], endColor[1], fadeTime));
+        StartCoroutine(lerp.Color_Text(popupText, startColor[1], endColor[1], fadeTime));
 
         // 数秒待つ
         yield return new WaitForSecondsRealtime(destroyTime);
 
         // 線形補間でアニメーション
         StartCoroutine(lerp.Color_Image(image, endColor[0], startColor[0], fadeTime));
-        StartCoroutine(lerp.Color_Text(messageText, endColor[1], startColor[1], fadeTime));
+        StartCoroutine(lerp.Color_Text(popupText, endColor[1], startColor[1], fadeTime));
 
         // 数秒待つ
         yield return new WaitForSecondsRealtime(fadeTime);

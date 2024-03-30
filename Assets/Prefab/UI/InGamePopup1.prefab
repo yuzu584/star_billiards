@@ -207,3 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53606b673144fe4da9dc2db56391425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popupType: 0
+  onChangeScreenDestroy: 0
+  onChangeLootDestroy: 0
+  popupText: {fileID: 2252027795733037923}

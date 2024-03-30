@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // ポップアップの親クラス
 public class PopupParent : MonoBehaviour
@@ -11,19 +12,25 @@ public class PopupParent : MonoBehaviour
     protected ScreenController scrCon;
     protected InputController input;
     protected Lerp lerp;
+    protected Localize localize;
 
     protected int index = -1;                                       // PopupManager が管理するポップアップの配列の何番目のポップアップか
     [SerializeField] protected bool onChangeScreenDestroy = false;  // 画面遷移時にポップアップを削除するか
     [SerializeField] protected bool onChangeLootDestroy = false;    // 階層遷移時にポップアップを削除するか
+    [SerializeField] protected Text popupText;                      // ポップアップのテキスト
 
     protected virtual void Start()
     {
         popupMana = PopupManager.instance;
         scrCon = ScreenController.instance;
         input = InputController.instance;
+        localize = Localize.instance;
 
         // Lerp をアタッチ
         lerp ??= gameObject.AddComponent<Lerp>();
+
+        // フォントを設定
+        popupText.font = localize.GetFont();
 
         // 画面遷移時にポップアップを削除
         if (onChangeScreenDestroy)

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7415601629667023091}
   - component: {fileID: 7415601629667023089}
   - component: {fileID: 7415601629667023088}
+  - component: {fileID: 7274814070881830214}
   m_Layer: 5
   m_Name: Effect Time
   m_TagString: Untagged
@@ -80,6 +81,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Effect Time
+--- !u!114 &7274814070881830214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415601629667023090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: 41
+  type: 531
+  text: {fileID: 7415601629667023088}
 --- !u!1 &7415601629925163329
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,6 +144,7 @@ GameObject:
   - component: {fileID: 7415601630185088596}
   - component: {fileID: 7415601630185088602}
   - component: {fileID: 7415601630185088597}
+  - component: {fileID: 4898303268619924584}
   m_Layer: 5
   m_Name: Energy Cost
   m_TagString: Untagged
@@ -197,6 +214,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Energy Cost
+--- !u!114 &4898303268619924584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415601630185088599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: 41
+  type: 530
+  text: {fileID: 7415601630185088597}
 --- !u!1 &7415601630223503785
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +240,7 @@ GameObject:
   - component: {fileID: 7415601630223503790}
   - component: {fileID: 7415601630223503788}
   - component: {fileID: 7415601630223503791}
+  - component: {fileID: 3924188665638175911}
   m_Layer: 5
   m_Name: Effect Details
   m_TagString: Untagged
@@ -265,7 +298,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
-    m_FontSize: 14
+    m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -277,6 +310,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Effect Details
+--- !u!114 &3924188665638175911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415601630223503785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: 41
+  type: 533
+  text: {fileID: 7415601630223503791}
 --- !u!1 &7415601630407778459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,6 +1184,7 @@ GameObject:
   - component: {fileID: 7415601631312406200}
   - component: {fileID: 7415601631312406206}
   - component: {fileID: 7415601631312406201}
+  - component: {fileID: 297729682318475657}
   m_Layer: 5
   m_Name: CoolDown
   m_TagString: Untagged
@@ -1205,6 +1254,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: CoolDown
+--- !u!114 &297729682318475657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415601631312406203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: 41
+  type: 532
+  text: {fileID: 7415601631312406201}
 --- !u!1 &7415601631348140724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,8 +1304,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -285, y: 140}
-  m_SizeDelta: {x: 130, y: 20}
+  m_AnchoredPosition: {x: -230, y: 140}
+  m_SizeDelta: {x: 240, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7415601631348140731
 CanvasRenderer:
