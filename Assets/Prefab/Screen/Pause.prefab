@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 4024843328011963313}
   - component: {fileID: 4024843328011963343}
   - component: {fileID: 4024843328011963312}
+  - component: {fileID: 6703946254435167071}
   m_Layer: 5
   m_Name: PauseText
   m_TagString: Untagged
@@ -153,6 +154,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: PAUSE
+--- !u!114 &6703946254435167071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4024843328011963314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: 0
+  type: 5
+  text: {fileID: 4024843328011963312}
 --- !u!1 &4024843328337284247
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,6 +271,14 @@ PrefabInstance:
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: scrAndLoot.scrType
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: group
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: planetInfo
@@ -416,6 +440,14 @@ PrefabInstance:
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: scrAndLoot.scrType
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: type
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: group
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: planetInfo
@@ -581,6 +613,14 @@ PrefabInstance:
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: scrAndLoot.scrType
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: group
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: planetInfo

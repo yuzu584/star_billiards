@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 7916718644746467181}
   - component: {fileID: 7916718644746467183}
   - component: {fileID: 7916718644746467182}
+  - component: {fileID: 5436433737641207443}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -184,6 +185,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Options
+--- !u!114 &5436433737641207443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7916718644746467180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: 0
+  type: 2
+  text: {fileID: 7916718644746467182}
 --- !u!1 &7916718645271867048
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,6 +656,14 @@ PrefabInstance:
       propertyPath: scrAndLoot.scrType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: type
+      value: 302
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: group
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5213633561102883098, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: m_Text
       value: Audio
@@ -885,6 +909,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: type
+      value: 1100
+      objectReference: {fileID: 0}
     - target: {fileID: 8199208808427150282, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: _optionsController
       value: 
@@ -937,6 +965,14 @@ PrefabInstance:
     - target: {fileID: 599461845565836011, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: scrAndLoot.scrType
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: type
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: group
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5213633561102883098, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: m_Text
@@ -1256,6 +1292,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5603181521276369992, guid: 18e40ccc74829a64cb36465d193a50af, type: 3}
+      propertyPath: type
+      value: 1100
+      objectReference: {fileID: 0}
     - target: {fileID: 8831911806282630702, guid: 18e40ccc74829a64cb36465d193a50af, type: 3}
       propertyPath: buttonUp
       value: 
@@ -1385,6 +1425,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5603181521276369992, guid: 18e40ccc74829a64cb36465d193a50af, type: 3}
+      propertyPath: type
+      value: 1100
+      objectReference: {fileID: 0}
     - target: {fileID: 8831911806282630702, guid: 18e40ccc74829a64cb36465d193a50af, type: 3}
       propertyPath: buttonUp
       value: 
@@ -1441,6 +1485,14 @@ PrefabInstance:
     - target: {fileID: 599461845565836011, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: scrAndLoot.scrType
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: type
+      value: 304
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: group
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5213633561102883098, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: m_Text
@@ -1582,6 +1634,14 @@ PrefabInstance:
     - target: {fileID: 599461845565836011, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: scrAndLoot.scrType
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: type
+      value: 303
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: group
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5213633561102883098, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: m_Text
@@ -1836,6 +1896,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: type
+      value: 1100
+      objectReference: {fileID: 0}
     - target: {fileID: 8199208808427150282, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: _optionsController
       value: 
@@ -1888,6 +1952,14 @@ PrefabInstance:
     - target: {fileID: 599461845565836011, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: scrAndLoot.scrType
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: type
+      value: 301
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: group
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5213633561102883098, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: m_Text
@@ -2133,6 +2205,10 @@ PrefabInstance:
     - target: {fileID: 5571069667479021931, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: type
+      value: 1100
       objectReference: {fileID: 0}
     - target: {fileID: 8199208808427150282, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: _optionsController

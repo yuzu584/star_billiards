@@ -231,6 +231,14 @@ PrefabInstance:
       propertyPath: clickAction
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: type
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: group
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Text
       value: OK
@@ -485,6 +493,14 @@ PrefabInstance:
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: clickAction
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: type
+      value: 1001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: group
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Text

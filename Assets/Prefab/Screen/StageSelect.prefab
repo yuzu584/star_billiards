@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5804563228046170806}
   - component: {fileID: 5804563228046170800}
   - component: {fileID: 5804563228046170801}
+  - component: {fileID: 7332836025666023384}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -80,6 +81,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Stage Select
+--- !u!114 &7332836025666023384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5804563228046170807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: 0
+  type: 1
+  text: {fileID: 5804563228046170801}
 --- !u!1 &5804563228586581539
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +634,14 @@ PrefabInstance:
       propertyPath: imageStructs.Array.data[1].lerpScale.endScale.y
       value: 1.12
       objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: type
+      value: 1004
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: group
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230018, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: planetInfo
       value: 
@@ -759,6 +783,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5804563229825962619}
     m_Modifications:
+    - target: {fileID: 2322886453213321513, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: type
+      value: 103
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322886453213321513, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: group
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2552555218248429928, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1136,6 +1168,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5804563229825962619}
     m_Modifications:
+    - target: {fileID: 2322886453213321513, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: type
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322886453213321513, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: group
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2552555218248429928, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1286,6 +1326,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5804563229825962619}
     m_Modifications:
+    - target: {fileID: 2322886453213321513, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: type
+      value: 102
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322886453213321513, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: group
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2552555218248429928, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1436,6 +1484,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5804563229825962619}
     m_Modifications:
+    - target: {fileID: 2322886453213321513, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: type
+      value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322886453213321513, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: group
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2552555218248429928, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1578,6 +1634,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5804563229825962619}
     m_Modifications:
+    - target: {fileID: 2322886453213321513, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: type
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322886453213321513, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
+      propertyPath: group
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2552555218248429928, guid: 1c1cadcb8a001434fad0ad8361d5b44e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

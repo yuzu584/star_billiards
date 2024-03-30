@@ -505,6 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  group: 101
   type: 2000
   text: {fileID: 5571069669276434658}
 --- !u!1 &5571069668366178310

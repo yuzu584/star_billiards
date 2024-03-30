@@ -10,16 +10,24 @@ public class Localize : Singleton<Localize>
     [SerializeField] private LanguageType language;
 
     // 文字列を取得
-    public string GetString(StringType type)
+    public string GetString(StringGroup group, StringType type)
     {
-        // 言語ごとのテキストの数繰り返す
-        for (int i = 0; i < stringTextData.stringData.Length; i++)
+        // 文字列のグループの数繰り返す
+        for (int i = 0; i < stringTextData.strings.Length; ++i)
         {
-            // 指定の StringType と一致したら
-            if (stringTextData.stringData[i].type == type)
+            // グループが見つかったら
+            if (stringTextData.strings[i].group == group)
             {
-                // 指定の StringType と一致したテキストを返す
-                return stringTextData.stringData[i].strings[(int)language].text;
+                // グループごとのテキストの数繰り返す
+                for (int j = 0; j < stringTextData.strings[i].stringData.Length; j++)
+                {
+                    // 指定の StringType と一致したら
+                    if (stringTextData.strings[i].stringData[j].type == type)
+                    {
+                        // 指定の StringType と一致したテキストを返す
+                        return stringTextData.strings[i].stringData[j].text[(int)language];
+                    }
+                }
             }
         }
 

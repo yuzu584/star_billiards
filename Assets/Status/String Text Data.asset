@@ -17,34 +17,170 @@ MonoBehaviour:
     font: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
   - language: 1
     font: {fileID: 12800000, guid: 1a28bfd48b57001499a5bf45f019fc20, type: 3}
-  stringData:
-  - type: 2000
-    strings:
-    - language: 0
-      text: None
-    - language: 1
-      text: "\u672A\u8A2D\u5B9A"
-  - type: 100
-    strings:
-    - language: 0
-      text: StageSelect
-    - language: 1
-      text: "\u30B9\u30C6\u30FC\u30B8\u9078\u629E"
-  - type: 101
-    strings:
-    - language: 0
-      text: Options
-    - language: 1
-      text: "\u8A2D\u5B9A"
-  - type: 102
-    strings:
-    - language: 0
-      text: SkillSelect
-    - language: 1
-      text: "\u30B9\u30AD\u30EB\u9078\u629E"
-  - type: 103
-    strings:
-    - language: 0
-      text: Exit
-    - language: 1
-      text: "\u30B2\u30FC\u30E0\u7D42\u4E86"
+  strings:
+  - group: 101
+    stringData:
+    - type: 1100
+      text:
+      - None
+      - "\u672A\u8A2D\u5B9A"
+  - group: 0
+    stringData:
+    - type: 0
+      text:
+      - Please any key
+      - "\u30DC\u30BF\u30F3\u3092\u62BC\u3057\u3066\u304F\u3060\u3055\u3044"
+    - type: 1
+      text:
+      - StageSelect
+      - "\u30B9\u30C6\u30FC\u30B8\u9078\u629E"
+    - type: 2
+      text:
+      - Options
+      - "\u8A2D\u5B9A"
+    - type: 3
+      text:
+      - SkillSelect
+      - "\u30B9\u30AD\u30EB\u9078\u629E"
+    - type: 4
+      text:
+      - ExitGame
+      - "\u30B2\u30FC\u30E0\u7D42\u4E86"
+    - type: 5
+      text:
+      - Pause
+      - "\u30DD\u30FC\u30BA"
+    - type: 6
+      text:
+      - Return to game
+      - "\u30B2\u30FC\u30E0\u518D\u958B"
+    - type: 7
+      text:
+      - Return to mainmenu
+      - "\u30E1\u30A4\u30F3\u30E1\u30CB\u30E5\u30FC\u306B\u623B\u308B"
+  - group: 10
+    stringData:
+    - type: 100
+      text:
+      - Stage 1
+      - "\u30B9\u30C6\u30FC\u30B8 1"
+    - type: 101
+      text:
+      - Stage 2
+      - "\u30B9\u30C6\u30FC\u30B8 2"
+    - type: 102
+      text:
+      - Stage 3
+      - "\u30B9\u30C6\u30FC\u30B8 3"
+    - type: 103
+      text:
+      - Stage 4
+      - "\u30B9\u30C6\u30FC\u30B8 4"
+    - type: 104
+      text:
+      - Stage 5
+      - "\u30B9\u30C6\u30FC\u30B8 5"
+  - group: 20
+    stringData:
+    - type: 200
+      text:
+      - Destroy Planet
+      - "\u60D1\u661F\u3092\u7834\u58CA\u3057\u308D"
+    - type: 201
+      text:
+      - Reach The Goal
+      - "\u30B4\u30FC\u30EB\u306B\u305F\u3069\u308A\u7740\u3051"
+  - group: 30
+    stringData:
+    - type: 300
+      text:
+      - GamePlay
+      - "\u30B2\u30FC\u30E0\u30D7\u30EC\u30A4"
+    - type: 301
+      text:
+      - Video
+      - "\u30D3\u30C7\u30AA"
+    - type: 302
+      text:
+      - Audio
+      - "\u30AA\u30FC\u30C7\u30A3\u30AA"
+    - type: 303
+      text:
+      - KeyConfig
+      - "\u30AD\u30FC\u30B3\u30F3\u30D5\u30A3\u30B0"
+    - type: 304
+      text:
+      - Language
+      - "\u8A00\u8A9E"
+  - group: 31
+    stringData: []
+  - group: 40
+    stringData:
+    - type: 500
+      text:
+      - SuperCharge
+      - "\u30B9\u30FC\u30D1\u30FC\u30C1\u30E3\u30FC\u30B8"
+    - type: 501
+      text:
+      - PowerSurge
+      - "\u30D1\u30EF\u30FC\u30B5\u30FC\u30B8"
+    - type: 502
+      text:
+      - Huge
+      - "\u5DE8\u5927\u5316"
+    - type: 503
+      text:
+      - GravityWave
+      - "\u91CD\u529B\u6CE2"
+    - type: 504
+      text:
+      - Frieze
+      - "\u30D5\u30EA\u30FC\u30BA"
+    - type: 505
+      text:
+      - GrappingHook
+      - "\u30B0\u30E9\u30C3\u30D7\u30EA\u30F3\u30B0\u30D5\u30C3\u30AF"
+    - type: 506
+      text:
+      - Slow
+      - "\u30B9\u30ED\u30FC"
+    - type: 507
+      text:
+      - InertialControl
+      - "\u30A4\u30F3\u30CA\u30FC\u30B7\u30E3\u30EB\u30B3\u30F3\u30C8\u30ED\u30FC\u30EB"
+    - type: 508
+      text:
+      - Blink
+      - "\u30D6\u30EA\u30F3\u30AF"
+    - type: 509
+      text:
+      - TeleportAnchor
+      - "\u30C6\u30EC\u30DD\u30FC\u30C8\u30A2\u30F3\u30AB\u30FC"
+  - group: 50
+    stringData:
+    - type: 600
+      text:
+      - Charge
+      - "\u30C1\u30E3\u30FC\u30B8"
+  - group: 100
+    stringData:
+    - type: 1000
+      text:
+      - OK
+      - "\u6C7A\u5B9A"
+    - type: 1001
+      text:
+      - Cancel
+      - "\u30AD\u30E3\u30F3\u30BB\u30EB"
+    - type: 1002
+      text:
+      - Apply
+      - "\u78BA\u5B9A"
+    - type: 1003
+      text:
+      - Reset
+      - "\u30EA\u30BB\u30C3\u30C8"
+    - type: 1004
+      text:
+      - Start
+      - "\u30B9\u30BF\u30FC\u30C8"

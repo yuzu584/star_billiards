@@ -6,6 +6,7 @@ using UnityEngine.UI;
 // テキストの文字列を言語に応じて変える
 public class LocalizeText : MonoBehaviour
 {
+    [SerializeField] private StringGroup group;
     [SerializeField] private StringType type;
     [SerializeField] private Text text;
 
@@ -21,7 +22,7 @@ public class LocalizeText : MonoBehaviour
     void SetText()
     {
         // テキストを設定
-        text.text = localize.GetString(type);
+        text.text = localize.GetString(group, type);
 
         // フォントを設定
         Font f = localize.GetFont();

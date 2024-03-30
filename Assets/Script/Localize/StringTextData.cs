@@ -7,7 +7,7 @@ using UnityEngine;
 public class StringTextData : ScriptableObject
 {
     public Fonts[] fonts;
-    public StringData[] stringData;
+    public Strings[] strings;
 }
 
 // 言語の種類
@@ -17,61 +17,78 @@ public enum LanguageType
     Japanese,   // 日本語
 }
 
+// 文字列のグループ
+// 要素が増減してもいいように数値を指定
+public enum StringGroup
+{
+    Screen = 000,
+    StageName = 010,
+    Mission = 020,
+    ConfigTop = 030,
+    ConfigContent = 031,
+    SkillName = 040,
+    Player = 050,
+    System = 100,
+    None = 101,
+}
+
 // 文字列の種類
 // 要素が増減してもいいように数値を指定
 public enum StringType
 {
-    // タイトル画面
+    // 画面
     PleaseAnyKey = 000,
+    StageSelect = 001,
+    Options = 002,
+    SkillSelect = 003,
+    ExitGame = 004,
+    Pause = 005,
+    ReturnToGame = 006,
+    ReturnToMainMenu = 007,
 
-    // メインメニュー
-    StageSelect = 100,
-    Options = 101,
-    SkillSelect = 102,
-    ExitGame = 103,
+    // ステージ名
+    Stage1 = 100,
+    Stage2 = 101,
+    Stage3 = 102,
+    Stage4 = 103,
+    Stage5 = 104,
 
-    // ステージ選択画面
-    Stage1 = 200,
-    Stage2 = 201,
-    Stage3 = 202,
-    Stage4 = 203,
-    Stage5 = 204,
+    // ミッション
+    DestroyPlanet = 200,
+    ReachTheGoal = 201,
 
-    // 設定画面
+    // 設定画面_Top
     GamePlay = 300,
     Video = 301,
     Audio = 302,
     KeyConfig = 303,
     Language = 304,
 
-    // スキル選択画面
-    SuperCharge = 400,
-    PowerSurge = 401,
-    Huge = 402,
-    GravityWave = 403,
-    Frieze = 404,
-    GrapplingHook = 405,
-    Slow = 406,
-    InertialControl = 407,
-    Blink = 408,
-    TeleportAnchor = 409,
+    // 設定項目
 
-    // ゲーム画面
+    // スキル名
+    SuperCharge = 500,
+    PowerSurge = 501,
+    Huge = 502,
+    GravityWave = 503,
+    Frieze = 504,
+    GrapplingHook = 505,
+    Slow = 506,
+    InertialControl = 507,
+    Blink = 508,
+    TeleportAnchor = 509,
 
-    // ポーズ画面
-    Pause = 600,
-    ReturnToGame = 601,
-    ReturnToMainMenu = 602,
+    // プレイヤー関連
+    Charge = 600,
 
-    // 惑星情報画面
-
-    // ステージクリア・ゲームオーバー画面
-
-    // その他
+    // システム
     OK = 1000,
     Cancel = 1001,
+    Apply = 1002,
+    Reset = 1003,
+    Start = 1004,
 
-    None = 2000,
+    None = 1100,
 }
 
 // 言語ごとの構造体
@@ -79,15 +96,7 @@ public enum StringType
 public struct StringData
 {
     public StringType type;
-    public Strings[] strings;
-}
-
-// 文字列の構造体
-[System.Serializable]
-public struct Strings
-{
-    public LanguageType language;
-    public string text;
+    public string[] text;
 }
 
 [System.Serializable]
@@ -95,4 +104,11 @@ public struct Fonts
 {
     public LanguageType language;
     public Font font;
+}
+
+[System.Serializable]
+public struct Strings
+{
+    public StringGroup group;
+    public StringData[] stringData;
 }

@@ -256,6 +256,14 @@ PrefabInstance:
       propertyPath: scrAndLoot.scrType
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: type
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: group
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230016, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Material
       value: 
@@ -479,6 +487,14 @@ PrefabInstance:
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: scrAndLoot.scrType
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: group
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5970234050213230016, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Material
