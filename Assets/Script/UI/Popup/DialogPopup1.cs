@@ -52,6 +52,7 @@ public class DialogPopup1 : PopupParent
     // キャンセルボタンの処理を行う
     void CancelBtnProcess(float f)
     {
+        cancelBtn.PlayBtnSound(cancelBtn.ClickSound);
         cancelBtn.ClickProcess();
     }
 

@@ -39,7 +39,7 @@ public class StageSelectUIController : MonoBehaviour
     void DrawStageInfo(Vector3 pos, GameObject button, StageButton stageButton)
     {
         // ステージボタンの見た目が変えられていたら見た目を元に戻す
-        ResetDetail(false);
+        ResetDetail(true);
 
         sBtn = stageButton;
         oldPos = pos;
@@ -90,6 +90,7 @@ public class StageSelectUIController : MonoBehaviour
             // 処理を高速で行うなら線形補完を行わずに直接値を変える
             if(orFast)
             {
+                lerp.StopAll();
                 oldButton.transform.localPosition = oldPos;
                 oldButton.transform.localScale = new Vector2(1.0f, 1.0f);
             }

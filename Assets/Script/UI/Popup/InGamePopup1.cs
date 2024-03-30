@@ -11,30 +11,12 @@ public class InGamePopup1 : PopupParent
     {
         base.Start();
 
-        scrCon.changeScreen += () =>
-        {
-            // ゲーム画面なら表示、それ以外なら非表示
-            for (int i = 0; i < popupMana.popupContent.Length; i++)
-            {
-                // インスタンスが生成されていれば
-                if (popupMana.popupContent[(int)popupType].instance[i] != null)
-                    popupMana.popupContent[(int)popupType].instance[i].SetActive(scrCon.Screen == ScreenController.ScreenType.InGame);
-            }
-        };
+        scrCon.changeScreen += HideOrDraw;
     }
 
     protected override void OnDestroy()
     {
-        scrCon.changeScreen -= () =>
-        {
-            // ゲーム画面なら表示、それ以外なら非表示
-            for (int i = 0; i < popupMana.popupContent.Length; i++)
-            {
-                // インスタンスが生成されていれば
-                if (popupMana.popupContent[(int)popupType].instance[i] != null)
-                    popupMana.popupContent[(int)popupType].instance[i].SetActive(scrCon.Screen == ScreenController.ScreenType.InGame);
-            }
-        };
+        scrCon.changeScreen -= HideOrDraw;
     }
 
     // ポップアップの処理
@@ -78,5 +60,19 @@ public class InGamePopup1 : PopupParent
 
         // ポップアップを削除
         Destroy();
+    }
+
+    // ポップアップを表示または非表示
+    void HideOrDraw()
+    {
+        // ゲーム画面なら表示、それ以外なら非表示
+        for (int i = 0; i < popupMana.popupContent[(int)popupType].instance.Length; i++)
+        {
+            // インスタンスが生成されていれば
+            if (popupMana.popupContent[(int)popupType].instance[i] != null)
+            {
+                popupMana.popupContent[(int)popupType].instance[i].SetActive(scrCon.Screen == ScreenController.ScreenType.InGame);
+            }
+        }
     }
 }

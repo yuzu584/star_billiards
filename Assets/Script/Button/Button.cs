@@ -111,8 +111,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         orPointer = true;
 
         // 音を再生
-        if (sound != null)
-            StartCoroutine(sound.Play(EnterSound));
+        PlayBtnSound(EnterSound);
 
         // フォーカスされているボタンを設定
         focus.SetFocusBtn(this);
@@ -132,8 +131,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         //音を再生
-        if (sound != null)
-            StartCoroutine(sound.Play(ClickSound));
+        PlayBtnSound(ClickSound);
 
         ClickProcess();
     }
@@ -154,6 +152,15 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public virtual void ClickProcess()
     {
         Debug.Log("クリック時の処理が設定されていません。");
+    }
+
+    // ボタンの音を再生
+    public void PlayBtnSound(AudioClip aClip)
+    {
+        if(aClip != null)
+        {
+            StartCoroutine(sound.Play(aClip));
+        }
     }
 
     // ボタンのアニメーション処理

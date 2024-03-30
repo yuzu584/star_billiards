@@ -20,6 +20,8 @@ public class StageButton : Button
 
     public bool anim = false;       // ボタンがアニメーション中か
 
+    public Vector3 defaultPos;      // ボタンの初期位置
+
     private StageController stageCon;
 
     // マウスポインターが乗った時の処理
@@ -39,7 +41,7 @@ public class StageButton : Button
             stageCon ??= StageController.instance;
 
             stageCon.stageNum = stageNum;
-            stageCon.DSIdele?.Invoke(transform.localPosition, gameObject, this);
+            stageCon.DSIdele?.Invoke(defaultPos, gameObject, this);
         }
 
         // ボタンのアニメーション処理
@@ -62,6 +64,8 @@ public class StageButton : Button
     protected override void OnEnable()
     {
         base.OnEnable();
+
+        defaultPos = gameObject.transform.localPosition;
     }
 
     protected override void Start()
