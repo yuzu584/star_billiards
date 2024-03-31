@@ -198,7 +198,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   group: 0
-  type: 2
+  type:
+    screen: 2
+    stageName: 100
+    mission: 100
+    configTop: 100
+    configContent: 100
+    skillName: 100
+    skillParameter: 100
+    skillDetails: 100
+    player: 100
+    message: 100
+    system: 100
   text: {fileID: 7916718644746467182}
 --- !u!1 &7916718645271867048
 GameObject:
@@ -664,6 +675,10 @@ PrefabInstance:
       propertyPath: group
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: type.configTop
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5213633561102883098, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: m_Text
       value: Audio
@@ -913,6 +928,10 @@ PrefabInstance:
       propertyPath: type
       value: 1100
       objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: group
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 8199208808427150282, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: _optionsController
       value: 
@@ -973,6 +992,10 @@ PrefabInstance:
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: group
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: type.configTop
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5213633561102883098, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: m_Text
@@ -1296,6 +1319,10 @@ PrefabInstance:
       propertyPath: type
       value: 1100
       objectReference: {fileID: 0}
+    - target: {fileID: 5603181521276369992, guid: 18e40ccc74829a64cb36465d193a50af, type: 3}
+      propertyPath: group
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 8831911806282630702, guid: 18e40ccc74829a64cb36465d193a50af, type: 3}
       propertyPath: buttonUp
       value: 
@@ -1429,6 +1456,10 @@ PrefabInstance:
       propertyPath: type
       value: 1100
       objectReference: {fileID: 0}
+    - target: {fileID: 5603181521276369992, guid: 18e40ccc74829a64cb36465d193a50af, type: 3}
+      propertyPath: group
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 8831911806282630702, guid: 18e40ccc74829a64cb36465d193a50af, type: 3}
       propertyPath: buttonUp
       value: 
@@ -1493,6 +1524,10 @@ PrefabInstance:
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: group
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: type.configTop
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5213633561102883098, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: m_Text
@@ -1642,6 +1677,10 @@ PrefabInstance:
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: group
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: type.configTop
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5213633561102883098, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: m_Text
@@ -1900,6 +1939,10 @@ PrefabInstance:
       propertyPath: type
       value: 1100
       objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: group
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 8199208808427150282, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: _optionsController
       value: 
@@ -1960,6 +2003,10 @@ PrefabInstance:
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: group
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: type.configTop
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5213633561102883098, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: m_Text
@@ -2209,6 +2256,10 @@ PrefabInstance:
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: type
       value: 1100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: group
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 8199208808427150282, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: _optionsController

@@ -5,50 +5,161 @@ using UnityEngine;
 // ゲーム内の翻訳に関する処理
 public class Localize : Singleton<Localize>
 {
-    [SerializeField] private StringTextData stringTextData;     // 各言語のテキストが入った ScriptableObject
+    // 言語ごとの情報が入った ScriptableObject
+    [SerializeField] private LanguageData languageData;
+
+    // 各言語のテキストが入った ScriptableObject
+    [SerializeField] private ConfigContentStringData configContentSD;
+    [SerializeField] private ConfigTopStringData configTopSD;
+    [SerializeField] private MessageStringData messageSD;
+    [SerializeField] private MissionStringData missionSD;
+    [SerializeField] private PlayerStringData playerSD;
+    [SerializeField] private ScreenStringData screenSD;
+    [SerializeField] private SkillDetailsStringData skillDetailsSD;
+    [SerializeField] private SkillNameStringData skillNameSD;
+    [SerializeField] private SkillParameterStringData skillParameterSD;
+    [SerializeField] private StageNameStringData stageNameSD;
+    [SerializeField] private SystemStringData systemSD;
 
     [SerializeField] private LanguageType language;
 
     // 文字列を取得
-    public string GetString(StringGroup group, StringType type)
+    public string GetString(StringGroup group, StringEnumStruct type)
     {
-        // 文字列のグループの数繰り返す
-        for (int i = 0; i < stringTextData.strings.Length; ++i)
+        string s;
+
+        switch (group)
         {
-            // グループが見つかったら
-            if (stringTextData.strings[i].group == group)
-            {
-                // グループごとのテキストの数繰り返す
-                for (int j = 0; j < stringTextData.strings[i].stringData.Length; j++)
-                {
-                    // 指定の StringType と一致したら
-                    if (stringTextData.strings[i].stringData[j].type == type)
-                    {
-                        // 指定の StringType と一致したテキストを返す
-                        return stringTextData.strings[i].stringData[j].text[(int)language];
-                    }
-                }
-            }
+            case StringGroup.ConfigContent:     s = GetString_ConfigContent(type.configContent);        break;
+            case StringGroup.ConfigTop:         s = GetString_ConfigTop(type.configTop);                break;
+            case StringGroup.Message:           s = GetString_Message(type.message);                    break;
+            case StringGroup.Mission:           s = GetString_Mission(type.mission);                    break;
+            case StringGroup.Player:            s = GetString_Player(type.player);                      break;
+            case StringGroup.Screen:            s = GetString_Screen(type.screen);                      break;
+            case StringGroup.SkillDetails:      s = GetString_SkillDetails(type.skillDetails);          break;
+            case StringGroup.SkillName:         s = GetString_SkillName(type.skillName);                break;
+            case StringGroup.SkillParameter:    s = GetString_SkillParameter(type.skillParameter);      break;
+            case StringGroup.StageName:         s = GetString_StageName(type.stageName);                break;
+            case StringGroup.System:            s = GetString_System(type.system);                      break;
+            default:                            s = "null";                                             break;
         }
 
-        // 見つからなかったら null を文字列で返す
-        return "null";
+        return s;
     }
 
     // 言語ごとのフォントを取得
     public Font GetFont()
     {
         // 言語ごとのフォントの数繰り返す
-        for(int i = 0; i < stringTextData.fonts.Length; i++)
+        for(int i = 0; i < languageData.fonts.Length; i++)
         {
             // 現在の言語が見つかったら
-            if (stringTextData.fonts[i].language == language)
+            if (languageData.fonts[i].language == language)
             {
                 // 現在の言語のフォントを返す
-                return stringTextData.fonts[i].font;
+                return languageData.fonts[i].font;
             }
         }
 
         return null;
+    }
+
+    public string GetString_ConfigContent(EnumConfigContent type)
+    {
+        for (int i = 0; i < configContentSD.strings.Length; i++)
+            if (configContentSD.strings[i].type == type)
+                return configContentSD.strings[i].text[(int)language];
+
+        return "null";
+    }
+
+    public string GetString_ConfigTop(EnumConfigTop type)
+    {
+        for (int i = 0; i < configTopSD.strings.Length; i++)
+            if (configTopSD.strings[i].type == type)
+                return configTopSD.strings[i].text[(int)language];
+
+        return "null";
+    }
+
+    public string GetString_Message(EnumMessage type)
+    {
+        for (int i = 0; i < messageSD.strings.Length; i++)
+            if (messageSD.strings[i].type == type)
+                return messageSD.strings[i].text[(int)language];
+
+        return "null";
+    }
+
+    public string GetString_Mission(EnumMission type)
+    {
+        for (int i = 0; i < missionSD.strings.Length; i++)
+            if (missionSD.strings[i].type == type)
+                return missionSD.strings[i].text[(int)language];
+
+        return "null";
+    }
+
+    public string GetString_Player(EnumPlayer type)
+    {
+        for (int i = 0; i < playerSD.strings.Length; i++)
+            if (playerSD.strings[i].type == type)
+                return playerSD.strings[i].text[(int)language];
+
+        return "null";
+    }
+
+    public string GetString_Screen(EnumScreen type)
+    {
+        for (int i = 0; i < screenSD.strings.Length; i++)
+            if (screenSD.strings[i].type == type)
+                return screenSD.strings[i].text[(int)language];
+
+        return "null";
+    }
+
+    public string GetString_SkillDetails(EnumSkillDetails type)
+    {
+        for (int i = 0; i < skillDetailsSD.strings.Length; i++)
+            if (skillDetailsSD.strings[i].type == type)
+                return skillDetailsSD.strings[i].text[(int)language];
+
+        return "null";
+    }
+
+    public string GetString_SkillName(EnumSkillName type)
+    {
+        for (int i = 0; i < skillNameSD.strings.Length; i++)
+            if (skillNameSD.strings[i].type == type)
+                return skillNameSD.strings[i].text[(int)language];
+
+        return "null";
+    }
+
+    public string GetString_SkillParameter(EnumSkillParameter type)
+    {
+        for (int i = 0; i < skillParameterSD.strings.Length; i++)
+            if (skillParameterSD.strings[i].type == type)
+                return skillParameterSD.strings[i].text[(int)language];
+
+        return "null";
+    }
+
+    public string GetString_StageName(EnumStageName type)
+    {
+        for (int i = 0; i < stageNameSD.strings.Length; i++)
+            if (stageNameSD.strings[i].type == type)
+                return stageNameSD.strings[i].text[(int)language];
+
+        return "null";
+    }
+
+    public string GetString_System(EnumSystem type)
+    {
+        for (int i = 0; i < systemSD.strings.Length; i++)
+            if (systemSD.strings[i].type == type)
+                return systemSD.strings[i].text[(int)language];
+
+        return "null";
     }
 }

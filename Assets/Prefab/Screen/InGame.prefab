@@ -147,7 +147,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   group: 50
-  type: 600
+  type:
+    screen: 100
+    stageName: 100
+    mission: 100
+    configTop: 100
+    configContent: 100
+    skillName: 100
+    skillParameter: 100
+    skillDetails: 100
+    player: 0
+    message: 100
+    system: 100
   text: {fileID: 6324641189447423496}
 --- !u!1 &6324641189460605311
 GameObject:

@@ -2,14 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 各言語のテキスト
-[CreateAssetMenu(menuName = "MyScriptable/Create StringTextData")]
-public class StringTextData : ScriptableObject
-{
-    public Fonts[] fonts;
-    public Strings[] strings;
-}
-
 // 言語の種類
 public enum LanguageType
 {
@@ -21,108 +13,154 @@ public enum LanguageType
 // 要素が増減してもいいように数値を指定
 public enum StringGroup
 {
-    Screen              = 000,  // 画面関係
-    StageName           = 010,  // ステージ名
-    Mission             = 020,  // ミッション名
-    ConfigTop           = 030,  // 設定画面の項目の名前
-    ConfigContent       = 031,  // 設定画面で設定可能な項目の名前
-    SkillName           = 040,  // スキル名
-    SkillParameter      = 041,  // スキルのパラメーター(消費エネルギーや効果時間など)
-    SkillDetails        = 042,  // スキルの効果
-    Player              = 050,  // プレイヤー関連
-    Message             = 060,  // 主にポップアップで出る文章
-    System              = 100,  // システム
-    None                = 101,
+    Screen                  = 000,  // 画面関係
+    StageName               = 010,  // ステージ名
+    Mission                 = 020,  // ミッション
+    ConfigTop               = 030,  // 設定画面の項目の名前
+    ConfigContent           = 031,  // 設定画面で設定可能な項目の名前
+    SkillName               = 040,  // スキル名
+    SkillParameter          = 041,  // スキルのパラメーター(消費エネルギーや効果時間など)
+    SkillDetails            = 042,  // スキルの効果
+    Player                  = 050,  // プレイヤー関連
+    Message                 = 060,  // 主にポップアップで出る文章
+    System                  = 100,  // システム
+    None                    = 101,
 }
 
-// 文字列の種類
-// 要素が増減してもいいように数値を指定
-public enum StringType
-{
-    // 画面
-    PleaseAnyKey        = 000,  // タイトル画面にあるテキスト
-    StageSelect         = 001,  // ステージ選択
-    Options             = 002,  // 設定
-    SkillSelect         = 003,  // スキル選択
-    ExitGame            = 004,  // ゲーム終了
-    Pause               = 005,  // ポーズ
-    ReturnToGame        = 006,  // ゲーム再開
-    ReturnToMainMenu    = 007,  // メインメニューに戻る
-
-    // ステージ名
-    Stage1              = 100,
-    Stage2              = 101,
-    Stage3              = 102,
-    Stage4              = 103,
-    Stage5              = 104,
-
-    // ミッション名
-    DestroyPlanet       = 200,  // 惑星を破壊しろ
-    ReachTheGoal        = 201,  // ゴールにたどり着け
-
-    // 設定画面_Top
-    GamePlay            = 300,  // ゲームプレイ
-    Video               = 301,  // ビデオ
-    Audio               = 302,  // オーディオ
-    KeyConfig           = 303,  // キーコンフィグ
-    Language            = 304,  // 言語
-
-    // 設定項目
-
-    // スキル名
-    SuperCharge         = 500,  // スーパーチャージ
-    PowerSurge          = 501,  // パワーサージ
-    Huge                = 502,  // 巨大化
-    GravityWave         = 503,  // 重力波
-    Frieze              = 504,  // フリーズ
-    GrapplingHook       = 505,  // グラップリングフック
-    Slow                = 506,  // スロー
-    InertialControl     = 507,  // インナーシャルコントロール
-    Blink               = 508,  // ブリンク
-    TeleportAnchor      = 509,  // テレポートアンカー
-
-    // スキルのパラメーター
-    EnergyCost          = 530,  // エネルギー消費量
-    EffectTime          = 531,  // 効果時間
-    CoolDown            = 532,  // クールダウン
-    EffectDetails       = 533,  // スキルの効果
-
-    // スキルの効果
-    SuperChargeDetails      = 560,  // スーパーチャージの効果
-    PowerSurgeDetails       = 561,  // パワーサージの効果
-    HugeDetails             = 562,  // 巨大化の効果
-    GravityWaveDetails      = 563,  // 重力波の効果
-    FriezeDetails           = 564,  // フリーズの効果
-    GrapplingHookDetails    = 565,  // グラップリングフックの効果
-    SlowDetails             = 566,  // スローの効果
-    InertialControlDetails  = 567,  // インナーシャルコントロールの効果
-    BlinkDetails            = 568,  // ブリンクの効果
-    TeleportAnchorDetails   = 569,  // テレポートアンカーの効果
-
-    // プレイヤー関連
-    Charge              = 600,  // チャージ
-
-    // 主にポップアップで出る文章
-    WasDecided          = 700,  // 確定しました
-    PleaseSelect3Skills = 701,  // スキルを3つ選んでいないときのテキスト
-    ExitGameText        = 702,  // ゲーム終了時のテキスト
-
-    // システム
-    OK                  = 1000, // 決定
-    Cancel              = 1001, // キャンセル
-    Apply               = 1002, // 確定
-    Reset               = 1003, // リセット
-    Start               = 1004, // スタート
-
-    None                = 1100,
-}
-
-// 言語ごとの構造体
+// 文字列の列挙型の構造体
 [System.Serializable]
-public struct StringData
+public struct StringEnumStruct
 {
-    public StringType type;
-    public string[] text;
+    public EnumScreen screen;
+    public EnumStageName stageName;
+    public EnumMission mission;
+    public EnumConfigTop configTop;
+    public EnumConfigContent configContent;
+    public EnumSkillName skillName;
+    public EnumSkillParameter skillParameter;
+    public EnumSkillDetails skillDetails;
+    public EnumPlayer player;
+    public EnumMessage message;
+    public EnumSystem system;
+}
+
+// 画面関係の列挙型
+public enum EnumScreen
+{
+    PleaseAnyKey            = 000,  // タイトル画面にあるテキスト
+    StageSelect             = 001,  // ステージ選択
+    Options                 = 002,  // 設定
+    SkillSelect             = 003,  // スキル選択
+    ExitGame                = 004,  // ゲーム終了
+    Pause                   = 005,  // ポーズ
+    ReturnToGame            = 006,  // ゲーム再開
+    ReturnToMainMenu        = 007,  // メインメニューに戻る
+    None                    = 100,
+}
+
+// ステージ名の列挙型
+public enum EnumStageName
+{
+    Stage1                  = 000,
+    Stage2                  = 001,
+    Stage3                  = 002,
+    Stage4                  = 003,
+    Stage5                  = 004,
+    None                    = 100,
+}
+
+// ミッションの列挙型
+public enum EnumMission
+{
+    DestroyPlanet           = 000,  // 惑星を破壊しろ
+    ReachTheGoal            = 001,  // ゴールにたどり着け
+    None                    = 100,
+}
+
+// 設定画面の項目の名前の列挙型
+public enum EnumConfigTop
+{
+    GamePlay                = 000,  // ゲームプレイ
+    Video                   = 001,  // ビデオ
+    Audio                   = 002,  // オーディオ
+    KeyConfig               = 003,  // キーコンフィグ
+    Language                = 004,  // 言語
+    None                    = 100,
+}
+
+// 設定画面で変更可能な項目の名前の列挙型
+public enum EnumConfigContent
+{
+    None                    = 100,
+}
+
+// スキル名の列挙型
+public enum EnumSkillName
+{
+    SuperCharge             = 000,  // スーパーチャージ
+    PowerSurge              = 001,  // パワーサージ
+    Huge                    = 002,  // 巨大化
+    GravityWave             = 003,  // 重力波
+    Frieze                  = 004,  // フリーズ
+    GrapplingHook           = 005,  // グラップリングフック
+    Slow                    = 006,  // スロー
+    InertialControl         = 007,  // インナーシャルコントロール
+    Blink                   = 008,  // ブリンク
+    TeleportAnchor          = 009,  // テレポートアンカー
+    None                    = 100,
+}
+
+// スキルのパラメーターの列挙型
+public enum EnumSkillParameter
+{
+    EnergyCost              = 000,  // エネルギー消費量
+    EffectTime              = 001,  // 効果時間
+    CoolDown                = 002,  // クールダウン
+    EffectDetails           = 003,  // スキルの効果
+    None                    = 100,
+}
+
+// スキルの効果の文章の列挙型
+public enum EnumSkillDetails
+{
+    SuperCharge             = 000,  // スーパーチャージの効果
+    PowerSurge              = 001,  // パワーサージの効果
+    Huge                    = 002,  // 巨大化の効果
+    GravityWave             = 003,  // 重力波の効果
+    Frieze                  = 004,  // フリーズの効果
+    GrapplingHook           = 005,  // グラップリングフックの効果
+    Slow                    = 006,  // スローの効果
+    InertialControl         = 007,  // インナーシャルコントロールの効果
+    Blink                   = 008,  // ブリンクの効果
+    TeleportAnchor          = 009,  // テレポートアンカーの効果
+    None                    = 100,
+}
+
+// プレイヤー関連の列挙型
+public enum EnumPlayer
+{
+    Charge                  = 000,  // チャージ
+    None                    = 100,
+}
+
+// 主にポップアップで出る文章の列挙型
+public enum EnumMessage
+{
+    WasDecided              = 000,  // 確定しました
+    PleaseSelect3Skills     = 001,  // スキルを3つ選んでいないときのテキスト
+    ExitGameText            = 002,  // ゲーム終了時のテキスト
+    None                    = 100,
+}
+
+// システムの列挙型
+public enum EnumSystem
+{
+    OK                      = 000,  // 決定
+    Cancel                  = 001,  // キャンセル
+    Apply                   = 002,  // 確定
+    Reset                   = 003,  // リセット
+    Start                   = 004,  // スタート
+    None                    = 100,
 }
 
 [System.Serializable]
@@ -132,9 +170,90 @@ public struct Fonts
     public Font font;
 }
 
+// 画面関係の文字列を扱う構造体
 [System.Serializable]
-public struct Strings
+public struct ScreenStrings
 {
-    public StringGroup group;
-    public StringData[] stringData;
+    public EnumScreen type;
+    public string[] text;
+}
+
+// ステージ名の文字列を扱う構造体
+[System.Serializable]
+public struct StageNameStrings
+{
+    public EnumStageName type;
+    public string[] text;
+}
+
+// ミッションの文字列を扱う構造体
+[System.Serializable]
+public struct MissionStrings
+{
+    public EnumMission type;
+    public string[] text;
+}
+
+// 設定画面の項目の名前の文字列を扱う構造体
+[System.Serializable]
+public struct ConfigTopStrings
+{
+    public EnumConfigTop type;
+    public string[] text;
+}
+
+// 設定画面で設定可能な項目の名前の文字列を扱う構造体
+[System.Serializable]
+public struct ConfigContentStrings
+{
+    public EnumConfigContent type;
+    public string[] text;
+}
+
+// スキル名の文字列を扱う構造体
+[System.Serializable]
+public struct SkillNameStrings
+{
+    public EnumSkillName type;
+    public string[] text;
+}
+
+// スキルのパラメーターの文字列を扱う構造体
+[System.Serializable]
+public struct SkillParameterStrings
+{
+    public EnumSkillParameter type;
+    public string[] text;
+}
+
+// スキルの効果の文字列を扱う構造体
+[System.Serializable]
+public struct SkillDetailsStrings
+{
+    public EnumSkillDetails type;
+    public string[] text;
+}
+
+// プレイヤー関連の文字列を扱う構造体
+[System.Serializable]
+public struct PlayerStrings
+{
+    public EnumPlayer type;
+    public string[] text;
+}
+
+// 主にポップアップで出る文字列を扱う構造体
+[System.Serializable]
+public struct MessageStrings
+{
+    public EnumMessage type;
+    public string[] text;
+}
+
+// システムの文字列を扱う構造体
+[System.Serializable]
+public struct SystemStrings
+{
+    public EnumSystem type;
+    public string[] text;
 }

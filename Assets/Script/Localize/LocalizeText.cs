@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LocalizeText : MonoBehaviour
 {
     [SerializeField] private StringGroup group;
-    [SerializeField] private StringType type;
+    [SerializeField] private StringEnumStruct type;
     [SerializeField] private Text text;
 
     private Localize localize;

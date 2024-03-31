@@ -103,12 +103,12 @@ public class Button1 : Button
             skillSelect.SetSelectSlot();
 
             // ポップアップ表示
-            popupMana.DrawPopup(PopupManager.PopupType.InMenuPopup1, localize.GetString(StringGroup.Message, StringType.WasDecided));
+            popupMana.DrawPopup(PopupManager.PopupType.InMenuPopup1, localize.GetString_Message(EnumMessage.WasDecided));
         }
         else
         {
             // ポップアップ表示
-            popupMana.DrawPopup(PopupManager.PopupType.InMenuPopup1, localize.GetString(StringGroup.Message, StringType.PleaseSelect3Skills));
+            popupMana.DrawPopup(PopupManager.PopupType.InMenuPopup1, localize.GetString_Message(EnumMessage.PleaseSelect3Skills));
         }
     }
 
@@ -122,7 +122,7 @@ public class Button1 : Button
     void ExitGame()
     {
         // ダイアログポップアップを生成
-        GameObject g = popupMana.DrawPopup(PopupManager.PopupType.DialogPopup1, localize.GetString(StringGroup.Message, StringType.ExitGameText));
+        GameObject g = popupMana.DrawPopup(PopupManager.PopupType.DialogPopup1, localize.GetString_Message(EnumMessage.ExitGameText));
 
         // ポップアップ生成済みなら終了
         if (g == null) return;

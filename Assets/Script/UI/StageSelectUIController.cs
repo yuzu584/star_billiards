@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -65,26 +66,10 @@ public class StageSelectUIController : MonoBehaviour
         stageCon ??= StageController.instance;
 
         // ステージ名を設定
-        switch (stageCon.stageNum)
-        {
-            case 0: stageName.text = localize.GetString(StringGroup.StageName, StringType.Stage1); break;
-            case 1: stageName.text = localize.GetString(StringGroup.StageName, StringType.Stage2); break;
-            case 2: stageName.text = localize.GetString(StringGroup.StageName, StringType.Stage3); break;
-            case 3: stageName.text = localize.GetString(StringGroup.StageName, StringType.Stage4); break;
-            case 4: stageName.text = localize.GetString(StringGroup.StageName, StringType.Stage5); break;
-            default:break;
-        }
+        stageName.text = localize.GetString_StageName((EnumStageName)Enum.ToObject(typeof(EnumStageName), stageCon.stageNum));
 
         // ミッション名を設定
-        switch (stageData.stageList[stageCon.stageNum].missionNum)
-        {
-            case 0: // 惑星を破壊しろ
-                missionName.text = localize.GetString(StringGroup.Mission, StringType.DestroyPlanet);
-                break;
-            case 1: // ゴールにたどり着け
-                missionName.text = localize.GetString(StringGroup.Mission, StringType.ReachTheGoal);
-                break;
-        }
+        missionName.text = localize.GetString_Mission((EnumMission)Enum.ToObject(typeof(EnumMission), stageData.stageList[stageCon.stageNum].missionNum));
 
         // ステージボタンを動かす
         StartCoroutine(lerp.Position_GameObject(oldButton, oldButton.transform.localPosition, newPos + new Vector3(-85.0f, 20.0f, 0.0f), fadeTime));

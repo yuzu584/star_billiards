@@ -570,7 +570,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d7ea10ec65cfa41ae874bf2f345694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stringTextData: {fileID: 11400000, guid: c6522f2ef3d36b74594d0b9cb95c0caa, type: 2}
+  languageData: {fileID: 11400000, guid: 99a464d26c71375419701e3962506339, type: 2}
+  configContentSD: {fileID: 11400000, guid: cbc5931175aa8304bb3cd1d54ce35dc4, type: 2}
+  configTopSD: {fileID: 11400000, guid: 86bdd08828fd09341a31220573faae22, type: 2}
+  messageSD: {fileID: 11400000, guid: 633c3b3e458464b428456c81bf85a5bc, type: 2}
+  missionSD: {fileID: 11400000, guid: 221c8a7eac8252d4d88f2bc6c0208cff, type: 2}
+  playerSD: {fileID: 11400000, guid: 6a9f5134dfda3364c91345be66d38150, type: 2}
+  screenSD: {fileID: 11400000, guid: 76276c8c86d66504288d9350edd08242, type: 2}
+  skillDetailsSD: {fileID: 11400000, guid: 88ea2634621a53d4bbb0a40e0e414471, type: 2}
+  skillNameSD: {fileID: 11400000, guid: b51f992a05ebcf347a590cf4bcf5328c, type: 2}
+  skillParameterSD: {fileID: 11400000, guid: 3fbf39378fa173148b510a8df5198cc4, type: 2}
+  stageNameSD: {fileID: 11400000, guid: 333b4a5b798153e43b639866f7b77ea8, type: 2}
+  systemSD: {fileID: 11400000, guid: 10c227ba5f9e7ac46be1c511aa586474, type: 2}
   language: 1
 --- !u!1 &702041413
 GameObject:
