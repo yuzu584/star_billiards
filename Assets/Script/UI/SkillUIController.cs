@@ -20,9 +20,8 @@ public class SkillUIController : MonoBehaviour
     // スキルのUIを描画
     void DrawSkillUI()
     {
-        string skillName;
-        skillName = localize.GetString_SkillName((EnumSkillName)Enum.ToObject(typeof(EnumSkillName),skillCon.selectSkill));
-
+        // スキル名の文字列を取得
+        string skillName = localize.GetString_SkillName((EnumSkillName)Enum.ToObject(typeof(EnumSkillName), (int)skillCon.skillSlot[skillCon.selectSkill]));
         float effectTime = AppConst.SKILL_EFFECT_TIME[(int)skillCon.skillSlot[skillCon.selectSkill]];
         float coolDown = AppConst.SKILL_COOLDOWN[(int)skillCon.skillSlot[skillCon.selectSkill]];
 

@@ -232,7 +232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &264912051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,6 +581,7 @@ MonoBehaviour:
   skillNameSD: {fileID: 11400000, guid: b51f992a05ebcf347a590cf4bcf5328c, type: 2}
   skillParameterSD: {fileID: 11400000, guid: 3fbf39378fa173148b510a8df5198cc4, type: 2}
   stageNameSD: {fileID: 11400000, guid: 333b4a5b798153e43b639866f7b77ea8, type: 2}
+  starNameSD: {fileID: 11400000, guid: c90ae8ab066853a46aa77abe8a214d90, type: 2}
   systemSD: {fileID: 11400000, guid: 10c227ba5f9e7ac46be1c511aa586474, type: 2}
   language: 1
 --- !u!1 &702041413

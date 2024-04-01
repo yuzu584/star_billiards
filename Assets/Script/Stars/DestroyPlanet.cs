@@ -11,6 +11,7 @@ public class DestroyPlanet : Singleton<DestroyPlanet>
     private StageController stageCon;
     private PlanetAmount planetAmount;
     private PopupManager popupMana;
+    private Localize localize;
 
     public delegate void DestroyPlanetDele();
     public DestroyPlanetDele DPdele;
@@ -21,6 +22,7 @@ public class DestroyPlanet : Singleton<DestroyPlanet>
         stageCon = StageController.instance;
         planetAmount = PlanetAmount.instance;
         popupMana = PopupManager.instance;
+        localize = Localize.instance;
     }
 
     // ˜f¯‚ğ”j‰ó
@@ -30,7 +32,7 @@ public class DestroyPlanet : Singleton<DestroyPlanet>
         if ((obj.CompareTag("Planet")) && (scrCon.Screen == ScreenController.ScreenType.InGame))
         {
             // ˜f¯‚ª”j‰ó‚³‚ê‚½|‚ğ“`‚¦‚éƒ|ƒbƒvƒAƒbƒv‚ğ•`‰æ
-            popupMana.DrawPopup(PopupManager.PopupType.InGamePopup1, obj.name +" was destroyed");
+            popupMana.DrawPopup(PopupManager.PopupType.InGamePopup1, obj.name + " " + localize.GetString_Message(EnumMessage.WasDestroyed));
 
             // ƒ~ƒbƒVƒ‡ƒ“‚ª"‘S‚Ä‚Ì˜f¯‚ğ”j‰ó"‚È‚ç
             if (stageData.stageList[stageCon.stageNum].missionNum == 0)

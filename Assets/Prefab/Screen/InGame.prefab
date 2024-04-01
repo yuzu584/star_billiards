@@ -158,6 +158,7 @@ MonoBehaviour:
     skillDetails: 100
     player: 0
     message: 100
+    starName: 0
     system: 100
   text: {fileID: 6324641189447423496}
 --- !u!1 &6324641189460605311
@@ -760,6 +761,7 @@ GameObject:
   - component: {fileID: 6324641190129028157}
   - component: {fileID: 6324641190129028159}
   - component: {fileID: 6324641190129028158}
+  - component: {fileID: 8696156054737769528}
   m_Layer: 5
   m_Name: Planet Name
   m_TagString: Untagged
@@ -829,6 +831,33 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: PlanetName
+--- !u!114 &8696156054737769528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6324641190129028156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: 70
+  type:
+    screen: 100
+    stageName: 100
+    mission: 100
+    configTop: 100
+    configContent: 100
+    skillName: 100
+    skillParameter: 100
+    skillDetails: 100
+    player: 100
+    message: 100
+    starName: 100
+    system: 100
+  text: {fileID: 6324641190129028158}
 --- !u!1 &6324641190157985591
 GameObject:
   m_ObjectHideFlags: 0

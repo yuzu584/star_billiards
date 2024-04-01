@@ -19,6 +19,7 @@ public class Localize : Singleton<Localize>
     [SerializeField] private SkillNameStringData skillNameSD;
     [SerializeField] private SkillParameterStringData skillParameterSD;
     [SerializeField] private StageNameStringData stageNameSD;
+    [SerializeField] private StarNameStringData starNameSD;
     [SerializeField] private SystemStringData systemSD;
 
     [SerializeField] private LanguageType language;
@@ -40,6 +41,7 @@ public class Localize : Singleton<Localize>
             case StringGroup.SkillName:         s = GetString_SkillName(type.skillName);                break;
             case StringGroup.SkillParameter:    s = GetString_SkillParameter(type.skillParameter);      break;
             case StringGroup.StageName:         s = GetString_StageName(type.stageName);                break;
+            case StringGroup.StarName:          s = GetString_StarName(type.starName);                  break;
             case StringGroup.System:            s = GetString_System(type.system);                      break;
             default:                            s = "null";                                             break;
         }
@@ -150,6 +152,16 @@ public class Localize : Singleton<Localize>
         for (int i = 0; i < stageNameSD.strings.Length; i++)
             if (stageNameSD.strings[i].type == type)
                 return stageNameSD.strings[i].text[(int)language];
+
+        return "null";
+    }
+
+
+    public string GetString_StarName(EnumStarName type)
+    {
+        for (int i = 0; i < starNameSD.strings.Length; i++)
+            if (starNameSD.strings[i].type == type)
+                return starNameSD.strings[i].text[(int)language];
 
         return "null";
     }

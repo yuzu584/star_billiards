@@ -23,6 +23,7 @@ public enum StringGroup
     SkillDetails            = 042,  // スキルの効果
     Player                  = 050,  // プレイヤー関連
     Message                 = 060,  // 主にポップアップで出る文章
+    StarName                = 070,  // 星の名前
     System                  = 100,  // システム
     None                    = 101,
 }
@@ -41,6 +42,7 @@ public struct StringEnumStruct
     public EnumSkillDetails skillDetails;
     public EnumPlayer player;
     public EnumMessage message;
+    public EnumStarName starName;
     public EnumSystem system;
 }
 
@@ -149,6 +151,23 @@ public enum EnumMessage
     WasDecided              = 000,  // 確定しました
     PleaseSelect3Skills     = 001,  // スキルを3つ選んでいないときのテキスト
     ExitGameText            = 002,  // ゲーム終了時のテキスト
+    WasDestroyed            = 003,  // 惑星が破壊されたときのメッセージ
+    None                    = 100,
+}
+
+// 星の名前の列挙型
+public enum EnumStarName
+{
+    Sun                     = 000,  // 太陽
+    Mercury                 = 001,  // 水星
+    Venus                   = 002,  // 金星
+    Earth                   = 003,  // 地球
+    Mars                    = 004,  // 火星
+    Jupiter                 = 005,  // 木星
+    Saturn                  = 006,  // 土星
+    Uranus                  = 007,  // 天王星
+    Neptune                 = 008,  // 海王星
+    BlackHole               = 009,  // ブラックホール
     None                    = 100,
 }
 
@@ -247,6 +266,14 @@ public struct PlayerStrings
 public struct MessageStrings
 {
     public EnumMessage type;
+    public string[] text;
+}
+
+// 星の名前の文字列を扱う構造体
+[System.Serializable]
+public struct StarNameStrings
+{
+    public EnumStarName type;
     public string[] text;
 }
 

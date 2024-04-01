@@ -29,3 +29,7 @@ MonoBehaviour:
     text:
     - Do you want to exit the game?
     - "\u30B2\u30FC\u30E0\u3092\u7D42\u4E86\u3057\u307E\u3059\u304B?"
+  - type: 3
+    text:
+    - was destroyed
+    - "\u306F\u7834\u58CA\u3055\u308C\u305F"
