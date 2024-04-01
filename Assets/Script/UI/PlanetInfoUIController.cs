@@ -44,8 +44,11 @@ public class PlanetInfoUIController : MonoBehaviour
 
     void Update()
     {
-        // ƒQ[ƒ€’†‚©‚Â‘ÎÛ‚ª˜f¯‚È‚ç•`‰æ
-        if ((scrCon.Screen == ScreenController.ScreenType.InGame) && (sphereRay.hitObjectTag == "Planet"))
+        bool isPlanet = sphereRay.hitObjectTag == "Planet";         // ‘ÎÛ‚ª˜f¯‚©
+        bool isFixedStar = sphereRay.hitObjectTag == "FixedStar";   // ‘ÎÛ‚ªP¯‚©
+
+        // ƒQ[ƒ€’†‚©‚Â‘ÎÛ‚ª˜f¯‚©P¯‚È‚ç•`‰æ
+        if ((scrCon.Screen == ScreenController.ScreenType.InGame) && ((isPlanet || isFixedStar)))
         {
             // ˜f¯î•ñUI‚ğ•`‰æ
             Draw(sphereRay.hitObjectPosition, sphereRay.hitObjectName);
@@ -53,7 +56,7 @@ public class PlanetInfoUIController : MonoBehaviour
             // ‹“_ˆÚ“®‘¬“x‚ğ’x‚­‚·‚é
             TPSCamera.instance.rate = AppConst.CAMERA_SLOW_SPEED_RATE;
         }
-        // ‘ÎÛ‚ª˜f¯ˆÈŠO‚È‚ç
+        // ‘ÎÛ‚ª˜f¯‚©P¯ˆÈŠO‚È‚ç
         else
         {
             targetRing.enabled = false;

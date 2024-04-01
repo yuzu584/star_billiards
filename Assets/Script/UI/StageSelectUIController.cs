@@ -59,8 +59,8 @@ public class StageSelectUIController : MonoBehaviour
 
         // ステージ情報UIの座標を設定
         Vector3 newPos = oldPos;
-        newPos.x = Mathf.Clamp(newPos.x, -200.0f, 200.0f);
-        newPos.y = Mathf.Clamp(newPos.y, -100.0f, 100.0f);
+        newPos.x = Mathf.Clamp(newPos.x, -270.0f, 270.0f);
+        newPos.y = Mathf.Clamp(newPos.y, -50.0f, 50.0f);
         stageInfoObj.transform.localPosition = newPos;
 
         stageCon ??= StageController.instance;
@@ -72,7 +72,7 @@ public class StageSelectUIController : MonoBehaviour
         missionName.text = localize.GetString_Mission((EnumMission)Enum.ToObject(typeof(EnumMission), stageData.stageList[stageCon.stageNum].missionNum));
 
         // ステージボタンを動かす
-        StartCoroutine(lerp.Position_GameObject(oldButton, oldButton.transform.localPosition, newPos + new Vector3(-85.0f, 20.0f, 0.0f), fadeTime));
+        StartCoroutine(lerp.Position_GameObject(oldButton, oldButton.transform.localPosition, newPos + new Vector3(-80.0f, 55.0f, 0.0f), fadeTime));
         StartCoroutine(lerp.Scale_GameObject(oldButton, oldButton.transform.localScale, new Vector2(0.4f, 0.4f), fadeTime));
 
         // ステージ情報UIを表示
