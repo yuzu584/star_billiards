@@ -319,6 +319,7 @@ GameObject:
   - component: {fileID: 291823624}
   - component: {fileID: 291823625}
   - component: {fileID: 291823626}
+  - component: {fileID: 291823627}
   m_Layer: 0
   m_Name: StageController
   m_TagString: Untagged
@@ -369,6 +370,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
+--- !u!114 &291823627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291823623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc6fdb75d261e34cbdc784e42ffa0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageData: {fileID: 11400000, guid: ed97b07f45508824e8c10d41d03f30a9, type: 2}
+  score: 
 --- !u!1 &315313512
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +598,6 @@ MonoBehaviour:
   stageNameSD: {fileID: 11400000, guid: 333b4a5b798153e43b639866f7b77ea8, type: 2}
   starNameSD: {fileID: 11400000, guid: c90ae8ab066853a46aa77abe8a214d90, type: 2}
   systemSD: {fileID: 11400000, guid: 10c227ba5f9e7ac46be1c511aa586474, type: 2}
-  language: 1
 --- !u!1 &702041413
 GameObject:
   m_ObjectHideFlags: 0

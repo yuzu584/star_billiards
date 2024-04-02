@@ -58,7 +58,7 @@ public class GameOverUI : Singleton<GameOverUI>
         StartCoroutine(lerp.Position_Text(gameOverText, startPos, endPos, fadeTime));
 
         // 一瞬待つ
-        yield return new WaitForSecondsRealtime(2.0f);
+        yield return new WaitForSecondsRealtime(1.0f);
 
         // テキストを動かす
         startPos = new Vector3(0.0f, 0.0f, 0.0f);

@@ -24,6 +24,7 @@ public class StageSelectUIController : MonoBehaviour
 
     private StageController stageCon;
     private Localize localize;
+    private StageScore stageScore;
     private Lerp lerp;
 
     void Start()
@@ -33,6 +34,7 @@ public class StageSelectUIController : MonoBehaviour
         stageCon.DSIdele += DrawStageInfo;
         
         localize = Localize.instance;
+        stageScore = StageScore.instance;
         lerp ??= gameObject.AddComponent<Lerp>();
 
         // テキストのフォントを設定
@@ -75,6 +77,12 @@ public class StageSelectUIController : MonoBehaviour
 
         // 制限時間のテキストを設定
         timeLimitText.text = stageData.stageList[stageCon.stageNum].timeLimit.ToString() + "s";
+
+        // スコアのテキストを設定
+        if(stageScore.score[stageCon.stageNum] == 0)
+            scoreText.text = "--------";
+        else
+            scoreText.text = stageScore.score[stageCon.stageNum].ToString();
 
         // ステージボタンを動かす
         StartCoroutine(lerp.Position_GameObject(oldButton, oldButton.transform.localPosition, newPos + new Vector3(-73.0f, 95.0f, 0.0f), fadeTime));

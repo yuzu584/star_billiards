@@ -10,11 +10,14 @@ public class StageClearUIController : MonoBehaviour
     [SerializeField] private Material stageClearButtonMat;              // ボタンのマテリアル
     public float fadeTime = 0.4f;                                       // フェード時間
 
-    private ScreenController scrCon;
+    private StageScore stageScore;
+    private StageController stageCon;
     private Lerp lerp;
 
     [SerializeField] private GameObject[] btn;                          // 画面に存在するボタン
     [SerializeField] private Text stageClearText;                       // ステージクリア画面のテキスト
+    [SerializeField] private Text[] scoreText;                          // スコアの項目名のテキスト
+    [SerializeField] private Text[] scoreValueText;                     // スコアの値のテキスト
 
 
     // ステージクリア画面のUIを描画
@@ -23,6 +26,13 @@ public class StageClearUIController : MonoBehaviour
         // ボタンを非表示
         for (int i = 0; i < btn.Length; i++)
             btn[i].SetActive(false);
+
+        // テキストを非表示
+        for(int i = 0; i < scoreText.Length; i++)
+            scoreText[i].enabled = false;
+
+        for (int i = 0; i < scoreValueText.Length; i++)
+            scoreText[i].enabled = false;
 
         // ステージクリア画面を動かす
         StartCoroutine(MoveStageClearUI());
@@ -43,13 +53,16 @@ public class StageClearUIController : MonoBehaviour
         StartCoroutine(lerp.Position_Text(stageClearText, startPos, endPos, fadeTime));
 
         // 一瞬待つ
-        yield return new WaitForSecondsRealtime(2.0f);
+        yield return new WaitForSecondsRealtime(1.0f);
 
         // テキストを動かす
         startPos = new Vector3(0.0f, 0.0f, 0.0f);
         endPos = new Vector3(0.0f, 100.0f, 0.0f);
         StartCoroutine(lerp.Position_Text(stageClearText, startPos, endPos, fadeTime));
 
+
+
+        // ボタンの数繰り返す
         for (int i = 0; i < btn.Length; ++i)
         {
             // ボタンを表示
@@ -73,7 +86,8 @@ public class StageClearUIController : MonoBehaviour
     private void Start()
     {
         lerp = gameObject.AddComponent<Lerp>();
-        scrCon = ScreenController.instance;
+        stageScore = StageScore.instance;
+        stageCon = StageController.instance;
 
         DrawStageClearUI();
     }
