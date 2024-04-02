@@ -1,3 +1,4 @@
+using Const;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,9 +12,9 @@ public class StageSelectUIController : MonoBehaviour
     [SerializeField] private StageData stageData;               // InspectorでStageDataを指定
     [SerializeField] private GameObject stageInfoObj;           // ステージの情報を表示するオブジェクト
     [SerializeField] private Text stageName;                    // ステージ名のテキスト
-    [SerializeField] private Text missionName;                  // ステージのミッション名のテキスト
-
-    private StageController stageCon;
+    [SerializeField] private Text missionText;                  // ステージのミッション名のテキスト
+    [SerializeField] private Text timeLimitText;                // ステージの制限時間のテキスト
+    [SerializeField] private Text scoreText;                    // ステージのスコアのテキスト
 
     private GameObject oldButton;                               // 取得したステージボタン
     private Vector3 oldPos;                                     // 取得したステージボタンの座標
@@ -21,6 +22,7 @@ public class StageSelectUIController : MonoBehaviour
     private float fadeTime = 0.4f;                              // フェード時間
     private StageButton sBtn;                                   // StageButtonを代入する変数
 
+    private StageController stageCon;
     private Localize localize;
     private Lerp lerp;
 
@@ -35,7 +37,7 @@ public class StageSelectUIController : MonoBehaviour
 
         // テキストのフォントを設定
         stageName.font = localize.GetFont();
-        missionName.font = localize.GetFont();
+        missionText.font = localize.GetFont();
     }
 
     private void OnDestroy()
@@ -69,11 +71,14 @@ public class StageSelectUIController : MonoBehaviour
         stageName.text = localize.GetString_StageName((EnumStageName)Enum.ToObject(typeof(EnumStageName), stageCon.stageNum));
 
         // ミッション名を設定
-        missionName.text = localize.GetString_Mission((EnumMission)Enum.ToObject(typeof(EnumMission), stageData.stageList[stageCon.stageNum].missionNum));
+        missionText.text = localize.GetString_Mission((EnumMission)Enum.ToObject(typeof(EnumMission), stageData.stageList[stageCon.stageNum].missionNum));
+
+        // 制限時間のテキストを設定
+        timeLimitText.text = stageData.stageList[stageCon.stageNum].timeLimit.ToString() + "s";
 
         // ステージボタンを動かす
-        StartCoroutine(lerp.Position_GameObject(oldButton, oldButton.transform.localPosition, newPos + new Vector3(-80.0f, 55.0f, 0.0f), fadeTime));
-        StartCoroutine(lerp.Scale_GameObject(oldButton, oldButton.transform.localScale, new Vector2(0.4f, 0.4f), fadeTime));
+        StartCoroutine(lerp.Position_GameObject(oldButton, oldButton.transform.localPosition, newPos + new Vector3(-73.0f, 95.0f, 0.0f), fadeTime));
+        StartCoroutine(lerp.Scale_GameObject(oldButton, oldButton.transform.localScale, new Vector2(0.8f, 0.8f), fadeTime));
 
         // ステージ情報UIを表示
         stageInfoObj.SetActive(true);
