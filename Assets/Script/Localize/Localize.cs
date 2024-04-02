@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Localize;
 
 // ゲーム内の翻訳に関する処理
 public class Localize : Singleton<Localize>
@@ -22,7 +23,24 @@ public class Localize : Singleton<Localize>
     [SerializeField] private StarNameStringData starNameSD;
     [SerializeField] private SystemStringData systemSD;
 
-    [SerializeField] private LanguageType language;
+    private LanguageType language;
+    public LanguageType Language
+    {
+        get { return language; }
+        set
+        {
+            language = value;
+            switchLanguageDele?.Invoke();
+        }
+    }
+
+    public event System.Action switchLanguageDele;
+
+    private void Start()
+    {
+        // 初期言語は日本語
+        Language = LanguageType.Japanese;
+    }
 
     // 文字列を取得
     public string GetString(StringGroup group, StringEnumStruct type)
@@ -56,7 +74,7 @@ public class Localize : Singleton<Localize>
         for(int i = 0; i < languageData.fonts.Length; i++)
         {
             // 現在の言語が見つかったら
-            if (languageData.fonts[i].language == language)
+            if (languageData.fonts[i].language == Language)
             {
                 // 現在の言語のフォントを返す
                 return languageData.fonts[i].font;
@@ -70,7 +88,7 @@ public class Localize : Singleton<Localize>
     {
         for (int i = 0; i < configContentSD.strings.Length; i++)
             if (configContentSD.strings[i].type == type)
-                return configContentSD.strings[i].text[(int)language];
+                return configContentSD.strings[i].text[(int)Language];
 
         return "null";
     }
@@ -79,7 +97,7 @@ public class Localize : Singleton<Localize>
     {
         for (int i = 0; i < configTopSD.strings.Length; i++)
             if (configTopSD.strings[i].type == type)
-                return configTopSD.strings[i].text[(int)language];
+                return configTopSD.strings[i].text[(int)Language];
 
         return "null";
     }
@@ -88,7 +106,7 @@ public class Localize : Singleton<Localize>
     {
         for (int i = 0; i < messageSD.strings.Length; i++)
             if (messageSD.strings[i].type == type)
-                return messageSD.strings[i].text[(int)language];
+                return messageSD.strings[i].text[(int)Language];
 
         return "null";
     }
@@ -97,7 +115,7 @@ public class Localize : Singleton<Localize>
     {
         for (int i = 0; i < missionSD.strings.Length; i++)
             if (missionSD.strings[i].type == type)
-                return missionSD.strings[i].text[(int)language];
+                return missionSD.strings[i].text[(int)Language];
 
         return "null";
     }
@@ -106,7 +124,7 @@ public class Localize : Singleton<Localize>
     {
         for (int i = 0; i < playerSD.strings.Length; i++)
             if (playerSD.strings[i].type == type)
-                return playerSD.strings[i].text[(int)language];
+                return playerSD.strings[i].text[(int)Language];
 
         return "null";
     }
@@ -115,7 +133,7 @@ public class Localize : Singleton<Localize>
     {
         for (int i = 0; i < screenSD.strings.Length; i++)
             if (screenSD.strings[i].type == type)
-                return screenSD.strings[i].text[(int)language];
+                return screenSD.strings[i].text[(int)Language];
 
         return "null";
     }
@@ -124,7 +142,7 @@ public class Localize : Singleton<Localize>
     {
         for (int i = 0; i < skillDetailsSD.strings.Length; i++)
             if (skillDetailsSD.strings[i].type == type)
-                return skillDetailsSD.strings[i].text[(int)language];
+                return skillDetailsSD.strings[i].text[(int)Language];
 
         return "null";
     }
@@ -133,7 +151,7 @@ public class Localize : Singleton<Localize>
     {
         for (int i = 0; i < skillNameSD.strings.Length; i++)
             if (skillNameSD.strings[i].type == type)
-                return skillNameSD.strings[i].text[(int)language];
+                return skillNameSD.strings[i].text[(int)Language];
 
         return "null";
     }
@@ -142,7 +160,7 @@ public class Localize : Singleton<Localize>
     {
         for (int i = 0; i < skillParameterSD.strings.Length; i++)
             if (skillParameterSD.strings[i].type == type)
-                return skillParameterSD.strings[i].text[(int)language];
+                return skillParameterSD.strings[i].text[(int)Language];
 
         return "null";
     }
@@ -151,7 +169,7 @@ public class Localize : Singleton<Localize>
     {
         for (int i = 0; i < stageNameSD.strings.Length; i++)
             if (stageNameSD.strings[i].type == type)
-                return stageNameSD.strings[i].text[(int)language];
+                return stageNameSD.strings[i].text[(int)Language];
 
         return "null";
     }
@@ -161,7 +179,7 @@ public class Localize : Singleton<Localize>
     {
         for (int i = 0; i < starNameSD.strings.Length; i++)
             if (starNameSD.strings[i].type == type)
-                return starNameSD.strings[i].text[(int)language];
+                return starNameSD.strings[i].text[(int)Language];
 
         return "null";
     }
@@ -170,7 +188,7 @@ public class Localize : Singleton<Localize>
     {
         for (int i = 0; i < systemSD.strings.Length; i++)
             if (systemSD.strings[i].type == type)
-                return systemSD.strings[i].text[(int)language];
+                return systemSD.strings[i].text[(int)Language];
 
         return "null";
     }

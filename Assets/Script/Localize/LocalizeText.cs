@@ -17,6 +17,13 @@ public class LocalizeText : MonoBehaviour
         localize = Localize.instance;
 
         SetText();
+
+        localize.switchLanguageDele += SetText;
+    }
+
+    private void OnDestroy()
+    {
+        localize.switchLanguageDele -= SetText;
     }
 
     void SetText()
