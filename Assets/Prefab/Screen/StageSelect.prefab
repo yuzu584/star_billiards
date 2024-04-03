@@ -1209,7 +1209,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 818a57efe5ef33049b71b74883e97228, type: 3}
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: clickAction
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: defaultFocus

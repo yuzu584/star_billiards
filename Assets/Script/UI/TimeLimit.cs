@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // 制限時間を管理
-public class TimeLimit : MonoBehaviour
+public class TimeLimit : Singleton<TimeLimit>
 {
     [SerializeField] private StageData stageData;           // InspectorでStageDataを指定
     [SerializeField] private Text value;                    // 制限時間の数値のテキスト
     [SerializeField] private Image gauge;                   // 制限時間のゲージ
 
-    private StageController stageCon;
+    public float time = 0;                                  // 制限時間
 
-    private float time = 0;                                 // 制限時間
+    private StageController stageCon;
     private Vector2 imageSize;                              // ゲージの画像のサイズの初期値
 
     // 制限時間を設定

@@ -9,8 +9,6 @@ using UnityEngine.UI;
 public class Button1 : Button
 {
     private Arrow arrow;
-    private Initialize init;
-    private CreateStage cStage;
     private SkillSelect skillSelect;
     private PopupManager popupMana;
     private Localize localize;
@@ -53,7 +51,6 @@ public class Button1 : Button
         switch (clickAction)
         {
             case ClickAction.ChangeScreen:          ChangeScreen();             break;  // 画面遷移
-            case ClickAction.StageStart:            StageStart();               break;  // ステージスタート
             case ClickAction.CreatePlanetDirArrow:  CreatePlanetDirArrow();     break;  // 惑星の方向を指し示す矢印を生成
             case ClickAction.ApplySkill:            ApplySkill();               break;  // 選択したスキルを適用
             case ClickAction.ResetSelectSkill:      ResetSelectSkill();         break;  // 選択したスキルをリセット
@@ -67,23 +64,6 @@ public class Button1 : Button
     private void ChangeScreen()
     {
         scrCon.Screen = nextScreen;
-    }
-
-    // ステージスタート
-    void StageStart()
-    {
-        // 画面をInGameに変更
-        scrCon.Screen = ScreenController.ScreenType.InGame;
-
-        // ステージに関する数値を初期化
-        init.init_Stage();
-
-        // ポップアップの配列を初期化
-        popupMana.Init(popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1]);
-
-        // ステージ生成
-        cStage.Destroy();
-        cStage.Create();
     }
 
     // 惑星の方向を指し示す矢印を生成
@@ -156,8 +136,6 @@ public class Button1 : Button
         base.Start();
 
         arrow = Arrow.instance;
-        init = Initialize.instance;
-        cStage = CreateStage.instance;
         skillSelect = SkillSelect.instance;
         popupMana = PopupManager.instance;
         localize = Localize.instance;

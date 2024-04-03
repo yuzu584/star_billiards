@@ -23,6 +23,9 @@ public class StageButton : Button
     public Vector3 defaultPos;      // ボタンの初期位置
 
     private StageController stageCon;
+    private Initialize init;
+    private CreateStage cStage;
+    private PopupManager popupMana;
 
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
@@ -40,7 +43,25 @@ public class StageButton : Button
 
             stageCon ??= StageController.instance;
 
-            stageCon.stageNum = stageNum;
+            // ステージ開始ボタンを押したときの挙動を設定
+            startBtn.action = () =>
+            {
+                stageCon.stageNum = stageNum;
+
+                // 画面をInGameに変更
+                scrCon.Screen = ScreenController.ScreenType.InGame;
+
+                // ステージに関する数値を初期化
+                init.init_Stage();
+
+                // ポップアップの配列を初期化
+                popupMana.Init(popupMana.popupContent[(int)PopupManager.PopupType.InGamePopup1]);
+
+                // ステージ生成
+                cStage.Destroy();
+                cStage.Create();
+            };
+
             stageCon.DSIdele?.Invoke(defaultPos, gameObject, this);
         }
 
@@ -73,6 +94,9 @@ public class StageButton : Button
         base.Start();
 
         stageCon ??= StageController.instance;
+        init = Initialize.instance;
+        cStage = CreateStage.instance;
+        popupMana = PopupManager.instance;
 
         // テキストをステージ名に設定
         stageName.text = stageData.stageList[stageNum].stageName;

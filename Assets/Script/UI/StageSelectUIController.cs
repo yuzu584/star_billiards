@@ -1,4 +1,3 @@
-using Const;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -70,19 +69,19 @@ public class StageSelectUIController : MonoBehaviour
         stageCon ??= StageController.instance;
 
         // ステージ名を設定
-        stageName.text = localize.GetString_StageName((EnumStageName)Enum.ToObject(typeof(EnumStageName), stageCon.stageNum));
+        stageName.text = localize.GetString_StageName((EnumStageName)Enum.ToObject(typeof(EnumStageName), sBtn.btnNum));
 
         // ミッション名を設定
-        missionText.text = localize.GetString_Mission((EnumMission)Enum.ToObject(typeof(EnumMission), stageData.stageList[stageCon.stageNum].missionNum));
+        missionText.text = localize.GetString_Mission((EnumMission)Enum.ToObject(typeof(EnumMission), stageData.stageList[sBtn.btnNum].missionNum));
 
         // 制限時間のテキストを設定
-        timeLimitText.text = stageData.stageList[stageCon.stageNum].timeLimit.ToString() + "s";
+        timeLimitText.text = stageData.stageList[sBtn.btnNum].timeLimit.ToString() + "s";
 
         // スコアのテキストを設定
-        if(stageScore.score[stageCon.stageNum] == 0)
+        if(stageScore.score[sBtn.btnNum] == 0)
             scoreText.text = "--------";
         else
-            scoreText.text = stageScore.score[stageCon.stageNum].ToString();
+            scoreText.text = stageScore.score[sBtn.btnNum].ToString();
 
         // ステージボタンを動かす
         StartCoroutine(lerp.Position_GameObject(oldButton, oldButton.transform.localPosition, newPos + new Vector3(-73.0f, 95.0f, 0.0f), fadeTime));
