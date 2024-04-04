@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fonts:
   - language: 0
-    font: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
+    font: {fileID: 12800000, guid: 1a28bfd48b57001499a5bf45f019fc20, type: 3}
   - language: 1
     font: {fileID: 12800000, guid: 1a28bfd48b57001499a5bf45f019fc20, type: 3}

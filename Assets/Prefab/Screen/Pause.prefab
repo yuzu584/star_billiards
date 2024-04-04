@@ -141,7 +141,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
+    m_Font: {fileID: 12800000, guid: 1a28bfd48b57001499a5bf45f019fc20, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -178,6 +178,7 @@ MonoBehaviour:
     skillDetails: 100
     player: 100
     message: 100
+    starName: 0
     system: 100
   text: {fileID: 4024843328011963312}
 --- !u!1 &4024843328337284247
@@ -326,7 +327,7 @@ PrefabInstance:
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
+      objectReference: {fileID: 12800000, guid: 1a28bfd48b57001499a5bf45f019fc20, type: 3}
     - target: {fileID: 5970234051200584752, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Name
       value: Options
@@ -499,7 +500,7 @@ PrefabInstance:
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
+      objectReference: {fileID: 12800000, guid: 1a28bfd48b57001499a5bf45f019fc20, type: 3}
     - target: {fileID: 5970234051200584752, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Name
       value: Return to mainmenu
@@ -676,7 +677,7 @@ PrefabInstance:
     - target: {fileID: 5970234051039374986, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: bce6f915a9216794883b6615d8a276d0, type: 3}
+      objectReference: {fileID: 12800000, guid: 1a28bfd48b57001499a5bf45f019fc20, type: 3}
     - target: {fileID: 5970234051200584752, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: m_Name
       value: Retorn to game
