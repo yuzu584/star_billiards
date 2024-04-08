@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f67b37141c06094daffe94e500512db, type: 3}
   m_Name: Screen Data
   m_EditorClassIdentifier: 
+  background: {fileID: 2074880246432404536, guid: 631db84da22c2ab4abe6bd4305a7e49b, type: 3}
   screenList:
   - screenName: Title
     screenObj: {fileID: 2585311485736157756, guid: 8a4a43afcdc201a4cb689e63de160561, type: 3}
@@ -21,6 +22,7 @@ MonoBehaviour:
     drawCursol: 1
     timeScale: 0
     drawStage: 0
+    drawBackGround: 1
     enterAnim: 1
     exitAnim: 1
     inputType: 1
@@ -35,6 +37,7 @@ MonoBehaviour:
     drawCursol: 1
     timeScale: 0
     drawStage: 0
+    drawBackGround: 1
     enterAnim: 1
     exitAnim: 1
     inputType: 1
@@ -47,6 +50,7 @@ MonoBehaviour:
     drawCursol: 1
     timeScale: 0
     drawStage: 0
+    drawBackGround: 1
     enterAnim: 1
     exitAnim: 1
     inputType: 1
@@ -69,6 +73,7 @@ MonoBehaviour:
     drawCursol: 1
     timeScale: 0
     drawStage: 0
+    drawBackGround: 1
     enterAnim: 1
     exitAnim: 1
     inputType: 1
@@ -81,6 +86,7 @@ MonoBehaviour:
     drawCursol: 1
     timeScale: 0
     drawStage: 0
+    drawBackGround: 1
     enterAnim: 1
     exitAnim: 1
     inputType: 1
@@ -93,6 +99,7 @@ MonoBehaviour:
     drawCursol: 0
     timeScale: 1
     drawStage: 1
+    drawBackGround: 0
     enterAnim: 0
     exitAnim: 0
     inputType: 0
@@ -105,6 +112,7 @@ MonoBehaviour:
     drawCursol: 1
     timeScale: 0
     drawStage: 1
+    drawBackGround: 0
     enterAnim: 0
     exitAnim: 0
     inputType: 1
@@ -117,6 +125,7 @@ MonoBehaviour:
     drawCursol: 1
     timeScale: 0
     drawStage: 1
+    drawBackGround: 0
     enterAnim: 0
     exitAnim: 0
     inputType: 1
@@ -129,6 +138,7 @@ MonoBehaviour:
     drawCursol: 1
     timeScale: 0
     drawStage: 1
+    drawBackGround: 0
     enterAnim: 0
     exitAnim: 0
     inputType: 1
@@ -141,6 +151,7 @@ MonoBehaviour:
     drawCursol: 1
     timeScale: 0
     drawStage: 1
+    drawBackGround: 0
     enterAnim: 0
     exitAnim: 0
     inputType: 1

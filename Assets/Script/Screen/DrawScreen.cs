@@ -9,7 +9,8 @@ public class DrawScreen : MonoBehaviour
     [SerializeField] private GameObject parentObj;
 
     private ScreenController scrCon;
-    private GameObject Ins;                // スクリーンのインスタンス
+    private GameObject scrIns;              // スクリーンのインスタンス
+    private GameObject backIns;             // 背景のインスタンス
 
     private void Start()
     {
@@ -25,19 +26,52 @@ public class DrawScreen : MonoBehaviour
     void Draw()
     {
         // 前回のスクリーンのインスタンスを削除
-        if (Ins)
-        {
-            Destroy(Ins);
-            Ins = null;
-        }
+        DestroyInstance(ref scrIns);
 
-        // スクリーンのインスタンスを生成
-        Ins = Instantiate(scrData.screenList[(int)scrCon.Screen].screenObj);
+        // インスタンスを生成
+        scrIns = Instantiate(scrData.screenList[(int)scrCon.Screen].screenObj);
 
-        // スクリーンの親オブジェクトを設定
-        Ins.transform.SetParent(parentObj.transform, false);
+        // 親オブジェクトを設定
+        scrIns.transform.SetParent(parentObj.transform, false);
 
         // 親オブジェクトの中で先頭にする
-        Ins.transform.SetAsFirstSibling();
+        scrIns.transform.SetAsFirstSibling();
+
+        // 背景を描画する画面なら描画
+        if (scrData.screenList[(int)scrCon.Screen].drawBackGround)
+        {
+            DrawBackGround();
+        }
+        // 描画しないならインスタンスを削除
+        else
+        {
+            DestroyInstance(ref backIns);
+        }
+    }
+
+    // 背景を描画
+    void DrawBackGround()
+    {
+        // 前回の背景のインスタンスを削除
+        DestroyInstance(ref backIns);
+
+        // インスタンスを生成
+        backIns = Instantiate(scrData.background);
+
+        // 親オブジェクトを設定
+        backIns.transform.SetParent(parentObj.transform, false);
+
+        // 親オブジェクトの中で先頭にする
+        backIns.transform.SetAsFirstSibling();
+    }
+
+    // インスタンスを削除して null を代入する(GameObject は参照を渡す)
+    void DestroyInstance(ref GameObject obj)
+    {
+        if (obj)
+        {
+            Destroy(obj);
+            obj = null;
+        }
     }
 }
