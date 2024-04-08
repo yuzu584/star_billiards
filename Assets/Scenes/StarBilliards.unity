@@ -356,6 +356,23 @@ MonoBehaviour:
   canvasRect: {fileID: 869580815}
   canvasWidth: 0
   canvasHeight: 0
+  mainColor:
+    serializedVersion: 2
+    rgba: 0
+  buttomColor:
+    serializedVersion: 2
+    rgba: 0
+  effectColor:
+    serializedVersion: 2
+    rgba: 0
+  maxMainColorRGB: 80
+  minMainColorRGB: 5
+  maxButtomColorRGB: 85
+  minButtomColorRGB: 0
+  maxEffectColorRGB: 85
+  minEffectColorRGB: 0
+  maxColorDiff: 30
+  minColorDiff: 5
 --- !u!1 &291823623
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,13 +17,13 @@ public class SquareEffect : MonoBehaviour
         bgEffect = BackGroundEffect.instance;
 
         // 回転速度を設定
-        rotationSpeed = Random.Range(0.1f, 100.0f);
+        rotationSpeed = Random.Range(1.0f, 50.0f);
 
         // 自分の Image コンポーネントを取得
         image = GetComponent<Image>();
 
         // 大きさを乱数で設定
-        float randScale = Random.Range(0.1f, 1.2f);
+        float randScale = Random.Range(0.05f, 1.5f);
         Vector2 scale = new Vector3(randScale, randScale);
         image.rectTransform.localScale = scale;
 
@@ -33,6 +33,9 @@ public class SquareEffect : MonoBehaviour
         float scrY = Random.Range(bgEffect.canvasHeight / -2, bgEffect.canvasHeight / 2);
         Vector3 pos = new Vector3(scrX, scrY, 0.0f);
         image.rectTransform.localPosition = pos;
+
+        // 色を設定
+        image.color = bgEffect.effectColor;
     }
 
     private void Update()
