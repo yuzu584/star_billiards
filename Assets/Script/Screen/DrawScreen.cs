@@ -9,12 +9,14 @@ public class DrawScreen : MonoBehaviour
     [SerializeField] private GameObject parentObj;
 
     private ScreenController scrCon;
+    private BackGroundEffect bgEffect;
     private GameObject scrIns;              // スクリーンのインスタンス
     private GameObject backIns;             // 背景のインスタンス
 
     private void Start()
     {
         scrCon = ScreenController.instance;
+        bgEffect = BackGroundEffect.instance;
 
         // 画面遷移時にスクリーンを描画
         scrCon.changeScreen += Draw;
@@ -63,6 +65,9 @@ public class DrawScreen : MonoBehaviour
 
         // 親オブジェクトの中で先頭にする
         backIns.transform.SetAsFirstSibling();
+
+        // エフェクト生成(エフェクトの親オブジェクトは生成した背景)
+        bgEffect.DrawEffect(backIns.transform);
     }
 
     // インスタンスを削除して null を代入する(GameObject は参照を渡す)
