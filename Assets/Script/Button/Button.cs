@@ -69,6 +69,13 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         SkillList,
     }
 
+    // ボタンの音声ファイルの列挙型
+    public enum BtnSounds
+    {
+        EnterSound,
+        ClickSound,
+    }
+
     // instanceを代入する変数
     protected ScreenController scrCon;
     protected Sound sound;
@@ -105,13 +112,13 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public bool orPointer = false;
 
     // マウスポインターがボタンの上に乗ったら
-    public void OnPointerEnter(PointerEventData pointerEventData)
+    public virtual void OnPointerEnter(PointerEventData pointerEventData)
     {
         // ポインターによってフォーカスされた
         orPointer = true;
 
         // 音を再生
-        PlayBtnSound(EnterSound);
+        PlayBtnSound(BtnSounds.EnterSound);
 
         // フォーカスされているボタンを設定
         focus.SetFocusBtn(this);
@@ -122,16 +129,16 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     }
 
     // マウスポインターがボタンの上から離れたら
-    public void OnPointerExit(PointerEventData pointerEventData)
+    public virtual void OnPointerExit(PointerEventData pointerEventData)
     {
-        ExitProcess();
+        //ExitProcess();
     }
 
     // ボタンがクリックされたら
-    public void OnPointerClick(PointerEventData pointerEventData)
+    public virtual void OnPointerClick(PointerEventData pointerEventData)
     {
         //音を再生
-        PlayBtnSound(ClickSound);
+        PlayBtnSound(BtnSounds.ClickSound);
 
         ClickProcess();
     }
@@ -155,11 +162,17 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     }
 
     // ボタンの音を再生
-    public void PlayBtnSound(AudioClip aClip)
+    public void PlayBtnSound(BtnSounds btnSounds)
     {
-        if(aClip != null)
+        // 再生する音によって分岐
+        switch (btnSounds)
         {
-            StartCoroutine(sound.Play(aClip));
+            case BtnSounds.EnterSound:
+                StartCoroutine(sound.Play(EnterSound));
+                break;
+            case BtnSounds.ClickSound:
+                StartCoroutine(sound.Play(ClickSound));
+                break;
         }
     }
 

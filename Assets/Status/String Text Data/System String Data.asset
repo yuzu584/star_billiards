@@ -37,3 +37,15 @@ MonoBehaviour:
     text:
     - Start
     - "\u30B9\u30BF\u30FC\u30C8"
+  - type: 5
+    text:
+    - Score
+    - "\u30B9\u30B3\u30A2"
+  - type: 6
+    text:
+    - HighScore
+    - "\u30CF\u30A4\u30B9\u30B3\u30A2"
+  - type: 7
+    text:
+    - New Record
+    - "\u65B0\u8A18\u9332"

@@ -179,6 +179,9 @@ public enum EnumSystem
     Apply                   = 002,  // 確定
     Reset                   = 003,  // リセット
     Start                   = 004,  // スタート
+    Score                   = 005,  // スコア
+    HighScore               = 006,  // ハイスコア
+    NewRecord               = 007,  // 新記録
     None                    = 100,
 }
 

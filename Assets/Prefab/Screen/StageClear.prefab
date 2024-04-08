@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 478445244246054041}
   - component: {fileID: 3601777267076807263}
   - component: {fileID: 8948856027100208167}
+  - component: {fileID: 1606042260928817718}
   m_Layer: 0
   m_Name: ScoreText
   m_TagString: Untagged
@@ -113,6 +114,33 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Score
+--- !u!114 &1606042260928817718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874490896242776215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: 100
+  type:
+    screen: 100
+    stageName: 100
+    mission: 100
+    configTop: 100
+    configContent: 100
+    skillName: 100
+    skillParameter: 100
+    skillDetails: 100
+    player: 100
+    message: 100
+    starName: 100
+    system: 5
+  text: {fileID: 8948856027100208167}
 --- !u!1 &2845325346890233291
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +152,7 @@ GameObject:
   - component: {fileID: 3611658251103827453}
   - component: {fileID: 79582594171418359}
   - component: {fileID: 6066580044884302862}
+  - component: {fileID: 6062835334530138258}
   m_Layer: 5
   m_Name: New Record
   m_TagString: Untagged
@@ -193,6 +222,33 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Record
+--- !u!114 &6062835334530138258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845325346890233291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: 100
+  type:
+    screen: 100
+    stageName: 100
+    mission: 100
+    configTop: 100
+    configContent: 100
+    skillName: 100
+    skillParameter: 100
+    skillDetails: 100
+    player: 100
+    message: 100
+    starName: 100
+    system: 7
+  text: {fileID: 6066580044884302862}
 --- !u!1 &3723365962929936140
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,6 +260,7 @@ GameObject:
   - component: {fileID: 8681920603429626693}
   - component: {fileID: 7782855463799339828}
   - component: {fileID: 150574751078228668}
+  - component: {fileID: 1839276364554541452}
   m_Layer: 0
   m_Name: High ScoreText
   m_TagString: Untagged
@@ -273,6 +330,33 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: HighScore
+--- !u!114 &1839276364554541452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3723365962929936140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: 100
+  type:
+    screen: 100
+    stageName: 100
+    mission: 100
+    configTop: 100
+    configContent: 100
+    skillName: 100
+    skillParameter: 100
+    skillDetails: 100
+    player: 100
+    message: 100
+    starName: 100
+    system: 6
+  text: {fileID: 150574751078228668}
 --- !u!1 &4396589447972874451
 GameObject:
   m_ObjectHideFlags: 0

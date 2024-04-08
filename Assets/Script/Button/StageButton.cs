@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class StageButton : Button
@@ -26,6 +26,11 @@ public class StageButton : Button
     private Initialize init;
     private CreateStage cStage;
     private PopupManager popupMana;
+
+    public override void OnPointerExit(PointerEventData pointerEventData)
+    {
+        ExitProcess();
+    }
 
     // マウスポインターが乗った時の処理
     public override void EnterProcess()

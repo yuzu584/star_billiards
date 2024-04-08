@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 // ダイアログポップアップ1
 public class DialogPopup1 : PopupParent
@@ -50,7 +49,7 @@ public class DialogPopup1 : PopupParent
     // キャンセルボタンの処理を行う
     void CancelBtnProcess(float f)
     {
-        cancelBtn.PlayBtnSound(cancelBtn.ClickSound);
+        cancelBtn.PlayBtnSound(Button.BtnSounds.ClickSound);
         cancelBtn.ClickProcess();
     }
 
