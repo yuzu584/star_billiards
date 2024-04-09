@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569bf9531f3d5854b83bf2c29e679171, type: 3}
+  m_Name: Key Guide String Data
+  m_EditorClassIdentifier: 
+  strings:
+  - type: 100
+    text:
+    - None_KeyGuide
+    - "\u672A\u8A2D\u5B9A_KeyGuide"
+  - type: 0
+    text:
+    - Select
+    - "\u6C7A\u5B9A"
+  - type: 1
+    text:
+    - Back / Cancel
+    - "\u623B\u308B / \u30AD\u30E3\u30F3\u30BB\u30EB"
+  - type: 2
+    text:
+    - MoveCursol
+    - "\u30AB\u30FC\u30BD\u30EB\u79FB\u52D5"

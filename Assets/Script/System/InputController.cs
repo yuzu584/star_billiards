@@ -7,9 +7,14 @@ using UnityEngine.InputSystem;
 public class InputController : Singleton<InputController>
 {
     [SerializeField] private ScreenData scrData;
+    [SerializeField] private PlayerInput playerInput;
 
     private ScreenController scrCon;
     private PlayerActions actions;                  // InputSystem
+
+    private string nowSchemeName = "";              // 現在の Scheme
+    private string oldSchemeName = "";              // 前回の Scheme
+    public event System.Action SwitchScheme;        // Scheme が切り替わった時に実行
 
     // デリゲートを定義
     public delegate void Game_OnMoveDele(Vector2 mVec);
@@ -76,6 +81,14 @@ public class InputController : Singleton<InputController>
 
     void Update()
     {
+        // Scheme が切り替わったか判定
+        nowSchemeName = GetNowScheme();
+        if(nowSchemeName != oldSchemeName)
+        {
+            SwitchScheme?.Invoke();
+        }
+        oldSchemeName = nowSchemeName;
+
         // 視点移動入力されているか判定(Game)
         if (IsPressed_Game_Look)
         {
@@ -129,6 +142,12 @@ public class InputController : Singleton<InputController>
     {
         canInput = false;
         actions.Disable();
+    }
+
+    // 現在の Scheme を取得する
+    public string GetNowScheme()
+    {
+        return playerInput.currentControlScheme;
     }
 
     public void Game_OnMove(InputAction.CallbackContext context)

@@ -144,6 +144,7 @@ MonoBehaviour:
     player: 100
     message: 100
     starName: 0
+    keyGuide: 0
     system: 100
   text: {fileID: 7415601629667023088}
 --- !u!1 &7415601629925163329
@@ -289,6 +290,7 @@ MonoBehaviour:
     player: 100
     message: 100
     starName: 0
+    keyGuide: 0
     system: 100
   text: {fileID: 7415601630185088597}
 --- !u!1 &7415601630223503785
@@ -397,6 +399,7 @@ MonoBehaviour:
     player: 100
     message: 100
     starName: 0
+    keyGuide: 0
     system: 100
   text: {fileID: 7415601630223503791}
 --- !u!1 &7415601630407778459
@@ -1275,6 +1278,7 @@ MonoBehaviour:
     player: 100
     message: 100
     starName: 0
+    keyGuide: 0
     system: 100
   text: {fileID: 7415601631312406201}
 --- !u!1 &7415601631348140724
@@ -1543,6 +1547,7 @@ MonoBehaviour:
     player: 100
     message: 100
     starName: 0
+    keyGuide: 0
     system: 100
   text: {fileID: 7415601631426383110}
 --- !u!1 &7415601631594078095

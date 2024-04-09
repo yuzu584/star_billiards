@@ -24,6 +24,7 @@ public enum StringGroup
     Player                  = 050,  // プレイヤー関連
     Message                 = 060,  // 主にポップアップで出る文章
     StarName                = 070,  // 星の名前
+    KeyGuide                = 080,  // キー説明のテキスト
     System                  = 100,  // システム
     None                    = 101,
 }
@@ -43,6 +44,7 @@ public struct StringEnumStruct
     public EnumPlayer player;
     public EnumMessage message;
     public EnumStarName starName;
+    public EnumKeyGuide keyGuide;
     public EnumSystem system;
 }
 
@@ -171,6 +173,15 @@ public enum EnumStarName
     None                    = 100,
 }
 
+// キー説明のテキストの列挙型
+public enum EnumKeyGuide
+{
+    Positive                = 000,  // Positive 入力
+    Negative                = 001,  // Negative 入力
+    MoveCursol              = 002,  // 上下左右入力(カーソル移動)
+    None                    = 100,
+}
+
 // システムの列挙型
 public enum EnumSystem
 {
@@ -277,6 +288,14 @@ public struct MessageStrings
 public struct StarNameStrings
 {
     public EnumStarName type;
+    public string[] text;
+}
+
+// キー説明のテキストを扱う構造体
+[System.Serializable]
+public struct KeyGuideStrings
+{
+    public EnumKeyGuide type;
     public string[] text;
 }
 
