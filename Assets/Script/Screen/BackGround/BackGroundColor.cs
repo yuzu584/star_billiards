@@ -17,7 +17,8 @@ public class BackGroundColor : MonoBehaviour
         bgEffect = BackGroundEffect.instance;
 
         // ”wŒi‚ÌƒGƒtƒFƒNƒg‚ğ¶¬
-        bgEffect.DrawEffect(parentT);
+        bgEffect.parentT = parentT;
+        bgEffect.DrawEffect();
 
         // ”wŒi‚Ì ButtomColor ‚ğİ’è
         material.SetColor("_TopColor", bgEffect.mainColor);

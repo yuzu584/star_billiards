@@ -10,6 +10,7 @@ public class BackGroundEffect : Singleton<BackGroundEffect>
 
     private int effectAmount = 20;                          // 生成するエフェクトの数
 
+    public Transform parentT;                               // 四角形エフェクトの親
     public float canvasWidth;                               // Canvas の幅
     public float canvasHeight;                              // Canvas の高さ
     public Color32 mainColor;                               // メインの背景色
@@ -31,20 +32,15 @@ public class BackGroundEffect : Singleton<BackGroundEffect>
     }
 
     // エフェクトを生成して描画
-    public void DrawEffect(Transform parent)
+    public void DrawEffect()
     {
         // 色を乱数で設定
         SetColor();
 
+        // 四角形のエフェクトを生成
         for (int i = 0; i < effectAmount; i++)
         {
-            Image ins;
-
-            // インスタンス生成
-            ins = Instantiate(squareEffect);
-
-            // 親を設定
-            ins.transform.SetParent(parent, false);
+            GenerateSquareEffect(true);
         }
     }
 
@@ -117,5 +113,27 @@ public class BackGroundEffect : Singleton<BackGroundEffect>
         }
 
         return _value;
+    }
+
+    // 四角形のエフェクトを生成
+    public void GenerateSquareEffect(bool fastDraw)
+    {
+        // 親オブジェクトが存在しなければ終了
+        if (parentT == null) return;
+
+        Image ins;
+
+        // インスタンス生成
+        ins = Instantiate(squareEffect);
+
+        // 素早く描画
+        if(fastDraw)
+        {
+            SquareEffect se = ins.GetComponent<SquareEffect>();
+            se.fastDraw = true;
+        }
+
+        // 親を設定
+        ins.transform.SetParent(parentT, false);
     }
 }
