@@ -354,6 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   squareEffect: {fileID: 7310846002842643814, guid: eb30e0d4390f0854c88b9441af3688db, type: 3}
   canvasRect: {fileID: 869580815}
+  parentT: {fileID: 0}
   canvasWidth: 0
   canvasHeight: 0
   mainColor:
@@ -366,13 +367,13 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 0
   maxMainColorRGB: 80
-  minMainColorRGB: 5
-  maxButtomColorRGB: 85
-  minButtomColorRGB: 0
-  maxEffectColorRGB: 85
-  minEffectColorRGB: 0
-  maxColorDiff: 30
-  minColorDiff: 5
+  minMainColorRGB: 20
+  maxButtomColorRGB: 80
+  minButtomColorRGB: 20
+  maxEffectColorRGB: 80
+  minEffectColorRGB: 20
+  maxColorDiff: 50
+  minColorDiff: 10
 --- !u!1 &291823623
 GameObject:
   m_ObjectHideFlags: 0

@@ -109,7 +109,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -120,7 +120,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -131,7 +131,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -142,7 +142,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -153,7 +153,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -164,7 +164,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Joystick>/stick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -175,7 +175,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Shot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -186,7 +186,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Shot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -197,7 +197,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/button8"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Shot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -208,7 +208,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""UseSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -219,7 +219,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""UseSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -230,7 +230,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Joystick>/trigger"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""UseSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -241,7 +241,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": ""ScaleVector2(x=0.05,y=0.05)"",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -252,7 +252,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": ""ScaleVector2(x=1.1,y=1.1)"",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -263,7 +263,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -274,7 +274,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -285,7 +285,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/button10"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -296,7 +296,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -307,7 +307,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -318,7 +318,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/button7"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -329,7 +329,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": ""Press"",
                     ""processors"": ""Clamp(min=-1,max=1)"",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""ChangeSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -351,7 +351,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""ChangeSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -362,7 +362,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""ChangeSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -384,7 +384,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/button5"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""ChangeSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -395,7 +395,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/button6"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""ChangeSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -417,7 +417,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/rz"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(min=-1),Invert"",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -428,7 +428,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/rz"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(max=1)"",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -439,7 +439,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/z"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(min=-1),Invert"",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -450,7 +450,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/z"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(max=1)"",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -507,7 +507,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -518,7 +518,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -529,7 +529,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -540,7 +540,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -562,7 +562,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -573,7 +573,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -584,7 +584,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -595,7 +595,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -606,7 +606,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -617,7 +617,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Joystick>/stick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -628,7 +628,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/dpad"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -639,7 +639,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/hat"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -650,7 +650,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/z"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Positive"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -661,7 +661,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/enter"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Positive"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -672,7 +672,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Positive"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -683,7 +683,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/button3"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Positive"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -694,7 +694,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/x"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Negative"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -705,7 +705,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keybord&Mouse"",
                     ""action"": ""Negative"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -716,7 +716,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Negative"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -727,7 +727,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/button2"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Negative"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -738,7 +738,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/select"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Negative"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -749,7 +749,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/button9"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Negative"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -757,7 +757,40 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Keybord&Mouse"",
+            ""bindingGroup"": ""Keybord&Mouse"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""GamePad"",
+            ""bindingGroup"": ""GamePad"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<XInputController>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<HID>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // Game
         m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
@@ -986,6 +1019,24 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+    private int m_KeybordMouseSchemeIndex = -1;
+    public InputControlScheme KeybordMouseScheme
+    {
+        get
+        {
+            if (m_KeybordMouseSchemeIndex == -1) m_KeybordMouseSchemeIndex = asset.FindControlSchemeIndex("Keybord&Mouse");
+            return asset.controlSchemes[m_KeybordMouseSchemeIndex];
+        }
+    }
+    private int m_GamePadSchemeIndex = -1;
+    public InputControlScheme GamePadScheme
+    {
+        get
+        {
+            if (m_GamePadSchemeIndex == -1) m_GamePadSchemeIndex = asset.FindControlSchemeIndex("GamePad");
+            return asset.controlSchemes[m_GamePadSchemeIndex];
+        }
+    }
     public interface IGameActions
     {
         void OnMove(InputAction.CallbackContext context);
