@@ -779,12 +779,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             ""bindingGroup"": ""GamePad"",
             ""devices"": [
                 {
-                    ""devicePath"": ""<XInputController>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                },
-                {
-                    ""devicePath"": ""<HID>"",
+                    ""devicePath"": ""<Gamepad>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }

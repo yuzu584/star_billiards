@@ -46,6 +46,13 @@ public class InputController : Singleton<InputController>
     [SerializeField] private bool IsPressed_Game_Shot;
     [SerializeField] private bool IsPressed_UI_Move;
 
+    // 長押し時間を計測
+    private float IsPressed_UI_Move_Time = 0.0f;
+
+    private float longPressWaitTime = 0.3f;         // 長押し時の連続実行を行うまでの時間
+    private float longPressInterval = 0.1f;         // 長押し時の連続実行間隔
+    private float longPressIntervalCount = 0.0f;    // 長押し時の連続実行間隔を計測
+
     public bool canInput = true; // InputSystemの入力が可能か
 
     protected override void Awake()
@@ -67,6 +74,8 @@ public class InputController : Singleton<InputController>
         actions.Game.ChangeSkill.performed += Game_OnChangeSkill;
         actions.Game.Pause.performed += Game_OnPause;
         actions.UI.Move.performed += UI_OnMove;
+        actions.UI.Move.performed += (InputAction.CallbackContext context) => { IsPressed_UI_Move = true; };
+        actions.UI.Move.canceled += (InputAction.CallbackContext context) => { IsPressed_UI_Move = false; IsPressed_UI_Move_Time = 0.0f; };
         actions.UI.Positive.performed += UI_OnPositive;
         actions.UI.Negative.performed += UI_OnNegative;
     }
@@ -77,6 +86,14 @@ public class InputController : Singleton<InputController>
 
         // 画面遷移時に入力状態の有効無効を設定する
         scrCon.changeScreen += SetInputs;
+
+        SwitchScheme += () =>
+        {
+            IsPressed_Game_Move = false;
+            IsPressed_Game_Look = false;
+            IsPressed_Game_Shot = false;
+            IsPressed_UI_Move = false;
+        };
     }
 
     void Update()
@@ -101,10 +118,35 @@ public class InputController : Singleton<InputController>
             game_OnShotDele(actions.Game.Shot.ReadValue<float>());
         }
 
-        // 移動入力されているか判定(UI)
+        // 移動入力の長押し判定(UI)
         if (IsPressed_UI_Move)
         {
-            ui_OnMoveDele(actions.UI.Move.ReadValue<Vector2>());
+            // 長押し時の連続実行を行うまでの時間が経過したら
+            if (IsPressed_UI_Move_Time > longPressWaitTime)
+            {
+                // 長押し時の連続実行間隔が経過したら
+                if (longPressIntervalCount > longPressInterval)
+                {
+                    // UI移動入力
+                    longPressIntervalCount = 0.0f;
+                    ui_OnMoveDele(actions.UI.Move.ReadValue<Vector2>());
+                }
+                else
+                {
+                    // 長押し時の連続実行間隔をカウント
+                    longPressIntervalCount += Time.unscaledDeltaTime;
+                }
+            }
+            else
+            {
+                // 長押し時の連続実行を行うまでの時間をカウント
+                IsPressed_UI_Move_Time += Time.unscaledDeltaTime;
+            }
+        }
+        else
+        {
+            // 長押し時の連続実行を行うまでの時間をリセット
+            if (IsPressed_UI_Move_Time != 0) IsPressed_UI_Move_Time = 0;
         }
     }
 
@@ -141,7 +183,7 @@ public class InputController : Singleton<InputController>
     public void DisableInputs()
     {
         canInput = false;
-        actions.Disable();
+        if(actions.asset.enabled != false) actions.Disable();
     }
 
     // 現在の Scheme を取得する
