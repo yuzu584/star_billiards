@@ -6,9 +6,9 @@ using UnityEngine.UI;
 // テキストの文字列を言語に応じて変える
 public class LocalizeText : MonoBehaviour
 {
-    [SerializeField] private StringGroup group;
-    [SerializeField] private StringEnumStruct type;
-    [SerializeField] private Text text;
+    public StringGroup group;
+    public StringEnumStruct type;
+    public Text text;
 
     private Localize localize;
 

@@ -353,6 +353,10 @@ PrefabInstance:
       propertyPath: keyType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 500608025188481098, guid: 41387977b6a44b5449a4d5a3e1b985bd, type: 3}
+      propertyPath: keyGuideType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41387977b6a44b5449a4d5a3e1b985bd, type: 3}
 --- !u!224 &155651952 stripped
@@ -2763,6 +2767,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 500608025188481098, guid: 41387977b6a44b5449a4d5a3e1b985bd, type: 3}
       propertyPath: keyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 500608025188481098, guid: 41387977b6a44b5449a4d5a3e1b985bd, type: 3}
+      propertyPath: keyGuideType
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

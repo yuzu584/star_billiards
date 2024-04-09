@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +9,20 @@ public class KeyGuideIconSetter : MonoBehaviour
 {
     [SerializeField] private Image Image;
     [SerializeField] private KeyGuideIconData keyGuideIconData;
-    [SerializeField] private KeyType keyType;
+    [SerializeField] private EnumKeyGuide keyGuideType;
+    [SerializeField] private Text text;
 
     private InputController input;
 
     private void Start()
     {
         input = InputController.instance;
+
+        // LocalizeText の値を設定
+        LocalizeText lt = text.AddComponent<LocalizeText>();
+        lt.text = text;
+        lt.group = StringGroup.KeyGuide;
+        lt.type.keyGuide = keyGuideType;
 
         input.SwitchScheme += SetIcon;
 
@@ -27,14 +35,14 @@ public class KeyGuideIconSetter : MonoBehaviour
         input.SwitchScheme -= SetIcon;
     }
 
-    Sprite SearchIcon(KeyType type)
+    Sprite SearchIcon(EnumKeyGuide type)
     {
         Sprite sprite;
 
         for (int i = 0; i < keyGuideIconData.keyTypeAndIcons.Length; i++)
         {
             // Type が一致したら
-            if (keyGuideIconData.keyTypeAndIcons[i].KeyType == type)
+            if (keyGuideIconData.keyTypeAndIcons[i].keyGuideType == type)
             {
                 // 現在の Scheme によって分岐
                 switch (input.GetNowScheme())
@@ -57,6 +65,6 @@ public class KeyGuideIconSetter : MonoBehaviour
     void SetIcon()
     {
         // アイコンを探して設定
-        Image.sprite = SearchIcon(keyType);
+        Image.sprite = SearchIcon(keyGuideType);
     }
 }

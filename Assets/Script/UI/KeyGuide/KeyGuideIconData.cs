@@ -9,14 +9,6 @@ public class KeyGuideIconData : ScriptableObject
     public KeyTypeAndIcons[] keyTypeAndIcons;
 }
 
-// キー入力の種類の列挙型
-public enum KeyType
-{
-    Positive,
-    Negative,
-    MoveCursol,
-}
-
 // アイコンをまとめる構造体
 [System.Serializable]
 public struct KeyIcons
@@ -29,6 +21,6 @@ public struct KeyIcons
 [System.Serializable]
 public struct KeyTypeAndIcons
 {
-    public KeyType KeyType;
+    public EnumKeyGuide keyGuideType;
     public KeyIcons KeyIcons;
 }

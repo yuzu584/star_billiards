@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 84378682304587961}
   - component: {fileID: 84378682304587975}
   - component: {fileID: 84378682304587960}
-  - component: {fileID: 84378682304587974}
   - component: {fileID: 3044636889529371783}
   m_Layer: 5
   m_Name: Action Name
@@ -113,7 +112,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 20, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &84378682304587975
@@ -158,34 +157,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Apply
---- !u!114 &84378682304587974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 84378682304587962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  group: 80
-  type:
-    screen: 100
-    stageName: 100
-    mission: 100
-    configTop: 100
-    configContent: 100
-    skillName: 100
-    skillParameter: 100
-    skillDetails: 100
-    player: 100
-    message: 100
-    starName: 100
-    keyGuide: 0
-    system: 100
-  text: {fileID: 84378682304587960}
 --- !u!114 &3044636889529371783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +226,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 84378681899275137}
   keyGuideIconData: {fileID: 11400000, guid: 4c51fedcbbd074a4a9d8b15c3ad334a1, type: 2}
-  keyType: 0
+  keyGuideType: 0
+  text: {fileID: 84378682304587960}
 --- !u!114 &5591034915419209211
 MonoBehaviour:
   m_ObjectHideFlags: 0
