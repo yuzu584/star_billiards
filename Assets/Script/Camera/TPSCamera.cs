@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using AppConst;
-using AppParam;
 
 // カメラの視点移動
 public class TPSCamera : Singleton<TPSCamera>
 {
-    [SerializeField] private GameObject player;                 // プレイヤー
-    [SerializeField] private float speed = 1.0f;                // 視点移動速度
+    [SerializeField] private GameObject player;                                                 // プレイヤー
+    [SerializeField] private float speed = 1.0f;                                                // 視点移動速度(Inspectorで指定)
 
+    private ClampedValue<float> angleMoveSpeed = new ClampedValue<float>(1.0f, 100.0f, 0.01f);  // 視点移動速度
     private InputController input;
 
-    public float rate = Const_Camera.CAMERA_DEFAULT_SPEED_RATE;     // 視点移動速度の倍率
+    public float rate = Const_Camera.CAMERA_DEFAULT_SPEED_RATE;                                 // 視点移動速度の倍率
 
     void Start()
     {
         input = InputController.instance;
         input.game_OnLookDele += MoveCameraAngle;
 
-        Param_Camera.angleMoveSpeed.Value = speed;
+        angleMoveSpeed.Value = speed;
     }
 
     // 視点移動処理
@@ -30,14 +30,14 @@ public class TPSCamera : Singleton<TPSCamera>
         if (Mathf.Abs(vec.x) > 0.001f)
         {
             // 回転軸はワールド座標のY軸
-            transform.RotateAround(player.transform.position, transform.up, (vec.x * Param_Camera.angleMoveSpeed.Value) * rate);
+            transform.RotateAround(player.transform.position, transform.up, (vec.x * angleMoveSpeed.Value) * rate);
         }
 
         // Y方向に一定量移動していれば縦回転
         if (Mathf.Abs(vec.y) > 0.001f)
         {
             // 回転軸はカメラ自身のX軸
-            transform.RotateAround(player.transform.position, transform.right, (-vec.y * Param_Camera.angleMoveSpeed.Value) * rate);
+            transform.RotateAround(player.transform.position, transform.right, (-vec.y * angleMoveSpeed.Value) * rate);
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using AppConst;
-using AppParam;
 
 // ショットボタンで弾を発射する
 public class Shot : Singleton<Shot>
@@ -80,7 +79,7 @@ public class Shot : Singleton<Shot>
     void FixedUpdate()
     {
         // エネルギーがある状態でショットボタンが押されたら減速
-        if ((inputValue > 0) && (Param_Player.energy.Value > 0))
+        if ((inputValue > 0) && (eneCon.energy.Value > 0))
             rb.velocity *= Const_Player.SPEED_REDUCTION_RATE;
     }
 
@@ -116,7 +115,7 @@ public class Shot : Singleton<Shot>
         else if (collision.gameObject.tag == "FixedStar")
         {
             // エネルギーを0にする(ゲームオーバー)
-            Param_Player.energy.Value = 0;
+            eneCon.energy.Value = 0;
         }
 
         // タグがPlanetとFixedStar以外なら
@@ -148,7 +147,7 @@ public class Shot : Singleton<Shot>
         inputValue = value;
 
         // エネルギーがある状態でショットボタンが押されていたら(長押し可)
-        if ((inputValue > 0) && (Param_Player.energy.Value > 0))
+        if ((inputValue > 0) && (eneCon.energy.Value > 0))
         {
             // 向きを設定してチャージする
             direction = pLine.RayDirection();
@@ -158,14 +157,14 @@ public class Shot : Singleton<Shot>
         else if ((inputValue == 0) && (charge > 0))
         {
             // エネルギーを消費して発射
-            Param_Player.energy.Value -= (int)charge / 10;
+            eneCon.energy.Value -= (int)charge / 10;
             Vector3 velocity = Camera.main.transform.forward;
             rb.AddForce(velocity * speed * charge);
             charge = 0;
         }
 
         // エネルギーがある状態でショットボタンが押されたら(押した瞬間だけ)
-        if ((inputValue > 0) && (Param_Player.energy.Value > 0) && (nowInput))
+        if ((inputValue > 0) && (eneCon.energy.Value > 0) && (nowInput))
         {
             // ジャストショットの猶予時間をカウント
             if (coroutine != null)

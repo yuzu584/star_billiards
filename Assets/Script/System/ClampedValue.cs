@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 値を保持するクラス(値を範囲内に収める機能付き)
-public class FunctionalValue<T> where T : struct, IComparable<T>
+public class ClampedValue<T> where T : struct, IComparable<T>
 {
     private T defaultValue;
     private T defaultMax;
@@ -47,7 +47,7 @@ public class FunctionalValue<T> where T : struct, IComparable<T>
     }
 
     // コンストラクタ
-    public FunctionalValue(T value, T max, T min)
+    public ClampedValue(T value, T max, T min)
     {
         _value = value;
         _max = max;

@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using AppParam;
-
 // エネルギーの増減を管理
 public class EnergyController : Singleton<EnergyController>
 {
+    public ClampedValue<int> energy = new ClampedValue<int> (1000, 1000, 0);    // エネルギー
+
     private ScreenController screenCon;
     private Initialize init;
     private StageController stageCon;
 
-    private Rigidbody rb;           // リジッドボディ
+    private Rigidbody rb;                                                       // リジッドボディ
 
     // 初期化処理
     void Init()
     {
-        Param_Player.energy.Value = Param_Player.energy.Max;
+        energy.Value = energy.Max;
     }
 
     void Start()
@@ -35,7 +35,7 @@ public class EnergyController : Singleton<EnergyController>
     void Update()
     {
         // ゲーム画面でエネルギーが0になったらゲームオーバー処理
-        if((screenCon.Screen == ScreenController.ScreenType.InGame) && (Param_Player.energy.Value <= 0))
+        if((screenCon.Screen == ScreenController.ScreenType.InGame) && (energy.Value <= 0))
         {
             stageCon.gameOverDele?.Invoke();
         }
