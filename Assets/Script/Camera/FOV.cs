@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using AppParam;
+
 // 視野角を変更する
 public class FOV : Singleton<FOV>
 {
     [SerializeField] private GameObject player; // 速度を参照するオブジェクト
-    [SerializeField] private int Fov = 60;      // 視野角
-    [SerializeField] private int maxFov = 90;   // 最大視野角
-    [SerializeField] private int minFov = 60;   // 最小視野角
 
     private Rigidbody rb; // リジッドボディ
 
@@ -22,15 +21,15 @@ public class FOV : Singleton<FOV>
     public void ChangeFOV()
     {
         // 視野角を滑らかに変更
-        Camera.main.fieldOfView += (Fov + rb.velocity.magnitude - Camera.main.fieldOfView) * Time.deltaTime;
+        Camera.main.fieldOfView += ((float)Param_Camera.fov.Value + rb.velocity.magnitude - Camera.main.fieldOfView) * Time.deltaTime;
 
         // 視野角を正常な範囲に保つ
-        Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, minFov, maxFov);
+        Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, Param_Camera.fov.Min, Param_Camera.fov.Max);
     }
 
     // 視野角を初期値にリセット
     public void ResetFOV()
     {
-        Camera.main.fieldOfView = Fov;
+        Camera.main.fieldOfView = Param_Camera.fov.Value;
     }
 }

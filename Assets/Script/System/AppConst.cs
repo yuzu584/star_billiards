@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// ゲーム内で使用する定数をまとめた名前空間
 namespace AppConst
 {
     public static class Const_Camera
@@ -16,7 +17,6 @@ namespace AppConst
 
     public static class Const_Player
     {
-        public const int DEFAULT_ENERGY_MAX = 1000;                                                         // エネルギーの最大値の初期値
         public const float SPEED_MAINTENANCE_RATE = 1.008f;                                                 // プレイヤーの速度維持率
         public const float SPEED_REDUCTION_RATE = 0.95f;                                                    // プレイヤーの速度減少率
         public const float SPEED_THRESHOLD = 0.01f;                                                         // プレイヤーの速度のしきい値

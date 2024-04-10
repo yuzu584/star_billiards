@@ -23,7 +23,8 @@ public class LocalizeText : MonoBehaviour
 
     private void OnDestroy()
     {
-        localize.switchLanguageDele -= SetText;
+        if(localize != null)
+            localize.switchLanguageDele -= SetText;
     }
 
     void SetText()

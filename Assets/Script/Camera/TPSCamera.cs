@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using AppConst;
+using AppParam;
 
 // カメラの視点移動
 public class TPSCamera : Singleton<TPSCamera>
@@ -18,6 +19,8 @@ public class TPSCamera : Singleton<TPSCamera>
     {
         input = InputController.instance;
         input.game_OnLookDele += MoveCameraAngle;
+
+        Param_Camera.angleMoveSpeed.Value = speed;
     }
 
     // 視点移動処理
@@ -27,14 +30,14 @@ public class TPSCamera : Singleton<TPSCamera>
         if (Mathf.Abs(vec.x) > 0.001f)
         {
             // 回転軸はワールド座標のY軸
-            transform.RotateAround(player.transform.position, transform.up, (vec.x * speed) * rate);
+            transform.RotateAround(player.transform.position, transform.up, (vec.x * Param_Camera.angleMoveSpeed.Value) * rate);
         }
 
         // Y方向に一定量移動していれば縦回転
         if (Mathf.Abs(vec.y) > 0.001f)
         {
             // 回転軸はカメラ自身のX軸
-            transform.RotateAround(player.transform.position, transform.right, (-vec.y * speed) * rate);
+            transform.RotateAround(player.transform.position, transform.right, (-vec.y * Param_Camera.angleMoveSpeed.Value) * rate);
         }
     }
 }

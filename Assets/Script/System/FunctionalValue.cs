@@ -6,6 +6,10 @@ using UnityEngine;
 // 値を保持するクラス(値を範囲内に収める機能付き)
 public class FunctionalValue<T> where T : struct, IComparable<T>
 {
+    private T defaultValue;
+    private T defaultMax;
+    private T defaultMin;
+
     // 値
     private T _value;
     public T Value
@@ -48,6 +52,11 @@ public class FunctionalValue<T> where T : struct, IComparable<T>
         _value = value;
         _max = max;
         _min = min;
+
+        defaultValue = value;
+        defaultMax = max;
+        defaultMin = min;
+
         ClampValue();
     }
 
@@ -60,5 +69,15 @@ public class FunctionalValue<T> where T : struct, IComparable<T>
         // 値が最大値以上なら
         else if (_value.CompareTo(_max) > 0)
             _value = _max;
+    }
+
+    // 値・最大値・最小値を初期値に戻す
+    public void Init()
+    {
+        _value = defaultValue;
+        _max = defaultMax;
+        _min = defaultMin;
+
+        ClampValue();
     }
 }
