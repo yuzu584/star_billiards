@@ -29,10 +29,10 @@ public class PredictionLine : Singleton<PredictionLine>
         input = InputController.instance;
 
         // 始点の太さを指定
-        lineRenderer.startWidth = AppConst.PREDICTION_LINE_START_WIDTH;
+        lineRenderer.startWidth = Const_Player.PREDICTION_LINE_START_WIDTH;
 
         // 終点の太さを指定
-        lineRenderer.endWidth = AppConst.PREDICTION_LINE_END_WIDTH;
+        lineRenderer.endWidth = Const_Player.PREDICTION_LINE_END_WIDTH;
 
         // lineRendererの線の数を指定
         lineRenderer.positionCount = 2;

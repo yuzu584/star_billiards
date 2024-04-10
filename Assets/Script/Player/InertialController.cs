@@ -29,12 +29,12 @@ public class InertialController : MonoBehaviour
         // 前入力なら減速を緩やかに
         if (mVec.y > 0)
         {
-            rb.velocity *= AppConst.SPEED_MAINTENANCE_RATE;
+            rb.velocity *= Const_Player.SPEED_MAINTENANCE_RATE;
         }
         // 後ろ入力なら減速
         else if (mVec.y < 0)
         {
-            rb.velocity *= AppConst.SPEED_REDUCTION_RATE;
+            rb.velocity *= Const_Player.SPEED_REDUCTION_RATE;
         }
         // 前後入力されていない状態で左右入力なら軌道を左右に曲げる
         else if (mVec.x != 0)
@@ -43,7 +43,7 @@ public class InertialController : MonoBehaviour
         }
 
         // 速度が一定の値以下なら0にする
-        if (rb.velocity.magnitude < AppConst.SPEED_THRESHOLD)
+        if (rb.velocity.magnitude < Const_Player.SPEED_THRESHOLD)
         {
             rb.velocity *= 0;
         }

@@ -12,7 +12,7 @@ public class TPSCamera : Singleton<TPSCamera>
 
     private InputController input;
 
-    public float rate = AppConst.CAMERA_DEFAULT_SPEED_RATE;     // Ž‹“_ˆÚ“®‘¬“x‚Ì”{—¦
+    public float rate = Const_Camera.CAMERA_DEFAULT_SPEED_RATE;     // Ž‹“_ˆÚ“®‘¬“x‚Ì”{—¦
 
     void Start()
     {

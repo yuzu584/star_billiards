@@ -27,7 +27,7 @@ public class SphereRay : Singleton<SphereRay>
         Ray ray = new Ray(Camera.main.transform.position,Camera.main.transform.forward);
 
         // 球体のRayを生成
-        if (Physics.SphereCast(ray, AppConst.SPHERE_RAY_WIDTH, out hit))
+        if (Physics.SphereCast(ray, Const_Player.SPHERE_RAY_WIDTH, out hit))
         {
             // hitしたオブジェクトの座標と名前とタグを取得
             hitObjectPosition = hit.collider.gameObject.transform.position;

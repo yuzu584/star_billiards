@@ -19,7 +19,7 @@ public class PlayerController : Singleton<PlayerController>
     void Init()
     {
         rb.velocity *= 0;
-        transform.position = AppConst.PLATER_DEFAULT_POSITION;
+        transform.position = Const_Player.PLATER_DEFAULT_POSITION;
 
         // ˆÚ“®§ŒÀ‚ğ‰ğœ
         rb.constraints = RigidbodyConstraints.FreezeRotation;

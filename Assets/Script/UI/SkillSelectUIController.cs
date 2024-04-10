@@ -45,12 +45,12 @@ public class SkillSelectUIController : MonoBehaviour
         effectDetails.text = localize.GetString_SkillDetails((EnumSkillDetails)Enum.ToObject(typeof(EnumSkillDetails), (int)type));
 
         // スキルのコストのテキストを更新
-        cost.text = AppConst.SKILL_ENERGY_USAGE[(int)type].ToString("0");
+        cost.text = Const_Skill.SKILLS[(int)type].energyUsage.ToString("0");
 
         // スキルの効果時間のテキストを更新
-        effectTime.text = AppConst.SKILL_EFFECT_TIME[(int)type].ToString("0") + "s";
+        effectTime.text = Const_Skill.SKILLS[(int)type].effectTime.ToString("0") + "s";
 
         // スキルのクールダウンのテキストを更新
-        coolDown.text = AppConst.SKILL_COOLDOWN[(int)type].ToString("0") + "s";
+        coolDown.text = Const_Skill.SKILLS[(int)type].coolDown.ToString("0") + "s";
     }
 }

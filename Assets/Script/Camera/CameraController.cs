@@ -32,8 +32,8 @@ public class CameraController : MonoBehaviour
                 chasePlayer = true;
 
                 // 座標と向きを変更
-                transform.position = AppConst.CAMERA_DEFAULT_IN_GAME_POS;
-                transform.rotation = Quaternion.Euler(AppConst.CAMERA_DEFAULT_IN_GAME_ANGLE);
+                transform.position = Const_Camera.CAMERA_DEFAULT_IN_GAME_POS;
+                transform.rotation = Quaternion.Euler(Const_Camera.CAMERA_DEFAULT_IN_GAME_ANGLE);
 
                 // プレイヤーの子オブジェクトに設定
                 transform.SetParent(player.transform, false);
@@ -53,8 +53,8 @@ public class CameraController : MonoBehaviour
                 transform.parent = null;
 
             // 座標と向きを変更
-            transform.position = AppConst.DEFAULT_STAGE_SELECT_POS;
-            transform.rotation = Quaternion.Euler(AppConst.DEFAULT_STAGE_SELECT_ANGLE);
+            transform.position = Const_Camera.DEFAULT_STAGE_SELECT_POS;
+            transform.rotation = Quaternion.Euler(Const_Camera.DEFAULT_STAGE_SELECT_ANGLE);
         }
     }
 }

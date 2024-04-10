@@ -7,7 +7,7 @@ using Const;
 // スキル選択を管理
 public class SkillSelect : Singleton<SkillSelect>
 {
-    public SkillController.SkillType[] selectSlot = new SkillController.SkillType[AppConst.SKILL_SLOT_AMOUNT];  // 選択しているスキルスロット
+    public SkillController.SkillType[] selectSlot = new SkillController.SkillType[Const_Skill.SKILL_SLOT_AMOUNT];  // 選択しているスキルスロット
 
     private SkillController skillCon;
 
@@ -27,7 +27,7 @@ public class SkillSelect : Singleton<SkillSelect>
     public void InitSelectSlot()
     {
         // スキルスロットの数繰り返す
-        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
+        for (int i = 0; i < Const_Skill.SKILL_SLOT_AMOUNT; i++)
         {
             // スキルを None(未選択) にする
             selectSlot[i] = SkillController.SkillType.None;
@@ -38,7 +38,7 @@ public class SkillSelect : Singleton<SkillSelect>
     public void SetSelectSlot()
     {
         // スキルスロットの数繰り返す
-        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
+        for (int i = 0; i < Const_Skill.SKILL_SLOT_AMOUNT; i++)
 
             // スキルをセット
             skillCon.skillSlot[i] = selectSlot[i];
@@ -50,7 +50,7 @@ public class SkillSelect : Singleton<SkillSelect>
         int count = 0;
 
         // スキルスロットの数繰り返す
-        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
+        for (int i = 0; i < Const_Skill.SKILL_SLOT_AMOUNT; i++)
         {
             // スキル未選択のスロットが見つかったら
             if (selectSlot[i] == SkillController.SkillType.None)
@@ -69,7 +69,7 @@ public class SkillSelect : Singleton<SkillSelect>
         int count = 0;
 
         // スキルスロットの数繰り返す
-        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
+        for (int i = 0; i < Const_Skill.SKILL_SLOT_AMOUNT; i++)
         {
             // 選択を解除するべきスキルが見つかったら
             if (selectSlot[i] == st)
@@ -86,7 +86,7 @@ public class SkillSelect : Singleton<SkillSelect>
     public bool CheckDoubleSelect(SkillController.SkillType st)
     {
         // スキルスロットの数繰り返す
-        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
+        for (int i = 0; i < Const_Skill.SKILL_SLOT_AMOUNT; i++)
         {
             // 選択済みなら false を返す
             if (selectSlot[i] == st) { return false; }
@@ -100,7 +100,7 @@ public class SkillSelect : Singleton<SkillSelect>
     public bool CheckNone()
     {
         // スキルスロットの数繰り返す
-        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
+        for (int i = 0; i < Const_Skill.SKILL_SLOT_AMOUNT; i++)
         {
             // None が見つかったら false を返す
             if (selectSlot[i] == SkillController.SkillType.None) { return false; }

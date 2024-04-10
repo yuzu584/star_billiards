@@ -23,13 +23,13 @@ public class Aim : MonoBehaviour
         if (value > 0)
         {
             // 時間の流れをスローにする
-            Time.timeScale = AppConst.SLOW_TIME_SCALE;
+            Time.timeScale = Const_System.SLOW_TIME_SCALE;
         }
         // エイムボタンが押されてないなら
         else if (value == 0)
         {
             // 時間の流れを元に戻す
-            Time.timeScale = AppConst.DEFAULT_TIME_SCALE;
+            Time.timeScale = Const_System.DEFAULT_TIME_SCALE;
         }
     }
 }

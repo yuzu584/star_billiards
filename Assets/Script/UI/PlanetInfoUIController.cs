@@ -54,7 +54,7 @@ public class PlanetInfoUIController : MonoBehaviour
             Draw(sphereRay.hitObjectPosition, sphereRay.hitObjectName);
 
             // 視点移動速度を遅くする
-            TPSCamera.instance.rate = AppConst.CAMERA_SLOW_SPEED_RATE;
+            TPSCamera.instance.rate = Const_Camera.CAMERA_SLOW_SPEED_RATE;
         }
         // 対象が惑星か恒星以外なら
         else
@@ -63,7 +63,7 @@ public class PlanetInfoUIController : MonoBehaviour
             planetName.enabled = false;
 
             // 視点移動速度を元に戻す
-            TPSCamera.instance.rate = AppConst.CAMERA_DEFAULT_SPEED_RATE;
+            TPSCamera.instance.rate = Const_Camera.CAMERA_DEFAULT_SPEED_RATE;
         }
     }
 }

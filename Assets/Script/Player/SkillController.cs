@@ -36,7 +36,7 @@ public class SkillController : Singleton<SkillController>
         None,
     }
 
-    public SkillType[] skillSlot = new SkillType[AppConst.SKILL_SLOT_AMOUNT];  // スキルスロット
+    public SkillType[] skillSlot = new SkillType[Const_Skill.SKILL_SLOT_AMOUNT];  // スキルスロット
 
     void Start()
     {
@@ -76,11 +76,11 @@ public class SkillController : Singleton<SkillController>
         if ((value != 0) && (effectTime == 0) && (coolDown == 0))
         {
             // 効果時間とクールダウンを設定
-            effectTime = AppConst.SKILL_EFFECT_TIME[(int)skillSlot[selectSkill]];
-            coolDown = AppConst.SKILL_COOLDOWN[(int)skillSlot[selectSkill]];
+            effectTime = Const_Skill.SKILLS[(int)skillSlot[selectSkill]].effectTime;
+            coolDown = Const_Skill.SKILLS[(int)skillSlot[selectSkill]].coolDown;
 
             // エネルギーを消費
-            eneCon.energy -= AppConst.SKILL_ENERGY_USAGE[(int)skillSlot[selectSkill]];
+            eneCon.energy -= Const_Skill.SKILLS[(int)skillSlot[selectSkill]].energyUsage;
 
             // 選択しているスキルによって分岐
             switch (skillSlot[selectSkill])
@@ -106,8 +106,8 @@ public class SkillController : Singleton<SkillController>
             // スキル番号が範囲外なら範囲内に収める
             if (selectSkill < 0)
                 selectSkill = 0;
-            else if (selectSkill > AppConst.SKILL_SLOT_AMOUNT - 1)
-                selectSkill = AppConst.SKILL_SLOT_AMOUNT - 1;
+            else if (selectSkill > Const_Skill.SKILL_SLOT_AMOUNT - 1)
+                selectSkill = Const_Skill.SKILL_SLOT_AMOUNT - 1;
         }
     }
 
@@ -132,7 +132,7 @@ public class SkillController : Singleton<SkillController>
     IEnumerator UseSuperCharge()
     {
         // チャージスピードを増加
-        shot.chargeSpeed = AppConst.DEFAULT_CHARGE_SPEED + AppConst.CHARGE_SPEED_INCREASE_AMOUNT;
+        shot.chargeSpeed = Const_Player.DEFAULT_CHARGE_SPEED + Const_Skill.CHARGE_SPEED_INCREASE_AMOUNT;
 
         // 効果時間が終わるまで待つ
         yield return new WaitForSeconds(effectTime);
@@ -145,8 +145,8 @@ public class SkillController : Singleton<SkillController>
     IEnumerator UsePowerSurge()
     {
         // プレイヤーの質量を増加
-        shot.playerBouncePower = AppConst.DEFAULT_BOUNCE_POWER - AppConst.BOUNCE_POWER_INCREASE_AMOUNT;
-        shot.planetBouncePower = AppConst.DEFAULT_BOUNCE_POWER + AppConst.BOUNCE_POWER_INCREASE_AMOUNT;
+        shot.playerBouncePower = Const_Player.DEFAULT_BOUNCE_POWER - Const_Skill.BOUNCE_POWER_INCREASE_AMOUNT;
+        shot.planetBouncePower = Const_Player.DEFAULT_BOUNCE_POWER + Const_Skill.BOUNCE_POWER_INCREASE_AMOUNT;
 
         // 効果時間が終わるまで待つ
         yield return new WaitForSeconds(effectTime);
@@ -159,7 +159,7 @@ public class SkillController : Singleton<SkillController>
     IEnumerator UseHuge()
     {
         // 巨大化
-        transform.localScale = AppConst.PLAYER_DEFAULT_SCALE * AppConst.SIZE_INCREASE_RATE;
+        transform.localScale = Const_Player.PLAYER_DEFAULT_SCALE * Const_Skill.SIZE_INCREASE_RATE;
 
         // 効果時間が終わるまで待つ
         yield return new WaitForSeconds(effectTime);
@@ -229,9 +229,9 @@ public class SkillController : Singleton<SkillController>
     // スキルの効果を消し去る
     void InitSkillEffect()
     {
-        shot.chargeSpeed = AppConst.DEFAULT_CHARGE_SPEED;
-        shot.playerBouncePower = AppConst.DEFAULT_BOUNCE_POWER;
-        shot.planetBouncePower = AppConst.DEFAULT_BOUNCE_POWER;
-        transform.localScale = AppConst.PLAYER_DEFAULT_SCALE;
+        shot.chargeSpeed = Const_Player.DEFAULT_CHARGE_SPEED;
+        shot.playerBouncePower = Const_Player.DEFAULT_BOUNCE_POWER;
+        shot.planetBouncePower = Const_Player.DEFAULT_BOUNCE_POWER;
+        transform.localScale = Const_Player.PLAYER_DEFAULT_SCALE;
     }
 }

@@ -51,17 +51,11 @@ public class SkillSlot : Button
         }
     }
 
-    // スキル名を表すテキストを設定
-    void SetNameText()
-    {
-        nameText.text = AppConst.SKILL_NAME[(int)skill];
-    }
-
     // スキルの選択状態表す画像の色を設定
     void SetSelectImageColor()
     {
         // スキルスロットの数繰り返す
-        for (int i = 0; i < AppConst.SKILL_SLOT_AMOUNT; i++)
+        for (int i = 0; i < Const_Skill.SKILL_SLOT_AMOUNT; i++)
         {
             // スキルがセットされていれば色を明るくする
             if (skillSelect.selectSlot[i] == skill)
@@ -85,9 +79,6 @@ public class SkillSlot : Button
         base.Start();
 
         skillSelect ??= SkillSelect.instance;
-
-        // スキル名のテキストを設定
-        SetNameText();
     }
 
     void Update()

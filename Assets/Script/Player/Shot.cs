@@ -8,11 +8,11 @@ using Const;
 public class Shot : Singleton<Shot>
 {
 
-    public float speed = AppConst.PLAYER_DEFAULT_SPEED;           // 移動速度
+    public float speed = Const_Player.PLAYER_DEFAULT_SPEED;           // 移動速度
     public float charge = 0;                                      // 球のチャージ
-    public float chargeSpeed = AppConst.DEFAULT_CHARGE_SPEED;     // 球のチャージ速度
-    public int playerBouncePower = AppConst.DEFAULT_BOUNCE_POWER; // 衝突したときのプレイヤーの反発力
-    public int planetBouncePower = AppConst.DEFAULT_BOUNCE_POWER; // 衝突したときの惑星の反発力
+    public float chargeSpeed = Const_Player.DEFAULT_CHARGE_SPEED;     // 球のチャージ速度
+    public int playerBouncePower = Const_Player.DEFAULT_BOUNCE_POWER; // 衝突したときのプレイヤーの反発力
+    public int planetBouncePower = Const_Player.DEFAULT_BOUNCE_POWER; // 衝突したときの惑星の反発力
 
     private PredictionLine pLine;
     private EnergyController eneCon;
@@ -80,7 +80,7 @@ public class Shot : Singleton<Shot>
     {
         // エネルギーがある状態でショットボタンが押されたら減速
         if ((inputValue > 0) && (eneCon.energy > 0))
-            rb.velocity *= AppConst.SPEED_REDUCTION_RATE;
+            rb.velocity *= Const_Player.SPEED_REDUCTION_RATE;
     }
 
     // 衝突したとき
