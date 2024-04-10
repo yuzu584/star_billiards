@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Const;
+using AppConst;
 
 // ƒvƒŒƒCƒ„[‚ğŠÇ—
 public class PlayerController : Singleton<PlayerController>

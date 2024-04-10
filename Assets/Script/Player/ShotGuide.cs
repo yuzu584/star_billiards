@@ -1,3 +1,4 @@
+using AppParam;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,7 +41,7 @@ public class ShotGuide : MonoBehaviour
         }
 
         // エネルギーがある状態でショットボタンが押されていたら
-        if ((value > 0) && (eneCon.energy > 0))
+        if ((value > 0) && (Param_Player.energy.Value > 0))
         {
             // 非表示なら表示
             if (!instance.activeSelf)

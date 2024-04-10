@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.UI;
-using Const;
+using AppConst;
 
 public class SkillSlot : Button
 {
@@ -13,9 +13,6 @@ public class SkillSlot : Button
 
     // instanceを代入する変数
     private SkillSelect skillSelect;
-
-    private Color defaultSelectImageColor = new(255.0f, 255.0f, 255.0f, 0.04f);
-    private Color selectedSelectImageColor = new(255.0f, 255.0f, 255.0f, 1.0f);
 
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
@@ -60,13 +57,13 @@ public class SkillSlot : Button
             // スキルがセットされていれば色を明るくする
             if (skillSelect.selectSlot[i] == skill)
             {
-                selectedImage.color = selectedSelectImageColor;
+                selectedImage.color = Const_Button.SKILLSLOT_SELECTIMAGE_SELECT_COLOR;
                 return;
             }
         }
 
         // スキルがセットされていなければ色を薄くする
-        selectedImage.color = defaultSelectImageColor;
+        selectedImage.color = Const_Button.SKILLSLOT_SELECTIMAGE_DEFAULT_COLOR;
     }
 
     protected override void OnEnable()

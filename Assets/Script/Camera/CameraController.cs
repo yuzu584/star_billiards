@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Const;
+using AppConst;
 
 // ƒƒCƒ“ƒJƒƒ‰‚ğŠÇ—
 public class CameraController : MonoBehaviour

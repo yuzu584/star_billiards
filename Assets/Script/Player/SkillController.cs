@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Const;
+using AppConst;
+using AppParam;
 
 // スキルを管理
 public class SkillController : Singleton<SkillController>
@@ -80,7 +81,7 @@ public class SkillController : Singleton<SkillController>
             coolDown = Const_Skill.SKILLS[(int)skillSlot[selectSkill]].coolDown;
 
             // エネルギーを消費
-            eneCon.energy -= Const_Skill.SKILLS[(int)skillSlot[selectSkill]].energyUsage;
+            Param_Player.energy.Value -= Const_Skill.SKILLS[(int)skillSlot[selectSkill]].energyUsage;
 
             // 選択しているスキルによって分岐
             switch (skillSlot[selectSkill])

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using AppParam;
+
 // エネルギーの増減を管理
 public class EnergyController : Singleton<EnergyController>
 {
@@ -11,13 +13,10 @@ public class EnergyController : Singleton<EnergyController>
 
     private Rigidbody rb;           // リジッドボディ
 
-    public float energy = 1000;     // プレイヤーのエネルギー
-    public float maxEnergy = 1000;  // 最大エネルギー
-
     // 初期化処理
     void Init()
     {
-        energy = maxEnergy;
+        Param_Player.energy.Value = Param_Player.energy.Max;
     }
 
     void Start()
@@ -36,15 +35,9 @@ public class EnergyController : Singleton<EnergyController>
     void Update()
     {
         // ゲーム画面でエネルギーが0になったらゲームオーバー処理
-        if((screenCon.Screen == ScreenController.ScreenType.InGame) && (energy <= 0))
+        if((screenCon.Screen == ScreenController.ScreenType.InGame) && (Param_Player.energy.Value <= 0))
         {
             stageCon.gameOverDele?.Invoke();
         }
-
-        // エネルギーの数値が範囲外なら範囲内に戻す
-        if (energy > maxEnergy)
-            energy = maxEnergy;
-        else if (energy < 0)
-            energy = 0;
     }
 }

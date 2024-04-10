@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine.UI;
-using UnityEditor;
-
 // –ß‚éƒ{ƒ^ƒ“‚ğŠÇ—
 public class BackButton : Button
 {

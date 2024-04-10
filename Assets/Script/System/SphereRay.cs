@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Const;
+using AppConst;
 using UnityEngine.UIElements;
 
 // 球体のRayを生成し、関数を呼び出す

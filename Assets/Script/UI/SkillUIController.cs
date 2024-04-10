@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-using Const;
+using AppConst;
 
 // ƒXƒLƒ‹‚ÌUI‚ğŠÇ—
 public class SkillUIController : MonoBehaviour

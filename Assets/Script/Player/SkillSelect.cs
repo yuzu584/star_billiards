@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Const;
+using AppConst;
 
 // ƒXƒLƒ‹‘I‘ğ‚ğŠÇ—
 public class SkillSelect : Singleton<SkillSelect>

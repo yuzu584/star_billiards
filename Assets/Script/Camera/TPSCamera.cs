@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Const;
+using AppConst;
 
 // ƒJƒƒ‰‚Ì‹“_ˆÚ“®
 public class TPSCamera : Singleton<TPSCamera>

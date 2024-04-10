@@ -1,3 +1,4 @@
+using AppParam;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,16 +28,16 @@ public class EnergyUIController : Singleton<EnergyUIController>
     void Draw()
     {
         // エネルギーゲージの増減を描画
-        energyGauge.fillAmount = eneCon.energy / eneCon.maxEnergy;
+        energyGauge.fillAmount = (float)Param_Player.energy.Value / (float)Param_Player.energy.Max;
 
-        if (energyAfterImage.fillAmount > eneCon.energy / eneCon.maxEnergy)
+        if (energyAfterImage.fillAmount > (float)Param_Player.energy.Value / (float)Param_Player.energy.Max)
         {
             // エネルギーゲージの減少量を少しずつ減らす
             energyAfterImage.fillAmount -=
-                (energyAfterImage.fillAmount - eneCon.energy / eneCon.maxEnergy) * Time.deltaTime;
+                (energyAfterImage.fillAmount - (float)Param_Player.energy.Value / (float)Param_Player.energy.Max) * Time.deltaTime;
         }
 
         // エネルギーの数値を表示
-        EnergyValue.text = eneCon.energy.ToString("0");
+        EnergyValue.text = Param_Player.energy.Value.ToString("0");
     }
 }
