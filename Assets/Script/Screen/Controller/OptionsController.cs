@@ -1,30 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static Button;
 
 // 設定画面を管理
 public class OptionsController : Singleton<OptionsController>
 {
-    public enum Loot   // 階層
-    {
-        Top = 0,       // 最初の画面
-        GamePlay = 1,  // ゲーム内設定
-        Video = 2,     // ビデオ設定
-        Audio = 3,     // オーディオ設定
-        KeyConfig = 4, // キー配置設定
-        Language = 5,  // 言語設定
-    }
-    public Loot loot = 0;
-    public Loot oldLoot = 0;        // 1フレーム前の階層
-
     public OptionsUIController opUICon;
+    private ScreenController scrCon;
+    private InputController input;
+
+    private void Start()
+    {
+        input = InputController.instance;
+        scrCon = ScreenController.instance;
+    }
 
     // 表示する階層を切り替え
-    public void SwitchLoot(Loot l)
+    public void SwitchLoot(int loot)
     {
         if (opUICon == null) return;
 
         // 階層を設定
-        loot = l;
+        scrCon.ScreenLoot = loot;
+    }
+
+    // 戻るボタンのクリック時の動作を変更
+    public void SetBuckButtonAction()
+    {
+        opUICon.buckBtn.action = () =>
+        {
+            if (scrCon.ScreenLoot == 0)
+            {
+                // 階層が0以下かつオブジェクトが有効なら
+                if ((scrCon.ScreenLoot <= 0) && (opUICon.buckBtn.gameObject.activeInHierarchy))
+                {
+                    //音を再生
+                    opUICon.buckBtn.PlayBtnSound(BtnSounds.ClickSound);
+
+                    // 前の画面に戻る
+                    scrCon.Screen = opUICon.buckBtn.oldScreen;
+                }
+            }
+            else if (scrCon.ScreenLoot > 0)
+            {
+                SwitchLoot(0);
+            }
+        };
     }
 }

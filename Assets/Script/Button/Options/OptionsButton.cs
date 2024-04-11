@@ -5,7 +5,7 @@ using UnityEngine;
 // İ’è‰æ–Ê‚Ì”Ä—pƒ{ƒ^ƒ“
 public class OptionsButton : Button
 {
-    [SerializeField] private OptionsController.Loot loot; // ‘JˆÚæ‚Ìİ’è€–Ú
+    [SerializeField] private int loot; // ‘JˆÚæ‚Ìİ’è€–Ú
 
     private OptionsController opCon;
 

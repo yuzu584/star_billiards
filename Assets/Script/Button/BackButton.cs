@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,9 @@ using UnityEngine;
 // 戻るボタンを管理
 public class BackButton : Button
 {
-    private ScreenController.ScreenType oldScreen = 0; // 前回のスクリーン(戻り先の画面)
+    public ScreenController.ScreenType oldScreen = 0; // 前回のスクリーン(戻り先の画面)
+
+    public Action action;
 
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
@@ -24,9 +27,7 @@ public class BackButton : Button
     // クリックされたときの処理
     public override void ClickProcess()
     {
-        // 画面を前の画面にする
-        scrCon.ScreenLoot = 0;
-        scrCon.Screen = oldScreen;
+        action?.Invoke();
     }
 
     // 前回のスクリーン番号をセット
@@ -38,16 +39,7 @@ public class BackButton : Button
     // 画面を戻る
     void Back(float v)
     {
-        // 階層が0以下かつオブジェクトが有効なら
-        if ((scrCon.ScreenLoot <= 0) && (gameObject.activeInHierarchy))
-        {
-            //音を再生
-            if (sound != null)
-                StartCoroutine(sound.Play(ClickSound));
-
-            // 前の画面に戻る
-            scrCon.Screen = oldScreen;
-        }
+        action?.Invoke();
     }
 
     protected override void OnEnable()
@@ -64,6 +56,20 @@ public class BackButton : Button
         input.ui_OnNegativeDele += Back;
 
         SetOldScreen();
+
+        action = () =>
+        {
+            // 階層が0以下かつオブジェクトが有効なら
+            if ((scrCon.ScreenLoot <= 0) && (gameObject.activeInHierarchy))
+            {
+                //音を再生
+                if (sound != null)
+                    PlayBtnSound(BtnSounds.ClickSound);
+
+                // 前の画面に戻る
+                scrCon.Screen = oldScreen;
+            }
+        };
     }
 
     protected override void OnDestroy()

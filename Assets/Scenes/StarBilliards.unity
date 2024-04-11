@@ -2483,9 +2483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecea3b83c609648448adc57e27ce76b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loot: 0
-  oldLoot: 0
   opUICon: {fileID: 0}
+  scrCon: {fileID: 0}
+  input: {fileID: 0}
 --- !u!1 &1658508820
 GameObject:
   m_ObjectHideFlags: 0
