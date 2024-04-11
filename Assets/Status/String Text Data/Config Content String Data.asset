@@ -17,3 +17,15 @@ MonoBehaviour:
     text:
     - None_ConfigContent
     - "\u672A\u8A2D\u5B9A_ConfigContent"
+  - type: 0
+    text:
+    - Energy
+    - "\u30A8\u30CD\u30EB\u30AE\u30FC"
+  - type: 1
+    text:
+    - AngleMoveSpeed
+    - "\u8996\u70B9\u79FB\u52D5\u901F\u5EA6"
+  - type: 2
+    text:
+    - Fov
+    - "\u8996\u91CE\u89D2"

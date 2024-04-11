@@ -12,6 +12,7 @@ public class ClampedValue<T> : IClampedValue where T : struct, IComparable<T>
     private T _min;         // 最小値
     private string _name;   // 名前(DictionaryのKeyに使用)
 
+    // コンストラクタ
     public ClampedValue(T value, T max, T min, string name)
     {
         _value = value;

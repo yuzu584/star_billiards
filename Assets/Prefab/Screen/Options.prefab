@@ -861,6 +861,10 @@ PrefabInstance:
       propertyPath: group
       value: 31
       objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: type.configContent
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8199208808427150282, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: _optionsController
       value: 
@@ -1252,6 +1256,10 @@ PrefabInstance:
       propertyPath: group
       value: 31
       objectReference: {fileID: 0}
+    - target: {fileID: 5603181521276369992, guid: 18e40ccc74829a64cb36465d193a50af, type: 3}
+      propertyPath: type.configContent
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8831911806282630702, guid: 18e40ccc74829a64cb36465d193a50af, type: 3}
       propertyPath: buttonUp
       value: 
@@ -1388,6 +1396,10 @@ PrefabInstance:
     - target: {fileID: 5603181521276369992, guid: 18e40ccc74829a64cb36465d193a50af, type: 3}
       propertyPath: group
       value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5603181521276369992, guid: 18e40ccc74829a64cb36465d193a50af, type: 3}
+      propertyPath: type.configContent
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8831911806282630702, guid: 18e40ccc74829a64cb36465d193a50af, type: 3}
       propertyPath: buttonUp
@@ -1876,6 +1888,10 @@ PrefabInstance:
       propertyPath: group
       value: 31
       objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: type.configContent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8199208808427150282, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: _optionsController
       value: 
@@ -2197,6 +2213,10 @@ PrefabInstance:
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: group
       value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: type.configContent
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8199208808427150282, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: _optionsController

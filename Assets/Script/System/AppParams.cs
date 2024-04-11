@@ -45,9 +45,9 @@ public class AppParams : Singleton<AppParams>
 
     public enum ParamsKey
     {
-        energy,
-        angleMoveSpeed,
-        fov,
-        None,
+        energy              = 000,
+        angleMoveSpeed      = 001,
+        fov                 = 002,
+        None                = 100,
     }
 }

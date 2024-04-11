@@ -86,7 +86,7 @@ public class Localize : Singleton<Localize>
         return null;
     }
 
-    public string GetString_ConfigContent(EnumConfigContent type)
+    public string GetString_ConfigContent(AppParams.ParamsKey type)
     {
         for (int i = 0; i < configContentSD.strings.Length; i++)
             if (configContentSD.strings[i].type == type)

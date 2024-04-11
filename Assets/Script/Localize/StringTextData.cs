@@ -37,7 +37,7 @@ public struct StringEnumStruct
     public EnumStageName stageName;
     public EnumMission mission;
     public EnumConfigTop configTop;
-    public EnumConfigContent configContent;
+    public AppParams.ParamsKey configContent;
     public EnumSkillName skillName;
     public EnumSkillParameter skillParameter;
     public EnumSkillDetails skillDetails;
@@ -89,12 +89,6 @@ public enum EnumConfigTop
     Audio                   = 002,  // オーディオ
     KeyConfig               = 003,  // キーコンフィグ
     Language                = 004,  // 言語
-    None                    = 100,
-}
-
-// 設定画面で変更可能な項目の名前の列挙型
-public enum EnumConfigContent
-{
     None                    = 100,
 }
 
@@ -239,7 +233,7 @@ public struct ConfigTopStrings
 [System.Serializable]
 public struct ConfigContentStrings
 {
-    public EnumConfigContent type;
+    public AppParams.ParamsKey type;
     public string[] text;
 }
 
