@@ -27,16 +27,16 @@ public class EnergyUIController : Singleton<EnergyUIController>
     void Draw()
     {
         // エネルギーゲージの増減を描画
-        energyGauge.fillAmount = (float)eneCon.energy.Value / (float)eneCon.energy.Max;
+        energyGauge.fillAmount = eneCon.energy.GetValue_Float() / eneCon.energy.GetMax_Float();
 
-        if (energyAfterImage.fillAmount > (float)eneCon.energy.Value / (float)eneCon.energy.Max)
+        if (energyAfterImage.fillAmount > eneCon.energy.GetValue_Float() / eneCon.energy.GetMax_Float())
         {
             // エネルギーゲージの減少量を少しずつ減らす
             energyAfterImage.fillAmount -=
-                (energyAfterImage.fillAmount - (float)eneCon.energy.Value / (float)eneCon.energy.Max) * Time.deltaTime;
+                (energyAfterImage.fillAmount - eneCon.energy.GetValue_Float() / eneCon.energy.GetMax_Float()) * Time.deltaTime;
         }
 
         // エネルギーの数値を表示
-        EnergyValue.text = eneCon.energy.Value.ToString("0");
+        EnergyValue.text = eneCon.energy.GetValue_Float().ToString("0");
     }
 }

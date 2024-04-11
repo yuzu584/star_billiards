@@ -90,7 +90,7 @@ public class PredictionLine : Singleton<PredictionLine>
     void RenderProcess(float value)
     {
         // エネルギーがある状態でショットボタンが押されていたら
-        if ((value > 0) && (eneCon.energy.Value > 0))
+        if ((value > 0) && (eneCon.energy.GetValue_Int() > 0))
         {
             // 線を表示
             lineRenderer.enabled = true;

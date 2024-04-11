@@ -8,11 +8,11 @@ using AppConst;
 public class Shot : Singleton<Shot>
 {
 
-    public float speed = Const_Player.PLAYER_DEFAULT_SPEED;           // 移動速度
-    public float charge = 0;                                      // 球のチャージ
-    public float chargeSpeed = Const_Player.DEFAULT_CHARGE_SPEED;     // 球のチャージ速度
-    public int playerBouncePower = Const_Player.DEFAULT_BOUNCE_POWER; // 衝突したときのプレイヤーの反発力
-    public int planetBouncePower = Const_Player.DEFAULT_BOUNCE_POWER; // 衝突したときの惑星の反発力
+    public float speed = Const_Player.PLAYER_DEFAULT_SPEED;             // 移動速度
+    public float charge = 0;                                            // 球のチャージ
+    public float chargeSpeed = Const_Player.DEFAULT_CHARGE_SPEED;       // 球のチャージ速度
+    public int playerBouncePower = Const_Player.DEFAULT_BOUNCE_POWER;   // 衝突したときのプレイヤーの反発力
+    public int planetBouncePower = Const_Player.DEFAULT_BOUNCE_POWER;   // 衝突したときの惑星の反発力
 
     private PredictionLine pLine;
     private EnergyController eneCon;
@@ -79,7 +79,7 @@ public class Shot : Singleton<Shot>
     void FixedUpdate()
     {
         // エネルギーがある状態でショットボタンが押されたら減速
-        if ((inputValue > 0) && (eneCon.energy.Value > 0))
+        if ((inputValue > 0) && (eneCon.energy.GetValue_Int() > 0))
             rb.velocity *= Const_Player.SPEED_REDUCTION_RATE;
     }
 
@@ -115,7 +115,7 @@ public class Shot : Singleton<Shot>
         else if (collision.gameObject.tag == "FixedStar")
         {
             // エネルギーを0にする(ゲームオーバー)
-            eneCon.energy.Value = 0;
+            eneCon.energy.SetValue(0);
         }
 
         // タグがPlanetとFixedStar以外なら
@@ -147,7 +147,7 @@ public class Shot : Singleton<Shot>
         inputValue = value;
 
         // エネルギーがある状態でショットボタンが押されていたら(長押し可)
-        if ((inputValue > 0) && (eneCon.energy.Value > 0))
+        if ((inputValue > 0) && (eneCon.energy.GetValue_Int() > 0))
         {
             // 向きを設定してチャージする
             direction = pLine.RayDirection();
@@ -157,14 +157,14 @@ public class Shot : Singleton<Shot>
         else if ((inputValue == 0) && (charge > 0))
         {
             // エネルギーを消費して発射
-            eneCon.energy.Value -= (int)charge / 10;
+            eneCon.energy.SetValue(eneCon.energy.GetValue_Int() - (int)charge / 10);
             Vector3 velocity = Camera.main.transform.forward;
             rb.AddForce(velocity * speed * charge);
             charge = 0;
         }
 
         // エネルギーがある状態でショットボタンが押されたら(押した瞬間だけ)
-        if ((inputValue > 0) && (eneCon.energy.Value > 0) && (nowInput))
+        if ((inputValue > 0) && (eneCon.energy.GetValue_Int() > 0) && (nowInput))
         {
             // ジャストショットの猶予時間をカウント
             if (coroutine != null)

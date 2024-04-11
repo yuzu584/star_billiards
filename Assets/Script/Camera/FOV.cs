@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,15 @@ using UnityEngine;
 // 視野角を変更する
 public class FOV : Singleton<FOV>
 {
-    [SerializeField] private GameObject player;                         // 速度を参照するオブジェクト
+    [SerializeField] private GameObject player;     // 速度を参照するオブジェクト
 
-    private ClampedValue<int> fov = new ClampedValue<int>(60, 90, 60);  // カメラの視野角
-    private Rigidbody rb;                                               // リジッドボディ
+    private ClampedValue<int> fov;                  // カメラの視野角
+    private Rigidbody rb;                           // リジッドボディ
 
     void Start()
     {
+        fov = new ClampedValue<int>(60, 90, 60, nameof(fov));
+
         // 速度を参照するオブジェクトのrigidbodyを取得
         rb = player.GetComponent<Rigidbody>();
     }
@@ -20,15 +23,15 @@ public class FOV : Singleton<FOV>
     public void ChangeFOV()
     {
         // 視野角を滑らかに変更
-        Camera.main.fieldOfView += ((float)fov.Value + rb.velocity.magnitude - Camera.main.fieldOfView) * Time.deltaTime;
+        Camera.main.fieldOfView += (fov.GetValue_Float() + rb.velocity.magnitude - Camera.main.fieldOfView) * Time.deltaTime;
 
         // 視野角を正常な範囲に保つ
-        Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, fov.Min, fov.Max);
+        Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, fov.GetMin_Float(), fov.GetMax_Float());
     }
 
     // 視野角を初期値にリセット
     public void ResetFOV()
     {
-        Camera.main.fieldOfView = fov.Value;
+        Camera.main.fieldOfView = fov.GetValue_Float();
     }
 }

@@ -40,7 +40,7 @@ public class ShotGuide : MonoBehaviour
         }
 
         // エネルギーがある状態でショットボタンが押されていたら
-        if ((value > 0) && (eneCon.energy.Value > 0))
+        if ((value > 0) && (eneCon.energy.GetValue_Float() > 0))
         {
             // 非表示なら表示
             if (!instance.activeSelf)
