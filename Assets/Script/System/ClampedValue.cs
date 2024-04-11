@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using static AppParams;
 
@@ -101,6 +100,8 @@ public class ClampedValue<T> : IClampedValue where T : struct, IComparable<T>
         AddDictionary();
         _name = name;
     }
+
+    public Type GetThisType() { return typeof(T); }
 
     // Dictionary ‚É’Ç‰Á
     private void AddDictionary()

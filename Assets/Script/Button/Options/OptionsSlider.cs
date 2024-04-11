@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,11 +10,12 @@ public class OptionsSlider : Button
 {
     [SerializeField] private Text state;                           // ボタンの状態を表すテキスト
     [SerializeField] private Slider slider;                        // スライダー
-    [SerializeField] private float defaultvalue;                   // 初期値
-    [SerializeField] private float maxValue;                       // 最大値
-    [SerializeField] private float minValue;                       // 最小値
+
+    [SerializeField] private AppParams.ParamsKey key;
+    private AppParams.IClampedValue clampedValue;
 
     private OptionsController opCon;
+    private AppParams appParams;
 
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
@@ -48,18 +50,17 @@ public class OptionsSlider : Button
         base.Start();
 
         opCon = OptionsController.instance;
+        appParams = AppParams.instance;
 
-        // スライダーの現在値・最大値・最小値を設定
-        slider.value = defaultvalue;
-        slider.maxValue = maxValue;
-        slider.minValue = minValue;
+        // スライダーの設定
+        SetSliderState();
 
         // ボタンの状態を表すテキストを設定
         SetStateText();
     }
 
     // ボタンの状態を表すテキストを設定
-    public void SetStateText()
+    void SetStateText()
     {
         state.text = slider.value.ToString("f1");
     }
@@ -68,5 +69,51 @@ public class OptionsSlider : Button
     public void MoveSlider(float value)
     {
         slider.value += Mathf.Round(value) * 10;
+    }
+
+    // スライダーの設定
+    void SetSliderState()
+    {
+        // IClampedValue 型のインターフェースを取得
+        clampedValue = appParams.GetClampedValue(key);
+
+        // スライダーの値が変化したときに変数の値も変化させる
+        slider.onValueChanged.AddListener(delegate
+        {
+            // ClampedValue の Type を取得
+            Type clampedValueType = clampedValue.GetThisType();
+
+            // 取得した Type が int 型なら
+            if (clampedValueType == typeof(int))
+            {
+                // スライダーの値を int 型に変換して代入
+                clampedValue.SetValue(Mathf.RoundToInt(slider.value));
+            }
+            // 取得した Type が float 型なら
+            else if (clampedValueType == typeof(float))
+            {
+                // スライダーの値をそのまま代入
+                clampedValue.SetValue(slider.value);
+            }
+        });
+
+        // 取得出来たら
+        if (clampedValue != null)
+        {
+            // スライダーの現在値・最大値・最小値を設定
+            float max = clampedValue.GetMax_Float();
+            float min = clampedValue.GetMin_Float();
+            float value = clampedValue.GetValue_Float();
+            slider.maxValue = max;
+            slider.minValue = min;
+            slider.value = value;
+        }
+        // 取得できなかったら
+        else
+        {
+            slider.value = 80.0f;
+            slider.maxValue = 100.0f;
+            slider.minValue = 0.0f;
+        }
     }
 }

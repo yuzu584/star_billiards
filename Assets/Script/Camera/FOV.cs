@@ -13,7 +13,7 @@ public class FOV : Singleton<FOV>
 
     void Start()
     {
-        fov = new ClampedValue<int>(60, 90, 60, nameof(fov));
+        fov = new ClampedValue<int>(60, 120, 10, nameof(fov));
 
         // 速度を参照するオブジェクトのrigidbodyを取得
         rb = player.GetComponent<Rigidbody>();
@@ -26,12 +26,12 @@ public class FOV : Singleton<FOV>
         Camera.main.fieldOfView += (fov.GetValue_Float() + rb.velocity.magnitude - Camera.main.fieldOfView) * Time.deltaTime;
 
         // 視野角を正常な範囲に保つ
-        Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, fov.GetMin_Float(), fov.GetMax_Float());
+        Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, fov.GetValue_Float() - 10.0f, fov.GetValue_Float() + 30.0f);
     }
 
     // 視野角を初期値にリセット
     public void ResetFOV()
     {
-        Camera.main.fieldOfView = fov.GetValue_Float();
+        Camera.main.fieldOfView = 60;
     }
 }
