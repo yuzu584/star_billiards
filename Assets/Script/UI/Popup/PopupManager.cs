@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Device;
 
 // ゲーム内のポップアップ全般を管理
 [DefaultExecutionOrder(-100)]
@@ -47,8 +46,13 @@ public class PopupManager : Singleton<PopupManager>
         // 空いている配列の場所を代入
         int count = CheckInstance(popupContent[(int)pType]);
 
-        // 配列が開いていなければ終了
-        if (count == -1) return null;
+        // 配列が開いていなければ
+        // 配列の 0 番目のポップアップを削除
+        if (count == -1)
+        {
+            count = 0;
+            popupContent[(int)pType].component[count].Destroy();
+        }
 
         // インスタンス生成
         popupContent[(int)pType].instance[count] = Instantiate(popupContent[(int)pType].obj);
