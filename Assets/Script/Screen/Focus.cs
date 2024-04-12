@@ -1,3 +1,4 @@
+using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,14 @@ public class Focus : Singleton<Focus>
     private InputController input;
     private Sound sound;
     private ButtonRecorder btnRec;
+
+    // デバッグ用の構造体
+    [System.Serializable]
+    public struct FocusDebugs
+    {
+        public bool buttonStartFocusLog;    // ボタンの最初のフォーカス処理のログを出すか
+    }
+    public FocusDebugs focusDebugs;
 
     void Start()
     {

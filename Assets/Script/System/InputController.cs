@@ -50,7 +50,7 @@ public class InputController : Singleton<InputController>
     private float IsPressed_UI_Move_Time = 0.0f;
 
     private float longPressWaitTime = 0.3f;         // 長押し時の連続実行を行うまでの時間
-    private float longPressInterval = 0.1f;         // 長押し時の連続実行間隔
+    private float longPressInterval = 0.05f;        // 長押し時の連続実行間隔
     private float longPressIntervalCount = 0.0f;    // 長押し時の連続実行間隔を計測
 
     public bool canInput = true; // InputSystemの入力が可能か

@@ -415,21 +415,30 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         {
             // フォーカス
             focus.SetFocusBtn(this);
-            Debug.Log($"[{name}] をデフォルトでフォーカス");
+
+            // フォーカス時のデバッグ処理が有効なら文字列を出力
+            if (focus.focusDebugs.buttonStartFocusLog)
+                Debug.Log($"type[{GetType()}] name[{name}] をデフォルトでフォーカス");
         }
         // ボタンが保存済みかつ btnNum が設定済みならフォーカス(フォーカスの優先度 : 中)
         else if ((thisSaved) && (canFocus))
         {
             // 自分を記録
             focus.SetFocusBtn(this);
-            Debug.Log($"[{name}] を保存済みでフォーカス");
+
+            // フォーカス時のデバッグ処理が有効なら文字列を出力
+            if (focus.focusDebugs.buttonStartFocusLog)
+                Debug.Log($"type[{GetType()}] name[{name}] を保存済みでフォーカス");
         }
         // 何のボタンも保存されていないかつ一番最初のボタンならフォーカス(フォーカスの優先度 : 低)
         else if ((somethingSaved) && (orFirst))
         {
             // フォーカス
             focus.SetFocusBtn(this);
-            Debug.Log($"[{name}] をボタン番号0でフォーカス");
+
+            // フォーカス時のデバッグ処理が有効なら文字列を出力
+            if (focus.focusDebugs.buttonStartFocusLog)
+                Debug.Log($"type[{GetType()}] name[{name}] をボタン番号0でフォーカス");
         }
     }
 
