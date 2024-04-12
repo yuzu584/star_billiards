@@ -48,6 +48,8 @@ public class AppParams : Singleton<AppParams>
         energy              = 000,
         angleMoveSpeed      = 001,
         fov                 = 002,
+        bgmVolume           = 003,
+        seVolume            = 004,
         None                = 100,
     }
 }

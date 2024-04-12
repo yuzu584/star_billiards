@@ -12,6 +12,8 @@ public class ClampedValue<T> : IClampedValue where T : struct, IComparable<T>
     private T _min;         // 最小値
     private string _name;   // 名前(DictionaryのKeyに使用)
 
+    public Action onValueChange;
+
     // コンストラクタ
     public ClampedValue(T value, T max, T min, string name)
     {
@@ -44,6 +46,7 @@ public class ClampedValue<T> : IClampedValue where T : struct, IComparable<T>
         {
             _value = (T)value;
             ClampValue();
+            onValueChange?.Invoke();
         }
         else
         {
