@@ -2484,8 +2484,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   opUICon: {fileID: 0}
-  scrCon: {fileID: 0}
-  input: {fileID: 0}
 --- !u!1 &1658508820
 GameObject:
   m_ObjectHideFlags: 0

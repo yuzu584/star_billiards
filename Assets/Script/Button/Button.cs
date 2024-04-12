@@ -104,7 +104,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public Group group;                                     // このボタンが所属するグループ
     public int btnNum;                                      // このボタンの番号(主にフォーカスしていたボタンを保存するために使用する)
 
-    public bool isStartFocus = false;                       // StartFocus が実行されたか
+    private bool isStartFocus = false;                      // StartFocus が実行されたか
 
     // ポインターによってフォーカスされたか
     // true  : ポインターによってフォーカスされた
@@ -395,7 +395,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     {
         // 最初のフォーカス処理が実行済みなら終了
         if (isStartFocus) return;
-
+        
         isStartFocus = true;
 
         // このボタンが保存済みか
@@ -410,24 +410,26 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         // このボタンが最初のボタンか(btnNum は連番で設定されているので 0 が入っていれば最初のボタンということになる)
         bool orFirst = (btnNum == 0);
 
+        // 最初にフォーカスされるボタンなら(フォーカスの優先度 : 高)
+        if (defaultFocus)
+        {
+            // フォーカス
+            focus.SetFocusBtn(this);
+            Debug.Log($"[{name}] をデフォルトでフォーカス");
+        }
         // ボタンが保存済みかつ btnNum が設定済みならフォーカス(フォーカスの優先度 : 中)
-        if ((thisSaved) && (canFocus))
+        else if ((thisSaved) && (canFocus))
         {
             // 自分を記録
             focus.SetFocusBtn(this);
+            Debug.Log($"[{name}] を保存済みでフォーカス");
         }
         // 何のボタンも保存されていないかつ一番最初のボタンならフォーカス(フォーカスの優先度 : 低)
         else if ((somethingSaved) && (orFirst))
         {
             // フォーカス
             focus.SetFocusBtn(this);
-        }
-
-        // 最初にフォーカスされるボタンなら(フォーカスの優先度 : 高)
-        if (defaultFocus)
-        {
-            // フォーカス
-            focus.SetFocusBtn(this);
+            Debug.Log($"[{name}] をボタン番号0でフォーカス");
         }
     }
 

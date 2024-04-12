@@ -57,19 +57,22 @@ public class BackButton : Button
 
         SetOldScreen();
 
-        action = () =>
+        if(action == null)
         {
-            // 階層が0以下かつオブジェクトが有効なら
-            if ((scrCon.ScreenLoot <= 0) && (gameObject.activeInHierarchy))
+            action = () =>
             {
-                //音を再生
-                if (sound != null)
-                    PlayBtnSound(BtnSounds.ClickSound);
+                // 階層が0以下かつオブジェクトが有効なら
+                if ((scrCon.ScreenLoot <= 0) && (gameObject.activeInHierarchy))
+                {
+                    //音を再生
+                    if (sound != null)
+                        PlayBtnSound(BtnSounds.ClickSound);
 
-                // 前の画面に戻る
-                scrCon.Screen = oldScreen;
-            }
-        };
+                    // 前の画面に戻る
+                    scrCon.Screen = oldScreen;
+                }
+            };
+        }
     }
 
     protected override void OnDestroy()

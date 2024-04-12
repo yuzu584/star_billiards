@@ -27,20 +27,20 @@ public class OptionsController : Singleton<OptionsController>
     }
 
     // 戻るボタンのクリック時の動作を変更
-    public void SetBuckButtonAction()
+    public void SetBuckButtonAction(BackButton backBtn)
     {
-        opUICon.buckBtn.action = () =>
+        backBtn.action = () =>
         {
             if (scrCon.ScreenLoot == 0)
             {
                 // 階層が0以下かつオブジェクトが有効なら
-                if ((scrCon.ScreenLoot <= 0) && (opUICon.buckBtn.gameObject.activeInHierarchy))
+                if ((scrCon.ScreenLoot <= 0) && (backBtn.gameObject.activeInHierarchy))
                 {
                     //音を再生
-                    opUICon.buckBtn.PlayBtnSound(BtnSounds.ClickSound);
+                    backBtn.PlayBtnSound(BtnSounds.ClickSound);
 
                     // 前の画面に戻る
-                    scrCon.Screen = opUICon.buckBtn.oldScreen;
+                    scrCon.Screen = backBtn.oldScreen;
                 }
             }
             else if (scrCon.ScreenLoot > 0)
