@@ -87,6 +87,10 @@ public class OptionsSlider : Button
         // IClampedValue 型のインターフェースを取得
         clampedValue = appParams.GetClampedValue(key);
 
+        // int型なら Slider の値を整数にする
+        if (clampedValue.GetThisType() == typeof(int))
+            slider.wholeNumbers = true;
+
         // スライダーの値が変化したときに変数の値も変化させる
         slider.onValueChanged.AddListener(delegate
         {

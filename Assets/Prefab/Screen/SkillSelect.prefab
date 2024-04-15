@@ -474,7 +474,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btn:
-  - btnNum:
+  - horizontalOrVertical: 1
+    buttons:
     - {fileID: 214918076227988170}
     - {fileID: 214918076708824968}
     - {fileID: 214918077923165209}
@@ -485,10 +486,14 @@ MonoBehaviour:
     - {fileID: 214918077028553538}
     - {fileID: 214918076677635851}
     - {fileID: 214918077980518634}
+  - horizontalOrVertical: 0
+    buttons:
+    - {fileID: 214918076227988170}
     - {fileID: 7696692793660990924}
     - {fileID: 7696692794003281252}
   dontFocusBtn:
-  - btnNum:
+  - horizontalOrVertical: 0
+    buttons:
     - {fileID: 1139548075187975880}
 --- !u!1 &7415601630482183830
 GameObject:

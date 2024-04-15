@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btn:
-  - btnNum:
+  - horizontalOrVertical: 0
+    buttons:
     - {fileID: 8932007284371719404}
     - {fileID: 8932007285421549700}
     - {fileID: 8932007284419823355}

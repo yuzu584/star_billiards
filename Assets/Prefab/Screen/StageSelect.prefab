@@ -342,6 +342,7 @@ MonoBehaviour:
     player: 100
     message: 100
     starName: 0
+    keyGuide: 0
     system: 100
   text: {fileID: 5804563228046170801}
 --- !u!1 &5804563228586581539
@@ -580,16 +581,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btn:
-  - btnNum:
+  - horizontalOrVertical: 0
+    buttons:
     - {fileID: 5804563228774349106}
     - {fileID: 8350110157323155479}
     - {fileID: 8350110157770161233}
     - {fileID: 8350110157911931794}
     - {fileID: 8350110157633903223}
-  - btnNum:
-    - {fileID: 6680057285076856557}
   dontFocusBtn:
-  - btnNum:
+  - horizontalOrVertical: 0
+    buttons:
     - {fileID: 4157962699789526160}
 --- !u!1 &5804563229426061217
 GameObject:

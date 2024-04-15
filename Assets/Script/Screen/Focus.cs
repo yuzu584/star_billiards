@@ -1,9 +1,7 @@
-using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Windows;
 
 // フォーカス関係処理を管理する
 [DefaultExecutionOrder(-100)]

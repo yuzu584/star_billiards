@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -486,13 +486,10 @@ MonoBehaviour:
   buttonRight: {fileID: 0}
   group: 0
   btnNum: 0
-  isStartFocus: 0
   orPointer: 0
   state: {fileID: 5571069667451277669}
   slider: {fileID: 7969821521926550252}
-  defaultvalue: 80
-  maxValue: 100
-  minValue: 0
+  key: 0
 --- !u!114 &7958577059214198213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,6 +515,7 @@ MonoBehaviour:
     player: 100
     message: 100
     starName: 0
+    keyGuide: 0
     system: 100
   text: {fileID: 5571069669276434658}
 --- !u!1 &5571069668366178310
