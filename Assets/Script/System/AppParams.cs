@@ -50,6 +50,7 @@ public class AppParams : Singleton<AppParams>
         fov                 = 002,
         bgmVolume           = 003,
         seVolume            = 004,
+        speedRate           = 005,
         None                = 100,
     }
 }

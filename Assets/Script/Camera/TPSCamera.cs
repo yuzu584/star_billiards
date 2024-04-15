@@ -17,7 +17,7 @@ public class TPSCamera : Singleton<TPSCamera>
 
     void Start()
     {
-        angleMoveSpeed = new ClampedValue<float>(1.0f, 100.0f, 0.01f, nameof(angleMoveSpeed));
+        angleMoveSpeed = new ClampedValue<float>(1.0f, 10.0f, 0.01f, nameof(angleMoveSpeed));
 
         input = InputController.instance;
         input.game_OnLookDele += MoveCameraAngle;

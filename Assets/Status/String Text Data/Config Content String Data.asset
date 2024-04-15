@@ -37,3 +37,7 @@ MonoBehaviour:
     text:
     - SE
     - "\u52B9\u679C\u97F3"
+  - type: 5
+    text:
+    - SpeedRate
+    - "\u79FB\u52D5\u901F\u5EA6\u500D\u7387"

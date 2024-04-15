@@ -9,6 +9,7 @@ public class Shot : Singleton<Shot>
 {
 
     public float speed = Const_Player.PLAYER_DEFAULT_SPEED;             // 移動速度
+    public ClampedValue<float> speedRate;                               // 移動速度倍率
     public float charge = 0;                                            // 球のチャージ
     public float chargeSpeed = Const_Player.DEFAULT_CHARGE_SPEED;       // 球のチャージ速度
     public int playerBouncePower = Const_Player.DEFAULT_BOUNCE_POWER;   // 衝突したときのプレイヤーの反発力
@@ -41,7 +42,7 @@ public class Shot : Singleton<Shot>
             cRb.constraints = RigidbodyConstraints.None;
 
             // プレイヤーとオブジェクトに力を加える
-            rb.AddForce(direction * speed * playerBouncePower / (2 * power));
+            rb.AddForce(direction * speed * speedRate.GetValue_Float() * playerBouncePower / (2 * power));
             cRb.velocity = colObjVelocity;
             cRb.velocity *= planetBouncePower / (50 / power);
         }
@@ -59,6 +60,8 @@ public class Shot : Singleton<Shot>
         rb = GetComponent<Rigidbody>();
 
         input.game_OnShotDele += ShotProcess;
+
+        speedRate = new ClampedValue<float>(1, 10, 0.1f, nameof(speedRate));
     }
 
     void Update()
@@ -123,7 +126,7 @@ public class Shot : Singleton<Shot>
         {
             // プレイヤーを加速させる
             rb.velocity *= 0;
-            rb.AddForce(direction * speed * playerBouncePower);
+            rb.AddForce(direction * speed * speedRate.GetValue_Float() * playerBouncePower);
         }
     }
 
@@ -159,7 +162,7 @@ public class Shot : Singleton<Shot>
             // エネルギーを消費して発射
             eneCon.energy.SetValue(eneCon.energy.GetValue_Int() - (int)charge / 10);
             Vector3 velocity = Camera.main.transform.forward;
-            rb.AddForce(velocity * speed * charge);
+            rb.AddForce(velocity * speed * speedRate.GetValue_Float() * charge);
             charge = 0;
         }
 

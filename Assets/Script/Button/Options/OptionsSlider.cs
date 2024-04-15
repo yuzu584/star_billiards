@@ -40,9 +40,6 @@ public class OptionsSlider : Button
     protected override void OnEnable()
     {
         base.OnEnable();
-
-        // ボタンの状態を表すテキストを設定
-        SetStateText();
     }
 
     protected override void Start()
@@ -54,21 +51,34 @@ public class OptionsSlider : Button
 
         // スライダーの設定
         SetSliderState();
-
-        // ボタンの状態を表すテキストを設定
-        SetStateText();
     }
 
     // ボタンの状態を表すテキストを設定
-    void SetStateText()
+    void SetStateText(Type type)
     {
-        state.text = slider.value.ToString("f1");
+        if(type == typeof(int))
+        {
+            state.text = slider.value.ToString("f0");
+        }
+        else if (type == typeof(float))
+        {
+            state.text = slider.value.ToString("f2");
+        }
     }
 
     // スライダーを動かす(ボタンで)
     public void MoveSlider(float value)
     {
-        slider.value += Mathf.Round(value) * 10;
+        // 入力値を丸める
+        float roundValue = Mathf.Round(value);
+
+        // 変化させる値をスライダーの最大値の桁数によって変化させる
+        float rate = 1;
+        for (int i = 0; i < slider.maxValue.ToString().Length; ++i)
+            rate *= 10;
+
+        // 値を変化させる
+        slider.value += roundValue * (rate / 1000);
     }
 
     // スライダーの設定
@@ -88,12 +98,18 @@ public class OptionsSlider : Button
             {
                 // スライダーの値を int 型に変換して代入
                 clampedValue.SetValue(Mathf.RoundToInt(slider.value));
+
+                // ボタンの状態を表すテキストを設定
+                SetStateText(clampedValueType);
             }
             // 取得した Type が float 型なら
             else if (clampedValueType == typeof(float))
             {
                 // スライダーの値をそのまま代入
                 clampedValue.SetValue(slider.value);
+
+                // ボタンの状態を表すテキストを設定
+                SetStateText(clampedValueType);
             }
         });
 
