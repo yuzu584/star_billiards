@@ -164,7 +164,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Joystick>/stick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""GamePad"",
+                    ""groups"": ""Joystick"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -251,7 +251,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""id"": ""199c674d-8ac1-45cd-8d0c-36e2db57d89e"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=1.1,y=1.1)"",
+                    ""processors"": """",
                     ""groups"": ""GamePad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -405,7 +405,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""id"": ""5ebb693e-c6cf-4cde-a9b7-e329c6c7dd50"",
                     ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=1.1,y=1.1)"",
+                    ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Look"",
                     ""isComposite"": true,
@@ -417,7 +417,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/rz"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(min=-1),Invert"",
-                    ""groups"": ""GamePad"",
+                    ""groups"": ""Joystick"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -428,7 +428,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/rz"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(max=1)"",
-                    ""groups"": ""GamePad"",
+                    ""groups"": ""Joystick"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -439,7 +439,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/z"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(min=-1),Invert"",
-                    ""groups"": ""GamePad"",
+                    ""groups"": ""Joystick"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -450,7 +450,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<HID::Logicool Logicool Dual Action>/z"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(max=1)"",
-                    ""groups"": ""GamePad"",
+                    ""groups"": ""Joystick"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -784,6 +784,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Joystick"",
+            ""bindingGroup"": ""Joystick"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Joystick>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
@@ -1030,6 +1041,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         {
             if (m_GamePadSchemeIndex == -1) m_GamePadSchemeIndex = asset.FindControlSchemeIndex("GamePad");
             return asset.controlSchemes[m_GamePadSchemeIndex];
+        }
+    }
+    private int m_JoystickSchemeIndex = -1;
+    public InputControlScheme JoystickScheme
+    {
+        get
+        {
+            if (m_JoystickSchemeIndex == -1) m_JoystickSchemeIndex = asset.FindControlSchemeIndex("Joystick");
+            return asset.controlSchemes[m_JoystickSchemeIndex];
         }
     }
     public interface IGameActions

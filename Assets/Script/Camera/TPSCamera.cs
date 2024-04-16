@@ -28,6 +28,15 @@ public class TPSCamera : Singleton<TPSCamera>
     // Ž‹“_ˆÚ“®ˆ—
     void MoveCameraAngle(Vector2 vec)
     {
+        if (input.GetNowScheme() == "Keybord&Mouse")
+        {
+            rate = Const_Camera.CAMERA_DEFAULT_SPEED_RATE;
+        }
+        else
+        {
+            rate = Const_Camera.CAMERA_DEFAULT_SPEED_RATE * Time.unscaledDeltaTime * 100;
+        }
+
         // X•ûŒü‚Éˆê’è—ÊˆÚ“®‚µ‚Ä‚¢‚ê‚Î‰¡‰ñ“]
         if (Mathf.Abs(vec.x) > 0.001f)
         {

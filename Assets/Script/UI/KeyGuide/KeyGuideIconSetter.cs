@@ -53,6 +53,9 @@ public class KeyGuideIconSetter : MonoBehaviour
                     case "GamePad":
                         sprite = keyGuideIconData.keyTypeAndIcons[i].KeyIcons.GamePad;          // 指定の Type のゲームパッドの画像を返す
                         return sprite;
+                    case "Joystick":
+                        sprite = keyGuideIconData.keyTypeAndIcons[i].KeyIcons.GamePad;          // 指定の Type のジョイスティック(ゲームパッドと同じ)の画像を返す
+                        return sprite;
                     default:
                         return keyGuideIconData.keyTypeAndIcons[0].KeyIcons.KeybordAndMouse;    // 存在しない Scheme なら Z キーの画像を返す
                 }
