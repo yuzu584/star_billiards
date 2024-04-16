@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 6031335898554966061}
   - component: {fileID: 7914491284914319843}
   m_Layer: 5
-  m_Name: Scrollbar Vertical (SkillSelect)
+  m_Name: Scrollbar Vertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}

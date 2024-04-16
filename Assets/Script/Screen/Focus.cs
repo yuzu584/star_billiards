@@ -16,6 +16,7 @@ public class Focus : Singleton<Focus>
     private InputController input;
     private Sound sound;
     private ButtonRecorder btnRec;
+    private ScrollBarController scrollBarCon;
 
     // デバッグ用の構造体
     [System.Serializable]
@@ -31,6 +32,7 @@ public class Focus : Singleton<Focus>
         input = InputController.instance;
         sound = Sound.instance;
         btnRec ??= ButtonRecorder.instance;
+        scrollBarCon ??= ScrollBarController.instance;
 
         input.ui_OnMoveDele += ChangeBtnFocus;
         input.ui_OnMoveDele += MoveSlider;
@@ -124,27 +126,45 @@ public class Focus : Singleton<Focus>
                 btnRec.SaveFocusedButton(focusBtn);
         }
 
-        // スクロールバーのスクロール処理
-        // スクロールが必要な座標を計算
-        if ((focusScrollbar != null) && (focusBtn.group == ScrollBarController.instance.scrollBarStruct[ScrollBarController.instance.num].group) && (!focusBtn.orPointer))
+        // フォーカスしているスクロールバーのスクロール処理
+        ScrollBarScrollProcess();
+    }
+
+    // フォーカスしているスクロールバーのスクロール処理
+    void ScrollBarScrollProcess()
+    {
+        scrollBarCon ??= ScrollBarController.instance;
+
+        // 必要なオブジェクトが1つでも無ければ終了
+        if (!scrollBarCon.scrollbar) return;
+        if (!scrollBarCon.contentParentRect) return;
+        if (!scrollBarCon.parentRect) return;
+
+        // スクロールするグループでなければ終了
+        if(focusBtn.group != scrollBarCon.group) return;
+
+        // Y軸のスケールが 0 なら終了(オブジェクト生成直後のスケール計算時に 0 になる)
+        if (scrollBarCon.contentParentRect.sizeDelta.y == 0) return;
+
+        // フォーカスするスクロールバーを設定
+        focusScrollbar = scrollBarCon.scrollbar;
+
+        // ボタンがポインター以外によってフォーカスされたなら、スクロールが必要な座標を計算
+        if (!focusBtn.orPointer)
         {
             float posY;                                     // 基準となるY座標
             float maxY;                                     // スクロールを行う一番上のY座標
             float minY;                                     // スクロールを行う一番下のY座標
             float value;                                    // スクロール量
-            int num;                                        // ScrollBarController の num
-            var instance = ScrollBarController.instance;    // ScrollBarController のインスタンス
-
-            num = instance.num;
 
             // フォーカスされているボタンのY座標 + スクロールバーのY座標
-            posY = focusBtn.gameObject.transform.localPosition.y + instance.scrollBarStruct[num].contentParentRect.localPosition.y;
+            posY = focusBtn.gameObject.transform.localPosition.y + scrollBarCon.contentParentRect.localPosition.y;
 
             // 上端から少し低い座標
             maxY = -30.0f;
 
             // 下端から少し高い座標
-            minY = -(instance.scrollBarStruct[num].parentRect.sizeDelta.y) + 30.0f;
+            minY = -(scrollBarCon.parentRect.sizeDelta.y) + 30.0f;
 
             // フォーカスしたボタンが一定以上の座標ならスクロール処理
             if (posY > maxY)
@@ -153,10 +173,10 @@ public class Focus : Singleton<Focus>
                 value = (posY - maxY);
 
                 // 親オブジェクトの高さに対するY座標の差の割合を求めて代入
-                value = Mathf.Abs(value / instance.scrollBarStruct[num].contentParentRect.sizeDelta.y);
-
+                value = Mathf.Abs(value / scrollBarCon.contentParentRect.sizeDelta.y);
+                
                 // スクロール処理
-                instance.Scroll(focusScrollbar, true, value);
+                scrollBarCon.Scroll(focusScrollbar, true, value);
             }
 
             // フォーカスしたボタンが一定以下の座標ならスクロール処理
@@ -166,10 +186,10 @@ public class Focus : Singleton<Focus>
                 value = (posY - minY);
 
                 // 親オブジェクトの高さに対するY座標の差の割合を求めて代入
-                value = Mathf.Abs(value / instance.scrollBarStruct[num].contentParentRect.sizeDelta.y);
+                value = Mathf.Abs(value / scrollBarCon.contentParentRect.sizeDelta.y);
 
                 // スクロール処理
-                instance.Scroll(focusScrollbar, false, value);
+                scrollBarCon.Scroll(focusScrollbar, false, value);
             }
         }
     }

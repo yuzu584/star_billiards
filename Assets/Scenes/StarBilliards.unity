@@ -2990,13 +2990,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e4ee41114893c478e6be1718100c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollbar: {fileID: 0}
+  parentRect: {fileID: 0}
+  contentParentRect: {fileID: 0}
+  group: 0
   num: 0
-  scrollBarStruct:
-  - scrollbar: {fileID: 0}
-    parentRect: {fileID: 0}
-    contentParentRect: {fileID: 0}
-    focusScreen: 4
-    group: 1
 --- !u!1001 &2015761855
 PrefabInstance:
   m_ObjectHideFlags: 0
