@@ -9,16 +9,17 @@ public class KeyGuideIconSetter : MonoBehaviour
 {
     [SerializeField] private Image Image;
     [SerializeField] private KeyGuideIconData keyGuideIconData;
-    [SerializeField] private EnumKeyGuide keyGuideType;
     [SerializeField] private Text text;
 
     private InputController input;
 
     private LocalizeText lt;
+    private KeyGuide keyGuide;
 
     private void Start()
     {
-        input = InputController.instance;
+        input ??= InputController.instance;
+        keyGuide ??= GetComponent<KeyGuide>();
 
         // LocalizeText の値を設定
         SetText();
@@ -38,6 +39,8 @@ public class KeyGuideIconSetter : MonoBehaviour
     Sprite SearchIcon(EnumKeyGuide type)
     {
         Sprite sprite;
+
+        input ??= InputController.instance;
 
         for (int i = 0; i < keyGuideIconData.keyTypeAndIcons.Length; i++)
         {
@@ -68,14 +71,16 @@ public class KeyGuideIconSetter : MonoBehaviour
     public void SetIcon()
     {
         // アイコンを探して設定
-        Image.sprite = SearchIcon(keyGuideType);
+        keyGuide ??= GetComponent<KeyGuide>();
+        Image.sprite = SearchIcon(keyGuide.EnumKeyGuide);
     }
 
     public void SetText()
     {
+        keyGuide ??= GetComponent<KeyGuide>();
         lt ??= text.AddComponent<LocalizeText>();
         lt.text = text;
         lt.group = StringGroup.KeyGuide;
-        lt.type.keyGuide = keyGuideType;
+        lt.type.keyGuide = keyGuide.EnumKeyGuide;
     }
 }
