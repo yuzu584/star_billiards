@@ -410,7 +410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btn:
-  - btnNum:
+  - horizontalOrVertical: 1
+    buttons:
     - {fileID: 2133337344248170490}
     - {fileID: 2133337343186632596}
     - {fileID: 2133337343667097572}

@@ -533,7 +533,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btn:
-  - btnNum:
+  - horizontalOrVertical: 1
+    buttons:
     - {fileID: 5360688071622405857}
   dontFocusBtn: []
 --- !u!1001 &6195652345738676412

@@ -260,7 +260,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btn: []
   dontFocusBtn:
-  - btnNum:
+  - horizontalOrVertical: 0
+    buttons:
     - {fileID: 352454099169025942}
 --- !u!1001 &7916718644914100051
 PrefabInstance:
