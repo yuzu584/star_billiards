@@ -13,9 +13,9 @@ public class ScrollBarSetter : MonoBehaviour
 
     private ScrollBarController scrollBarCon;
 
-    private void Start()
+    private void OnEnable()
     {
-        scrollBarCon = ScrollBarController.instance;
+        scrollBarCon ??= ScrollBarController.instance;
 
         // ê›íË
         scrollBarCon.scrollbar = scrollbar;
@@ -24,7 +24,7 @@ public class ScrollBarSetter : MonoBehaviour
         scrollBarCon.group = group;
     }
 
-    private void OnDestroy()
+    private void OnDisable ()
     {
         // çÌèú
         scrollBarCon.scrollbar = null;
