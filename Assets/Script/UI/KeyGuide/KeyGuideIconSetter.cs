@@ -14,15 +14,14 @@ public class KeyGuideIconSetter : MonoBehaviour
 
     private InputController input;
 
+    private LocalizeText lt;
+
     private void Start()
     {
         input = InputController.instance;
 
         // LocalizeText の値を設定
-        LocalizeText lt = text.AddComponent<LocalizeText>();
-        lt.text = text;
-        lt.group = StringGroup.KeyGuide;
-        lt.type.keyGuide = keyGuideType;
+        SetText();
 
         input.SwitchScheme += SetIcon;
 
@@ -35,6 +34,7 @@ public class KeyGuideIconSetter : MonoBehaviour
         input.SwitchScheme -= SetIcon;
     }
 
+    // 指定の画像を探して返す
     Sprite SearchIcon(EnumKeyGuide type)
     {
         Sprite sprite;
@@ -62,9 +62,17 @@ public class KeyGuideIconSetter : MonoBehaviour
         return keyGuideIconData.keyTypeAndIcons[0].KeyIcons.KeybordAndMouse;                    // なにもヒットしなければ Z キーの画像を返す
     }
 
-    void SetIcon()
+    public void SetIcon()
     {
         // アイコンを探して設定
         Image.sprite = SearchIcon(keyGuideType);
+    }
+
+    public void SetText()
+    {
+        lt ??= text.AddComponent<LocalizeText>();
+        lt.text = text;
+        lt.group = StringGroup.KeyGuide;
+        lt.type.keyGuide = keyGuideType;
     }
 }
