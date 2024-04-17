@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Localize;
+using Illogic.Data;
 
 // ƒQ[ƒ€“à‚Ì–|–ó‚ÉŠÖ‚·‚éˆ—
 public class Localize : Singleton<Localize>

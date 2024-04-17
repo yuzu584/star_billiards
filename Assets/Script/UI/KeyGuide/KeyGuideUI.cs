@@ -84,7 +84,6 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
         }
         else
         {
-            Debug.Log("ガイドを更新");
             return true;
         }
     }
