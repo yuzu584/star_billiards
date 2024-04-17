@@ -9,14 +9,15 @@ public class DrawScreen : MonoBehaviour
     [SerializeField] private GameObject parentObj;
 
     private ScreenController scrCon;
-    private BackGroundEffect bgEffect;
+    private KeyGuideUI keyGuideUI;
+
     private GameObject scrIns;              // スクリーンのインスタンス
     private GameObject backIns;             // 背景のインスタンス
 
     private void Start()
     {
         scrCon = ScreenController.instance;
-        bgEffect = BackGroundEffect.instance;
+        keyGuideUI = KeyGuideUI.instance;
 
         // 画面遷移時にスクリーンを描画
         scrCon.changeScreen += Draw;
@@ -49,6 +50,9 @@ public class DrawScreen : MonoBehaviour
         {
             DestroyInstance(ref backIns);
         }
+
+        // 操作ガイドUIの HorizontalLayoutGroup を更新させる
+        StartCoroutine(keyGuideUI.UpdateLayoutGroup());
     }
 
     // 背景を描画

@@ -1789,7 +1789,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1148952466}
   - component: {fileID: 1148952479}
-  - component: {fileID: 1148952482}
   m_Layer: 0
   m_Name: UIFunctionController
   m_TagString: Untagged
@@ -1822,18 +1821,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b78f950fd31d1b4aaffa04792dc87b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1148952482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148952465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10eb5ce851b1fe849a384015200b963b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1180901546
@@ -2292,6 +2279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guideObj: {fileID: 84378682335883373, guid: 41387977b6a44b5449a4d5a3e1b985bd, type: 3}
   parentObj: {fileID: 1584582463}
+  horizontalLayoutGroup: {fileID: 1584582465}
   keyGuides: []
 --- !u!1 &1600059364
 GameObject:

@@ -1,21 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // キー操作のガイドのUIを管理
 public class KeyGuideUI : Singleton<KeyGuideUI>
 {
     [SerializeField] private GameObject guideObj;       // キー操作ガイドのプレハブ
     [SerializeField] private GameObject parentObj;      // キー操作ガイドのプレハブの親オブジェクト
+    [SerializeField] private HorizontalLayoutGroup horizontalLayoutGroup;
 
     public List<GameObject> keyGuides = new List<GameObject>();
 
     private bool isFirstDraw = true;
-
-    private void Start()
-    {
-
-    }
 
     // キー操作のガイドのUIを描画
     public void DrawGuide(EnumKeyGuide[] types)
@@ -90,5 +87,15 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
             Debug.Log("ガイドを更新");
             return true;
         }
+    }
+
+    // HorizontalLayoutGroup を更新させる
+    public IEnumerator UpdateLayoutGroup()
+    {
+        horizontalLayoutGroup.enabled = false;
+
+        // 一瞬待つ
+        yield return new WaitForSecondsRealtime(0.03f);
+        horizontalLayoutGroup.enabled = true;
     }
 }
