@@ -6,7 +6,9 @@ using UnityEngine.UI;
 // キー操作のガイドを管理
 public class KeyGuide : MonoBehaviour
 {
+    [SerializeField] private Image image;
     [SerializeField] private Text text;
+    [SerializeField] private KeyGuideIconSetter iconSetter;
 
     private EnumKeyGuide keyGuideType;
     public EnumKeyGuide EnumKeyGuide
@@ -22,12 +24,9 @@ public class KeyGuide : MonoBehaviour
     // アイコンとテキストを設定
     void SetIconAndText()
     {
-        var iconSetter = GetComponent<KeyGuideIconSetter>();
-        if (iconSetter != null)
-        {
-            // アイコンとテキストを設定
-            iconSetter.SetIcon();
-            iconSetter.SetText();
-        }
+        // アイコンとテキストを設定
+        iconSetter.SetIcon();
+        iconSetter.SetText();
+        Debug.Log("ガイドのアイコンとテキストを設定");
     }
 }

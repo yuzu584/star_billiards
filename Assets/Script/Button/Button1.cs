@@ -33,6 +33,8 @@ public class Button1 : Button
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
     {
+        base.EnterProcess();
+
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, true);
     }
@@ -40,6 +42,8 @@ public class Button1 : Button
     // マウスポインターが離れたときの処理
     public override void ExitProcess()
     {
+        base.ExitProcess();
+
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, false);
     }
@@ -47,6 +51,8 @@ public class Button1 : Button
     // クリックされたときの処理
     public override void ClickProcess()
     {
+        base.ClickProcess();
+
         // ボタンを押したときの効果によって分岐
         switch (clickAction)
         {

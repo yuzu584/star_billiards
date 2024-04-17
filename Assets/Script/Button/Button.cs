@@ -62,6 +62,8 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     [SerializeField] protected ImageStruct[] imageStructs;
     [SerializeField] protected TextStruct[] textStructs;
 
+    [SerializeField] protected EnumKeyGuide[] keyGuides = { EnumKeyGuide.Positive, EnumKeyGuide.Negative, EnumKeyGuide.MoveCursol };
+
     // ボタンが所属するグループ
     public enum Group
     {
@@ -82,6 +84,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     protected InputController input;
     protected Focus focus;
     protected ButtonRecorder btnRec;
+    protected KeyGuideUI keyGuideUI;
 
     protected Lerp lerp;
 
@@ -117,12 +120,6 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         // ポインターによってフォーカスされた
         orPointer = true;
 
-        // 音を再生
-        PlayBtnSound(BtnSounds.EnterSound);
-
-        // フォーカスされているボタンを設定
-        focus.SetFocusBtn(this);
-
         EnterProcess();
 
         orPointer = false;
@@ -137,33 +134,39 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     // ボタンがクリックされたら
     public virtual void OnPointerClick(PointerEventData pointerEventData)
     {
-        //音を再生
-        PlayBtnSound(BtnSounds.ClickSound);
-
         ClickProcess();
     }
 
     // マウスポインターが乗った時の処理
     public virtual void EnterProcess()
     {
-        Debug.Log("ポインターが乗った時の処理が設定されていません。");
+        // 音を再生
+        PlayBtnSound(BtnSounds.EnterSound);
+
+        // フォーカスされているボタンを設定
+        focus.SetFocusBtn(this);
+
+        DrawKeyGuide();
     }
 
     // マウスポインターが離れたときの処理
     public virtual void ExitProcess()
     {
-        Debug.Log("ポインターが離れた時の処理が設定されていません。");
+        
     }
 
     // クリックされたときの処理
     public virtual void ClickProcess()
     {
-        Debug.Log("クリック時の処理が設定されていません。");
+        //音を再生
+        PlayBtnSound(BtnSounds.ClickSound);
     }
 
     // ボタンの音を再生
     public void PlayBtnSound(BtnSounds btnSounds)
     {
+        sound ??= Sound.instance;
+
         // 再生する音によって分岐
         switch (btnSounds)
         {
@@ -442,15 +445,23 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         }
     }
 
+    // キー操作ガイドのUIを描画
+    void DrawKeyGuide()
+    {
+        keyGuideUI ??= KeyGuideUI.instance;
+        keyGuideUI.DrawGuide(keyGuides);
+    }
+
     protected virtual void Start()
     {
         lerp ??= gameObject.AddComponent<Lerp>();
 
         scrCon ??= ScreenController.instance;
         focus ??= Focus.instance;
-        sound = Sound.instance;
+        sound ??= Sound.instance;
         input = InputController.instance;
         btnRec ??= ButtonRecorder.instance;
+        keyGuideUI ??= KeyGuideUI.instance;
 
         // StartFocus を階層遷移時に一回だけ実行
         scrCon.changeLoot += StartFocus;

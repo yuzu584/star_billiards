@@ -103,8 +103,21 @@ MonoBehaviour:
       fadeTime: 0.4
     onPointerDraw: 0
   textStructs: []
+  keyGuides: 000000000100000002000000
+  defaultFocus: 0
+  scrAndLoot:
+    scrType: 0
+    scrLoot: 0
   EnterSound: {fileID: 8300000, guid: 13dc1ec8e21e60b4b83f31fb90a45748, type: 3}
   ClickSound: {fileID: 8300000, guid: 7909af90f96bfd943bed28cc2e9d25a2, type: 3}
+  buttonUp: {fileID: 0}
+  buttonDown: {fileID: 0}
+  buttonLeft: {fileID: 0}
+  buttonRight: {fileID: 0}
+  group: 0
+  btnNum: 0
+  orPointer: 0
+  oldScreen: 0
 --- !u!1001 &3865741229817698171
 PrefabInstance:
   m_ObjectHideFlags: 0

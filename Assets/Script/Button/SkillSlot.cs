@@ -17,6 +17,8 @@ public class SkillSlot : Button
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
     {
+        base.EnterProcess();
+
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, true);
 
@@ -29,6 +31,8 @@ public class SkillSlot : Button
     // マウスポインターが離れたときの処理
     public override void ExitProcess()
     {
+        base.ExitProcess();
+
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, false);
     }
@@ -36,6 +40,8 @@ public class SkillSlot : Button
     // クリックされたときの処理
     public override void ClickProcess()
     {
+        base.ClickProcess();
+
         // 既に選択されたスキルでなければ、選択しているスキルスロットを設定
         if (skillSelect.CheckDoubleSelect(skill))
         {

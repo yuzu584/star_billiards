@@ -200,6 +200,7 @@ MonoBehaviour:
       endScale: {x: 0, y: 0}
       fadeTime: 0
     onPointerDraw: 0
+  keyGuides: 000000000100000002000000
   defaultFocus: 0
   scrAndLoot:
     scrType: 0
@@ -212,7 +213,6 @@ MonoBehaviour:
   buttonRight: {fileID: 0}
   group: 0
   btnNum: 0
-  isStartFocus: 0
   orPointer: 0
   state: {fileID: 2829114146131303149}
   stateText:
@@ -244,6 +244,7 @@ MonoBehaviour:
     player: 100
     message: 100
     starName: 0
+    keyGuide: 0
     system: 100
   text: {fileID: 2829114147495447402}
 --- !u!1 &2829114146131303147

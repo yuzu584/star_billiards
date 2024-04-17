@@ -16,6 +16,8 @@ public class OptionsSwitch : Button
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
     {
+        base.EnterProcess();
+
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, true);
     }
@@ -23,6 +25,8 @@ public class OptionsSwitch : Button
     // マウスポインターが離れたときの処理
     public override void ExitProcess()
     {
+        base.ExitProcess();
+
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, false);
     }
@@ -30,6 +34,8 @@ public class OptionsSwitch : Button
     // クリックされたときの処理
     public override void ClickProcess()
     {
+        base.ClickProcess();
+
         ++nowState;
         if(nowState > (stateText.Length - 1))
             nowState = 0;

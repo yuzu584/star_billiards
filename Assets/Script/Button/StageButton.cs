@@ -35,6 +35,8 @@ public class StageButton : Button
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
     {
+        base.EnterProcess();
+
         // アニメーション中ではないなら
         if (!anim)
         {
@@ -77,6 +79,8 @@ public class StageButton : Button
     // マウスポインターが離れたときの処理
     public override void ExitProcess()
     {
+        base.ExitProcess();
+
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, false);
     }
@@ -84,7 +88,7 @@ public class StageButton : Button
     // クリックされたときの処理
     public override void ClickProcess()
     {
-
+        base.ClickProcess();
     }
 
     protected override void OnEnable()

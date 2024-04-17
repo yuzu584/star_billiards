@@ -10,22 +10,26 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
 
     public List<GameObject> keyGuides = new List<GameObject>();
 
+    private bool isFirstDraw = true;
+
     private void Start()
     {
-        EnumKeyGuide[] g =
-        {
-            EnumKeyGuide.None,
-            EnumKeyGuide.Positive,
-            EnumKeyGuide.Negative,
-            EnumKeyGuide.MoveCursol,
-        };
 
-        Draw(g);
     }
 
     // キー操作のガイドのUIを描画
-    void Draw(EnumKeyGuide[] types)
+    public void DrawGuide(EnumKeyGuide[] types)
     {
+        // 現在表示しているガイドと同じガイドを描画しようとしていたら終了
+        if (!isFirstDraw)
+        {
+            if(!RedrawCheck(types)) return;
+        }
+        else if(isFirstDraw)
+        {
+            isFirstDraw = false;
+        }
+
         // List の中身を空にする
         for(int i = 0; i < keyGuides.Count; ++i)
         {
@@ -41,6 +45,38 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
             var component = obj.GetComponent<KeyGuide>();           // コンポーネント取得
             component.EnumKeyGuide = types[i];                      // ガイドの種類を設定
             keyGuides.Add(obj);                                     // リストに追加
+        }
+    }
+
+    // 現在表示しているガイドと同じガイドを描画しようとしているかチェック
+    bool RedrawCheck(EnumKeyGuide[] types)
+    {
+        int redrawCount = 0;
+
+        for (int i = 0; i < keyGuides.Count; ++i)
+        {
+            if (i >= types.Length)
+            {
+                continue;
+            }
+
+            // コンポーネント取得
+            KeyGuide component = keyGuides[i].GetComponent<KeyGuide>();
+
+            // 同じガイドならカウント
+            if (component.EnumKeyGuide == types[i])
+                ++redrawCount;
+        }
+
+        // 全てのガイドが描画済みなら false
+        if (redrawCount >= keyGuides.Count)
+        {
+            return false;
+        }
+        else
+        {
+            Debug.Log("ガイドを更新");
+            return true;
         }
     }
 }

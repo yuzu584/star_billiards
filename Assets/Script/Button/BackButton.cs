@@ -13,6 +13,8 @@ public class BackButton : Button
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
     {
+        base.EnterProcess();
+
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, true);
     }
@@ -20,6 +22,8 @@ public class BackButton : Button
     // マウスポインターが離れたときの処理
     public override void ExitProcess()
     {
+        base.ExitProcess();
+
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, false);
     }
@@ -27,6 +31,8 @@ public class BackButton : Button
     // クリックされたときの処理
     public override void ClickProcess()
     {
+        base.ClickProcess();
+
         action?.Invoke();
     }
 

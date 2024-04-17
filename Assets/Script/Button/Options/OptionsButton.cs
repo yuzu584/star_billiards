@@ -12,6 +12,8 @@ public class OptionsButton : Button
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
     {
+        base.EnterProcess();
+
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, true);
     }
@@ -19,6 +21,8 @@ public class OptionsButton : Button
     // マウスポインターが離れたときの処理
     public override void ExitProcess()
     {
+        base.ExitProcess();
+
         // ボタンのアニメーション処理
         BtnAnimProcess(imageStructs, textStructs, false);
     }
@@ -26,6 +30,8 @@ public class OptionsButton : Button
     // クリックされたときの処理
     public override void ClickProcess()
     {
+        base.ClickProcess();
+
         // 設定画面の階層を変更
         opCon.SwitchLoot(loot);
     }
