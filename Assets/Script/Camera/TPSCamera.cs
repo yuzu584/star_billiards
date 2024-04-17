@@ -14,6 +14,7 @@ public class TPSCamera : Singleton<TPSCamera>
     private InputController input;
 
     public float rate = Const_Camera.CAMERA_DEFAULT_SPEED_RATE;     // 視点移動速度の倍率
+    private float schemeRate;                                       // 入力デバイスによって変動する視点移動速度の倍率
 
     void Start()
     {
@@ -30,25 +31,25 @@ public class TPSCamera : Singleton<TPSCamera>
     {
         if (input.GetNowScheme() == "Keybord&Mouse")
         {
-            rate = Const_Camera.CAMERA_DEFAULT_SPEED_RATE;
+            schemeRate = rate;
         }
         else
         {
-            rate = Const_Camera.CAMERA_DEFAULT_SPEED_RATE * Time.unscaledDeltaTime * 100;
+            schemeRate = rate * Time.unscaledDeltaTime * 100;
         }
 
         // X方向に一定量移動していれば横回転
         if (Mathf.Abs(vec.x) > 0.001f)
         {
             // 回転軸はワールド座標のY軸
-            transform.RotateAround(player.transform.position, transform.up, (vec.x * angleMoveSpeed.GetValue_Float()) * rate);
+            transform.RotateAround(player.transform.position, transform.up, (vec.x * angleMoveSpeed.GetValue_Float()) * schemeRate);
         }
 
         // Y方向に一定量移動していれば縦回転
         if (Mathf.Abs(vec.y) > 0.001f)
         {
             // 回転軸はカメラ自身のX軸
-            transform.RotateAround(player.transform.position, transform.right, (-vec.y * angleMoveSpeed.GetValue_Float()) * rate);
+            transform.RotateAround(player.transform.position, transform.right, (-vec.y * angleMoveSpeed.GetValue_Float()) * schemeRate);
         }
     }
 }

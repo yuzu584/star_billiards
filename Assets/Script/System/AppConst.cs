@@ -38,16 +38,16 @@ namespace AppConst
         public static readonly Skill[] SKILLS = new Skill[SKILL_NUM]
         {
             // 使用エネルギー量, 効果時間, クールダウンを設定
-            new (20    , 3.0f  , 10.0f ),
-            new (20    , 3.0f  , 10.0f ),
-            new (80    , 3.0f  , 10.0f ),
-            new (100   , 3.0f  , 0.5f  ),
-            new (50    , 3.0f  , 0.5f  ),
-            new (50    , 3.0f  , 0.5f  ),
-            new (100   , 3.0f  , 10.0f ),
-            new (50    , 3.0f  , 10.0f ),
-            new (20    , 3.0f  , 0.5f  ),
-            new (50    , 3.0f  , 0.5f  ),
+            new (20    , 10.0f  , 3.0f),
+            new (20    , 10.0f  , 3.0f),
+            new (80    , 10.0f  , 3.0f),
+            new (100   , 0.5f   , 3.0f),
+            new (50    , 0.5f   , 3.0f),
+            new (50    , 0.5f   , 3.0f),
+            new (100   , 10.0f  , 3.0f),
+            new (50    , 10.0f  , 3.0f),
+            new (20    , 0.5f   , 3.0f),
+            new (50    , 0.5f   , 3.0f),
         };
 
         public const int CHARGE_SPEED_INCREASE_AMOUNT = 1;                                                  // スーパーチャージ使用時のチャージ速度増加量

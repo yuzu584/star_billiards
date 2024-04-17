@@ -27,6 +27,5 @@ public class KeyGuide : MonoBehaviour
         // アイコンとテキストを設定
         iconSetter.SetIcon();
         iconSetter.SetText();
-        Debug.Log("ガイドのアイコンとテキストを設定");
     }
 }

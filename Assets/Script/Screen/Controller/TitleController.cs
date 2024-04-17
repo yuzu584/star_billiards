@@ -7,11 +7,16 @@ public class TitleController : MonoBehaviour
 {
     private ScreenController scrCon;
     private InputController input;
+    private KeyGuideUI keyGuideUI;
 
     void Start()
     {
         scrCon = ScreenController.instance;
         input = InputController.instance;
+        keyGuideUI = KeyGuideUI.instance;
+
+        // キー操作ガイドを削除
+        keyGuideUI.DestroyGuide();
     }
 
     void Update()

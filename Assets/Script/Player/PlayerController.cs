@@ -18,11 +18,12 @@ public class PlayerController : Singleton<PlayerController>
     // プレイヤーに関する数値を初期化
     void Init()
     {
-        rb.velocity *= 0;
         transform.position = Const_Player.PLATER_DEFAULT_POSITION;
 
         // 移動制限を解除
         rb.constraints = RigidbodyConstraints.FreezeRotation;
+
+        rb.velocity *= 0;
     }
 
     void Start()

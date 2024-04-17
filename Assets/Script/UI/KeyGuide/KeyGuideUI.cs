@@ -20,22 +20,23 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
     // キー操作のガイドのUIを描画
     public void DrawGuide(EnumKeyGuide[] types)
     {
-        // 現在表示しているガイドと同じガイドを描画しようとしていたら終了
+        // ガイドが何も表示されていなければ今回の描画は最初の描画
+        if (keyGuides.Count == 0) isFirstDraw = true;
+
+        // 既にガイドが描画済みなら
         if (!isFirstDraw)
         {
-            if(!RedrawCheck(types)) return;
+            // 現在表示しているガイドと同じガイドを描画しようとしていたら終了
+            if (!RedrawCheck(types)) return;
         }
+        // これが最初の描画なら RedrawCheck を行わない
         else if(isFirstDraw)
         {
             isFirstDraw = false;
         }
 
         // List の中身を空にする
-        for(int i = 0; i < keyGuides.Count; ++i)
-        {
-            Destroy(keyGuides[i]);
-        }
-        keyGuides.Clear();
+        DestroyGuide();
 
         // 引数の数ガイドを生成
         for (int i = 0; i < types.Length; i++)
@@ -46,6 +47,17 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
             component.EnumKeyGuide = types[i];                      // ガイドの種類を設定
             keyGuides.Add(obj);                                     // リストに追加
         }
+    }
+
+    // キー操作ガイドUIを削除
+    public void DestroyGuide()
+    {
+        // List の中身を空にする
+        for (int i = 0; i < keyGuides.Count; ++i)
+        {
+            Destroy(keyGuides[i]);
+        }
+        keyGuides.Clear();
     }
 
     // 現在表示しているガイドと同じガイドを描画しようとしているかチェック
