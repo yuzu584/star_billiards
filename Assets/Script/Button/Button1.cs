@@ -108,7 +108,7 @@ public class Button1 : Button
     void ExitGame()
     {
         // ダイアログポップアップを生成
-        GameObject g = popupMana.DrawPopup(PopupManager.PopupType.DialogPopup1, localize.GetString("message_data", "exit_game"));
+        GameObject g = popupMana.DrawPopup(PopupManager.PopupType.DialogPopup1, localize.GetString("system", "ok"));
 
         // ポップアップ生成済みなら終了
         if (g == null) return;
