@@ -12,10 +12,15 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
 
     public List<GameObject> keyGuides = new List<GameObject>();
 
+    public enum KeyGuideType
+    {
+
+    }
+
     private bool isFirstDraw = true;
 
     // キー操作のガイドのUIを描画
-    public void DrawGuide(EnumKeyGuide[] types)
+    public void DrawGuide(string[] types)
     {
         // ガイドが何も表示されていなければ今回の描画は最初の描画
         if (keyGuides.Count == 0) isFirstDraw = true;
@@ -41,7 +46,7 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
             GameObject obj = Instantiate(guideObj);                 // インスタンス生成
             obj.transform.SetParent(parentObj.transform, false);    // 親オブジェクトを設定
             var component = obj.GetComponent<KeyGuide>();           // コンポーネント取得
-            component.EnumKeyGuide = types[i];                      // ガイドの種類を設定
+            component.KeyGuideType = types[i];                      // ガイドの種類を設定
             keyGuides.Add(obj);                                     // リストに追加
         }
     }
@@ -58,7 +63,7 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
     }
 
     // 現在表示しているガイドと同じガイドを描画しようとしているかチェック
-    bool RedrawCheck(EnumKeyGuide[] types)
+    bool RedrawCheck(string[] types)
     {
         int redrawCount = 0;
 
@@ -73,7 +78,7 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
             KeyGuide component = keyGuides[i].GetComponent<KeyGuide>();
 
             // 同じガイドならカウント
-            if (component.EnumKeyGuide == types[i])
+            if (component.KeyGuideType == types[i])
                 ++redrawCount;
         }
 

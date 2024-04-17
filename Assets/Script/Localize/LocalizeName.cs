@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LocalizeName : MonoBehaviour
 {
-    [SerializeField] private StringGroup group;
-    [SerializeField] private StringEnumStruct type;
+    [SerializeField] private string seet;
+    [SerializeField] private string dataName;
 
     private Localize localize;
 
@@ -19,6 +19,6 @@ public class LocalizeName : MonoBehaviour
     void SetName()
     {
         // オブジェクトの名前を設定
-        gameObject.name = localize.GetString(group, type);
+        gameObject.name = localize.GetString(seet, dataName);
     }
 }

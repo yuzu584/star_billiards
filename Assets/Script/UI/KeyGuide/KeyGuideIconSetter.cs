@@ -36,7 +36,7 @@ public class KeyGuideIconSetter : MonoBehaviour
     }
 
     // 指定の画像を探して返す
-    Sprite SearchIcon(EnumKeyGuide type)
+    Sprite SearchIcon(string type)
     {
         Sprite sprite;
 
@@ -72,7 +72,7 @@ public class KeyGuideIconSetter : MonoBehaviour
     {
         // アイコンを探して設定
         keyGuide ??= GetComponent<KeyGuide>();
-        Image.sprite = SearchIcon(keyGuide.EnumKeyGuide);
+        Image.sprite = SearchIcon(keyGuide.KeyGuideType);
     }
 
     public void SetText()
@@ -80,7 +80,7 @@ public class KeyGuideIconSetter : MonoBehaviour
         keyGuide ??= GetComponent<KeyGuide>();
         lt ??= text.AddComponent<LocalizeText>();
         lt.text = text;
-        lt.group = StringGroup.KeyGuide;
-        lt.type.keyGuide = keyGuide.EnumKeyGuide;
+        lt.seet = "key_guide_data";
+        lt.dataName = keyGuide.KeyGuideType;
     }
 }

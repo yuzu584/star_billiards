@@ -1,3 +1,4 @@
+using Illogic.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,16 @@ using UnityEngine;
 // ゲーム内の翻訳に関する処理
 public class Localize : Singleton<Localize>
 {
-    // 言語ごとの情報が入った ScriptableObject
-    [SerializeField] private LanguageData languageData;
+    [SerializeField] private Font font;
+
+    // 翻訳テキストをまとめたODSファイル
+    private ODSReader reader;
+
+    public enum LanguageType
+    {
+        English,
+        Japanese,
+    }
 
     private LanguageType language;
     public LanguageType Language
@@ -23,30 +32,37 @@ public class Localize : Singleton<Localize>
 
     private void Start()
     {
+        // 翻訳テキストをまとめたODSファイルを読み込む
+        reader = new ODSReader("localize_string_data.ods");
+
         // 初期言語は日本語
         Language = LanguageType.Japanese;
     }
 
     // 文字列を取得
-    public string GetString()
+    public string GetString(string seet, string name)
     {
-        return "制作中";
+        if (seet == "") return NotFindText();
+        if (name == "") return NotFindText();
+
+        // シート名を指定
+        var seetData = new DataTable(reader, seet);
+
+        // 取り出したいデータ名とid(言語番号)を指定
+        var s = seetData[(int)Language][name];
+
+        return s;
     }
 
-    // 言語ごとのフォントを取得
+    // フォントを取得
     public Font GetFont()
     {
-        // 言語ごとのフォントの数繰り返す
-        for(int i = 0; i < languageData.fonts.Length; i++)
-        {
-            // 現在の言語が見つかったら
-            if (languageData.fonts[i].language == Language)
-            {
-                // 現在の言語のフォントを返す
-                return languageData.fonts[i].font;
-            }
-        }
+        return font;
+    }
 
-        return null;
+    // 指定のテキストが見つからなかったとき
+    public string NotFindText()
+    {
+        return "Could not find the text";
     }
 }

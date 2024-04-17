@@ -39,10 +39,10 @@ public class SkillSelectUIController : MonoBehaviour
     void DrawSkillInfo(SkillController.SkillType type)
     {
         // スキル名のテキストを更新
-        skillName.text = localize.GetString_SkillName((EnumSkillName)Enum.ToObject(typeof(EnumSkillName), (int)type));
+        skillName.text = localize.GetString("skill_name_data", type.ToString());
 
         // スキルの効果のテキストを更新
-        effectDetails.text = localize.GetString_SkillDetails((EnumSkillDetails)Enum.ToObject(typeof(EnumSkillDetails), (int)type));
+        effectDetails.text = localize.GetString("skill_details_data", type.ToString());
 
         // スキルのコストのテキストを更新
         cost.text = Const_Skill.SKILLS[(int)type].energyUsage.ToString("0");

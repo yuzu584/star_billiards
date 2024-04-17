@@ -51,12 +51,12 @@ public class MissionUIController : MonoBehaviour
             case 0: // 全ての惑星を破壊
 
                 // ミッションのテキストを設定
-                mText.text = localize.GetString_Mission(EnumMission.DestroyPlanet) + " " + planetAmount.planetDestroyAmount + " / " + planet;
+                mText.text = localize.GetString("mission_name_data", "destroy_planet") + " " + planetAmount.planetDestroyAmount + " / " + planet;
                 break;
             case 1: // 時間内にゴールにたどり着け
 
                 // ミッションのテキストを設定
-                mText.text = localize.GetString_Mission(EnumMission.ReachTheGoal);
+                mText.text = localize.GetString("mission_name_data", "reach_the_goal");
                 break;
             default:
                 break;

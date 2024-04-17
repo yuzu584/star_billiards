@@ -69,10 +69,10 @@ public class StageSelectUIController : MonoBehaviour
         stageCon ??= StageController.instance;
 
         // ステージ名を設定
-        stageName.text = localize.GetString_StageName((EnumStageName)Enum.ToObject(typeof(EnumStageName), sBtn.btnNum));
+        stageName.text = localize.GetString("stage_name_data", "stage_1");
 
         // ミッション名を設定
-        missionText.text = localize.GetString_Mission((EnumMission)Enum.ToObject(typeof(EnumMission), stageData.stageList[sBtn.btnNum].missionNum));
+        missionText.text = localize.GetString("mission_name_data", "destroy_planet");
 
         // 制限時間のテキストを設定
         timeLimitText.text = stageData.stageList[sBtn.btnNum].timeLimit.ToString() + "s";

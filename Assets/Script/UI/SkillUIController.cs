@@ -21,7 +21,7 @@ public class SkillUIController : MonoBehaviour
     void DrawSkillUI()
     {
         // ƒXƒLƒ‹–¼‚Ì•¶Žš—ñ‚ðŽæ“¾
-        string skillName = localize.GetString_SkillName((EnumSkillName)Enum.ToObject(typeof(EnumSkillName), (int)skillCon.skillSlot[skillCon.selectSkill]));
+        string skillName = localize.GetString("skill_name_data", skillCon.skillSlot[skillCon.selectSkill].ToString());
         float effectTime = Const_Skill.SKILLS[(int)skillCon.skillSlot[skillCon.selectSkill]].effectTime;
         float coolDown = Const_Skill.SKILLS[(int)skillCon.skillSlot[skillCon.selectSkill]].coolDown;
 

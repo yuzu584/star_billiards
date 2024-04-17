@@ -10,8 +10,8 @@ public class KeyGuide : MonoBehaviour
     [SerializeField] private Text text;
     [SerializeField] private KeyGuideIconSetter iconSetter;
 
-    private EnumKeyGuide keyGuideType;
-    public EnumKeyGuide EnumKeyGuide
+    private string keyGuideType;
+    public string KeyGuideType
     {
         get { return keyGuideType; }
         set

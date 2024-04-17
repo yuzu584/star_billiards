@@ -62,7 +62,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     [SerializeField] protected ImageStruct[] imageStructs;
     [SerializeField] protected TextStruct[] textStructs;
 
-    [SerializeField] protected EnumKeyGuide[] keyGuides;
+    [SerializeField] protected string[] keyGuides;
 
     // ボタンが所属するグループ
     public enum Group
