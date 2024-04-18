@@ -294,12 +294,20 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: seet
+      value: options_video
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: type
       value: 301
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: group
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: dataName
+      value: video
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: type.configTop
@@ -438,12 +446,20 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: seet
+      value: options_language
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: type
       value: 304
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: group
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: dataName
+      value: language
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: type.configTop
@@ -586,12 +602,20 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: seet
+      value: options_key_config
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: type
       value: 303
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: group
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: dataName
+      value: key_config
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: type.configTop
@@ -746,12 +770,20 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: seet
+      value: options_gameplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: type
       value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: group
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: dataName
+      value: gameplay
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: type.configTop
@@ -894,12 +926,20 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: seet
+      value: options_audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: type
       value: 302
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: group
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: dataName
+      value: audio
       objectReference: {fileID: 0}
     - target: {fileID: 4411111042162408565, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: type.configTop

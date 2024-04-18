@@ -156,9 +156,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3657587204573946840, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
+      propertyPath: seet
+      value: options_gameplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657587204573946840, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
+      propertyPath: dataName
+      value: player
+      objectReference: {fileID: 0}
     - target: {fileID: 7070850883561271925, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
       propertyPath: m_Name
-      value: Heading Sentence
+      value: _Player_
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
@@ -460,9 +468,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3657587204573946840, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
+      propertyPath: seet
+      value: options_gameplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657587204573946840, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
+      propertyPath: dataName
+      value: camera
+      objectReference: {fileID: 0}
     - target: {fileID: 7070850883561271925, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
       propertyPath: m_Name
-      value: Heading Sentence (1)
+      value: _Camera_
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
@@ -614,12 +630,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: seet
+      value: options_gameplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: type
       value: 1100
       objectReference: {fileID: 0}
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: group
       value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: dataName
+      value: energy
       objectReference: {fileID: 0}
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: type.configContent
@@ -786,12 +810,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: seet
+      value: options_gameplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: type
       value: 1100
       objectReference: {fileID: 0}
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: group
       value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: dataName
+      value: camera_sensitivity
       objectReference: {fileID: 0}
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: type.configContent
@@ -958,12 +990,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: seet
+      value: options_gameplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: type
       value: 1100
       objectReference: {fileID: 0}
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: group
       value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: dataName
+      value: move_speed_rate
       objectReference: {fileID: 0}
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: type.keyGuide

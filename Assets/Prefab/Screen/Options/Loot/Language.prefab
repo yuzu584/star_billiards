@@ -145,9 +145,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3657587204573946840, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
+      propertyPath: seet
+      value: options_language
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657587204573946840, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
+      propertyPath: dataName
+      value: configurable_languages
+      objectReference: {fileID: 0}
     - target: {fileID: 7070850883561271925, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
       propertyPath: m_Name
-      value: Heading Sentence
+      value: _Configurable Languages_
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}

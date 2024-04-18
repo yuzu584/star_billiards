@@ -147,9 +147,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3657587204573946840, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
+      propertyPath: seet
+      value: options_audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657587204573946840, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
+      propertyPath: dataName
+      value: volume
+      objectReference: {fileID: 0}
     - target: {fileID: 7070850883561271925, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
       propertyPath: m_Name
-      value: Heading Sentence
+      value: _Volume_
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
@@ -281,8 +289,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: seet
+      value: options_audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: group
       value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: dataName
+      value: se
       objectReference: {fileID: 0}
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: type.keyGuide
@@ -437,8 +453,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: seet
+      value: options_audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: group
       value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
+      propertyPath: dataName
+      value: bgm
       objectReference: {fileID: 0}
     - target: {fileID: 7958577059214198213, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: type.keyGuide
@@ -474,11 +498,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 170856092006541308, guid: 045ab392eb0322d49a4fb3afc7c3f996, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 170856092006541308, guid: 045ab392eb0322d49a4fb3afc7c3f996, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 170856092006541308, guid: 045ab392eb0322d49a4fb3afc7c3f996, type: 3}
       propertyPath: m_AnchorMin.y
@@ -603,6 +627,10 @@ PrefabInstance:
     - target: {fileID: 2624620287620266400, guid: 045ab392eb0322d49a4fb3afc7c3f996, type: 3}
       propertyPath: m_Name
       value: ScrollList
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427032684367039665, guid: 045ab392eb0322d49a4fb3afc7c3f996, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3695323966714284408, guid: 045ab392eb0322d49a4fb3afc7c3f996, type: 3}
       propertyPath: m_AnchorMax.x
