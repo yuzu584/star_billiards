@@ -118,6 +118,7 @@ MonoBehaviour:
   btnNum: 0
   orPointer: 0
   oldScreen: 0
+  oldScreenAutoSet: 1
 --- !u!1001 &3865741229817698171
 PrefabInstance:
   m_ObjectHideFlags: 0

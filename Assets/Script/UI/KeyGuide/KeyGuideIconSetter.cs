@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static KeyGuide;
 
 // キー操作ガイドの画像をセットする
 public class KeyGuideIconSetter : MonoBehaviour
@@ -36,7 +37,7 @@ public class KeyGuideIconSetter : MonoBehaviour
     }
 
     // 指定の画像を探して返す
-    Sprite SearchIcon(string type)
+    Sprite SearchIcon(KeyGuideType type)
     {
         Sprite sprite;
 
@@ -72,7 +73,7 @@ public class KeyGuideIconSetter : MonoBehaviour
     {
         // アイコンを探して設定
         keyGuide ??= GetComponent<KeyGuide>();
-        Image.sprite = SearchIcon(keyGuide.KeyGuideType);
+        Image.sprite = SearchIcon(keyGuide.Type);
     }
 
     public void SetText()
@@ -80,7 +81,7 @@ public class KeyGuideIconSetter : MonoBehaviour
         keyGuide ??= GetComponent<KeyGuide>();
         lt ??= text.AddComponent<LocalizeText>();
         lt.text = text;
-        lt.seet = "key_guide_data";
-        lt.dataName = keyGuide.KeyGuideType;
+        lt.seet = "key_guide";
+        lt.dataName = keyGuide.Type.ToString();
     }
 }

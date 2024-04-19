@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static KeyGuide;
 
 // キー操作のガイドのUIを管理
 public class KeyGuideUI : Singleton<KeyGuideUI>
@@ -12,15 +13,10 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
 
     public List<GameObject> keyGuides = new List<GameObject>();
 
-    public enum KeyGuideType
-    {
-
-    }
-
     private bool isFirstDraw = true;
 
     // キー操作のガイドのUIを描画
-    public void DrawGuide(string[] types)
+    public void DrawGuide(KeyGuideType[] types)
     {
         // ガイドが何も表示されていなければ今回の描画は最初の描画
         if (keyGuides.Count == 0) isFirstDraw = true;
@@ -46,7 +42,7 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
             GameObject obj = Instantiate(guideObj);                 // インスタンス生成
             obj.transform.SetParent(parentObj.transform, false);    // 親オブジェクトを設定
             var component = obj.GetComponent<KeyGuide>();           // コンポーネント取得
-            component.KeyGuideType = types[i];                      // ガイドの種類を設定
+            component.Type = types[i];                              // ガイドの種類を設定
             keyGuides.Add(obj);                                     // リストに追加
         }
     }
@@ -63,22 +59,20 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
     }
 
     // 現在表示しているガイドと同じガイドを描画しようとしているかチェック
-    bool RedrawCheck(string[] types)
+    bool RedrawCheck(KeyGuideType[] types)
     {
         int redrawCount = 0;
 
+        // 比較する配列の長さが違うなら true を返す
+        if (keyGuides.Count != types.Length) return true;
+
         for (int i = 0; i < keyGuides.Count; ++i)
         {
-            if (i >= types.Length)
-            {
-                continue;
-            }
-
             // コンポーネント取得
             KeyGuide component = keyGuides[i].GetComponent<KeyGuide>();
 
             // 同じガイドならカウント
-            if (component.KeyGuideType == types[i])
+            if (component.Type == types[i])
                 ++redrawCount;
         }
 

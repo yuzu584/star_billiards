@@ -6,7 +6,8 @@ using UnityEngine;
 // 戻るボタンを管理
 public class BackButton : Button
 {
-    public ScreenController.ScreenType oldScreen = 0; // 前回のスクリーン(戻り先の画面)
+    public ScreenController.ScreenType oldScreen = 0;   // 戻り先の画面
+    public bool oldScreenAutoSet = true;                // 戻り先の画面を自動で設定するか
 
     public Action action;
 
@@ -39,7 +40,8 @@ public class BackButton : Button
     // 前回のスクリーン番号をセット
     void SetOldScreen()
     {
-        oldScreen = scrCon.oldScreen;
+        if (oldScreenAutoSet)
+            oldScreen = scrCon.oldScreen;
     }
 
     // 画面を戻る

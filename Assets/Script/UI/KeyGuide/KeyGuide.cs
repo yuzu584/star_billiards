@@ -10,14 +10,21 @@ public class KeyGuide : MonoBehaviour
     [SerializeField] private Text text;
     [SerializeField] private KeyGuideIconSetter iconSetter;
 
-    private string keyGuideType;
-    public string KeyGuideType
+    public enum KeyGuideType
     {
-        get { return keyGuideType; }
+        positive,
+        negative,
+        move_cursol,
+    }
+
+    private KeyGuideType type;
+    public KeyGuideType Type
+    {
+        get { return type; }
         set
         {
             SetIconAndText();
-            keyGuideType = value;
+            type = value;
         }
     }
 

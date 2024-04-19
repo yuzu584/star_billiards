@@ -555,6 +555,7 @@ MonoBehaviour:
   missionText: {fileID: 5804563229426061219}
   timeLimitText: {fileID: 5066035267820700551}
   scoreText: {fileID: 3277023147867126970}
+  backBtn: {fileID: 4157962699789526160}
 --- !u!114 &3145380358360702436
 MonoBehaviour:
   m_ObjectHideFlags: 0

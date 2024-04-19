@@ -335,7 +335,7 @@ MonoBehaviour:
       endScale: {x: 0, y: 0}
       fadeTime: 0
     onPointerDraw: 0
-  keyGuides: []
+  keyGuides: 000000000100000002000000
   defaultFocus: 0
   scrAndLoot:
     scrType: 0

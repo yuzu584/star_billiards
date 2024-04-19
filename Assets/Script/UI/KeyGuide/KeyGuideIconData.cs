@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static KeyGuide;
 
 // キー操作ガイドの画像を管理
 [CreateAssetMenu(menuName = "MyScriptable/Create KeyGuideIconData")]
@@ -21,6 +22,6 @@ public struct KeyIcons
 [System.Serializable]
 public struct KeyTypeAndIcons
 {
-    public string keyGuideType;
+    public KeyGuideType keyGuideType;
     public KeyIcons KeyIcons;
 }

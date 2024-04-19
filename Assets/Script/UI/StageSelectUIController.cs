@@ -14,6 +14,7 @@ public class StageSelectUIController : MonoBehaviour
     [SerializeField] private Text missionText;                  // ステージのミッション名のテキスト
     [SerializeField] private Text timeLimitText;                // ステージの制限時間のテキスト
     [SerializeField] private Text scoreText;                    // ステージのスコアのテキスト
+    [SerializeField] private BackButton backBtn;                // 戻るボタン
 
     private GameObject oldButton;                               // 取得したステージボタン
     private Vector3 oldPos;                                     // 取得したステージボタンの座標
@@ -39,6 +40,10 @@ public class StageSelectUIController : MonoBehaviour
         // テキストのフォントを設定
         stageName.font = localize.GetFont();
         missionText.font = localize.GetFont();
+
+        // 戻るボタンの戻り先を手動で設定
+        backBtn.oldScreenAutoSet = false;
+        backBtn.oldScreen = ScreenController.ScreenType.MainMenu;
     }
 
     private void OnDestroy()
