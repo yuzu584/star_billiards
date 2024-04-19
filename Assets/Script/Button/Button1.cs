@@ -30,22 +30,18 @@ public class Button1 : Button
 
     public Action action;
 
+    public ScreenAndLoot scrAndLoot_popup;  // ポップアップのスクリーンと階層
+
     // マウスポインターが乗った時の処理
     public override void EnterProcess()
     {
         base.EnterProcess();
-
-        // ボタンのアニメーション処理
-        BtnAnimProcess(imageStructs, textStructs, true);
     }
 
     // マウスポインターが離れたときの処理
     public override void ExitProcess()
     {
         base.ExitProcess();
-
-        // ボタンのアニメーション処理
-        BtnAnimProcess(imageStructs, textStructs, false);
     }
 
     // クリックされたときの処理
@@ -119,7 +115,7 @@ public class Button1 : Button
         DialogPopup1 dp1 = g.GetComponent<DialogPopup1>();
 
         // ポップアップのボタンの値を設定
-        dp1.SetScreenAndLoot(ScreenController.ScreenType.MainMenu, 1);
+        dp1.SetScreenAndLoot(scrAndLoot_popup.scrType, scrAndLoot_popup.scrLoot);
 
         // ポップアップの OK ボタンを押したときの処理を設定
         dp1.Action = () =>

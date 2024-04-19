@@ -71,18 +71,12 @@ public class StageButton : Button
 
             stageCon.DSIdele?.Invoke(defaultPos, gameObject, this);
         }
-
-        // ボタンのアニメーション処理
-        BtnAnimProcess(imageStructs, textStructs, true);
     }
 
     // マウスポインターが離れたときの処理
     public override void ExitProcess()
     {
         base.ExitProcess();
-
-        // ボタンのアニメーション処理
-        BtnAnimProcess(imageStructs, textStructs, false);
     }
 
     // クリックされたときの処理

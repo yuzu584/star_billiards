@@ -19,9 +19,6 @@ public class SkillSlot : Button
     {
         base.EnterProcess();
 
-        // ボタンのアニメーション処理
-        BtnAnimProcess(imageStructs, textStructs, true);
-
         skillSelect ??= SkillSelect.instance;
 
         // スキルの情報を描画
@@ -32,9 +29,6 @@ public class SkillSlot : Button
     public override void ExitProcess()
     {
         base.ExitProcess();
-
-        // ボタンのアニメーション処理
-        BtnAnimProcess(imageStructs, textStructs, false);
     }
 
     // クリックされたときの処理

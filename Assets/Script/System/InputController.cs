@@ -53,7 +53,7 @@ public class InputController : Singleton<InputController>
     private float longPressInterval = 0.05f;        // 長押し時の連続実行間隔
     private float longPressIntervalCount = 0.0f;    // 長押し時の連続実行間隔を計測
 
-    public bool canInput = true; // InputSystemの入力が可能か
+    public bool canInput = true;                    // InputSystemの入力が可能か
 
     protected override void Awake()
     {

@@ -19,6 +19,8 @@ MonoBehaviour:
     loot:
     - name: Top
       screenObj: {fileID: 0}
+    - name: Exit Popup
+      screenObj: {fileID: 0}
     drawCursol: 1
     timeScale: 0
     drawStage: 0
@@ -31,8 +33,6 @@ MonoBehaviour:
     screenObj: {fileID: 8632690720436358100, guid: 27db11c2108a8e448a3f9165866d71b9, type: 3}
     loot:
     - name: Top
-      screenObj: {fileID: 0}
-    - name: ExitPopup
       screenObj: {fileID: 0}
     drawCursol: 1
     timeScale: 0

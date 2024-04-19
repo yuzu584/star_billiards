@@ -144,6 +144,10 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         // 音を再生
         PlayBtnSound(BtnSounds.EnterSound);
 
+        // ボタンのアニメーション処理
+        if (focus.focusBtn != this)
+            BtnAnimProcess(imageStructs, textStructs, true);
+
         // フォーカスされているボタンを設定
         focus.SetFocusBtn(this);
 
@@ -153,7 +157,9 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     // マウスポインターが離れたときの処理
     public virtual void ExitProcess()
     {
-        
+        // ボタンのアニメーション処理
+        if (focus.focusBtn != this)
+            BtnAnimProcess(imageStructs, textStructs, false);
     }
 
     // クリックされたときの処理
@@ -385,10 +391,16 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
                 if(sound != null)
                     StartCoroutine(sound.Play(EnterSound));
 
+                // ボタンのアニメーション処理
+                BtnAnimProcess(imageStructs, textStructs, true);
+
                 EnterProcess();
             }
             else
             {
+                // ボタンのアニメーション処理
+                BtnAnimProcess(imageStructs, textStructs, false);
+
                 ExitProcess();
             }
         }

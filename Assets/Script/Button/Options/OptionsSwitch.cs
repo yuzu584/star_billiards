@@ -17,18 +17,12 @@ public class OptionsSwitch : Button
     public override void EnterProcess()
     {
         base.EnterProcess();
-
-        // ボタンのアニメーション処理
-        BtnAnimProcess(imageStructs, textStructs, true);
     }
 
     // マウスポインターが離れたときの処理
     public override void ExitProcess()
     {
         base.ExitProcess();
-
-        // ボタンのアニメーション処理
-        BtnAnimProcess(imageStructs, textStructs, false);
     }
 
     // クリックされたときの処理
