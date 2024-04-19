@@ -106,9 +106,6 @@ public class StageButton : Button
         init = Initialize.instance;
         cStage = CreateStage.instance;
         popupMana = PopupManager.instance;
-
-        // テキストをステージ名に設定
-        stageName.text = stageData.stageList[stageNum].stageName;
     }
 
     void Update()

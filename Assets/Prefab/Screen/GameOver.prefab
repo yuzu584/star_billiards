@@ -290,12 +290,20 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: seet
+      value: screen_action
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: type
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: group
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: dataName
+      value: return_to_mainmenu
       objectReference: {fileID: 0}
     - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: type.screen
@@ -526,8 +534,16 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: seet
+      value: screen_name
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: group
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: dataName
+      value: stage_select
       objectReference: {fileID: 0}
     - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: type.screen

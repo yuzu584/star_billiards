@@ -70,7 +70,7 @@ public class StageSelectUIController : MonoBehaviour
 
         // ステージ名を設定
         LocalizeText lt = stageButton.gameObject.GetComponent<LocalizeText>();
-        stageName.text = lt.text.text;
+        stageName.text = localize.GetString(lt.seet, lt.dataName);
 
         // ミッション名を設定
         switch (stageData.stageList[stageCon.stageNum].missionNum)

@@ -159,17 +159,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51065a5a367bff2409b72c6fd74f4f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  group: 70
-  type:
-    screen: 100
-    stageName: 100
-    mission: 100
-    configTop: 100
-    configContent: 100
-    skillName: 100
-    skillParameter: 100
-    skillDetails: 100
-    player: 100
-    message: 100
-    starName: 7
-    system: 100
+  seet: star_name
+  dataName: uranus

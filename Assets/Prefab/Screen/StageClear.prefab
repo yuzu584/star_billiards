@@ -126,21 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  group: 100
-  type:
-    screen: 100
-    stageName: 100
-    mission: 100
-    configTop: 100
-    configContent: 100
-    skillName: 100
-    skillParameter: 100
-    skillDetails: 100
-    player: 100
-    message: 100
-    starName: 100
-    keyGuide: 0
-    system: 5
+  seet: system
+  dataName: score
   text: {fileID: 8948856027100208167}
 --- !u!1 &2845325346890233291
 GameObject:
@@ -235,21 +222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  group: 100
-  type:
-    screen: 100
-    stageName: 100
-    mission: 100
-    configTop: 100
-    configContent: 100
-    skillName: 100
-    skillParameter: 100
-    skillDetails: 100
-    player: 100
-    message: 100
-    starName: 100
-    keyGuide: 0
-    system: 7
+  seet: system
+  dataName: new_record
   text: {fileID: 6066580044884302862}
 --- !u!1 &3723365962929936140
 GameObject:
@@ -344,21 +318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  group: 100
-  type:
-    screen: 100
-    stageName: 100
-    mission: 100
-    configTop: 100
-    configContent: 100
-    skillName: 100
-    skillParameter: 100
-    skillDetails: 100
-    player: 100
-    message: 100
-    starName: 100
-    keyGuide: 0
-    system: 6
+  seet: system
+  dataName: high_score
   text: {fileID: 150574751078228668}
 --- !u!1 &4396589447972874451
 GameObject:
@@ -862,12 +823,20 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: seet
+      value: screen_name
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: group
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: dataName
+      value: stage_select
       objectReference: {fileID: 0}
     - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: type.screen
@@ -1060,12 +1029,20 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: seet
+      value: screen_action
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: type
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: group
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: dataName
+      value: return_to_mainmenu
       objectReference: {fileID: 0}
     - target: {fileID: 3062701042717884281, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: type.screen

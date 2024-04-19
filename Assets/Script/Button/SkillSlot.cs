@@ -10,8 +10,8 @@ public class SkillSlot : Button
     [SerializeField] private SkillController.SkillType skill = 0;       // スキル
     [SerializeField] private Text nameText;                             // スキル名を表すテキスト
     [SerializeField] private Image selectedImage;                       // スキルの選択状態を表す画像
+    [SerializeField] private LocalizeText localizeText;
 
-    // instanceを代入する変数
     private SkillSelect skillSelect;
 
     // マウスポインターが乗った時の処理
@@ -75,6 +75,11 @@ public class SkillSlot : Button
     protected override void OnEnable()
     {
         base.OnEnable();
+
+        // 翻訳テキストの設定
+        localizeText.seet = "skill_name";
+        localizeText.dataName = skill.ToString();
+        localizeText.SetText();
     }
 
     protected override void Start()

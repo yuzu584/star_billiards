@@ -131,8 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seet: 
-  dataName: 
+  seet: skill_param_name
+  dataName: effect_time
   text: {fileID: 7415601629667023088}
 --- !u!1 &7415601629925163329
 GameObject:
@@ -264,8 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seet: 
-  dataName: 
+  seet: skill_param_name
+  dataName: energy_cost
   text: {fileID: 7415601630185088597}
 --- !u!1 &7415601630223503785
 GameObject:
@@ -360,8 +360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seet: 
-  dataName: 
+  seet: skill_param_name
+  dataName: skill_details
   text: {fileID: 7415601630223503791}
 --- !u!1 &7415601630407778459
 GameObject:
@@ -1250,8 +1250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seet: 
-  dataName: 
+  seet: skill_param_name
+  dataName: cool_down
   text: {fileID: 7415601631312406201}
 --- !u!1 &7415601631348140724
 GameObject:
@@ -1737,7 +1737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2518879172071398491, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2518879172071398491, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1775,9 +1775,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3657587204573946840, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
+      propertyPath: seet
+      value: skill_other
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657587204573946840, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
+      propertyPath: dataName
+      value: immediate_activation
+      objectReference: {fileID: 0}
     - target: {fileID: 7070850883561271925, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
       propertyPath: m_Name
-      value: Heading Sentence (1)
+      value: _Immediate activation_
       objectReference: {fileID: 0}
     - target: {fileID: 8915417391068936968, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1847,7 +1855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2518879172071398491, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2518879172071398491, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1885,9 +1893,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3657587204573946840, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
+      propertyPath: seet
+      value: skill_other
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657587204573946840, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
+      propertyPath: dataName
+      value: enhanced_player
+      objectReference: {fileID: 0}
     - target: {fileID: 7070850883561271925, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
       propertyPath: m_Name
-      value: Heading Sentence
+      value: _Enhanced player_
       objectReference: {fileID: 0}
     - target: {fileID: 8915417391068936968, guid: 94594f3c33f13d742b9d2537ce20757a, type: 3}
       propertyPath: m_SizeDelta.x

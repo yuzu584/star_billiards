@@ -335,7 +335,7 @@ MonoBehaviour:
       endScale: {x: 0, y: 0}
       fadeTime: 0
     onPointerDraw: 0
-  keyGuides: 640000000100000002000000
+  keyGuides: []
   defaultFocus: 0
   scrAndLoot:
     scrType: 0
@@ -352,6 +352,7 @@ MonoBehaviour:
   skill: 0
   nameText: {fileID: 7557092268006458988}
   selectedImage: {fileID: 2657103403607380263}
+  localizeText: {fileID: 1628948846239766759}
 --- !u!114 &1628948846239766759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,21 +365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  group: 101
-  type:
-    screen: 100
-    stageName: 100
-    mission: 100
-    configTop: 100
-    configContent: 100
-    skillName: 100
-    skillParameter: 100
-    skillDetails: 100
-    player: 100
-    message: 100
-    starName: 0
-    keyGuide: 0
-    system: 100
+  seet: 
+  dataName: 
   text: {fileID: 7557092268006458988}
 --- !u!1 &8355400256215643350
 GameObject:

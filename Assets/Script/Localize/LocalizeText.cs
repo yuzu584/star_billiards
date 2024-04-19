@@ -14,7 +14,7 @@ public class LocalizeText : MonoBehaviour
 
     private void Start()
     {
-        localize = Localize.instance;
+        localize ??= Localize.instance;
 
         SetText();
 
@@ -27,8 +27,10 @@ public class LocalizeText : MonoBehaviour
             localize.switchLanguageDele -= SetText;
     }
 
-    void SetText()
+    public void SetText()
     {
+        localize ??= Localize.instance;
+
         // テキストを設定
         text.text = localize.GetString(seet, dataName);
 

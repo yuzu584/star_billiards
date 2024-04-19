@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 4772162736740668217}
   - component: {fileID: 3126899408159142561}
   - component: {fileID: 4772162736740668220}
-  - component: {fileID: 968163988277761778}
-  - component: {fileID: 6296971585200377657}
+  - component: {fileID: 347723946999318810}
+  - component: {fileID: 4588159484834947777}
   m_Layer: 3
   m_Name: Sun
   m_TagString: FixedStar
@@ -133,7 +133,7 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &968163988277761778
+--- !u!114 &347723946999318810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b2083ee59036c47a61a036848adcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6296971585200377657
+--- !u!114 &4588159484834947777
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,20 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51065a5a367bff2409b72c6fd74f4f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  group: 70
-  type:
-    screen: 100
-    stageName: 100
-    mission: 100
-    configTop: 100
-    configContent: 100
-    skillName: 100
-    skillParameter: 100
-    skillDetails: 100
-    player: 100
-    message: 100
-    starName: 0
-    system: 100
+  seet: star_name
+  dataName: sun
 --- !u!1 &6592015305360109789
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +283,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7624361161684046481}
-  - component: {fileID: 7272036849494297551}
   m_Layer: 0
   m_Name: Sun
   m_TagString: FixedStar
@@ -320,15 +307,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7272036849494297551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8018973082679575124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b2083ee59036c47a61a036848adcff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
