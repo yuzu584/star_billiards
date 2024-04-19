@@ -10,15 +10,25 @@ public class KeyGuide : MonoBehaviour
     [SerializeField] private Text text;
     [SerializeField] private KeyGuideIconSetter iconSetter;
 
-    public enum KeyGuideType
+    // キー操作ガイドUIのアイコンの種類
+    public enum KeyGuideIconType
+    {
+        positive,
+        negative,
+        move,
+    }
+
+    // キー操作ガイドUIのテキストの種類
+    public enum KeyGuideTextType
     {
         positive,
         negative,
         move_cursol,
+        return_to_previous_screen,
     }
 
-    private KeyGuideType type;
-    public KeyGuideType Type
+    private KeyGuideTextType type;
+    public KeyGuideTextType Type
     {
         get { return type; }
         set

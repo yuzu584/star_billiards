@@ -37,7 +37,7 @@ public class KeyGuideIconSetter : MonoBehaviour
     }
 
     // Žw’è‚Ì‰æ‘œ‚ð’T‚µ‚Ä•Ô‚·
-    Sprite SearchIcon(KeyGuideType type)
+    Sprite SearchIcon(KeyGuideTextType type)
     {
         Sprite sprite;
 

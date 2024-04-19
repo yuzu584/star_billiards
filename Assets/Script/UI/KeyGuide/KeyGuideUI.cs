@@ -16,7 +16,7 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
     private bool isFirstDraw = true;
 
     // キー操作のガイドのUIを描画
-    public void DrawGuide(KeyGuideType[] types)
+    public void DrawGuide(KeyGuideTextType[] types)
     {
         // ガイドが何も表示されていなければ今回の描画は最初の描画
         if (keyGuides.Count == 0) isFirstDraw = true;
@@ -59,7 +59,7 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
     }
 
     // 現在表示しているガイドと同じガイドを描画しようとしているかチェック
-    bool RedrawCheck(KeyGuideType[] types)
+    bool RedrawCheck(KeyGuideTextType[] types)
     {
         int redrawCount = 0;
 

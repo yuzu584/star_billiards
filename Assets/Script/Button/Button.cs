@@ -63,7 +63,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     [SerializeField] protected ImageStruct[] imageStructs;
     [SerializeField] protected TextStruct[] textStructs;
 
-    [SerializeField] protected KeyGuideType[] keyGuides;
+    [SerializeField] protected KeyGuideTextType[] keyGuides;
 
     // ボタンが所属するグループ
     public enum Group
@@ -387,10 +387,6 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         {
             if (isEnter)
             {
-                // 音を再生
-                if(sound != null)
-                    StartCoroutine(sound.Play(EnterSound));
-
                 // ボタンのアニメーション処理
                 BtnAnimProcess(imageStructs, textStructs, true);
 
