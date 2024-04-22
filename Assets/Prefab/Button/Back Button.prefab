@@ -103,7 +103,11 @@ MonoBehaviour:
       fadeTime: 0.4
     onPointerDraw: 0
   textStructs: []
-  keyGuides: 000000000100000002000000
+  keyGuideTypes:
+  - text: 3
+    icon: 0
+  - text: 2
+    icon: 2
   defaultFocus: 0
   scrAndLoot:
     scrType: 0

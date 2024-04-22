@@ -13,36 +13,46 @@ public class KeyGuide : MonoBehaviour
     // キー操作ガイドUIのアイコンの種類
     public enum KeyGuideIconType
     {
-        positive,
-        negative,
+        ui_positive,
+        ui_negative,
         move,
     }
 
     // キー操作ガイドUIのテキストの種類
     public enum KeyGuideTextType
     {
-        positive,
-        negative,
+        decision,
+        back,
         move_cursol,
         return_to_previous_screen,
     }
 
-    private KeyGuideTextType type;
-    public KeyGuideTextType Type
+    [System.Serializable]
+    public struct KeyGuideIconAndTextType
     {
-        get { return type; }
+        public KeyGuideTextType text;
+        public KeyGuideIconType icon;
+    }
+
+    private KeyGuideTextType textType;
+    public KeyGuideTextType TextType
+    {
+        get { return textType; }
         set
         {
-            SetIconAndText();
-            type = value;
+            iconSetter.SetText();
+            textType = value;
         }
     }
 
-    // アイコンとテキストを設定
-    void SetIconAndText()
+    private KeyGuideIconType iconType;
+    public KeyGuideIconType IconType
     {
-        // アイコンとテキストを設定
-        iconSetter.SetIcon();
-        iconSetter.SetText();
+        get { return iconType; }
+        set
+        {
+            iconSetter.SetIcon();
+            iconType = value;
+        }
     }
 }

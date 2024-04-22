@@ -200,7 +200,13 @@ MonoBehaviour:
       endScale: {x: 0, y: 0}
       fadeTime: 0
     onPointerDraw: 0
-  keyGuides: 000000000100000002000000
+  keyGuideTypes:
+  - text: 0
+    icon: 0
+  - text: 1
+    icon: 1
+  - text: 2
+    icon: 2
   defaultFocus: 0
   scrAndLoot:
     scrType: 0
@@ -231,21 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a89ad0f0c537514ba30e96d95d94048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  group: 101
-  type:
-    screen: 100
-    stageName: 100
-    mission: 100
-    configTop: 100
-    configContent: 100
-    skillName: 100
-    skillParameter: 100
-    skillDetails: 100
-    player: 100
-    message: 100
-    starName: 0
-    keyGuide: 0
-    system: 100
+  seet: 
+  dataName: 
   text: {fileID: 2829114147495447402}
 --- !u!1 &2829114146131303147
 GameObject:

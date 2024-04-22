@@ -37,7 +37,7 @@ public class KeyGuideIconSetter : MonoBehaviour
     }
 
     // Žw’è‚Ì‰æ‘œ‚ð’T‚µ‚Ä•Ô‚·
-    Sprite SearchIcon(KeyGuideTextType type)
+    Sprite SearchIcon(KeyGuideIconType type)
     {
         Sprite sprite;
 
@@ -46,7 +46,7 @@ public class KeyGuideIconSetter : MonoBehaviour
         for (int i = 0; i < keyGuideIconData.keyTypeAndIcons.Length; i++)
         {
             // Type ‚ªˆê’v‚µ‚½‚ç
-            if (keyGuideIconData.keyTypeAndIcons[i].keyGuideType == type)
+            if (keyGuideIconData.keyTypeAndIcons[i].iconType == type)
             {
                 // Œ»Ý‚Ì Scheme ‚É‚æ‚Á‚Ä•ªŠò
                 switch (input.GetNowScheme())
@@ -73,7 +73,7 @@ public class KeyGuideIconSetter : MonoBehaviour
     {
         // ƒAƒCƒRƒ“‚ð’T‚µ‚ÄÝ’è
         keyGuide ??= GetComponent<KeyGuide>();
-        Image.sprite = SearchIcon(keyGuide.Type);
+        Image.sprite = SearchIcon(keyGuide.IconType);
     }
 
     public void SetText()
@@ -82,6 +82,6 @@ public class KeyGuideIconSetter : MonoBehaviour
         lt ??= text.AddComponent<LocalizeText>();
         lt.text = text;
         lt.seet = "key_guide";
-        lt.dataName = keyGuide.Type.ToString();
+        lt.dataName = keyGuide.TextType.ToString();
     }
 }

@@ -63,7 +63,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     [SerializeField] protected ImageStruct[] imageStructs;
     [SerializeField] protected TextStruct[] textStructs;
 
-    [SerializeField] protected KeyGuideTextType[] keyGuides;
+    public KeyGuideIconAndTextType[] keyGuideTypes;
 
     // ボタンが所属するグループ
     public enum Group
@@ -458,7 +458,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     void DrawKeyGuide()
     {
         keyGuideUI ??= KeyGuideUI.instance;
-        keyGuideUI.DrawGuide(keyGuides);
+        keyGuideUI.DrawGuide(keyGuideTypes);
     }
 
     protected virtual void Start()

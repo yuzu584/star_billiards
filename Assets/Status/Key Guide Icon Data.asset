@@ -13,19 +13,15 @@ MonoBehaviour:
   m_Name: Key Guide Icon Data
   m_EditorClassIdentifier: 
   keyTypeAndIcons:
-  - keyGuideType: 0
+  - iconType: 0
     KeyIcons:
       KeybordAndMouse: {fileID: 21300000, guid: 4fce72f76e64b2d4fb2b3a10949acf39, type: 3}
       GamePad: {fileID: 21300000, guid: c9054376d4458f74daa750ad5b4424d3, type: 3}
-  - keyGuideType: 1
+  - iconType: 1
     KeyIcons:
       KeybordAndMouse: {fileID: 21300000, guid: 8bbb5cfc5e04dea4c816fe303a40838c, type: 3}
       GamePad: {fileID: 21300000, guid: 525479bb6ac5f1743a88d850826b1774, type: 3}
-  - keyGuideType: 2
+  - iconType: 2
     KeyIcons:
       KeybordAndMouse: {fileID: 21300000, guid: 4b1851a514479c1409b1467e8f910ebe, type: 3}
       GamePad: {fileID: 21300000, guid: 72fb99c2e2c7b2445a9e8a7900349529, type: 3}
-  - keyGuideType: 3
-    KeyIcons:
-      KeybordAndMouse: {fileID: 21300000, guid: 8bbb5cfc5e04dea4c816fe303a40838c, type: 3}
-      GamePad: {fileID: 21300000, guid: 525479bb6ac5f1743a88d850826b1774, type: 3}

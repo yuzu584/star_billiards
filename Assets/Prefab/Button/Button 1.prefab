@@ -104,7 +104,13 @@ MonoBehaviour:
       endScale: {x: 0, y: 0}
       fadeTime: 0
     onPointerDraw: 0
-  keyGuides: 000000000100000002000000
+  keyGuideTypes:
+  - text: 0
+    icon: 0
+  - text: 1
+    icon: 1
+  - text: 2
+    icon: 2
   defaultFocus: 0
   scrAndLoot:
     scrType: 0
@@ -120,6 +126,9 @@ MonoBehaviour:
   orPointer: 0
   clickAction: 0
   nextScreen: 0
+  scrAndLoot_popup:
+    scrType: 0
+    scrLoot: 0
 --- !u!114 &3062701042717884281
 MonoBehaviour:
   m_ObjectHideFlags: 0

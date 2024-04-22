@@ -420,6 +420,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: keyGuideTypes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: imageStructs.Array.data[0].onPointerDraw
       value: 0
       objectReference: {fileID: 0}

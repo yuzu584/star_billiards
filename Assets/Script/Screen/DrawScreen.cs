@@ -50,9 +50,6 @@ public class DrawScreen : MonoBehaviour
         {
             DestroyInstance(ref backIns);
         }
-
-        // ‘€ìƒKƒCƒhUI‚Ì HorizontalLayoutGroup ‚ğXV‚³‚¹‚é
-        StartCoroutine(keyGuideUI.UpdateLayoutGroup());
     }
 
     // ”wŒi‚ğ•`‰æ

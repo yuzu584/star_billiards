@@ -22,6 +22,6 @@ public struct KeyIcons
 [System.Serializable]
 public struct KeyTypeAndIcons
 {
-    public KeyGuideTextType keyGuideType;
+    public KeyGuideIconType iconType;
     public KeyIcons KeyIcons;
 }
