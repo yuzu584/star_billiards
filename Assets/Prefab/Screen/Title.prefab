@@ -392,6 +392,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2585311485736157757}
     m_Modifications:
     - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
+      propertyPath: EnterSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 880919052158026651, guid: e3fc9be4e89d0d243a74919d3e97b3c9, type: 3}
       propertyPath: nextScreen
       value: 1
       objectReference: {fileID: 0}

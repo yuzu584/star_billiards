@@ -6,11 +6,29 @@ using UnityEngine.Audio;
 // 音を管理
 public class Sound : Singleton<Sound>
 {
+    private const float SOUND_PLAY_INTERVAL = 0.05f;                    // 音再生間隔
+
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioMixer audioMixer;
 
-    public ClampedValue<float> bgmVolume;   // BGM の音量
-    public ClampedValue<float> seVolume;    // SE の音量
+    public ClampedValue<float> bgmVolume;                               // BGM の音量
+    public ClampedValue<float> seVolume;                                // SE の音量
+
+    // AudioClip ごとの情報
+    [System.Serializable]
+    public class AudioClipData
+    {
+        public AudioClip audioClip;
+        public float playedTime;                                        // 前回再生したときの時間
+
+        // 再生間隔を経過したか( true:経過済み false:経過していない)
+        public bool CheckInterval()
+        {
+            return (Time.realtimeSinceStartup - playedTime >= SOUND_PLAY_INTERVAL);
+        }
+    }
+
+    public List<AudioClipData> clipData = new List<AudioClipData>();    // AudioClip ごとの情報の List
 
     private void Start()
     {
@@ -30,7 +48,15 @@ public class Sound : Singleton<Sound>
     // 音声ファイルを再生
     public IEnumerator Play(AudioClip audio)
     {
-        audioSource.PlayOneShot(audio);
+        if (audio == null) yield break;
+
+        // 再生間隔を経過していたら再生
+        AudioClipData acd = GetClip(audio);
+        if (acd.CheckInterval())
+        {
+            acd.playedTime = Time.realtimeSinceStartup;
+            audioSource.PlayOneShot(acd.audioClip);
+        }
 
         yield return null;
     }
@@ -71,5 +97,24 @@ public class Sound : Singleton<Sound>
         {
             return Mathf.Pow(10.0f, -Mathf.Log(1.0f / volLvRatio, 2.0f) / 2.0f);
         }
+    }
+
+    // List に引数の AudioClip が含まれてれば返す
+    // 含まれていなければ List に追加して返す
+    private AudioClipData GetClip(AudioClip ac)
+    {
+        for (int i = 0; i < clipData.Count; i++)
+        {
+            // AudioClip が見つかったら返す
+            if (clipData[i].audioClip == ac)
+            {
+                return clipData[i];
+            }
+        }
+
+        // AudioClip が見つからなかったら List に追加して返す
+        AudioClipData ad = new AudioClipData { audioClip = ac };
+        clipData.Add(ad);
+        return ad;
     }
 }
