@@ -64,11 +64,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 170856092006541308, guid: 045ab392eb0322d49a4fb3afc7c3f996, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 170856092006541308, guid: 045ab392eb0322d49a4fb3afc7c3f996, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1029904879700119725, guid: 045ab392eb0322d49a4fb3afc7c3f996, type: 3}
       propertyPath: m_Pivot.x
@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3427032684367039665, guid: 045ab392eb0322d49a4fb3afc7c3f996, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3695323966714284408, guid: 045ab392eb0322d49a4fb3afc7c3f996, type: 3}
       propertyPath: m_AnchorMax.x
@@ -263,7 +263,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2278713236912858717, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: key
-      value: 2
+      value: fov
       objectReference: {fileID: 0}
     - target: {fileID: 2278713236912858717, guid: f63c00f22f2615f47a0fd79b241522d1, type: 3}
       propertyPath: defaultFocus

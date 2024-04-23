@@ -27,30 +27,19 @@ public class AppParams : Singleton<AppParams>
         string GetName();
         void SetName(string name);
         Type GetThisType();
+        void SetOnValueChanged(Action action);
+        void SetOnMaxChanged(Action action);
+        void SetOnMinChanged(Action action);
     }
 
     // 指定の key の Dictionary の要素を取得
-    public IClampedValue GetClampedValue(ParamsKey key)
+    public IClampedValue GetClampedValue(string key)
     {
-        // ParamsKey を文字列に変換
-        string keyString = key.ToString();
-
         // Key で Dictionary 内を検索
         // ヒットすればヒットした IClampedValue を返す
-        if (instance.paramsDic.ContainsKey(keyString))
-            return paramsDic[keyString];
+        if (instance.paramsDic.ContainsKey(key))
+            return paramsDic[key];
         // ヒットしなければ null を返す
         else return null;
-    }
-
-    public enum ParamsKey
-    {
-        energy              = 000,
-        angleMoveSpeed      = 001,
-        fov                 = 002,
-        bgmVolume           = 003,
-        seVolume            = 004,
-        speedRate           = 005,
-        None                = 100,
     }
 }

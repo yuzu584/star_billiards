@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnergyController : Singleton<EnergyController>
 {
     public ClampedValue<int> energy;        // エネルギー
+    public ClampedValue<int> maxEnergy;     // 最大エネルギー
 
     private ScreenController screenCon;
     private Initialize init;
@@ -24,6 +25,10 @@ public class EnergyController : Singleton<EnergyController>
         stageCon = StageController.instance;
 
         energy = new ClampedValue<int>(1000, 1000, 0, nameof(energy));
+        maxEnergy = new ClampedValue<int>(1000, 10000, 0, nameof(maxEnergy));
+
+        // "最大エネルギー" の値が変化したときに "エネルギー" の最大値を設定
+        maxEnergy.SetOnValueChanged(() => { energy.SetMax(maxEnergy.GetValue_Int()); });
 
         // デリゲートに初期化関数を登録
         init.init_Stage += Init;

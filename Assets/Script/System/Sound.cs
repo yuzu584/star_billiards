@@ -19,8 +19,8 @@ public class Sound : Singleton<Sound>
         seVolume = new ClampedValue<float>(0.8f, 1, 0, nameof(seVolume));
 
         // ’l‚ª•Ï‰»‚µ‚½‚Æ‚«‚Ì Action ‚ğİ’è
-        bgmVolume.onValueChange = () => SetVolume("BGM", bgmVolume.GetValue_Float());
-        seVolume.onValueChange = () => SetVolume("SE", seVolume.GetValue_Float());
+        bgmVolume.SetOnValueChanged(() => SetVolume("BGM", bgmVolume.GetValue_Float()));
+        seVolume.SetOnValueChanged(() => SetVolume("SE", seVolume.GetValue_Float()));
 
         // Å‰‚É‰¹—Ê‚ğİ’è
         SetVolume("BGM", bgmVolume.GetValue_Float());

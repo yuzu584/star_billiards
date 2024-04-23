@@ -11,7 +11,7 @@ public class OptionsSlider : Button
     [SerializeField] private Text state;                           // ボタンの状態を表すテキスト
     [SerializeField] private Slider slider;                        // スライダー
 
-    [SerializeField] private AppParams.ParamsKey key;
+    [SerializeField] private string key;
     private AppParams.IClampedValue clampedValue;
 
     private OptionsController opCon;
@@ -85,6 +85,12 @@ public class OptionsSlider : Button
         // IClampedValue 型のインターフェースを取得
         clampedValue = appParams.GetClampedValue(key);
 
+        if (clampedValue == null)
+        {
+            Debug.LogError("IClampedValue 型のインターフェースを取得できませんでした。");
+            return;
+        }
+
         // int型なら Slider の値を整数にする
         if (clampedValue.GetThisType() == typeof(int))
             slider.wholeNumbers = true;
@@ -125,6 +131,9 @@ public class OptionsSlider : Button
             slider.maxValue = max;
             slider.minValue = min;
             slider.value = value;
+
+            Action action = () => { slider.maxValue = clampedValue.GetMax_Float(); };
+            clampedValue.SetOnMaxChanged(() => { slider.maxValue = clampedValue.GetMax_Float(); });
         }
         // 取得できなかったら
         else

@@ -12,7 +12,9 @@ public class ClampedValue<T> : IClampedValue where T : struct, IComparable<T>
     private T _min;         // 最小値
     private string _name;   // 名前(DictionaryのKeyに使用)
 
-    public Action onValueChange;
+    private Action onValueChanged;
+    private Action onMaxChanged;
+    private Action onMinChanged;
 
     // コンストラクタ
     public ClampedValue(T value, T max, T min, string name)
@@ -46,7 +48,7 @@ public class ClampedValue<T> : IClampedValue where T : struct, IComparable<T>
         {
             _value = (T)value;
             ClampValue();
-            onValueChange?.Invoke();
+            onValueChanged?.Invoke();
         }
         else
         {
@@ -66,6 +68,7 @@ public class ClampedValue<T> : IClampedValue where T : struct, IComparable<T>
         {
             _max = (T)max;
             ClampValue();
+            onMaxChanged?.Invoke();
         }
         else
         {
@@ -85,6 +88,7 @@ public class ClampedValue<T> : IClampedValue where T : struct, IComparable<T>
         {
             _min = (T)min;
             ClampValue();
+            onMinChanged?.Invoke();
         }
         else
         {
@@ -106,6 +110,21 @@ public class ClampedValue<T> : IClampedValue where T : struct, IComparable<T>
     }
 
     public Type GetThisType() { return typeof(T); }
+
+    public void SetOnValueChanged(Action action)
+    {
+        onValueChanged += action;
+    }
+
+    public void SetOnMaxChanged(Action action)
+    {
+        onMaxChanged += action;
+    }
+
+    public void SetOnMinChanged(Action action)
+    {
+        onMinChanged += action;
+    }
 
     // Dictionary に追加
     private void AddDictionary()

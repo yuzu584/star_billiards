@@ -494,7 +494,7 @@ MonoBehaviour:
   orPointer: 0
   state: {fileID: 5571069667451277669}
   slider: {fileID: 7969821521926550252}
-  key: 0
+  key: 
 --- !u!114 &7958577059214198213
 MonoBehaviour:
   m_ObjectHideFlags: 0
