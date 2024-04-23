@@ -90,11 +90,11 @@ MonoBehaviour:
   textStructs: []
   keyGuideTypes:
   - text: 0
-    icon: 0
+    icon: 00000000
   - text: 1
-    icon: 1
+    icon: 01000000
   - text: 2
-    icon: 2
+    icon: 02000000
   defaultFocus: 0
   scrAndLoot:
     scrType: 0

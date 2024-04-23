@@ -18,7 +18,10 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
     public void DrawGuide(KeyGuide.KeyGuideIconAndTextType[] types)
     {
         // ガイドが何も表示されていなければ今回の描画は最初の描画
-        if (keyGuides.Count == 0) isFirstDraw = true;
+        if (keyGuides.Count == 0)
+        {
+            isFirstDraw = true;
+        }
 
         // 既にガイドが描画済みなら
         if (!isFirstDraw)
@@ -41,8 +44,18 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
             GameObject obj = Instantiate(guideObj);                 // インスタンス生成
             obj.transform.SetParent(parentObj.transform, false);    // 親オブジェクトを設定
             var component = obj.GetComponent<KeyGuide>();           // コンポーネント取得
-            component.TextType = types[i].text;         // ガイドのテキストの種類を設定
-            component.IconType = types[i].icon;         // ガイドのアイコンの種類を設定
+
+            // ガイドのテキストとアイコンの種類を設定(アイコンの数によって分岐)
+            if (types[i].icon.Length == 1)
+                component.IconAndText = types[i];
+            else if (types[i].icon.Length > 1)
+            {
+                for (int j = 0; j < types[i].icon.Length - 1; j++)
+                {
+                    component.DuplicateImage(types[i]);
+                }
+            }
+
             keyGuides.Add(obj);                                     // リストに追加
         }
 
@@ -75,7 +88,7 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
             KeyGuide component = keyGuides[i].GetComponent<KeyGuide>();
 
             // 同じガイドならカウント
-            if ((component.TextType == types[i].text) && (component.IconType == types[i].icon))
+            if ((component.IconAndText.CheckIconEquals(types[i].icon)) && (component.IconAndText.text == types[i].text))
                 ++redrawCount;
         }
 

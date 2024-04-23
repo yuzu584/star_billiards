@@ -8,7 +8,6 @@ using static KeyGuide;
 // キー操作ガイドの画像をセットする
 public class KeyGuideIconSetter : MonoBehaviour
 {
-    [SerializeField] private Image Image;
     [SerializeField] private KeyGuideIconData keyGuideIconData;
     [SerializeField] private Text text;
 
@@ -33,6 +32,7 @@ public class KeyGuideIconSetter : MonoBehaviour
 
     private void OnDestroy()
     {
+        input ??= InputController.instance;
         input.SwitchScheme -= SetIcon;
     }
 
@@ -73,7 +73,13 @@ public class KeyGuideIconSetter : MonoBehaviour
     {
         // アイコンを探して設定
         keyGuide ??= GetComponent<KeyGuide>();
-        Image.sprite = SearchIcon(keyGuide.IconType);
+
+        if (keyGuide.image.Length < 1) return;
+
+        for(int i = 0; i < keyGuide.image.Length; i++)
+        {
+            keyGuide.image[i].sprite = SearchIcon(keyGuide.IconAndText.icon[i]);
+        }
     }
 
     public void SetText()
@@ -82,6 +88,6 @@ public class KeyGuideIconSetter : MonoBehaviour
         lt ??= text.AddComponent<LocalizeText>();
         lt.text = text;
         lt.seet = "key_guide";
-        lt.dataName = keyGuide.TextType.ToString();
+        lt.dataName = keyGuide.IconAndText.text.ToString();
     }
 }

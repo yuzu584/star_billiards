@@ -225,9 +225,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9932468851848a41bfdb256bfc40ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 84378681899275137}
   text: {fileID: 84378682304587960}
   iconSetter: {fileID: 500608025188481098}
+  image:
+  - {fileID: 84378681899275137}
 --- !u!114 &500608025188481098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,7 +241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0786f373b48b9945ab9998b928a4b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Image: {fileID: 84378681899275137}
   keyGuideIconData: {fileID: 11400000, guid: 4c51fedcbbd074a4a9d8b15c3ad334a1, type: 2}
   text: {fileID: 84378682304587960}
 --- !u!114 &4496349852028068735

@@ -6,9 +6,9 @@ using UnityEngine.UI;
 // キー操作のガイドを管理
 public class KeyGuide : MonoBehaviour
 {
-    [SerializeField] private Image image;
     [SerializeField] private Text text;
     [SerializeField] private KeyGuideIconSetter iconSetter;
+    public Image[] image;
 
     // キー操作ガイドUIのアイコンの種類
     public enum KeyGuideIconType
@@ -31,28 +31,59 @@ public class KeyGuide : MonoBehaviour
     public struct KeyGuideIconAndTextType
     {
         public KeyGuideTextType text;
-        public KeyGuideIconType icon;
-    }
+        public KeyGuideIconType[] icon;
 
-    private KeyGuideTextType textType;
-    public KeyGuideTextType TextType
-    {
-        get { return textType; }
-        set
+        // アイコンの列挙型配列が同じか判定
+        public bool CheckIconEquals(KeyGuideIconType[] _icon)
         {
-            iconSetter.SetText();
-            textType = value;
+            if(icon == null || _icon == null) return false;  // null チェック
+            if(icon.Length != _icon.Length) return false;    // 配列の長さチェック
+
+            int count = 0;
+            for(int i = 0; i < icon.Length; ++i)
+            {
+                // 同じアイコンならカウント
+                if (icon[i] == _icon[i]) ++count;
+            }
+
+            return count >= icon.Length;
         }
     }
 
-    private KeyGuideIconType iconType;
-    public KeyGuideIconType IconType
+    private KeyGuideIconAndTextType iconAndText;
+    public KeyGuideIconAndTextType IconAndText
     {
-        get { return iconType; }
+        get { return iconAndText; }
         set
         {
+            iconAndText = value;
             iconSetter.SetIcon();
-            iconType = value;
+            iconSetter.SetText();
         }
+    }
+
+    // 画像を複製
+    public void DuplicateImage(KeyGuideIconAndTextType type)
+    {
+        // 配列の長さチェック
+        if(type.icon.Length < 1) return;
+
+        // 0 番目の Image は保存しておく
+        Image save = image[0];
+        image = new Image[type.icon.Length];
+        image[0] = save;
+
+        for (int i = 1; i < image.Length; ++i)
+        {
+            // インスタンス生成
+            image[i] = Instantiate(image[0]);
+
+            // 親オブジェクトを設定して先頭に
+            image[i].transform.SetParent(transform, false);
+            image[i].transform.SetAsFirstSibling();
+        }
+
+        // 画像を設定
+        iconAndText = type;
     }
 }

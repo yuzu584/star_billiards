@@ -385,14 +385,15 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     {
         if (gameObject.activeInHierarchy)
         {
-            if (isEnter)
+            // ポインターが乗って無いときのみ実行
+            if ((isEnter) && (!orPointer))
             {
                 // ボタンのアニメーション処理
                 BtnAnimProcess(imageStructs, textStructs, true);
 
                 EnterProcess();
             }
-            else
+            else if(!orPointer)
             {
                 // ボタンのアニメーション処理
                 BtnAnimProcess(imageStructs, textStructs, false);
