@@ -1100,7 +1100,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8dcc1f54b81c1041a484f3ccab06ece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyGuideTypes: []
+  keyGuideTypes:
+  - text: 4
+    icon: 03000000
+  - text: 5
+    icon: 04000000
+  - text: 6
+    icon: 05000000
+  - text: 7
+    icon: 0700000006000000
 --- !u!1 &6324641190774873433
 GameObject:
   m_ObjectHideFlags: 0

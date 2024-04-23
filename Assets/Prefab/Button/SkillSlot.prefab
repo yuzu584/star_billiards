@@ -336,7 +336,7 @@ MonoBehaviour:
       fadeTime: 0
     onPointerDraw: 0
   keyGuideTypes:
-  - text: 0
+  - text: 9
     icon: 00000000
   - text: 1
     icon: 01000000

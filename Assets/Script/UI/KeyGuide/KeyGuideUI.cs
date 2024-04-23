@@ -10,7 +10,10 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
     [SerializeField] private GameObject parentObj;      // キー操作ガイドのプレハブの親オブジェクト
     [SerializeField] private HorizontalLayoutGroup horizontalLayoutGroup;
 
-    public List<GameObject> keyGuides = new List<GameObject>();
+    public List<GameObject> keyGuideObjs = new List<GameObject>();
+    public List<KeyGuide> keyGuideComponents = new List<KeyGuide>();
+
+    public bool smoothSwitching = true;                 // キー操作ガイドUIのスムーズな切り替えを行うか
 
     private bool isFirstDraw = true;
 
@@ -18,7 +21,7 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
     public void DrawGuide(KeyGuide.KeyGuideIconAndTextType[] types)
     {
         // ガイドが何も表示されていなければ今回の描画は最初の描画
-        if (keyGuides.Count == 0)
+        if (keyGuideObjs.Count == 0)
         {
             isFirstDraw = true;
         }
@@ -43,20 +46,20 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
         {
             GameObject obj = Instantiate(guideObj);                 // インスタンス生成
             obj.transform.SetParent(parentObj.transform, false);    // 親オブジェクトを設定
-            var component = obj.GetComponent<KeyGuide>();           // コンポーネント取得
+            keyGuideComponents.Add(obj.GetComponent<KeyGuide>());   // コンポーネント取得
 
             // ガイドのテキストとアイコンの種類を設定(アイコンの数によって分岐)
             if (types[i].icon.Length == 1)
-                component.IconAndText = types[i];
+                keyGuideComponents[i].IconAndText = types[i];
             else if (types[i].icon.Length > 1)
             {
                 for (int j = 0; j < types[i].icon.Length - 1; j++)
                 {
-                    component.DuplicateImage(types[i]);
+                    keyGuideComponents[i].DuplicateImage(types[i]);
                 }
             }
 
-            keyGuides.Add(obj);                                     // リストに追加
+            keyGuideObjs.Add(obj);                                     // リストに追加
         }
 
         // HorizontalLayoutGroup を更新させる
@@ -67,11 +70,12 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
     public void DestroyGuide()
     {
         // List の中身を空にする
-        for (int i = 0; i < keyGuides.Count; ++i)
+        for (int i = 0; i < keyGuideObjs.Count; ++i)
         {
-            Destroy(keyGuides[i]);
+            Destroy(keyGuideObjs[i]);
         }
-        keyGuides.Clear();
+        keyGuideObjs.Clear();
+        keyGuideComponents.Clear();
     }
 
     // 現在表示しているガイドと同じガイドを描画しようとしているかチェック
@@ -80,12 +84,12 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
         int redrawCount = 0;
 
         // 比較する配列の長さが違うなら true を返す
-        if (keyGuides.Count != types.Length) return true;
+        if (keyGuideObjs.Count != types.Length) return true;
 
-        for (int i = 0; i < keyGuides.Count; ++i)
+        for (int i = 0; i < keyGuideObjs.Count; ++i)
         {
             // コンポーネント取得
-            KeyGuide component = keyGuides[i].GetComponent<KeyGuide>();
+            KeyGuide component = keyGuideObjs[i].GetComponent<KeyGuide>();
 
             // 同じガイドならカウント
             if ((component.IconAndText.CheckIconEquals(types[i].icon)) && (component.IconAndText.text == types[i].text))
@@ -93,7 +97,7 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
         }
 
         // 全てのガイドが描画済みなら false
-        if (redrawCount >= keyGuides.Count)
+        if (redrawCount >= keyGuideObjs.Count)
         {
             return false;
         }
@@ -108,8 +112,24 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
     {
         horizontalLayoutGroup.enabled = false;
 
+        // スムーズな切り替えを行うなら
+        if (smoothSwitching)
+        {
+            for (int i = 0; i < keyGuideComponents.Count; ++i)
+                keyGuideComponents[i].GuideEnabled(false);
+        }
+
         // 一瞬待つ
-        yield return new WaitForSecondsRealtime(0.03f);
+        //yield return new WaitForSecondsRealtime(0.01f);
+        yield return null;
+
+        // スムーズな切り替えを行うなら
+        if (smoothSwitching)
+        {
+            for (int i = 0; i < keyGuideComponents.Count; ++i)
+                keyGuideComponents[i].GuideEnabled(true);
+        }
+
         horizontalLayoutGroup.enabled = true;
     }
 }

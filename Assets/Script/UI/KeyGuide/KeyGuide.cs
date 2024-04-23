@@ -16,6 +16,11 @@ public class KeyGuide : MonoBehaviour
         ui_positive,
         ui_negative,
         move,
+        game_shot,
+        game_acceleration_deceleration,
+        game_use_skill,
+        game_change_skill_left,
+        game_change_skill_right,
     }
 
     // キー操作ガイドUIのテキストの種類
@@ -25,6 +30,12 @@ public class KeyGuide : MonoBehaviour
         back,
         move_cursol,
         return_to_previous_screen,
+        shot,
+        acceleration_deceleration,
+        use_skill,
+        change_skill,
+        increase_decrease_value,
+        select_skill,
     }
 
     [System.Serializable]
@@ -85,5 +96,16 @@ public class KeyGuide : MonoBehaviour
 
         // 画像を設定
         iconAndText = type;
+    }
+
+    // 非表示にする
+    public void GuideEnabled(bool isEnabled)
+    {
+        // テキストを非表示
+        text.enabled = isEnabled;
+
+        // アイコンを非表示
+        for (int i = 0; i < image.Length; ++i )
+            image[i].enabled = isEnabled;
     }
 }
