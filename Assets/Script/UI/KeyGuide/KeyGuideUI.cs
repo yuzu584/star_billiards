@@ -17,6 +17,13 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
 
     private bool isFirstDraw = true;
 
+    private Lerp lerp;
+
+    private void Start()
+    {
+        lerp ??= gameObject.AddComponent<Lerp>();
+    }
+
     // キー操作のガイドのUIを描画
     public void DrawGuide(KeyGuide.KeyGuideIconAndTextType[] types)
     {
@@ -69,6 +76,10 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
     // キー操作ガイドUIを削除
     public void DestroyGuide()
     {
+        // 全ての線形補間を止める
+        lerp ??= gameObject.AddComponent<Lerp>();
+        lerp.StopAll();
+
         // List の中身を空にする
         for (int i = 0; i < keyGuideObjs.Count; ++i)
         {
@@ -128,6 +139,21 @@ public class KeyGuideUI : Singleton<KeyGuideUI>
         {
             for (int i = 0; i < keyGuideComponents.Count; ++i)
                 keyGuideComponents[i].GuideEnabled(true);
+
+            lerp ??= gameObject.AddComponent<Lerp>();
+
+            Color32 alpha255 = new Color32(255, 255, 255, 255);
+            Color32 alpha0 = new Color32(255, 255, 255, 0);
+            float fadeTime = 0.5f;
+
+            lerp.StopAll();
+
+            for (int i = 0; i < keyGuideComponents.Count; ++i)
+            {
+                StartCoroutine(lerp.Color_Text(keyGuideComponents[i].text, alpha0, alpha255, fadeTime));
+                for (int j = 0; j < keyGuideComponents[i].image.Length; ++j)
+                    StartCoroutine(lerp.Color_Image(keyGuideComponents[i].image[j], alpha0, alpha255, fadeTime));
+            }
         }
 
         horizontalLayoutGroup.enabled = true;

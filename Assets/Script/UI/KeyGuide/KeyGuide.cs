@@ -6,9 +6,10 @@ using UnityEngine.UI;
 // キー操作のガイドを管理
 public class KeyGuide : MonoBehaviour
 {
-    [SerializeField] private Text text;
     [SerializeField] private KeyGuideIconSetter iconSetter;
+
     public Image[] image;
+    public Text text;
 
     // キー操作ガイドUIのアイコンの種類
     public enum KeyGuideIconType

@@ -5,7 +5,6 @@ using UnityEngine;
 
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using static KeyGuide;
 
 // ボタンの親クラス
 public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
@@ -63,7 +62,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     [SerializeField] protected ImageStruct[] imageStructs;
     [SerializeField] protected TextStruct[] textStructs;
 
-    public KeyGuideIconAndTextType[] keyGuideTypes;
+    public KeyGuide.KeyGuideIconAndTextType[] keyGuideTypes;
 
     // ボタンが所属するグループ
     public enum Group
