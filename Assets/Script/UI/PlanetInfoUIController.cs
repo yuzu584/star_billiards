@@ -11,15 +11,11 @@ public class PlanetInfoUIController : MonoBehaviour
     [SerializeField] private Image targetRing;
     [SerializeField] private Text planetName;
 
-    private UIController uICon;
-    private Converter converter;
     private SphereRay sphereRay;
     private ScreenController scrCon;
 
     private void Start()
     {
-        uICon = UIController.instance;
-        converter = Converter.instance;
         sphereRay = SphereRay.instance;
         scrCon = ScreenController.instance;
     }

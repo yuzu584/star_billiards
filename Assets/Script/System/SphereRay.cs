@@ -13,14 +13,6 @@ public class SphereRay : Singleton<SphereRay>
     [System.NonSerialized] public string hitObjectName;      // hitしたオブジェクトの名前
     [System.NonSerialized] public string hitObjectTag;       // hitしたオブジェクトのタグ
 
-    
-    private UIController uICon;
-
-    private void Start()
-    {
-        uICon = UIController.instance;
-    }
-
     void Update()
     {
         // Rayを生成
