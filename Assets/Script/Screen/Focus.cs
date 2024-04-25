@@ -44,7 +44,7 @@ public class Focus : Singleton<Focus>
             if(focusBtn != null)
             {
                 // 音を再生
-                StartCoroutine(sound.Play(focusBtn.ClickSound));
+                sound.Play(focusBtn.ClickSound);
 
                 // ボタンクリック時の処理
                 focusBtn.ClickProcess();

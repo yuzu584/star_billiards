@@ -344,6 +344,7 @@ GameObject:
   - component: {fileID: 5571069667479021931}
   - component: {fileID: 2278713236912858717}
   - component: {fileID: 7958577059214198213}
+  - component: {fileID: -2382807024552974104}
   m_Layer: 5
   m_Name: Option Slider
   m_TagString: Untagged
@@ -387,93 +388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b28b465f16f0b4186b6f429d4cbf0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageStructs:
-  - image: {fileID: 2122637892194971672}
-    lerpColor:
-      useLerp: 1
-      startColor: {r: 1, g: 1, b: 1, a: 0}
-      endColor: {r: 1, g: 1, b: 1, a: 0.19607843}
-      fadeTime: 0.4
-    lerpPosition:
-      useLerp: 0
-      startPos: {x: 0, y: 0, z: 0}
-      endPos: {x: 0, y: 0, z: 0}
-      fadeTime: 0
-    lerpScale:
-      useLerp: 0
-      startScale: {x: 0, y: 0}
-      endScale: {x: 0, y: 0}
-      fadeTime: 0
-    onPointerDraw: 1
-  - image: {fileID: 2034751251383816408}
-    lerpColor:
-      useLerp: 1
-      startColor: {r: 1, g: 1, b: 1, a: 0.039215688}
-      endColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-      fadeTime: 0.4
-    lerpPosition:
-      useLerp: 0
-      startPos: {x: 0, y: 0, z: 0}
-      endPos: {x: 0, y: 0, z: 0}
-      fadeTime: 0
-    lerpScale:
-      useLerp: 0
-      startScale: {x: 0, y: 0}
-      endScale: {x: 0, y: 0}
-      fadeTime: 0
-    onPointerDraw: 0
-  - image: {fileID: 5571069668366178360}
-    lerpColor:
-      useLerp: 1
-      startColor: {r: 1, g: 1, b: 1, a: 0.39215687}
-      endColor: {r: 1, g: 1, b: 1, a: 0.78431374}
-      fadeTime: 0.4
-    lerpPosition:
-      useLerp: 0
-      startPos: {x: 0, y: 0, z: 0}
-      endPos: {x: 0, y: 0, z: 0}
-      fadeTime: 0
-    lerpScale:
-      useLerp: 1
-      startScale: {x: 1, y: 1}
-      endScale: {x: 1.01, y: 1.2}
-      fadeTime: 0.4
-    onPointerDraw: 0
-  textStructs:
-  - text: {fileID: 5571069667451277669}
-    lerpColor:
-      useLerp: 1
-      startColor: {r: 1, g: 1, b: 1, a: 1}
-      endColor: {r: 0, g: 0, b: 0, a: 1}
-      fadeTime: 0.4
-    lerpPosition:
-      useLerp: 0
-      startPos: {x: 0, y: 0, z: 0}
-      endPos: {x: 0, y: 0, z: 0}
-      fadeTime: 0
-    lerpScale:
-      useLerp: 0
-      startScale: {x: 0, y: 0}
-      endScale: {x: 0, y: 0}
-      fadeTime: 0
-    onPointerDraw: 0
-  - text: {fileID: 5571069669276434658}
-    lerpColor:
-      useLerp: 1
-      startColor: {r: 1, g: 1, b: 1, a: 1}
-      endColor: {r: 0, g: 0, b: 0, a: 1}
-      fadeTime: 0.4
-    lerpPosition:
-      useLerp: 0
-      startPos: {x: 0, y: 0, z: 0}
-      endPos: {x: 0, y: 0, z: 0}
-      fadeTime: 0
-    lerpScale:
-      useLerp: 0
-      startScale: {x: 0, y: 0}
-      endScale: {x: 0, y: 0}
-      fadeTime: 0
-    onPointerDraw: 0
   keyGuideTypes:
   - text: 8
     icon: 02000000
@@ -510,6 +424,75 @@ MonoBehaviour:
   seet: 
   dataName: 
   text: {fileID: 5571069669276434658}
+--- !u!114 &-2382807024552974104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5571069667479021930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd933d54393a8140b3d99921eed4064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpStructs:
+  - ui: {fileID: 2034751251383816408}
+    color:
+      use: 1
+      changedColor: {r: 1, g: 1, b: 1, a: 0.5882353}
+      fadeTime: 0.4
+    position:
+      use: 0
+      posFluctuation: {x: 0, y: 0, z: 0}
+      fadeTime: 0
+    scale:
+      use: 0
+      scaleFluctuation: {x: 0, y: 0}
+      fadeTime: 0
+    onPointerDraw: 0
+  - ui: {fileID: 5571069669276434658}
+    color:
+      use: 1
+      changedColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      fadeTime: 0.4
+    position:
+      use: 0
+      posFluctuation: {x: 0, y: 0, z: 0}
+      fadeTime: 0
+    scale:
+      use: 0
+      scaleFluctuation: {x: 0, y: 0}
+      fadeTime: 0
+    onPointerDraw: 0
+  - ui: {fileID: 5571069667451277669}
+    color:
+      use: 1
+      changedColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      fadeTime: 0.4
+    position:
+      use: 0
+      posFluctuation: {x: 0, y: 0, z: 0}
+      fadeTime: 0
+    scale:
+      use: 0
+      scaleFluctuation: {x: 0, y: 0}
+      fadeTime: 0
+    onPointerDraw: 0
+  - ui: {fileID: 2122637892194971672}
+    color:
+      use: 1
+      changedColor: {r: 1, g: 1, b: 1, a: 0.19607843}
+      fadeTime: 0.4
+    position:
+      use: 0
+      posFluctuation: {x: 0, y: 0, z: 0}
+      fadeTime: 0
+    scale:
+      use: 0
+      scaleFluctuation: {x: 0, y: 0}
+      fadeTime: 0
+    onPointerDraw: 0
 --- !u!1 &5571069668366178310
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,9 +46,9 @@ public class Sound : Singleton<Sound>
     }
 
     // 音声ファイルを再生
-    public IEnumerator Play(AudioClip audio)
+    public void Play(AudioClip audio)
     {
-        if (audio == null) yield break;
+        if (audio == null) return;
 
         // 再生間隔を経過していたら再生
         AudioClipData acd = GetClip(audio);
@@ -57,8 +57,6 @@ public class Sound : Singleton<Sound>
             acd.playedTime = Time.realtimeSinceStartup;
             audioSource.PlayOneShot(acd.audioClip);
         }
-
-        yield return null;
     }
 
     // AudioMixer の音量を設定

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5970234051200584755}
   - component: {fileID: 880919052158026651}
   - component: {fileID: 3062701042717884281}
+  - component: {fileID: 1732535807072903682}
   m_Layer: 5
   m_Name: Button 1
   m_TagString: Untagged
@@ -51,59 +52,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a475a13cfe6e5d49a9e4c625a6e2428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageStructs:
-  - image: {fileID: 5970234050213230016}
-    lerpColor:
-      useLerp: 1
-      startColor: {r: 1, g: 1, b: 1, a: 0.039215688}
-      endColor: {r: 1, g: 1, b: 1, a: 0.78431374}
-      fadeTime: 0.4
-    lerpPosition:
-      useLerp: 0
-      startPos: {x: 0, y: 0, z: 0}
-      endPos: {x: 0, y: 0, z: 0}
-      fadeTime: 0
-    lerpScale:
-      useLerp: 0
-      startScale: {x: 0, y: 0}
-      endScale: {x: 0, y: 0}
-      fadeTime: 0
-    onPointerDraw: 0
-  - image: {fileID: 5970234051254067567}
-    lerpColor:
-      useLerp: 1
-      startColor: {r: 1, g: 1, b: 1, a: 0.39215687}
-      endColor: {r: 1, g: 1, b: 1, a: 0.78431374}
-      fadeTime: 0.4
-    lerpPosition:
-      useLerp: 0
-      startPos: {x: 0, y: 0, z: 0}
-      endPos: {x: 0, y: 0, z: 5}
-      fadeTime: 0.4
-    lerpScale:
-      useLerp: 1
-      startScale: {x: 1, y: 1}
-      endScale: {x: 1.03, y: 1.1}
-      fadeTime: 0.4
-    onPointerDraw: 0
-  textStructs:
-  - text: {fileID: 5970234051039374986}
-    lerpColor:
-      useLerp: 1
-      startColor: {r: 1, g: 1, b: 1, a: 1}
-      endColor: {r: 0, g: 0, b: 0, a: 1}
-      fadeTime: 0.4
-    lerpPosition:
-      useLerp: 0
-      startPos: {x: 0, y: 0, z: 0}
-      endPos: {x: 0, y: 0, z: 0}
-      fadeTime: 0
-    lerpScale:
-      useLerp: 0
-      startScale: {x: 0, y: 0}
-      endScale: {x: 0, y: 0}
-      fadeTime: 0
-    onPointerDraw: 0
   keyGuideTypes:
   - text: 0
     icon: 00000000
@@ -144,6 +92,47 @@ MonoBehaviour:
   seet: 
   dataName: 
   text: {fileID: 5970234051039374986}
+--- !u!114 &1732535807072903682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5970234051200584752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd933d54393a8140b3d99921eed4064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpStructs:
+  - ui: {fileID: 5970234050213230016}
+    color:
+      use: 1
+      changedColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+      fadeTime: 0.4
+    position:
+      use: 0
+      posFluctuation: {x: 0, y: 0, z: 0}
+      fadeTime: 0
+    scale:
+      use: 0
+      scaleFluctuation: {x: 0, y: 0}
+      fadeTime: 0
+    onPointerDraw: 0
+  - ui: {fileID: 5970234051039374986}
+    color:
+      use: 1
+      changedColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+      fadeTime: 0.4
+    position:
+      use: 0
+      posFluctuation: {x: 0, y: 0, z: 0}
+      fadeTime: 0
+    scale:
+      use: 0
+      scaleFluctuation: {x: 0, y: 0}
+      fadeTime: 0
+    onPointerDraw: 0
 --- !u!1001 &1501167659160551737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -261,17 +250,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5970234051254067567 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5048447447817347158, guid: 3fcc6669d61c95c44b2f966e528cdf87, type: 3}
-  m_PrefabInstance: {fileID: 1501167659160551737}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &6191061910118939308 stripped
