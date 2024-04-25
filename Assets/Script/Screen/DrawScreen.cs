@@ -66,6 +66,12 @@ public class DrawScreen : MonoBehaviour
 
         // 親オブジェクトの中で先頭にする
         backIns.transform.SetAsFirstSibling();
+
+        // 背景のエフェクトの親オブジェクトは生成したインスタンス
+        BackGroundEffect.instance.parentT = backIns.transform;
+
+        // 背景のエフェクトを描画
+        BackGroundEffect.instance.DrawEffect();
     }
 
     // インスタンスを削除して null を代入する(GameObject は参照を渡す)

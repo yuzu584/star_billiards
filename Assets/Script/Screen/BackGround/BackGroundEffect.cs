@@ -7,6 +7,8 @@ public class BackGroundEffect : Singleton<BackGroundEffect>
 {
     [SerializeField] private Image squareEffect;            // 四角形のエフェクトのプレハブ
     [SerializeField] private RectTransform canvasRect;
+    public Material material;
+    Color32 savedTopColor, savedButtomColor;                // マテリアルの初期色を保存
 
     private int effectAmount = 20;                          // 生成するエフェクトの数
 
@@ -25,11 +27,35 @@ public class BackGroundEffect : Singleton<BackGroundEffect>
     public int maxColorDiff;                                // メインの色から変化させる RGB の量の最大値
     public int minColorDiff;                                // メインの色から変化させる RGB の量の最小値
 
+    override protected void Awake()
+    {
+        base.Awake();
+
+        savedTopColor = material.GetColor("_TopColor");
+        savedButtomColor = material.GetColor("_ButtomColor");
+    }
+
     private void Start()
     {
         canvasWidth = canvasRect.sizeDelta.x;
         canvasHeight = canvasRect.sizeDelta.y;
+
+        // 背景のエフェクトを生成
+        DrawEffect();
+
+        // マテリアルの色を設定
+        SetMaterialColor();
     }
+
+#if UNITY_EDITOR
+    private void OnApplicationQuit()
+    {
+        // アプリケーション終了時に保存しておいた色をマテリアルにセットして、
+        // git の差分が発生しないようにする
+        material.SetColor("_TopColor", savedTopColor);
+        material.SetColor("_ButtomColor", savedButtomColor);
+    }
+#endif
 
     // エフェクトを生成して描画
     public void DrawEffect()
@@ -80,6 +106,17 @@ public class BackGroundEffect : Singleton<BackGroundEffect>
         g = Mathf.Clamp(g, minEffectColorRGB, maxEffectColorRGB);
         b = Mathf.Clamp(b, minEffectColorRGB, maxEffectColorRGB);
         effectColor = new Color32((byte)r, (byte)g, (byte)b, (byte)a);
+
+        // マテリアルの色を設定
+        SetMaterialColor();
+    }
+
+    // マテリアルの色を設定
+    void SetMaterialColor()
+    {
+        // 背景の ButtomColor を設定
+        material.SetColor("_TopColor", mainColor);
+        material.SetColor("_ButtomColor", buttomColor);
     }
 
     // 指定の値から指定の値以上変化した乱数を返す

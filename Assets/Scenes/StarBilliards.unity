@@ -555,6 +555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   squareEffect: {fileID: 7310846002842643814, guid: eb30e0d4390f0854c88b9441af3688db, type: 3}
   canvasRect: {fileID: 869580815}
+  material: {fileID: 2100000, guid: 74e2efa47c579c7468586a7226b6e718, type: 2}
   parentT: {fileID: 0}
   canvasWidth: 0
   canvasHeight: 0
