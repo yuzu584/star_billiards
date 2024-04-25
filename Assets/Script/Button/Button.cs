@@ -50,7 +50,8 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public Group group;                                     // このボタンが所属するグループ
     public int btnNum;                                      // このボタンの番号(主にフォーカスしていたボタンを保存するために使用する)
 
-    private bool isStartFocus = false;                      // StartFocus が実行されたか
+    protected bool isStartFocus = false;                    // StartFocus が実行されたか
+    protected bool animating = false;                       // ボタンのアニメーション中か
 
     protected UILerper uiLerper;
 
@@ -89,7 +90,8 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         PlayBtnSound(BtnSounds.EnterSound);
 
         // ボタンのアニメーション処理
-        if(uiLerper != null) uiLerper.AnimProcess(true);
+        if((uiLerper != null) && (!animating)) uiLerper.AnimProcess(true);
+        animating = true;
 
         // フォーカスされているボタンを設定
         focus.SetFocusBtn(this);
@@ -101,7 +103,8 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public virtual void ExitProcess()
     {
         // ボタンのアニメーション処理
-        if (uiLerper != null) uiLerper.AnimProcess(false);
+        if ((uiLerper != null) && (animating)) uiLerper.AnimProcess(false);
+        animating = false;
     }
 
     // クリックされたときの処理
