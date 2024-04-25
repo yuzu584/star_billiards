@@ -1,11 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using static UnityEngine.InputSystem.OnScreen.OnScreenStick;
 
 // ボタンの親クラス
 public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
@@ -210,8 +207,6 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     protected virtual void Start()
     {
-        uiLerper = GetComponent<UILerper>();
-
         scrCon ??= ScreenController.instance;
         focus ??= Focus.instance;
         sound ??= Sound.instance;
@@ -228,6 +223,8 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     protected virtual void OnEnable()
     {
+        uiLerper ??= GetComponent<UILerper>();
+
         // 取得されていなければ取得
         scrCon ??= ScreenController.instance;
         focus ??= Focus.instance;

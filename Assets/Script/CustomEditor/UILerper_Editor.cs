@@ -2,6 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using StarBilliards.System;
 
 [CustomEditor(typeof(UILerper))]
 public class UILerper_Editor : Editor
@@ -48,7 +49,20 @@ public class UILerper_Editor : Editor
             // 線形補間で使用するクラスを取得
             var lerp = lerpsProperty.GetArrayElementAtIndex(i);
             var ui = lerp.FindPropertyRelative("ui");
-            foldOut[i] = EditorGUILayout.Foldout(foldOut[i], "content " + i);
+            UnityNullCheck nullChecker = new UnityNullCheck();
+            if (nullChecker.IsNull(ui.objectReferenceValue))
+            {
+                // 線形補間を使用する UI が存在しなければ見出しの文字列は null
+                foldOut[i] = EditorGUILayout.Foldout(foldOut[i], "null");
+            }
+            else
+            {
+                // 見出しの文字列は線形補間を使用する UI の名前とその型名
+                // 型名に "UnityEngine.UI." が含まれていたら取り除く
+                string s = $"{ui.objectReferenceValue.name}({ui.objectReferenceValue.GetType().ToString().Replace("UnityEngine.UI.", "")})";
+
+                foldOut[i] = EditorGUILayout.Foldout(foldOut[i], s);
+            }
 
             if (!foldOut[i]) continue;
 
