@@ -40,6 +40,8 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     }
 
     [SerializeField] protected bool defaultFocus = false;   // 最初にフォーカスするボタンか
+    [SerializeField] protected bool lockButton = false;     // ボタンが押せるかどうか( true : 押せない false : 押せる )
+
     public ScreenAndLoot scrAndLoot;                        // スクリーンと階層をまとめた構造体
     public AudioClip EnterSound;                            // ポインターが乗った時に再生する音声ファイル
     public AudioClip ClickSound;                            // ボタンクリック時に再生する音声ファイル
@@ -110,6 +112,9 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     // クリックされたときの処理
     public virtual void ClickProcess()
     {
+        // もしボタンがロックされているなら押したときの処理を行わない
+        if (lockButton) return;
+
         //音を再生
         PlayBtnSound(BtnSounds.ClickSound);
     }

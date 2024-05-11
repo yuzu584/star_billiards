@@ -60,6 +60,7 @@ MonoBehaviour:
   - text: 2
     icon: 02000000
   defaultFocus: 0
+  lockButton: 0
   scrAndLoot:
     scrType: 0
     scrLoot: 0
