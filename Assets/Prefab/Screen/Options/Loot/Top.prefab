@@ -438,6 +438,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3167917194627300110}
     - target: {fileID: 599461845565836011, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: lockButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 599461845565836011, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: _optionsController
       value: 
       objectReference: {fileID: 0}
@@ -593,6 +597,10 @@ PrefabInstance:
       propertyPath: buttonDown
       value: 
       objectReference: {fileID: 3167917194503482659}
+    - target: {fileID: 599461845565836011, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
+      propertyPath: lockButton
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 599461845565836011, guid: 042cc4a70dbdd94428ece8c9ddf3b12d, type: 3}
       propertyPath: _optionsController
       value: 

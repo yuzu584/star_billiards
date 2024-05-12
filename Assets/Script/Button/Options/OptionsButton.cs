@@ -26,6 +26,9 @@ public class OptionsButton : Button
     {
         base.ClickProcess();
 
+        // ボタンがロックされていたら処理を行わず終了
+        if (lockButton) return;
+
         // 設定画面の階層を変更
         opCon.SwitchLoot(loot);
     }

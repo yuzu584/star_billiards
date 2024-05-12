@@ -43,9 +43,6 @@ public class Focus : Singleton<Focus>
             // ボタンがフォーカスされていれば
             if(focusBtn != null)
             {
-                // 音を再生
-                sound.Play(focusBtn.ClickSound);
-
                 // ボタンクリック時の処理
                 focusBtn.ClickProcess();
             }

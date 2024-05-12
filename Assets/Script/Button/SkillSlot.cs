@@ -36,6 +36,9 @@ public class SkillSlot : Button
     {
         base.ClickProcess();
 
+        // ボタンがロックされていたら処理を行わず終了
+        if (lockButton) return;
+
         // 既に選択されたスキルでなければ、選択しているスキルスロットを設定
         if (skillSelect.CheckDoubleSelect(skill))
         {

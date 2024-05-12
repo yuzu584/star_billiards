@@ -2105,6 +2105,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: lockButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonRight
       value: 
       objectReference: {fileID: 7696692793660990924}
@@ -2423,6 +2427,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: lockButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonRight
       value: 
       objectReference: {fileID: 7696692793660990924}
@@ -2697,6 +2705,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: lockButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonRight
       value: 
       objectReference: {fileID: 7696692793660990924}
@@ -2856,6 +2868,10 @@ PrefabInstance:
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonLeft
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: lockButton
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonRight
@@ -3901,6 +3917,10 @@ PrefabInstance:
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonLeft
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
+      propertyPath: lockButton
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7210835567840534325, guid: ca2be888cf23b8044bf67cb6e9a6495e, type: 3}
       propertyPath: buttonRight

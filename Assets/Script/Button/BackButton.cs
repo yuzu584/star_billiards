@@ -28,6 +28,9 @@ public class BackButton : Button
     {
         base.ClickProcess();
 
+        // ボタンがロックされていたら処理を行わず終了
+        if (lockButton) return;
+
         action?.Invoke();
     }
 

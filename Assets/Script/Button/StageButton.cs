@@ -83,6 +83,9 @@ public class StageButton : Button
     public override void ClickProcess()
     {
         base.ClickProcess();
+
+        // ボタンがロックされていたら処理を行わず終了
+        if (lockButton) return;
     }
 
     protected override void OnEnable()

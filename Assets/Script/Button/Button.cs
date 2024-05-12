@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 // ボタンの親クラス
 public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    private const float BUTTON_LOCK_ALPHA = 0.1f;           // ボタンロック時の透明度
+
     public KeyGuide.KeyGuideIconAndTextType[] keyGuideTypes;
 
     // ボタンが所属するグループ
@@ -21,6 +23,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     {
         EnterSound,
         ClickSound,
+        LockedSound,
     }
 
     // instanceを代入する変数
@@ -40,11 +43,14 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     }
 
     [SerializeField] protected bool defaultFocus = false;   // 最初にフォーカスするボタンか
-    [SerializeField] protected bool lockButton = false;     // ボタンが押せるかどうか( true : 押せない false : 押せる )
+    [SerializeField] protected bool lockButton = false;     // ボタンがロックされているか(ロックされているとボタンを押せなくなる)
+    [SerializeField] protected AudioClip EnterSound;        // ポインターが乗った時に再生する音声ファイル
+    [SerializeField] protected AudioClip ClickSound;        // ボタンクリック時に再生する音声ファイル
+    [SerializeField] protected AudioClip LockedSound;       // ボタンロック時にボタンを押したとき再生する音声ファイル
+
+    private bool oldLockButton = false;                     // Inspector更新時に lockButton の値が変わったか判定する用の変数
 
     public ScreenAndLoot scrAndLoot;                        // スクリーンと階層をまとめた構造体
-    public AudioClip EnterSound;                            // ポインターが乗った時に再生する音声ファイル
-    public AudioClip ClickSound;                            // ボタンクリック時に再生する音声ファイル
     public Button buttonUp;                                 // 自分の上に位置するボタン
     public Button buttonDown;                               // 自分の下に位置するボタン
     public Button buttonLeft;                               // 自分の左に位置するボタン
@@ -61,6 +67,8 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     // true  : ポインターによってフォーカスされた
     // false : ポインター以外(コントローラー入力など)でフォーカスされた
     public bool orPointer = false;
+
+    private bool updateInspector = false;                   // Inspectorの値が更新されたか
 
     // マウスポインターがボタンの上に乗ったら
     public virtual void OnPointerEnter(PointerEventData pointerEventData)
@@ -112,11 +120,20 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     // クリックされたときの処理
     public virtual void ClickProcess()
     {
-        // もしボタンがロックされているなら押したときの処理を行わない
-        if (lockButton) return;
+        // ボタンがロックされているかどうかで分岐
+        if (lockButton)
+        {
+            // ボタンロック時の音を再生
+            PlayBtnSound(BtnSounds.LockedSound);
 
-        //音を再生
-        PlayBtnSound(BtnSounds.ClickSound);
+            // ボタンが押せない旨を伝えるポップアップを生成
+            PopupManager.instance.DrawPopup(PopupManager.PopupType.InMenuPopup1, Localize.instance.GetString("system", "button_lock_text"));
+        }
+        else 
+        {
+            // クリック時の音を再生
+            PlayBtnSound(BtnSounds.ClickSound);
+        }
     }
 
     // ボタンの音を再生
@@ -132,6 +149,11 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
                 break;
             case BtnSounds.ClickSound:
                 sound.Play(ClickSound);
+                break;
+            case BtnSounds.LockedSound:
+                sound.Play(LockedSound);
+                break;
+            default:
                 break;
         }
     }
@@ -213,6 +235,30 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         keyGuideUI.DrawGuide(keyGuideTypes);
     }
 
+    private void Lock()
+    {
+        // 値に変更がなければ終了
+        if (lockButton == oldLockButton) return;
+
+        // 変更後の値を保存
+        oldLockButton = lockButton;
+
+        // ボタンがロックされたなら
+        if (lockButton)
+        {
+            // CanvasGroup コンポーネントを追加
+            var component = gameObject.AddComponent<CanvasGroup>();
+
+            // ボタンを透けさせる
+            component.alpha = BUTTON_LOCK_ALPHA;
+        }
+        else
+        {
+            // コンポーネント削除
+            Destroy(GetComponent<CanvasGroup>());
+        }
+    }
+
     protected virtual void Start()
     {
         scrCon ??= ScreenController.instance;
@@ -227,6 +273,23 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
         // 最初のフォーカス処理
         StartFocus();
+
+        // ボタンのロック処理
+        Lock();
+    }
+
+    private void Update()
+    {
+        // Inspectorに更新がなければ終了
+        if (!updateInspector) return;
+
+        // ボタンのロック処理
+        Lock();
+    }
+
+    void OnValidate()
+    {
+        updateInspector = true;
     }
 
     protected virtual void OnEnable()

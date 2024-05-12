@@ -49,6 +49,9 @@ public class Button1 : Button
     {
         base.ClickProcess();
 
+        // ボタンがロックされていたら処理を行わず終了
+        if (lockButton) return;
+
         // ボタンを押したときの効果によって分岐
         switch (clickAction)
         {

@@ -30,6 +30,9 @@ public class OptionsSwitch : Button
     {
         base.ClickProcess();
 
+        // ボタンがロックされていたら処理を行わず終了
+        if (lockButton) return;
+
         ++nowState;
         if(nowState > (stateText.Length - 1))
             nowState = 0;

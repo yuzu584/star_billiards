@@ -291,11 +291,13 @@ MonoBehaviour:
   - text: 2
     icon: 02000000
   defaultFocus: 0
+  lockButton: 0
   scrAndLoot:
     scrType: 0
     scrLoot: 0
   EnterSound: {fileID: 8300000, guid: 13dc1ec8e21e60b4b83f31fb90a45748, type: 3}
   ClickSound: {fileID: 8300000, guid: 6383ff15321eb9146a08c0130415cf4f, type: 3}
+  LockedSound: {fileID: 8300000, guid: b1b64f498267627499d48941df95a7a9, type: 3}
   buttonUp: {fileID: 0}
   buttonDown: {fileID: 0}
   buttonLeft: {fileID: 0}
